@@ -1,13 +1,10 @@
 
-/* ---------------------------------------------------
-    asy-sidebar STYLE
------------------------------------------------------ */
 
 .asy-wrapper {
     display: flex;
     width: 100%;
     align-items: stretch;
-    height:100vh;  
+    height:100vh;
     height:100%;
 }
 
@@ -32,7 +29,6 @@
 animation-duration: 0.3s;
 -webkit-animation-fill-mode: both;
 animation-fill-mode: both;
-    /*transition: all 1s;*/
 }
 .menuDroit .modal-dialog{margin: 0 0;height:100%;}
 .menuDroit{height:100%;}
@@ -43,7 +39,7 @@ animation-fill-mode: both;
       -webkit-transform: translate3d(50px, 0, 0);
       transform: translate3d(50px, 0, 0);
     }
-  
+
     to {
       opacity: 1;
       -webkit-transform: translate3d(0, 0, 0);
@@ -56,7 +52,7 @@ animation-fill-mode: both;
       -webkit-transform: translate3d(0px, 0, 0);
       transform: translate3d(0px, 0, 0);
     }
-  
+
     to {
       opacity: 1;
       -webkit-transform: translate3d(50px, 0, 0);
@@ -72,9 +68,7 @@ animation-fill-mode: both;
     -webkit-animation-name: fadeOutMenu;
     animation-name: fadeOutMenu;
   }
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
+
 
 #content {
     width: 100%;
@@ -83,9 +77,7 @@ animation-fill-mode: both;
     transition: all 0.3s;
 }
 
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
+
 
 
 

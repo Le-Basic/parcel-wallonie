@@ -79,10 +79,6 @@
   padding-top: 8rem;
 }
 
-/* .global2 {
-    padding-top: 5rem !important;
-} */
-
 #productView,
 #landscapeView {
   margin-top: -6rem;
@@ -118,7 +114,7 @@
 }
 
 .content-map {
-  /* background-color: #fff; */
+
   background-image: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 0%,
@@ -152,7 +148,7 @@
 #map3,
 #map4 {
   position: sticky;
-  /* top: 300px; */
+
   top: 19vh;
   max-width: 1200px;
   margin: auto;
@@ -163,10 +159,10 @@
   top: 220px;
 }
 
-/* #imgmap2, */
+
 #imgmap3,
 #imgmap4,
-/* #map2, */
+
 #map3,
 #map4 {
 }
@@ -250,11 +246,6 @@
   padding: 0 2rem;
 }
 
-/* h3{font-family: WorkSans-Medium;
-    font-size: 33px;
-    color: #015A5A;
-    letter-spacing: 0.85px;} */
-
 .card-surface {
   background: #ffffff;
   border: 1px solid rgba(196, 197, 195, 0.24);
@@ -287,8 +278,7 @@
   padding: 0.5rem;
   background: #ffffff;
   color: #015a5a;
-  /* width: 41px;
-            height: 41px; */
+
   font-size: 2rem;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.22);
   border-radius: 3px;
@@ -309,7 +299,7 @@
 }
 
 .containerSurface {
-  /* display: none; */
+
   visibility: hidden;
   height: 0px;
 }
@@ -374,7 +364,7 @@
 }
 
 .col-icon {
-  /* width: 6%; */
+
   width: 64px;
   text-align: center;
   padding-right: 5px;
@@ -424,8 +414,8 @@
 
 .col-pourcent {
   font-weight: bold;
-  /* width: 7%; */
-  /*width: 48px;*/
+
+
   width: 100px;
   text-align: right;
   padding-left: 0.5rem;
@@ -476,7 +466,7 @@
   padding-bottom: 5rem;
 }
 
-/* colors icons **/
+
 
 .grey {
   color: #585757;
@@ -541,9 +531,6 @@
   border-color: #a9a9a9;
 }
 
-/* #productView .cadre-categorie {
-            padding: 10px 20px;
-        } */
 
 #productView .cadre-categorie,
 #landscapeView .cadre-categorie {
@@ -783,12 +770,12 @@
   }
 
   .spacer-bottom {
-    /* height: 39rem; */
+
     height: 76rem;
   }
 
   .content-map {
-    /* background-color: #fff; */
+
     background-image: linear-gradient(
       180deg,
       rgba(255, 252, 252, 0) 0%,
@@ -1066,7 +1053,7 @@
 }
 
 .down-arrow {
-  /* position: absolute; */
+
   width: 0;
   height: 30px;
   animation: jumpInfinite 1.5s infinite;
