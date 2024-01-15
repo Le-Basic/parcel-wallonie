@@ -63,7 +63,7 @@
       <!-- <?php include '../partials/menu-affiner-2modales.php'; ?> -->
     </nav>
   </div>
-  <!-- Modal -->
+  <!-- Modal s-->
   <div
     class="modal fade modal-simple"
     id="modal-population-groupe"
