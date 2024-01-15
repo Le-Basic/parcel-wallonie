@@ -1,0 +1,157 @@
+* {
+  box-sizing: border-box;
+}
+
+.slider-range {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 12px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+  border-radius: 16px;
+}
+
+.slider-range::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 18px; /* Set a specific slider handle width */
+  height: 18px; /* Slider handle height */
+  background: #91c423; /* Green background */
+  border-radius: 50%;
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider-range::webkit-slider-runnable-track {
+  background: #91c423;
+}
+*/ .slider-range::-moz-range-progress {
+  background: #91c423;
+}
+
+.slider-range::-ms-fill-lower {
+  background: #91c423;
+}
+
+.range-slider {
+  width: 100%;
+  /*padding: 30px;*/
+  height: 79px;
+}
+.range-slider .range-values {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: #888888;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 15px;
+}
+
+.rangeslider {
+  margin: 4px auto;
+  position: relative;
+}
+.rangeslider.rangeslider--horizontal {
+  height: 11px;
+  background-color: #e5e5e5;
+  border-radius: 7px;
+  box-shadow: none;
+}
+.rangeslider.rangeslider--horizontal.rangeslider--active .rangeslider__handle {
+  background-color: #ffefb3;
+}
+.rangeslider .rangeslider__fill {
+  height: 11px;
+  background-color: #ffca00;
+  border-radius: 7px;
+  box-shadow: none;
+}
+.rangeslider .rangeslider__handle {
+  width: 21px;
+  height: 21px;
+  /*border: 3px solid #ffca00;*/
+  background-color: #ffca00;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  box-shadow: 0 0 0 2px rgba(255, 202, 0, 0.2);
+}
+
+output {
+  display: block;
+  margin-bottom: 5px;
+  padding: 0;
+  text-align: right;
+  color: #080808;
+  font-size: 20px;
+  line-height: 18px;
+  font-weight: 400;
+  font-family: "Varela", sans-serif;
+}
+output .output {
+  margin-right: 3px;
+  font-size: 20px;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+.legumes .rangeslider .rangeslider__fill,
+.legumes .rangeslider .rangeslider__handle {
+  background-color: #91c423;
+}
+.legumes
+  .rangeslider.rangeslider--horizontal.rangeslider--active
+  .rangeslider__handle {
+  background-color: #015a5a;
+}
+
+.fruits .rangeslider .rangeslider__fill,
+.fruits .rangeslider .rangeslider__handle {
+  background-color: #a261c0;
+}
+.fruits
+  .rangeslider.rangeslider--horizontal.rangeslider--active
+  .rangeslider__handle {
+  background-color: #4f2065;
+}
+
+.cereales .rangeslider .rangeslider__fill,
+.cereales .rangeslider .rangeslider__handle {
+  background-color: #f5a623;
+}
+.cereales
+  .rangeslider.rangeslider--horizontal.rangeslider--active
+  .rangeslider__handle {
+  background-color: #874e00;
+}
+
+.viande .rangeslider .rangeslider__fill,
+.viande .rangeslider .rangeslider__handle {
+  background-color: #b57a60;
+}
+.viande
+  .rangeslider.rangeslider--horizontal.rangeslider--active
+  .rangeslider__handle {
+  background-color: #463025;
+}
+@media (max-width: 1200px) {
+  output .output,
+  output {
+    font-size: 15px;
+  }
+  /*.rangeslider.rangeslider--horizontal {height:0px;}*/
+  .rangeslider.rangeslider--horizontal {
+    height: 7px;
+  }
+  .rangeslider .rangeslider__fill {
+    height: 7px;
+  }
+  .rangeslider .rangeslider__handle {
+    width: 17px;
+    height: 17px;
+  }
+}

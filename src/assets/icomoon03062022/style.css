@@ -1,0 +1,324 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?q0am5u');
+  src:  url('fonts/icomoon.eot?q0am5u#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?q0am5u') format('truetype'),
+    url('fonts/icomoon.woff?q0am5u') format('woff'),
+    url('fonts/icomoon.svg?q0am5u#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-export:before {
+  content: "\e962";
+}
+.icon-vigne:before {
+  content: "\e961";
+}
+.icon-text:before {
+  content: "\e95f";
+}
+.icon-chart:before {
+  content: "\e960";
+}
+.icon-nutrition:before {
+  content: "\e95e";
+}
+.icon-prairie:before {
+  content: "\e95d";
+}
+.icon-proteine:before {
+  content: "\e95c";
+}
+.icon-vue-produits:before {
+  content: "\e956";
+}
+.icon-energie:before {
+  content: "\e959";
+}
+.icon-fibres:before {
+  content: "\e95a";
+}
+.icon-lipides:before {
+  content: "\e95b";
+}
+.icon-vue-paysage:before {
+  content: "\e951";
+}
+.icon-viande-rouge:before {
+  content: "\e952";
+}
+.icon-viande-blanche:before {
+  content: "\e953";
+}
+.icon-sucre:before {
+  content: "\e954";
+}
+.icon-secs:before {
+  content: "\e955";
+}
+.icon-pdt:before {
+  content: "\e957";
+}
+.icon-oleagineux:before {
+  content: "\e958";
+}
+.icon-oeuf:before {
+  content: "\e950";
+}
+.icon-legumineuses:before {
+  content: "\e94f";
+}
+.icon-legumes2:before {
+  content: "\e94e";
+}
+.icon-lait:before {
+  content: "\e94d";
+}
+.icon-jachere:before {
+  content: "\e94c";
+}
+.icon-huile:before {
+  content: "\e94b";
+}
+.icon-gaspillage:before {
+  content: "\e94a";
+}
+.icon-fruit2:before {
+  content: "\e949";
+}
+.icon-fourragere:before {
+  content: "\e948";
+}
+.icon-cereales2:before {
+  content: "\e947";
+}
+.icon-autres-cultures:before {
+  content: "\e946";
+}
+.icon-linkedin:before {
+  content: "\e945";
+}
+.icon-cles:before {
+  content: "\e943";
+}
+.icon-energy:before {
+  content: "\e944";
+}
+.icon-baisse:before {
+  content: "\e941";
+}
+.icon-hausse:before {
+  content: "\e942";
+}
+.icon-contexte:before {
+  content: "\e93b";
+}
+.icon-indicateur:before {
+  content: "\e93c";
+}
+.icon-perimetre:before {
+  content: "\e93d";
+}
+.icon-repere:before {
+  content: "\e93e";
+}
+.icon-source:before {
+  content: "\e93f";
+}
+.icon-unite:before {
+  content: "\e940";
+}
+.icon-fleche-baisse:before {
+  content: "\e939";
+}
+.icon-fleche-hausse:before {
+  content: "\e93a";
+}
+.icon-impact-air:before {
+  content: "\e92d";
+}
+.icon-impact-biodiversite:before {
+  content: "\e92e";
+}
+.icon-impact-climat:before {
+  content: "\e92f";
+}
+.icon-impact-co2:before {
+  content: "\e930";
+}
+.icon-impact-deforest:before {
+  content: "\e931";
+}
+.icon-impact-eau-conso:before {
+  content: "\e932";
+}
+.icon-impact-eau:before {
+  content: "\e933";
+}
+.icon-impact-eaupol:before {
+  content: "\e934";
+}
+.icon-impact-empreinte:before {
+  content: "\e935";
+}
+.icon-impact-especes:before {
+  content: "\e936";
+}
+.icon-impact-sol:before {
+  content: "\e937";
+}
+.icon-impact-solqualit:before {
+  content: "\e938";
+}
+.icon-echelle-departement:before {
+  content: "\e92b";
+}
+.icon-echelle-village:before {
+  content: "\e92c";
+}
+.icon-affiner-reloc:before {
+  content: "\e923";
+}
+.icon-echelle-foot:before {
+  content: "\e924";
+}
+.icon-echelle-paris:before {
+  content: "\e925";
+}
+.icon-echelle-parking:before {
+  content: "\e926";
+}
+.icon-echelle-terrain:before {
+  content: "\e927";
+}
+.icon-emploi:before {
+  content: "\e928";
+}
+.icon-personne:before {
+  content: "\e929";
+}
+.icon-Plan-de-travail-44:before {
+  content: "\e92a";
+}
+.icon-ico_calcul:before {
+  content: "\e900";
+}
+.icon-ico_calcul2:before {
+  content: "\e901";
+}
+.icon-ico_CATEGORIES_cereales:before {
+  content: "\e902";
+}
+.icon-ico_CATEGORIES_fruits:before {
+  content: "\e903";
+}
+.icon-ico_CATEGORIES_legumes:before {
+  content: "\e904";
+}
+.icon-ico_CATEGORIES_viande:before {
+  content: "\e905";
+}
+.icon-ico_champ:before {
+  content: "\e906";
+}
+.icon-ico_detail:before {
+  content: "\e907";
+}
+.icon-ico_element_info:before {
+  content: "\e908";
+}
+.icon-ico_element_recherche:before {
+  content: "\e909";
+}
+.icon-ico_fermer:before {
+  content: "\e90a";
+}
+.icon-ico_filtres_bio:before {
+  content: "\e90b";
+}
+.icon-ico_filtres-reloc:before {
+  content: "\e90c";
+}
+.icon-ico_fleche_bas:before {
+  content: "\e90d";
+}
+.icon-ico_fleche_detail_gros:before {
+  content: "\e90e";
+}
+.icon-ico_fleche_detail:before {
+  content: "\e90f";
+}
+.icon-ico_fleche_retour:before {
+  content: "\e910";
+}
+.icon-ico_groupe:before {
+  content: "\e911";
+}
+.icon-ico_menu_affiner:before {
+  content: "\e912";
+}
+.icon-ico_menu_hamburger:before {
+  content: "\e913";
+}
+.icon-ico_navigation_agir:before {
+  content: "\e914";
+}
+.icon-ico_navigation_alimentation:before {
+  content: "\e915";
+}
+.icon-ico_navigation_emploi:before {
+  content: "\e916";
+}
+.icon-ico_navigation_impacts:before {
+  content: "\e917";
+}
+.icon-ico_navigation_parcours:before {
+  content: "\e918";
+}
+.icon-ico_navigation_population:before {
+  content: "\e919";
+}
+.icon-ico_navigation_repartition:before {
+  content: "\e91a";
+}
+.icon-ico_navigation_resultats:before {
+  content: "\e91b";
+}
+.icon-ico_navigation_surface:before {
+  content: "\e91c";
+}
+.icon-ico_navigation_territoire:before {
+  content: "\e91d";
+}
+.icon-ico_partage_facebook:before {
+  content: "\e91e";
+}
+.icon-ico_partage_lien:before {
+  content: "\e91f";
+}
+.icon-ico_partage_mail:before {
+  content: "\e920";
+}
+.icon-ico_partage_twitter:before {
+  content: "\e921";
+}
+.icon-ico_poids:before {
+  content: "\e922";
+}

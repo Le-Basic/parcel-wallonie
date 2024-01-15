@@ -1,0 +1,121 @@
+
+/* ---------------------------------------------------
+    asy-sidebar STYLE
+----------------------------------------------------- */
+
+.asy-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    height:100vh;  
+    height:100%;
+}
+
+#asy-sidebar {
+    min-width: 450px;
+    max-width: 450px;
+    margin-right: -450px;
+    display:none;
+    opacity:0;
+    background-color:#fff;
+    box-shadow: -10px 11px 7px 0 rgba(191,196,215,0.06);
+    height:100vh;
+    height:100%;
+}
+
+#asy-sidebar.active {
+    z-index:4600;
+    display:block;
+    margin-right: 0px;
+    opacity:1;
+    -webkit-animation-duration: 0.3s;
+animation-duration: 0.3s;
+-webkit-animation-fill-mode: both;
+animation-fill-mode: both;
+    /*transition: all 1s;*/
+}
+.menuDroit .modal-dialog{margin: 0 0;height:100%;}
+.menuDroit{height:100%;}
+
+@keyframes fadeInMenu {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(50px, 0, 0);
+      transform: translate3d(50px, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  @keyframes fadeOutMenu {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0px, 0, 0);
+      transform: translate3d(0px, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(50px, 0, 0);
+      transform: translate3d(50px, 0, 0);
+    }
+  }
+
+  .fadeInMenu {
+    -webkit-animation-name: fadeInMenu;
+    animation-name: fadeInMenu;
+  }
+  .fadeOutMenu {
+    -webkit-animation-name: fadeOutMenu;
+    animation-name: fadeOutMenu;
+  }
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+
+
+@media (max-width: 1200px) {
+    #asy-sidebar {
+        min-width: 350px;
+        max-width: 350px;
+    }
+
+}
+@media (max-width: 1024px) {
+  #asy-sidebar {
+      min-width: 320px;
+      max-width: 320px;
+  }
+}
+@media (max-width: 768px) {
+  #asy-sidebar{width:100%;max-width:768px;min-width:unset;}
+
+#asy-sidebar.active{width:100%;position:fixed;}
+#asy-sidebar.active{overflow-y:hidden;}
+#asy-sidebar.active .menuDroit{overflow-y: auto;}
+}
+
+
+#asy-sidebar{
+  position: -webkit-sticky;
+position: sticky;
+top: 0;
+z-index: 1020;
+
+}
+#asy-sidebar .modal-content{height:100vh;}

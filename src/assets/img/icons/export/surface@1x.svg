@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>surface@1x</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(-2.000000, -1.000000)" fill="#91C423">
+            <g id="ico_navigation_surface" transform="translate(2.660000, 1.900000)">
+                <path d="M2.59363476,19.5954641 L13.4599717,30.461801 L2.59363476,30.461801 L2.59363476,19.5954641 Z M2.59363476,15.9280896 L2.59363476,4.51746592 L28.5368288,30.4652242 L17.1262051,30.4652242 L2.59363476,15.9280896 Z M4.33147275,2.59363476 L15.7420964,2.59363476 L30.461801,17.3133393 L30.461801,28.723963 L4.33147275,2.59363476 Z M19.4094709,2.59363476 L30.4652242,2.59363476 L30.4652242,13.6493881 L19.4094709,2.59363476 Z M0,33.06 L33.0577179,33.06 L33.0577179,3.24309431e-15 L0,3.24309431e-15 L0,33.06 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

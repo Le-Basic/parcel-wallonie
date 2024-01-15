@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="13px" viewBox="0 0 27 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>top</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Rectangle" transform="translate(-811.000000, -319.000000)" fill="#015A5A" fill-rule="nonzero">
+            <g id="Group-6" transform="translate(490.589664, 294.883369)">
+                <g id="Group" transform="translate(327.144913, 16.906379)">
+                    <g id="ELEMENTS-/-fleche-droite" transform="translate(6.943767, 12.730239) scale(1, -1) rotate(-270.000000) translate(-6.943767, -12.730239) ">
+                        <path d="M11.9069637,13.9859139 L2.59541525,24.9294696 C2.0030883,25.6259714 1.04273167,25.6259714 0.450692274,24.9294696 C-0.141395049,24.2335874 1.40166424,23.1049334 1.99375156,22.4091075 L10.2330344,12.7257329 L1.9939912,3.04269614 C1.40190387,2.34653231 -0.141155415,1.21799098 0.450931908,0.52210879 C1.04301923,-0.174055039 2.00332793,-0.174055039 2.59565489,0.52210879 L11.9072033,11.4658335 C12.203247,11.8139436 12.3511011,12.2696974 12.3511011,12.7256765 C12.3511011,13.181881 12.2029594,13.6379728 11.9069637,13.9859139 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
