@@ -64,6 +64,11 @@
                         class="badge badge-pill badge-light pointer"
                         style="cursor: pointer"
                         >{{ geo.localeName }}
+                        <span
+                          @click="this.$store.commit('removeGeo', geo)"
+                          class="icon-ico_fermer icon"
+                          style="font-size: 8px; color: white"
+                        ></span>
                       </span>
                     </div>
                   </div>
@@ -110,7 +115,7 @@
                       >au sein de la France métropolitaine</strong
                     >
                   </p>
-                  <div class="mt-4 input-info">
+                  <!-- <div class="mt-4 input-info">
                     <label class="container-checkbox">
                       <div class="d-flex align-items-center">
                         <span>Rechercher par EPCI</span>
@@ -141,7 +146,7 @@
                       <input type="checkbox" id="CheckboxPNR" />
                       <span class="checkmark"></span>
                     </label>
-                  </div>
+                  </div> -->
                   <div class="mt-5"></div>
                   <div class="div-continuer">
                     <router-link to="/2-choix-de-la-population" id="suite">
@@ -351,7 +356,8 @@ export default {
   },
   data() {
     return {
-      pointGeoAPI: "https://convertisseur.azurewebsites.net/API/GeoData/",
+      pointGeoAPI:
+        "https://observatoire-filieres.azurewebsites.net/parcel/GeoData/",
       rechercheInput: "",
       list_geo: [],
     };
@@ -370,9 +376,9 @@ export default {
   watch: {
     rechercheInput: function (valeur) {
       console.log(valeur);
-      if (valeur.length > 3) {
+      if (valeur.length > 2) {
         axios
-          .get(this.pointGeoAPI + valeur)
+          .get(this.pointGeoAPI + valeur + "?pays=belgique")
           .then((response) => {
             this.list_geo = response.data;
             console.log(this.list_geo);

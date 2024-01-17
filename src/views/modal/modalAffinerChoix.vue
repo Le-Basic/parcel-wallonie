@@ -1,9 +1,9 @@
 <template>
   <!-- Modal -->
   <div class="menuDroit" id="menu-affiner">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" v-if="showParametres">
       <div class="modal-content">
-        <button class="text-center close" onclick="showSelection();">
+        <button class="text-center close" @click="changeActive">
           <div class="revoir-select">Revoir votre sélection</div>
         </button>
         <div class="modal-header d-flex align-items-center justify-between">
@@ -437,9 +437,9 @@
     </div>
     <!-- modal -->
     <div class="menuDroit" id="menu-selection">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog" role="document" v-if="!showParametres">
         <div class="modal-content">
-          <button class="text-center close" onclick="showAffiner();">
+          <button class="text-center close">
             <div class="revoir-select">Affiner votre sélection</div>
           </button>
           <div class="modal-header d-flex align-items-center justify-between">
@@ -517,12 +517,16 @@ export default {
       partbiofruits: this.$store.state.partbiofruits,
       partbiocereales: this.$store.state.partbiocereales,
       partbioelevage: this.$store.state.partbioelevage,
+      showParametres: true,
     };
   },
   methods: {
     fermerModalAffiner() {
       this.$emit("fermerModalAffiner");
       console.log("fermerModalAffiner");
+    },
+    changeActive() {
+      this.showParametres = !this.showParametres;
     },
   },
 };

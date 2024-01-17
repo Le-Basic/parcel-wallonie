@@ -21,7 +21,6 @@
 
 .selec-alim {
   width: 100% !important;
-
 }
 
 .selec-alim .choix-alim {
@@ -50,8 +49,6 @@
   text-align: center;
   padding: 1rem;
 }
-
-
 
 .block-products {
   background-color: #015a5a;
@@ -163,7 +160,6 @@
 }
 
 .detailproductscollapse {
-
   text-decoration: none;
   max-width: 465px;
   margin: 0 auto 4rem;
@@ -177,13 +173,11 @@
 }
 
 .detailproductscollapse[aria-expanded="true"] {
-
   text-decoration: none;
 }
 
 @media (max-width: 576px) {
   .detailproductscollapse {
-
     max-width: 385px;
     padding: 0 1rem 0 3rem;
   }
@@ -195,13 +189,10 @@
   }
 
   .detailproductscollapse {
-
     max-width: unset;
     padding: 0 1rem 0 3rem;
   }
 }
-
-
 
 .select-choice {
   max-width: 1100px;
@@ -230,8 +221,6 @@
   font-size: 23px;
   margin-bottom: 0.7rem;
 }
-
-
 
 .title-protein {
   font-size: 23px;
@@ -331,8 +320,6 @@
   }
 }
 
-
-
 .jauges {
   margin-top: 4rem;
   margin-bottom: 2rem;
@@ -406,8 +393,6 @@
   }
 }
 
-
-
 .egalimBox {
   max-width: 800px;
   margin: 2rem auto;
@@ -456,14 +441,12 @@
   border: 2px solid #91c322;
 }
 
-
-
 #listDiets {
   position: absolute;
   background-color: #fff;
   padding: 2rem;
 
-  box-shadow: 0 4px 21px 0 rgb(193 193 193  50%);
+  box-shadow: 0 4px 21px 0 rgb(193 193 193 50%);
   border-radius: 5px;
 
   margin-top: 1rem;
@@ -485,8 +468,6 @@
   cursor: pointer;
   border-radius: 5px;
 }
-
-
 
 #detailProduct .modal-content,
 .modalTooltip .modal-content {

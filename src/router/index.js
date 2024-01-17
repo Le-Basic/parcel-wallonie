@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import ChoixDuTerritoire from "../views/ChoixDuTerritoire.vue";
 import ChoixDePopulation from "../views/ChoixDePopulation.vue";
 import ChoixParametres from "../views/ChoixParametres.vue";
 import ResultatsImpacts from "../views/ResultatsImpacts.vue";
@@ -10,6 +11,11 @@ const routes = [
     path: "/",
     name: "home",
     component: HomeView,
+  },
+  {
+    path: "/1-choix-du-territoire",
+    name: "territoire",
+    component: ChoixDuTerritoire,
   },
   {
     path: "/2-choix-de-la-population",

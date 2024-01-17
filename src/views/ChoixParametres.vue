@@ -706,7 +706,7 @@ export default {
   margin-bottom: 1rem;
 }
 
-.badge {
+.badges {
   background: #91c322;
   border-radius: 8px;
   color: #fff;

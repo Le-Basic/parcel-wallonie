@@ -14,5 +14,4 @@ import "./css/sidebar.css";
 import "./css/style-modal-right.css";
 import "./css/style-range.css";
 import "./css/style-font.css";
-import LoadScript from "vue-plugin-load-script";
-createApp(App).use(store).use(router).use(LoadScript).mount("#app");
+createApp(App).use(store).use(router).mount("#app");
