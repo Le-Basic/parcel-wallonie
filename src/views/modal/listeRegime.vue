@@ -43,6 +43,7 @@ import regimeVegetarien from "@/assets/img/parcours/regime-vegetarien.svg";
 import regimeMoitie from "@/assets/img/parcours/regime-moitie.svg";
 import regimeQuart from "@/assets/img/parcours/regime-quart.svg";
 import regimeActuel from "@/assets/img/parcours/regime-actuel.svg";
+import { regimeListe } from "@/config/regimeListe";
 
 export default {
   name: "ListeRegime",
@@ -57,7 +58,10 @@ export default {
   methods: {
     choixRegime(regime) {
       console.log(regime);
-      this.$store.commit("regimeAlimentaire", regime);
+      this.$store.commit(
+        "regimeAlimentaire",
+        regimeListe.find((r) => r.nomCourt === regime)
+      );
       console.log(this.$store.state.regime_alimentaire);
       this.$emit("changementRegime", regime);
       document.getElementById("listDiets").classList.remove("d-block");

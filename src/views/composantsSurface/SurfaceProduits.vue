@@ -1,6 +1,7 @@
 <template>
   <div class="bloc-surface">
     <h3 class="text-center">Surface agricole à mobiliser</h3>
+    <pre v-if="test2"> {{ test2 }}</pre>
     <div
       class="cadre-resultat resultat-ha animated flipInX delay-05s bg-vert-clair"
     >
@@ -9,45 +10,8 @@
           class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_potentiel"
           id="surface_potentiel6"
         >
-          <div class="odometer-inside">
-            <span class="odometer-digit"
-              ><span class="odometer-digit-spacer">8</span
-              ><span class="odometer-digit-inner"
-                ><span class="odometer-ribbon"
-                  ><span class="odometer-ribbon-inner"
-                    ><span class="odometer-value">4</span></span
-                  ></span
-                ></span
-              ></span
-            ><span class="odometer-formatting-mark"> </span
-            ><span class="odometer-digit"
-              ><span class="odometer-digit-spacer">8</span
-              ><span class="odometer-digit-inner"
-                ><span class="odometer-ribbon"
-                  ><span class="odometer-ribbon-inner"
-                    ><span class="odometer-value">6</span></span
-                  ></span
-                ></span
-              ></span
-            ><span class="odometer-digit"
-              ><span class="odometer-digit-spacer">8</span
-              ><span class="odometer-digit-inner"
-                ><span class="odometer-ribbon"
-                  ><span class="odometer-ribbon-inner"
-                    ><span class="odometer-value">8</span></span
-                  ></span
-                ></span
-              ></span
-            ><span class="odometer-digit"
-              ><span class="odometer-digit-spacer">8</span
-              ><span class="odometer-digit-inner"
-                ><span class="odometer-ribbon"
-                  ><span class="odometer-ribbon-inner"
-                    ><span class="odometer-value">0</span></span
-                  ></span
-                ></span
-              ></span
-            >
+          <div class="odometer-inside" v-if="surfaces_a_mobiliser">
+            {{ this.surfaces_a_mobiliser["surfaces_a_mobiliser"] }}
           </div>
         </div>
         <div class="hectares animated fadeIn delay-1-5s">
@@ -93,6 +57,7 @@
           class="auto-style1 w-100"
           id="CategoryresultsTable"
           border="1"
+          v-if="surfaces_a_mobiliser"
         >
           <thead></thead>
           <tbody>
@@ -118,7 +83,15 @@
                   </div>
                   <div class="result-chiffres">
                     <div class="titre-categorie">Légumes</div>
-                    <div class="hectares"></div>
+                    <div class="hectares">
+                      {{
+                        formatterSurfacesNecessaires(
+                          surfaces_a_mobiliser[
+                            "surfaces_a_mobiliser_parcel_niveau_1"
+                          ][3].surface_necessaire_conventionnel
+                        )
+                      }}
+                    </div>
                   </div>
                   <div class="result-plus">
                     <span class="icon-ico_fleche_detail_gros icon legumes">
@@ -149,7 +122,15 @@
                   </div>
                   <div class="result-chiffres">
                     <div class="titre-categorie">Fruits</div>
-                    <div class="hectares">' + strafftotalfruits + '</div>
+                    <div class="hectares">
+                      {{
+                        formatterSurfacesNecessaires(
+                          surfaces_a_mobiliser[
+                            "surfaces_a_mobiliser_parcel_niveau_1"
+                          ][1].surface_necessaire_conventionnel
+                        )
+                      }}
+                    </div>
                   </div>
                   <div class="result-plus">
                     <span
@@ -182,7 +163,15 @@
                     <div class="titre-categorie">
                       Céréales et autres cultures...
                     </div>
-                    <div class="hectares">' + strafftotalgcultures + '</div>
+                    <div class="hectares">
+                      {{
+                        formatterSurfacesNecessaires(
+                          surfaces_a_mobiliser[
+                            "surfaces_a_mobiliser_parcel_niveau_1"
+                          ][2].surface_necessaire_conventionnel
+                        )
+                      }}
+                    </div>
                   </div>
                   <div class="result-plus">
                     <span
@@ -213,7 +202,17 @@
                   </div>
                   <div class="result-chiffres">
                     <div class="titre-categorie">Elevage</div>
-                    <div class="hectares">' + strafftotallelevage + '</div>
+                    <div class="hectares">
+                      {{
+                        formatterSurfacesNecessaires(
+                          surfaces_a_mobiliser[
+                            "surfaces_a_mobiliser_parcel_niveau_1"
+                          ].find(
+                            (item) => item.libelle_parcel_niveau_1 == "Elevage"
+                          ).surface_necessaire_conventionnel
+                        )
+                      }}
+                    </div>
                   </div>
                   <div class="result-plus">
                     <span
@@ -240,44 +239,7 @@
           id="surface_act8"
         >
           <div class="odometer-inside">
-            <span class="odometer-digit"
-              ><span class="odometer-digit-spacer">8</span
-              ><span class="odometer-digit-inner"
-                ><span class="odometer-ribbon"
-                  ><span class="odometer-ribbon-inner"
-                    ><span class="odometer-value">4</span></span
-                  ></span
-                ></span
-              ></span
-            ><span class="odometer-formatting-mark"> </span
-            ><span class="odometer-digit"
-              ><span class="odometer-digit-spacer">8</span
-              ><span class="odometer-digit-inner"
-                ><span class="odometer-ribbon"
-                  ><span class="odometer-ribbon-inner"
-                    ><span class="odometer-value">6</span></span
-                  ></span
-                ></span
-              ></span
-            ><span class="odometer-digit"
-              ><span class="odometer-digit-spacer">8</span
-              ><span class="odometer-digit-inner"
-                ><span class="odometer-ribbon"
-                  ><span class="odometer-ribbon-inner"
-                    ><span class="odometer-value">8</span></span
-                  ></span
-                ></span
-              ></span
-            ><span class="odometer-digit"
-              ><span class="odometer-digit-spacer">8</span
-              ><span class="odometer-digit-inner"
-                ><span class="odometer-ribbon"
-                  ><span class="odometer-ribbon-inner"
-                    ><span class="odometer-value">0</span></span
-                  ></span
-                ></span
-              ></span
-            >
+            {{ this.data.surfaceActuelle }}
           </div>
         </div>
         <div class="hectares animated fadeIn delay-1-5s">
@@ -316,6 +278,7 @@
           class="auto-style1 w-100"
           id="ProdCategoryresultsTable"
           border="1"
+          v-if="this.data.occupationActuelle"
         >
           <thead></thead>
           <tbody>
@@ -336,7 +299,16 @@
                     <div class="titre-categorie">
                       Cultures annuelles pour alimentation humaine
                     </div>
-                    <div class="hectares">' + stralim_humaine + '</div>
+                    <div
+                      class="hectares"
+                      v-if="this.data.occupationActuelle[0]"
+                    >
+                      {{
+                        formatterSurfacesNecessaires(
+                          this.data.occupationActuelle[0]["surface"]
+                        )
+                      }}
+                    </div>
                   </div>
                 </div>
               </td>
@@ -358,7 +330,16 @@
                     <div class="titre-categorie">
                       Elevage (dont alimentation & estives et landes)
                     </div>
-                    <div class="hectares">' + strelevage + '</div>
+                    <div
+                      class="hectares"
+                      v-if="this.data.occupationActuelle[0]"
+                    >
+                      {{
+                        formatterSurfacesNecessaires(
+                          this.data.occupationActuelle[1]["surface"]
+                        )
+                      }}
+                    </div>
                   </div>
                 </div>
               </td>
@@ -378,7 +359,16 @@
                   </div>
                   <div class="result-chiffres">
                     <div class="titre-categorie">Fruits</div>
-                    <div class="hectares">' + strfruits + '</div>
+                    <div
+                      class="hectares"
+                      v-if="this.data.occupationActuelle[3]"
+                    >
+                      {{
+                        formatterSurfacesNecessaires(
+                          this.data.occupationActuelle[3]["surface"]
+                        )
+                      }}
+                    </div>
                   </div>
                 </div>
               </td>
@@ -398,7 +388,16 @@
                   </div>
                   <div class="result-chiffres">
                     <div class="titre-categorie">Légumes</div>
-                    <div class="hectares">' + strlegumes + '</div>
+                    <div
+                      class="hectares"
+                      v-if="this.data.occupationActuelle[4]"
+                    >
+                      {{
+                        formatterSurfacesNecessaires(
+                          this.data.occupationActuelle[4]["surface"]
+                        )
+                      }}
+                    </div>
                   </div>
                 </div>
               </td>
@@ -416,12 +415,21 @@
                   </div>
                   <div class="result-chiffres">
                     <div class="titre-categorie">Jachères</div>
-                    <div class="hectares">' + strjacheres + '</div>
+                    <div
+                      class="hectares"
+                      v-if="this.data.occupationActuelle[5]"
+                    >
+                      {{
+                        formatterSurfacesNecessaires(
+                          this.data.occupationActuelle[5]["surface"]
+                        )
+                      }}
+                    </div>
                   </div>
                 </div>
               </td>
             </tr>
-            <tr>
+            <!-- <tr>
               <td colspan="5">
                 <div
                   class="cadre-categorie autreindus animated fadeIn delay-1s"
@@ -440,29 +448,16 @@
                     <div class="titre-categorie">
                       Cultures industrielles hors alimentation
                     </div>
-                    <div class="hectares">' + strhors_alim + '</div>
+                    <div
+                      class="hectares"
+                      v-if="this.data.occupationActuelle[6]"
+                    >
+                      {{ this.data.occupationActuelle[6]["surface"] }}
+                    </div>
                   </div>
                 </div>
               </td>
-            </tr>
-            <tr>
-              <td colspan="5">
-                <div class="cadre-categorie vignes animated fadeIn delay-1s">
-                  <div
-                    class="result-graph"
-                    id="ppc7"
-                    style="width: 65px; height: 65px"
-                  ></div>
-                  <div class="result-type">
-                    <span class="icon-vignes ico-medium vignes"></span>
-                  </div>
-                  <div class="result-chiffres">
-                    <div class="titre-categorie">Vignes</div>
-                    <div class="hectares">' + strvignes + '</div>
-                  </div>
-                </div>
-              </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </div>
@@ -636,7 +631,7 @@
       <button
         type="button"
         class="btn btn-principal mt-5"
-        @click="nextStep('landscapeView')"
+        @click="nextStep('landscape')"
       >
         <router-link :to="{ hash: '#landscapeView' }"> Suivant </router-link>
       </button>
@@ -986,66 +981,156 @@
 
 <script>
 import { Treemap } from "d3plus-hierarchy";
-
+import { getSurfaceAMobiliser } from "@/plugins/getSurfacesNecessaires";
+import { pushDataViz } from "@/plugins/pushDataViz";
 export default {
-  mounted() {
-    var data1 = [
-      {
-        surface: 2,
-        name: "légumes",
-        image: "../assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
-        color: "#91C423",
+  inject: ["$axios"],
+  data() {
+    return {
+      data: {
+        occupationActuelle: [],
+        potentielNourricier: [],
+        surfaces_a_mobiliser_parcel_niveau_1: [],
+        surfaces_a_mobiliser: null,
+        test: [],
       },
-      {
-        surface: 10,
-        name: "fruits",
-        image: "../assets/img/icons/cat/ico_CATEGORIES_fruits.svg",
-        color: "#A261C0",
-      },
-      {
-        surface: 8,
-        name: "céréales",
-        image: "../assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
-        color: "#F5A623",
-      },
-      {
-        surface: 24,
-        name: "Viandes et œufs ",
-        image: "../assets/img/icons/cat/ico_CATEGORIES_viande.svg",
-        color: "#B57A60",
-      },
-      {
-        surface: 46,
-        name: "Produits laitiers",
-        image: "../assets/img/icons/cat/ico_CATEGORIES_viande.svg",
-        color: "#B57A60",
-      },
-    ];
-    new Treemap()
-      .select("#viz")
-      .data(data1)
-      .groupBy("name")
-      .sum("surface")
-      .color("color")
-      .height(500)
-      .legend(0)
-      .render();
+    };
+  },
+  methods: {
+    recupererDonnees() {
+      const bodyFormData = new FormData();
+      var codesTerritoireParcel = this.$store.state.geoList.map(
+        (el) => el.code_territoire
+      );
+      codesTerritoireParcel = ["mun91114"];
+      console.log(codesTerritoireParcel);
+      bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
+      this.$axios
+        .post(
+          "https://observatoire-filieres.azurewebsites.net/parcel/belgique/surfaces_actuels_produit",
+          codesTerritoireParcel, // Request body data
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          this.data.occupationActuelle = [
+            {
+              surface: response.data.find(
+                (el) =>
+                  el.libelle_parcel_produit_actuel ==
+                  "Cultures annuelles pour alimentation humaine"
+              ).sau_ha,
+              name: "Cultures annuelles pour alimentation humaine",
+              image: "/assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
+              color: "#F5A623",
+            },
+            {
+              surface: response.data.find(
+                (el) =>
+                  el.libelle_parcel_produit_actuel ==
+                  "Elevage (dont alimentation & estives et landes)"
+              ).sau_ha,
+              name: "Elevage (dont alimentation & estives et landes)",
+              image: "/assets/img/icons/cat/ico_CATEGORIES_viande.svg",
+              color: "#B57A60",
+            },
+            {
+              surface: response.data.find(
+                (el) => el.libelle_parcel_produit_actuel == "Fruits"
+              ).sau_ha,
+              name: "fruits",
+              image: "/assets/img/icons/cat/ico_CATEGORIES_fruits.svg",
+              color: "#A261C0",
+            },
+            {
+              surface: response.data.find(
+                (el) => el.libelle_parcel_produit_actuel == "Légumes"
+              ).sau_ha,
+              name: "légumes",
+              image: "/assets/img/icons/cat/ico_CATEGORIES_legumes.svg",
+              color: "#91C423",
+            },
+            {
+              surface: response.data.find(
+                (el) =>
+                  el.libelle_parcel_produit_actuel ==
+                  "Elevage (dont alimentation & estives et landes)"
+              ).sau_ha,
+              name: "Jachères",
+              image: "/assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
+              color: "#9CC347",
+            },
+            {
+              surface: response.data.find(
+                (el) =>
+                  el.libelle_parcel_produit_actuel ==
+                  "Elevage (dont alimentation & estives et landes)"
+              ).sau_ha,
+              name: "Cultures industrielles hors alimentation",
+              image: "/assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
+              color: "#62D5F3",
+            },
+            // {
+            //   surface: round(autres_espaces, 0),
+            //   name: "Autres surfaces agricoles",
+            //   image: "/assets/img/icons/cat/ico_CATEGORIES_viande.svg",
+            //   color: "#a9a9a9",
+            // },
+          ];
 
-    new Treemap()
-      .select("#viz2")
-      .data(data1)
-      .groupBy("name")
-      .sum("surface")
-      .color("color")
-      .height(500)
-      .legend(0)
-      .render();
+          new Treemap()
+            .select("#viz2")
+            .data(this.data.occupationActuelle)
+            .groupBy("name")
+            .sum("surface")
+            .color("color")
+            .height(500)
+            .legend(0)
+            .tooltip({
+              share: false,
+            })
+            .render();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    nextStep(hash) {
+      this.$emit("nextStep", hash);
+    },
+    formatterSurfacesNecessaires(chiffreSurface) {
+      return (
+        "Environ " +
+        Math.round(chiffreSurface).toLocaleString("fr-FR") +
+        " hectares"
+      );
+    },
   },
 
-  methods: {
-    nextStep(step) {
-      console.log(step);
-      this.$emit("nextStep", step);
+  async mounted() {
+    this.recupererDonnees();
+    await getSurfaceAMobiliser()
+      .then((res) => (this.surfaces_a_mobiliser = res))
+      .then((res) => {
+        pushDataViz(res["surfaces_a_mobiliser_parcel_niveau_1"]);
+      });
+    this.test = await getSurfaceAMobiliser();
+  },
+  computed: {
+    surfaces_a_mobiliser_parcel_niveau_1_data() {
+      return this.surfaces_a_mobiliser_parcel_niveau_1;
+    },
+  },
+  watch: {
+    surfaces_a_mobiliser(nouvellevaleur) {
+      if (nouvellevaleur) {
+        this.surfaces_a_mobiliser_parcel_niveau_1 =
+          nouvellevaleur["surfaces_a_mobiliser_parcel_niveau_1"];
+      }
     },
   },
 };

@@ -14,4 +14,7 @@ import "./css/sidebar.css";
 import "./css/style-modal-right.css";
 import "./css/style-range.css";
 import "./css/style-font.css";
-createApp(App).use(store).use(router).mount("#app");
+import $axios from "./plugins/axios.js";
+
+window.apiURL = "https://observatoire-filieres.azurewebsites.net/";
+createApp(App).use(store).use(router).use($axios).mount("#app");

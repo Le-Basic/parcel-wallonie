@@ -1,13 +1,15 @@
 import { createStore } from "vuex";
-
+import VuexPersistence from "vuex-persist";
+import { regimeListe } from "@/config/regimeListe.js";
 const getDefaultState = () => {
   return {
+    regimeListe: regimeListe,
     geoList: [],
     population: null,
     part_relocalisee: null,
     part_bio: null,
-    regime_alimentaire: null,
-    partpertes: null,
+    regime_alimentaire: regimeListe.find((el) => el.default == true),
+    partpertes: 0,
     partbiolegumes: null,
     partbiofruits: null,
     partbiocereales: null,
@@ -94,5 +96,6 @@ export default createStore({
       commit("partBioElevage", partbioelevage);
     },
   },
+  plugins: [new VuexPersistence().plugin],
   modules: {},
 });

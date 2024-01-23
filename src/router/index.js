@@ -6,6 +6,7 @@ import ChoixParametres from "../views/ChoixParametres.vue";
 import ResultatsImpacts from "../views/ResultatsImpacts.vue";
 import ResultatsRelocalisation from "../views/ResultatsRelocalisation.vue";
 import ResultatsSurfaces from "../views/ResultatsSurfaces.vue";
+import ResultatsEmplois from "../views/ResultatsEmplois.vue";
 const routes = [
   {
     path: "/",
@@ -38,6 +39,11 @@ const routes = [
     component: ResultatsSurfaces,
   },
   {
+    path: "/emplois-crees-par-la-relocalisation",
+    name: "emplois-crees-par-la-relocalisation",
+    component: ResultatsEmplois,
+  },
+  {
     path: "/impacts-ecologiques-de-la-relocatisation",
     name: "impacts ecolos",
     component: ResultatsImpacts,
@@ -47,6 +53,10 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  // eslint-disable-next-line
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 };
+  },
 });
 
 export default router;

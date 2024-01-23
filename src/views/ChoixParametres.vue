@@ -1,14 +1,12 @@
 <template>
   <div class="asy-wrapper">
     <div class="content">
-      <BarreNavigation menuType="recherche" active="3" />
+      <BarreNavigation menuType="recherche" :active="3" />
       <div class="section centrervh selec-alim" id="section0">
         <div class="container">
           <h1 class="animated fadeInUp mb-5">
             Choisissez l’alimentation liée à votre simulation de relocalisation
           </h1>
-          <pre> {{ $store.state }}</pre>
-          <pre> {{ partpertes }}</pre>
           <resumeChoix />
           <div id="egalimWarning" class="egalimBox d-none">
             <div class="row align-items-center">
@@ -110,12 +108,16 @@
                     style="font-style: normal"
                     data-toggle="modal"
                     data-target="#tooltipDetail"
-                    onclick="tooltip('bio')"
+                    @click="showTooltip('bio')"
                     ><span class="icon-ico_element_info"></span
                   ></a>
                 </div>
               </div>
             </div>
+            <modalBioCurseur
+              v-if="montrerModal == 'bio'"
+              @close="fermerModal"
+            ></modalBioCurseur>
             <div
               class="col-lg-4 col-12 bloc-3col animated fadeIn delay-1s"
               style="z-index: 2"
@@ -145,8 +147,15 @@
                       class="diet d-flex align-items-center"
                       id="dietSelected"
                     >
-                      <img alt="" :src="regime.img" width="16" />
-                      {{ regime.nom }}
+                      <img
+                        alt=""
+                        :src="regime.img"
+                        width="20"
+                        style="padding: 4px"
+                      />
+                      <span style="flex: 1; padding: 4px"
+                        >{{ regime.nom }}
+                      </span>
                     </div>
                     <div class="arrows mx-auto">
                       <span class="pointer mb-2"></span>
@@ -264,24 +273,27 @@ import listeRegime from "./modal/listeRegime.vue";
 import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
 import resumeChoix from "./modal/resumeChoix.vue";
 import "rangeslider.js/dist/rangeslider.css";
+import modalBioCurseur from "./modal/modalBioCurseur.vue";
 export default {
+  inject: ["$axios"],
   name: "ChoixParametres",
   components: {
     BarreNavigation,
     listeRegime,
     resumeChoix,
+    modalBioCurseur,
   },
   data() {
     return {
+      data: {
+        curseur_bio: 0,
+      },
+      montrerModal: "",
       partbio: 1.8,
       partpertes: 0,
       partviande: "actuel",
       partviandeText: "Régime actuel",
-      regime: {
-        nom: "Régime actuel",
-        img: require("@/assets/img/parcours/regime-actuel.svg"),
-        nomCourt: "actuel",
-      },
+      regime: this.$store.state.regime_alimentaire,
       regimeListe: [
         {
           nom: "Régime actuel",
@@ -312,9 +324,47 @@ export default {
     };
   },
   methods: {
+    recupererDonnees() {
+      console.log("recupererDonnees");
+      const bodyFormData = new FormData();
+      var codesTerritoireParcel = this.$store.state.geoList.map(
+        (el) => el.code_territoire
+      );
+      codesTerritoireParcel = ["mun91114"];
+
+      console.log(codesTerritoireParcel);
+      bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
+      this.$axios
+        .post(
+          "https://observatoire-filieres.azurewebsites.net/parcel/belgique/curseurs_bio",
+          codesTerritoireParcel, // Request body data
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          this.data.curseur_bio = response.data[0]["curseur_bio"];
+          if (!this.$store.state.part_bio) {
+            this.partbio = Math.round(this.data.curseur_bio * 100);
+          }
+          console.log(this.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     changementRegime(regime) {
       console.log(regime);
       this.regime = this.regimeListe.find((r) => r.nomCourt === regime);
+    },
+    showTooltip(id) {
+      this.montrerModal = id;
+    },
+    fermerModal() {
+      this.montrerModal = "";
     },
   },
   computed: {
@@ -336,6 +386,16 @@ export default {
     partpertes: function (val) {
       this.$store.commit("partPertes", val);
     },
+  },
+  mounted() {
+    this.recupererDonnees();
+    this.regime = this.$store.state.regime_alimentaire;
+    if (this.$store.state.partpertes) {
+      this.partpertes = this.$store.state.partpertes;
+    }
+    if (this.$store.state.part_bio) {
+      this.partbio = this.$store.state.part_bio;
+    }
   },
 };
 </script>

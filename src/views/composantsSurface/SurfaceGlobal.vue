@@ -28,7 +28,10 @@
               id="shape1"
               alt=""
               class="mx-auto"
-              style="width: 100%; opacity: 1"
+              :style="{
+                width: (data.surface / max_potentiel_surface) * 100 + '%',
+                opacity: 1,
+              }"
               :src="require('@/assets/img/surfaces/circle1.svg')"
             />
           </div>
@@ -37,17 +40,26 @@
               id="shape3"
               alt=""
               class="mx-auto"
-              style="width: 50%; opacity: 1"
-              :src="require('@/assets/img/surfaces/circle-empreinte.svg')"
+              :style="{
+                width:
+                  (data.surfaces_a_mobiliser / max_potentiel_surface) * 100 +
+                  '%',
+                opacity: 1,
+                'z-index': 200,
+              }"
+              :src="require('@/assets/img/surfaces/circle-agricole.svg')"
             />
           </div>
-          <div id="imgmap3" class="animate__animated">
+          <div id="imgmap3" class="animate__animated" style="opacity: 0">
             <img
               id="shape2"
               alt=""
               class="mx-auto"
-              style="width: 20%; opacity: 1 z-index: 100"
-              :src="require('@/assets/img/surfaces/circle-agricole.svg')"
+              :style="{
+                width: (data.sau / max_potentiel_surface) * 100 + '%',
+                opacity: 1,
+              }"
+              :src="require('@/assets/img/surfaces/circle-empreinte.svg')"
             />
           </div>
           <div id="imgmap4" class="animate__animated">
@@ -97,8 +109,9 @@
                 id="surface_territoire_actuelle1"
               >
                 <div class="odometer-inside">
-                  <span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
+                  <span class="chiffre-encart">{{ data.surface }}</span>
+
+                  ><!--<span class="odometer-digit-spacer">8</span
                     ><span class="odometer-digit-inner"
                       ><span class="odometer-ribbon"
                         ><span class="odometer-ribbon-inner"
@@ -132,9 +145,9 @@
                         ><span class="odometer-ribbon-inner"
                           ><span class="odometer-value">0</span></span
                         ></span
-                      ></span
-                    ></span
-                  >
+                      ></span -->
+                  <!-- ></span
+                  > -->
                 </div>
               </div>
               <div class="hectares animate__animated fadeIn delay-1-5s">
@@ -155,7 +168,8 @@
                 id="surface_act"
               >
                 <div class="odometer-inside">
-                  <span class="odometer-digit"
+                  <span class="chiffre-encart">{{ data.sau }}</span>
+                  <!-- <span class="odometer-digit"
                     ><span class="odometer-digit-spacer">8</span
                     ><span class="odometer-digit-inner"
                       ><span class="odometer-ribbon"
@@ -192,7 +206,7 @@
                         ></span
                       ></span
                     ></span
-                  >
+                  > -->
                 </div>
               </div>
               <div class="hectares animate__animated fadeIn delay-1-5s">
@@ -207,7 +221,7 @@
             <div class="subtext" id="txt_artificialisation">
               Sur le territoire, les surfaces naturelles agricoles et
               forestières ont diminué de
-              <span id="artificialisation"></span> hectares entre 2009 et 2019.
+              <span id="artificialisation"></span> hectares entre 2012 et 2022.
             </div>
           </div>
         </div>
@@ -232,8 +246,9 @@
                 class="animate__animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_potentiel"
                 id="surface_potentiel"
               >
-                <div class="odometer-inside">
-                  <span class="odometer-digit"
+                <div class="odometer-inside" v-if="data.potentiel_nourricier">
+                  {{ data.surfaces_a_mobiliser }}
+                  <!-- <span class="odometer-digit"
                     ><span class="odometer-digit-spacer">8</span
                     ><span class="odometer-digit-inner"
                       ><span class="odometer-ribbon"
@@ -270,7 +285,7 @@
                         ></span
                       ></span
                     ></span
-                  >
+                  > -->
                 </div>
               </div>
               <div class="hectares animate__animated fadeIn delay-1-5s">
@@ -306,7 +321,8 @@
                 id="potentiel"
               >
                 <div class="odometer-inside">
-                  <span class="odometer-digit"
+                  {{ data.potentiel_nourricier }}
+                  <!-- <span class="odometer-digit"
                     ><span class="odometer-digit-spacer">8</span
                     ><span class="odometer-digit-inner"
                       ><span class="odometer-ribbon"
@@ -343,7 +359,7 @@
                         ></span
                       ></span
                     ></span
-                  >
+                  > -->
                 </div>
               </div>
               <div class="hectares animate__animated fadeIn delay-1-5s">%</div>
@@ -357,7 +373,9 @@
           <div class="row">
             <div class="col">
               <div>
-                <span class="surface_potentiel" id="surface_potentiel2">0</span>
+                <span class="surface_potentiel" id="surface_potentiel2">
+                  {{ data.surfaces_a_mobiliser }}</span
+                >
                 hectares
               </div>
               <div class="potentialLegend">Surface agricole à mobiliser</div>
@@ -366,7 +384,11 @@
                   <div
                     id="sbar1"
                     class="bar bg-vert-clair animate__animated"
-                    style="width: 100%"
+                    :style="{
+                      width:
+                        (data.surfaces_a_mobiliser / max_potentiel_sau) * 100 +
+                        '%',
+                    }"
                   ></div>
                 </div>
                 <div class="position-absolute bargrey w-100" style="z-index: 1">
@@ -379,15 +401,21 @@
             </div>
             <div class="col">
               <div class="">
-                <span class="surface_act" id="surface_act2">0</span> hectares
+                <span class="surface_act" id="surface_act2">
+                  {{ data.sau }}</span
+                >
+                hectares
               </div>
               <div class="potentialLegend">Surface agricole actuelle</div>
               <div class="position-relative">
                 <div id="bar2" class="position-absolute" style="z-index: 2">
                   <div
+                    v-if="max_potentiel_sau"
                     id=" sbar2"
                     class="bar bg-vert-fonce animate__animated"
-                    style="width: 100%"
+                    :style="{
+                      width: (data.sau / max_potentiel_sau) * 100 + '%',
+                    }"
                   ></div>
                 </div>
                 <div class="position-absolute bargrey w-100" style="z-index: 1">
@@ -416,7 +444,7 @@
           <button
             type="button"
             class="btn btn-principal mt-5"
-            @click="nextStep('productView')"
+            @click="nextStep('product')"
           >
             Suivant
           </button>
@@ -427,12 +455,176 @@
 </template>
 
 <script>
+import {
+  getSurfaceActuelle,
+  getSurfaceAMobiliser,
+} from "@/plugins/getSurfacesNecessaires";
+
 export default {
+  inject: ["$axios"],
+  data() {
+    return {
+      codesTerritoireParcel: this.$store.state.geoList,
+      data: {
+        surface: 0,
+        sau: 0,
+        potentiel_nourricier: 0,
+        surfaces_a_mobiliser: 0,
+      },
+    };
+  },
   methods: {
+    gererVisibiliteImage() {
+      let map1 = document.getElementById("map1");
+      // let map2 = document.getElementById("map2");
+      let map3 = document.getElementById("map3");
+      let map4 = document.getElementById("map4");
+      let imgmap1 = document.getElementById("imgmap1");
+      let imgmap2 = document.getElementById("imgmap2");
+      let imgmap3 = document.getElementById("imgmap3");
+      // let imgmap4 = document.getElementById("imgmap4");
+      let content2 = document.getElementById("content2");
+      let content3 = document.getElementById("content3");
+      let content4 = document.getElementById("content4");
+      // let variableHeight = 0;
+      let shape1 = document.getElementById("shape1");
+      let shape2 = document.getElementById("shape2");
+      let shape3 = document.getElementById("shape3");
+      console.log(window.scrollY);
+      if (window.innerWidth <= 768) {
+        shape3.style.opacity = 1;
+        shape2.style.opacity = 1;
+      }
+      if (window.scrollY >= map1.offsetHeight + map3.offsetHeight - 400) {
+        map3.classList.add("fadeIn");
+        content3.classList.add("fadeInUp");
+        imgmap3.classList.add("fadeIn");
+        imgmap2.classList.remove("fadeIn");
+        imgmap2.style.opacity = 0;
+        imgmap3.style.opacity = 1;
+        imgmap2.classList.add("fadeOut");
+      } else if (window.scrollY < map1.offsetHeight + map3.offsetHeight - 400) {
+        if (shape3.clientWidth > shape1.clientWidth) {
+          imgmap1.classList.add("position-devant1");
+        }
+        imgmap3.style.opacity = 0;
+        imgmap2.classList.add("fadeIn");
+        imgmap2.classList.remove("fadeOut");
+        imgmap2.style.opacity = 1;
+        content3.style.opacity = 0;
+        imgmap3.classList.remove("fadeIn");
+        content3.classList.remove("fadeInUp");
+        content2.style.opacity = 1;
+        content2.classList.add("fadeInUp");
+      }
+      if (
+        window.scrollY >=
+        map1.offsetHeight + map3.offsetHeight + map4.offsetHeight
+      ) {
+        console.log("remove");
+        let shape2 = document.getElementById("shape2");
+        let shape3 = document.getElementById("shape3").clientWidth;
+        if (shape2.clientWidth > shape3.clientWidth) {
+          imgmap2.classList.add("position-devant2");
+        }
+        imgmap2.classList.remove("fadeOut");
+        imgmap2.style.opacity = 1;
+        // content2.style.opacity = 0;
+        map4.classList.add("fadeIn");
+        // imgmap4.classList.add("fadeIn");
+        content4.classList.add("fadeInUp");
+        imgmap1.style.opacity = 0;
+        imgmap1.classList.remove("fadeIn");
+        imgmap1.classList.add("fadeOut");
+        if (this.data.sau > this.data.surfaces_a_mobiliser) {
+          imgmap2.classList.add("position-devant2");
+        }
+      } else if (
+        window.scrollY <
+        map1.offsetHeight + map3.offsetHeight + map4.offsetHeight
+      ) {
+        // content4.style.opacity = 0;
+        // imgmap4.style.opacity = 0;
+        // imgmap4.classList.remove("fadeIn");
+        content4.classList.remove("fadeInUp");
+        imgmap1.classList.add("fadeIn");
+        imgmap1.style.opacity = 1;
+        // imgmap1.classList.add("fadeIn");
+        imgmap1.classList.remove("fadeOut");
+      }
+    },
     nextStep(step) {
-      this.$router.push({ hash: step });
+      console.log("nextStep", step);
+      window.scrollTo(0, 0);
       this.$emit("nextStep", step);
     },
+    recupererDonnees() {
+      const bodyFormData = new FormData();
+      var codesTerritoireParcel = this.$store.state.geoList.map(
+        (el) => el.code_territoire
+      );
+      codesTerritoireParcel = ["mun91114"];
+
+      console.log(codesTerritoireParcel);
+      bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
+      this.$axios
+        .post(
+          "https://observatoire-filieres.azurewebsites.net/parcel/belgique/surfaces_agregees",
+          codesTerritoireParcel, // Request body data
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          this.data.surface = response.data[0]["surface_ha"];
+          this.data.sau = response.data[0]["sau_ha"];
+          console.log(this.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+  computed: {
+    max_potentiel_sau() {
+      return Math.max(this.data.sau, this.data.potentiel_nourricier);
+    },
+    max_potentiel_surface() {
+      return Math.max(this.data.surface, this.data.potentiel_nourricier);
+    },
+  },
+  async mounted() {
+    window.addEventListener("scroll", this.gererVisibiliteImage);
+    this.data.surfaces_a_mobiliser = Math.round(
+      await getSurfaceAMobiliser().then((res) => res["surfaces_a_mobiliser"])
+    );
+    const surface_actuelle = await getSurfaceActuelle();
+    console.log("ACTUELLE", surface_actuelle);
+    this.data.surface = surface_actuelle["surface_ha"];
+    this.data.sau = surface_actuelle["sau_ha"];
+    this.data.potentiel_nourricier = Math.round(
+      (this.data.sau * 100) / this.data.surfaces_a_mobiliser
+    );
+    console.log(this.data);
+    this.recupererDonnees();
+  },
+  unmounted() {
+    window.removeEventListener("scroll", this.gererVisibiliteImage);
   },
 };
 </script>
+
+<style scoped>
+.chiffre-encart {
+  font-size: 34px;
+  color: #ffffff;
+}
+
+.hectares {
+  font-size: 18px;
+  color: #ffffff;
+}
+</style>

@@ -56,7 +56,7 @@
       <div class="result-chiffres">
         <span class="vert-clair">régime alimentaire : </span
         ><span id="assiette3" class="vert-fonce">
-          {{ $store.state.regime_alimentaire }}</span
+          {{ $store.state.regime_alimentaire["libelle"] }}</span
         >
       </div>
       <!--<div class="result-plus"><span class="icon-ico_fleche_detail_gros icon vert-clair"></span></div>-->

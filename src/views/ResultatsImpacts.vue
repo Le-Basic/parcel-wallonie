@@ -1,8 +1,11 @@
 <template>
-  <div>
-    <BarreNavigation @montrerModalAffinage="montrerModalAffiner" />
+  <div class="asy-wrapper" style="flex-direction: row">
+    <div>
+      <BarreNavigation
+        @montrerModalAffinage="montrerModalAffiner"
+        :active="4"
+      />
 
-    <div class="asy-wrapper">
       <div class="content">
         <!-- <?php include '../partials/nav2.php'; ?> -->
         <div class="section centrervh" id="section0">
@@ -177,7 +180,17 @@
                                   class="ico-medium"
                                 ></span
                                 ><span id="impactmodalair2" class="impact-nbr"
-                                  ><span id="gaz_effet_serre4">-</span>%
+                                  ><span
+                                    id="gaz_effet_serre4"
+                                    v-if="impacts.length > 0"
+                                    >{{
+                                      Math.round(
+                                        impacts.find(
+                                          (el) => el.ID_EcoImpact_Indicator == 1
+                                        )["EcoImpact_Indicator_Value_Person"]
+                                      )
+                                    }}</span
+                                  >%
                                 </span></span
                               >
                             </div>
@@ -195,7 +208,17 @@
                                   class="ico-medium"
                                 ></span
                                 ><span id="impactmodalair1" class="impact-nbr"
-                                  ><span id="gaz_effet_serre3">-</span>%
+                                  ><span
+                                    id="gaz_effet_serre3"
+                                    v-if="impacts.length > 0"
+                                    >{{
+                                      Math.round(
+                                        impacts.find(
+                                          (el) => el.ID_EcoImpact_Indicator == 1
+                                        )["EcoImpact_Indicator_Value_Hectare"]
+                                      )
+                                    }}</span
+                                  >%
                                 </span></span
                               >
                             </div>
@@ -204,6 +227,7 @@
                       </div>
                       <div
                         class="col-sm-3 result-plus d-flex flex-column justify-content-center text-center"
+                        @click="ouvrirModal('ImpactGes')"
                       >
                         <span class="icon-ico_fleche_detail_gros icon"></span
                         ><span class="explain">Explications</span>
@@ -246,7 +270,14 @@
                               <span class="impact-result"
                                 ><span id="" class="ico-medium"></span
                                 ><span id="" class="impact-nbr"
-                                  ><span id="">-</span>%
+                                  ><span id="" v-if="impacts.length > 0">{{
+                                    Math.round(
+                                      impacts.find(
+                                        (el) => el.ID_EcoImpact_Indicator == 1
+                                      )["EcoImpact_Indicator_Value_Hectare"]
+                                    )
+                                  }}</span
+                                  >%
                                 </span></span
                               >
                             </div>
@@ -264,7 +295,17 @@
                                   class="ico-medium"
                                 ></span
                                 ><span id="impactmodaldeclin" class="impact-nbr"
-                                  ><span id="declin_especes2">-</span>%
+                                  ><span
+                                    id="declin_especes2"
+                                    v-if="impacts.length > 0"
+                                    >{{
+                                      Math.round(
+                                        impacts.find(
+                                          (el) => el.ID_EcoImpact_Indicator == 1
+                                        )["EcoImpact_Indicator_Value_Hectare"]
+                                      )
+                                    }}</span
+                                  >%
                                 </span></span
                               >
                             </div>
@@ -273,6 +314,7 @@
                       </div>
                       <div
                         class="col-sm-3 result-plus d-flex flex-column justify-content-center text-center"
+                        @click="ouvrirModal('impactBiodiv')"
                       >
                         <span class="icon-ico_fleche_detail_gros icon"></span
                         ><span class="explain">Explications</span>
@@ -312,7 +354,17 @@
                                   class="ico-medium"
                                 ></span
                                 ><span id="impactmodalbiodiv" class="impact-nbr"
-                                  ><span id="deforestation2">-</span>%
+                                  ><span
+                                    id="deforestation2"
+                                    v-if="impacts.length > 0"
+                                    >{{
+                                      Math.round(
+                                        impacts.find(
+                                          (el) => el.ID_EcoImpact_Indicator == 1
+                                        )["EcoImpact_Indicator_Value_Hectare"]
+                                      )
+                                    }}</span
+                                  >%
                                 </span></span
                               >
                             </div>
@@ -327,7 +379,14 @@
                               <span class="impact-result"
                                 ><span id="" class="ico-medium"></span
                                 ><span id="" class="impact-nbr"
-                                  ><span id="">-</span>%
+                                  ><span id="" v-if="impacts.length > 0">{{
+                                    Math.round(
+                                      impacts.find(
+                                        (el) => el.ID_EcoImpact_Indicator == 1
+                                      )["EcoImpact_Indicator_Value_Hectare"]
+                                    )
+                                  }}</span
+                                  >%
                                 </span></span
                               >
                             </div>
@@ -379,7 +438,17 @@
                                   class="ico-medium"
                                 ></span
                                 ><span id="impactmodaleau4" class="impact-nbr"
-                                  ><span id="qualite_eau4">-</span>%
+                                  ><span
+                                    id="qualite_eau4"
+                                    v-if="impacts.length > 0"
+                                    >{{
+                                      Math.round(
+                                        impacts.find(
+                                          (el) => el.ID_EcoImpact_Indicator == 1
+                                        )["EcoImpact_Indicator_Value_Hectare"]
+                                      )
+                                    }}</span
+                                  >%
                                 </span></span
                               >
                             </div>
@@ -397,7 +466,17 @@
                                   class="ico-medium"
                                 ></span
                                 ><span id="impactmodaleau3" class="impact-nbr"
-                                  ><span id="qualite_eau2">-</span>%
+                                  ><span
+                                    id="qualite_eau2"
+                                    v-if="impacts.length > 0"
+                                    >{{
+                                      Math.round(
+                                        impacts.find(
+                                          (el) => el.ID_EcoImpact_Indicator == 1
+                                        )["EcoImpact_Indicator_Value_Hectare"]
+                                      )
+                                    }}</span
+                                  >%
                                 </span></span
                               >
                             </div>
@@ -445,7 +524,17 @@
                                   class="ico-medium"
                                 ></span
                                 ><span id="impactmodaleau1" class="impact-nbr"
-                                  ><span id="consommation_eau2">-</span>%
+                                  ><span
+                                    id="consommation_eau2"
+                                    v-if="impacts.length > 0"
+                                    >{{
+                                      Math.round(
+                                        impacts.find(
+                                          (el) => el.ID_EcoImpact_Indicator == 1
+                                        )["EcoImpact_Indicator_Value_Hectare"]
+                                      )
+                                    }}</span
+                                  >%
                                 </span></span
                               >
                             </div>
@@ -464,7 +553,17 @@
                                   class="ico-medium"
                                 ></span
                                 ><span id="impactmodaleau2" class="impact-nbr"
-                                  ><span id="consommation_eau3">-</span>%
+                                  ><span
+                                    id="consommation_eau3"
+                                    v-if="impacts.length > 0"
+                                    >{{
+                                      Math.round(
+                                        impacts.find(
+                                          (el) => el.ID_EcoImpact_Indicator == 1
+                                        )["EcoImpact_Indicator_Value_Hectare"]
+                                      )
+                                    }}</span
+                                  >%
                                 </span></span
                               >
                             </div>
@@ -516,7 +615,17 @@
                                   class="ico-medium"
                                 ></span
                                 ><span id="impactmodalsol1" class="impact-nbr"
-                                  ><span id="empreinte_sol2">-</span>%
+                                  ><span
+                                    id="empreinte_sol2"
+                                    v-if="impacts.length > 0"
+                                    >{{
+                                      Math.round(
+                                        impacts.find(
+                                          (el) => el.ID_EcoImpact_Indicator == 1
+                                        )["EcoImpact_Indicator_Value_Hectare"]
+                                      )
+                                    }}</span
+                                  >%
                                 </span></span
                               >
                             </div>
@@ -531,7 +640,14 @@
                               <span class="impact-result"
                                 ><span id=" " class="ico-medium"></span
                                 ><span id="" class="impact-nbr"
-                                  ><span id="">-</span>%
+                                  ><span id="" v-if="impacts.length > 0">{{
+                                    Math.round(
+                                      impacts.find(
+                                        (el) => el.ID_EcoImpact_Indicator == 1
+                                      )["EcoImpact_Indicator_Value_Hectare"]
+                                    )
+                                  }}</span
+                                  >%
                                 </span></span
                               >
                             </div>
@@ -573,7 +689,17 @@
                               <span class="impact-result"
                                 ><span id="" class="ico-medium"></span
                                 ><span id="" class="impact-nbr"
-                                  ><span id="gaz_effet_serre4">-</span>%
+                                  ><span
+                                    id="gaz_effet_serre4"
+                                    v-if="impacts.length > 0"
+                                    >{{
+                                      Math.round(
+                                        impacts.find(
+                                          (el) => el.ID_EcoImpact_Indicator == 1
+                                        )["EcoImpact_Indicator_Value_Hectare"]
+                                      )
+                                    }}</span
+                                  >%
                                 </span></span
                               >
                             </div>
@@ -591,7 +717,17 @@
                                   class="ico-medium"
                                 ></span
                                 ><span id="impactmodalsol2" class="impact-nbr"
-                                  ><span id="degradation_sols2">-</span>%
+                                  ><span
+                                    id="degradation_sols2"
+                                    v-if="impacts.length > 0"
+                                    >{{
+                                      Math.round(
+                                        impacts.find(
+                                          (el) => el.ID_EcoImpact_Indicator == 1
+                                        )["EcoImpact_Indicator_Value_Hectare"]
+                                      )
+                                    }}</span
+                                  >%
                                 </span></span
                               >
                             </div>
@@ -625,10 +761,10 @@
         <!--end section-->
       </div>
       <!--end content-->
+      <nav id="asy-sidebar" :class="montrerClasse">
+        <modal-affiner-choix @fermerModalAffiner="fermerModal" />
+      </nav>
     </div>
-    <nav id="asy-sidebar" :class="montrerClasse">
-      <modal-affiner-choix @fermerModalAffiner="fermerModal" />
-    </nav>
     <!--asy-wrapper-->
     <div
       class="modal fade"
@@ -926,6 +1062,10 @@
         </div>
       </div>
     </div>
+    <modalImpact v-if="modalActive" :modalId="modalActive" />
+    <nav id="asy-sidebar" :class="montrerClasse">
+      <modal-affiner-choix @fermerModalAffiner="fermerModal" />
+    </nav>
   </div>
 </template>
 
@@ -933,16 +1073,20 @@
 import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
 import resumeChoix from "./modal/resumeChoix.vue";
 import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
-
+import modalImpact from "./modal/modalImpact.vue";
+import { getImpacts } from "@/plugins/getImpacts.js";
 export default {
   components: {
     BarreNavigation,
     resumeChoix,
     ModalAffinerChoix,
+    modalImpact,
   },
   data() {
     return {
       montrerClasse: "",
+      impacts: [],
+      modalActive: null,
     };
   },
   methods: {
@@ -953,6 +1097,14 @@ export default {
     fermerModal() {
       this.montrerClasse = "";
     },
+    ouvrirModal(id) {
+      console.log(id);
+      this.modalActive = id;
+    },
+  },
+  async mounted() {
+    this.impacts = await getImpacts();
+    console.log(this.impacts);
   },
 };
 </script>

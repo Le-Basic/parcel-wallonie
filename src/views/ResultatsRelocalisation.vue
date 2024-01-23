@@ -1,7 +1,7 @@
 <template>
   <div class="asy-wrapper">
     <div class="content">
-      <Nav @montrerModalAffinage="montrerModalAffiner" active="1"></Nav>
+      <Nav @montrerModalAffinage="montrerModalAffiner" :active="1"></Nav>
       <div class="section centrervh surfaces-container" id="section0">
         <div class="container">
           <div class="titre-page animated fadeInUp">
@@ -37,7 +37,7 @@
                         class="nbr-ha animated flipInX delay-1s odometer"
                         id="surface6"
                       >
-                        -
+                        {{ surfaces_a_mobiliser }}
                       </div>
                       <div class="hectares">hectares</div>
                     </div>
@@ -53,7 +53,8 @@
                       <span
                         class="nbr-ha animated flipInY delay-1s odometer"
                         id="potentiel0"
-                        >-</span
+                        v-if="potentiel_nourricier"
+                        >{{ potentiel_nourricier }}</span
                       >
                       <span class="hectares ml-1">%</span>
                     </div>
@@ -168,12 +169,20 @@
 import Nav from "@/components/Nav/BarreNavigation.vue";
 import resumeChoix from "./modal/resumeChoix.vue";
 import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
+import {
+  getSurfaceActuelle,
+  getSurfaceAMobiliser,
+} from "@/plugins/getSurfacesNecessaires";
 
 export default {
   components: { resumeChoix, Nav, ModalAffinerChoix },
   data() {
     return {
+      donnees: {},
+      surfaces_a_mobiliser: 0,
+      surface_actuelle: 0,
       montrerClasse: "",
+      potentiel_nourricier: 0,
     };
   },
   methods: {
@@ -185,14 +194,17 @@ export default {
       this.montrerClasse = "";
     },
   },
+  async mounted() {
+    this.surfaces_a_mobiliser = Math.round(
+      await getSurfaceAMobiliser().then((res) => res["surfaces_a_mobiliser"])
+    );
+    this.surface_actuelle = await getSurfaceActuelle();
+    this.potentiel_nourricier = Math.round(
+      (this.surface_actuelle["sau_ha"] * 100) / this.surfaces_a_mobiliser
+    );
+    console.log(this.potentiel_nourricier);
+  },
 };
 </script>
 
-<style scoped>
-.show {
-  margin-right: 0px !important;
-  display: block !important;
-  padding: 0px !important;
-  opacity: 1 !important;
-}
-</style>
+<style scoped></style>

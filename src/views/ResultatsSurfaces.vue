@@ -1,7 +1,10 @@
 <template>
   <div class="asy-wrapper">
     <div class="content">
-      <BarreNavigation />
+      <BarreNavigation
+        @montrerModalAffinage="montrerModalAffiner"
+        :active="2"
+      />
       <div class="section centrervh" id="section0" style="width: 100%">
         <div class="container">
           <h1 class="animated fadeInUp fast h1-result mb-1">
@@ -67,7 +70,7 @@
               active: cardSurfaceActive == 'global',
             }"
           >
-            <SurfaceGlobal />
+            <SurfaceGlobal @nextStep="changeCarte" />
           </div>
           <div
             id="productView"
@@ -80,9 +83,10 @@
             <SurfaceProduits
               :class="{
                 containerSurface: true,
-                'non-active': true,
+                'non-active': !(cardSurfaceActive == 'product'),
                 active: cardSurfaceActive == 'product',
               }"
+              @nextStep="changeCarte"
             />
           </div>
           <div
@@ -105,8 +109,8 @@
       </div>
     </div>
 
-    <nav id="asy-sidebar" class="">
-      <!-- <?php include '../partials/menu-affiner-2modales.php'; ?> -->
+    <nav id="asy-sidebar" :class="montrerClasse">
+      <modal-affiner-choix @fermerModalAffiner="fermerModal" />
     </nav>
   </div>
   <!-- <?php include '../partials/scripts-footer.php'; ?> -->
@@ -114,6 +118,7 @@
 
 <script>
 import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
+import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
 import resumeChoix from "./modal/resumeChoix.vue";
 import SurfaceGlobal from "./composantsSurface/SurfaceGlobal.vue";
 import SurfacePaysage from "./composantsSurface/SurfacePaysage.vue";
@@ -122,6 +127,7 @@ import SurfaceProduits from "./composantsSurface/SurfaceProduits.vue";
 export default {
   components: {
     BarreNavigation,
+    ModalAffinerChoix,
     resumeChoix,
     SurfaceGlobal,
     SurfacePaysage,
@@ -130,7 +136,21 @@ export default {
   data() {
     return {
       cardSurfaceActive: "global",
+      montrerClasse: "",
     };
+  },
+  methods: {
+    changeCarte(hash) {
+      console.log(hash);
+      this.cardSurfaceActive = hash;
+    },
+    montrerModalAffiner() {
+      this.montrerClasse = "show";
+      console.log("montrerModalAffinage");
+    },
+    fermerModal() {
+      this.montrerClasse = "";
+    },
   },
 };
 </script>
@@ -150,5 +170,11 @@ export default {
   display: none !important;
   visibility: hidden !important;
   overflow: hidden;
+}
+.show {
+  margin-right: 0px !important;
+  display: block !important;
+  padding: 0px !important;
+  opacity: 1 !important;
 }
 </style>

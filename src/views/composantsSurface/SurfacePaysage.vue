@@ -84,6 +84,7 @@
             id="PaysSpatCategoryresultsTable"
             class="auto-style1 w-100"
             border="1"
+            v-if="data.occupationActuelle.length > 0"
           >
             <thead></thead>
             <tbody>
@@ -103,7 +104,9 @@
                       <div class="col titre-categorie mb-0">
                         Prairie, estives, landes
                       </div>
-                      <div class="col-auto ml-auto hectares">881 877</div>
+                      <div class="col-auto ml-auto hectares">
+                        {{ data.occupationActuelle[0]["surface"] }}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -124,7 +127,9 @@
                       <div class="col mb-0 titre-categorie">
                         Cultures fourragères
                       </div>
-                      <div class="col-auto ml-auto hectares">202 398</div>
+                      <div class="col-auto ml-auto hectares">
+                        {{ data.occupationActuelle[1]["surface"] }}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -145,7 +150,9 @@
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">Légumineuses</div>
-                      <div class="col-auto ml-auto hectares">81 873</div>
+                      <div class="col-auto ml-auto hectares">
+                        {{ data.occupationActuelle[3]["surface"] }}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -168,7 +175,9 @@
                       <div class="col mb-0 titre-categorie">
                         Céréales, Oléagineux, protéagineux
                       </div>
-                      <div class="col-auto ml-auto hectares">22 398</div>
+                      <div class="col-auto ml-auto hectares">
+                        {{ data.occupationActuelle[4]["surface"] }}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -190,7 +199,9 @@
                         Cultures industrielles alimentaires (pomme de terre,
                         betterave à sucre…)
                       </div>
-                      <div class="col-auto ml-auto hectares">11 273</div>
+                      <div class="col-auto ml-auto hectares">
+                        {{ data.occupationActuelle[5]["surface"] }}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -211,7 +222,9 @@
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">Fruits</div>
-                      <div class="col-auto ml-auto hectares">1 273</div>
+                      <div class="col-auto ml-auto hectares">
+                        {{ data.occupationActuelle[6]["surface"] }}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -232,7 +245,9 @@
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">Légumes</div>
-                      <div class="col-auto ml-auto hectares">2738</div>
+                      <div class="col-auto ml-auto hectares">
+                        {{ data.occupationActuelle[7]["surface"] }}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -320,9 +335,10 @@
         <div class="wrap-viz4 resultats-categories repartition">
           <table
             summary="Resultats"
-            id="PaysCategoryresultsTable"
+            id="PaysSpatCategoryresultsTable"
             class="auto-style1 w-100"
             border="1"
+            v-if="data.occupationActuelle.length > 0"
           >
             <thead></thead>
             <tbody>
@@ -342,7 +358,9 @@
                       <div class="col titre-categorie mb-0">
                         Prairie, estives, landes
                       </div>
-                      <div class="col-auto ml-auto hectares">881 877</div>
+                      <div class="col-auto ml-auto hectares">
+                        {{ data.occupationActuelle[0]["surface"] }}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -363,7 +381,9 @@
                       <div class="col mb-0 titre-categorie">
                         Cultures fourragères
                       </div>
-                      <div class="col-auto ml-auto hectares">202 398</div>
+                      <div class="col-auto ml-auto hectares">
+                        {{ data.occupationActuelle[1]["surface"] }}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -384,7 +404,9 @@
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">Légumineuses</div>
-                      <div class="col-auto ml-auto hectares">81 873</div>
+                      <div class="col-auto ml-auto hectares">
+                        {{ data.occupationActuelle[3]["surface"] }}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -407,7 +429,9 @@
                       <div class="col mb-0 titre-categorie">
                         Céréales, Oléagineux, protéagineux
                       </div>
-                      <div class="col-auto ml-auto hectares">22 398</div>
+                      <div class="col-auto ml-auto hectares">
+                        {{ data.occupationActuelle[4]["surface"] }}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -429,7 +453,9 @@
                         Cultures industrielles alimentaires (pomme de terre,
                         betterave à sucre…)
                       </div>
-                      <div class="col-auto ml-auto hectares">11 273</div>
+                      <div class="col-auto ml-auto hectares">
+                        {{ data.occupationActuelle[5]["surface"] }}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -450,7 +476,9 @@
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">Fruits</div>
-                      <div class="col-auto ml-auto hectares">1 273</div>
+                      <div class="col-auto ml-auto hectares">
+                        {{ data.occupationActuelle[6]["surface"] }}
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -471,51 +499,9 @@
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">Légumes</div>
-                      <div class="col-auto ml-auto hectares">2738</div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="5">
-                  <div
-                    class="cadre-categorie autreindus animated fadeIn"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-viande"
-                    style="cursor: pointer"
-                  >
-                    <div class="result-type">
-                      <span
-                        class="icon-autres-cultures ico-medium autreindus"
-                      ></span>
-                    </div>
-                    <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">
-                        Autres cultures industrielles
+                      <div class="col-auto ml-auto hectares">
+                        {{ data.occupationActuelle[7]["surface"] }}
                       </div>
-                      <div class="col-auto ml-auto hectares">1 273</div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="5">
-                  <div
-                    class="cadre-categorie jachere animated fadeIn"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-viande"
-                    style="cursor: pointer"
-                  >
-                    <div class="result-type">
-                      <span class="icon-jachere ico-medium jachere"></span>
-                    </div>
-                    <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">
-                        Jachères, Gel et autres espaces agricoles
-                      </div>
-                      <div class="col-auto ml-auto hectares">2738</div>
                     </div>
                   </div>
                 </td>
@@ -541,11 +527,118 @@
 import { Treemap } from "d3plus-hierarchy";
 
 export default {
+  inject: ["$axios"],
+  data() {
+    return {
+      data: {
+        occupationActuelle: [],
+        potentielNourricier: [],
+      },
+    };
+  },
+  methods: {
+    recupererDonnees() {
+      var data4 = [
+        {
+          surface: 881877,
+          name: "Prairies",
+          color: "#D1F18C",
+        },
+        {
+          surface: 402398,
+          name: "Cultures fourragères",
+          color: "#F1CF98",
+        },
+        {
+          surface: 54540,
+          name: "Légumineuses",
+          color: "#FDD084",
+        },
+        {
+          surface: 170505,
+          name: "Céréales",
+          color: "#FBCDC2",
+        },
+        {
+          surface: 18180,
+          name: "Cultures industrielles",
+          color: "#88D9D9",
+        },
+        {
+          surface: 27400,
+          name: "Fruits",
+          color: "#FB97C7",
+        },
+        {
+          surface: 20200,
+          name: "Légumes",
+          color: "#EABDFF",
+        },
+        {
+          surface: 20000,
+          name: "Autres",
+          color: "#9CE6FA",
+          background: "#F1F9E0",
+        },
+        {
+          surface: 10000,
+          name: "Jachères",
+          color: "#BDD687",
+        },
+      ];
+      const bodyFormData = new FormData();
+      var codesTerritoireParcel = this.$store.state.geoList.map(
+        (el) => el.code_territoire
+      );
+      codesTerritoireParcel = ["mun91114"];
+      console.log(codesTerritoireParcel);
+      bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
+      this.$axios
+        .post(
+          "https://observatoire-filieres.azurewebsites.net/parcel/belgique/surfaces_actuels_paysage",
+          codesTerritoireParcel, // Request body data
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          data4.forEach((el) => {
+            console.log(el);
+            response.data.find((el2) => {
+              if (el.name == el2.libelle_parcel_paysage_actuel) {
+                el.surface = el2.sau_ha;
+                this.data.occupationActuelle.push(el);
+                console.log(this.data.occupationActuelle);
+              }
+            });
+          });
+          console.log(response);
+        })
+        .then(() => {
+          new Treemap()
+            .select("#viz4")
+            .data(this.data.occupationActuelle)
+            .groupBy("name")
+            .sum("surface")
+            .color("color")
+            .height(500)
+            .legend(0)
+            .render();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
   mounted() {
+    this.recupererDonnees();
     var data3 = [
       {
         surface: 881877,
-        name: "Prairies..",
+        name: "Prairies",
         color: "#D1F18C",
       },
       {
@@ -590,67 +683,9 @@ export default {
         color: "#BDD687",
       },
     ];
-    var data4 = [
-      {
-        surface: 881877,
-        name: "Prairies..",
-        color: "#D1F18C",
-      },
-      {
-        surface: 402398,
-        name: "Cultures fourragères",
-        color: "#F1CF98",
-      },
-      {
-        surface: 54540,
-        name: "Légumineuses",
-        color: "#FDD084",
-      },
-      {
-        surface: 170505,
-        name: "Céréales..",
-        color: "#FBCDC2",
-      },
-      {
-        surface: 18180,
-        name: "Cult. indus..",
-        color: "#88D9D9",
-      },
-      {
-        surface: 27400,
-        name: "Fruits",
-        color: "#FB97C7",
-      },
-      {
-        surface: 20200,
-        name: "Légumes",
-        color: "#EABDFF",
-      },
-      {
-        surface: 20000,
-        name: "Autres..",
-        color: "#9CE6FA",
-        background: "#F1F9E0",
-      },
-      {
-        surface: 10000,
-        name: "Jachères..",
-        color: "#BDD687",
-      },
-    ];
     new Treemap()
       .select("#viz3")
       .data(data3)
-      .groupBy("name")
-      .sum("surface")
-      .color("color")
-      .height(500)
-      .legend(0)
-      .render();
-
-    new Treemap()
-      .select("#viz4")
-      .data(data4)
       .groupBy("name")
       .sum("surface")
       .color("color")

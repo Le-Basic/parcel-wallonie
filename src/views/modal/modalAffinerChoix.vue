@@ -529,6 +529,23 @@ export default {
       this.showParametres = !this.showParametres;
     },
   },
+  watch: {
+    partpertes: function (val) {
+      this.$store.commit("partPertes", val);
+    },
+    partbiocereales: function (val) {
+      this.$store.commit("partBioCereales", val);
+    },
+    partbioelevage: function (val) {
+      this.$store.commit("partBioElevage", val);
+    },
+    partbiofruits: function (val) {
+      this.$store.commit("partBioFruits", val);
+    },
+    partbiolegumes: function (val) {
+      this.$store.commit("partBioLegumes", val);
+    },
+  },
 };
 </script>
 

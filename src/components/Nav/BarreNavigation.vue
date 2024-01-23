@@ -57,6 +57,7 @@
               data-target="#modalNavigation"
               data-toggle="modal"
               type="button"
+              @click="changeModalPrincipale"
             >
               <span class="icon-ico_menu_hamburger"></span>
             </button>
@@ -113,16 +114,17 @@
     </nav>
 
     <div
-      class="modal fade modal-fullscreen-menu"
+      class="fade modal-fullscreen-menu show modal"
       id="modalNavigation"
       role="dialog"
-      tabindex="-1"
+      v-if="montrerModalPrincipale"
     >
       <button
         aria-label="Close"
         class="close btn"
         data-dismiss="modal"
         type="button"
+        @click="changeModalPrincipale"
       >
         <span class="sr-only">Fermer</span>
         <span class="icon-ico_fermer icon" style="font-size: 27px"></span>
@@ -271,12 +273,28 @@ export default {
       default: 1,
     },
   },
+  data() {
+    return {
+      montrerModalPrincipale: false,
+    };
+  },
 
   methods: {
     montrerModalAffinage() {
       this.$emit("montrerModalAffinage");
       console.log("montrerModalAffinage");
     },
+    changeModalPrincipale() {
+      this.montrerModalPrincipale = !this.montrerModalPrincipale;
+    },
   },
 };
 </script>
+
+<style scoped>
+.modal {
+  display: block !important;
+  opacity: 1 !important;
+  height: 100vh;
+}
+</style>

@@ -13,7 +13,7 @@
         />
       </li>
       <li
-        :class="['n av-item', { active: active == 1 }]"
+        :class="['nav-item', { active: active == 1 }]"
         data-menuanchor="3rdPage"
       >
         <router-link class="nav-link" to="/resultats-de-votre-relocalisation"
