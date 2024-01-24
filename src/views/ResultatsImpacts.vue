@@ -395,6 +395,7 @@
                       </div>
                       <div
                         class="col-sm-3 result-plus align-items-center d-flex flex-column justify-content-center text-center"
+                        @click="ouvrirModal('impactEau')"
                       >
                         <span class="icon-ico_fleche_detail_gros icon"></span
                         ><span class="explain">Explications</span>

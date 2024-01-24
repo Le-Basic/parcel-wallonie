@@ -8,7 +8,7 @@
     aria-hidden="true"
   >
     <div class="modal-dialog" role="document">
-      <div class="modal-content modal-repart-cat-detail">
+      <div class="modal-content" v-if="modalId">
         <component :is="modalId" />
       </div>
     </div>
@@ -16,16 +16,14 @@
 </template>
 
 <script>
-import ImpactGes from "./modalImpacts/impactGes.vue";
-import impactBiodiv from "./modalImpacts/impactBiodiv.vue";
-import impactClimat from "./modalImpacts/impactClimat.vue";
-import impactEau from "./modalImpacts/impactEau.vue";
+import detailsCereales from "./modalDetails/detailsCereales.vue";
+import detailsFruits from "./modalDetails/detailsFruits.vue";
+import detailsViande from "./modalDetails/detailsViande.vue";
 export default {
-  components: { ImpactGes, impactBiodiv, impactClimat, impactEau },
+  components: { detailsCereales, detailsFruits, detailsViande },
   props: {
     modalId: {
       type: String,
-      required: true,
     },
   },
 };
@@ -34,7 +32,10 @@ export default {
 <style scoped>
 .modals {
   position: absolute;
-  width: 100vw;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: fit-content;
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.5);
 }

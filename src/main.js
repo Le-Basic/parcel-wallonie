@@ -14,7 +14,13 @@ import "./css/sidebar.css";
 import "./css/style-modal-right.css";
 import "./css/style-range.css";
 import "./css/style-font.css";
+import ECharts from "vue-echarts";
 import $axios from "./plugins/axios.js";
 
-window.apiURL = "https://observatoire-filieres.azurewebsites.net/";
-createApp(App).use(store).use(router).use($axios).mount("#app");
+window.apiURL = "https://lebasic.nohost.me/api/";
+createApp(App)
+  .use(store)
+  .use(router)
+  .use($axios)
+  .component("v-chart", ECharts)
+  .mount("#app");

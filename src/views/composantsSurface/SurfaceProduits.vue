@@ -1,7 +1,8 @@
 <template>
   <div class="bloc-surface">
+    <modalDetail v-if="modalDetails" :modalId="modalDetails"></modalDetail>
     <h3 class="text-center">Surface agricole à mobiliser</h3>
-    <pre v-if="test2"> {{ test2 }}</pre>
+
     <div
       class="cadre-resultat resultat-ha animated flipInX delay-05s bg-vert-clair"
     >
@@ -74,7 +75,9 @@
                     class="result-graph"
                     id="pc1"
                     style="width: 65px; height: 65px"
-                  ></div>
+                  >
+                    <jaugeChart></jaugeChart>
+                  </div>
                   <div class="result-type">
                     <span
                       class="icon-ico_CATEGORIES_legumes ico-medium legumes"
@@ -94,7 +97,10 @@
                     </div>
                   </div>
                   <div class="result-plus">
-                    <span class="icon-ico_fleche_detail_gros icon legumes">
+                    <span
+                      @click="ouvrirModal('detailsFruits')"
+                      class="icon-ico_fleche_detail_gros icon legumes"
+                    >
                     </span>
                   </div>
                 </div>
@@ -102,7 +108,7 @@
             </tr>
 
             <tr>
-              <td colspan="5">
+              <td colspan="5" @click="ouvrirModal('detailsFruits')">
                 <div
                   class="cadre-categorie fruits animated fadeIn delay-1-5s"
                   onclick=""
@@ -114,7 +120,9 @@
                     class="result-graph"
                     id="pc2"
                     style="width: 65px; height: 65px"
-                  ></div>
+                  >
+                    <jaugeChart></jaugeChart>
+                  </div>
                   <div class="result-type">
                     <span
                       class="icon-ico_CATEGORIES_fruits ico-medium fruits"
@@ -141,7 +149,7 @@
               </td>
             </tr>
             <tr>
-              <td colspan="5">
+              <td colspan="5" @click="ouvrirModal('detailsCereales')">
                 <div
                   class="cadre-categorie cereales animated fadeIn delay-2s"
                   onclick=""
@@ -153,7 +161,9 @@
                     class="result-graph"
                     id="pc3"
                     style="width: 65px; height: 65px"
-                  ></div>
+                  >
+                    <jaugeChart></jaugeChart>
+                  </div>
                   <div class="result-type">
                     <span
                       class="icon-ico_CATEGORIES_cereales ico-medium cereales"
@@ -182,7 +192,7 @@
               </td>
             </tr>
             <tr>
-              <td colspan="5">
+              <td colspan="5" @click="ouvrirModal('detailsViande')">
                 <div
                   class="cadre-categorie viande animated fadeIn delay-2-5s"
                   onclick=""
@@ -194,7 +204,9 @@
                     class="result-graph"
                     id="pc4"
                     style="width: 65px; height: 65px"
-                  ></div>
+                  >
+                    <jaugeChart></jaugeChart>
+                  </div>
                   <div class="result-type">
                     <span
                       class="icon-ico_CATEGORIES_viande ico-medium viande"
@@ -289,7 +301,9 @@
                     class="result-graph"
                     id="ppc1"
                     style="width: 65px; height: 65px"
-                  ></div>
+                  >
+                    <jaugeChart></jaugeChart>
+                  </div>
                   <div class="result-type">
                     <span
                       class="icon-ico_CATEGORIES_cereales ico-medium cereales"
@@ -320,7 +334,9 @@
                     class="result-graph"
                     id="ppc2"
                     style="width: 65px; height: 65px"
-                  ></div>
+                  >
+                    <jaugeChart></jaugeChart>
+                  </div>
                   <div class="result-type">
                     <span
                       class="icon-ico_CATEGORIES_viande ico-medium viande"
@@ -983,8 +999,14 @@
 import { Treemap } from "d3plus-hierarchy";
 import { getSurfaceAMobiliser } from "@/plugins/getSurfacesNecessaires";
 import { pushDataViz } from "@/plugins/pushDataViz";
+import modalDetail from "../modal/modalDetail.vue";
+import jaugeChart from "@/components/jaugeChart.vue";
 export default {
   inject: ["$axios"],
+  components: {
+    modalDetail,
+    jaugeChart,
+  },
   data() {
     return {
       data: {
@@ -992,11 +1014,16 @@ export default {
         potentielNourricier: [],
         surfaces_a_mobiliser_parcel_niveau_1: [],
         surfaces_a_mobiliser: null,
-        test: [],
       },
+      modalDetails: "",
     };
   },
   methods: {
+    ouvrirModal(id) {
+      console.log(id);
+      this.modalDetails = id;
+      console.log(this.modalDetails);
+    },
     recupererDonnees() {
       const bodyFormData = new FormData();
       var codesTerritoireParcel = this.$store.state.geoList.map(

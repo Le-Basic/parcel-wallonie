@@ -81,6 +81,7 @@
             }"
           >
             <SurfaceProduits
+              v-if="cardSurfaceActive == 'product'"
               :class="{
                 containerSurface: true,
                 'non-active': !(cardSurfaceActive == 'product'),
