@@ -9,7 +9,7 @@
   >
     <div class="modal-dialog" role="document">
       <div class="modal-content" v-if="modalId">
-        <component :is="modalId" />
+        <component :is="modalId" @fermerModal="fermerModal" />
       </div>
     </div>
   </div>
@@ -19,11 +19,17 @@
 import detailsCereales from "./modalDetails/detailsCereales.vue";
 import detailsFruits from "./modalDetails/detailsFruits.vue";
 import detailsViande from "./modalDetails/detailsViande.vue";
+import detailsLegumes from "./modalDetails/detailsLegumes.vue";
 export default {
-  components: { detailsCereales, detailsFruits, detailsViande },
+  components: { detailsCereales, detailsFruits, detailsViande, detailsLegumes },
   props: {
     modalId: {
       type: String,
+    },
+  },
+  methods: {
+    fermerModal() {
+      this.$emit("fermerModal");
     },
   },
 };

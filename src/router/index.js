@@ -7,6 +7,8 @@ import ResultatsImpacts from "../views/ResultatsImpacts.vue";
 import ResultatsRelocalisation from "../views/ResultatsRelocalisation.vue";
 import ResultatsSurfaces from "../views/ResultatsSurfaces.vue";
 import ResultatsEmplois from "../views/ResultatsEmplois.vue";
+import testBenjamin from "../views/testBenjamin.vue";
+
 const routes = [
   {
     path: "/",
@@ -47,6 +49,11 @@ const routes = [
     path: "/impacts-ecologiques-de-la-relocatisation",
     name: "impacts ecolos",
     component: ResultatsImpacts,
+  },
+  {
+    path: "/test",
+    name: "test",
+    component: testBenjamin,
   },
 ];
 

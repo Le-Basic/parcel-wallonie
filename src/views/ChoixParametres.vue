@@ -336,7 +336,7 @@ export default {
       bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
       this.$axios
         .post(
-          "https://observatoire-filieres.azurewebsites.net/parcel/belgique/curseurs_bio",
+          window.apiURL + "parcel/belgique/curseurs_bio",
           codesTerritoireParcel, // Request body data
           {
             headers: {

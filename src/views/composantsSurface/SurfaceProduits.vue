@@ -1,6 +1,10 @@
 <template>
   <div class="bloc-surface">
-    <modalDetail v-if="modalDetails" :modalId="modalDetails"></modalDetail>
+    <modalDetail
+      v-if="modalDetails"
+      :modalId="modalDetails"
+      @fermerModal="fermerModal"
+    ></modalDetail>
     <h3 class="text-center">Surface agricole à mobiliser</h3>
 
     <div
@@ -20,6 +24,7 @@
         </div>
       </div>
     </div>
+    <pre></pre>
     <div class="map-content">
       sont théoriquement nécessaires pour satisfaire les besoins alimentaires de
       la population choisie
@@ -63,7 +68,7 @@
           <thead></thead>
           <tbody>
             <tr>
-              <td colspan="5">
+              <td colspan="5" @click="ouvrirModal('detailsLegumes')">
                 <div
                   class="cadre-categorie legumes animated fadeIn delay-1s"
                   onclick=""
@@ -76,7 +81,13 @@
                     id="pc1"
                     style="width: 65px; height: 65px"
                   >
-                    <jaugeChart></jaugeChart>
+                    <jaugeChart
+                      :value="
+                        surfaces_a_mobiliser_parcel_niveau_1[3]
+                          .part_surface_a_mobiliser
+                      "
+                      couleur="#91C423"
+                    ></jaugeChart>
                   </div>
                   <div class="result-type">
                     <span
@@ -121,7 +132,13 @@
                     id="pc2"
                     style="width: 65px; height: 65px"
                   >
-                    <jaugeChart></jaugeChart>
+                    <jaugeChart
+                      :value="
+                        surfaces_a_mobiliser_parcel_niveau_1[1]
+                          .part_surface_a_mobiliser
+                      "
+                      couleur="#A261C0"
+                    ></jaugeChart>
                   </div>
                   <div class="result-type">
                     <span
@@ -162,7 +179,13 @@
                     id="pc3"
                     style="width: 65px; height: 65px"
                   >
-                    <jaugeChart></jaugeChart>
+                    <jaugeChart
+                      :value="
+                        surfaces_a_mobiliser_parcel_niveau_1[2]
+                          .part_surface_a_mobiliser
+                      "
+                      couleur="#F9B233"
+                    ></jaugeChart>
                   </div>
                   <div class="result-type">
                     <span
@@ -205,7 +228,13 @@
                     id="pc4"
                     style="width: 65px; height: 65px"
                   >
-                    <jaugeChart></jaugeChart>
+                    <jaugeChart
+                      :value="
+                        surfaces_a_mobiliser_parcel_niveau_1[0]
+                          .part_surface_a_mobiliser
+                      "
+                      couleur="#B57A60"
+                    ></jaugeChart>
                   </div>
                   <div class="result-type">
                     <span
@@ -251,8 +280,9 @@
           id="surface_act8"
         >
           <div class="odometer-inside">
-            {{ this.data.surfaceActuelle }}
+            {{ this.occupationActuelleTotale }}
           </div>
+          <pre>{{ this.occupationActuelle }}</pre>
         </div>
         <div class="hectares animated fadeIn delay-1-5s">
           hectares agricoles
@@ -290,7 +320,7 @@
           class="auto-style1 w-100"
           id="ProdCategoryresultsTable"
           border="1"
-          v-if="this.data.occupationActuelle"
+          v-if="this.occupationActuelle"
         >
           <thead></thead>
           <tbody>
@@ -313,13 +343,10 @@
                     <div class="titre-categorie">
                       Cultures annuelles pour alimentation humaine
                     </div>
-                    <div
-                      class="hectares"
-                      v-if="this.data.occupationActuelle[0]"
-                    >
+                    <div class="hectares" v-if="this.occupationActuelle[0]">
                       {{
                         formatterSurfacesNecessaires(
-                          this.data.occupationActuelle[0]["surface"]
+                          this.occupationActuelle[0]["surface"]
                         )
                       }}
                     </div>
@@ -346,13 +373,10 @@
                     <div class="titre-categorie">
                       Elevage (dont alimentation & estives et landes)
                     </div>
-                    <div
-                      class="hectares"
-                      v-if="this.data.occupationActuelle[0]"
-                    >
+                    <div class="hectares" v-if="this.occupationActuelle[0]">
                       {{
                         formatterSurfacesNecessaires(
-                          this.data.occupationActuelle[1]["surface"]
+                          this.occupationActuelle[1]["surface"]
                         )
                       }}
                     </div>
@@ -375,13 +399,10 @@
                   </div>
                   <div class="result-chiffres">
                     <div class="titre-categorie">Fruits</div>
-                    <div
-                      class="hectares"
-                      v-if="this.data.occupationActuelle[3]"
-                    >
+                    <div class="hectares" v-if="this.occupationActuelle[3]">
                       {{
                         formatterSurfacesNecessaires(
-                          this.data.occupationActuelle[3]["surface"]
+                          this.occupationActuelle[3]["surface"]
                         )
                       }}
                     </div>
@@ -404,13 +425,10 @@
                   </div>
                   <div class="result-chiffres">
                     <div class="titre-categorie">Légumes</div>
-                    <div
-                      class="hectares"
-                      v-if="this.data.occupationActuelle[4]"
-                    >
+                    <div class="hectares" v-if="this.occupationActuelle[4]">
                       {{
                         formatterSurfacesNecessaires(
-                          this.data.occupationActuelle[4]["surface"]
+                          this.occupationActuelle[4]["surface"]
                         )
                       }}
                     </div>
@@ -431,13 +449,10 @@
                   </div>
                   <div class="result-chiffres">
                     <div class="titre-categorie">Jachères</div>
-                    <div
-                      class="hectares"
-                      v-if="this.data.occupationActuelle[5]"
-                    >
+                    <div class="hectares" v-if="this.occupationActuelle[5]">
                       {{
                         formatterSurfacesNecessaires(
-                          this.data.occupationActuelle[5]["surface"]
+                          this.occupationActuelle[5]["surface"]
                         )
                       }}
                     </div>
@@ -466,9 +481,9 @@
                     </div>
                     <div
                       class="hectares"
-                      v-if="this.data.occupationActuelle[6]"
+                      v-if="this.occupationActuelle[6]"
                     >
-                      {{ this.data.occupationActuelle[6]["surface"] }}
+                      {{ this.occupationActuelle[6]["surface"] }}
                     </div>
                   </div>
                 </div>
@@ -1001,6 +1016,7 @@ import { getSurfaceAMobiliser } from "@/plugins/getSurfacesNecessaires";
 import { pushDataViz } from "@/plugins/pushDataViz";
 import modalDetail from "../modal/modalDetail.vue";
 import jaugeChart from "@/components/jaugeChart.vue";
+import axios from "axios";
 export default {
   inject: ["$axios"],
   components: {
@@ -1010,11 +1026,11 @@ export default {
   data() {
     return {
       data: {
-        occupationActuelle: [],
         potentielNourricier: [],
-        surfaces_a_mobiliser_parcel_niveau_1: [],
-        surfaces_a_mobiliser: null,
       },
+      occupationActuelle: [],
+      surfaces_a_mobiliser_parcel_niveau_1: [],
+      surfaces_a_mobiliser: null,
       modalDetails: "",
     };
   },
@@ -1032,9 +1048,9 @@ export default {
       codesTerritoireParcel = ["mun91114"];
       console.log(codesTerritoireParcel);
       bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
-      this.$axios
+      axios
         .post(
-          "https://observatoire-filieres.azurewebsites.net/parcel/belgique/surfaces_actuels_produit",
+          window.apiURL + "parcel/belgique/surfaces_actuels_produit",
           codesTerritoireParcel, // Request body data
           {
             headers: {
@@ -1043,8 +1059,11 @@ export default {
             },
           }
         )
+        .catch((error) => {
+          console.log(error);
+        })
         .then((response) => {
-          this.data.occupationActuelle = [
+          this.occupationActuelle = [
             {
               surface: response.data.find(
                 (el) =>
@@ -1111,7 +1130,7 @@ export default {
 
           new Treemap()
             .select("#viz2")
-            .data(this.data.occupationActuelle)
+            .data(this.occupationActuelle)
             .groupBy("name")
             .sum("surface")
             .color("color")
@@ -1136,6 +1155,9 @@ export default {
         " hectares"
       );
     },
+    fermerModal() {
+      this.modalDetails = "";
+    },
   },
 
   async mounted() {
@@ -1151,12 +1173,26 @@ export default {
     surfaces_a_mobiliser_parcel_niveau_1_data() {
       return this.surfaces_a_mobiliser_parcel_niveau_1;
     },
+    occupationActuelleTotale() {
+      return Math.round(
+        this.occupationActuelle.reduce((acc, item) => acc + item.surface, 0)
+      );
+    },
   },
   watch: {
     surfaces_a_mobiliser(nouvellevaleur) {
       if (nouvellevaleur) {
-        this.surfaces_a_mobiliser_parcel_niveau_1 =
-          nouvellevaleur["surfaces_a_mobiliser_parcel_niveau_1"];
+        this.surfaces_a_mobiliser_parcel_niveau_1 = nouvellevaleur[
+          "surfaces_a_mobiliser_parcel_niveau_1"
+        ].map((item) => {
+          return {
+            ...item,
+            part_surface_a_mobiliser: Math.round(
+              (item.surface_necessaire_conventionnel * 100) /
+                nouvellevaleur["surfaces_a_mobiliser"]
+            ),
+          };
+        });
       }
     },
   },

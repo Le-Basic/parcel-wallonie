@@ -356,8 +356,7 @@ export default {
   },
   data() {
     return {
-      pointGeoAPI:
-        "https://observatoire-filieres.azurewebsites.net/parcel/GeoData/",
+      pointGeoAPI: window.apiURL + "/parcel/GeoData/",
       rechercheInput: "",
       list_geo: [],
     };

@@ -60,6 +60,7 @@ export async function getSurfaceAMobiliser() {
       res[valeur.libelle_parcel_niveau_1] = {
         libelle_parcel_niveau_1: valeur.libelle_parcel_niveau_1,
         surface_necessaire_conventionnel: 0,
+        surface_necessaire_bio: 0,
       };
       surfaces_a_mobiliser_parcel_niveau_1.push(
         res[valeur.libelle_parcel_niveau_1]
@@ -67,9 +68,10 @@ export async function getSurfaceAMobiliser() {
     }
     res[valeur.libelle_parcel_niveau_1].surface_necessaire_conventionnel +=
       valeur.surface_necessaire_conventionnel;
+    res[valeur.libelle_parcel_niveau_1].surface_necessaire_bio +=
+      valeur.surface_necessaire_bio;
     return res;
   }, {});
-  console.log("test", surfaces_a_mobiliser_parcel_niveau_1);
 
   return {
     surfaces_a_mobiliser: surfaces_a_mobiliser,

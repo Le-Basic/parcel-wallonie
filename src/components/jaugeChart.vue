@@ -27,20 +27,30 @@ export default defineComponent({
   components: {
     VChart,
   },
+  props: {
+    value: {
+      type: Number,
+      default: 10,
+    },
+    couleur: {
+      type: String,
+      default: "#00a8ff",
+    },
+  },
   provide: {
     [THEME_KEY]: "light",
   },
-  setup() {
+  setup(props) {
     const option = ref({
       series: [
         {
           name: "Traffic Sources",
           type: "pie",
-          color: ["#00a8ff", "#EEEEEE"],
+          color: [props.couleur, "#EEEEEE"],
           radius: ["50%", "70%"],
           data: [
-            { value: 1.3, name: "1%" },
-            { value: 99, name: "" },
+            { value: props.value, name: String(props.value) + "%" },
+            { value: 100 - props.value, name: "" },
           ],
           label: {
             show: true,

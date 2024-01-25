@@ -595,7 +595,7 @@ export default {
       bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
       this.$axios
         .post(
-          "https://observatoire-filieres.azurewebsites.net/parcel/belgique/surfaces_actuels_paysage",
+          window.apiURL + "parcel/belgique/surfaces_actuels_paysage",
           codesTerritoireParcel, // Request body data
           {
             headers: {

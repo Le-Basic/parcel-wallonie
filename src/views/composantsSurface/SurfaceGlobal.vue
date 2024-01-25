@@ -569,7 +569,7 @@ export default {
       bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
       this.$axios
         .post(
-          "https://observatoire-filieres.azurewebsites.net/parcel/belgique/surfaces_agregees",
+          window.apiURL + "parcel/belgique/surfaces_agregees",
           codesTerritoireParcel, // Request body data
           {
             headers: {
