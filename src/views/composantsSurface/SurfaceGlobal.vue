@@ -23,21 +23,20 @@
     >
       <div class="col-12 col-lg-auto map-surface is-flex">
         <div id="globalView-images" class="my-auto">
-          <div id="imgmap1" class="animate__animated">
+          <div id="div-image-surface-territoire" class="animate__animated">
             <img
-              id="shape1"
               alt=""
               class="mx-auto"
               :style="{
                 width: (data.surface / max_potentiel_surface) * 100 + '%',
                 opacity: 1,
+                'z-index': 10,
               }"
               :src="require('@/assets/img/surfaces/circle1.svg')"
             />
           </div>
-          <div id="imgmap2" class="animate__animated">
+          <div id="div-image-sau-actuelle" class="animate__animated">
             <img
-              id="shape3"
               alt=""
               class="mx-auto"
               :style="{
@@ -50,9 +49,12 @@
               :src="require('@/assets/img/surfaces/circle-agricole.svg')"
             />
           </div>
-          <div id="imgmap3" class="animate__animated" style="opacity: 0">
+          <div
+            id="div-image-potentiel-nourricier"
+            class="animate__animated"
+            style="opacity: 0"
+          >
             <img
-              id="shape2"
               alt=""
               class="mx-auto"
               :style="{
@@ -63,12 +65,7 @@
             />
           </div>
           <div id="imgmap4" class="animate__animated">
-            <img
-              id="shape4"
-              alt=""
-              class="mx-auto"
-              style="width: 0%; opacity: 0"
-            />
+            <img alt="" class="mx-auto" style="width: 0%; opacity: 0" />
           </div>
         </div>
         <div id="legend-map" class="row justify-content-center">
@@ -234,9 +231,9 @@
       <div class="col-12 col-lg-auto map-surface"></div>
       <div
         class="col-12 col-lg-6 content-map animate__animated flex-column"
-        id="content3"
+        id="conteneur-surface-agricole-a-mobiliser"
       >
-        <div id="text-map3" class="text-map">
+        <div class="text-map">
           <h3 class="">Surface agricole à mobiliser</h3>
           <div
             class="cadre-resultat resultat-ha animate__animated flipInX delay-05s bg-vert-clair ml-0 mt-3"
@@ -307,7 +304,7 @@
       <div class="col-12 col-lg-auto map-surface"></div>
       <div
         class="col-12 col-lg-6 content-map animate__animated flex-column"
-        id="content4"
+        id="conteneur-potentiel-nourricier"
       >
         <h3 class="">Potentiel nourricier</h3>
         <div class="d-flex align-items-center">
@@ -476,81 +473,47 @@ export default {
   methods: {
     gererVisibiliteImage() {
       let map1 = document.getElementById("map1");
-      // let map2 = document.getElementById("map2");
       let map3 = document.getElementById("map3");
       let map4 = document.getElementById("map4");
-      let imgmap1 = document.getElementById("imgmap1");
-      let imgmap2 = document.getElementById("imgmap2");
-      let imgmap3 = document.getElementById("imgmap3");
-      // let imgmap4 = document.getElementById("imgmap4");
-      let content2 = document.getElementById("content2");
-      let content3 = document.getElementById("content3");
-      let content4 = document.getElementById("content4");
-      // let variableHeight = 0;
-      let shape1 = document.getElementById("shape1");
-      let shape2 = document.getElementById("shape2");
-      let shape3 = document.getElementById("shape3");
-      console.log(window.scrollY);
-      if (window.innerWidth <= 768) {
-        shape3.style.opacity = 1;
-        shape2.style.opacity = 1;
-      }
+      let imageSurfaceTerritoire = document.getElementById(
+        "div-image-surface-territoire"
+      );
+      let imageSauActuelle = document.getElementById("div-image-sau-actuelle");
+      let imagePotentielNourricier = document.getElementById(
+        "div-image-potentiel-nourricier"
+      );
       if (window.scrollY >= map1.offsetHeight + map3.offsetHeight - 400) {
-        map3.classList.add("fadeIn");
-        content3.classList.add("fadeInUp");
-        imgmap3.classList.add("fadeIn");
-        imgmap2.classList.remove("fadeIn");
-        imgmap2.style.opacity = 0;
-        imgmap3.style.opacity = 1;
-        imgmap2.classList.add("fadeOut");
+        imagePotentielNourricier.classList.add("fadeIn");
+        imageSauActuelle.classList.remove("fadeIn");
+        imageSauActuelle.style.opacity = 0;
+        imagePotentielNourricier.style.opacity = 1;
+        imageSauActuelle.classList.add("fadeOut");
       } else if (window.scrollY < map1.offsetHeight + map3.offsetHeight - 400) {
-        if (shape3.clientWidth > shape1.clientWidth) {
-          imgmap1.classList.add("position-devant1");
-        }
-        imgmap3.style.opacity = 0;
-        imgmap2.classList.add("fadeIn");
-        imgmap2.classList.remove("fadeOut");
-        imgmap2.style.opacity = 1;
-        content3.style.opacity = 0;
-        imgmap3.classList.remove("fadeIn");
-        content3.classList.remove("fadeInUp");
-        content2.style.opacity = 1;
-        content2.classList.add("fadeInUp");
+        imagePotentielNourricier.style.opacity = 0;
+        imageSauActuelle.classList.add("fadeIn");
+        imageSauActuelle.classList.remove("fadeOut");
+        imageSauActuelle.style.opacity = 1;
+        imagePotentielNourricier.classList.remove("fadeIn");
       }
       if (
         window.scrollY >=
         map1.offsetHeight + map3.offsetHeight + map4.offsetHeight
       ) {
-        console.log("remove");
-        let shape2 = document.getElementById("shape2");
-        let shape3 = document.getElementById("shape3").clientWidth;
-        if (shape2.clientWidth > shape3.clientWidth) {
-          imgmap2.classList.add("position-devant2");
-        }
-        imgmap2.classList.remove("fadeOut");
-        imgmap2.style.opacity = 1;
-        // content2.style.opacity = 0;
-        map4.classList.add("fadeIn");
-        // imgmap4.classList.add("fadeIn");
-        content4.classList.add("fadeInUp");
-        imgmap1.style.opacity = 0;
-        imgmap1.classList.remove("fadeIn");
-        imgmap1.classList.add("fadeOut");
-        if (this.data.sau > this.data.surfaces_a_mobiliser) {
-          imgmap2.classList.add("position-devant2");
+        imageSauActuelle.classList.remove("fadeOut");
+        imageSauActuelle.style.opacity = 1;
+        imageSurfaceTerritoire.style.opacity = 0;
+        imageSurfaceTerritoire.classList.remove("fadeIn");
+        imageSurfaceTerritoire.classList.add("fadeOut");
+        if (this.data.sau < this.data.surfaces_a_mobiliser) {
+          imageSauActuelle.classList.add("position-devant2");
         }
       } else if (
         window.scrollY <
         map1.offsetHeight + map3.offsetHeight + map4.offsetHeight
       ) {
-        // content4.style.opacity = 0;
-        // imgmap4.style.opacity = 0;
-        // imgmap4.classList.remove("fadeIn");
-        content4.classList.remove("fadeInUp");
-        imgmap1.classList.add("fadeIn");
-        imgmap1.style.opacity = 1;
-        // imgmap1.classList.add("fadeIn");
-        imgmap1.classList.remove("fadeOut");
+        imageSurfaceTerritoire.classList.add("fadeIn");
+        imageSurfaceTerritoire.style.opacity = 1;
+        imageSurfaceTerritoire.classList.remove("fadeOut");
       }
     },
     nextStep(step) {
@@ -564,8 +527,6 @@ export default {
         (el) => el.code_territoire
       );
       codesTerritoireParcel = ["mun91114"];
-
-      console.log(codesTerritoireParcel);
       bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
       this.$axios
         .post(
