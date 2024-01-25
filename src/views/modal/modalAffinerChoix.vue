@@ -38,7 +38,7 @@
                       id="partlocaleval"
                     ></span
                     ><span class="text-bold legumes"
-                      >{{ partlocale }} %</span
+                      >{{ $store.state.part_relocalisee }} %</span
                     ></output
                   >
                 </div>
