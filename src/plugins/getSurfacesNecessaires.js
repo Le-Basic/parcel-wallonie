@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IDS_REGIMES_ALIMENTAIRES } from "../config/regimeIds";
 
 export async function fetchData(api_route) {
   const bodyFormData = new FormData();
@@ -22,13 +23,15 @@ export async function fetchData(api_route) {
   return response.data;
 }
 
-export async function getSurfaceNecessaire() {
+export async function fetchSurfaceNecessaire(
+  url,
+  codesTerritoireParcel,
+  idRegimeAlimentaire
+) {
   const bodyFormData = new FormData();
-  const codesTerritoireParcel = ["mun91114"];
-  console.log(codesTerritoireParcel);
   bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
   const response = await axios.post(
-    window.apiURL + "parcel/belgique/surfaces_necessaires",
+    `${url}?id_menu=${idRegimeAlimentaire}`,
     codesTerritoireParcel, // Request body data
     {
       headers: {
@@ -46,8 +49,16 @@ export async function getSurfaceActuelle() {
   return data[0];
 }
 
-export async function getSurfaceAMobiliser() {
-  var data = await getSurfaceNecessaire();
+export async function getSurfaceAMobiliser(
+  idRegimeAlimentaire = IDS_REGIMES_ALIMENTAIRES.ACTUEL
+) {
+  const url = window.apiURL + "parcel/belgique/surfaces_necessaires";
+  const codesTerritoireParcel = ["mun91114"];
+  var data = await fetchSurfaceNecessaire(
+    url,
+    codesTerritoireParcel,
+    idRegimeAlimentaire
+  );
   const surfaces_a_mobiliser = data
     .map((item) => {
       return item.surface_necessaire_conventionnel;
