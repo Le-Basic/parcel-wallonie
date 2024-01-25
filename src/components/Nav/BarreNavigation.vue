@@ -291,7 +291,7 @@ export default {
     clearLocalStorage() {
       console.log("clearLocalStorage");
       localStorage.clear();
-      this.store.commit("RESET_STORE");
+      this.$store.commit("RESET_STORE");
     },
   },
 };
