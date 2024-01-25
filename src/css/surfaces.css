@@ -135,11 +135,11 @@
   margin: auto 0;
 }
 
-#content3 {
+#conteneur-surface-agricole-a-mobiliser {
   margin-top: -3rem;
 }
 
-#content4 {
+#conteneur-potentiel-nourricier {
   margin-top: -6rem;
 }
 
@@ -160,7 +160,7 @@
 }
 
 
-#imgmap3,
+#div-image-potentiel-nourricier,
 #imgmap4,
 
 #map3,
@@ -180,9 +180,9 @@
   margin: auto;
 }
 
-#imgmap1,
-#imgmap2,
-#imgmap3,
+#div-image-surface-territoire,
+#div-image-sau-actuelle,
+#div-image-potentiel-nourricier,
 #imgmap4 {
   position: absolute;
   display: flex;
@@ -204,9 +204,9 @@
   top: 10vh;
 }
 
-.bigmap #imgmap1,
-.bigmap #imgmap2,
-.bigmap #imgmap3,
+.bigmap #div-image-surface-territoire,
+.bigmap #div-image-sau-actuelle,
+.bigmap #div-image-potentiel-nourricier,
 .bigmap #imgmap4 {
   width: 650px;
   height: 650px;
@@ -222,19 +222,19 @@
   padding: 0 3rem;
 }
 
-.bigmap #content4 {
+.bigmap #conteneur-potentiel-nourricier {
   margin-top: 0px;
 }
 
-#imgmap1 {
+#div-image-surface-territoire {
   z-index: 0;
 }
 
-#imgmap2 {
+#div-image-sau-actuelle {
   z-index: 2;
 }
 
-#imgmap3 {
+#div-image-potentiel-nourricier {
   z-index: 3;
 }
 
@@ -571,9 +571,9 @@
     max-width: 1400px;
   }
 
-  .bigmap #imgmap1,
-  .bigmap #imgmap2,
-  .bigmap #imgmap3,
+  .bigmap #div-image-surface-territoire,
+  .bigmap #div-image-sau-actuelle,
+  .bigmap #div-image-potentiel-nourricier,
   .bigmap #imgmap4 {
     width: 500px;
     height: 500px;
@@ -598,9 +598,9 @@
 }
 
 @media (max-width: 1400px) {
-  #imgmap1,
-  #imgmap2,
-  #imgmap3,
+  #div-image-surface-territoire,
+  #div-image-sau-actuelle,
+  #div-image-potentiel-nourricier,
   #imgmap4 {
     width: 250px;
   }
@@ -621,9 +621,9 @@
     max-width: 1400px;
   }
 
-  .bigmap #imgmap1,
-  .bigmap #imgmap2,
-  .bigmap #imgmap3,
+  .bigmap #div-image-surface-territoire,
+  .bigmap #div-image-sau-actuelle,
+  .bigmap #div-image-potentiel-nourricier,
   .bigmap #imgmap4 {
     width: 500px;
     height: 500px;
@@ -665,9 +665,9 @@
     max-width: 1400px;
   }
 
-  .bigmap #imgmap1,
-  .bigmap #imgmap2,
-  .bigmap #imgmap3,
+  .bigmap #div-image-surface-territoire,
+  .bigmap #div-image-sau-actuelle,
+  .bigmap #div-image-potentiel-nourricier,
   .bigmap #imgmap4 {
     width: 453px;
     height: 453px;
@@ -709,9 +709,9 @@
     max-width: 1400px;
   }
 
-  .bigmap #imgmap1,
-  .bigmap #imgmap2,
-  .bigmap #imgmap3,
+  .bigmap #div-image-surface-territoire,
+  .bigmap #div-image-sau-actuelle,
+  .bigmap #div-image-potentiel-nourricier,
   .bigmap #imgmap4 {
     width: 360px;
     height: 360px;
@@ -793,9 +793,9 @@
     max-width: 1400px;
   }
 
-  .bigmap #imgmap1,
-  .bigmap #imgmap2,
-  .bigmap #imgmap3,
+  .bigmap #div-image-surface-territoire,
+  .bigmap #div-image-sau-actuelle,
+  .bigmap #div-image-potentiel-nourricier,
   .bigmap #imgmap4 {
     width: 300px;
     height: 300px;
@@ -954,27 +954,27 @@
 }
 
 @media (max-width: 990px) {
-  #imgmap1,
-  #imgmap2,
-  #imgmap3,
+  #div-image-surface-territoire,
+  #div-image-sau-actuelle,
+  #div-image-potentiel-nourricier,
   #imgmap4 {
     left: 25vw;
   }
 }
 
 @media (max-width: 576px) {
-  #imgmap1,
-  #imgmap2,
-  #imgmap3,
+  #div-image-surface-territoire,
+  #div-image-sau-actuelle,
+  #div-image-potentiel-nourricier,
   #imgmap4 {
     left: 15vw;
   }
 }
 
 @media (max-width: 375px) {
-  #imgmap1,
-  #imgmap2,
-  #imgmap3,
+  #div-image-surface-territoire,
+  #div-image-sau-actuelle,
+  #div-image-potentiel-nourricier,
   #imgmap4 {
     left: 15vw;
   }
@@ -989,16 +989,16 @@
 @media (max-width: 400px) {
   .map-surface,
   .map-surface img,
-  #imgmap1,
-  #imgmap2,
-  #imgmap3,
+  #div-image-surface-territoire,
+  #div-image-sau-actuelle,
+  #div-image-potentiel-nourricier,
   #imgmap4 {
     max-height: 180px;
   }
 
-  #imgmap1,
-  #imgmap2,
-  #imgmap3,
+  #div-image-surface-territoire,
+  #div-image-sau-actuelle,
+  #div-image-potentiel-nourricier,
   #imgmap4 {
     width: 190px;
   }
@@ -1011,7 +1011,7 @@
     font-size: 14px;
   }
 
-  #content4 {
+  #conteneur-potentiel-nourricier {
     min-height: 700px;
   }
 }
@@ -1019,16 +1019,16 @@
 @media (max-width: 340px) {
   .map-surface,
   .map-surface img,
-  #imgmap1,
-  #imgmap2,
-  #imgmap3,
+  #div-image-surface-territoire,
+  #div-image-sau-actuelle,
+  #div-image-potentiel-nourricier,
   #imgmap4 {
     max-height: 120px;
   }
 
-  #imgmap1,
-  #imgmap2,
-  #imgmap3,
+  #div-image-surface-territoire,
+  #div-image-sau-actuelle,
+  #div-image-potentiel-nourricier,
   #imgmap4 {
     width: 130px;
   }
@@ -1046,8 +1046,8 @@
     top: 21px;
   }
 
-  #content4,
-  #content3 {
+  #conteneur-potentiel-nourricier,
+  #conteneur-surface-agricole-a-mobiliser {
     margin-top: unset;
   }
 }
