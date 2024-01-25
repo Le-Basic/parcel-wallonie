@@ -61,7 +61,7 @@
         de la population choisie
       </div>
 
-      <div class="no-data no-data-viz3">
+      <div class="no-data no-data-viz3" v-if="false">
         Désolé, nous n'avons pas de données suffisantes pour afficher ce
         graphique
       </div>
@@ -315,7 +315,7 @@
         </div>
       </div>
 
-      <div class="no-data no-data-viz4">
+      <div class="no-data no-data-viz4" v-if="false">
         Désolé, nous n'avons pas de données suffisantes pour afficher ce
         graphique
       </div>

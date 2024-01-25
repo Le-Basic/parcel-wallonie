@@ -30,7 +30,7 @@
       la population choisie
     </div>
 
-    <div class="no-data no-data-viz">
+    <div class="no-data no-data-viz" v-if="false">
       Désolé, nous n'avons pas de données suffisantes pour afficher ce graphique
     </div>
 
@@ -282,7 +282,6 @@
           <div class="odometer-inside">
             {{ this.occupationActuelleTotale }}
           </div>
-          <pre>{{ this.occupationActuelle }}</pre>
         </div>
         <div class="hectares animated fadeIn delay-1-5s">
           hectares agricoles
@@ -290,7 +289,7 @@
       </div>
     </div>
 
-    <div class="no-data no-data-viz2">
+    <div class="no-data no-data-viz2" v-if="false">
       Désolé, nous n'avons pas de données suffisantes pour afficher ce graphique
     </div>
 
@@ -1102,9 +1101,7 @@ export default {
             },
             {
               surface: response.data.find(
-                (el) =>
-                  el.libelle_parcel_produit_actuel ==
-                  "Elevage (dont alimentation & estives et landes)"
+                (el) => el.libelle_parcel_produit_actuel == "Jachères"
               ).sau_ha,
               name: "Jachères",
               image: "/assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
@@ -1114,7 +1111,7 @@ export default {
               surface: response.data.find(
                 (el) =>
                   el.libelle_parcel_produit_actuel ==
-                  "Elevage (dont alimentation & estives et landes)"
+                  "Cultures industrielles hors alimentation"
               ).sau_ha,
               name: "Cultures industrielles hors alimentation",
               image: "/assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
