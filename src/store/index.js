@@ -70,7 +70,7 @@ export default createStore({
     removeGeo({ commit }, geo) {
       commit("removeGeo", geo);
     },
-    resetStore({ commit }) {
+    RESET_STORE({ commit }) {
       commit("RESET_STORE");
     },
     choisirPopulation({ commit }, population) {
