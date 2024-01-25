@@ -9,7 +9,7 @@ const getDefaultState = () => {
     part_relocalisee: null,
     part_bio: null,
     regime_alimentaire: regimeListe.find((el) => el.default == true),
-    partpertes: 0,
+    partpertes: null,
     partbiolegumes: null,
     partbiofruits: null,
     partbiocereales: null,
@@ -57,6 +57,11 @@ export default createStore({
     partPertes(state, partpertes) {
       state.partpertes = partpertes;
     },
+    choisirRegimeAlimentaire(state, regime_alimentaire_nomCourt) {
+      state.regime_alimentaire = state.regimeListe.find(
+        (el) => el.nomCourt == regime_alimentaire_nomCourt
+      );
+    },
   },
   actions: {
     addGeo({ commit }, geo) {
@@ -94,6 +99,9 @@ export default createStore({
     },
     partBioElevage({ commit }, partbioelevage) {
       commit("partBioElevage", partbioelevage);
+    },
+    choisirRegimeAlimentaire({ commit }, regime_alimentaire_nomCourt) {
+      commit("choisirRegimeAlimentaire", regime_alimentaire_nomCourt);
     },
   },
   plugins: [new VuexPersistence().plugin],
