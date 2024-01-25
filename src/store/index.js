@@ -9,7 +9,7 @@ const getDefaultState = () => {
     part_relocalisee: 100,
     part_bio: null,
     regime_alimentaire: regimeListe.find((el) => el.default == true),
-    partpertes: null,
+    partpertes: 0,
     partbiolegumes: null,
     partbiofruits: null,
     partbiocereales: null,
