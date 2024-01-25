@@ -50,7 +50,7 @@
                   step="1.000"
                   value="100"
                   id="partlocale"
-                  v-model="$store.state.partlocale"
+                  v-model="$store.state.part_relocalisee"
                 />
                 <div class="range-values">
                   <span class="range-min">0</span

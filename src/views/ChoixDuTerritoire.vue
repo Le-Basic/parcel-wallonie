@@ -131,7 +131,7 @@ export default {
     };
   },
   beforeMount: function () {
-    this.$store.commit("resetStore");
+    this.$store.commit("RESET_STORE");
   },
   methods: {
     ajouter(item) {

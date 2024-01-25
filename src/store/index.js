@@ -6,7 +6,7 @@ const getDefaultState = () => {
     regimeListe: regimeListe,
     geoList: [],
     population: null,
-    part_relocalisee: null,
+    part_relocalisee: 100,
     part_bio: null,
     regime_alimentaire: regimeListe.find((el) => el.default == true),
     partpertes: null,

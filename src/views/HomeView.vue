@@ -362,7 +362,8 @@ export default {
     };
   },
   beforeMount: function () {
-    this.$store.commit("resetStore");
+    window.localStorage.clear();
+    this.$store.commit("RESET_STORE");
   },
   methods: {
     ajouter(item) {
