@@ -34,6 +34,7 @@
               :src="require('@/assets/img/logos/logo.svg')"
               width="181"
               height="auto"
+              @click="clearLocalStorage"
           /></router-link>
           <div
             class="col-2 col-sm-4 d-flex ml-auto justify-content-end align-items-center pr-0"
@@ -286,6 +287,11 @@ export default {
     },
     changeModalPrincipale() {
       this.montrerModalPrincipale = !this.montrerModalPrincipale;
+    },
+    clearLocalStorage() {
+      console.log("clearLocalStorage");
+      localStorage.clear();
+      this.store.commit("RESET_STORE");
     },
   },
 };

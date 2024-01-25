@@ -4,8 +4,8 @@ export const regimeListe = [
     img: require("@/assets/img/parcours/regime-actuel.svg"),
     nomCourt: "actuel",
     libelle: "Régime actuel",
-    default: true,
     id: 0,
+    default: true,
   },
   {
     nom: "Diminution d'1/4 des produits animaux",
