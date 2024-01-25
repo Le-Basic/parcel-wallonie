@@ -78,7 +78,7 @@
                       id="valpartpertes"
                     ></span
                     ><span class="text-bold legumes"
-                      >{{ partpertes }} %</span
+                      >{{ $store.state.partpertes }} %</span
                     ></output
                   >
                 </div>
@@ -139,6 +139,7 @@
             <div
               class="tout-bio bg-white legumes d-flex ml-auto mr-auto"
               style="max-width: 500px"
+              v-if="false"
             >
               <span class="icon-ico_CATEGORIES_legumes legumes icon"></span>
               <div class="mr-auto">Légumes en bio</div>
@@ -193,6 +194,7 @@
             <div
               class="tout-bio bg-white fruits d-flex ml-auto mr-auto"
               style="max-width: 500px"
+              v-if="false"
             >
               <span class="icon-ico_CATEGORIES_fruits fruits icon"></span>
               <div class="mr-auto">Fruits en bio</div>
@@ -247,6 +249,7 @@
             <div
               class="tout-bio bg-white cereales d-flex ml-auto mr-auto"
               style="max-width: 500px"
+              v-if="false"
             >
               <span class="icon-ico_CATEGORIES_cereales cereales icon"></span>
               <div class="mr-auto">Céréales et autres en bio</div>
@@ -301,6 +304,7 @@
             <div
               class="tout-bio bg-white viande d-flex ml-auto mr-auto"
               style="max-width: 500px"
+              v-if="false"
             >
               <span class="icon-ico_CATEGORIES_viande viande icon"></span>
               <div class="mr-auto">Elevage en bio</div>
@@ -374,8 +378,9 @@
                   type="radio"
                   checked="checked"
                   name="id_assiette2"
-                  value="flexi0"
+                  value="actuel"
                   id="2flexi0"
+                  v-model="regimeChoisi"
                 />
                 <span class="checkmark checkmark-radio"></span>
               </label>
@@ -384,8 +389,9 @@
                 <input
                   type="radio"
                   name="id_assiette2"
-                  value="flexi1"
+                  value="quart"
                   id="2flexi1"
+                  v-model="regimeChoisi"
                 />
                 <span class="checkmark checkmark-radio"></span>
               </label>
@@ -394,8 +400,9 @@
                 <input
                   type="radio"
                   name="id_assiette2"
-                  value="flexi2"
+                  value="moitie"
                   id="2flexi2"
+                  v-model="regimeChoisi"
                 />
                 <span class="checkmark checkmark-radio"></span>
               </label>
@@ -404,8 +411,9 @@
                 <input
                   type="radio"
                   name="id_assiette2"
-                  value="vegetarienne"
+                  value="vegetarien"
                   id="2vegetarienne"
+                  v-model="regimeChoisi"
                 />
                 <span class="checkmark checkmark-radio"></span>
               </label>
@@ -414,7 +422,7 @@
               <span class="checkmark checkmark-radio"></span>
             </label-->
               <!-- <?php if (isset($parcours) && $parcours != "2") : ?> -->
-              <label class="container-checkbox"
+              <label class="container-checkbox" v-if="false"
                 ><strong>Régime perso</strong> <br />
                 <input type="radio" name="id_assiette2" value="" id="2flexi5" />
                 <span class="checkmark checkmark-radio"></span>
@@ -518,6 +526,7 @@ export default {
       partbiocereales: this.$store.state.partbiocereales,
       partbioelevage: this.$store.state.partbioelevage,
       showParametres: true,
+      regimeChoisi: this.$store.state.regime_alimentaire.nomCourt,
     };
   },
   methods: {
@@ -544,6 +553,9 @@ export default {
     },
     partbiolegumes: function (val) {
       this.$store.commit("partBioLegumes", val);
+    },
+    regimeChoisi: function (val) {
+      this.$store.commit("choisirRegimeAlimentaire", val);
     },
   },
 };
