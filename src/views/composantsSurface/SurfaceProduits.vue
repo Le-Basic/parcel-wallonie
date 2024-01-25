@@ -24,7 +24,6 @@
         </div>
       </div>
     </div>
-    <pre></pre>
     <div class="map-content">
       sont théoriquement nécessaires pour satisfaire les besoins alimentaires de
       la population choisie
@@ -44,7 +43,6 @@
           min-height: 550px;
         "
       >
-        >
         <div
           id="viz"
           class="viz"
@@ -305,12 +303,7 @@
       >
         <div
           id="viz2"
-          style="
-            background-color: #fff;
-            height: 100%;
-            margin-top: 20px;
-            min-height: 550px;
-          "
+          style="background-color: #fff; height: 100%; min-height: 550px"
         ></div>
       </div>
       <div class="wrap-viz2 resultats-categories repartition delay-1s">
@@ -331,7 +324,11 @@
                     id="ppc1"
                     style="width: 65px; height: 65px"
                   >
-                    <jaugeChart></jaugeChart>
+                    <jaugeChart
+                      v-if="this.surfacesActuelles[0]"
+                      :value="this.surfacesActuelles[0].part"
+                      :couleur="this.surfacesActuelles[0].color"
+                    ></jaugeChart>
                   </div>
                   <div class="result-type">
                     <span
@@ -361,7 +358,11 @@
                     id="ppc2"
                     style="width: 65px; height: 65px"
                   >
-                    <jaugeChart></jaugeChart>
+                    <jaugeChart
+                      v-if="this.surfacesActuelles[1]"
+                      :value="this.surfacesActuelles[1].part"
+                      :couleur="this.surfacesActuelles[1].color"
+                    ></jaugeChart>
                   </div>
                   <div class="result-type">
                     <span
@@ -372,7 +373,7 @@
                     <div class="titre-categorie">
                       Elevage (dont alimentation & estives et landes)
                     </div>
-                    <div class="hectares" v-if="this.occupationActuelle[0]">
+                    <div class="hectares" v-if="this.occupationActuelle[1]">
                       {{
                         formatterSurfacesNecessaires(
                           this.occupationActuelle[1]["surface"]
@@ -390,7 +391,13 @@
                     class="result-graph"
                     id="ppc3"
                     style="width: 65px; height: 65px"
-                  ></div>
+                  >
+                    <jaugeChart
+                      v-if="this.surfacesActuelles[3]"
+                      :value="this.surfacesActuelles[3].part"
+                      :couleur="this.surfacesActuelles[3].color"
+                    ></jaugeChart>
+                  </div>
                   <div class="result-type">
                     <span
                       class="icon-ico_CATEGORIES_fruits ico-medium fruits"
@@ -416,7 +423,13 @@
                     class="result-graph"
                     id="ppc4"
                     style="width: 65px; height: 65px"
-                  ></div>
+                  >
+                    <jaugeChart
+                      v-if="this.surfacesActuelles[4]"
+                      :value="this.surfacesActuelles[4].part"
+                      :couleur="this.surfacesActuelles[4].color"
+                    ></jaugeChart>
+                  </div>
                   <div class="result-type">
                     <span
                       class="icon-ico_CATEGORIES_legumes ico-medium legumes"
@@ -442,7 +455,13 @@
                     class="result-graph"
                     id="ppc5"
                     style="width: 65px; height: 65px"
-                  ></div>
+                  >
+                    <jaugeChart
+                      v-if="this.surfacesActuelles[5]"
+                      :value="this.surfacesActuelles[5].part"
+                      :couleur="this.surfacesActuelles[5].color"
+                    ></jaugeChart>
+                  </div>
                   <div class="result-type">
                     <span class="icon-jachere ico-medium jachere"></span>
                   </div>
@@ -1174,6 +1193,16 @@ export default {
       return Math.round(
         this.occupationActuelle.reduce((acc, item) => acc + item.surface, 0)
       );
+    },
+    surfacesActuelles() {
+      return this.occupationActuelle.map((item) => {
+        return {
+          ...item,
+          part: Math.round(
+            (item.surface * 100) / this.occupationActuelleTotale
+          ),
+        };
+      });
     },
   },
   watch: {

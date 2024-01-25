@@ -6,10 +6,10 @@ const getDefaultState = () => {
     regimeListe: regimeListe,
     geoList: [],
     population: null,
-    part_relocalisee: null,
+    part_relocalisee: 100,
     part_bio: null,
     regime_alimentaire: regimeListe.find((el) => el.default == true),
-    partpertes: null,
+    partpertes: 0,
     partbiolegumes: null,
     partbiofruits: null,
     partbiocereales: null,
@@ -70,7 +70,7 @@ export default createStore({
     removeGeo({ commit }, geo) {
       commit("removeGeo", geo);
     },
-    resetStore({ commit }) {
+    RESET_STORE({ commit }) {
       commit("RESET_STORE");
     },
     choisirPopulation({ commit }, population) {
