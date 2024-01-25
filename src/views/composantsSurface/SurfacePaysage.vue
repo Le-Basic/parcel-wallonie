@@ -65,7 +65,6 @@
         Désolé, nous n'avons pas de données suffisantes pour afficher ce
         graphique
       </div>
-
       <div class="cadre-graphique mt-5">
         <div
           class="wrap-viz3 resultats-categories repartition graph"
@@ -102,10 +101,14 @@
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col titre-categorie mb-0">
-                        Prairie, estives, landes
+                        {{ data.occupationActuelle[0]["name"] }}
                       </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[0]["surface"] }}
+                        {{
+                          formaterSurfacesNecessaires(
+                            data.occupationActuelle[0]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -125,10 +128,14 @@
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">
-                        Cultures fourragères
+                        {{ data.occupationActuelle[1]["name"] }}
                       </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[1]["surface"] }}
+                        {{
+                          formaterSurfacesNecessaires(
+                            data.occupationActuelle[1]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -149,9 +156,15 @@
                       ></span>
                     </div>
                     <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">Légumineuses</div>
+                      <div class="col mb-0 titre-categorie">
+                        {{ data.occupationActuelle[3]["name"] }}
+                      </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[3]["surface"] }}
+                        {{
+                          formaterSurfacesNecessaires(
+                            data.occupationActuelle[3]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -173,10 +186,14 @@
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">
-                        Céréales, Oléagineux, protéagineux
+                        {{ data.occupationActuelle[4]["name"] }}
                       </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[4]["surface"] }}
+                        {{
+                          formaterSurfacesNecessaires(
+                            data.occupationActuelle[4]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -196,11 +213,14 @@
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">
-                        Cultures industrielles alimentaires (pomme de terre,
-                        betterave à sucre…)
+                        {{ data.occupationActuelle[5]["name"] }}
                       </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[5]["surface"] }}
+                        {{
+                          formaterSurfacesNecessaires(
+                            data.occupationActuelle[5]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -221,9 +241,15 @@
                       ></span>
                     </div>
                     <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">Fruits</div>
+                      <div class="col mb-0 titre-categorie">
+                        {{ data.occupationActuelle[6]["name"] }}
+                      </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[6]["surface"] }}
+                        {{
+                          formaterSurfacesNecessaires(
+                            data.occupationActuelle[6]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -244,9 +270,15 @@
                       ></span>
                     </div>
                     <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">Légumes</div>
+                      <div class="col mb-0 titre-categorie">
+                        {{ data.occupationActuelle[7]["name"] }}
+                      </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[7]["surface"] }}
+                        {{
+                          formaterSurfacesNecessaires(
+                            data.occupationActuelle[7]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -359,7 +391,11 @@
                         Prairie, estives, landes
                       </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[0]["surface"] }}
+                        {{
+                          formaterSurfacesNecessaires(
+                            data.occupationActuelle[0]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -382,7 +418,11 @@
                         Cultures fourragères
                       </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[1]["surface"] }}
+                        {{
+                          formaterSurfacesNecessaires(
+                            data.occupationActuelle[1]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -405,7 +445,11 @@
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">Légumineuses</div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[3]["surface"] }}
+                        {{
+                          formaterSurfacesNecessaires(
+                            data.occupationActuelle[3]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -430,7 +474,11 @@
                         Céréales, Oléagineux, protéagineux
                       </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[4]["surface"] }}
+                        {{
+                          formaterSurfacesNecessaires(
+                            data.occupationActuelle[4]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -454,7 +502,11 @@
                         betterave à sucre…)
                       </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[5]["surface"] }}
+                        {{
+                          formaterSurfacesNecessaires(
+                            data.occupationActuelle[5]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -477,7 +529,11 @@
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">Fruits</div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[6]["surface"] }}
+                        {{
+                          formaterSurfacesNecessaires(
+                            data.occupationActuelle[6]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -500,7 +556,11 @@
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">Légumes</div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[7]["surface"] }}
+                        {{
+                          formaterSurfacesNecessaires(
+                            data.occupationActuelle[7]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -525,6 +585,7 @@
 
 <script>
 import { Treemap } from "d3plus-hierarchy";
+import { formaterSurfacesNecessaires } from "@/plugins/outilsSurfaces.js";
 
 export default {
   inject: ["$axios"],
@@ -631,6 +692,9 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    formaterSurfacesNecessaires(chiffreSurface) {
+      return formaterSurfacesNecessaires(chiffreSurface);
     },
   },
   mounted() {

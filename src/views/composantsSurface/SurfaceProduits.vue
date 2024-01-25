@@ -97,7 +97,7 @@
                     <div class="titre-categorie">Légumes</div>
                     <div class="hectares">
                       {{
-                        formatterSurfacesNecessaires(
+                        formaterSurfacesNecessaires(
                           surfaces_a_mobiliser[
                             "surfaces_a_mobiliser_parcel_niveau_1"
                           ][3].surface_necessaire_conventionnel
@@ -147,7 +147,7 @@
                     <div class="titre-categorie">Fruits</div>
                     <div class="hectares">
                       {{
-                        formatterSurfacesNecessaires(
+                        formaterSurfacesNecessaires(
                           surfaces_a_mobiliser[
                             "surfaces_a_mobiliser_parcel_niveau_1"
                           ][1].surface_necessaire_conventionnel
@@ -196,7 +196,7 @@
                     </div>
                     <div class="hectares">
                       {{
-                        formatterSurfacesNecessaires(
+                        formaterSurfacesNecessaires(
                           surfaces_a_mobiliser[
                             "surfaces_a_mobiliser_parcel_niveau_1"
                           ][2].surface_necessaire_conventionnel
@@ -243,7 +243,7 @@
                     <div class="titre-categorie">Elevage</div>
                     <div class="hectares">
                       {{
-                        formatterSurfacesNecessaires(
+                        formaterSurfacesNecessaires(
                           surfaces_a_mobiliser[
                             "surfaces_a_mobiliser_parcel_niveau_1"
                           ].find(
@@ -341,7 +341,7 @@
                     </div>
                     <div class="hectares" v-if="this.occupationActuelle[0]">
                       {{
-                        formatterSurfacesNecessaires(
+                        formaterSurfacesNecessaires(
                           this.occupationActuelle[0]["surface"]
                         )
                       }}
@@ -375,7 +375,7 @@
                     </div>
                     <div class="hectares" v-if="this.occupationActuelle[1]">
                       {{
-                        formatterSurfacesNecessaires(
+                        formaterSurfacesNecessaires(
                           this.occupationActuelle[1]["surface"]
                         )
                       }}
@@ -407,7 +407,7 @@
                     <div class="titre-categorie">Fruits</div>
                     <div class="hectares" v-if="this.occupationActuelle[3]">
                       {{
-                        formatterSurfacesNecessaires(
+                        formaterSurfacesNecessaires(
                           this.occupationActuelle[3]["surface"]
                         )
                       }}
@@ -439,7 +439,7 @@
                     <div class="titre-categorie">Légumes</div>
                     <div class="hectares" v-if="this.occupationActuelle[4]">
                       {{
-                        formatterSurfacesNecessaires(
+                        formaterSurfacesNecessaires(
                           this.occupationActuelle[4]["surface"]
                         )
                       }}
@@ -469,7 +469,7 @@
                     <div class="titre-categorie">Jachères</div>
                     <div class="hectares" v-if="this.occupationActuelle[5]">
                       {{
-                        formatterSurfacesNecessaires(
+                        formaterSurfacesNecessaires(
                           this.occupationActuelle[5]["surface"]
                         )
                       }}
@@ -1035,6 +1035,8 @@ import { pushDataViz } from "@/plugins/pushDataViz";
 import modalDetail from "../modal/modalDetail.vue";
 import jaugeChart from "@/components/jaugeChart.vue";
 import axios from "axios";
+import { formaterSurfacesNecessaires } from "@/plugins/outilsSurfaces.js";
+
 export default {
   inject: ["$axios"],
   components: {
@@ -1164,12 +1166,8 @@ export default {
     nextStep(hash) {
       this.$emit("nextStep", hash);
     },
-    formatterSurfacesNecessaires(chiffreSurface) {
-      return (
-        "Environ " +
-        Math.round(chiffreSurface).toLocaleString("fr-FR") +
-        " hectares"
-      );
+    formaterSurfacesNecessaires(chiffreSurface) {
+      return formaterSurfacesNecessaires(chiffreSurface);
     },
     fermerModal() {
       this.modalDetails = "";
