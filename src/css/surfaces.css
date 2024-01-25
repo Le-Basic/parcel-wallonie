@@ -144,9 +144,9 @@
 }
 
 #map2,
-#map1,
-#map3,
-#map4 {
+#zone-surface-actuelle,
+#zone-surface-a-mobiliser,
+#zone-potentiel-nourricier {
   position: sticky;
 
   top: 19vh;
@@ -160,11 +160,11 @@
 }
 
 
+#div-image-surface-a-mobiliser,
 #div-image-potentiel-nourricier,
-#imgmap4,
 
-#map3,
-#map4 {
+#zone-surface-a-mobiliser,
+#zone-potentiel-nourricier {
 }
 
 #maps {
@@ -182,8 +182,8 @@
 
 #div-image-surface-territoire,
 #div-image-sau-actuelle,
-#div-image-potentiel-nourricier,
-#imgmap4 {
+#div-image-surface-a-mobiliser,
+#div-image-potentiel-nourricier {
   position: absolute;
   display: flex;
   align-items: center;
@@ -195,10 +195,10 @@
   width: 380px;
 }
 
-.bigmap#map1,
+.bigmap#zone-surface-actuelle,
 .bigmap#map2,
-.bigmap#map4,
-.bigmap#map3 {
+.bigmap#zone-potentiel-nourricier,
+.bigmap#zone-surface-a-mobiliser {
   max-width: 1500px;
   height: 650px;
   top: 10vh;
@@ -206,8 +206,8 @@
 
 .bigmap #div-image-surface-territoire,
 .bigmap #div-image-sau-actuelle,
-.bigmap #div-image-potentiel-nourricier,
-.bigmap #imgmap4 {
+.bigmap #div-image-surface-a-mobiliser,
+.bigmap #div-image-potentiel-nourricier {
   width: 650px;
   height: 650px;
   left: 0;
@@ -234,11 +234,11 @@
   z-index: 2;
 }
 
-#div-image-potentiel-nourricier {
+#div-image-surface-a-mobiliser {
   z-index: 3;
 }
 
-#imgmap4 {
+#div-image-potentiel-nourricier {
   z-index: 4;
 }
 
@@ -563,18 +563,18 @@
 }
 
 @media (max-width: 1550px) {
-  .bigmap#map1,
+  .bigmap#zone-surface-actuelle,
   .bigmap#map2,
-  .bigmap#map4,
-  .bigmap#map3 {
+  .bigmap#zone-potentiel-nourricier,
+  .bigmap#zone-surface-a-mobiliser {
     height: 500px;
     max-width: 1400px;
   }
 
   .bigmap #div-image-surface-territoire,
   .bigmap #div-image-sau-actuelle,
-  .bigmap #div-image-potentiel-nourricier,
-  .bigmap #imgmap4 {
+  .bigmap #div-image-surface-a-mobiliser,
+  .bigmap #div-image-potentiel-nourricier {
     width: 500px;
     height: 500px;
   }
@@ -600,8 +600,8 @@
 @media (max-width: 1400px) {
   #div-image-surface-territoire,
   #div-image-sau-actuelle,
-  #div-image-potentiel-nourricier,
-  #imgmap4 {
+  #div-image-surface-a-mobiliser,
+  #div-image-potentiel-nourricier {
     width: 250px;
   }
 
@@ -613,18 +613,18 @@
     padding: 0rem;
   }
 
-  .bigmap#map1,
+  .bigmap#zone-surface-actuelle,
   .bigmap#map2,
-  .bigmap#map4,
-  .bigmap#map3 {
+  .bigmap#zone-potentiel-nourricier,
+  .bigmap#zone-surface-a-mobiliser {
     height: 500px;
     max-width: 1400px;
   }
 
   .bigmap #div-image-surface-territoire,
   .bigmap #div-image-sau-actuelle,
-  .bigmap #div-image-potentiel-nourricier,
-  .bigmap #imgmap4 {
+  .bigmap #div-image-surface-a-mobiliser,
+  .bigmap #div-image-potentiel-nourricier {
     width: 500px;
     height: 500px;
   }
@@ -657,18 +657,18 @@
     margin-top: 1rem;
   }
 
-  .bigmap#map1,
+  .bigmap#zone-surface-actuelle,
   .bigmap#map2,
-  .bigmap#map4,
-  .bigmap#map3 {
+  .bigmap#zone-potentiel-nourricier,
+  .bigmap#zone-surface-a-mobiliser {
     height: 453px;
     max-width: 1400px;
   }
 
   .bigmap #div-image-surface-territoire,
   .bigmap #div-image-sau-actuelle,
-  .bigmap #div-image-potentiel-nourricier,
-  .bigmap #imgmap4 {
+  .bigmap #div-image-surface-a-mobiliser,
+  .bigmap #div-image-potentiel-nourricier {
     width: 453px;
     height: 453px;
   }
@@ -701,18 +701,18 @@
     margin-top: 1rem;
   }
 
-  .bigmap#map1,
+  .bigmap#zone-surface-actuelle,
   .bigmap#map2,
-  .bigmap#map4,
-  .bigmap#map3 {
+  .bigmap#zone-potentiel-nourricier,
+  .bigmap#zone-surface-a-mobiliser {
     height: 360px;
     max-width: 1400px;
   }
 
   .bigmap #div-image-surface-territoire,
   .bigmap #div-image-sau-actuelle,
-  .bigmap #div-image-potentiel-nourricier,
-  .bigmap #imgmap4 {
+  .bigmap #div-image-surface-a-mobiliser,
+  .bigmap #div-image-potentiel-nourricier {
     width: 360px;
     height: 360px;
   }
@@ -754,9 +754,9 @@
   }
 
   #map2,
-  #map1,
-  #map3,
-  #map4 {
+  #zone-surface-actuelle,
+  #zone-surface-a-mobiliser,
+  #zone-potentiel-nourricier {
     top: 0px;
   }
 
@@ -785,18 +785,18 @@
     );
   }
 
-  .bigmap#map1,
+  .bigmap#zone-surface-actuelle,
   .bigmap#map2,
-  .bigmap#map4,
-  .bigmap#map3 {
+  .bigmap#zone-potentiel-nourricier,
+  .bigmap#zone-surface-a-mobiliser {
     height: 500px;
     max-width: 1400px;
   }
 
   .bigmap #div-image-surface-territoire,
   .bigmap #div-image-sau-actuelle,
-  .bigmap #div-image-potentiel-nourricier,
-  .bigmap #imgmap4 {
+  .bigmap #div-image-surface-a-mobiliser,
+  .bigmap #div-image-potentiel-nourricier {
     width: 300px;
     height: 300px;
   }
@@ -855,9 +855,9 @@
 
 @media (max-height: 800px) and(min-width:991px) {
   #map2,
-  #map1,
-  #map3,
-  #map4 {
+  #zone-surface-actuelle,
+  #zone-surface-a-mobiliser,
+  #zone-potentiel-nourricier {
     top: calc(15vh);
   }
 }
@@ -946,9 +946,9 @@
 }
 
 #map2 h3,
-#map1 h3,
-#map3 h3,
-#map4 h3 {
+#zone-surface-actuelle h3,
+#zone-surface-a-mobiliser h3,
+#zone-potentiel-nourricier h3 {
   text-align: left;
   margin-bottom: 1rem;
 }
@@ -956,8 +956,8 @@
 @media (max-width: 990px) {
   #div-image-surface-territoire,
   #div-image-sau-actuelle,
-  #div-image-potentiel-nourricier,
-  #imgmap4 {
+  #div-image-surface-a-mobiliser,
+  #div-image-potentiel-nourricier {
     left: 25vw;
   }
 }
@@ -965,8 +965,8 @@
 @media (max-width: 576px) {
   #div-image-surface-territoire,
   #div-image-sau-actuelle,
-  #div-image-potentiel-nourricier,
-  #imgmap4 {
+  #div-image-surface-a-mobiliser,
+  #div-image-potentiel-nourricier {
     left: 15vw;
   }
 }
@@ -974,8 +974,8 @@
 @media (max-width: 375px) {
   #div-image-surface-territoire,
   #div-image-sau-actuelle,
-  #div-image-potentiel-nourricier,
-  #imgmap4 {
+  #div-image-surface-a-mobiliser,
+  #div-image-potentiel-nourricier {
     left: 15vw;
   }
 }
@@ -991,15 +991,15 @@
   .map-surface img,
   #div-image-surface-territoire,
   #div-image-sau-actuelle,
-  #div-image-potentiel-nourricier,
-  #imgmap4 {
+  #div-image-surface-a-mobiliser,
+  #div-image-potentiel-nourricier {
     max-height: 180px;
   }
 
   #div-image-surface-territoire,
   #div-image-sau-actuelle,
-  #div-image-potentiel-nourricier,
-  #imgmap4 {
+  #div-image-surface-a-mobiliser,
+  #div-image-potentiel-nourricier {
     width: 190px;
   }
 
@@ -1021,15 +1021,15 @@
   .map-surface img,
   #div-image-surface-territoire,
   #div-image-sau-actuelle,
-  #div-image-potentiel-nourricier,
-  #imgmap4 {
+  #div-image-surface-a-mobiliser,
+  #div-image-potentiel-nourricier {
     max-height: 120px;
   }
 
   #div-image-surface-territoire,
   #div-image-sau-actuelle,
-  #div-image-potentiel-nourricier,
-  #imgmap4 {
+  #div-image-surface-a-mobiliser,
+  #div-image-potentiel-nourricier {
     width: 130px;
   }
 
@@ -1040,9 +1040,9 @@
 
 @media (max-width: 991px) {
   #map2,
-  #map1,
-  #map3,
-  #map4 {
+  #zone-surface-actuelle,
+  #zone-surface-a-mobiliser,
+  #zone-potentiel-nourricier {
     top: 21px;
   }
 

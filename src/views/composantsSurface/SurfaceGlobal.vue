@@ -3,7 +3,7 @@
     <div class="position-relative w-100 text-center">
       <div class="w-100 d-flex position-absolute">
         <a
-          href="#map1"
+          href="#zone-surface-actuelle"
           class="down-arrow d-block d-flex flex-column justify-content-center text-center mx-auto"
           style="width: 200px"
           ><span class="mb-3 vert-fonce">Scrollez pour lire la suite </span
@@ -19,7 +19,7 @@
 
     <div
       class="row align-items-center block-surface animate__animated bigmap"
-      id="map1"
+      id="zone-surface-actuelle"
     >
       <div class="col-12 col-lg-auto map-surface is-flex">
         <div id="globalView-images" class="my-auto">
@@ -30,7 +30,6 @@
               :style="{
                 width: (data.surface / max_potentiel_surface) * 100 + '%',
                 opacity: 1,
-                'z-index': 10,
               }"
               :src="require('@/assets/img/surfaces/circle1.svg')"
             />
@@ -40,31 +39,33 @@
               alt=""
               class="mx-auto"
               :style="{
-                width:
-                  (data.surfaces_a_mobiliser / max_potentiel_surface) * 100 +
-                  '%',
+                width: (data.sau / max_potentiel_surface) * 100 + '%',
                 opacity: 1,
-                'z-index': 200,
               }"
               :src="require('@/assets/img/surfaces/circle-agricole.svg')"
             />
           </div>
           <div
-            id="div-image-potentiel-nourricier"
+            id="div-image-surface-a-mobiliser"
             class="animate__animated"
-            style="opacity: 0"
+            :style="{
+              opacity: 0,
+              'z-index': data.sau > data.surfaces_a_mobiliser ? 10 : 0,
+            }"
           >
             <img
               alt=""
               class="mx-auto"
               :style="{
-                width: (data.sau / max_potentiel_surface) * 100 + '%',
+                width:
+                  (data.surfaces_a_mobiliser / max_potentiel_surface) * 100 +
+                  '%',
                 opacity: 1,
               }"
               :src="require('@/assets/img/surfaces/circle-empreinte.svg')"
             />
           </div>
-          <div id="imgmap4" class="animate__animated">
+          <div id="div-image-potentiel-nourricier" class="animate__animated">
             <img alt="" class="mx-auto" style="width: 0%; opacity: 0" />
           </div>
         </div>
@@ -95,7 +96,7 @@
         style="opacity: 1"
         id="content2"
       >
-        <div id="text-map1" class="text-map">
+        <div class="text-map">
           <h3 class="">Surface totale du territoire</h3>
           <div
             class="cadre-resultat resultat-ha animate__animated flipInX delay-05s bg-grey-light ml-0 mt-3"
@@ -154,7 +155,7 @@
           </div>
           <div class="map-content"></div>
         </div>
-        <div id="text-map2" class="text-map">
+        <div class="text-map">
           <h3 class="">Surface agricole actuelle</h3>
           <div
             class="cadre-resultat resultat-ha animate__animated flipInX delay-05s ml-0 mt-3"
@@ -226,7 +227,7 @@
     </div>
     <div
       class="row align-items-center block-surface animate__animated bigmap"
-      id="map3"
+      id="zone-surface-a-mobiliser"
     >
       <div class="col-12 col-lg-auto map-surface"></div>
       <div
@@ -299,7 +300,7 @@
     </div>
     <div
       class="row align-items-center block-surface animate__animated bigmap"
-      id="map4"
+      id="zone-potentiel-nourricier"
     >
       <div class="col-12 col-lg-auto map-surface"></div>
       <div
@@ -472,23 +473,39 @@ export default {
   },
   methods: {
     gererVisibiliteImage() {
-      let map1 = document.getElementById("map1");
-      let map3 = document.getElementById("map3");
-      let map4 = document.getElementById("map4");
+      let zoneScrollableSurfaceActuelle = document.getElementById(
+        "zone-surface-actuelle"
+      );
+      let zoneScrollableSurfaceAMobiliser = document.getElementById(
+        "zone-surface-a-mobiliser"
+      );
+      let zoneScrollablePotentielNourricier = document.getElementById(
+        "zone-potentiel-nourricier"
+      );
       let imageSurfaceTerritoire = document.getElementById(
         "div-image-surface-territoire"
       );
       let imageSauActuelle = document.getElementById("div-image-sau-actuelle");
       let imagePotentielNourricier = document.getElementById(
-        "div-image-potentiel-nourricier"
+        "div-image-surface-a-mobiliser"
       );
-      if (window.scrollY >= map1.offsetHeight + map3.offsetHeight - 400) {
+      if (
+        window.scrollY >=
+        zoneScrollableSurfaceActuelle.offsetHeight +
+          zoneScrollableSurfaceAMobiliser.offsetHeight -
+          400
+      ) {
         imagePotentielNourricier.classList.add("fadeIn");
         imageSauActuelle.classList.remove("fadeIn");
         imageSauActuelle.style.opacity = 0;
         imagePotentielNourricier.style.opacity = 1;
         imageSauActuelle.classList.add("fadeOut");
-      } else if (window.scrollY < map1.offsetHeight + map3.offsetHeight - 400) {
+      } else if (
+        window.scrollY <
+        zoneScrollableSurfaceActuelle.offsetHeight +
+          zoneScrollableSurfaceAMobiliser.offsetHeight -
+          400
+      ) {
         imagePotentielNourricier.style.opacity = 0;
         imageSauActuelle.classList.add("fadeIn");
         imageSauActuelle.classList.remove("fadeOut");
@@ -497,19 +514,23 @@ export default {
       }
       if (
         window.scrollY >=
-        map1.offsetHeight + map3.offsetHeight + map4.offsetHeight
+        zoneScrollableSurfaceActuelle.offsetHeight +
+          zoneScrollableSurfaceAMobiliser.offsetHeight +
+          zoneScrollablePotentielNourricier.offsetHeight
       ) {
         imageSauActuelle.classList.remove("fadeOut");
         imageSauActuelle.style.opacity = 1;
         imageSurfaceTerritoire.style.opacity = 0;
         imageSurfaceTerritoire.classList.remove("fadeIn");
         imageSurfaceTerritoire.classList.add("fadeOut");
-        if (this.data.sau < this.data.surfaces_a_mobiliser) {
+        if (this.data.sau > this.data.surfaces_a_mobiliser) {
           imageSauActuelle.classList.add("position-devant2");
         }
       } else if (
         window.scrollY <
-        map1.offsetHeight + map3.offsetHeight + map4.offsetHeight
+        zoneScrollableSurfaceActuelle.offsetHeight +
+          zoneScrollableSurfaceAMobiliser.offsetHeight +
+          zoneScrollablePotentielNourricier.offsetHeight
       ) {
         imageSurfaceTerritoire.classList.add("fadeIn");
         imageSurfaceTerritoire.style.opacity = 1;
