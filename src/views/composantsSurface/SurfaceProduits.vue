@@ -81,7 +81,7 @@
                   >
                     <jaugeChart
                       :value="
-                        surfaces_a_mobiliser_parcel_niveau_1[3]
+                        surfaces_emplois_a_mobiliser_parcel_niveau_1[3]
                           .part_surface_a_mobiliser
                       "
                       couleur="#91C423"
@@ -99,7 +99,7 @@
                       {{
                         formatterSurfacesNecessaires(
                           surfaces_a_mobiliser[
-                            "surfaces_a_mobiliser_parcel_niveau_1"
+                            "surfaces_emplois_a_mobiliser_parcel_niveau_1"
                           ][3].surface_necessaire_conventionnel
                         )
                       }}
@@ -132,7 +132,7 @@
                   >
                     <jaugeChart
                       :value="
-                        surfaces_a_mobiliser_parcel_niveau_1[1]
+                        surfaces_emplois_a_mobiliser_parcel_niveau_1[1]
                           .part_surface_a_mobiliser
                       "
                       couleur="#A261C0"
@@ -149,7 +149,7 @@
                       {{
                         formatterSurfacesNecessaires(
                           surfaces_a_mobiliser[
-                            "surfaces_a_mobiliser_parcel_niveau_1"
+                            "surfaces_emplois_a_mobiliser_parcel_niveau_1"
                           ][1].surface_necessaire_conventionnel
                         )
                       }}
@@ -179,7 +179,7 @@
                   >
                     <jaugeChart
                       :value="
-                        surfaces_a_mobiliser_parcel_niveau_1[2]
+                        surfaces_emplois_a_mobiliser_parcel_niveau_1[2]
                           .part_surface_a_mobiliser
                       "
                       couleur="#F9B233"
@@ -198,7 +198,7 @@
                       {{
                         formatterSurfacesNecessaires(
                           surfaces_a_mobiliser[
-                            "surfaces_a_mobiliser_parcel_niveau_1"
+                            "surfaces_emplois_a_mobiliser_parcel_niveau_1"
                           ][2].surface_necessaire_conventionnel
                         )
                       }}
@@ -228,7 +228,7 @@
                   >
                     <jaugeChart
                       :value="
-                        surfaces_a_mobiliser_parcel_niveau_1[0]
+                        surfaces_emplois_a_mobiliser_parcel_niveau_1[0]
                           .part_surface_a_mobiliser
                       "
                       couleur="#B57A60"
@@ -245,7 +245,7 @@
                       {{
                         formatterSurfacesNecessaires(
                           surfaces_a_mobiliser[
-                            "surfaces_a_mobiliser_parcel_niveau_1"
+                            "surfaces_emplois_a_mobiliser_parcel_niveau_1"
                           ].find(
                             (item) => item.libelle_parcel_niveau_1 == "Elevage"
                           ).surface_necessaire_conventionnel
@@ -1047,7 +1047,7 @@ export default {
         potentielNourricier: [],
       },
       occupationActuelle: [],
-      surfaces_a_mobiliser_parcel_niveau_1: [],
+      surfaces_emplois_a_mobiliser_parcel_niveau_1: [],
       surfaces_a_mobiliser: null,
       modalDetails: "",
     };
@@ -1181,13 +1181,13 @@ export default {
     await getSurfaceAMobiliser()
       .then((res) => (this.surfaces_a_mobiliser = res))
       .then((res) => {
-        pushDataViz(res["surfaces_a_mobiliser_parcel_niveau_1"]);
+        pushDataViz(res["surfaces_emplois_a_mobiliser_parcel_niveau_1"]);
       });
     this.test = await getSurfaceAMobiliser();
   },
   computed: {
-    surfaces_a_mobiliser_parcel_niveau_1_data() {
-      return this.surfaces_a_mobiliser_parcel_niveau_1;
+    surfaces_emplois_a_mobiliser_parcel_niveau_1_data() {
+      return this.surfaces_emplois_a_mobiliser_parcel_niveau_1;
     },
     occupationActuelleTotale() {
       return Math.round(
@@ -1208,8 +1208,8 @@ export default {
   watch: {
     surfaces_a_mobiliser(nouvellevaleur) {
       if (nouvellevaleur) {
-        this.surfaces_a_mobiliser_parcel_niveau_1 = nouvellevaleur[
-          "surfaces_a_mobiliser_parcel_niveau_1"
+        this.surfaces_emplois_a_mobiliser_parcel_niveau_1 = nouvellevaleur[
+          "surfaces_emplois_a_mobiliser_parcel_niveau_1"
         ].map((item) => {
           return {
             ...item,

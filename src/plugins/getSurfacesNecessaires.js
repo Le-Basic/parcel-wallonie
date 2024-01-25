@@ -65,15 +65,22 @@ export async function getSurfaceAMobiliser(
     })
     .reduce((somme, surface) => somme + surface, 0);
 
-  const surfaces_a_mobiliser_parcel_niveau_1 = [];
+  const emplois_a_mobiliser = data
+    .map((item) => {
+      return item.emploi_conventionnel;
+    })
+    .reduce((somme, emploi) => somme + emploi, 0);
+  const surfaces_emplois_a_mobiliser_parcel_niveau_1 = [];
   data.reduce(function (res, valeur) {
     if (!res[valeur.libelle_parcel_niveau_1]) {
       res[valeur.libelle_parcel_niveau_1] = {
         libelle_parcel_niveau_1: valeur.libelle_parcel_niveau_1,
         surface_necessaire_conventionnel: 0,
         surface_necessaire_bio: 0,
+        emploi_conventionnel: 0,
+        emploi_bio: 0,
       };
-      surfaces_a_mobiliser_parcel_niveau_1.push(
+      surfaces_emplois_a_mobiliser_parcel_niveau_1.push(
         res[valeur.libelle_parcel_niveau_1]
       );
     }
@@ -81,11 +88,16 @@ export async function getSurfaceAMobiliser(
       valeur.surface_necessaire_conventionnel;
     res[valeur.libelle_parcel_niveau_1].surface_necessaire_bio +=
       valeur.surface_necessaire_bio;
+    res[valeur.libelle_parcel_niveau_1].emploi_conventionnel +=
+      valeur.emploi_conventionnel;
+    res[valeur.libelle_parcel_niveau_1].emploi_bio += valeur.emploi_bio;
     return res;
   }, {});
 
   return {
     surfaces_a_mobiliser: surfaces_a_mobiliser,
-    surfaces_a_mobiliser_parcel_niveau_1: surfaces_a_mobiliser_parcel_niveau_1,
+    emplois_a_mobiliser: emplois_a_mobiliser,
+    surfaces_emplois_a_mobiliser_parcel_niveau_1:
+      surfaces_emplois_a_mobiliser_parcel_niveau_1,
   };
 }

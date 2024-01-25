@@ -19,8 +19,9 @@
                   <div
                     class="nbr-ha animated flipInY delay-05s fast"
                     id="emplois_repartition"
+                    v-if="surfaces_emplois"
                   >
-                    0
+                    {{ surfaces_emplois.emplois_a_mobiliser }}
                   </div>
                   <div class="hectares animated fadeIn delay-1s fast">
                     emplois agricoles directs
@@ -83,8 +84,15 @@
                               <div
                                 class="chiffre-emploi legumes animated flipInX"
                                 id="totaljoblegumes"
+                                v-if="surfaces_emplois"
                               >
-                                1000
+                                {{
+                                  trouverChiffre(
+                                    surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1,
+                                    CATEGORIE_PRODUITS.LEGUMES.libelle,
+                                    "emploi_conventionnel"
+                                  )
+                                }}
                               </div>
                               <div class="result-plus">
                                 <span
@@ -128,8 +136,15 @@
                               <div
                                 class="chiffre-emploi fruits animated flipInX"
                                 id="totaljobfruits"
+                                v-if="surfaces_emplois"
                               >
-                                1000
+                                {{
+                                  trouverChiffre(
+                                    surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1,
+                                    CATEGORIE_PRODUITS.FRUITS.libelle,
+                                    "emploi_conventionnel"
+                                  )
+                                }}
                               </div>
                               <div class="result-plus">
                                 <span
@@ -172,8 +187,15 @@
                               <div
                                 class="chiffre-emploi cereales animated flipInX"
                                 id="totaljobgcultures"
+                                v-if="surfaces_emplois"
                               >
-                                1000
+                                {{
+                                  trouverChiffre(
+                                    surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1,
+                                    CATEGORIE_PRODUITS.CEREALES.libelle,
+                                    "emploi_conventionnel"
+                                  )
+                                }}
                               </div>
                               <div class="result-plus">
                                 <span
@@ -207,7 +229,7 @@
                             </div>
                             <div class="result-chiffres">
                               <div class="hectares">
-                                Emplois générés par l\'élevage
+                                Emplois générés par l'élevage
                                 <a
                                   href="#"
                                   class="info pb-3"
@@ -224,8 +246,15 @@
                               <div
                                 class="chiffre-emploi viande animated flipInX"
                                 id="totaljobelevage"
+                                v-if="surfaces_emplois"
                               >
-                                1000
+                                {{
+                                  trouverChiffre(
+                                    surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1,
+                                    CATEGORIE_PRODUITS.ELEVAGE.libelle,
+                                    "emploi_conventionnel"
+                                  )
+                                }}
                               </div>
                               <div class="result-plus">
                                 <span
@@ -248,18 +277,63 @@
                       class="auto-style1"
                       border="0"
                       style="width: 100%"
+                      v-if="surfaces_emplois"
                     >
                       <tr style="height: 110px" class="animated fadeIn">
-                        <td valign="middle" id="man_legumes"><vizEmploi /></td>
+                        <td valign="middle" id="man_legumes">
+                          <vizEmploi
+                            :couleur="CATEGORIE_PRODUITS.LEGUMES.couleur"
+                            :objetEmplois="
+                              surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1
+                            "
+                            :categorieProduitLibelle="
+                              CATEGORIE_PRODUITS.LEGUMES.libelle
+                            "
+                            v-if="surfaces_emplois"
+                          />
+                        </td>
                       </tr>
                       <tr style="height: 110px" class="animated fadeIn">
-                        <td valign="middle" id="man_fruits"><vizEmploi /></td>
+                        <td valign="middle" id="man_fruits">
+                          <vizEmploi
+                            :couleur="CATEGORIE_PRODUITS.FRUITS.couleur"
+                            :objetEmplois="
+                              surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1
+                            "
+                            :categorieProduitLibelle="
+                              CATEGORIE_PRODUITS.FRUITS.libelle
+                            "
+                            v-if="surfaces_emplois"
+                          />
+                        </td>
                       </tr>
                       <tr style="height: 110px" class="animated fadeIn">
-                        <td valign="middle" id="man_cereales"><vizEmploi /></td>
+                        <td valign="middle" id="man_cereales">
+                          <vizEmploi
+                            :couleur="CATEGORIE_PRODUITS.CEREALES.couleur"
+                            :objetEmplois="
+                              surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1
+                            "
+                            :categorieProduitLibelle="
+                              CATEGORIE_PRODUITS.CEREALES.libelle
+                            "
+                            v-if="surfaces_emplois"
+                          />
+                        </td>
                       </tr>
                       <tr style="height: 110px" class="animated fadeIn">
-                        <td valign="middle" id="man_elevage"><vizEmploi /></td>
+                        <td valign="middle" id="man_elevage">
+                          <vizEmploi
+                            :couleur="CATEGORIE_PRODUITS.ELEVAGE.couleur"
+                            :objetEmplois="
+                              surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1
+                            "
+                            :categorieProduitLibelle="
+                              CATEGORIE_PRODUITS.ELEVAGE.libelle
+                            "
+                            v-if="surfaces_emplois"
+                          />
+                        </td>
                       </tr>
                     </table>
                     <!--        for ($i = 1; $i <= 100; $i++) {
@@ -387,7 +461,9 @@ import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
 import resumeChoix from "./modal/resumeChoix.vue";
 import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
 import vizEmploi from "./viz/vizEmploi.vue";
-
+import { getSurfaceAMobiliser } from "@/plugins/getSurfacesNecessaires";
+import { CATEGORIE_PRODUITS } from "@/config/categorieProduits";
+import { trouverChiffre } from "@/plugins/utils";
 export default {
   components: {
     BarreNavigation,
@@ -398,16 +474,35 @@ export default {
   data() {
     return {
       montrerClasse: "",
+      surfaces_emplois: null,
+      CATEGORIE_PRODUITS,
+      emploi_conventionnel: "emploi_conventionnel",
     };
   },
   methods: {
     montrerModalAffiner() {
       this.montrerClasse = "show";
-      console.log("montrerModalAffinage");
     },
     fermerModal() {
       this.montrerClasse = "";
     },
+    trouverChiffre,
+  },
+  async mounted() {
+    this.surfaces_emplois = await getSurfaceAMobiliser().then((res) => {
+      return {
+        emplois_a_mobiliser: res.emplois_a_mobiliser,
+        surfaces_emplois_a_mobiliser_parcel_niveau_1:
+          res.surfaces_emplois_a_mobiliser_parcel_niveau_1.map((item) => {
+            return {
+              ...item,
+              part_emplois: Math.round(
+                (item.emploi_conventionnel * 100) / res.emplois_a_mobiliser
+              ),
+            };
+          }),
+      };
+    });
   },
 };
 </script>
