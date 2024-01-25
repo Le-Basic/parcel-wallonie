@@ -207,4 +207,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.show {
+  margin-right: 0px !important;
+  display: block !important;
+  padding: 0px !important;
+  opacity: 1 !important;
+}
+</style>

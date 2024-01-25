@@ -50,7 +50,7 @@
                   step="1.000"
                   value="100"
                   id="partlocale"
-                  v-model="partlocale"
+                  v-model="$store.state.partlocale"
                 />
                 <div class="range-values">
                   <span class="range-min">0</span
@@ -90,7 +90,7 @@
                   step="1.000"
                   value="100"
                   id="partpertes"
-                  v-model="partpertes"
+                  v-model="$store.state.partpertes"
                 />
                 <div class="range-values">
                   <span class="range-min">0</span
@@ -170,7 +170,7 @@
                       id="partbiolegumesval"
                     ></span
                     ><span class="text-bold legumes"
-                      >{{ partbiolegumes }} %</span
+                      >{{ $store.state.partbiolegumes }} %</span
                     ></output
                   >
                 </div>
@@ -182,7 +182,7 @@
                 step="1.000"
                 value="100"
                 id="partbiolegumes"
-                v-model="partbiolegumes"
+                v-model="$store.state.partbiolegumes"
                 class="slider-range"
               />
               <div class="range-values">
@@ -224,7 +224,7 @@
                       id="partbiofruitsval"
                     ></span
                     ><span class="text-bold fruits"
-                      >{{ partbiofruits }} %</span
+                      >{{ $store.state.partbiofruits }} %</span
                     ></output
                   >
                 </div>
@@ -237,7 +237,7 @@
                 step="1.000"
                 value="100"
                 id="partbiofruits"
-                v-model="partbiofruits"
+                v-model="$store.state.partbiofruits"
               />
               <div class="range-values">
                 <span class="range-min">0</span
@@ -278,7 +278,7 @@
                       id="partbiocerealesval"
                     ></span
                     ><span class="text-bold cereales"
-                      >{{ partbiocereales }} %</span
+                      >{{ $store.state.partbiocereales }} %</span
                     ></output
                   >
                 </div>
@@ -291,7 +291,7 @@
                 value="100"
                 id="partbiocereales"
                 class="slider-range"
-                v-model="partbiocereales"
+                v-model="$store.state.partbiocereales"
               />
               <div class="range-values">
                 <span class="range-min">0</span
@@ -332,7 +332,7 @@
                       id="partbioelevageval"
                     ></span
                     ><span class="text-bold viande"
-                      >{{ partbioelevage }} %</span
+                      >{{ $store.state.partbioelevage }} %</span
                     ></output
                   >
                 </div>
@@ -345,7 +345,7 @@
                 value="100"
                 id="partbioelevage"
                 class="slider-range"
-                v-model="partbioelevage"
+                v-model="$store.state.partbioelevage"
               />
               <div class="range-values">
                 <span class="range-min">0</span

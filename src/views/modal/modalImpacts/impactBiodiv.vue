@@ -660,7 +660,7 @@
       <!--card--->
       <blocImpact>
         <template v-slot:icon>
-          <span class="icon-ico_calcul2 icon white"></span>
+          <span class="icon-ico_calcul2 ipcon white"></span>
         </template>
         <template v-slot:nomBouton>Méthodologie de calcul</template>
         <template v-slot:contenu>
