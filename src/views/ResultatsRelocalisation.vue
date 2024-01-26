@@ -169,10 +169,7 @@
 import Nav from "@/components/Nav/BarreNavigation.vue";
 import resumeChoix from "./modal/resumeChoix.vue";
 import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
-import {
-  getSurfaceActuelle,
-  getSurfaceAMobiliser,
-} from "@/plugins/getSurfacesNecessaires";
+import { fetchSurfaceActuelle } from "@/plugins/getSurfacesNecessaires";
 
 export default {
   components: { resumeChoix, Nav, ModalAffinerChoix },
@@ -188,21 +185,29 @@ export default {
   methods: {
     montrerModalAffiner() {
       this.montrerClasse = "show";
-      console.log("montrerModalAffinage");
     },
     fermerModal() {
       this.montrerClasse = "";
     },
   },
   async mounted() {
-    this.surfaces_a_mobiliser = Math.round(
-      await getSurfaceAMobiliser().then((res) => res["surfaces_a_mobiliser"])
+    this.surface_actuelle = await fetchSurfaceActuelle();
+    this.$store.dispatch(
+      "actionChoisirRegimeAlimentaire",
+      this.$store.state.regime_alimentaire
     );
-    this.surface_actuelle = await getSurfaceActuelle();
     this.potentiel_nourricier = Math.round(
       (this.surface_actuelle["sau_ha"] * 100) / this.surfaces_a_mobiliser
     );
-    console.log(this.potentiel_nourricier);
+  },
+  watch: {
+    // TODO : est ce qu'il n'y a pas plus simple que d'utiliser un watch ? (on peut pas s'en sortir avec des ref et des computedProps ?)
+    "$store.state.resultatSimulation": {
+      handler(resultatSimulation) {
+        this.surfaces_a_mobiliser = resultatSimulation.surfaceAMobiliser;
+      },
+      immediate: true,
+    },
   },
 };
 </script>

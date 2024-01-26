@@ -37,3 +37,10 @@ export const regimeListe = [
     id: IDS_REGIMES_ALIMENTAIRES.VEGETALIEN,
   },
 ];
+
+export function getRegimeParId(idRegime) {
+  return regimeListe.find((r) => r.id == idRegime);
+}
+export function getRegimeParNomCourt(nomCourtRegime) {
+  return regimeListe.find((r) => r.nomCourt == nomCourtRegime);
+}

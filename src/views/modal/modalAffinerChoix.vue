@@ -515,6 +515,7 @@
 <script>
 import "rangeslider.js";
 import "rangeslider.js/dist/rangeslider.css";
+import { getRegimeParNomCourt } from "@/config/regimeListe";
 export default {
   name: "MenuAffinerChoix",
   data: function () {
@@ -554,8 +555,10 @@ export default {
     partbiolegumes: function (val) {
       this.$store.commit("partBioLegumes", val);
     },
-    regimeChoisi: function (val) {
-      this.$store.commit("choisirRegimeAlimentaire", val);
+    regimeChoisi: function (nomCourtRegime) {
+      // TODO : choix pour utiliser nomCourt ou id comme clé partout pour les régimes
+      const regimeChoisi = getRegimeParNomCourt(nomCourtRegime);
+      this.$store.dispatch("actionChoisirRegimeAlimentaire", regimeChoisi);
     },
   },
 };

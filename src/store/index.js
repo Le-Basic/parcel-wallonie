@@ -1,6 +1,8 @@
 import { createStore } from "vuex";
 import VuexPersistence from "vuex-persist";
 import { regimeListe } from "@/config/regimeListe.js";
+import { fetchSurfaceNecessaire } from "@/plugins/getSurfacesNecessaires";
+import { calculerResultatSimulation } from "../plugins/calculResultatSimulation";
 const getDefaultState = () => {
   return {
     regimeListe: regimeListe,
@@ -14,6 +16,11 @@ const getDefaultState = () => {
     partbiofruits: null,
     partbiocereales: null,
     partbioelevage: null,
+    resultatSimulation: {
+      surfaceAMobiliser: 0,
+      emploisAMobiliser: 0,
+      surfacesEmploisAMobiliser: 0,
+    },
   };
 };
 
@@ -62,6 +69,15 @@ export default createStore({
         (el) => el.nomCourt == regime_alimentaire_nomCourt
       );
     },
+    // TODO : parallel change pour bascule progressive sur de nouveau mutateurs
+    // PROP : nommage avec prefixe "mutation" + aucune logique ni transfo
+    mutationRegimeAlimentaire(state, regimeAlimentaire) {
+      state.regime_alimentaire = regimeAlimentaire;
+    },
+    mutationResultatSimulation(state, resultatSimulation) {
+      console.log("mutationResultatSimulation", resultatSimulation);
+      state.resultatSimulation = resultatSimulation;
+    },
   },
   actions: {
     addGeo({ commit }, geo) {
@@ -102,6 +118,26 @@ export default createStore({
     },
     choisirRegimeAlimentaire({ commit }, regime_alimentaire_nomCourt) {
       commit("choisirRegimeAlimentaire", regime_alimentaire_nomCourt);
+    },
+    // TODO : parallel change pour introduire progressivement les nouvelles actions
+    // PROP Nommage : convention de nommage, toutes les actions commencent par action, toutes les mutations commencent par mutation
+    // PROP Archi 1 : on rapatrie le plus de logique possible dans ces actions (qui peut porter de la logique async et garantie la mutation de plusieurs state en cohérence)
+    // PROP Archi 2 : et même si on peut, on déplace la logique dans des fonctions externes aux actions (dans plugin ou autre), ce qui permet de les tester
+    // PROP Archi 3 : le state contient une partie input, une partie output. L'ouput est contenu dans l'objet "resultatSimulation", les actions ont la responsabilité de le mettre à jour en fonction des modifications des inputs
+    async actionChoisirRegimeAlimentaire({ commit }, regimeAlimentaire) {
+      commit("mutationRegimeAlimentaire", regimeAlimentaire);
+      const url = window.apiURL + "parcel/belgique/surfaces_necessaires";
+      // TODO : mun91114 en dur ici, mais on pourrait déjà le remonter au niveau du défault state et du mutateur
+      const codesTerritoireParcel = ["mun91114"];
+      var surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
+        url,
+        codesTerritoireParcel,
+        regimeAlimentaire.id
+      );
+      let resultatSimulation = calculerResultatSimulation(
+        surfaceNecessaireResponseApi
+      );
+      commit("mutationResultatSimulation", resultatSimulation);
     },
   },
   plugins: [new VuexPersistence().plugin],

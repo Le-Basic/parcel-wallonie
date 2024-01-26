@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IDS_REGIMES_ALIMENTAIRES } from "../config/regimeIds";
 
-export async function fetchData(api_route) {
+async function fetchData(api_route) {
   const bodyFormData = new FormData();
   const codesTerritoireParcel = ["mun91114"];
   console.log(codesTerritoireParcel);
@@ -21,6 +21,12 @@ export async function fetchData(api_route) {
       console.log(error);
     });
   return response.data;
+}
+
+// TODO : extraire l'url en param comme pour fetchSurfaceNecessaire (permet de faire des tests, et ne rend pas le code dépendant à window.apiURL)
+export async function fetchSurfaceActuelle() {
+  const data = await fetchData("parcel/belgique/surfaces_agregees");
+  return data[0];
 }
 
 export async function fetchSurfaceNecessaire(
@@ -43,35 +49,23 @@ export async function fetchSurfaceNecessaire(
   return response.data;
 }
 
-export async function getSurfaceActuelle() {
-  const data = await fetchData("parcel/belgique/surfaces_agregees");
-  console.log(data[0]);
-  return data[0];
-}
-
-export async function getSurfaceAMobiliser(
-  idRegimeAlimentaire = IDS_REGIMES_ALIMENTAIRES.ACTUEL
+// TODO : fait partie des règles de calcul => a bouger dans le plugin calculResultatSimulation.js
+export function calculerSurfacesEtEmploisAMobiliser(
+  surfaceNecessaireResponseApi
 ) {
-  const url = window.apiURL + "parcel/belgique/surfaces_necessaires";
-  const codesTerritoireParcel = ["mun91114"];
-  var data = await fetchSurfaceNecessaire(
-    url,
-    codesTerritoireParcel,
-    idRegimeAlimentaire
-  );
-  const surfaces_a_mobiliser = data
+  const surfaces_a_mobiliser = surfaceNecessaireResponseApi
     .map((item) => {
       return item.surface_necessaire_conventionnel;
     })
     .reduce((somme, surface) => somme + surface, 0);
 
-  const emplois_a_mobiliser = data
+  const emplois_a_mobiliser = surfaceNecessaireResponseApi
     .map((item) => {
       return item.emploi_conventionnel;
     })
     .reduce((somme, emploi) => somme + emploi, 0);
   const surfaces_emplois_a_mobiliser_parcel_niveau_1 = [];
-  data.reduce(function (res, valeur) {
+  surfaceNecessaireResponseApi.reduce(function (res, valeur) {
     if (!res[valeur.libelle_parcel_niveau_1]) {
       res[valeur.libelle_parcel_niveau_1] = {
         libelle_parcel_niveau_1: valeur.libelle_parcel_niveau_1,
@@ -100,4 +94,19 @@ export async function getSurfaceAMobiliser(
     surfaces_emplois_a_mobiliser_parcel_niveau_1:
       surfaces_emplois_a_mobiliser_parcel_niveau_1,
   };
+}
+
+// TODO : Fonction DEPRECATED => ce point d'entrée est async car il enchaine l'appel d'api + règle de calcul
+// Bascule progressive à faire sur fetchSurfaceNecessaire et calculerSurfaceAMobiliser, qui sont appelés par les actions du store
+export async function getSurfaceAMobiliser(
+  idRegimeAlimentaire = IDS_REGIMES_ALIMENTAIRES.ACTUEL
+) {
+  const url = window.apiURL + "parcel/belgique/surfaces_necessaires";
+  const codesTerritoireParcel = ["mun91114"];
+  var surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
+    url,
+    codesTerritoireParcel,
+    idRegimeAlimentaire
+  );
+  return calculerSurfacesEtEmploisAMobiliser(surfaceNecessaireResponseApi);
 }
