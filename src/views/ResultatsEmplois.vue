@@ -89,7 +89,8 @@
                                 {{
                                   trouverChiffre(
                                     surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1,
-                                    CATEGORIE_PRODUITS.LEGUMES.libelle,
+                                    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
+                                      .LEGUMES.libelle,
                                     "emploi_conventionnel"
                                   )
                                 }}
@@ -141,7 +142,8 @@
                                 {{
                                   trouverChiffre(
                                     surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1,
-                                    CATEGORIE_PRODUITS.FRUITS.libelle,
+                                    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
+                                      .FRUITS.libelle,
                                     "emploi_conventionnel"
                                   )
                                 }}
@@ -192,7 +194,8 @@
                                 {{
                                   trouverChiffre(
                                     surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1,
-                                    CATEGORIE_PRODUITS.CEREALES.libelle,
+                                    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
+                                      .CEREALES.libelle,
                                     "emploi_conventionnel"
                                   )
                                 }}
@@ -251,7 +254,8 @@
                                 {{
                                   trouverChiffre(
                                     surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1,
-                                    CATEGORIE_PRODUITS.ELEVAGE.libelle,
+                                    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
+                                      .ELEVAGE.libelle,
                                     "emploi_conventionnel"
                                   )
                                 }}
@@ -282,12 +286,16 @@
                       <tr style="height: 110px" class="animated fadeIn">
                         <td valign="middle" id="man_legumes">
                           <vizEmploi
-                            :couleur="CATEGORIE_PRODUITS.LEGUMES.couleur"
+                            :couleur="
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES
+                                .couleur
+                            "
                             :objetEmplois="
                               surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1
                             "
                             :categorieProduitLibelle="
-                              CATEGORIE_PRODUITS.LEGUMES.libelle
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES
+                                .libelle
                             "
                             v-if="surfaces_emplois"
                           />
@@ -296,12 +304,16 @@
                       <tr style="height: 110px" class="animated fadeIn">
                         <td valign="middle" id="man_fruits">
                           <vizEmploi
-                            :couleur="CATEGORIE_PRODUITS.FRUITS.couleur"
+                            :couleur="
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS
+                                .couleur
+                            "
                             :objetEmplois="
                               surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1
                             "
                             :categorieProduitLibelle="
-                              CATEGORIE_PRODUITS.FRUITS.libelle
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS
+                                .libelle
                             "
                             v-if="surfaces_emplois"
                           />
@@ -310,12 +322,16 @@
                       <tr style="height: 110px" class="animated fadeIn">
                         <td valign="middle" id="man_cereales">
                           <vizEmploi
-                            :couleur="CATEGORIE_PRODUITS.CEREALES.couleur"
+                            :couleur="
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES
+                                .couleur
+                            "
                             :objetEmplois="
                               surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1
                             "
                             :categorieProduitLibelle="
-                              CATEGORIE_PRODUITS.CEREALES.libelle
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES
+                                .libelle
                             "
                             v-if="surfaces_emplois"
                           />
@@ -324,12 +340,16 @@
                       <tr style="height: 110px" class="animated fadeIn">
                         <td valign="middle" id="man_elevage">
                           <vizEmploi
-                            :couleur="CATEGORIE_PRODUITS.ELEVAGE.couleur"
+                            :couleur="
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE
+                                .couleur
+                            "
                             :objetEmplois="
                               surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1
                             "
                             :categorieProduitLibelle="
-                              CATEGORIE_PRODUITS.ELEVAGE.libelle
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE
+                                .libelle
                             "
                             v-if="surfaces_emplois"
                           />
@@ -462,7 +482,7 @@ import resumeChoix from "./modal/resumeChoix.vue";
 import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
 import vizEmploi from "./viz/vizEmploi.vue";
 import { getSurfaceAMobiliser } from "@/plugins/getSurfacesNecessaires";
-import { CATEGORIE_PRODUITS } from "@/config/categorieProduits";
+import { CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER } from "@/config/categorieProduitsPotentielNourricier";
 import { trouverChiffre } from "@/plugins/utils";
 export default {
   components: {
@@ -475,7 +495,7 @@ export default {
     return {
       montrerClasse: "",
       surfaces_emplois: null,
-      CATEGORIE_PRODUITS,
+      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER,
       emploi_conventionnel: "emploi_conventionnel",
     };
   },

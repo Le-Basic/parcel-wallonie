@@ -6,7 +6,6 @@
       @fermerModal="fermerModal"
     ></modalDetail>
     <h3 class="text-center">Surface agricole à mobiliser</h3>
-    {{ this.$store.state.resultatSimulation.surfacesEmploisAMobiliser }}
     <div
       class="cadre-resultat resultat-ha animated flipInX delay-05s bg-vert-clair"
     >
@@ -82,13 +81,13 @@
                     id="pc1"
                     style="width: 65px; height: 65px"
                   >
-                    <!-- <jaugeChart
+                    <jaugeChart
                       :value="
                         this.$store.state.resultatSimulation
                           .surfacesEmploisAMobiliser[3].part_surface_a_mobiliser
                       "
                       couleur="#91C423"
-                    ></jaugeChart> -->
+                    ></jaugeChart>
                   </div>
                   <div class="result-type">
                     <span
@@ -133,13 +132,13 @@
                     id="pc2"
                     style="width: 65px; height: 65px"
                   >
-                    <!-- <jaugeChart
+                    <jaugeChart
                       :value="
                         this.$store.state.resultatSimulation
                           .surfacesEmploisAMobiliser[1].part_surface_a_mobiliser
                       "
                       couleur="#A261C0"
-                    ></jaugeChart> -->
+                    ></jaugeChart>
                   </div>
                   <div class="result-type">
                     <span
@@ -180,13 +179,13 @@
                     id="pc3"
                     style="width: 65px; height: 65px"
                   >
-                    <!-- <jaugeChart
+                    <jaugeChart
                       :value="
                         this.$store.state.resultatSimulation
                           .surfacesEmploisAMobiliser[2].part_surface_a_mobiliser
                       "
                       couleur="#F9B233"
-                    ></jaugeChart> -->
+                    ></jaugeChart>
                   </div>
                   <div class="result-type">
                     <span
@@ -229,13 +228,13 @@
                     id="pc4"
                     style="width: 65px; height: 65px"
                   >
-                    <!-- <jaugeChart
+                    <jaugeChart
                       :value="
                         this.$store.state.resultatSimulation
                           .surfacesEmploisAMobiliser[0].part_surface_a_mobiliser
                       "
                       couleur="#B57A60"
-                    ></jaugeChart> -->
+                    ></jaugeChart>
                   </div>
                   <div class="result-type">
                     <span
@@ -279,7 +278,9 @@
           id="surface_act8"
         >
           <div class="odometer-inside">
-            {{ this.occupationActuelleTotale }}
+            {{
+              Math.round(this.$store.state.resultatSimulation.surfacesActuelles)
+            }}
           </div>
         </div>
         <div class="hectares animated fadeIn delay-1-5s">
@@ -313,7 +314,9 @@
           class="auto-style1 w-100"
           id="ProdCategoryresultsTable"
           border="1"
-          v-if="this.occupationActuelle"
+          v-if="
+            this.$store.state.resultatSimulation.surfacesActuellesParcelNiveau1
+          "
         >
           <thead></thead>
           <tbody>
@@ -326,9 +329,28 @@
                     style="width: 65px; height: 65px"
                   >
                     <jaugeChart
-                      v-if="this.surfacesActuelles[0]"
-                      :value="this.surfacesActuelles[0].part"
-                      :couleur="this.surfacesActuelles[0].color"
+                      :value="
+                        Math.round(
+                          trouverChiffre(
+                            this.$store.state.resultatSimulation
+                              .surfacesActuellesParcelNiveau1,
+                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES
+                              .libelle,
+                            'part_surfaces_actuelles',
+                            'libelle_parcel_produit_actuel'
+                          ) * 100
+                        )
+                      "
+                      :couleur="
+                        trouverChiffre(
+                          this.$store.state.resultatSimulation
+                            .surfacesActuellesParcelNiveau1,
+                          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES
+                            .libelle,
+                          'couleur',
+                          'libelle_parcel_produit_actuel'
+                        )
+                      "
                     ></jaugeChart>
                   </div>
                   <div class="result-type">
@@ -343,7 +365,14 @@
                     <div class="hectares" v-if="this.occupationActuelle[0]">
                       {{
                         formatterSurfacesNecessaires(
-                          this.occupationActuelle[0]["surface"]
+                          trouverChiffre(
+                            this.$store.state.resultatSimulation
+                              .surfacesActuellesParcelNiveau1,
+                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES
+                              .libelle,
+                            "sau_ha",
+                            "libelle_parcel_produit_actuel"
+                          )
                         )
                       }}
                     </div>
@@ -360,9 +389,27 @@
                     style="width: 65px; height: 65px"
                   >
                     <jaugeChart
-                      v-if="this.surfacesActuelles[1]"
-                      :value="this.surfacesActuelles[1].part"
-                      :couleur="this.surfacesActuelles[1].color"
+                      :value="
+                        Math.round(
+                          trouverChiffre(
+                            this.$store.state.resultatSimulation
+                              .surfacesActuellesParcelNiveau1,
+                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE
+                              .libelle,
+                            'part_surfaces_actuelles',
+                            'libelle_parcel_produit_actuel'
+                          ) * 100
+                        )
+                      "
+                      :couleur="
+                        trouverChiffre(
+                          this.$store.state.resultatSimulation
+                            .surfacesActuellesParcelNiveau1,
+                          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE.libelle,
+                          'couleur',
+                          'libelle_parcel_produit_actuel'
+                        )
+                      "
                     ></jaugeChart>
                   </div>
                   <div class="result-type">
@@ -377,7 +424,14 @@
                     <div class="hectares" v-if="this.occupationActuelle[1]">
                       {{
                         formatterSurfacesNecessaires(
-                          this.occupationActuelle[1]["surface"]
+                          trouverChiffre(
+                            this.$store.state.resultatSimulation
+                              .surfacesActuellesParcelNiveau1,
+                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE
+                              .libelle,
+                            "sau_ha",
+                            "libelle_parcel_produit_actuel"
+                          )
                         )
                       }}
                     </div>
@@ -394,9 +448,27 @@
                     style="width: 65px; height: 65px"
                   >
                     <jaugeChart
-                      v-if="this.surfacesActuelles[3]"
-                      :value="this.surfacesActuelles[3].part"
-                      :couleur="this.surfacesActuelles[3].color"
+                      :value="
+                        Math.round(
+                          trouverChiffre(
+                            this.$store.state.resultatSimulation
+                              .surfacesActuellesParcelNiveau1,
+                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS
+                              .libelle,
+                            'part_surfaces_actuelles',
+                            'libelle_parcel_produit_actuel'
+                          ) * 100
+                        )
+                      "
+                      :couleur="
+                        trouverChiffre(
+                          this.$store.state.resultatSimulation
+                            .surfacesActuellesParcelNiveau1,
+                          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS.libelle,
+                          'couleur',
+                          'libelle_parcel_produit_actuel'
+                        )
+                      "
                     ></jaugeChart>
                   </div>
                   <div class="result-type">
@@ -409,7 +481,14 @@
                     <div class="hectares" v-if="this.occupationActuelle[3]">
                       {{
                         formatterSurfacesNecessaires(
-                          this.occupationActuelle[3]["surface"]
+                          trouverChiffre(
+                            this.$store.state.resultatSimulation
+                              .surfacesActuellesParcelNiveau1,
+                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS
+                              .libelle,
+                            "sau_ha",
+                            "libelle_parcel_produit_actuel"
+                          )
                         )
                       }}
                     </div>
@@ -426,9 +505,27 @@
                     style="width: 65px; height: 65px"
                   >
                     <jaugeChart
-                      v-if="this.surfacesActuelles[4]"
-                      :value="this.surfacesActuelles[4].part"
-                      :couleur="this.surfacesActuelles[4].color"
+                      :value="
+                        Math.round(
+                          trouverChiffre(
+                            this.$store.state.resultatSimulation
+                              .surfacesActuellesParcelNiveau1,
+                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.LEGUMES
+                              .libelle,
+                            'part_surfaces_actuelles',
+                            'libelle_parcel_produit_actuel'
+                          ) * 100
+                        )
+                      "
+                      :couleur="
+                        trouverChiffre(
+                          this.$store.state.resultatSimulation
+                            .surfacesActuellesParcelNiveau1,
+                          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.LEGUMES.libelle,
+                          'couleur',
+                          'libelle_parcel_produit_actuel'
+                        )
+                      "
                     ></jaugeChart>
                   </div>
                   <div class="result-type">
@@ -441,7 +538,14 @@
                     <div class="hectares" v-if="this.occupationActuelle[4]">
                       {{
                         formatterSurfacesNecessaires(
-                          this.occupationActuelle[4]["surface"]
+                          trouverChiffre(
+                            this.$store.state.resultatSimulation
+                              .surfacesActuellesParcelNiveau1,
+                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.LEGUMES
+                              .libelle,
+                            "sau_ha",
+                            "libelle_parcel_produit_actuel"
+                          )
                         )
                       }}
                     </div>
@@ -459,8 +563,28 @@
                   >
                     <jaugeChart
                       v-if="this.surfacesActuelles[5]"
-                      :value="this.surfacesActuelles[5].part"
-                      :couleur="this.surfacesActuelles[5].color"
+                      :value="
+                        Math.round(
+                          trouverChiffre(
+                            this.$store.state.resultatSimulation
+                              .surfacesActuellesParcelNiveau1,
+                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.JACHERES
+                              .libelle,
+                            'part_surfaces_actuelles',
+                            'libelle_parcel_produit_actuel'
+                          ) * 100
+                        )
+                      "
+                      :couleur="
+                        trouverChiffre(
+                          this.$store.state.resultatSimulation
+                            .surfacesActuellesParcelNiveau1,
+                          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.JACHERES
+                            .libelle,
+                          'couleur',
+                          'libelle_parcel_produit_actuel'
+                        )
+                      "
                     ></jaugeChart>
                   </div>
                   <div class="result-type">
@@ -471,7 +595,14 @@
                     <div class="hectares" v-if="this.occupationActuelle[5]">
                       {{
                         formatterSurfacesNecessaires(
-                          this.occupationActuelle[5]["surface"]
+                          trouverChiffre(
+                            this.$store.state.resultatSimulation
+                              .surfacesActuellesParcelNiveau1,
+                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.JACHERES
+                              .libelle,
+                            "sau_ha",
+                            "libelle_parcel_produit_actuel"
+                          )
                         )
                       }}
                     </div>
@@ -1031,6 +1162,8 @@
 
 <script>
 import { Treemap } from "d3plus-hierarchy";
+import { CATEGORIE_PRODUITS_SURFACES_ACTUELLES } from "@/config/categorieProduitsActuel";
+import { trouverChiffre } from "@/plugins/utils";
 import { pushDataViz } from "@/plugins/pushDataViz";
 import modalDetail from "../modal/modalDetail.vue";
 import jaugeChart from "@/components/jaugeChart.vue";
@@ -1043,6 +1176,7 @@ export default {
   },
   data() {
     return {
+      CATEGORIE_PRODUITS_SURFACES_ACTUELLES,
       data: {
         potentielNourricier: [],
       },
@@ -1052,6 +1186,7 @@ export default {
     };
   },
   methods: {
+    trouverChiffre,
     ouvrirModal(id) {
       console.log(id);
       this.modalDetails = id;
@@ -1145,10 +1280,13 @@ export default {
 
           new Treemap()
             .select("#viz2")
-            .data(this.occupationActuelle)
-            .groupBy("name")
-            .sum("surface")
-            .color("color")
+            .data(
+              this.$store.state.resultatSimulation
+                .surfacesActuellesParcelNiveau1
+            )
+            .groupBy("libelle_parcel_produit_actuel")
+            .sum("sau_ha")
+            .color("couleur")
             .height(500)
             .legend(0)
             .tooltip({

@@ -114,13 +114,19 @@ export function calculerSurfacesEtEmploisAMobiliser(
       return item.sau_ha;
     })
     .reduce((somme, surface) => somme + surface, 0);
+  const surfaces_actuelles_parcel_niveau_1 = surfaceActuelleResponseApi.map(
+    (item) => ({
+      ...item,
+      part_surfaces_actuelles: item.sau_ha / surfaces_actuelles,
+    })
+  );
   return {
     surfaces_a_mobiliser: surfaces_a_mobiliser,
     emplois_a_mobiliser: emplois_a_mobiliser,
     surfaces_emplois_a_mobiliser_parcel_niveau_1:
       surfaces_emplois_a_mobiliser_parcel_niveau_1,
     surfaces_actuelles: surfaces_actuelles,
-    surfaces_actuelles_parcel_niveau_1: surfaceActuelleResponseApi,
+    surfaces_actuelles_parcel_niveau_1: surfaces_actuelles_parcel_niveau_1,
   };
 }
 
