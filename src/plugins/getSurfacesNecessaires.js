@@ -91,6 +91,7 @@ export function calculerSurfacesEtEmploisAMobiliser(
         emploi_conventionnel: 0,
         emploi_bio: 0,
         part_surfaces_a_mobiliser: 0,
+        part_emplois_a_mobiliser: 0,
       };
       surfaces_emplois_a_mobiliser_parcel_niveau_1.push(
         res[valeur.libelle_parcel_niveau_1]
@@ -105,6 +106,8 @@ export function calculerSurfacesEtEmploisAMobiliser(
     res[valeur.libelle_parcel_niveau_1].emploi_bio += valeur.emploi_bio;
     res[valeur.libelle_parcel_niveau_1].part_surfaces_a_mobiliser +=
       valeur.surface_necessaire_conventionnel / surfaces_a_mobiliser;
+    res[valeur.libelle_parcel_niveau_1].part_emplois_a_mobiliser +=
+      valeur.emploi_conventionnel / emplois_a_mobiliser;
     return res;
   }, {});
 

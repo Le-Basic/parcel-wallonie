@@ -15,7 +15,6 @@
             Estimation des effets associés :
           </div>
           a
-          <pre> {{ this.$store.state.resultatSimulation }}</pre>
           <div class="resultats-generaux row">
             <div
               class="col-12 col-sm-12 col-lg-6 mb-2"
