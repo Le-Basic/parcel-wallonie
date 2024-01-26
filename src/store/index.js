@@ -1,7 +1,10 @@
 import { createStore } from "vuex";
 import VuexPersistence from "vuex-persist";
 import { regimeListe } from "@/config/regimeListe.js";
-import { fetchSurfaceNecessaire } from "@/plugins/getSurfacesNecessaires";
+import {
+  fetchSurfaceNecessaire,
+  fetchSurfacesActuelles,
+} from "@/plugins/getSurfacesNecessaires";
 import { calculerResultatSimulation } from "../plugins/calculResultatSimulation";
 const getDefaultState = () => {
   return {
@@ -20,6 +23,8 @@ const getDefaultState = () => {
       surfaceAMobiliser: 0,
       emploisAMobiliser: 0,
       surfacesEmploisAMobiliser: 0,
+      surfacesActuelles: 0,
+      surfacesActuellesParcelNiveau1: [],
     },
   };
 };
@@ -127,6 +132,8 @@ export default createStore({
     async actionChoisirRegimeAlimentaire({ commit }, regimeAlimentaire) {
       commit("mutationRegimeAlimentaire", regimeAlimentaire);
       const url = window.apiURL + "parcel/belgique/surfaces_necessaires";
+      const actuelles_url =
+        window.apiURL + "parcel/belgique/surfaces_actuels_produit";
       // TODO : mun91114 en dur ici, mais on pourrait déjà le remonter au niveau du défault state et du mutateur
       const codesTerritoireParcel = ["mun91114"];
       var surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
@@ -134,8 +141,13 @@ export default createStore({
         codesTerritoireParcel,
         regimeAlimentaire.id
       );
+      var surfaceActuelleResponseApi = await fetchSurfacesActuelles(
+        actuelles_url,
+        codesTerritoireParcel
+      );
       let resultatSimulation = calculerResultatSimulation(
-        surfaceNecessaireResponseApi
+        surfaceNecessaireResponseApi,
+        surfaceActuelleResponseApi
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },

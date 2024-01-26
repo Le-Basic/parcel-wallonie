@@ -6,7 +6,7 @@
       @fermerModal="fermerModal"
     ></modalDetail>
     <h3 class="text-center">Surface agricole à mobiliser</h3>
-
+    {{ this.$store.state.resultatSimulation.surfacesEmploisAMobiliser }}
     <div
       class="cadre-resultat resultat-ha animated flipInX delay-05s bg-vert-clair"
     >
@@ -15,8 +15,11 @@
           class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_potentiel"
           id="surface_potentiel6"
         >
-          <div class="odometer-inside" v-if="surfaces_a_mobiliser">
-            {{ this.surfaces_a_mobiliser["surfaces_a_mobiliser"] }}
+          <div
+            class="odometer-inside"
+            v-if="this.$store.state.resultatSimulation.surfaceAMobiliser"
+          >
+            {{ this.$store.state.resultatSimulation.surfaceAMobiliser }}
           </div>
         </div>
         <div class="hectares animated fadeIn delay-1-5s">
@@ -61,7 +64,7 @@
           class="auto-style1 w-100"
           id="CategoryresultsTable"
           border="1"
-          v-if="surfaces_a_mobiliser"
+          v-if="this.$store.state.resultatSimulation.surfacesEmploisAMobiliser"
         >
           <thead></thead>
           <tbody>
@@ -79,13 +82,13 @@
                     id="pc1"
                     style="width: 65px; height: 65px"
                   >
-                    <jaugeChart
+                    <!-- <jaugeChart
                       :value="
-                        surfaces_emplois_a_mobiliser_parcel_niveau_1[3]
-                          .part_surface_a_mobiliser
+                        this.$store.state.resultatSimulation
+                          .surfacesEmploisAMobiliser[3].part_surface_a_mobiliser
                       "
                       couleur="#91C423"
-                    ></jaugeChart>
+                    ></jaugeChart> -->
                   </div>
                   <div class="result-type">
                     <span
@@ -98,9 +101,9 @@
                     <div class="hectares">
                       {{
                         formatterSurfacesNecessaires(
-                          surfaces_a_mobiliser[
-                            "surfaces_emplois_a_mobiliser_parcel_niveau_1"
-                          ][3].surface_necessaire_conventionnel
+                          this.$store.state.resultatSimulation
+                            .surfacesEmploisAMobiliser[3]
+                            .surface_necessaire_conventionnel
                         )
                       }}
                     </div>
@@ -130,13 +133,13 @@
                     id="pc2"
                     style="width: 65px; height: 65px"
                   >
-                    <jaugeChart
+                    <!-- <jaugeChart
                       :value="
-                        surfaces_emplois_a_mobiliser_parcel_niveau_1[1]
-                          .part_surface_a_mobiliser
+                        this.$store.state.resultatSimulation
+                          .surfacesEmploisAMobiliser[1].part_surface_a_mobiliser
                       "
                       couleur="#A261C0"
-                    ></jaugeChart>
+                    ></jaugeChart> -->
                   </div>
                   <div class="result-type">
                     <span
@@ -148,9 +151,9 @@
                     <div class="hectares">
                       {{
                         formatterSurfacesNecessaires(
-                          surfaces_a_mobiliser[
-                            "surfaces_emplois_a_mobiliser_parcel_niveau_1"
-                          ][1].surface_necessaire_conventionnel
+                          this.$store.state.resultatSimulation
+                            .surfacesEmploisAMobiliser[1]
+                            .surface_necessaire_conventionnel
                         )
                       }}
                     </div>
@@ -177,13 +180,13 @@
                     id="pc3"
                     style="width: 65px; height: 65px"
                   >
-                    <jaugeChart
+                    <!-- <jaugeChart
                       :value="
-                        surfaces_emplois_a_mobiliser_parcel_niveau_1[2]
-                          .part_surface_a_mobiliser
+                        this.$store.state.resultatSimulation
+                          .surfacesEmploisAMobiliser[2].part_surface_a_mobiliser
                       "
                       couleur="#F9B233"
-                    ></jaugeChart>
+                    ></jaugeChart> -->
                   </div>
                   <div class="result-type">
                     <span
@@ -197,9 +200,9 @@
                     <div class="hectares">
                       {{
                         formatterSurfacesNecessaires(
-                          surfaces_a_mobiliser[
-                            "surfaces_emplois_a_mobiliser_parcel_niveau_1"
-                          ][2].surface_necessaire_conventionnel
+                          this.$store.state.resultatSimulation
+                            .surfacesEmploisAMobiliser[2]
+                            .surface_necessaire_conventionnel
                         )
                       }}
                     </div>
@@ -226,13 +229,13 @@
                     id="pc4"
                     style="width: 65px; height: 65px"
                   >
-                    <jaugeChart
+                    <!-- <jaugeChart
                       :value="
-                        surfaces_emplois_a_mobiliser_parcel_niveau_1[0]
-                          .part_surface_a_mobiliser
+                        this.$store.state.resultatSimulation
+                          .surfacesEmploisAMobiliser[0].part_surface_a_mobiliser
                       "
                       couleur="#B57A60"
-                    ></jaugeChart>
+                    ></jaugeChart> -->
                   </div>
                   <div class="result-type">
                     <span
@@ -244,9 +247,7 @@
                     <div class="hectares">
                       {{
                         formatterSurfacesNecessaires(
-                          surfaces_a_mobiliser[
-                            "surfaces_emplois_a_mobiliser_parcel_niveau_1"
-                          ].find(
+                          this.$store.state.resultatSimulation.surfacesEmploisAMobiliser.find(
                             (item) => item.libelle_parcel_niveau_1 == "Elevage"
                           ).surface_necessaire_conventionnel
                         )
@@ -1030,7 +1031,6 @@
 
 <script>
 import { Treemap } from "d3plus-hierarchy";
-import { getSurfaceAMobiliser } from "@/plugins/getSurfacesNecessaires";
 import { pushDataViz } from "@/plugins/pushDataViz";
 import modalDetail from "../modal/modalDetail.vue";
 import jaugeChart from "@/components/jaugeChart.vue";
@@ -1048,7 +1048,6 @@ export default {
       },
       occupationActuelle: [],
       surfaces_emplois_a_mobiliser_parcel_niveau_1: [],
-      surfaces_a_mobiliser: null,
       modalDetails: "",
     };
   },
@@ -1177,13 +1176,8 @@ export default {
   },
 
   async mounted() {
+    pushDataViz(this.$store.state.resultatSimulation.surfacesEmploisAMobiliser);
     this.recupererDonnees();
-    await getSurfaceAMobiliser()
-      .then((res) => (this.surfaces_a_mobiliser = res))
-      .then((res) => {
-        pushDataViz(res["surfaces_emplois_a_mobiliser_parcel_niveau_1"]);
-      });
-    this.test = await getSurfaceAMobiliser();
   },
   computed: {
     surfaces_emplois_a_mobiliser_parcel_niveau_1_data() {
@@ -1203,23 +1197,6 @@ export default {
           ),
         };
       });
-    },
-  },
-  watch: {
-    surfaces_a_mobiliser(nouvellevaleur) {
-      if (nouvellevaleur) {
-        this.surfaces_emplois_a_mobiliser_parcel_niveau_1 = nouvellevaleur[
-          "surfaces_emplois_a_mobiliser_parcel_niveau_1"
-        ].map((item) => {
-          return {
-            ...item,
-            part_surface_a_mobiliser: Math.round(
-              (item.surface_necessaire_conventionnel * 100) /
-                nouvellevaleur["surfaces_a_mobiliser"]
-            ),
-          };
-        });
-      }
     },
   },
 };
