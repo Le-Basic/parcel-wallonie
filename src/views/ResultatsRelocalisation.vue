@@ -37,7 +37,9 @@
                         class="nbr-ha animated flipInX delay-1s odometer"
                         id="surface6"
                       >
-                        {{ surfaces_a_mobiliser }}
+                        {{
+                          this.$store.state.resultatSimulation.surfaceAMobiliser
+                        }}
                       </div>
                       <div class="hectares">hectares</div>
                     </div>
@@ -177,10 +179,8 @@
 import Nav from "@/components/Nav/BarreNavigation.vue";
 import resumeChoix from "./modal/resumeChoix.vue";
 import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
-import {
-  getSurfaceActuelle,
-  getSurfaceAMobiliser,
-} from "@/plugins/getSurfacesNecessaires";
+import { fetchSurfaceActuelle } from "@/plugins/getSurfacesNecessaires";
+
 import { getImpacts } from "@/plugins/getImpacts";
 import { IDS_IMPACTS } from "@/config/ImpactIds";
 
@@ -189,10 +189,9 @@ export default {
   data() {
     return {
       donnees: {},
-      surfaces_a_mobiliser: 0,
+      // FIX surface_actuelle doit être aussi stockée dans le store et nulle part ailleurs
       surface_actuelle: 0,
       montrerClasse: "",
-      potentiel_nourricier: 0,
       impacts: [],
       IDS_IMPACTS,
     };
@@ -200,22 +199,30 @@ export default {
   methods: {
     montrerModalAffiner() {
       this.montrerClasse = "show";
-      console.log("montrerModalAffinage");
     },
     fermerModal() {
       this.montrerClasse = "";
     },
   },
   async mounted() {
-    this.surfaces_a_mobiliser = Math.round(
-      await getSurfaceAMobiliser().then((res) => res["surfaces_a_mobiliser"])
+    this.surface_actuelle = await fetchSurfaceActuelle();
+    this.$store.dispatch(
+      "actionChoisirRegimeAlimentaire",
+      this.$store.state.regime_alimentaire
     );
-    this.surface_actuelle = await getSurfaceActuelle();
     this.potentiel_nourricier = Math.round(
-      (this.surface_actuelle["sau_ha"] * 100) / this.surfaces_a_mobiliser
+      (this.surface_actuelle["sau_ha"] * 100) /
+        this.$store.state.resultatSimulation.surfaceAMobiliser
     );
-    console.log(this.potentiel_nourricier);
     this.impacts = await getImpacts();
+  },
+  computed: {
+    potentiel_nourricier() {
+      return Math.round(
+        (this.surface_actuelle["sau_ha"] * 100) /
+          this.$store.state.resultatSimulation.surfaceAMobiliser
+      );
+    },
   },
 };
 </script>

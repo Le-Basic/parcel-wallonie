@@ -454,7 +454,7 @@
 
 <script>
 import {
-  getSurfaceActuelle,
+  fetchSurfaceActuelle,
   getSurfaceAMobiliser,
 } from "@/plugins/getSurfacesNecessaires";
 
@@ -583,7 +583,7 @@ export default {
     this.data.surfaces_a_mobiliser = Math.round(
       await getSurfaceAMobiliser().then((res) => res["surfaces_a_mobiliser"])
     );
-    const surface_actuelle = await getSurfaceActuelle();
+    const surface_actuelle = await fetchSurfaceActuelle();
     console.log("ACTUELLE", surface_actuelle);
     this.data.surface = surface_actuelle["surface_ha"];
     this.data.sau = surface_actuelle["sau_ha"];
