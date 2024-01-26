@@ -273,8 +273,8 @@
                                   ><span id="" v-if="impacts.length > 0">{{
                                     Math.round(
                                       impacts.find(
-                                        (el) => el.ID_EcoImpact_Indicator == 1
-                                      )["EcoImpact_Indicator_Value_Hectare"]
+                                        (el) => el.ID_EcoImpact_Indicator == 2
+                                      )["EcoImpact_Indicator_Value_Person"]
                                     )
                                   }}</span
                                   >%
@@ -301,7 +301,7 @@
                                     >{{
                                       Math.round(
                                         impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 1
+                                          (el) => el.ID_EcoImpact_Indicator == 2
                                         )["EcoImpact_Indicator_Value_Hectare"]
                                       )
                                     }}</span
@@ -360,8 +360,8 @@
                                     >{{
                                       Math.round(
                                         impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 1
-                                        )["EcoImpact_Indicator_Value_Hectare"]
+                                          (el) => el.ID_EcoImpact_Indicator == 3
+                                        )["EcoImpact_Indicator_Value_Person"]
                                       )
                                     }}</span
                                   >%
@@ -382,7 +382,7 @@
                                   ><span id="" v-if="impacts.length > 0">{{
                                     Math.round(
                                       impacts.find(
-                                        (el) => el.ID_EcoImpact_Indicator == 1
+                                        (el) => el.ID_EcoImpact_Indicator == 3
                                       )["EcoImpact_Indicator_Value_Hectare"]
                                     )
                                   }}</span
@@ -445,8 +445,8 @@
                                     >{{
                                       Math.round(
                                         impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 1
-                                        )["EcoImpact_Indicator_Value_Hectare"]
+                                          (el) => el.ID_EcoImpact_Indicator == 4
+                                        )["EcoImpact_Indicator_Value_Person"]
                                       )
                                     }}</span
                                   >%
@@ -473,7 +473,7 @@
                                     >{{
                                       Math.round(
                                         impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 1
+                                          (el) => el.ID_EcoImpact_Indicator == 4
                                         )["EcoImpact_Indicator_Value_Hectare"]
                                       )
                                     }}</span
@@ -531,8 +531,8 @@
                                     >{{
                                       Math.round(
                                         impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 1
-                                        )["EcoImpact_Indicator_Value_Hectare"]
+                                          (el) => el.ID_EcoImpact_Indicator == 5
+                                        )["EcoImpact_Indicator_Value_Person"]
                                       )
                                     }}</span
                                   >%
@@ -560,7 +560,7 @@
                                     >{{
                                       Math.round(
                                         impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 1
+                                          (el) => el.ID_EcoImpact_Indicator == 5
                                         )["EcoImpact_Indicator_Value_Hectare"]
                                       )
                                     }}</span
@@ -622,8 +622,8 @@
                                     >{{
                                       Math.round(
                                         impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 1
-                                        )["EcoImpact_Indicator_Value_Hectare"]
+                                          (el) => el.ID_EcoImpact_Indicator == 6
+                                        )["EcoImpact_Indicator_Value_Person"]
                                       )
                                     }}</span
                                   >%
@@ -644,7 +644,7 @@
                                   ><span id="" v-if="impacts.length > 0">{{
                                     Math.round(
                                       impacts.find(
-                                        (el) => el.ID_EcoImpact_Indicator == 1
+                                        (el) => el.ID_EcoImpact_Indicator == 6
                                       )["EcoImpact_Indicator_Value_Hectare"]
                                     )
                                   }}</span
@@ -696,8 +696,8 @@
                                     >{{
                                       Math.round(
                                         impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 1
-                                        )["EcoImpact_Indicator_Value_Hectare"]
+                                          (el) => el.ID_EcoImpact_Indicator == 7
+                                        )["EcoImpact_Indicator_Value_Person"]
                                       )
                                     }}</span
                                   >%
@@ -724,7 +724,7 @@
                                     >{{
                                       Math.round(
                                         impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 1
+                                          (el) => el.ID_EcoImpact_Indicator == 7
                                         )["EcoImpact_Indicator_Value_Hectare"]
                                       )
                                     }}</span

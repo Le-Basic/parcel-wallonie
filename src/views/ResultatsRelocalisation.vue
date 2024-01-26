@@ -37,7 +37,9 @@
                         class="nbr-ha animated flipInX delay-1s odometer"
                         id="surface6"
                       >
-                        {{ surfaces_a_mobiliser }}
+                        {{
+                          this.$store.state.resultatSimulation.surfaceAMobiliser
+                        }}
                       </div>
                       <div class="hectares">hectares</div>
                     </div>
@@ -110,8 +112,16 @@
                       <div
                         class="nbr-ha animated flipInX delay-2s odometer2"
                         id="gaz_effet_serre3"
+                        v-if="impacts.length > 0"
                       >
-                        -
+                        {{
+                          Math.round(
+                            impacts.find(
+                              (el) =>
+                                el.ID_EcoImpact_Indicator == IDS_IMPACTS.GES
+                            )["EcoImpact_Indicator_Value_Hectare"]
+                          )
+                        }}
                       </div>
                       <span class="impact-pourcent">%</span>
                     </div>
@@ -170,16 +180,19 @@ import Nav from "@/components/Nav/BarreNavigation.vue";
 import resumeChoix from "./modal/resumeChoix.vue";
 import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
 import { fetchSurfaceActuelle } from "@/plugins/getSurfacesNecessaires";
+import { getImpacts } from "@/plugins/getImpacts";
+import { IDS_IMPACTS } from "@/config/ImpactIds";
 
 export default {
   components: { resumeChoix, Nav, ModalAffinerChoix },
   data() {
     return {
       donnees: {},
-      surfaces_a_mobiliser: 0,
+      // FIX surface_actuelle doit être aussi stockée dans le store et nulle part ailleurs
       surface_actuelle: 0,
       montrerClasse: "",
-      potentiel_nourricier: 0,
+      impacts: [],
+      IDS_IMPACTS,
     };
   },
   methods: {
@@ -197,16 +210,17 @@ export default {
       this.$store.state.regime_alimentaire
     );
     this.potentiel_nourricier = Math.round(
-      (this.surface_actuelle["sau_ha"] * 100) / this.surfaces_a_mobiliser
+      (this.surface_actuelle["sau_ha"] * 100) /
+        this.$store.state.resultatSimulation.surfaceAMobiliser
     );
+    this.impacts = await getImpacts();
   },
-  watch: {
-    // TODO : est ce qu'il n'y a pas plus simple que d'utiliser un watch ? (on peut pas s'en sortir avec des ref et des computedProps ?)
-    "$store.state.resultatSimulation": {
-      handler(resultatSimulation) {
-        this.surfaces_a_mobiliser = resultatSimulation.surfaceAMobiliser;
-      },
-      immediate: true,
+  computed: {
+    potentiel_nourricier() {
+      return Math.round(
+        (this.surface_actuelle["sau_ha"] * 100) /
+          this.$store.state.resultatSimulation.surfaceAMobiliser
+      );
     },
   },
 };
