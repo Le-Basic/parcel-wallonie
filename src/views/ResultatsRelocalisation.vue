@@ -110,8 +110,16 @@
                       <div
                         class="nbr-ha animated flipInX delay-2s odometer2"
                         id="gaz_effet_serre3"
+                        v-if="impacts.length > 0"
                       >
-                        -
+                        {{
+                          Math.round(
+                            impacts.find(
+                              (el) =>
+                                el.ID_EcoImpact_Indicator == IDS_IMPACTS.GES
+                            )["EcoImpact_Indicator_Value_Hectare"]
+                          )
+                        }}
                       </div>
                       <span class="impact-pourcent">%</span>
                     </div>
@@ -173,6 +181,8 @@ import {
   getSurfaceActuelle,
   getSurfaceAMobiliser,
 } from "@/plugins/getSurfacesNecessaires";
+import { getImpacts } from "@/plugins/getImpacts";
+import { IDS_IMPACTS } from "@/config/ImpactIds";
 
 export default {
   components: { resumeChoix, Nav, ModalAffinerChoix },
@@ -183,6 +193,8 @@ export default {
       surface_actuelle: 0,
       montrerClasse: "",
       potentiel_nourricier: 0,
+      impacts: [],
+      IDS_IMPACTS,
     };
   },
   methods: {
@@ -203,6 +215,7 @@ export default {
       (this.surface_actuelle["sau_ha"] * 100) / this.surfaces_a_mobiliser
     );
     console.log(this.potentiel_nourricier);
+    this.impacts = await getImpacts();
   },
 };
 </script>
