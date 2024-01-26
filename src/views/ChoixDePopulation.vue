@@ -16,7 +16,7 @@
               <router-link
                 to="/3-type-dalimentation"
                 id="toute"
-                @click="choisirPopulation('toute')"
+                @click="this.$store.state.population.type = 'toute'"
                 ><button type="button" class="btn btn-big-light">
                   Toute la population du territoire
                 </button></router-link
@@ -34,15 +34,16 @@
               >
             </div>
             <div class="animated fadeInUp delay-1-5s">
-              <a
-                href="#secondPage"
-                id="groupe"
-                onclick="majitem('population','groupe');"
+              <a href="#secondPage" id="groupe"
                 ><button
                   type="button"
                   class="btn btn-big-light"
                   data-toggle="modal"
                   data-target="#modal-population-groupe"
+                  @click="
+                    modalActive = true;
+                    this.$store.state.population.type = 'groupe';
+                  "
                 >
                   ou un groupe de personnes
                 </button></a
@@ -62,110 +63,28 @@
     <nav id="asy-sidebar" class="">
       <!-- <?php include '../partials/menu-affiner-2modales.php'; ?> -->
     </nav>
+    <modalGroupedePersonne @close="fermerModale" v-if="modalActive" />
   </div>
   <!-- Modal s-->
-  <div
-    class="modal fade modal-simple"
-    id="modal-population-groupe"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content modal-repart-cat-detail">
-        <div class="modal-header d-flex align-items-center">
-          <div>
-            <span class="icon-ico_navigation_population icon vert-clair"></span>
-          </div>
-          <div class="">
-            <div class="titre-categorie">
-              Définissez votre groupe de personne
-            </div>
-          </div>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span class="icon-ico_fermer icon"></span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="bloc">
-            <span class="nombres-ajout pop">
-              <div class="handle-counter" id="handleCounterenfants">
-                <span class="btn-moins counter-minus">-</span>
-                <input
-                  type="text"
-                  class="nombre groupe"
-                  name="nbenfants"
-                  id="nbenfants"
-                  value="150"
-                />
-                <span class="btn-plus counter-plus">+</span
-                ><span class="labelnb"> Enfants (0-17 ans)</span>
-              </div>
-            </span>
-          </div>
-          <div class="bloc">
-            <span class="nombres-ajout pop">
-              <div class="handle-counter" id="handleCounteradultes">
-                <span class="btn-moins counter-minus">-</span>
-                <input
-                  type="text"
-                  class="nombre groupe"
-                  name="nbadultes"
-                  id="nbadultes"
-                  value="150"
-                />
-                <span class="btn-plus counter-plus">+</span
-                ><span class="labelnb"> Adultes (18-64 ans)</span>
-              </div>
-            </span>
-          </div>
-          <div class="bloc">
-            <span class="nombres-ajout pop">
-              <div class="handle-counter" id="handleCounterseniors">
-                <span class="btn-moins counter-minus">-</span>
-                <input
-                  type="text"
-                  class="nombre groupe"
-                  name="nbseniors"
-                  id="nbseniors"
-                  value="150"
-                />
-                <span class="btn-plus counter-plus">+</span
-                ><span class="labelnb"> Personnes âgées (65+ ans)</span>
-              </div>
-            </span>
-          </div>
-          <router-link to="/3-type-dalimentation"
-            ><button
-              type="button"
-              class="btn btn-principal"
-              onclick="majitem('nbenfants',$('#nbenfants').val());majitem('nbadultes',$('#nbadultes').val());majitem('nbseniors',$('#nbseniors').val());"
-            >
-              Valider
-            </button></router-link
-          >
-        </div>
-      </div>
-      <!-- modal body-->
-    </div>
-    <!-- modal-content -->
-  </div>
+
+  <!-- modal-content -->
   <!-- modal-dialog -->
 </template>
 
 <script>
 import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
 import resumeChoix from "./modal/resumeChoix.vue";
+import modalGroupedePersonne from "./modal/modalGroupedePersonne.vue";
 export default {
   components: {
     BarreNavigation,
+    modalGroupedePersonne,
     resumeChoix,
+  },
+  data() {
+    return {
+      modalActive: false,
+    };
   },
   methods: {
     choisirPopulation(item) {
@@ -173,6 +92,9 @@ export default {
       this.list_geo = [];
       this.$store.commit("choisirPopulation", item);
       console.log("store", this.$store.state);
+    },
+    fermerModale() {
+      this.modalActive = false;
     },
   },
 };

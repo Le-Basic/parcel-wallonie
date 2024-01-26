@@ -5,7 +5,12 @@ const getDefaultState = () => {
   return {
     regimeListe: regimeListe,
     geoList: [],
-    population: null,
+    population: {
+      type: null,
+      nbEnfants: 150,
+      nbAdultes: 150,
+      nbSeniors: 150,
+    },
     part_relocalisee: 100,
     part_bio: null,
     regime_alimentaire: regimeListe.find((el) => el.default == true),
@@ -62,6 +67,12 @@ export default createStore({
         (el) => el.nomCourt == regime_alimentaire_nomCourt
       );
     },
+    incrementerPopulation(state, groupePopulation) {
+      state.population[groupePopulation]++;
+    },
+    reduirePopulation(state, groupePopulation) {
+      state.population[groupePopulation]--;
+    },
   },
   actions: {
     addGeo({ commit }, geo) {
@@ -102,6 +113,20 @@ export default createStore({
     },
     choisirRegimeAlimentaire({ commit }, regime_alimentaire_nomCourt) {
       commit("choisirRegimeAlimentaire", regime_alimentaire_nomCourt);
+    },
+    incrementerPopulation({ commit }, groupePopulation) {
+      commit("incrementerPopulation", groupePopulation);
+    },
+    reduirePopulation({ commit }, groupePopulation) {
+      commit("reduirePopulation", groupePopulation);
+    },
+    resetPopulation({ commit }) {
+      commit("choisirPopulation", {
+        type: null,
+        nbEnfants: 150,
+        nbAdultes: 150,
+        nbSeniors: 150,
+      });
     },
   },
   plugins: [new VuexPersistence().plugin],
