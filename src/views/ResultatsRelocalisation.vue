@@ -180,6 +180,7 @@ import Nav from "@/components/Nav/BarreNavigation.vue";
 import resumeChoix from "./modal/resumeChoix.vue";
 import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
 import { fetchSurfaceActuelle } from "@/plugins/getSurfacesNecessaires";
+
 import { getImpacts } from "@/plugins/getImpacts";
 import { IDS_IMPACTS } from "@/config/ImpactIds";
 
