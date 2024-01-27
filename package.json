@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve": "vitest --run && vue-cli-service serve",
+    "build": "vitest --run && vue-cli-service build",
+    "lint:format": "prettier --write \"**/*.{ts,tsx,js,jsx,html}\" --config  \".prettierrc\" --ignore-path  \".eslintignore\"",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
