@@ -1,5 +1,4 @@
 import axios from "axios";
-import { IDS_REGIMES_ALIMENTAIRES } from "../config/regimeIds";
 
 async function fetchData(api_route) {
   const bodyFormData = new FormData();
@@ -67,8 +66,8 @@ export async function fetchSurfaceNecessaire(
 
 // TODO : fait partie des règles de calcul => a bouger dans le plugin calculResultatSimulation.js
 export function calculerSurfacesEtEmploisAMobiliser(
-  surfaceNecessaireResponseApi,
-  surfaceActuelleResponseApi
+  surfaceActuelleResponseApi,
+  surfaceNecessaireResponseApi
 ) {
   const surfaces_a_mobiliser = surfaceNecessaireResponseApi
     .map((item) => {
@@ -111,7 +110,6 @@ export function calculerSurfacesEtEmploisAMobiliser(
     return res;
   }, {});
 
-  console.log("surfaceActuelleResponseApi", surfaceActuelleResponseApi);
   const surfaces_actuelles = surfaceActuelleResponseApi
     .map((item) => {
       return item.sau_ha;
@@ -131,19 +129,4 @@ export function calculerSurfacesEtEmploisAMobiliser(
     surfaces_actuelles: surfaces_actuelles,
     surfaces_actuelles_parcel_niveau_1: surfaces_actuelles_parcel_niveau_1,
   };
-}
-
-// TODO : Fonction DEPRECATED => ce point d'entrée est async car il enchaine l'appel d'api + règle de calcul
-// Bascule progressive à faire sur fetchSurfaceNecessaire et calculerSurfaceAMobiliser, qui sont appelés par les actions du store
-export async function getSurfaceAMobiliser(
-  idRegimeAlimentaire = IDS_REGIMES_ALIMENTAIRES.ACTUEL
-) {
-  const url = window.apiURL + "parcel/belgique/surfaces_necessaires";
-  const codesTerritoireParcel = ["mun91114"];
-  var surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
-    url,
-    codesTerritoireParcel,
-    idRegimeAlimentaire
-  );
-  return calculerSurfacesEtEmploisAMobiliser(surfaceNecessaireResponseApi);
 }

@@ -4,15 +4,64 @@ import { calculerResultatSimulation } from "./calculResultatSimulation";
 describe("Test du calcul du resultat de la simulation", () => {
   it("Test appel API surfaces_necessaires, Régime alimentaire ACTUEL", () => {
     const resultatSimulation = calculerResultatSimulation(
+      REPONSE_API_SURFACE_ACTUELLE,
       REPONSE_API_SURFACE_NECESSAIRE
     );
     expect(resultatSimulation.surfaceAMobiliser).toEqual(3335);
     expect(resultatSimulation.emploisAMobiliser).toEqual(120);
-    // expect(resultatSimulation.surfacesEmploisAMobiliser).toEqual({});
+    expect(resultatSimulation.surfacesActuelles).toEqual(300);
+    expect(resultatSimulation.potentielNourricier).toEqual(9);
+    let eltSurfacesEmploisAMobiliser =
+      resultatSimulation.surfacesEmploisAMobiliser.find(
+        (e) => e.libelle_parcel_niveau_1 === "Elevage"
+      );
+    expect(eltSurfacesEmploisAMobiliser.emploi_bio).toEqual(138);
+    expect(eltSurfacesEmploisAMobiliser.surface_necessaire_bio).toEqual(5446);
   });
 });
 
 // TODO simplifier pour avoir une donnée de test plus facile a maintenir (taille nécessaire et suffisante pour exercer le code)
+const REPONSE_API_SURFACE_ACTUELLE = [
+  {
+    libelle_parcel_produit_actuel:
+      "Cultures annuelles pour alimentation humaine",
+    image: "/assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
+    couleur: "#F5A623",
+    sau_ha: 100,
+  },
+  {
+    libelle_parcel_produit_actuel: "Cultures industrielles hors alimentation",
+    image: "/assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
+    couleur: "#62D5F3",
+    sau_ha: 0,
+  },
+  {
+    libelle_parcel_produit_actuel:
+      "Elevage (dont alimentation & estives et landes)",
+    image: "/assets/img/icons/cat/ico_CATEGORIES_viande.svg",
+    couleur: "#B57A60",
+    sau_ha: 200,
+  },
+  {
+    libelle_parcel_produit_actuel: "Fruits",
+    image: "/assets/img/icons/cat/ico_CATEGORIES_fruits.svg",
+    couleur: "#A261C0",
+    sau_ha: 0,
+  },
+  {
+    libelle_parcel_produit_actuel: "Jachères",
+    image: "/assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
+    couleur: "#9CC347",
+    sau_ha: 0,
+  },
+  {
+    libelle_parcel_produit_actuel: "Légumes",
+    image: "/assets/img/icons/cat/ico_CATEGORIES_legumes.svg",
+    couleur: "#91C423",
+    sau_ha: 0,
+  },
+];
+
 const REPONSE_API_SURFACE_NECESSAIRE = [
   {
     code_parcel: "EL.BVV",

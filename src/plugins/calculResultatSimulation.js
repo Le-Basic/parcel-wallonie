@@ -14,11 +14,16 @@ export function calculerResultatSimulation(
     surfaceActuelleReponseApi,
     surfaceNecessaireResponseApi
   );
+  const potentielNourricier = Math.round(
+    (surfaces_actuelles * 100) / surfaces_a_mobiliser
+  );
+
   return {
     surfaceAMobiliser: surfaces_a_mobiliser,
     emploisAMobiliser: emplois_a_mobiliser,
     surfacesEmploisAMobiliser: surfaces_emplois_a_mobiliser_parcel_niveau_1,
     surfacesActuelles: surfaces_actuelles,
     surfacesActuellesParcelNiveau1: surfaces_actuelles_parcel_niveau_1,
+    potentielNourricier: potentielNourricier,
   };
 }

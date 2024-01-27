@@ -25,6 +25,7 @@ const getDefaultState = () => {
       surfacesEmploisAMobiliser: 0,
       surfacesActuelles: 0,
       surfacesActuellesParcelNiveau1: [],
+      potentielNourricier: 0,
     },
   };
 };
@@ -136,18 +137,18 @@ export default createStore({
         window.apiURL + "parcel/belgique/surfaces_actuels_produit";
       // TODO : mun91114 en dur ici, mais on pourrait déjà le remonter au niveau du défault state et du mutateur
       const codesTerritoireParcel = ["mun91114"];
+      var surfaceActuelleResponseApi = await fetchSurfacesActuelles(
+        actuelles_url,
+        codesTerritoireParcel
+      );
       var surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
         url,
         codesTerritoireParcel,
         regimeAlimentaire.id
       );
-      var surfaceActuelleResponseApi = await fetchSurfacesActuelles(
-        actuelles_url,
-        codesTerritoireParcel
-      );
       let resultatSimulation = calculerResultatSimulation(
-        surfaceNecessaireResponseApi,
-        surfaceActuelleResponseApi
+        surfaceActuelleResponseApi,
+        surfaceNecessaireResponseApi
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },
