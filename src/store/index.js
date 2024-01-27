@@ -30,6 +30,41 @@ const getDefaultState = () => {
   };
 };
 
+async function recalculerResultatSimulation(
+  idRegimeAlimentaire,
+  partBioElevage,
+  partPertes
+) {
+  console.log(
+    "recalculerResultatSimulation",
+    idRegimeAlimentaire,
+    partBioElevage,
+    partPertes
+  );
+
+  const url = window.apiURL + "parcel/belgique/surfaces_necessaires";
+  const actuelles_url =
+    window.apiURL + "parcel/belgique/surfaces_actuels_produit";
+  // TODO : mun91114 en dur ici, mais on pourrait déjà le remonter au niveau du défault state et du mutateur
+  const codesTerritoireParcel = ["mun91114"];
+  var surfaceActuelleResponseApi = await fetchSurfacesActuelles(
+    actuelles_url,
+    codesTerritoireParcel
+  );
+  var surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
+    url,
+    codesTerritoireParcel,
+    idRegimeAlimentaire
+  );
+  let resultatSimulation = calculerResultatSimulation(
+    surfaceActuelleResponseApi,
+    surfaceNecessaireResponseApi,
+    partBioElevage,
+    partPertes
+  );
+  return resultatSimulation;
+}
+
 export default createStore({
   state: getDefaultState(),
   getters: {},
@@ -80,8 +115,13 @@ export default createStore({
     mutationRegimeAlimentaire(state, regimeAlimentaire) {
       state.regime_alimentaire = regimeAlimentaire;
     },
+    mutationPartBioElevage(state, partBioElevage) {
+      state.partbioelevage = partBioElevage;
+    },
+    mutationPartPertes(state, partPertes) {
+      state.partpertes = partPertes;
+    },
     mutationResultatSimulation(state, resultatSimulation) {
-      console.log("mutationResultatSimulation", resultatSimulation);
       state.resultatSimulation = resultatSimulation;
     },
   },
@@ -119,9 +159,6 @@ export default createStore({
     partBioCereales({ commit }, partbiocereales) {
       commit("partBioCereales", partbiocereales);
     },
-    partBioElevage({ commit }, partbioelevage) {
-      commit("partBioElevage", partbioelevage);
-    },
     choisirRegimeAlimentaire({ commit }, regime_alimentaire_nomCourt) {
       commit("choisirRegimeAlimentaire", regime_alimentaire_nomCourt);
     },
@@ -132,23 +169,28 @@ export default createStore({
     // PROP Archi 3 : le state contient une partie input, une partie output. L'ouput est contenu dans l'objet "resultatSimulation", les actions ont la responsabilité de le mettre à jour en fonction des modifications des inputs
     async actionChoisirRegimeAlimentaire({ commit }, regimeAlimentaire) {
       commit("mutationRegimeAlimentaire", regimeAlimentaire);
-      const url = window.apiURL + "parcel/belgique/surfaces_necessaires";
-      const actuelles_url =
-        window.apiURL + "parcel/belgique/surfaces_actuels_produit";
-      // TODO : mun91114 en dur ici, mais on pourrait déjà le remonter au niveau du défault state et du mutateur
-      const codesTerritoireParcel = ["mun91114"];
-      var surfaceActuelleResponseApi = await fetchSurfacesActuelles(
-        actuelles_url,
-        codesTerritoireParcel
+      let resultatSimulation = await recalculerResultatSimulation(
+        this.state.regime_alimentaire.id,
+        this.state.partbioelevage,
+        this.state.partpertes
       );
-      var surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
-        url,
-        codesTerritoireParcel,
-        regimeAlimentaire.id
+      commit("mutationResultatSimulation", resultatSimulation);
+    },
+    async actionModifierPartBioElevage({ commit }, partBioElevage) {
+      commit("mutationPartBioElevage", partBioElevage);
+      let resultatSimulation = await recalculerResultatSimulation(
+        this.state.regime_alimentaire.id,
+        this.state.partbioelevage,
+        this.state.partpertes
       );
-      let resultatSimulation = calculerResultatSimulation(
-        surfaceActuelleResponseApi,
-        surfaceNecessaireResponseApi
+      commit("mutationResultatSimulation", resultatSimulation);
+    },
+    async actionModifierPartPertes({ commit }, partPertes) {
+      commit("mutationPartPertes", partPertes);
+      let resultatSimulation = await recalculerResultatSimulation(
+        this.state.regime_alimentaire.id,
+        this.state.partbioelevage,
+        this.state.partpertes
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },

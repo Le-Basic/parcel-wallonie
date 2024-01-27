@@ -78,7 +78,7 @@
                       id="valpartpertes"
                     ></span
                     ><span class="text-bold legumes"
-                      >{{ $store.state.partpertes }} %</span
+                      >{{ partPertes }} %</span
                     ></output
                   >
                 </div>
@@ -90,7 +90,7 @@
                   step="1.000"
                   value="100"
                   id="partpertes"
-                  v-model="$store.state.partpertes"
+                  v-model="partPertes"
                 />
                 <div class="range-values">
                   <span class="range-min">0</span
@@ -128,7 +128,7 @@
                       partbiolegumes = 100;
                       partbiofruits = 100;
                       partbiocereales = 100;
-                      partbioelevage = 100;
+                      partBioElevage = 100;
                     "
                     value="1"
                   />
@@ -336,7 +336,7 @@
                       id="partbioelevageval"
                     ></span
                     ><span class="text-bold viande"
-                      >{{ $store.state.partbioelevage }} %</span
+                      >{{ partBioElevage }} %</span
                     ></output
                   >
                 </div>
@@ -349,7 +349,7 @@
                 value="100"
                 id="partbioelevage"
                 class="slider-range"
-                v-model="$store.state.partbioelevage"
+                v-model="partBioElevage"
               />
               <div class="range-values">
                 <span class="range-min">0</span
@@ -521,11 +521,11 @@ export default {
   data: function () {
     return {
       partlocale: this.$store.state.partlocale,
-      partpertes: this.$store.state.partpertes,
+      partPertes: this.$store.state.partpertes,
       partbiolegumes: this.$store.state.partbiolegumes,
       partbiofruits: this.$store.state.partbiofruits,
       partbiocereales: this.$store.state.partbiocereales,
-      partbioelevage: this.$store.state.partbioelevage,
+      partBioElevage: this.$store.state.partbioelevage,
       showParametres: true,
       regimeChoisi: this.$store.state.regime_alimentaire.nomCourt,
     };
@@ -540,14 +540,14 @@ export default {
     },
   },
   watch: {
-    partpertes: function (val) {
-      this.$store.commit("partPertes", val);
+    partPertes: function (partPertes) {
+      this.$store.dispatch("actionModifierPartPertes", partPertes);
     },
     partbiocereales: function (val) {
       this.$store.commit("partBioCereales", val);
     },
-    partbioelevage: function (val) {
-      this.$store.commit("partBioElevage", val);
+    partBioElevage: function (partBioElevage) {
+      this.$store.dispatch("actionModifierPartBioElevage", partBioElevage);
     },
     partbiofruits: function (val) {
       this.$store.commit("partBioFruits", val);
