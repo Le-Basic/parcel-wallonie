@@ -1,47 +1,54 @@
 <template>
   <div>
-    <nav class="navbar nav-modal menu-principal" id="nav-steps">
+    <nav
+      id="nav-steps"
+      class="navbar nav-modal menu-principal"
+    >
       <!--sticky-top-->
       <div class="container-fluid mt-3 flex-column">
         <div
           class="w-100 d-flex row justify-content-between align-items-center flex-row"
         >
           <div class="col-10 col-sm-4 d-inline pl-0 justify-content-center">
-            <router-link to="javascript:history.go(-1)"
-              ><span class="mt-5"
-                ><span
-                  class="icon-ico_fleche_retour icon d-sm-none"
-                ></span></span></router-link
-            ><button
+            <router-link to="javascript:history.go(-1)">
+              <span class="mt-5"><span
+                class="icon-ico_fleche_retour icon d-sm-none"
+              /></span>
+            </router-link><button
+              id="asy-sidebarCollapse6"
               type="button"
               class="btn btn-menu-affiner d-sm-none"
-              id="asy-sidebarCollapse6"
               style="cursor: pointer"
             >
-              <span class="icon-ico_menu_affiner icon"></span>Affiner
+              <span class="icon-ico_menu_affiner icon" />Affiner
             </button>
-            <router-link to="/recommencer<?php echo $parcours; ?>"
-              ><button type="button" class="btn btn-principal btn-menu-new">
+            <router-link to="/recommencer<?php echo $parcours; ?>">
+              <button
+                type="button"
+                class="btn btn-principal btn-menu-new"
+              >
                 Nouvelle recherche
-              </button></router-link
-            >
+              </button>
+            </router-link>
           </div>
           <router-link
             class="col-0 col-sm-4 navbar-brand text-center d-sm-block d-none"
             to="/"
-            ><img
+          >
+            <img
               alt="logo"
               :src="require('@/assets/img/logos/logo.svg')"
               width="181"
               height="auto"
               @click="clearLocalStorage"
-          /></router-link>
+            >
+          </router-link>
           <div
             class="col-2 col-sm-4 d-flex ml-auto justify-content-end align-items-center pr-0"
           >
             <router-link
-              class="btn btn-notification"
               id="btn-notification"
+              class="btn btn-notification"
               data-toggle="collapse"
               to="#modalNotification"
               role="button"
@@ -51,7 +58,7 @@
               <img
                 :src="require('@/assets/img/icons/notification.svg')"
                 class="bell"
-              /><span>PARCEL évolue</span>
+              ><span>PARCEL évolue</span>
             </router-link>
             <button
               class="btn navbar-btn btn-link text-right mt-1"
@@ -60,7 +67,7 @@
               type="button"
               @click="changeModalPrincipale"
             >
-              <span class="icon-ico_menu_hamburger"></span>
+              <span class="icon-ico_menu_hamburger" />
             </button>
           </div>
         </div>
@@ -71,25 +78,25 @@
           >
             <div class="btn-affiner">
               <a
-                class="sticky-top"
-                id="asy-sidebarCollapse"
                 v-if="menuType == 'resultats'"
+                id="asy-sidebarCollapse"
+                class="sticky-top"
                 @click="drawgraphs"
               >
                 <div
                   class="d-flex justify-content-center flex-column btn-affiner-rond"
                   @click="montrerModalAffinage"
                 >
-                  <span class="icon-ico_menu_affiner icon"></span>
+                  <span class="icon-ico_menu_affiner icon" />
                   <div class="affiner-head">Changer</div>
                   <div class="affiner-recherche">mes paramètres</div>
                 </div>
               </a>
             </div>
             <div
+              v-if="menuType == 'resultats'"
               class="btn-affiner"
               style="position: fixed"
-              v-if="menuType == 'resultats'"
             >
               <router-link
                 class="btn-exporter"
@@ -100,25 +107,35 @@
                     <span
                       class="icon-export mr-2 d-inline-block"
                       style="font-size: 1rem"
-                    ></span>
+                    />
                   </div>
-                  <div class="btn-exporter-head">Exporter</div>
+                  <div class="btn-exporter-head">
+                    Exporter
+                  </div>
                 </div>
-                <div class="affiner-recherche">mes résultats</div>
+                <div class="affiner-recherche">
+                  mes résultats
+                </div>
               </router-link>
             </div>
-            <MenuResultats v-if="menuType == 'resultats'" :active="active" />
-            <MenuRecherche v-if="menuType == 'recherche'" :active="active" />
+            <MenuResultats
+              v-if="menuType == 'resultats'"
+              :active="active"
+            />
+            <MenuRecherche
+              v-if="menuType == 'recherche'"
+              :active="active"
+            />
           </nav>
         </div>
       </div>
     </nav>
 
     <div
-      class="fade modal-fullscreen-menu show modal"
-      id="modalNavigation"
-      role="dialog"
       v-if="montrerModalPrincipale"
+      id="modalNavigation"
+      class="fade modal-fullscreen-menu show modal"
+      role="dialog"
     >
       <button
         aria-label="Close"
@@ -128,40 +145,62 @@
         @click="changeModalPrincipale"
       >
         <span class="sr-only">Fermer</span>
-        <span class="icon-ico_fermer icon" style="font-size: 27px"></span>
+        <span
+          class="icon-ico_fermer icon"
+          style="font-size: 27px"
+        />
       </button>
       <div
-        class="modal-dialog d-flex justify-content-between flex-md-row flex-column"
         id="side-calc"
+        class="modal-dialog d-flex justify-content-between flex-md-row flex-column"
       >
         <div class="d-flex align-items-center col-12 col-md-7 col-lg-8">
           <nav class="list-group">
-            <router-link class="list-group-item" to="/">Accueil</router-link>
+            <router-link
+              class="list-group-item"
+              to="/"
+            >
+              Accueil
+            </router-link>
 
             <!-- <router-link class="list-group-item" to="projet">Le projet</router-link>-->
             <router-link
               class="list-group-item"
               to="/methodologie-de-calcul-de-la-relocalisation-alimentaire"
-              >Méthodologie de calcul</router-link
             >
+              Méthodologie de calcul
+            </router-link>
 
             <router-link
               class="list-group-item"
               to="/agir-pour-une-relocalisation-durable"
-              >Agir</router-link
             >
-            <router-link class="list-group-item" to="/partenaires-du-projet"
-              >Partenaires</router-link
+              Agir
+            </router-link>
+            <router-link
+              class="list-group-item"
+              to="/partenaires-du-projet"
             >
+              Partenaires
+            </router-link>
             <router-link
               class="list-group-item"
               to="/ressources-sur-lalimentation-durable"
-              >Ressources</router-link
             >
-            <router-link class="list-group-item" to="/faq">FAQ</router-link>
-            <router-link class="list-group-item" to="/contacter-parcel"
-              >Nous contacter</router-link
+              Ressources
+            </router-link>
+            <router-link
+              class="list-group-item"
+              to="/faq"
             >
+              FAQ
+            </router-link>
+            <router-link
+              class="list-group-item"
+              to="/contacter-parcel"
+            >
+              Nous contacter
+            </router-link>
           </nav>
         </div>
         <div
@@ -188,7 +227,7 @@
                       :src="require('@/assets/img/parcours/parcours1.svg')"
                       width="100%"
                       height="auto"
-                    />
+                    >
                   </router-link>
                 </div>
                 <div>
@@ -202,10 +241,14 @@
                   <router-link
                     to="/1-choix-du-territoire"
                     onclick="localStorage.clear();"
-                    ><button type="button" class="btn btn-principal mt-3">
-                      Commencer
-                    </button></router-link
                   >
+                    <button
+                      type="button"
+                      class="btn btn-principal mt-3"
+                    >
+                      Commencer
+                    </button>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -226,7 +269,7 @@
                       "
                       width="100%"
                       height="auto"
-                    />
+                    >
                   </router-link>
                 </div>
                 <div>
@@ -240,10 +283,14 @@
                   <router-link
                     to="/1-relocaliser-une-surface-disponible"
                     onclick="localStorage.clear();"
-                    ><button type="button" class="btn btn-principal mt-3">
-                      Commencer
-                    </button></router-link
                   >
+                    <button
+                      type="button"
+                      class="btn btn-principal mt-3"
+                    >
+                      Commencer
+                    </button>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -259,11 +306,11 @@ import MenuResultats from "@/components/Menu/MenuResultats.vue";
 import MenuRecherche from "@/components/Menu/MenuRecherche.vue";
 
 export default {
+  name: "BarreNavigation",
   components: {
     MenuResultats,
     MenuRecherche,
   },
-  name: "BarreNavigation",
   props: {
     menuType: {
       type: String,

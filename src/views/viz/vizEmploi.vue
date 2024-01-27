@@ -1,11 +1,14 @@
 <template>
   <ul class="grille">
-    <li v-for="i in 100" :key="i">
+    <li
+      v-for="i in 100"
+      :key="i"
+    >
       <!-- Your Vue dynamic content here -->
       <span
         class="icon-emploi"
         :style="{ color: i < emplois_nombre ? couleur : '' }"
-      ></span>
+      />
     </li>
   </ul>
 </template>
@@ -14,7 +17,7 @@
 import { trouverChiffre } from "@/plugins/utils";
 
 export default {
-  name: "vizEmploi",
+  name: "VizEmploi",
   props: {
     objetEmplois: {
       type: Object,
@@ -29,9 +32,6 @@ export default {
       required: true,
     },
   },
-  methods: {
-    trouverChiffre,
-  },
   computed: {
     emplois_nombre() {
       console.log(this.objetEmplois);
@@ -41,6 +41,9 @@ export default {
         "emploi_conventionnel"
       );
     },
+  },
+  methods: {
+    trouverChiffre,
   },
 };
 </script>

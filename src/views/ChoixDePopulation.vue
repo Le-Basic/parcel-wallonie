@@ -1,11 +1,19 @@
 <template>
   <div class="asy-wrapper">
     <div class="content">
-      <BarreNavigation menuType="recherche" active="2" />
-      <div class="section centrervh" id="section0">
+      <BarreNavigation
+        menu-type="recherche"
+        active="2"
+      />
+      <div
+        id="section0"
+        class="section centrervh"
+      >
         <div class="container">
           <div class="mb-5 animated fadeInUp">
-            <h1 class="mb-3">Choisissez la population concernée</h1>
+            <h1 class="mb-3">
+              Choisissez la population concernée
+            </h1>
             <div class="sous-titre">
               dont vous souhaitez relocaliser l’alimentation
             </div>
@@ -14,69 +22,78 @@
           <div class="choix-pop mt-5">
             <div class="animated fadeInUp delay-05s">
               <router-link
-                to="/3-type-dalimentation"
                 id="toute"
+                to="/3-type-dalimentation"
                 @click="choisirPopulation('toute')"
-                ><button type="button" class="btn btn-big-light">
-                  Toute la population du territoire
-                </button></router-link
               >
+                <button
+                  type="button"
+                  class="btn btn-big-light"
+                >
+                  Toute la population du territoire
+                </button>
+              </router-link>
             </div>
             <div class="animated fadeInUp delay-1s">
               <a
-                href="/2-choix-de-la-population-par-etablissement"
                 id="type"
+                href="/2-choix-de-la-population-par-etablissement"
                 onclick="majitem('population','type');"
-                ><button type="button" class="btn btn-big-light">
-                  Ou les consommateurs d’un ou plusieurs établissements (école,
-                  hôpital…)
-                </button></a
+              ><button
+                type="button"
+                class="btn btn-big-light"
               >
+                Ou les consommateurs d’un ou plusieurs établissements (école,
+                hôpital…)
+              </button></a>
             </div>
             <div class="animated fadeInUp delay-1-5s">
               <a
-                href="#secondPage"
                 id="groupe"
+                href="#secondPage"
                 onclick="majitem('population','groupe');"
-                ><button
-                  type="button"
-                  class="btn btn-big-light"
-                  data-toggle="modal"
-                  data-target="#modal-population-groupe"
-                >
-                  ou un groupe de personnes
-                </button></a
+              ><button
+                type="button"
+                class="btn btn-big-light"
+                data-toggle="modal"
+                data-target="#modal-population-groupe"
               >
+                ou un groupe de personnes
+              </button></a>
             </div>
           </div>
           <div class="text-center note animated fadeInUp delay-2s">
-            <em
-              >*En fonction du choix de population, PARCEL détermine les
+            <em>*En fonction du choix de population, PARCEL détermine les
               consommations alimentaires qui varient en fonction de l'âge et du
-              sexe</em
-            >
+              sexe</em>
           </div>
         </div>
       </div>
     </div>
-    <nav id="asy-sidebar" class="">
+    <nav
+      id="asy-sidebar"
+      class=""
+    >
       <!-- <?php include '../partials/menu-affiner-2modales.php'; ?> -->
     </nav>
   </div>
   <!-- Modal s-->
   <div
-    class="modal fade modal-simple"
     id="modal-population-groupe"
+    class="modal fade modal-simple"
     tabindex="-1"
     role="dialog"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
-    <div class="modal-dialog" role="document">
+    <div
+      class="modal-dialog"
+      role="document"
+    >
       <div class="modal-content modal-repart-cat-detail">
         <div class="modal-header d-flex align-items-center">
           <div>
-            <span class="icon-ico_navigation_population icon vert-clair"></span>
+            <span class="icon-ico_navigation_population icon vert-clair" />
           </div>
           <div class="">
             <div class="titre-categorie">
@@ -89,67 +106,73 @@
             data-dismiss="modal"
             aria-label="Close"
           >
-            <span class="icon-ico_fermer icon"></span>
+            <span class="icon-ico_fermer icon" />
           </button>
         </div>
         <div class="modal-body">
           <div class="bloc">
             <span class="nombres-ajout pop">
-              <div class="handle-counter" id="handleCounterenfants">
+              <div
+                id="handleCounterenfants"
+                class="handle-counter"
+              >
                 <span class="btn-moins counter-minus">-</span>
                 <input
+                  id="nbenfants"
                   type="text"
                   class="nombre groupe"
                   name="nbenfants"
-                  id="nbenfants"
                   value="150"
-                />
-                <span class="btn-plus counter-plus">+</span
-                ><span class="labelnb"> Enfants (0-17 ans)</span>
+                >
+                <span class="btn-plus counter-plus">+</span><span class="labelnb"> Enfants (0-17 ans)</span>
               </div>
             </span>
           </div>
           <div class="bloc">
             <span class="nombres-ajout pop">
-              <div class="handle-counter" id="handleCounteradultes">
+              <div
+                id="handleCounteradultes"
+                class="handle-counter"
+              >
                 <span class="btn-moins counter-minus">-</span>
                 <input
+                  id="nbadultes"
                   type="text"
                   class="nombre groupe"
                   name="nbadultes"
-                  id="nbadultes"
                   value="150"
-                />
-                <span class="btn-plus counter-plus">+</span
-                ><span class="labelnb"> Adultes (18-64 ans)</span>
+                >
+                <span class="btn-plus counter-plus">+</span><span class="labelnb"> Adultes (18-64 ans)</span>
               </div>
             </span>
           </div>
           <div class="bloc">
             <span class="nombres-ajout pop">
-              <div class="handle-counter" id="handleCounterseniors">
+              <div
+                id="handleCounterseniors"
+                class="handle-counter"
+              >
                 <span class="btn-moins counter-minus">-</span>
                 <input
+                  id="nbseniors"
                   type="text"
                   class="nombre groupe"
                   name="nbseniors"
-                  id="nbseniors"
                   value="150"
-                />
-                <span class="btn-plus counter-plus">+</span
-                ><span class="labelnb"> Personnes âgées (65+ ans)</span>
+                >
+                <span class="btn-plus counter-plus">+</span><span class="labelnb"> Personnes âgées (65+ ans)</span>
               </div>
             </span>
           </div>
-          <router-link to="/3-type-dalimentation"
-            ><button
+          <router-link to="/3-type-dalimentation">
+            <button
               type="button"
               class="btn btn-principal"
               onclick="majitem('nbenfants',$('#nbenfants').val());majitem('nbadultes',$('#nbadultes').val());majitem('nbseniors',$('#nbseniors').val());"
             >
               Valider
-            </button></router-link
-          >
+            </button>
+          </router-link>
         </div>
       </div>
       <!-- modal body-->

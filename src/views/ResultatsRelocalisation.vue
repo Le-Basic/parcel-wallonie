@@ -1,15 +1,29 @@
 <template>
   <div class="asy-wrapper">
     <div class="content">
-      <Nav @montrerModalAffinage="montrerModalAffiner" :active="1"></Nav>
-      <div class="section centrervh surfaces-container" id="section0">
+      <BarreNavigation
+        :active="1"
+        @montrer-modal-affinage="montrerModalAffiner"
+      />
+      <div
+        id="section0"
+        class="section centrervh surfaces-container"
+      >
         <div class="container">
           <div class="titre-page animated fadeInUp">
-            <div class="text-h1" style="margin-bottom: 30px">Mes choix</div>
+            <div
+              class="text-h1"
+              style="margin-bottom: 30px"
+            >
+              Mes choix
+            </div>
           </div>
-          <resumeChoix></resumeChoix>
+          <resumeChoix />
 
-          <div class="" id="asy-sidebarCollapse4"></div>
+          <div
+            id="asy-sidebarCollapse4"
+            class=""
+          />
 
           <div class="text-h2 animated fadeInDown delay-05s">
             Estimation des effets associés :
@@ -25,45 +39,47 @@
                 style="cursor: pointer"
               >
                 <div class="row mb-sm-3 w-100">
-                  <div class="col" style="border-right: 1px solid #91c423">
+                  <div
+                    class="col"
+                    style="border-right: 1px solid #91c423"
+                  >
                     <div class="result-type">
-                      <span class="icon-ico_navigation_surface icon"></span
-                      ><span class="titre-result">
+                      <span class="icon-ico_navigation_surface icon" /><span class="titre-result">
                         <h2>Surfaces agricoles à mobiliser</h2>
                       </span>
                     </div>
                     <div class="result-chiffres text-center">
                       <div
-                        class="nbr-ha animated flipInX delay-1s odometer"
                         id="surface6"
+                        class="nbr-ha animated flipInX delay-1s odometer"
                       >
                         {{
-                          this.$store.state.resultatSimulation.surfaceAMobiliser
+                          $store.state.resultatSimulation.surfaceAMobiliser
                         }}
                       </div>
-                      <div class="hectares">hectares</div>
+                      <div class="hectares">
+                        hectares
+                      </div>
                     </div>
                   </div>
                   <div class="col">
                     <div class="result-type">
-                      <span class="icon-ico_navigation_surface icon"></span
-                      ><span class="titre-result">
+                      <span class="icon-ico_navigation_surface icon" /><span class="titre-result">
                         <h2>Potentiel nourricier</h2>
                       </span>
                     </div>
                     <div class="result-chiffres text-center">
                       <span
-                        class="nbr-ha animated flipInY delay-1s odometer"
-                        id="potentiel0"
                         v-if="potentiel_nourricier"
-                        >{{ potentiel_nourricier }}</span
-                      >
+                        id="potentiel0"
+                        class="nbr-ha animated flipInY delay-1s odometer"
+                      >{{ potentiel_nourricier }}</span>
                       <span class="hectares ml-1">%</span>
                     </div>
                   </div>
                 </div>
                 <div class="result-plus mb-auto mb-sm-0 mt-auto">
-                  <span class="icon-ico_fleche_detail_gros icon"></span>
+                  <span class="icon-ico_fleche_detail_gros icon" />
                 </div>
               </div>
             </div>
@@ -74,45 +90,44 @@
                 style="cursor: pointer"
               >
                 <div class="result-type">
-                  <span class="icon-ico_navigation_emploi icon"></span
-                  ><span class="titre-result"
-                    >Emplois agricoles à mobiliser</span
-                  >
+                  <span class="icon-ico_navigation_emploi icon" /><span class="titre-result">Emplois agricoles à mobiliser</span>
                 </div>
                 <div class="result-chiffres">
                   <div
-                    class="nbr-ha animated flipInY delay-1-5s odometer"
                     id="emplois4"
+                    class="nbr-ha animated flipInY delay-1-5s odometer"
                     style="float: none"
                   >
                     -
                   </div>
                   <div class="hectares">
-                    emplois <span id="emplois_inf_1"></span>
+                    emplois <span id="emplois_inf_1" />
                   </div>
                 </div>
                 <div class="result-plus mt-auto mb-2">
-                  <span class="icon-ico_fleche_detail_gros icon"></span>
+                  <span class="icon-ico_fleche_detail_gros icon" />
                 </div>
               </div>
             </div>
-            <div class="col-sm-6 col-lg mb-2" id="result-impacts">
+            <div
+              id="result-impacts"
+              class="col-sm-6 col-lg mb-2"
+            >
               <div
                 class="h-100 mb-0 cadre-resultat animated cadre-btn fadeIn delay-2s"
                 onclick="location.href='/impacts-ecologiques-de-la-relocatisation';"
                 style="cursor: pointer"
               >
                 <div class="result-type">
-                  <span class="icon-ico_navigation_impacts icon"></span
-                  ><span class="titre-result">Impacts écologiques</span>
+                  <span class="icon-ico_navigation_impacts icon" /><span class="titre-result">Impacts écologiques</span>
                 </div>
                 <div class="liste-impacts d-flex">
                   <div class="result-chiffres d-flex align-items-center">
                     <div class="percent-impacts d-flex align-items-center">
                       <div
-                        class="nbr-ha animated flipInX delay-2s odometer2"
-                        id="gaz_effet_serre3"
                         v-if="impacts.length > 0"
+                        id="gaz_effet_serre3"
+                        class="nbr-ha animated flipInX delay-2s odometer2"
                       >
                         {{
                           Math.round(
@@ -138,7 +153,9 @@
                   </div>
                   <div>
                     <ul class="">
-                      <li class="selected"><a href="#">Climat</a></li>
+                      <li class="selected">
+                        <a href="#">Climat</a>
+                      </li>
                       <li><a href="#">Biodiversité</a></li>
                       <li><a href="#">Eau</a></li>
                       <li><a href="#">Sols</a></li>
@@ -146,7 +163,7 @@
                   </div>
                 </div>
                 <div class="result-plus mt-auto mb-2">
-                  <span class="icon-ico_fleche_detail_gros icon"></span>
+                  <span class="icon-ico_fleche_detail_gros icon" />
                 </div>
               </div>
             </div>
@@ -169,14 +186,17 @@
         </div>
       </div>
     </div>
-    <nav id="asy-sidebar" :class="montrerClasse">
-      <modal-affiner-choix @fermerModalAffiner="fermerModal" />
+    <nav
+      id="asy-sidebar"
+      :class="montrerClasse"
+    >
+      <modal-affiner-choix @fermer-modal-affiner="fermerModal" />
     </nav>
   </div>
 </template>
 
 <script>
-import Nav from "@/components/Nav/BarreNavigation.vue";
+import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
 import resumeChoix from "./modal/resumeChoix.vue";
 import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
 import { fetchSurfaceActuelle } from "@/plugins/getSurfacesNecessaires";
@@ -185,7 +205,7 @@ import { getImpacts } from "@/plugins/getImpacts";
 import { IDS_IMPACTS } from "@/config/ImpactIds";
 
 export default {
-  components: { resumeChoix, Nav, ModalAffinerChoix },
+  components: { BarreNavigation, resumeChoix, ModalAffinerChoix },
   data() {
     return {
       donnees: {},
@@ -196,12 +216,12 @@ export default {
       IDS_IMPACTS,
     };
   },
-  methods: {
-    montrerModalAffiner() {
-      this.montrerClasse = "show";
-    },
-    fermerModal() {
-      this.montrerClasse = "";
+  computed: {
+    potentiel_nourricier() {
+      return Math.round(
+        (this.surface_actuelle["sau_ha"] * 100) /
+          this.$store.state.resultatSimulation.surfaceAMobiliser
+      );
     },
   },
   async mounted() {
@@ -216,12 +236,12 @@ export default {
     );
     this.impacts = await getImpacts();
   },
-  computed: {
-    potentiel_nourricier() {
-      return Math.round(
-        (this.surface_actuelle["sau_ha"] * 100) /
-          this.$store.state.resultatSimulation.surfaceAMobiliser
-      );
+  methods: {
+    montrerModalAffiner() {
+      this.montrerClasse = "show";
+    },
+    fermerModal() {
+      this.montrerClasse = "";
     },
   },
 };

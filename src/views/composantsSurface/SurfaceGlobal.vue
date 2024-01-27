@@ -6,24 +6,29 @@
           href="#zone-surface-actuelle"
           class="down-arrow d-block d-flex flex-column justify-content-center text-center mx-auto"
           style="width: 200px"
-          ><span class="mb-3 vert-fonce">Scrollez pour lire la suite </span
-          ><img
-            alt=""
-            :src="require('@/assets/img/fleches/fleche-bas-vert.svg')"
-            width="40px"
-            class="mb-0 mx-auto"
-        /></a>
+        ><span class="mb-3 vert-fonce">Scrollez pour lire la suite </span><img
+          alt=""
+          :src="require('@/assets/img/fleches/fleche-bas-vert.svg')"
+          width="40px"
+          class="mb-0 mx-auto"
+        ></a>
       </div>
     </div>
-    <div class="pt-5"></div>
+    <div class="pt-5" />
 
     <div
-      class="row align-items-center block-surface animate__animated bigmap"
       id="zone-surface-actuelle"
+      class="row align-items-center block-surface animate__animated bigmap"
     >
       <div class="col-12 col-lg-auto map-surface is-flex">
-        <div id="globalView-images" class="my-auto">
-          <div id="div-image-surface-territoire" class="animate__animated">
+        <div
+          id="globalView-images"
+          class="my-auto"
+        >
+          <div
+            id="div-image-surface-territoire"
+            class="animate__animated"
+          >
             <img
               alt=""
               class="mx-auto"
@@ -32,9 +37,12 @@
                 opacity: 1,
               }"
               :src="require('@/assets/img/surfaces/circle1.svg')"
-            />
+            >
           </div>
-          <div id="div-image-sau-actuelle" class="animate__animated">
+          <div
+            id="div-image-sau-actuelle"
+            class="animate__animated"
+          >
             <img
               alt=""
               class="mx-auto"
@@ -43,7 +51,7 @@
                 opacity: 1,
               }"
               :src="require('@/assets/img/surfaces/circle-agricole.svg')"
-            />
+            >
           </div>
           <div
             id="div-image-surface-a-mobiliser"
@@ -63,48 +71,59 @@
                 opacity: 1,
               }"
               :src="require('@/assets/img/surfaces/circle-empreinte.svg')"
-            />
+            >
           </div>
-          <div id="div-image-potentiel-nourricier" class="animate__animated">
-            <img alt="" class="mx-auto" style="width: 0%; opacity: 0" />
+          <div
+            id="div-image-potentiel-nourricier"
+            class="animate__animated"
+          >
+            <img
+              alt=""
+              class="mx-auto"
+              style="width: 0%; opacity: 0"
+            >
           </div>
         </div>
-        <div id="legend-map" class="row justify-content-center">
+        <div
+          id="legend-map"
+          class="row justify-content-center"
+        >
           <div class="col-auto">
             <div class="d-flex align-items-center justify-content-center mb-3">
-              <span class="legende bg-grey-light"></span
-              ><span class="legend-name">Surface totale du territoire</span>
+              <span class="legende bg-grey-light" /><span class="legend-name">Surface totale du territoire</span>
             </div>
           </div>
           <div
             class="col-auto d-flex align-items-center justify-content-center mb-3"
           >
-            <span class="legende bg-legumes"></span>
+            <span class="legende bg-legumes" />
             <span class="legend-name">Empreinte alimentaire</span>
           </div>
           <div
             class="col-auto d-flex align-items-center justify-content-center mb-3"
           >
-            <span class="legende bg-vert-fonce"></span>
+            <span class="legende bg-vert-fonce" />
             <span class="legend-name">Surface agricole actuelle</span>
           </div>
         </div>
       </div>
 
       <div
+        id="content2"
         class="col-12 col-lg-6 content-map flex-column"
         style="opacity: 1"
-        id="content2"
       >
         <div class="text-map">
-          <h3 class="">Surface totale du territoire</h3>
+          <h3 class="">
+            Surface totale du territoire
+          </h3>
           <div
             class="cadre-resultat resultat-ha animate__animated flipInX delay-05s bg-grey-light ml-0 mt-3"
           >
             <div class="d-inline-flex align-items-center">
               <div
-                class="animate__animated flipInY delay-1s nbr-ha odometer odometer-auto-theme"
                 id="surface_territoire_actuelle1"
+                class="animate__animated flipInY delay-1s nbr-ha odometer odometer-auto-theme"
               >
                 <div class="odometer-inside">
                   <span class="chiffre-encart">{{ data.surface }}</span>
@@ -153,17 +172,19 @@
               </div>
             </div>
           </div>
-          <div class="map-content"></div>
+          <div class="map-content" />
         </div>
         <div class="text-map">
-          <h3 class="">Surface agricole actuelle</h3>
+          <h3 class="">
+            Surface agricole actuelle
+          </h3>
           <div
             class="cadre-resultat resultat-ha animate__animated flipInX delay-05s ml-0 mt-3"
           >
             <div class="d-inline-flex align-items-center">
               <div
-                class="animate__animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_act"
                 id="surface_act"
+                class="animate__animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_act"
               >
                 <div class="odometer-inside">
                   <span class="chiffre-encart">{{ data.sau }}</span>
@@ -216,35 +237,43 @@
             La différence entre la surface grise et la surface verte matérialise
             les espaces artificialisés, boisés, semi-naturels et les zones
             humides.
-            <div class="subtext" id="txt_artificialisation">
+            <div
+              id="txt_artificialisation"
+              class="subtext"
+            >
               Sur le territoire, les surfaces naturelles agricoles et
               forestières ont diminué de
-              <span id="artificialisation"></span> hectares entre 2012 et 2022.
+              <span id="artificialisation" /> hectares entre 2012 et 2022.
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="row align-items-center block-surface animate__animated bigmap"
       id="zone-surface-a-mobiliser"
+      class="row align-items-center block-surface animate__animated bigmap"
     >
-      <div class="col-12 col-lg-auto map-surface"></div>
+      <div class="col-12 col-lg-auto map-surface" />
       <div
-        class="col-12 col-lg-6 content-map animate__animated flex-column"
         id="conteneur-surface-agricole-a-mobiliser"
+        class="col-12 col-lg-6 content-map animate__animated flex-column"
       >
         <div class="text-map">
-          <h3 class="">Surface agricole à mobiliser</h3>
+          <h3 class="">
+            Surface agricole à mobiliser
+          </h3>
           <div
             class="cadre-resultat resultat-ha animate__animated flipInX delay-05s bg-vert-clair ml-0 mt-3"
           >
             <div class="d-inline-flex align-items-center">
               <div
-                class="animate__animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_potentiel"
                 id="surface_potentiel"
+                class="animate__animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_potentiel"
               >
-                <div class="odometer-inside" v-if="data.potentiel_nourricier">
+                <div
+                  v-if="data.potentiel_nourricier"
+                  class="odometer-inside"
+                >
                   {{ data.surfaces_a_mobiliser }}
                   <!-- <span class="odometer-digit"
                     ><span class="odometer-digit-spacer">8</span
@@ -299,15 +328,17 @@
       </div>
     </div>
     <div
-      class="row align-items-center block-surface animate__animated bigmap"
       id="zone-potentiel-nourricier"
+      class="row align-items-center block-surface animate__animated bigmap"
     >
-      <div class="col-12 col-lg-auto map-surface"></div>
+      <div class="col-12 col-lg-auto map-surface" />
       <div
-        class="col-12 col-lg-6 content-map animate__animated flex-column"
         id="conteneur-potentiel-nourricier"
+        class="col-12 col-lg-6 content-map animate__animated flex-column"
       >
-        <h3 class="">Potentiel nourricier</h3>
+        <h3 class="">
+          Potentiel nourricier
+        </h3>
         <div class="d-flex align-items-center">
           <div
             class="cadre-resultat resultat-ha bg-white vert-fonce animate__animated flipInX delay-05s mx-0 mt-3"
@@ -315,8 +346,8 @@
           >
             <div class="d-inline-flex align-items-center">
               <div
-                class="animate__animated flipInY delay-1s nbr-ha odometer odometer-auto-theme potentiel"
                 id="potentiel"
+                class="animate__animated flipInY delay-1s nbr-ha odometer odometer-auto-theme potentiel"
               >
                 <div class="odometer-inside">
                   {{ data.potentiel_nourricier }}
@@ -360,7 +391,9 @@
                   > -->
                 </div>
               </div>
-              <div class="hectares animate__animated fadeIn delay-1-5s">%</div>
+              <div class="hectares animate__animated fadeIn delay-1-5s">
+                %
+              </div>
             </div>
           </div>
         </div>
@@ -371,14 +404,22 @@
           <div class="row">
             <div class="col">
               <div>
-                <span class="surface_potentiel" id="surface_potentiel2">
-                  {{ data.surfaces_a_mobiliser }}</span
+                <span
+                  id="surface_potentiel2"
+                  class="surface_potentiel"
                 >
+                  {{ data.surfaces_a_mobiliser }}</span>
                 hectares
               </div>
-              <div class="potentialLegend">Surface agricole à mobiliser</div>
+              <div class="potentialLegend">
+                Surface agricole à mobiliser
+              </div>
               <div class="position-relative mb-5 pb-3">
-                <div id="bar1" class="position-absolute" style="z-index: 2">
+                <div
+                  id="bar1"
+                  class="position-absolute"
+                  style="z-index: 2"
+                >
                   <div
                     id="sbar1"
                     class="bar bg-vert-clair animate__animated"
@@ -387,26 +428,37 @@
                         (data.surfaces_a_mobiliser / max_potentiel_sau) * 100 +
                         '%',
                     }"
-                  ></div>
+                  />
                 </div>
-                <div class="position-absolute bargrey w-100" style="z-index: 1">
+                <div
+                  class="position-absolute bargrey w-100"
+                  style="z-index: 1"
+                >
                   <div
                     class="bar bg-grey-light animate__animated"
                     style="width: 100%"
-                  ></div>
+                  />
                 </div>
               </div>
             </div>
             <div class="col">
               <div class="">
-                <span class="surface_act" id="surface_act2">
-                  {{ data.sau }}</span
+                <span
+                  id="surface_act2"
+                  class="surface_act"
                 >
+                  {{ data.sau }}</span>
                 hectares
               </div>
-              <div class="potentialLegend">Surface agricole actuelle</div>
+              <div class="potentialLegend">
+                Surface agricole actuelle
+              </div>
               <div class="position-relative">
-                <div id="bar2" class="position-absolute" style="z-index: 2">
+                <div
+                  id="bar2"
+                  class="position-absolute"
+                  style="z-index: 2"
+                >
                   <div
                     v-if="max_potentiel_sau"
                     id=" sbar2"
@@ -414,19 +466,25 @@
                     :style="{
                       width: (data.sau / max_potentiel_sau) * 100 + '%',
                     }"
-                  ></div>
+                  />
                 </div>
-                <div class="position-absolute bargrey w-100" style="z-index: 1">
+                <div
+                  class="position-absolute bargrey w-100"
+                  style="z-index: 1"
+                >
                   <div
                     class="bar bg-grey-light animate__animated"
                     style="width: 100%"
-                  ></div>
+                  />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div id="textPotential" class="map-content contentPotential active">
+        <div
+          id="textPotential"
+          class="map-content contentPotential active"
+        >
           C’est le rapport entre la surface agricole actuelle et la surface
           agricole à mobiliser. Cela traduit la capacité théorique des surfaces
           agricoles du territoire à répondre à la demande alimentaire de la
@@ -434,7 +492,10 @@
           <div class="subtext">
             Sur la base de la part de bio et des régimes alimentaires actuels,
             le potentiel nourricier du territoire est de
-            <span class="potentiel" id="potentiel2">0</span>%.
+            <span
+              id="potentiel2"
+              class="potentiel"
+            >0</span>%.
           </div>
         </div>
 
@@ -470,6 +531,32 @@ export default {
         surfaces_a_mobiliser: 0,
       },
     };
+  },
+  computed: {
+    max_potentiel_sau() {
+      return Math.max(this.data.sau, this.data.potentiel_nourricier);
+    },
+    max_potentiel_surface() {
+      return Math.max(this.data.surface, this.data.potentiel_nourricier);
+    },
+  },
+  async mounted() {
+    window.addEventListener("scroll", this.gererVisibiliteImage);
+    this.data.surfaces_a_mobiliser = Math.round(
+      await getSurfaceAMobiliser().then((res) => res["surfaces_a_mobiliser"])
+    );
+    const surface_actuelle = await fetchSurfaceActuelle();
+    console.log("ACTUELLE", surface_actuelle);
+    this.data.surface = surface_actuelle["surface_ha"];
+    this.data.sau = surface_actuelle["sau_ha"];
+    this.data.potentiel_nourricier = Math.round(
+      (this.data.sau * 100) / this.data.surfaces_a_mobiliser
+    );
+    console.log(this.data);
+    this.recupererDonnees();
+  },
+  unmounted() {
+    window.removeEventListener("scroll", this.gererVisibiliteImage);
   },
   methods: {
     gererVisibiliteImage() {
@@ -569,32 +656,6 @@ export default {
           console.log(error);
         });
     },
-  },
-  computed: {
-    max_potentiel_sau() {
-      return Math.max(this.data.sau, this.data.potentiel_nourricier);
-    },
-    max_potentiel_surface() {
-      return Math.max(this.data.surface, this.data.potentiel_nourricier);
-    },
-  },
-  async mounted() {
-    window.addEventListener("scroll", this.gererVisibiliteImage);
-    this.data.surfaces_a_mobiliser = Math.round(
-      await getSurfaceAMobiliser().then((res) => res["surfaces_a_mobiliser"])
-    );
-    const surface_actuelle = await fetchSurfaceActuelle();
-    console.log("ACTUELLE", surface_actuelle);
-    this.data.surface = surface_actuelle["surface_ha"];
-    this.data.sau = surface_actuelle["sau_ha"];
-    this.data.potentiel_nourricier = Math.round(
-      (this.data.sau * 100) / this.data.surfaces_a_mobiliser
-    );
-    console.log(this.data);
-    this.recupererDonnees();
-  },
-  unmounted() {
-    window.removeEventListener("scroll", this.gererVisibiliteImage);
   },
 };
 </script>

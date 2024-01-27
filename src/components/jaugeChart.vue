@@ -1,5 +1,9 @@
 <template>
-  <v-chart class="chart" :option="option" autoresize />
+  <v-chart
+    class="chart"
+    :option="option"
+    autoresize
+  />
 </template>
 
 <script>
@@ -27,6 +31,9 @@ export default defineComponent({
   components: {
     VChart,
   },
+  provide: {
+    [THEME_KEY]: "light",
+  },
   props: {
     value: {
       type: Number,
@@ -36,9 +43,6 @@ export default defineComponent({
       type: String,
       default: "#00a8ff",
     },
-  },
-  provide: {
-    [THEME_KEY]: "light",
   },
   setup(props) {
     const option = ref({

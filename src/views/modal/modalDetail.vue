@@ -1,15 +1,24 @@
 <template>
   <div
-    class="modals"
     id="modal-impact-climat1"
+    class="modals"
     tabindex="-1"
     role="dialog"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content" v-if="modalId">
-        <component :is="modalId" @fermerModal="fermerModal" />
+    <div
+      class="modal-dialog"
+      role="document"
+    >
+      <div
+        v-if="modalId"
+        class="modal-content"
+      >
+        <component
+          :is="modalId"
+          @fermer-modal="fermerModal"
+        />
       </div>
     </div>
   </div>
