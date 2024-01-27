@@ -171,7 +171,7 @@
                       id="partbiolegumesval"
                     ></span
                     ><span class="text-bold legumes"
-                      >{{ $store.state.partbiolegumes }} %</span
+                      >{{ partbiolegumes }} %</span
                     ></output
                   >
                 </div>
@@ -183,7 +183,7 @@
                 step="1.000"
                 value="100"
                 id="partbiolegumes"
-                v-model="$store.state.partbiolegumes"
+                v-model="partbiolegumes"
                 class="slider-range"
               />
               <div class="range-values">
@@ -226,7 +226,7 @@
                       id="partbiofruitsval"
                     ></span
                     ><span class="text-bold fruits"
-                      >{{ $store.state.partbiofruits }} %</span
+                      >{{ partbiofruits }} %</span
                     ></output
                   >
                 </div>
@@ -239,7 +239,7 @@
                 step="1.000"
                 value="100"
                 id="partbiofruits"
-                v-model="$store.state.partbiofruits"
+                v-model="partbiofruits"
               />
               <div class="range-values">
                 <span class="range-min">0</span
@@ -281,7 +281,7 @@
                       id="partbiocerealesval"
                     ></span
                     ><span class="text-bold cereales"
-                      >{{ $store.state.partbiocereales }} %</span
+                      >{{ partbiocereales }} %</span
                     ></output
                   >
                 </div>
@@ -294,7 +294,7 @@
                 value="100"
                 id="partbiocereales"
                 class="slider-range"
-                v-model="$store.state.partbiocereales"
+                v-model="partbiocereales"
               />
               <div class="range-values">
                 <span class="range-min">0</span
@@ -543,17 +543,17 @@ export default {
     partPertes: function (partPertes) {
       this.$store.dispatch("actionModifierPartPertes", partPertes);
     },
-    partbiocereales: function (val) {
-      this.$store.commit("partBioCereales", val);
+    partbiocereales: function (partBioCereales) {
+      this.$store.dispatch("actionModifierPartBioCereales", partBioCereales);
     },
     partBioElevage: function (partBioElevage) {
       this.$store.dispatch("actionModifierPartBioElevage", partBioElevage);
     },
-    partbiofruits: function (val) {
-      this.$store.commit("partBioFruits", val);
+    partbiofruits: function (partBioFruits) {
+      this.$store.dispatch("actionModifierPartBioFruits", partBioFruits);
     },
-    partbiolegumes: function (val) {
-      this.$store.commit("partBioLegumes", val);
+    partbiolegumes: function (partBioLegumes) {
+      this.$store.dispatch("actionModifierPartBioLegumes", partBioLegumes);
     },
     regimeChoisi: function (nomCourtRegime) {
       // TODO : choix pour utiliser nomCourt ou id comme clé partout pour les régimes

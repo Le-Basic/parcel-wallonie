@@ -50,12 +50,14 @@ export function pushDataViz(data) {
         color: trouverCouleur(el.libelle_parcel_niveau_1),
       };
     });
+    var container = document.getElementById("viz");
+    container.innerHTML = "";
     console.log("VizData", Vizdata);
     new Treemap()
       .select("#viz")
       .data(Vizdata)
       .groupBy("libelle_parcel_niveau_1")
-      .sum("surface_necessaire_conventionnel")
+      .sum("surface_a_mobiliser")
       .color("color")
       .height(500)
       .legend(0)

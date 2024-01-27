@@ -31,14 +31,22 @@ const getDefaultState = () => {
 };
 
 async function recalculerResultatSimulation(
+  codesTerritoireParcel,
   idRegimeAlimentaire,
   partBioElevage,
+  partBioFruits,
+  partBioLegumes,
+  partBioCereales,
   partPertes
 ) {
   console.log(
     "recalculerResultatSimulation",
+    codesTerritoireParcel,
     idRegimeAlimentaire,
     partBioElevage,
+    partBioFruits,
+    partBioLegumes,
+    partBioCereales,
     partPertes
   );
 
@@ -46,7 +54,6 @@ async function recalculerResultatSimulation(
   const actuelles_url =
     window.apiURL + "parcel/belgique/surfaces_actuels_produit";
   // TODO : mun91114 en dur ici, mais on pourrait déjà le remonter au niveau du défault state et du mutateur
-  const codesTerritoireParcel = ["mun91114"];
   var surfaceActuelleResponseApi = await fetchSurfacesActuelles(
     actuelles_url,
     codesTerritoireParcel
@@ -60,6 +67,9 @@ async function recalculerResultatSimulation(
     surfaceActuelleResponseApi,
     surfaceNecessaireResponseApi,
     partBioElevage,
+    partBioFruits,
+    partBioLegumes,
+    partBioCereales,
     partPertes
   );
   return resultatSimulation;
@@ -67,7 +77,11 @@ async function recalculerResultatSimulation(
 
 export default createStore({
   state: getDefaultState(),
-  getters: {},
+  getters: {
+    getcodesTerritoireParcel: (state) => {
+      return state.geoList.map((item) => item.code_territoire);
+    },
+  },
   mutations: {
     addGeo(state, geo) {
       state.geoList.push(geo);
@@ -117,6 +131,15 @@ export default createStore({
     },
     mutationPartBioElevage(state, partBioElevage) {
       state.partbioelevage = partBioElevage;
+    },
+    mutationPartBioFruits(state, partBioFruits) {
+      state.partbiofruits = partBioFruits;
+    },
+    mutationPartBioLegumes(state, partBioLegumes) {
+      state.partbiolegumes = partBioLegumes;
+    },
+    mutationPartBioCereales(state, partBioCereales) {
+      state.partbiocereales = partBioCereales;
     },
     mutationPartPertes(state, partPertes) {
       state.partpertes = partPertes;
@@ -170,8 +193,12 @@ export default createStore({
     async actionChoisirRegimeAlimentaire({ commit }, regimeAlimentaire) {
       commit("mutationRegimeAlimentaire", regimeAlimentaire);
       let resultatSimulation = await recalculerResultatSimulation(
+        this.getters.getcodesTerritoireParcel,
         this.state.regime_alimentaire.id,
         this.state.partbioelevage,
+        this.state.partbiofruits,
+        this.state.partbiolegumes,
+        this.state.partbiocereales,
         this.state.partpertes
       );
       commit("mutationResultatSimulation", resultatSimulation);
@@ -179,8 +206,52 @@ export default createStore({
     async actionModifierPartBioElevage({ commit }, partBioElevage) {
       commit("mutationPartBioElevage", partBioElevage);
       let resultatSimulation = await recalculerResultatSimulation(
+        this.getters.getcodesTerritoireParcel,
         this.state.regime_alimentaire.id,
         this.state.partbioelevage,
+        this.state.partbiofruits,
+        this.state.partbiolegumes,
+        this.state.partbiocereales,
+        this.state.partpertes
+      );
+      commit("mutationResultatSimulation", resultatSimulation);
+    },
+    async actionModifierPartBioFruits({ commit }, partBioFruits) {
+      commit("mutationPartBioFruits", partBioFruits);
+      let resultatSimulation = await recalculerResultatSimulation(
+        this.getters.getcodesTerritoireParcel,
+        this.state.regime_alimentaire.id,
+        this.state.partbioelevage,
+        this.state.partbiofruits,
+        this.state.partbiolegumes,
+        this.state.partbiocereales,
+        this.state.partpertes
+      );
+      commit("mutationResultatSimulation", resultatSimulation);
+    },
+    async actionModifierPartBioLegumes({ commit }, partBioLegumes) {
+      console.log("actionModifierPartBioLegumes", partBioLegumes);
+      commit("mutationPartBioLegumes", partBioLegumes);
+      let resultatSimulation = await recalculerResultatSimulation(
+        this.getters.getcodesTerritoireParcel,
+        this.state.regime_alimentaire.id,
+        this.state.partbioelevage,
+        this.state.partbiofruits,
+        this.state.partbiolegumes,
+        this.state.partbiocereales,
+        this.state.partpertes
+      );
+      commit("mutationResultatSimulation", resultatSimulation);
+    },
+    async actionModifierPartBioCereales({ commit }, partBioCereales) {
+      commit("mutationPartBioCereales", partBioCereales);
+      let resultatSimulation = await recalculerResultatSimulation(
+        this.getters.getcodesTerritoireParcel,
+        this.state.regime_alimentaire.id,
+        this.state.partbioelevage,
+        this.state.partbiofruits,
+        this.state.partbiolegumes,
+        this.state.partbiocereales,
         this.state.partpertes
       );
       commit("mutationResultatSimulation", resultatSimulation);
@@ -188,8 +259,12 @@ export default createStore({
     async actionModifierPartPertes({ commit }, partPertes) {
       commit("mutationPartPertes", partPertes);
       let resultatSimulation = await recalculerResultatSimulation(
+        this.getters.getcodesTerritoireParcel,
         this.state.regime_alimentaire.id,
         this.state.partbioelevage,
+        this.state.partbiofruits,
+        this.state.partbiolegumes,
+        this.state.partbiocereales,
         this.state.partpertes
       );
       commit("mutationResultatSimulation", resultatSimulation);

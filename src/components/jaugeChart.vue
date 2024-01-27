@@ -1,5 +1,5 @@
 <template>
-  <v-chart class="chart" :option="option" autoresize />
+  <v-chart class="chart" :option="option" autoresize ref="jauge" />
 </template>
 
 <script>
@@ -39,6 +39,16 @@ export default defineComponent({
   },
   provide: {
     [THEME_KEY]: "light",
+  },
+  methods: {
+    updateChart() {
+      // Use nextTick to ensure the chart updates after the data change
+      this.$nextTick(() => {
+        console.log("updateChart");
+        this.$refs.jauge.clear();
+        this.$refs.jauge.setOption(this.option);
+      });
+    },
   },
   setup(props) {
     const option = ref({

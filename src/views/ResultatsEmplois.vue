@@ -91,7 +91,7 @@
                                       .surfacesEmploisAMobiliser,
                                     CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
                                       .LEGUMES.libelle,
-                                    "emploi_conventionnel",
+                                    "emplois_a_mobiliser",
                                     "libelle_parcel_niveau_1"
                                   )
                                 }}
@@ -146,7 +146,7 @@
                                       .surfacesEmploisAMobiliser,
                                     CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
                                       .FRUITS.libelle,
-                                    "emploi_conventionnel",
+                                    "emplois_a_mobiliser",
                                     "libelle_parcel_niveau_1"
                                   )
                                 }}
@@ -200,7 +200,7 @@
                                       .surfacesEmploisAMobiliser,
                                     CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
                                       .CEREALES.libelle,
-                                    "emploi_conventionnel",
+                                    "emplois_a_mobiliser",
                                     "libelle_parcel_niveau_1"
                                   )
                                 }}
@@ -262,7 +262,7 @@
                                       .surfacesEmploisAMobiliser,
                                     CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
                                       .ELEVAGE.libelle,
-                                    "emploi_conventionnel",
+                                    "emplois_a_mobiliser",
                                     "libelle_parcel_niveau_1"
                                   )
                                 }}
@@ -513,7 +513,7 @@ export default {
       montrerClasse: "",
       modalEmplois: null,
       CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER,
-      emploi_conventionnel: "emploi_conventionnel",
+      emplois_a_mobiliser: "emplois_a_mobiliser",
     };
   },
   methods: {
@@ -529,10 +529,6 @@ export default {
       this.modalDetails = id;
       console.log(this.modalDetails);
     },
-  },
-  async mounted() {
-    this.this.$store.state.resultatSimulation =
-      this.$store.state.resultatSimulation.surfacesEmploisAMobiliser;
   },
 };
 </script>

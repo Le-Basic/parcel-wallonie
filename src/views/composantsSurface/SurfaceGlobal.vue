@@ -445,7 +445,10 @@
           <div class="subtext">
             Sur la base de la part de bio et des régimes alimentaires actuels,
             le potentiel nourricier du territoire est de
-            <span class="potentiel" id="potentiel2">0</span>%.
+            <span class="potentiel" id="potentiel2">{{
+              data.potentiel_nourricier
+            }}</span
+            >%.
           </div>
         </div>
 
@@ -556,7 +559,7 @@ export default {
       var codesTerritoireParcel = this.$store.state.geoList.map(
         (el) => el.code_territoire
       );
-      codesTerritoireParcel = ["mun91114"];
+      codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
       bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
       this.$axios
         .post(
@@ -593,10 +596,8 @@ export default {
     console.log("ACTUELLE", surface_actuelle);
     this.data.surface = surface_actuelle["surface_ha"];
     this.data.sau = surface_actuelle["sau_ha"];
-    this.data.potentiel_nourricier = Math.round(
-      (this.data.sau * 100) /
-        this.$store.state.resultatSimulation.surfaceAMobiliser
-    );
+    this.data.potentiel_nourricier =
+      this.$store.state.resultatSimulation.potentielNourricier;
     console.log(this.data);
     this.recupererDonnees();
   },

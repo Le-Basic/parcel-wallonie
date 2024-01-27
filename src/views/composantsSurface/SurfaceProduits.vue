@@ -87,6 +87,7 @@
                           .surfacesEmploisAMobiliser[3].part_surface_a_mobiliser
                       "
                       couleur="#91C423"
+                      :key="this.$store.state.resultatSimulation"
                     ></jaugeChart>
                   </div>
                   <div class="result-type">
@@ -101,8 +102,7 @@
                       {{
                         formatterSurfacesNecessaires(
                           this.$store.state.resultatSimulation
-                            .surfacesEmploisAMobiliser[3]
-                            .surface_necessaire_conventionnel
+                            .surfacesEmploisAMobiliser[3].surface_a_mobiliser
                         )
                       }}
                     </div>
@@ -138,6 +138,7 @@
                           .surfacesEmploisAMobiliser[1].part_surface_a_mobiliser
                       "
                       couleur="#A261C0"
+                      :key="this.$store.state.resultatSimulation"
                     ></jaugeChart>
                   </div>
                   <div class="result-type">
@@ -151,8 +152,7 @@
                       {{
                         formatterSurfacesNecessaires(
                           this.$store.state.resultatSimulation
-                            .surfacesEmploisAMobiliser[1]
-                            .surface_necessaire_conventionnel
+                            .surfacesEmploisAMobiliser[1].surface_a_mobiliser
                         )
                       }}
                     </div>
@@ -185,6 +185,7 @@
                           .surfacesEmploisAMobiliser[2].part_surface_a_mobiliser
                       "
                       couleur="#F9B233"
+                      :key="this.$store.state.resultatSimulation"
                     ></jaugeChart>
                   </div>
                   <div class="result-type">
@@ -200,8 +201,7 @@
                       {{
                         formatterSurfacesNecessaires(
                           this.$store.state.resultatSimulation
-                            .surfacesEmploisAMobiliser[2]
-                            .surface_necessaire_conventionnel
+                            .surfacesEmploisAMobiliser[2].surface_a_mobiliser
                         )
                       }}
                     </div>
@@ -234,6 +234,7 @@
                           .surfacesEmploisAMobiliser[0].part_surface_a_mobiliser
                       "
                       couleur="#B57A60"
+                      :key="this.$store.state.resultatSimulation"
                     ></jaugeChart>
                   </div>
                   <div class="result-type">
@@ -248,7 +249,7 @@
                         formatterSurfacesNecessaires(
                           this.$store.state.resultatSimulation.surfacesEmploisAMobiliser.find(
                             (item) => item.libelle_parcel_niveau_1 == "Elevage"
-                          ).surface_necessaire_conventionnel
+                          ).surface_a_mobiliser
                         )
                       }}
                     </div>
@@ -1335,6 +1336,14 @@ export default {
           ),
         };
       });
+    },
+  },
+  watch: {
+    "$store.state.resultatSimulation.surfacesEmploisAMobiliser": function () {
+      console.log("test");
+      pushDataViz(
+        this.$store.state.resultatSimulation.surfacesEmploisAMobiliser
+      );
     },
   },
 };
