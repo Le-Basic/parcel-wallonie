@@ -46,34 +46,6 @@ function calculerSurfacesEtEmploisAMobiliser(
   partBioCereales,
   partPertes
 ) {
-  // const surfaceNecessaireBioElevage = surfaceNecessaireResponseApi
-  //   .filter((item) => {
-  //     return item.libelle_parcel_niveau_1 === "Elevage";
-  //   })
-  //   .map((item) => {
-  //     return item.surface_necessaire_bio;
-  //   })
-  //   .reduce((somme, surface) => somme + surface, 0);
-  // const surfaceNecessaireConventionnelElevage = surfaceNecessaireResponseApi
-  //   .filter((item) => {
-  //     return item.libelle_parcel_niveau_1 === "Elevage";
-  //   })
-  //   .map((item) => {
-  //     return item.surface_necessaire_conventionnel;
-  //   })
-  //   .reduce((somme, surface) => somme + surface, 0);
-
-  // const surfaces_a_mobiliser =
-  //   (((partBioElevage / 100) * surfaceNecessaireBioElevage +
-  //     (1 - partBioElevage / 100) * surfaceNecessaireConventionnelElevage) *
-  //     (1 - 0.18)) /
-  //   (1 - 0.18 * (1 - partPertes / 100));
-
-  // const emplois_a_mobiliser = surfaceNecessaireResponseApi
-  //   .map((item) => {
-  //     return item.emploi_conventionnel;
-  //   })
-  //   .reduce((somme, emploi) => somme + emploi, 0);
   let surfaces_emplois_a_mobiliser_parcel_niveau_1 = [];
   surfaceNecessaireResponseApi.reduce(function (res, valeur) {
     if (!res[valeur.libelle_parcel_niveau_1]) {
@@ -119,10 +91,6 @@ function calculerSurfacesEtEmploisAMobiliser(
         partBioCereales,
         partPertes
       );
-    // res[valeur.libelle_parcel_niveau_1].part_surface_a_mobiliser +=
-    //   valeur.surface_necessaire_conventionnel / surfaces_a_mobiliser;
-    // res[valeur.libelle_parcel_niveau_1].part_emplois_a_mobiliser +=
-    //   valeur.emploi_conventionnel / emplois_a_mobiliser;
     return res;
   }, {});
 

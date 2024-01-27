@@ -18,7 +18,11 @@
             class="odometer-inside"
             v-if="this.$store.state.resultatSimulation.surfaceAMobiliser"
           >
-            {{ this.$store.state.resultatSimulation.surfaceAMobiliser }}
+            {{
+              formatterChiffres(
+                this.$store.state.resultatSimulation.surfaceAMobiliser
+              )
+            }}
           </div>
         </div>
         <div class="hectares animated fadeIn delay-1-5s">
@@ -280,7 +284,9 @@
         >
           <div class="odometer-inside">
             {{
-              Math.round(this.$store.state.resultatSimulation.surfacesActuelles)
+              formatterChiffres(
+                this.$store.state.resultatSimulation.surfacesActuelles
+              )
             }}
           </div>
         </div>
@@ -1162,6 +1168,7 @@
 </template>
 
 <script>
+import { formatterChiffres } from "@/plugins/surfaceProduits";
 import { Treemap } from "d3plus-hierarchy";
 import { CATEGORIE_PRODUITS_SURFACES_ACTUELLES } from "@/config/categorieProduitsActuel";
 import { trouverChiffre } from "@/plugins/utils";
@@ -1188,6 +1195,7 @@ export default {
   },
   methods: {
     trouverChiffre,
+    formatterChiffres,
     ouvrirModal(id) {
       console.log(id);
       this.modalDetails = id;

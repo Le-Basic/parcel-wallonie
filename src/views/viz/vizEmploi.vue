@@ -38,7 +38,7 @@ export default {
       return trouverChiffre(
         this.objetEmplois,
         this.categorieProduitLibelle,
-        "emplois_a_mobiliser"
+        "part_emplois_a_mobiliser"
       );
     },
   },

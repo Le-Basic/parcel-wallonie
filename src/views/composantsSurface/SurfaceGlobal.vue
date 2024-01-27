@@ -39,7 +39,7 @@
               alt=""
               class="mx-auto"
               :style="{
-                width: (data.sau / max_potentiel_surface) * 100 + '%',
+                width: (surfaces_actuelles / max_potentiel_surface) * 100 + '%',
                 opacity: 1,
               }"
               :src="require('@/assets/img/surfaces/circle-agricole.svg')"
@@ -51,7 +51,7 @@
             :style="{
               opacity: 0,
               'z-index':
-                data.sau >
+                surfaces_actuelles >
                 this.$store.state.resultatSimulation.surfaceAMobiliser
                   ? 10
                   : 0,
@@ -113,9 +113,11 @@
                 id="surface_territoire_actuelle1"
               >
                 <div class="odometer-inside">
-                  <span class="chiffre-encart">{{ data.surface }}</span>
+                  <span class="chiffre-encart">{{
+                    formatterChiffres(data.surface)
+                  }}</span>
 
-                  ><!--<span class="odometer-digit-spacer">8</span
+                  <!--<span class="odometer-digit-spacer">8</span
                     ><span class="odometer-digit-inner"
                       ><span class="odometer-ribbon"
                         ><span class="odometer-ribbon-inner"
@@ -154,7 +156,10 @@
                   > -->
                 </div>
               </div>
-              <div class="hectares animate__animated fadeIn delay-1-5s">
+              <div
+                class="hectares animate__animated fadeIn delay-1-5s"
+                style="color: #ffffff"
+              >
                 hectares
               </div>
             </div>
@@ -172,7 +177,9 @@
                 id="surface_act"
               >
                 <div class="odometer-inside">
-                  <span class="chiffre-encart">{{ data.sau }}</span>
+                  <span class="chiffre-encart">{{
+                    formatterChiffres(surfaces_actuelles)
+                  }}</span>
                   <!-- <span class="odometer-digit"
                     ><span class="odometer-digit-spacer">8</span
                     ><span class="odometer-digit-inner"
@@ -251,7 +258,11 @@
                 id="surface_potentiel"
               >
                 <div class="odometer-inside" v-if="data.potentiel_nourricier">
-                  {{ this.$store.state.resultatSimulation.surfaceAMobiliser }}
+                  {{
+                    formatterChiffres(
+                      this.$store.state.resultatSimulation.surfaceAMobiliser
+                    )
+                  }}
                   <!-- <span class="odometer-digit"
                     ><span class="odometer-digit-spacer">8</span
                     ><span class="odometer-digit-inner"
@@ -379,7 +390,9 @@
               <div>
                 <span class="surface_potentiel" id="surface_potentiel2">
                   {{
-                    this.$store.state.resultatSimulation.surfaceAMobiliser
+                    formatterChiffres(
+                      this.$store.state.resultatSimulation.surfaceAMobiliser
+                    )
                   }}</span
                 >
                 hectares
@@ -411,7 +424,7 @@
             <div class="col">
               <div class="">
                 <span class="surface_act" id="surface_act2">
-                  {{ data.sau }}</span
+                  {{ formatterChiffres(surfaces_actuelles) }}</span
                 >
                 hectares
               </div>
@@ -423,7 +436,8 @@
                     id=" sbar2"
                     class="bar bg-vert-fonce animate__animated"
                     :style="{
-                      width: (data.sau / max_potentiel_sau) * 100 + '%',
+                      width:
+                        (surfaces_actuelles / max_potentiel_sau) * 100 + '%',
                     }"
                   ></div>
                 </div>
@@ -468,7 +482,7 @@
 
 <script>
 import { fetchSurfaceActuelle } from "@/plugins/getSurfacesNecessaires";
-
+import { formatterChiffres } from "@/plugins/surfaceProduits";
 export default {
   inject: ["$axios"],
   data() {
@@ -482,6 +496,7 @@ export default {
     };
   },
   methods: {
+    formatterChiffres,
     gererVisibiliteImage() {
       let zoneScrollableSurfaceActuelle = document.getElementById(
         "zone-surface-actuelle"
@@ -534,7 +549,8 @@ export default {
         imageSurfaceTerritoire.classList.remove("fadeIn");
         imageSurfaceTerritoire.classList.add("fadeOut");
         if (
-          this.data.sau > this.$store.state.resultatSimulation.surfaceAMobiliser
+          this.surfaces_actuelles >
+          this.$store.state.resultatSimulation.surfaceAMobiliser
         ) {
           imageSauActuelle.classList.add("position-devant2");
         }
@@ -574,7 +590,6 @@ export default {
         )
         .then((response) => {
           this.data.surface = response.data[0]["surface_ha"];
-          this.data.sau = response.data[0]["sau_ha"];
           console.log(this.data);
         })
         .catch((error) => {
@@ -583,8 +598,11 @@ export default {
     },
   },
   computed: {
+    surfaces_actuelles() {
+      return this.$store.state.resultatSimulation.surfacesActuelles;
+    },
     max_potentiel_sau() {
-      return Math.max(this.data.sau, this.data.potentiel_nourricier);
+      return Math.max(this.surfaces_actuelles, this.data.potentiel_nourricier);
     },
     max_potentiel_surface() {
       return Math.max(this.data.surface, this.data.potentiel_nourricier);
@@ -595,7 +613,7 @@ export default {
     const surface_actuelle = await fetchSurfaceActuelle();
     console.log("ACTUELLE", surface_actuelle);
     this.data.surface = surface_actuelle["surface_ha"];
-    this.data.sau = surface_actuelle["sau_ha"];
+    this.surfaces_actuelles = surface_actuelle["sau_ha"];
     this.data.potentiel_nourricier =
       this.$store.state.resultatSimulation.potentielNourricier;
     console.log(this.data);

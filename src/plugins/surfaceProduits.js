@@ -5,3 +5,7 @@ export function formatterSurfacesNecessaires(chiffreSurface) {
     " hectares"
   );
 }
+
+export function formatterChiffres(chiffreSurface) {
+  return Math.round(chiffreSurface).toLocaleString("fr-FR");
+}
