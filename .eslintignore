@@ -1,8 +1,5 @@
-/**/build
-/**/public
-/**/.output/
-/**/node_modules
-/**/dist/
-/**/cypress/screenshots
-/**/cypress/videos
-/**/lib
+.github
+dist
+node_modules
+public
+src/assets
