@@ -1,24 +1,35 @@
 <template>
   <div class="modal-header d-flex align-items-center">
     <div>
-      <span class="icon-impact-co2 ico-medium ico-impact mr-3 cereales"></span>
+      <span class="icon-impact-co2 ico-medium ico-impact mr-3 cereales" />
     </div>
     <div class="d-flex flex-column">
       <div class="titre-categorie">
         Le climat et l’air : les émissions de gaz à effet de serre
       </div>
-      <div class="hectares"></div>
+      <div class="hectares" />
     </div>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-      <span class="icon-ico_fermer icon"></span>
+    <button
+      type="button"
+      class="close"
+      data-dismiss="modal"
+      aria-label="Close"
+    >
+      <span class="icon-ico_fermer icon" />
     </button>
   </div>
   <!--modal-header--->
   <div class="modal-body">
-    <div id="accordeon-fiche" class="accordeon-detail cereales-fonce">
+    <div
+      id="accordeon-fiche"
+      class="accordeon-detail cereales-fonce"
+    >
       <div class="card">
         <!--l'indicateur-->
-        <div class="card-header" id="headingUnit">
+        <div
+          id="headingUnit"
+          class="card-header"
+        >
           <button
             class="btn btn-link"
             data-toggle="collapse"
@@ -26,7 +37,7 @@
             aria-expanded="true"
             aria-controls="collapseResult"
           >
-            <div><span class="icon-unite icon white"></span></div>
+            <div><span class="icon-unite icon white" /></div>
             <div>
               Des résultats variables selon l’unité : par hectare ou par
               personne
@@ -44,13 +55,14 @@
               <div class="col cadre-impact">
                 <div class="cadre-impact-detail">
                   <div class="impact-graph text-center">
-                    <span class="icon-impact-co2 ico-medium ico-impact"></span
-                    ><span class="impact-result"
-                      ><span id="flechemodalair12" class="ico-medium"></span
-                      ><span id="impactmodalair12" class="impact-nbr"
-                        ><span id="gaz_effet_serre32">-</span>%
-                      </span></span
-                    >
+                    <span class="icon-impact-co2 ico-medium ico-impact" /><span class="impact-result"><span
+                      id="flechemodalair12"
+                      class="ico-medium"
+                    /><span
+                      id="impactmodalair12"
+                      class="impact-nbr"
+                    ><span id="gaz_effet_serre32">-</span>%
+                    </span></span>
                   </div>
                   <div class="impact-nom text-center">
                     Emissions de gaz à effet de serre
@@ -60,20 +72,20 @@
                   </div>
                 </div>
                 <div>
-                  <strong
-                    >Quel est l’impact environnemental d’un hectare moyen
-                    nécessaire à la production de mon alimentation ?</strong
-                  >
+                  <strong>Quel est l’impact environnemental d’un hectare moyen
+                    nécessaire à la production de mon alimentation ?</strong>
                 </div>
               </div>
               <div class="col cadre-impact">
                 <div class="cadre-impact-detail">
                   <div class="impact-graph text-center">
-                    <span class="icon-impact-co2 ico-medium ico-impact"></span
-                    ><span class="impact-result"></span
-                    ><span id="flechemodalair22" class="ico-medium"></span
-                    ><span id="impactmodalair22" class="impact-nbr"
-                      ><span id="gaz_effet_serre42">-</span>%
+                    <span class="icon-impact-co2 ico-medium ico-impact" /><span class="impact-result" /><span
+                      id="flechemodalair22"
+                      class="ico-medium"
+                    /><span
+                      id="impactmodalair22"
+                      class="impact-nbr"
+                    ><span id="gaz_effet_serre42">-</span>%
                     </span>
                   </div>
                   <div class="impact-nom text-center">
@@ -84,10 +96,8 @@
                   </div>
                 </div>
                 <div>
-                  <strong
-                    >Quel est l’impact environnemental de mon alimentation
-                    ?</strong
-                  >
+                  <strong>Quel est l’impact environnemental de mon alimentation
+                    ?</strong>
                 </div>
               </div>
             </div>
@@ -117,11 +127,13 @@
       </div>
       <!--card indic--->
       <blocImpact>
-        <template v-slot:icon>
-          <span class="icon-ico_navigation_alimentation icon white"></span>
+        <template #icon>
+          <span class="icon-ico_navigation_alimentation icon white" />
         </template>
-        <template v-slot:nomBouton>Définition de l’indicateur</template>
-        <template v-slot:contenu>
+        <template #nomBouton>
+          Définition de l’indicateur
+        </template>
+        <template #contenu>
           <div class="card-body">
             <!-- def indicateur-->
             <div class="def-indicateur">
@@ -134,26 +146,22 @@
                     <div class="line-ico d-flex align-items-center">
                       <span
                         class="icon-ico_navigation_territoire icon cereales icon-medium"
-                      ></span
-                      >Pas de relocalisation
+                      />Pas de relocalisation
                     </div>
                     <div class="line-ico d-flex align-items-center">
                       <span
                         class="icon-ico_CATEGORIES_viande icon cereales icon-medium"
-                      ></span
-                      >Régime actuel
+                      />Régime actuel
                     </div>
                     <div class="line-ico d-flex align-items-center">
                       <span
                         class="icon-affiner-reloc icon cereales icon-medium"
-                      ></span
-                      >Agriculture actuelle
+                      />Agriculture actuelle
                     </div>
                     <div class="line-ico d-flex align-items-center">
                       <span
                         class="icon-gaspillage icon cereales icon-medium"
-                      ></span
-                      >Pertes et gaspillage actuelles
+                      />Pertes et gaspillage actuelles
                     </div>
                   </div>
                   <div class="alim-distance text-center mb-3">
@@ -164,14 +172,13 @@
                       alt="…"
                       width="40px"
                       class="ml-auto mr-auto"
-                    />
+                    >
                   </div>
                 </div>
                 <div class="pl-3 pr-3">
                   <div class="alert alert-danger align-items-center h-25">
                     <div>
-                      <strong
-                        >Parcel ne se prononce pas sur les impacts de la
+                      <strong>Parcel ne se prononce pas sur les impacts de la
                         relocalisation
                       </strong>
                       (l'état de la rechercher actuelle ne permet pas de les
@@ -192,26 +199,22 @@
                     <div class="line-ico d-flex align-items-center">
                       <span
                         class="icon-ico_filtres-reloc icon cereales icon-medium"
-                      ></span
-                      >Relocalisation
+                      />Relocalisation
                     </div>
                     <div class="line-ico d-flex align-items-center">
                       <span
                         class="icon-ico_CATEGORIES_viande icon cereales icon-medium"
-                      ></span
-                      >Régime actuel
+                      />Régime actuel
                     </div>
                     <div class="line-ico d-flex align-items-center">
                       <span
                         class="icon-affiner-reloc icon cereales icon-medium"
-                      ></span
-                      >Agriculture actuelle
+                      />Agriculture actuelle
                     </div>
                     <div class="line-ico d-flex align-items-center">
                       <span
                         class="icon-gaspillage icon cereales icon-medium"
-                      ></span
-                      >Pertes et gaspillage actuelles
+                      />Pertes et gaspillage actuelles
                     </div>
                   </div>
                   <div class="alim-distance text-center mb-3">
@@ -222,7 +225,7 @@
                       alt="…"
                       width="40px"
                       class="ml-auto mr-auto"
-                    />
+                    >
                   </div>
                   <div class="cadre-resultat cadre-clair">
                     <div class="indic-titre cereales">
@@ -231,36 +234,30 @@
                     <div class="line-ico d-flex align-items-center">
                       <span
                         class="icon-ico_filtres-reloc icon cereales icon-medium"
-                      ></span
-                      >Relocalisation
+                      />Relocalisation
                     </div>
                     <div class="line-ico d-flex align-items-center">
                       <span
                         class="icon-ico_navigation_alimentation icon cereales icon-medium"
-                      ></span
-                      >Changement de régime
+                      />Changement de régime
                     </div>
                     <div class="line-ico d-flex align-items-center">
                       <span
                         class="icon-ico_filtres_bio icon cereales icon-medium"
-                      ></span
-                      >% d'agriculture en bio ?
+                      />% d'agriculture en bio ?
                     </div>
                     <div class="line-ico d-flex align-items-center">
                       <span
                         class="icon-gaspillage icon cereales icon-medium"
-                      ></span
-                      >Réduction des pertes et gaspillage
+                      />Réduction des pertes et gaspillage
                     </div>
                   </div>
                 </div>
                 <div class="pl-3 pr-3">
                   <div class="alert alert-success">
-                    <strong
-                      >Parcel donne l'impact d'un passage au bio, d'un
+                    <strong>Parcel donne l'impact d'un passage au bio, d'un
                       changement de régime alimentaire et de réduction des
-                      pertes et gaspillage.</strong
-                    >
+                      pertes et gaspillage.</strong>
                   </div>
                   <div class="alert alert-success">
                     <div class="indic-legende">
@@ -282,16 +279,18 @@
 
       <!--cles-->
       <bloc-impact>
-        <template v-slot:icon>
-          <span class="icon-cles icon white"></span>
+        <template #icon>
+          <span class="icon-cles icon white" />
         </template>
-        <template v-slot:nomBouton>Quelques clés d'interprétation</template>
-        <template v-slot:contenu>
+        <template #nomBouton>
+          Quelques clés d'interprétation
+        </template>
+        <template #contenu>
           <div class="card-body">
             <div class="d-flex align-items-center">
               <span
                 class="icon-ico_filtres-reloc icon cereales icon-medium"
-              ></span>
+              />
               <strong>Les effets d’une relocalisation</strong>
             </div>
             <ul>
@@ -321,7 +320,7 @@
       >
         <div class="card-body">
           <div class="d-flex align-items-center">
-            <span class="icon-ico_filtres_bio icon cereales icon-medium"></span>
+            <span class="icon-ico_filtres_bio icon cereales icon-medium" />
             <strong>Les effets d’un passage au bio</strong>
           </div>
           <ul>
@@ -342,7 +341,7 @@
           <div class="d-flex align-items-center">
             <span
               class="icon-ico_navigation_alimentation icon cereales icon-medium"
-            ></span>
+            />
             <strong>Les effets d’une réduction des produits animaux</strong>
           </div>
           <ul>
@@ -365,7 +364,7 @@
             </li>
           </ul>
           <div class="d-flex align-items-center">
-            <span class="icon-gaspillage icon cereales icon-medium"></span>
+            <span class="icon-gaspillage icon cereales icon-medium" />
             <strong>Les effets d’une réduction des pertes et gaspillage</strong>
           </div>
           <ul>
@@ -384,63 +383,40 @@
       </div>
       <!--collapse--->
       <bloc-impact>
-        <template v-slot:icon
-          ><span class="icon-contexte icon white"></span
-        ></template>
-        <template v-slot:nomBouton>Eléments de contexte </template>
-        <template v-slot:contenu>
+        <template #icon>
+          <span class="icon-contexte icon white" />
+        </template>
+        <template #nomBouton>
+          Eléments de contexte
+        </template>
+        <template #contenu>
           <div class="card-body">
             <div
               class="cadre-resultat methodo-detail d-flex flex-sm-row flex-column justify-content-around infographie-detail cereales-fonce"
             >
               <span
                 class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-                ><span
-                  class="icon-ico_navigation_alimentation icon icon cereales"
-                ></span>
+              ><span
+                 class="icon-ico_navigation_alimentation icon icon cereales"
+               />
                 <div class="info-infos">
-                  <span class="d-flex flex-column info-intro"
-                    ><span class="info-entete cereales"
-                      >alimentation<sup>1 </sup></span
-                    ><span class="info-verbe">=</span></span
-                  ><span class="d-flex flex-column info-detail"
-                    ><span class="nbr-ha"> 24 %</span
-                    ><span class="hectares"
-                      >de l’empreinte carbone des ménages français</span
-                    ></span
-                  >
+                  <span class="d-flex flex-column info-intro"><span class="info-entete cereales">alimentation<sup>1 </sup></span><span class="info-verbe">=</span></span><span class="d-flex flex-column info-detail"><span class="nbr-ha"> 24 %</span><span class="hectares">de l’empreinte carbone des ménages français</span></span>
                 </div>
               </span>
               <span
                 class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-                ><span class="icon-affiner-reloc icon cereales"></span>
+              ><span class="icon-affiner-reloc icon cereales" />
                 <div class="info-infos">
-                  <span class="d-flex flex-column info-intro"
-                    ><span class="info-entete cereales"
-                      >production agricole </span
-                    ><span class="info-verbe">=</span></span
-                  ><span class="d-flex flex-column info-detail"
-                    ><span class="nbr-ha"> 2/3</span
-                    ><span class="hectares"
-                      >de l’empreinte carbone de l’alimentation en France</span
-                    ></span
-                  >
+                  <span class="d-flex flex-column info-intro"><span class="info-entete cereales">production agricole </span><span class="info-verbe">=</span></span><span class="d-flex flex-column info-detail"><span class="nbr-ha"> 2/3</span><span class="hectares">de l’empreinte carbone de l’alimentation en France</span></span>
                 </div>
               </span>
               <span
                 class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-                ><span class="icon-ico_CATEGORIES_viande icon cereales"></span>
+              ><span class="icon-ico_CATEGORIES_viande icon cereales" />
                 <div class="info-infos">
-                  <span class="d-flex flex-column info-intro"
-                    ><span class="info-entete cereales">produits animaux</span
-                    ><span class="info-verbe">=</span></span
-                  ><span class="d-flex flex-column info-detail"
-                    ><span class="nbr-ha"> 80% </span
-                    ><span class="hectares">
-                      de l’empreinte carbone de l’alimentation des ménages
-                      français</span
-                    ></span
-                  >
+                  <span class="d-flex flex-column info-intro"><span class="info-entete cereales">produits animaux</span><span class="info-verbe">=</span></span><span class="d-flex flex-column info-detail"><span class="nbr-ha"> 80% </span><span class="hectares">
+                    de l’empreinte carbone de l’alimentation des ménages
+                    français</span></span>
                 </div>
               </span>
             </div>
@@ -448,8 +424,8 @@
               <sup>1 </sup>émissions de gaz à effet de serre issues de
               l'alimentation des ménages
             </div>
-          </div></template
-        >
+          </div>
+        </template>
       </bloc-impact>
       <bloc-impact />
       <div class="card">
@@ -459,11 +435,13 @@
       </div>
       <!--card--->
       <blocImpact>
-        <template v-slot:icon>
-          <span class="icon-ico_calcul2 icon white"></span>
+        <template #icon>
+          <span class="icon-ico_calcul2 icon white" />
         </template>
-        <template v-slot:nomBouton>Méthodologie de calcul</template>
-        <template v-slot:contenu>
+        <template #nomBouton>
+          Méthodologie de calcul
+        </template>
+        <template #contenu>
           <div class="card-body">
             <div class="mb-3">
               • Pour les éléments sur la méthode de calcul des indicateurs, se
@@ -472,108 +450,86 @@
                 href="/methodologie-de-calcul-de-la-relocalisation-alimentaire"
                 target="_blank"
                 rel="noopener noreferrer"
-                >page annexe méthodologique</a
-              >, accessible par le menu principal
+              >page annexe méthodologique</a>, accessible par le menu principal
             </div>
           </div>
           <!--card-body-->
         </template>
       </blocImpact>
       <blocImpact>
-        <template v-slot:icon>
-          <span class="icon-source icon white"></span>
+        <template #icon>
+          <span class="icon-source icon white" />
         </template>
-        <template v-slot:nomBouton>Principales ressources</template>
-        <template v-slot:contenu>
+        <template #nomBouton>
+          Principales ressources
+        </template>
+        <template #contenu>
           <div class="card-body">
             <ul>
               <li>
-                ­<span class="source-titre">Base de Données FoodGES </span
-                ><span class="source-auteur"> – ADEME</span
-                ><span class="source-année"> – 2016</span>
+                ­<span class="source-titre">Base de Données FoodGES </span><span class="source-auteur"> – ADEME</span><span class="source-année"> – 2016</span>
                 <div>
                   <a
                     class=""
                     href="http://www.bilans-ges.ademe.fr/fr/actualite/actualite/detail/id/23"
-                    >Voir l'étude</a
-                  >
+                  >Voir l'étude</a>
                 </div>
               </li>
               <li>
-                ­<span class="source-titre"
-                  >Quantifier et chiffrer économiquement les externalités de
-                  l’agriculture biologique ?</span
-                ><span class="source-auteur">
-                  – ITAB, Sautereau, N., Benoît, M. </span
-                ><span class="source-année"> – 2016</span>
+                ­<span class="source-titre">Quantifier et chiffrer économiquement les externalités de
+                  l’agriculture biologique ?</span><span class="source-auteur">
+                  – ITAB, Sautereau, N., Benoît, M. </span><span class="source-année"> – 2016</span>
                 <div>
                   <a
                     class=""
                     href="http://www.itab.asso.fr/downloads/amenites/amenites-ab-rapport-nov2016.pdf"
-                    >Voir l'étude</a
-                  >
+                  >Voir l'étude</a>
                 </div>
               </li>
               <li>
-                ­<span class="source-titre"
-                  >Many shades of gray - The context-dependent performance of
-                  organic agriculture</span
-                ><span class="source-auteur">
-                  – Seufert, V., Ramankutty, N.</span
-                ><span class="source-année"> – 2017</span>
+                ­<span class="source-titre">Many shades of gray - The context-dependent performance of
+                  organic agriculture</span><span class="source-auteur">
+                  – Seufert, V., Ramankutty, N.</span><span class="source-année"> – 2017</span>
                 <div>
                   <a
                     class=""
                     href="https://www.researchgate.net/publication/314682330_Many_shades_of_gray-The_context-dependent_performance_of_organic_agriculture"
-                    >Voir l'étude</a
-                  >
+                  >Voir l'étude</a>
                 </div>
               </li>
               <li>
-                ­<span class="source-titre"
-                  >L’empreinte énergétique et carbone de l’alimentation en
-                  France – de la production à la consommation</span
-                ><span class="source-auteur">
-                  – Barbier, C., Couturier C. et al.</span
-                ><span class="source-année">– 2019</span>
+                ­<span class="source-titre">L’empreinte énergétique et carbone de l’alimentation en
+                  France – de la production à la consommation</span><span class="source-auteur">
+                  – Barbier, C., Couturier C. et al.</span><span class="source-année">– 2019</span>
                 <div>
                   <a
                     class=""
                     href="https://www.actu-environnement.com/media/pdf/news-32955-etude.pdf"
-                    >Voir l'étude</a
-                  >
+                  >Voir l'étude</a>
                 </div>
               </li>
               <li>
-                ­<span class="source-titre"
-                  >Une Europe agroécologique en 2050 : une agriculture
-                  multifonctionnelle pour une alimentation saine.</span
-                ><span class="source-auteur"> – Aubert, P.M., Poux, X. </span
-                ><span class="source-année"> – 2018</span>
+                ­<span class="source-titre">Une Europe agroécologique en 2050 : une agriculture
+                  multifonctionnelle pour une alimentation saine.</span><span class="source-auteur"> – Aubert, P.M., Poux, X. </span><span class="source-année"> – 2018</span>
                 <div>
                   <a
                     class=""
                     href="https://www.iddri.org/sites/default/files/PDF/Publications/Catalogue%20Iddri/Etude/201809-ST0918-tyfa_0.pdf"
-                    >Voir l'étude</a
-                  >
+                  >Voir l'étude</a>
                 </div>
               </li>
               <li>
-                ­<span class="source-titre"
-                  >Elevage bovin et environnement : les chiffres clés.</span
-                ><span class="source-auteur"> – IDELE</span
-                ><span class="source-année"> – 2018</span>
+                ­<span class="source-titre">Elevage bovin et environnement : les chiffres clés.</span><span class="source-auteur"> – IDELE</span><span class="source-année"> – 2018</span>
                 <div>
                   <a
                     class=""
                     href="http://idele.fr/?eID=cmis_download&oID=workspace://SpacesStore/22418327-4fcf-4f1c-9b45-eb7d0c3e5682"
-                    >Voir l'étude</a
-                  >
+                  >Voir l'étude</a>
                 </div>
               </li>
             </ul>
-          </div></template
-        >
+          </div>
+        </template>
       </blocImpact>
       <!--card--->
     </div>
@@ -585,7 +541,7 @@
 <script>
 import blocImpact from "./composant/blocImpact.vue";
 export default {
-  name: "modalImpactGes",
+  name: "ModalImpactGes",
   components: {
     blocImpact,
   },

@@ -6,16 +6,21 @@
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
-    <div class="modal-dialog" role="document">
+    <div
+      class="modal-dialog"
+      role="document"
+    >
       <div class="modal-content modal-repart-cat-detail">
         <div class="modal-header d-flex align-items-center">
           <div>
             <span
               class="icon-impact-eau-conso ico-medium ico-impact mr-3 eau"
-            ></span>
+            />
           </div>
           <div class="d-flex flex-column">
-            <div class="titre-categorie">Eau : Consommation d’eau</div>
+            <div class="titre-categorie">
+              Eau : Consommation d’eau
+            </div>
           </div>
           <button
             type="button"
@@ -23,18 +28,23 @@
             data-dismiss="modal"
             aria-label="Close"
           >
-            <span class="icon-ico_fermer icon"></span>
+            <span class="icon-ico_fermer icon" />
           </button>
         </div>
         <!--modal-header--->
         <div class="modal-body">
-          <div id="accordeon-fiche" class="accordeon-detail eau-fonce">
+          <div
+            id="accordeon-fiche"
+            class="accordeon-detail eau-fonce"
+          >
             <blocImpact>
-              <template v-slot:icon>
-                <span class="icon-source icon white"></span>
+              <template #icon>
+                <span class="icon-source icon white" />
               </template>
-              <template v-slot:nomBouton>Principales ressources</template>
-              <template v-slot:contenu>
+              <template #nomBouton>
+                Principales ressources
+              </template>
+              <template #contenu>
                 <div class="card-body">
                   <div class="row cadre-impacts">
                     <div class="col cadre-impact">
@@ -42,16 +52,14 @@
                         <div class="impact-graph text-center">
                           <span
                             class="icon-impact-eau-conso ico-medium ico-impact"
-                          ></span
-                          ><span class="impact-result"
-                            ><span
-                              id="flechemodaleau22"
-                              class="ico-medium"
-                            ></span
-                            ><span id="impactmodaleau22" class="impact-nbr"
-                              ><span id="consommation_eau32">-</span>%
-                            </span></span
-                          >
+                          /><span class="impact-result"><span
+                            id="flechemodaleau22"
+                            class="ico-medium"
+                          /><span
+                            id="impactmodaleau22"
+                            class="impact-nbr"
+                          ><span id="consommation_eau32">-</span>%
+                          </span></span>
                         </div>
                         <div class="impact-nom text-center">
                           Consommation d’eau
@@ -61,11 +69,9 @@
                         </div>
                       </div>
                       <div>
-                        <strong
-                          >Quel est l’impact environnemental d’un hectare moyen
+                        <strong>Quel est l’impact environnemental d’un hectare moyen
                           nécessaire à la production de mon alimentation
-                          ?</strong
-                        >
+                          ?</strong>
                       </div>
                     </div>
                     <div class="col cadre-impact">
@@ -73,16 +79,14 @@
                         <div class="impact-graph text-center">
                           <span
                             class="icon-impact-eau-conso ico-medium ico-impact"
-                          ></span
-                          ><span class="impact-result"
-                            ><span
-                              id="flechemodaleau12"
-                              class="ico-medium"
-                            ></span
-                            ><span id="impactmodaleau12" class="impact-nbr"
-                              ><span id="consommation_eau22">-</span>%
-                            </span></span
-                          >
+                          /><span class="impact-result"><span
+                            id="flechemodaleau12"
+                            class="ico-medium"
+                          /><span
+                            id="impactmodaleau12"
+                            class="impact-nbr"
+                          ><span id="consommation_eau22">-</span>%
+                          </span></span>
                         </div>
                         <div class="impact-nom text-center">
                           Consommation d’eau
@@ -92,10 +96,8 @@
                         </div>
                       </div>
                       <div>
-                        <strong
-                          >Quel est l’impact environnemental de mon alimentation
-                          ?</strong
-                        >
+                        <strong>Quel est l’impact environnemental de mon alimentation
+                          ?</strong>
                       </div>
                     </div>
                   </div>
@@ -128,13 +130,13 @@
 
             <!--cles-->
             <blocImpact>
-              <template v-slot:icon>
-                <span class="icon-cles icon white"></span>
+              <template #icon>
+                <span class="icon-cles icon white" />
               </template>
-              <template v-slot:nomBouton
-                >Quelques clés d'interprétation</template
-              >
-              <template v-slot:contenu>
+              <template #nomBouton>
+                Quelques clés d'interprétation
+              </template>
+              <template #contenu>
                 <div class="card-body">
                   <!-- def indicateur-->
                   <div class="def-indicateur">
@@ -149,26 +151,22 @@
                           <div class="line-ico d-flex align-items-center">
                             <span
                               class="icon-ico_navigation_territoire icon eau icon-medium"
-                            ></span
-                            >Pas de relocalisation
+                            />Pas de relocalisation
                           </div>
                           <div class="line-ico d-flex align-items-center">
                             <span
                               class="icon-ico_CATEGORIES_viande icon eau icon-medium"
-                            ></span
-                            >Régime actuel
+                            />Régime actuel
                           </div>
                           <div class="line-ico d-flex align-items-center">
                             <span
                               class="icon-affiner-reloc icon eau icon-medium"
-                            ></span
-                            >Agriculture actuelle
+                            />Agriculture actuelle
                           </div>
                           <div class="line-ico d-flex align-items-center">
                             <span
                               class="icon-gaspillage icon eau icon-medium"
-                            ></span
-                            >Pertes et gaspillage actuelles
+                            />Pertes et gaspillage actuelles
                           </div>
                         </div>
                         <div class="alim-distance text-center mb-3">
@@ -179,14 +177,13 @@
                             alt="…"
                             width="40px"
                             class="ml-auto mr-auto"
-                          />
+                          >
                         </div>
                       </div>
                       <div class="pl-3 pr-3">
                         <div class="alert alert-danger align-items-center h-25">
                           <div>
-                            <strong
-                              >Parcel ne se prononce pas sur les impacts de la
+                            <strong>Parcel ne se prononce pas sur les impacts de la
                               relocalisation
                             </strong>
                             (l'état de la rechercher actuelle ne permet pas de
@@ -207,26 +204,22 @@
                           <div class="line-ico d-flex align-items-center">
                             <span
                               class="icon-ico_filtres-reloc icon eau icon-medium"
-                            ></span
-                            >Relocalisation
+                            />Relocalisation
                           </div>
                           <div class="line-ico d-flex align-items-center">
                             <span
                               class="icon-ico_CATEGORIES_viande icon eau icon-medium"
-                            ></span
-                            >Régime actuel
+                            />Régime actuel
                           </div>
                           <div class="line-ico d-flex align-items-center">
                             <span
                               class="icon-affiner-reloc icon eau icon-medium"
-                            ></span
-                            >Agriculture actuelle
+                            />Agriculture actuelle
                           </div>
                           <div class="line-ico d-flex align-items-center">
                             <span
                               class="icon-gaspillage icon eau icon-medium"
-                            ></span
-                            >Pertes et gaspillage actuelles
+                            />Pertes et gaspillage actuelles
                           </div>
                         </div>
                         <div class="alim-distance text-center mb-3">
@@ -237,7 +230,7 @@
                             alt="…"
                             width="40px"
                             class="ml-auto mr-auto"
-                          />
+                          >
                         </div>
                         <div class="cadre-resultat cadre-clair">
                           <div class="indic-titre eau">
@@ -246,42 +239,38 @@
                           <div class="line-ico d-flex align-items-center">
                             <span
                               class="icon-ico_filtres-reloc icon eau icon-medium"
-                            ></span
-                            >Relocalisation
+                            />Relocalisation
                           </div>
                           <div class="line-ico d-flex align-items-center">
                             <span
                               class="icon-ico_navigation_alimentation icon eau icon-medium"
-                            ></span
-                            >Changement de régime
+                            />Changement de régime
                           </div>
                           <div class="line-ico d-flex align-items-center">
                             <span
                               class="icon-affiner-reloc icon eau icon-medium"
-                            ></span
-                            >Agriculture actuelle
+                            />Agriculture actuelle
                           </div>
                           <div class="line-ico d-flex align-items-center">
                             <span
                               class="icon-gaspillage icon eau icon-medium"
-                            ></span
-                            >Réduction des pertes et gaspillage
+                            />Réduction des pertes et gaspillage
                           </div>
                         </div>
                       </div>
                       <div class="pl-3 pr-3">
                         <div class="alert alert-success">
-                          <strong
-                            >Parcel donne l'impact d'un passage au bio, d'un
+                          <strong>Parcel donne l'impact d'un passage au bio, d'un
                             changement de régime alimentaire et de réduction des
-                            pertes et gaspillage.</strong
-                          >
+                            pertes et gaspillage.</strong>
                         </div>
                         <div class="alert alert-success">
-                          <div class="indic-legende">CONSOMMATION D’EAU</div>
+                          <div class="indic-legende">
+                            CONSOMMATION D’EAU
+                          </div>
                           <div class="indic-detail">
                             DIFFERENCE DE CONSOMMATION D’EAU DOUCE DE SURFACE OU
-                            SOUTERRAINE<br />
+                            SOUTERRAINE<br>
                             (Indicateur Eau Bleu de Water FootPrint Network)
                           </div>
                         </div>
@@ -291,14 +280,12 @@
                   </div>
                   <div class="mb-3 mt-5">
                     <div class="mb-3">
-                      <strong
-                        >Autrement dit, on calcule la différence entre les
+                      <strong>Autrement dit, on calcule la différence entre les
                         impacts entre une alimentation relocalisée avec des
                         régimes, des parts de bio et des pertes et gaspillage
                         actuels et une alimentation relocalisée avec des
                         régimes, des parts de bio et des réductions des pertes
-                        et gaspillage choisis par l’utilisateur.</strong
-                      >
+                        et gaspillage choisis par l’utilisateur.</strong>
                       On ne calcule pas l’impact de la relocalisation et d’un
                       passage au bio (trop d’incertitudes en l’état actuel des
                       connaissances).
@@ -312,18 +299,18 @@
 
             <!--cles-->
             <blocImpact>
-              <template v-slot:icon>
-                <span class="icon-cles icon white"></span>
+              <template #icon>
+                <span class="icon-cles icon white" />
               </template>
-              <template v-slot:nomBouton
-                >Quelques clés d'interprétation</template
-              >
-              <template v-slot:contenu>
+              <template #nomBouton>
+                Quelques clés d'interprétation
+              </template>
+              <template #contenu>
                 <div class="card-body">
                   <div class="d-flex align-items-center">
                     <span
                       class="icon-ico_filtres_bio icon eau icon-medium"
-                    ></span>
+                    />
                     <strong>Les effets d’un passage au bio</strong>
                   </div>
                   <ul>
@@ -335,10 +322,8 @@
                   <div class="d-flex align-items-center">
                     <span
                       class="icon-ico_navigation_alimentation icon eau icon-medium"
-                    ></span>
-                    <strong
-                      >Les effets d’une réduction des produits animaux</strong
-                    >
+                    />
+                    <strong>Les effets d’une réduction des produits animaux</strong>
                   </div>
                   <ul>
                     <li>
@@ -355,11 +340,9 @@
                     </li>
                   </ul>
                   <div class="d-flex align-items-center">
-                    <span class="icon-gaspillage icon eau icon-medium"></span>
-                    <strong
-                      >Les effets d’une réduction des pertes et
-                      gaspillage</strong
-                    >
+                    <span class="icon-gaspillage icon eau icon-medium" />
+                    <strong>Les effets d’une réduction des pertes et
+                      gaspillage</strong>
                   </div>
                   <ul>
                     <li>
@@ -377,70 +360,46 @@
 
             <!--cles-->
             <blocImpact>
-              <template v-slot:icon>
-                <span class="icon-cles icon white"></span>
+              <template #icon>
+                <span class="icon-cles icon white" />
               </template>
-              <template v-slot:nomBouton
-                >Quelques clés d'interprétation</template
-              >
-              <template v-slot:contenu>
+              <template #nomBouton>
+                Quelques clés d'interprétation
+              </template>
+              <template #contenu>
                 <div class="card-body">
                   <div
                     class="cadre-resultat methodo-detail d-flex flex-sm-row flex-column justify-content-around infographie-detail eau-fonce"
                   >
                     <span
                       class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-                      ><span
-                        class="icon-ico_navigation_alimentation icon icon eau"
-                      ></span>
+                    ><span
+                       class="icon-ico_navigation_alimentation icon icon eau"
+                     />
                       <div class="info-infos">
-                        <span class="d-flex flex-column info-intro"
-                          ><span class="info-entete eau">alimentation</span
-                          ><span class="info-verbe">=</span></span
-                        ><span class="d-flex flex-column info-detail"
-                          ><span class="nbr-ha">20%</span
-                          ><span class="hectares"
-                            >de l’empreinte en eau moyenne d’un Français (1
-                            875m3)
-                          </span></span
-                        >
+                        <span class="d-flex flex-column info-intro"><span class="info-entete eau">alimentation</span><span class="info-verbe">=</span></span><span class="d-flex flex-column info-detail"><span class="nbr-ha">20%</span><span class="hectares">de l’empreinte en eau moyenne d’un Français (1
+                          875m3)
+                        </span></span>
                       </div>
                     </span>
                     <span
                       class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-                      ><span class="icon-affiner-reloc icon eau"></span>
+                    ><span class="icon-affiner-reloc icon eau" />
                       <div class="info-infos">
-                        <span class="d-flex flex-column info-intro"
-                          ><span class="info-entete eau">agriculture</span
-                          ><span class="info-verbe">=</span></span
-                        ><span class="d-flex flex-column info-detail"
-                          ><span class="nbr-ha">50%</span
-                          ><span class="hectares"
-                            >de la consommation d'eau en France (en période
-                            ordinaire)</span
-                          ></span
-                        >
+                        <span class="d-flex flex-column info-intro"><span class="info-entete eau">agriculture</span><span class="info-verbe">=</span></span><span class="d-flex flex-column info-detail"><span class="nbr-ha">50%</span><span class="hectares">de la consommation d'eau en France (en période
+                          ordinaire)</span></span>
                       </div>
                     </span>
                     <span
                       class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-                      ><span class="icon-impact-eau-conso icon eau"></span>
+                    ><span class="icon-impact-eau-conso icon eau" />
                       <div class="info-infos">
-                        <span class="d-flex flex-column info-intro"
-                          ><span class="info-entete eau"
-                            >Consommation d’eau </span
-                          ><span class="info-verbe">=</span></span
-                        ><span class="d-flex flex-column info-detail"
-                          ><span class="nbr-ha">4 Mds m<sup>3</sup></span
-                          ><span class="hectares"
-                            >d’eau sont prélevés chaque année pour la production
-                            agricole</span
-                          ></span
-                        >
+                        <span class="d-flex flex-column info-intro"><span class="info-entete eau">Consommation d’eau </span><span class="info-verbe">=</span></span><span class="d-flex flex-column info-detail"><span class="nbr-ha">4 Mds m<sup>3</sup></span><span class="hectares">d’eau sont prélevés chaque année pour la production
+                          agricole</span></span>
                       </div>
                     </span>
                   </div>
-                  <div class="mt-5"></div>
+                  <div class="mt-5" />
                 </div>
                 <!--card-body-->
               </template>
@@ -449,13 +408,13 @@
 
             <!--cles-->
             <blocImpact>
-              <template v-slot:icon>
-                <span class="icon-cles icon white"></span>
+              <template #icon>
+                <span class="icon-cles icon white" />
               </template>
-              <template v-slot:nomBouton
-                >Quelques clés d'interprétation</template
-              >
-              <template v-slot:contenu>
+              <template #nomBouton>
+                Quelques clés d'interprétation
+              </template>
+              <template #contenu>
                 <div class="card-body">
                   <ul>
                     <li>
@@ -510,13 +469,13 @@
 
             <!--cles-->
             <blocImpact>
-              <template v-slot:icon>
-                <span class="icon-cles icon white"></span>
+              <template #icon>
+                <span class="icon-cles icon white" />
               </template>
-              <template v-slot:nomBouton
-                >Quelques clés d'interprétation</template
-              >
-              <template v-slot:contenu>
+              <template #nomBouton>
+                Quelques clés d'interprétation
+              </template>
+              <template #contenu>
                 <div class="card-body">
                   <div class="mb-3">
                     • Pour les éléments sur la méthode de calcul des
@@ -525,8 +484,7 @@
                       href="/methodologie-de-calcul-de-la-relocalisation-alimentaire"
                       target="_blank"
                       rel="noopener noreferrer"
-                      >page annexe méthodologique</a
-                    >, accessible par le menu principal
+                    >page annexe méthodologique</a>, accessible par le menu principal
                   </div>
                 </div>
                 <!--card-body-->
@@ -536,65 +494,50 @@
 
             <!--cles-->
             <blocImpact>
-              <template v-slot:icon>
-                <span class="icon-cles icon white"></span>
+              <template #icon>
+                <span class="icon-cles icon white" />
               </template>
-              <template v-slot:nomBouton
-                >Quelques clés d'interprétation</template
-              >
-              <template v-slot:contenu>
+              <template #nomBouton>
+                Quelques clés d'interprétation
+              </template>
+              <template #contenu>
                 <div class="card-body">
                   <ul>
                     <li>
-                      ­<span class="source-titre"
-                        >The Water Footprint Assessment Manual Setting the
-                        Global Standart</span
-                      ><span class="source-auteur"> – Hoekstra et al.,</span
-                      ><span class="source-année"> – 2011</span>
+                      ­<span class="source-titre">The Water Footprint Assessment Manual Setting the
+                        Global Standart</span><span class="source-auteur"> – Hoekstra et al.,</span><span class="source-année"> – 2011</span>
                       <div>
                         <a
                           class=""
                           href="https://waterfootprint.org/media/downloads/TheWaterFootprintAssessmentManual_2.pdf"
-                          >Voir l'étude</a
-                        >
+                        >Voir l'étude</a>
                       </div>
                     </li>
                     <li>
-                      ­<span class="source-titre"
-                        >Eau et Agriculture, Tome 1 Aspects quantitatifs</span
-                      ><span class="source-auteur"> – CGAAER</span
-                      ><span class="source-année"> – 2015</span>
+                      ­<span class="source-titre">Eau et Agriculture, Tome 1 Aspects quantitatifs</span><span class="source-auteur"> – CGAAER</span><span class="source-année"> – 2015</span>
                       <div>
                         <a
                           class=""
                           href="https://agriculture.gouv.fr/telecharger/76633?token=c9074114540bf02504eaeaccfc0a47b9"
-                          >Voir l'étude</a
-                        >
+                        >Voir l'étude</a>
                       </div>
                     </li>
                     <li>
-                      ­<span class="source-titre"
-                        >L’eau et les milieux aquatiques - Chiffres clés</span
-                      ><span class="source-auteur"> – CGDD</span
-                      ><span class="source-année"> – 2016</span>
+                      ­<span class="source-titre">L’eau et les milieux aquatiques - Chiffres clés</span><span class="source-auteur"> – CGDD</span><span class="source-année"> – 2016</span>
                       <div>
                         <a
                           class=""
                           href="https://www.eaufrance.fr/sites/default/files/2018-06/eau_cles_2016_201602.pdf"
-                          >Voir l'étude</a
-                        >
+                        >Voir l'étude</a>
                       </div>
                     </li>
                     <li>
-                      ­<span class="source-titre"
-                        >Water Foot Print Network Data Base</span
-                      >
+                      ­<span class="source-titre">Water Foot Print Network Data Base</span>
                       <div>
                         <a
                           class=""
                           href="https://waterfootprint.org/en/resources/waterstat/product-water-footprint-statistics/"
-                          >Voir l'étude</a
-                        >
+                        >Voir l'étude</a>
                       </div>
                     </li>
                   </ul>
@@ -620,7 +563,7 @@
 <script>
 import blocImpact from "./composant/blocImpact.vue";
 export default {
-  name: "modalImpactGes",
+  name: "ModalImpactGes",
   components: {
     blocImpact,
   },

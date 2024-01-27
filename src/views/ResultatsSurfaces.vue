@@ -2,10 +2,14 @@
   <div class="asy-wrapper">
     <div class="content">
       <BarreNavigation
-        @montrerModalAffinage="montrerModalAffiner"
         :active="2"
+        @montrer-modal-affinage="montrerModalAffiner"
       />
-      <div class="section centrervh" id="section0" style="width: 100%">
+      <div
+        id="section0"
+        class="section centrervh"
+        style="width: 100%"
+      >
         <div class="container">
           <h1 class="animated fadeInUp fast h1-result mb-1">
             Quelles sont les surfaces agricoles nécessaires et disponibles pour
@@ -13,49 +17,61 @@
           </h1>
 
           <resumeChoix />
-          <div id="navigation-surface" class="row justify-content-center">
-            <div class="col-auto" id="global">
+          <div
+            id="navigation-surface"
+            class="row justify-content-center"
+          >
+            <div
+              id="global"
+              class="col-auto"
+            >
               <div
+                id="global"
                 :class="{
                   'card-surface': true,
                   'card-active': cardSurfaceActive == 'global',
                 }"
-                id="global"
                 @click="cardSurfaceActive = 'global'"
               >
                 <div class="m-auto">
-                  <div class="icon icon-ico_navigation_surface"></div>
+                  <div class="icon icon-ico_navigation_surface" />
                   vue globale
                 </div>
               </div>
             </div>
 
-            <div class="col-auto" id="product">
+            <div
+              id="product"
+              class="col-auto"
+            >
               <div
+                id="product"
                 :class="{
                   'card-surface': true,
                   'card-active': cardSurfaceActive == 'product',
                 }"
-                id="product"
                 @click="cardSurfaceActive = 'product'"
               >
                 <div class="m-auto">
-                  <div class="icon icon-vue-produits"></div>
+                  <div class="icon icon-vue-produits" />
                   vue produits
                 </div>
               </div>
             </div>
-            <div class="col-auto" id="landscape">
+            <div
+              id="landscape"
+              class="col-auto"
+            >
               <div
+                id="landscape"
                 :class="{
                   'card-surface': true,
                   'card-active': cardSurfaceActive == 'landscape',
                 }"
-                id="landscape"
                 @click="cardSurfaceActive = 'landscape'"
               >
                 <div class="m-auto">
-                  <div class="icon icon-vue-paysage"></div>
+                  <div class="icon icon-vue-paysage" />
 
                   vue paysage
                 </div>
@@ -70,7 +86,7 @@
               active: cardSurfaceActive == 'global',
             }"
           >
-            <SurfaceGlobal @nextStep="changeCarte" />
+            <SurfaceGlobal @next-step="changeCarte" />
           </div>
           <div
             id="productView"
@@ -87,7 +103,7 @@
                 'non-active': !(cardSurfaceActive == 'product'),
                 active: cardSurfaceActive == 'product',
               }"
-              @nextStep="changeCarte"
+              @next-step="changeCarte"
             />
           </div>
           <div
@@ -110,8 +126,11 @@
       </div>
     </div>
 
-    <nav id="asy-sidebar" :class="montrerClasse">
-      <modal-affiner-choix @fermerModalAffiner="fermerModal" />
+    <nav
+      id="asy-sidebar"
+      :class="montrerClasse"
+    >
+      <modal-affiner-choix @fermer-modal-affiner="fermerModal" />
     </nav>
   </div>
   <!-- <?php include '../partials/scripts-footer.php'; ?> -->

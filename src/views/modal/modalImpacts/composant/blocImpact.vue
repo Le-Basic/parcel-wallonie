@@ -2,8 +2,8 @@
   <div class="card">
     <!--domaine de validite-->
     <div
-      :class="{ 'card-header': true, 'btn-link-ouvert': ouvert }"
       id="heading4"
+      :class="{ 'card-header': true, 'btn-link-ouvert': ouvert }"
     >
       <h5 class="mb-0">
         <button
@@ -15,20 +15,24 @@
           @click="toggle"
         >
           <div>
-            <slot name="icon"
-              ><span class="icon-perimetre icon white"></span
-            ></slot>
+            <slot name="icon">
+              <span class="icon-perimetre icon white" />
+            </slot>
           </div>
-          <div><slot name="nomBouton"> Domaine de validité</slot></div>
+          <div>
+            <slot name="nomBouton">
+              Domaine de validité
+            </slot>
+          </div>
         </button>
       </h5>
     </div>
     <!--card-header-->
     <div
+      v-if="ouvert"
       id="collapsePerimetre"
       aria-labelledby="heading4"
       data-parent="#accordeon-fiche"
-      v-if="ouvert"
     >
       <slot name="contenu">
         <div class="card-body">
@@ -91,7 +95,7 @@
 
 <script>
 export default {
-  name: "blocAccordeon",
+  name: "BlocAccordeon",
   data() {
     return {
       ouvert: false,

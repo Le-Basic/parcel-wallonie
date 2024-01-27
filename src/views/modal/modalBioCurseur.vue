@@ -1,12 +1,15 @@
 <template>
   <div
-    class="modal fade modalTooltip"
     id="tooltipDetail"
+    class="modal fade modalTooltip"
     tabindex="-1"
     role="dialog"
     aria-labelledby="tooltipDetail"
   >
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div
+      class="modal-dialog modal-dialog-centered"
+      role="document"
+    >
       <div class="modal-content">
         <div class="modal-header">
           <button
@@ -19,7 +22,10 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body" id="textTooltip">
+        <div
+          id="textTooltip"
+          class="modal-body"
+        >
           Cette donnée est calculée uniquement sur les produits de PARCEL, à
           partir des surfaces agricoles (bio et non bio) du département et
           intègre les différences de rendements entre agriculture biologique et
@@ -34,7 +40,7 @@
 
 <script>
 export default {
-  name: "modalBioCurseur",
+  name: "ModalBioCurseur",
   methods: {
     close() {
       this.$emit("close");

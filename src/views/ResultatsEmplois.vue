@@ -1,14 +1,20 @@
 <template>
-  <div class="asy-wrapper" style="flex-direction: row">
+  <div
+    class="asy-wrapper"
+    style="flex-direction: row"
+  >
     <div>
       <BarreNavigation
-        @montrerModalAffinage="montrerModalAffiner"
         :active="3"
+        @montrer-modal-affinage="montrerModalAffiner"
       />
 
       <div class="content">
         <div class="content">
-          <div class="section centrervh" id="section0">
+          <div
+            id="section0"
+            class="section centrervh"
+          >
             <div class="container">
               <h1 class="animated fadeInUp fast h1-result mb-3">
                 Quels sont les emplois agricoles nécessaires pour notre
@@ -17,9 +23,9 @@
               <div class="cadre-resultat resultat-ha animated flipInX">
                 <div class="d-inline-flex">
                   <div
-                    class="nbr-ha animated flipInY delay-05s fast"
-                    id="emplois_repartition"
                     v-if="surfaces_emplois"
+                    id="emplois_repartition"
+                    class="nbr-ha animated flipInY delay-05s fast"
                   >
                     {{ surfaces_emplois.emplois_a_mobiliser }}
                   </div>
@@ -46,13 +52,13 @@
               <div class="cadre-graphique">
                 <div class="resultats-categories repartition cadre-emploi">
                   <table
+                    id="CategoryresultsTableJob"
                     summary="Repartition"
                     class="auto-style1 w-100"
-                    id="CategoryresultsTableJob"
                     border="0"
                     style="width: 100%"
                   >
-                    <thead></thead>
+                    <thead />
                     <tbody>
                       <tr class="rowHtmljob">
                         <td colspan="4">
@@ -63,28 +69,30 @@
                             style="cursor: pointer"
                           >
                             <div class="result-emploi">
-                              <span class="icon-emploi ico-medium"></span>
+                              <span class="icon-emploi ico-medium" />
                             </div>
                             <div class="result-type">
                               <div
-                                class="result-graph"
                                 id="pcj1"
+                                class="result-graph"
                                 style="width: 65px; height: 65px"
-                              ></div>
+                              />
                               <span
                                 class="icon-ico_CATEGORIES_legumes ico-medium legumes"
-                              ></span>
+                              />
                             </div>
                             <div class="result-chiffres">
-                              <div class="hectares">Emplois en maraîchage</div>
+                              <div class="hectares">
+                                Emplois en maraîchage
+                              </div>
                             </div>
                             <div
                               class="d-flex flex-grow align-items-center ml-auto"
                             >
                               <div
-                                class="chiffre-emploi legumes animated flipInX"
-                                id="totaljoblegumes"
                                 v-if="surfaces_emplois"
+                                id="totaljoblegumes"
+                                class="chiffre-emploi legumes animated flipInX"
                               >
                                 {{
                                   trouverChiffre(
@@ -97,7 +105,7 @@
                               <div class="result-plus">
                                 <span
                                   class="icon-ico_fleche_detail_gros icon legumes"
-                                ></span>
+                                />
                               </div>
                             </div>
                           </div>
@@ -113,17 +121,17 @@
                             style="cursor: pointer"
                           >
                             <div class="result-emploi">
-                              <span class="icon-emploi ico-medium"></span>
+                              <span class="icon-emploi ico-medium" />
                             </div>
                             <div class="result-type">
                               <div
-                                class="result-graph"
                                 id="pcj2"
+                                class="result-graph"
                                 style="width: 65px; height: 65px"
-                              ></div>
+                              />
                               <span
                                 class="icon-ico_CATEGORIES_fruits ico-medium fruits"
-                              ></span>
+                              />
                             </div>
                             <div class="result-chiffres">
                               <div class="hectares">
@@ -134,9 +142,9 @@
                               class="d-flex flex-grow align-items-center ml-auto"
                             >
                               <div
-                                class="chiffre-emploi fruits animated flipInX"
-                                id="totaljobfruits"
                                 v-if="surfaces_emplois"
+                                id="totaljobfruits"
+                                class="chiffre-emploi fruits animated flipInX"
                               >
                                 {{
                                   trouverChiffre(
@@ -149,7 +157,7 @@
                               <div class="result-plus">
                                 <span
                                   class="icon-ico_fleche_detail_gros icon fruits"
-                                ></span>
+                                />
                               </div>
                             </div>
                           </div>
@@ -164,17 +172,17 @@
                             style="cursor: pointer"
                           >
                             <div class="result-emploi">
-                              <span class="icon-emploi ico-medium"></span>
+                              <span class="icon-emploi ico-medium" />
                             </div>
                             <div class="result-type">
                               <div
-                                class="result-graph"
                                 id="pcj3"
+                                class="result-graph"
                                 style="width: 65px; height: 65px"
-                              ></div>
+                              />
                               <span
                                 class="icon-ico_CATEGORIES_cereales ico-medium cereales"
-                              ></span>
+                              />
                             </div>
                             <div class="result-chiffres">
                               <div class="hectares">
@@ -185,9 +193,9 @@
                               class="d-flex flex-grow align-items-center ml-auto"
                             >
                               <div
-                                class="chiffre-emploi cereales animated flipInX"
-                                id="totaljobgcultures"
                                 v-if="surfaces_emplois"
+                                id="totaljobgcultures"
+                                class="chiffre-emploi cereales animated flipInX"
                               >
                                 {{
                                   trouverChiffre(
@@ -200,7 +208,7 @@
                               <div class="result-plus">
                                 <span
                                   class="icon-ico_fleche_detail_gros icon cereales"
-                                ></span>
+                                />
                               </div>
                             </div>
                           </div>
@@ -215,17 +223,17 @@
                             style="cursor: pointer"
                           >
                             <div class="result-emploi">
-                              <span class="icon-emploi ico-medium"></span>
+                              <span class="icon-emploi ico-medium" />
                             </div>
                             <div class="result-type">
                               <div
-                                class="result-graph"
                                 id="pcj4"
+                                class="result-graph"
                                 style="width: 65px; height: 65px"
-                              ></div>
+                              />
                               <span
                                 class="icon-ico_CATEGORIES_viande ico-medium viande"
-                              ></span>
+                              />
                             </div>
                             <div class="result-chiffres">
                               <div class="hectares">
@@ -236,17 +244,16 @@
                                   style="font-style: normal"
                                   data-tooltip="Les emplois générés par l\'élevage comptabilisent les emplois de l\'élevage ainsi que les emplois liés à la production de l\'alimentation pour l\'élevage."
                                   data-placement="left"
-                                  ><span class="icon-ico_element_info"></span
-                                ></a>
+                                ><span class="icon-ico_element_info" /></a>
                               </div>
                             </div>
                             <div
                               class="d-flex flex-grow align-items-center ml-auto"
                             >
                               <div
-                                class="chiffre-emploi viande animated flipInX"
-                                id="totaljobelevage"
                                 v-if="surfaces_emplois"
+                                id="totaljobelevage"
+                                class="chiffre-emploi viande animated flipInX"
                               >
                                 {{
                                   trouverChiffre(
@@ -259,7 +266,7 @@
                               <div class="result-plus">
                                 <span
                                   class="icon-ico_fleche_detail_gros icon viande"
-                                ></span>
+                                />
                               </div>
                             </div>
                           </div>
@@ -273,65 +280,89 @@
                 >
                   <div id="viz5">
                     <table
+                      v-if="surfaces_emplois"
                       summary="Repartition"
                       class="auto-style1"
                       border="0"
                       style="width: 100%"
-                      v-if="surfaces_emplois"
                     >
-                      <tr style="height: 110px" class="animated fadeIn">
-                        <td valign="middle" id="man_legumes">
+                      <tr
+                        style="height: 110px"
+                        class="animated fadeIn"
+                      >
+                        <td
+                          id="man_legumes"
+                          valign="middle"
+                        >
                           <vizEmploi
+                            v-if="surfaces_emplois"
                             :couleur="CATEGORIE_PRODUITS.LEGUMES.couleur"
-                            :objetEmplois="
+                            :objet-emplois="
                               surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1
                             "
-                            :categorieProduitLibelle="
+                            :categorie-produit-libelle="
                               CATEGORIE_PRODUITS.LEGUMES.libelle
                             "
-                            v-if="surfaces_emplois"
                           />
                         </td>
                       </tr>
-                      <tr style="height: 110px" class="animated fadeIn">
-                        <td valign="middle" id="man_fruits">
+                      <tr
+                        style="height: 110px"
+                        class="animated fadeIn"
+                      >
+                        <td
+                          id="man_fruits"
+                          valign="middle"
+                        >
                           <vizEmploi
+                            v-if="surfaces_emplois"
                             :couleur="CATEGORIE_PRODUITS.FRUITS.couleur"
-                            :objetEmplois="
+                            :objet-emplois="
                               surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1
                             "
-                            :categorieProduitLibelle="
+                            :categorie-produit-libelle="
                               CATEGORIE_PRODUITS.FRUITS.libelle
                             "
-                            v-if="surfaces_emplois"
                           />
                         </td>
                       </tr>
-                      <tr style="height: 110px" class="animated fadeIn">
-                        <td valign="middle" id="man_cereales">
+                      <tr
+                        style="height: 110px"
+                        class="animated fadeIn"
+                      >
+                        <td
+                          id="man_cereales"
+                          valign="middle"
+                        >
                           <vizEmploi
+                            v-if="surfaces_emplois"
                             :couleur="CATEGORIE_PRODUITS.CEREALES.couleur"
-                            :objetEmplois="
+                            :objet-emplois="
                               surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1
                             "
-                            :categorieProduitLibelle="
+                            :categorie-produit-libelle="
                               CATEGORIE_PRODUITS.CEREALES.libelle
                             "
-                            v-if="surfaces_emplois"
                           />
                         </td>
                       </tr>
-                      <tr style="height: 110px" class="animated fadeIn">
-                        <td valign="middle" id="man_elevage">
+                      <tr
+                        style="height: 110px"
+                        class="animated fadeIn"
+                      >
+                        <td
+                          id="man_elevage"
+                          valign="middle"
+                        >
                           <vizEmploi
+                            v-if="surfaces_emplois"
                             :couleur="CATEGORIE_PRODUITS.ELEVAGE.couleur"
-                            :objetEmplois="
+                            :objet-emplois="
                               surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1
                             "
-                            :categorieProduitLibelle="
+                            :categorie-produit-libelle="
                               CATEGORIE_PRODUITS.ELEVAGE.libelle
                             "
-                            v-if="surfaces_emplois"
                           />
                         </td>
                       </tr>
@@ -379,11 +410,12 @@
     </div>-->
               </div>
               <div class="div-continuer mb-big animated fadeInUp delay-5-5s">
-                <a href="/impacts-ecologiques-de-la-relocatisation"
-                  ><button type="button" class="btn btn-principal mt-5">
-                    Voir les impacts
-                  </button></a
+                <a href="/impacts-ecologiques-de-la-relocatisation"><button
+                  type="button"
+                  class="btn btn-principal mt-5"
                 >
+                  Voir les impacts
+                </button></a>
               </div>
             </div>
           </div>
@@ -391,22 +423,30 @@
       </div>
     </div>
     <div
-      class="modal fade"
       id="modal-emplois-legumes"
+      class="modal fade"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog" role="document">
+      <div
+        class="modal-dialog"
+        role="document"
+      >
         <div class="modal-content modal-repart-cat-detail">
           <div class="modal-header d-flex align-items-center">
             <div>
-              <span class="icon-ico_CATEGORIES_legumes icon legumes"></span>
+              <span class="icon-ico_CATEGORIES_legumes icon legumes" />
             </div>
             <div class="d-flex flex-column">
-              <div class="titre-categorie">Emplois en maraîchage</div>
-              <div class="hectares" id="-totaljoblegumes2"></div>
+              <div class="titre-categorie">
+                Emplois en maraîchage
+              </div>
+              <div
+                id="-totaljoblegumes2"
+                class="hectares"
+              />
             </div>
             <button
               type="button"
@@ -414,11 +454,14 @@
               data-dismiss="modal"
               aria-label="Close"
             >
-              <span class="icon-ico_fermer icon"></span>
+              <span class="icon-ico_fermer icon" />
             </button>
           </div>
           <div class="modal-body">
-            <div id="accordeon-fiche" class="accordeon-detail legumes-fonce">
+            <div
+              id="accordeon-fiche"
+              class="accordeon-detail legumes-fonce"
+            >
               <!-- <?php include '../partials/modal-emploi-legumes.php'; ?> -->
               <!--div class="card">
               <div class="card-header " id="heading2">
@@ -450,8 +493,11 @@
         </div>
       </div>
     </div>
-    <nav id="asy-sidebar" :class="montrerClasse">
-      <modal-affiner-choix @fermerModalAffiner="fermerModal" />
+    <nav
+      id="asy-sidebar"
+      :class="montrerClasse"
+    >
+      <modal-affiner-choix @fermer-modal-affiner="fermerModal" />
     </nav>
   </div>
 </template>
@@ -479,15 +525,6 @@ export default {
       emploi_conventionnel: "emploi_conventionnel",
     };
   },
-  methods: {
-    montrerModalAffiner() {
-      this.montrerClasse = "show";
-    },
-    fermerModal() {
-      this.montrerClasse = "";
-    },
-    trouverChiffre,
-  },
   async mounted() {
     this.surfaces_emplois = await getSurfaceAMobiliser().then((res) => {
       return {
@@ -503,6 +540,15 @@ export default {
           }),
       };
     });
+  },
+  methods: {
+    montrerModalAffiner() {
+      this.montrerClasse = "show";
+    },
+    fermerModal() {
+      this.montrerClasse = "";
+    },
+    trouverChiffre,
   },
 };
 </script>

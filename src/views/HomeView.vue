@@ -1,7 +1,10 @@
 <template>
   <div>
-    <MenuSimple></MenuSimple>
-    <div class="section flex-column" id="accueil">
+    <MenuSimple />
+    <div
+      id="accueil"
+      class="section flex-column"
+    >
       <div class="accueil-texte">
         <div class="titre animated fadeInUp mb-3">
           <h1>
@@ -10,40 +13,47 @@
           </h1>
         </div>
       </div>
-      <div class="container-fluid" id="accueil-couv">
+      <div
+        id="accueil-couv"
+        class="container-fluid"
+      >
         <div class="row align-items-center accueil">
           <div class="col-md-6 col-lg-6 col-12 col-image">
             <div class="animated fadeIn delay-05s">
               <img
+                id="img-home"
                 :src="
                   require('@/assets/img/parcours/animation-home5-4params.gif')
                 "
-                id="img-home"
                 alt=""
                 width="500"
                 class="w-100 animated fadeIn delay-05s"
-              />
+              >
             </div>
           </div>
           <div class="col-md-6 col-lg-6 col-12">
-            <div class="animated fadeIn" id="section0">
+            <div
+              id="section0"
+              class="animated fadeIn"
+            >
               <div class="container">
                 <div class="mb-5 animated fadeInUp d-flex align-items-center">
                   <div>
                     <span
                       class="icon-ico_navigation_territoire icon vert-clair home-locate"
-                    >
-                    </span>
+                    />
                   </div>
-                  <h1 class="mb-0">Définissez le territoire concerné</h1>
+                  <h1 class="mb-0">
+                    Définissez le territoire concerné
+                  </h1>
                 </div>
                 <div
                   id="preselection"
                   class="text-center animated delay-05s fadeIn"
                 >
                   <div
+                    v-if="$store.state.geoList.length > 0"
                     class="alert alert-success mb-5"
-                    v-if="this.$store.state.geoList.length > 0"
                   >
                     <div
                       style="
@@ -59,47 +69,50 @@
                       class="ui-widget-content d-flex justify-content-center flex-wrap"
                     >
                       <span
-                        v-for="geo in this.$store.state.geoList"
+                        v-for="geo in $store.state.geoList"
                         :key="geo.id"
                         class="badge badge-pill badge-light pointer"
                         style="cursor: pointer"
-                        >{{ geo.localeName }}
+                      >{{ geo.localeName }}
                         <span
-                          @click="this.$store.commit('removeGeo', geo)"
                           class="icon-ico_fermer icon"
                           style="font-size: 8px; color: white"
-                        ></span>
+                          @click="$store.commit('removeGeo', geo)"
+                        />
                       </span>
                     </div>
                   </div>
                 </div>
                 <div class="animated fadeIn">
                   <div class="champ-recherche d-flex align-items-center">
-                    <span class="icon-ico_element_recherche icon"></span>
-                    <form autocomplete="off" class="w-100">
+                    <span class="icon-ico_element_recherche icon" />
+                    <form
+                      autocomplete="off"
+                      class="w-100"
+                    >
                       <input
                         autocomplete="false"
                         name="hidden"
                         type="text"
                         style="display: none"
-                      />
+                      >
                       <input
-                        class="recherche"
                         id="city"
+                        v-model="rechercheInput"
+                        class="recherche"
                         placeholder="Où ?"
                         aria-describedby="inputGroup-sizing-sm"
-                        v-model="rechercheInput"
-                      />
+                      >
                       <ul
-                        class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front"
-                        id="list"
-                        style="position: absolute; z-index: 1"
                         v-if="rechercheInput.length > 3 && list_geo.length > 0"
+                        id="list"
+                        class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front"
+                        style="position: absolute; z-index: 1"
                       >
                         <li
-                          class="ui-menu-item"
                           v-for="item in list_geo"
                           :key="item.id"
+                          class="ui-menu-item"
                           @click="ajouter(item)"
                         >
                           {{ item.localeName }}
@@ -111,9 +124,7 @@
                   <p>
                     Saisissez le nom d’une ou plusieurs région(s),
                     département(s), commune(s) ou leur code postal
-                    <strong class="vert-fonce"
-                      >au sein de la France métropolitaine</strong
-                    >
+                    <strong class="vert-fonce">au sein de la France métropolitaine</strong>
                   </p>
                   <!-- <div class="mt-4 input-info">
                     <label class="container-checkbox">
@@ -147,10 +158,16 @@
                       <span class="checkmark"></span>
                     </label>
                   </div> -->
-                  <div class="mt-5"></div>
+                  <div class="mt-5" />
                   <div class="div-continuer">
-                    <router-link to="/2-choix-de-la-population" id="suite">
-                      <button type="button" class="btn btn-principal mt-5">
+                    <router-link
+                      id="suite"
+                      to="/2-choix-de-la-population"
+                    >
+                      <button
+                        type="button"
+                        class="btn btn-principal mt-5"
+                      >
                         Continuer
                       </button>
                     </router-link>
@@ -162,8 +179,15 @@
         </div>
       </div>
     </div>
-    <div class="bandeau-play" id="parcours-choix" style="position: relative">
-      <div class="w-100" style="position: relative">
+    <div
+      id="parcours-choix"
+      class="bandeau-play"
+      style="position: relative"
+    >
+      <div
+        class="w-100"
+        style="position: relative"
+      >
         <div
           class="cadre-resultat resultat-ha"
           style="
@@ -179,7 +203,10 @@
           ou
         </div>
       </div>
-      <div class="choix-alim parcours-home" style="z-index: 1">
+      <div
+        class="choix-alim parcours-home"
+        style="z-index: 1"
+      >
         <div class="container-fluid">
           <div class="row align-items-center">
             <div class="col-12 col-md-6 col-lg-6 d-flex">
@@ -187,7 +214,7 @@
                 :src="require('@/assets/img/parcours/parcours2-home.svg')"
                 alt=""
                 class="mx-auto"
-              />
+              >
             </div>
             <div class="col-12 col-md-6 col-lg-6">
               <div class="align-items-center">
@@ -206,10 +233,12 @@
                     onclick="localStorage.clear();"
                     href="/1-relocaliser-une-surface-disponible"
                     class="btn-go"
-                    ><button type="button" class="btn btn-principal mt-3">
-                      Commencer
-                    </button></a
+                  ><button
+                    type="button"
+                    class="btn btn-principal mt-3"
                   >
+                    Commencer
+                  </button></a>
                 </div>
               </div>
             </div>
@@ -218,7 +247,9 @@
       </div>
     </div>
     <div class="mt-0 section-home container-fluid section-vert">
-      <div class="text-h1 mb-3 text-white">PARCEL</div>
+      <div class="text-h1 mb-3 text-white">
+        PARCEL
+      </div>
       <div class="container emphase text-center mb-5">
         Pour une Alimentation Résiliente Citoyenne Et Locale
       </div>
@@ -228,11 +259,9 @@
             <p>
               PARCEL est un outil web simple, ludique et gratuit, permettant
               d’évaluer pour un territoire donné les
-              <strong
-                >surfaces agricoles nécessaires pour se nourrir localement,
+              <strong>surfaces agricoles nécessaires pour se nourrir localement,
                 ainsi que les emplois agricoles et les impacts écologiques
-                associés</strong
-              >
+                associés</strong>
               à d’éventuels changements de mode de production agricole et/ou de
               régimes alimentaires (émissions de gaz à effet de serre, pollution
               des ressources en eau, effets sur la biodiversité…)
@@ -240,10 +269,8 @@
             <p>
               Développé par Terre de Liens, la Fédération Nationale de
               l’Agriculture Biologique (FNAB) et le BASIC, PARCEL invite
-              <strong
-                >les citoyens et les élus à se saisir des enjeux actuels de
-                l’alimentation</strong
-              >
+              <strong>les citoyens et les élus à se saisir des enjeux actuels de
+                l’alimentation</strong>
               en leur proposant de « jouer » sur 4 des principaux leviers de
               durabilité de l’alimentation :
             </p>
@@ -265,7 +292,9 @@
       </div>
     </div>
     <div class="section-home container-fluid">
-      <div class="text-h1">La démarche générale de calcul</div>
+      <div class="text-h1">
+        La démarche générale de calcul
+      </div>
       <div class="container">
         <div class="">
           <p>
@@ -300,45 +329,54 @@
               :src="require('@/assets/img/parcours/schema-methodo2022.svg')"
               width="80%"
               height="auto"
-            />
+            >
           </div>
         </div>
       </div>
     </div>
     <div class="section-home container-fluid">
-      <div class="text-h1">Les co-porteurs</div>
+      <div class="text-h1">
+        Les co-porteurs
+      </div>
       <div
         class="logos d-flex align-items-center justify-content-center flex-wrap"
       >
         <div class="item">
-          <a href="https://terredeliens.org/" target="_blank"
-            ><img
-              alt="logo-partenaire"
-              :src="require('@/assets/img/logos/partenaires/tdl.png')"
-              width="160px"
-              height="auto"
-              class="pt-3"
-          /></a>
+          <a
+            href="https://terredeliens.org/"
+            target="_blank"
+          ><img
+            alt="logo-partenaire"
+            :src="require('@/assets/img/logos/partenaires/tdl.png')"
+            width="160px"
+            height="auto"
+            class="pt-3"
+          ></a>
         </div>
         <div class="item">
-          <a href="https://www.fnab.org/" target="_blank">
+          <a
+            href="https://www.fnab.org/"
+            target="_blank"
+          >
             <img
               alt="logo-partenaire"
               :src="require('@/assets/img/logos/partenaires/fnab.png')"
               width="160px"
               height="auto"
               class="pt-3"
-          /></a>
+            ></a>
         </div>
         <div class="item">
-          <a href="https://lebasic.com/" target="_blank"
-            ><img
-              alt="logo-partenaire"
-              :src="require('@/assets/img/logos/partenaires/basic.svg')"
-              width="260px"
-              height="auto"
-              class="pt-3"
-          /></a>
+          <a
+            href="https://lebasic.com/"
+            target="_blank"
+          ><img
+            alt="logo-partenaire"
+            :src="require('@/assets/img/logos/partenaires/basic.svg')"
+            width="260px"
+            height="auto"
+            class="pt-3"
+          ></a>
         </div>
       </div>
     </div>
@@ -361,18 +399,6 @@ export default {
       list_geo: [],
     };
   },
-  beforeMount: function () {
-    window.localStorage.clear();
-    this.$store.commit("RESET_STORE");
-  },
-  methods: {
-    ajouter(item) {
-      this.rechercheInput = "";
-      this.list_geo = [];
-      this.$store.commit("addGeo", item);
-      console.log("store", this.$store.state);
-    },
-  },
   watch: {
     rechercheInput: function (valeur) {
       console.log(valeur);
@@ -387,6 +413,18 @@ export default {
             console.log(error);
           });
       }
+    },
+  },
+  beforeMount: function () {
+    window.localStorage.clear();
+    this.$store.commit("RESET_STORE");
+  },
+  methods: {
+    ajouter(item) {
+      this.rechercheInput = "";
+      this.list_geo = [];
+      this.$store.commit("addGeo", item);
+      console.log("store", this.$store.state);
     },
   },
 };

@@ -1,14 +1,23 @@
 <template>
   <div class="asy-wrapper">
     <div class="content">
-      <BarreNavigation menuType="recherche" :active="3" />
-      <div class="section centrervh selec-alim" id="section0">
+      <BarreNavigation
+        menu-type="recherche"
+        :active="3"
+      />
+      <div
+        id="section0"
+        class="section centrervh selec-alim"
+      >
         <div class="container">
           <h1 class="animated fadeInUp mb-5">
             Choisissez l’alimentation liée à votre simulation de relocalisation
           </h1>
           <resumeChoix />
-          <div id="egalimWarning" class="egalimBox d-none">
+          <div
+            id="egalimWarning"
+            class="egalimBox d-none"
+          >
             <div class="row align-items-center">
               <div class="col-12 col-md-auto logoEgalim mb-3 mb-md-0">
                 Loi Egalim
@@ -18,20 +27,25 @@
                 animaux" ne respectent plus les objectifs de la loi ÉGalim.
               </div>
               <div class="col-auto">
-                <a href="#" class="btn" onclick="initEgalim()">réinitialiser</a>
+                <a
+                  href="#"
+                  class="btn"
+                  onclick="initEgalim()"
+                >réinitialiser</a>
               </div>
             </div>
           </div>
-          <div id="egalimDefault" class="egalimBox d-none">
+          <div
+            id="egalimDefault"
+            class="egalimBox d-none"
+          >
             <div class="row align-items-center">
               <div class="col-12 col-md-auto logoEgalim mb-3 mb-md-0">
                 Loi Egalim
               </div>
               <div class="col-12 col-md btn">
-                <b
-                  >Les leviers bio et part de produits animaux sont préréglés
-                  sur les objectifs de la loi Égalim.</b
-                >
+                <b>Les leviers bio et part de produits animaux sont préréglés
+                  sur les objectifs de la loi Égalim.</b>
                 En effet, vous avez choisi de relocaliser l’alimentation pour
                 des établissements de restauration collective, vous devrez donc
                 respecter la loi ÉGalim.
@@ -40,12 +54,14 @@
                   data-toggle="modal"
                   data-target="#tooltipDetail"
                   onclick="tooltip('pourcent_egalim')"
-                  ><span class="icon-ico_element_info vert-fonce"></span
-                ></a>
+                ><span class="icon-ico_element_info vert-fonce" /></a>
               </div>
             </div>
           </div>
-          <div id="egalimBetter" class="egalimBox d-none">
+          <div
+            id="egalimBetter"
+            class="egalimBox d-none"
+          >
             <div class="row align-items-center">
               <div class="col-12 col-md-auto logoEgalim mb-3 mb-md-0">
                 Loi Egalim
@@ -55,52 +71,66 @@
                 les attendus de la loi ÉGalim.
               </div>
               <div class="col-auto">
-                <a href="#" class="btn" onclick="initEgalim()">réinitialiser</a>
+                <a
+                  href="#"
+                  class="btn"
+                  onclick="initEgalim()"
+                >réinitialiser</a>
               </div>
             </div>
           </div>
 
-          <div class="row choix-alim mt-5" id="contentEgalim">
+          <div
+            id="contentEgalim"
+            class="row choix-alim mt-5"
+          >
             <div class="col-lg-4 col-12 bloc-3col animated fadeIn delay-05s">
-              <div class="card-alim egalim" id="bio">
+              <div
+                id="bio"
+                class="card-alim egalim"
+              >
                 <div class="header-cardalim">
-                  <div class="icon-ico_filtres_bio ico-medium mx-auto"></div>
-                  <div class="titre-filtre">Quelle part de produits bio ?</div>
+                  <div class="icon-ico_filtres_bio ico-medium mx-auto" />
+                  <div class="titre-filtre">
+                    Quelle part de produits bio ?
+                  </div>
                 </div>
                 <p class="subtitle">
                   Faites varier le pourcentage<sup>*</sup> de produits bio (en
                   volume) de l’alimentation relocalisée
                 </p>
                 <div class="legumes">
-                  <div class="range-slider mx-auto" style="max-width: 650px">
+                  <div
+                    class="range-slider mx-auto"
+                    style="max-width: 650px"
+                  >
                     <div class="mb-4">
-                      <output class="range-output"
-                        ><span class="text-bold output legumes" id="valpartbio">
-                          {{ partbioText }}</span
-                        ><span class="text-bold legumes">%</span></output
+                      <output class="range-output"><span
+                        id="valpartbio"
+                        class="text-bold output legumes"
                       >
+                        {{ partbioText }}</span><span class="text-bold legumes">%</span></output>
                     </div>
                     <input
-                      type="range"
                       id="partbio"
+                      ref="partbioSlider"
+                      v-model="partbio"
+                      type="range"
                       class="slider-range"
                       min="0"
                       max="100"
                       step="1.000"
                       value="1.8"
-                      v-model="partbio"
-                      ref="partbioSlider"
-                    />
+                    >
                     <div class="range-values">
-                      <span class="range-min">0</span
-                      ><span class="range-max">100</span>
+                      <span class="range-min">0</span><span class="range-max">100</span>
                     </div>
                   </div>
                 </div>
                 <div class="note">
                   <sup>*</sup>Le pourcentage minimum affiché correspond à la
                   part, en volume, de production bio actuelle du territoire.
-                  <br /><br />En relocalisant, votre alimentation contient a
+                  <br><br>En relocalisant, votre alimentation contient a
                   minima cette part de produits bio.
                   <a
                     href="#bio"
@@ -109,24 +139,26 @@
                     data-toggle="modal"
                     data-target="#tooltipDetail"
                     @click="showTooltip('bio')"
-                    ><span class="icon-ico_element_info"></span
-                  ></a>
+                  ><span class="icon-ico_element_info" /></a>
                 </div>
               </div>
             </div>
             <modalBioCurseur
               v-if="montrerModal == 'bio'"
               @close="fermerModal"
-            ></modalBioCurseur>
+            />
             <div
               class="col-lg-4 col-12 bloc-3col animated fadeIn delay-1s"
               style="z-index: 2"
             >
-              <div class="card-alim egalim" id="meat">
+              <div
+                id="meat"
+                class="card-alim egalim"
+              >
                 <div class="header-cardalim">
                   <div
                     class="icon-ico_navigation_alimentation ico-medium mx-auto"
-                  ></div>
+                  />
                   <div class="titre-filtre">
                     Quelle part de produits animaux ?
                   </div>
@@ -138,56 +170,58 @@
                   les Français proviennent de produits animaux)
                 </p>
 
-                <div class="mt-5" id="partviande">
+                <div
+                  id="partviande"
+                  class="mt-5"
+                >
                   <div
                     class="card-diet d-flex align-items-center"
                     onclick=" document.getElementById('listDiets').classList.toggle('d-block')"
                   >
                     <div
-                      class="diet d-flex align-items-center"
                       id="dietSelected"
+                      class="diet d-flex align-items-center"
                     >
                       <img
                         alt=""
                         :src="regime.img"
                         width="20"
                         style="padding: 4px"
-                      />
-                      <span style="flex: 1; padding: 4px"
-                        >{{ regime.nom }}
+                      >
+                      <span style="flex: 1; padding: 4px">{{ regime.nom }}
                       </span>
                     </div>
                     <div class="arrows mx-auto">
-                      <span class="pointer mb-2"></span>
-                      <span
-                        ><img
-                          alt=""
-                          :src="require('@/assets/img/elements/top.svg')"
-                          width="16" />
+                      <span class="pointer mb-2" />
+                      <span><img
+                              alt=""
+                              :src="require('@/assets/img/elements/top.svg')"
+                              width="16"
+                            >
                         <img
                           alt=""
                           :src="require('@/assets/img/elements/bottom.svg')"
                           width="16"
-                      /></span>
+                        ></span>
                     </div>
                   </div>
                   <!-- <?php include '../partials/listdiets.php'; ?> -->
-                  <listeRegime @changementRegime="changementRegime" />
+                  <listeRegime @changement-regime="changementRegime" />
                 </div>
                 <div class="note mb-4">
                   <sup>*</sup>Les régimes proposés sont calculés pour garantir
                   un équilibre nutritionnel (pour plus d'informations voir la
                   page annexe "<a
                     href="/methodologie-de-calcul-de-la-relocalisation-alimentaire"
-                    >méthodologie de calcul</a
-                  >")
+                  >méthodologie de calcul</a>")
                 </div>
                 <!-- <div class="text-center w-100"><a href="/regime-personnalise" class="mx-auto btn-line">Composer vous-même<br>votre régime alimentaire</a></div> -->
                 <div class="text-center w-100">
-                  <a href="/regime-personnalise" class="mx-auto url-simple"
-                    >Professionnels ? Accédez au choix de régimes alimentaires
-                    détaillés</a
-                  >
+                  <a
+                    href="/regime-personnalise"
+                    class="mx-auto url-simple"
+                  >Professionnels ? Accédez au choix de régimes alimentaires
+                    détaillés</a>
                 </div>
               </div>
             </div>
@@ -195,9 +229,12 @@
               class="col-lg-4 col-12 bloc-3col animated fadeIn delay-1-5s"
               style="z-index: 1"
             >
-              <div class="card-alim" id="waste">
+              <div
+                id="waste"
+                class="card-alim"
+              >
                 <div class="header-cardalim">
-                  <div class="icon-gaspillage ico-medium mx-auto"></div>
+                  <div class="icon-gaspillage ico-medium mx-auto" />
                   <div class="titre-filtre">
                     Quelle part de pertes et gaspillage souhaitez-vous réduire?
                   </div>
@@ -210,41 +247,42 @@
                       data-toggle="modal"
                       data-target="#tooltipDetail"
                       onclick="tooltip('waste')"
-                      ><span class="icon-ico_element_info vert-fonce"></span
-                    ></a>
+                    ><span class="icon-ico_element_info vert-fonce" /></a>
                     <!-- <a href="#waste" class="info pb-3" style="font-style:normal;" data-tooltip="Cette donnée est calculée uniquement sur les produits de PARCEL, à partir des surfaces agricoles (bio et non bio) du département et intègre les différences de rendements entre agriculture biologique et agriculture conventionnelle.  Il ne s'agit ni du pourcentage de la surface agricole (SAU) en bio sur le territoire ni de la consommation actuelle de produits bio sur le territoire." data-placement="left"><span class="icon-ico_element_info"></span></a></p> -->
                   </p>
                 </div>
 
                 <div class="legumes">
-                  <div class="range-slider2 mx-auto" style="max-width: 650px">
+                  <div
+                    class="range-slider2 mx-auto"
+                    style="max-width: 650px"
+                  >
                     <div class="mb-4">
-                      <output class="range-output"
-                        ><span
-                          class="text-bold output legumes"
-                          id="valpartpertes"
-                        >
-                          {{ partpertes }}</span
-                        ><span class="text-bold legumes">%</span></output
+                      <output class="range-output"><span
+                        id="valpartpertes"
+                        class="text-bold output legumes"
                       >
+                        {{ partpertes }}</span><span class="text-bold legumes">%</span></output>
                     </div>
                     <input
-                      type="range"
                       id="partpertes"
+                      v-model="partpertes"
+                      type="range"
                       class="slider-range"
                       min="0"
                       max="100"
                       step="1.000"
                       value="1.8"
-                      v-model="partpertes"
-                    />
+                    >
                     <div class="range-values">
-                      <span class="range-min">0</span
-                      ><span class="range-max">100</span>
+                      <span class="range-min">0</span><span class="range-max">100</span>
                     </div>
                   </div>
                 </div>
-                <div class="note" id="note_pertes">
+                <div
+                  id="note_pertes"
+                  class="note"
+                >
                   <sup>*</sup>Actuellement, 1/5 de la production agricole est
                   perdue ou gaspillée
                 </div>
@@ -256,11 +294,14 @@
             class="div-continuer animated fadeInUp posiiton-relative"
             style="z-index: 1"
           >
-            <router-link to="/resultats-de-votre-relocalisation"
-              ><button type="button" class="btn btn-principal mt-5">
+            <router-link to="/resultats-de-votre-relocalisation">
+              <button
+                type="button"
+                class="btn btn-principal mt-5"
+              >
                 Continuer
-              </button></router-link
-            >
+              </button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -275,7 +316,6 @@ import resumeChoix from "./modal/resumeChoix.vue";
 import "rangeslider.js/dist/rangeslider.css";
 import modalBioCurseur from "./modal/modalBioCurseur.vue";
 export default {
-  inject: ["$axios"],
   name: "ChoixParametres",
   components: {
     BarreNavigation,
@@ -283,6 +323,7 @@ export default {
     resumeChoix,
     modalBioCurseur,
   },
+  inject: ["$axios"],
   data() {
     return {
       data: {
@@ -322,6 +363,36 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    partbioText() {
+      return this.partbio;
+    },
+    partpertesText() {
+      return this.partpertes;
+    },
+  },
+  watch: {
+    partbio: function (val) {
+      this.$store.commit("partBio", val);
+      this.$store.commit("partBioLegumes", val);
+      this.$store.commit("partBioFruits", val);
+      this.$store.commit("partBioElevage", val);
+      this.$store.commit("partBioCereales", val);
+    },
+    partpertes: function (val) {
+      this.$store.commit("partPertes", val);
+    },
+  },
+  mounted() {
+    this.recupererDonnees();
+    this.regime = this.$store.state.regime_alimentaire;
+    if (this.$store.state.partpertes) {
+      this.partpertes = this.$store.state.partpertes;
+    }
+    if (this.$store.state.part_bio) {
+      this.partbio = this.$store.state.part_bio;
+    }
   },
   methods: {
     recupererDonnees() {
@@ -366,36 +437,6 @@ export default {
     fermerModal() {
       this.montrerModal = "";
     },
-  },
-  computed: {
-    partbioText() {
-      return this.partbio;
-    },
-    partpertesText() {
-      return this.partpertes;
-    },
-  },
-  watch: {
-    partbio: function (val) {
-      this.$store.commit("partBio", val);
-      this.$store.commit("partBioLegumes", val);
-      this.$store.commit("partBioFruits", val);
-      this.$store.commit("partBioElevage", val);
-      this.$store.commit("partBioCereales", val);
-    },
-    partpertes: function (val) {
-      this.$store.commit("partPertes", val);
-    },
-  },
-  mounted() {
-    this.recupererDonnees();
-    this.regime = this.$store.state.regime_alimentaire;
-    if (this.$store.state.partpertes) {
-      this.partpertes = this.$store.state.partpertes;
-    }
-    if (this.$store.state.part_bio) {
-      this.partbio = this.$store.state.part_bio;
-    }
   },
 };
 </script>

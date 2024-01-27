@@ -1,13 +1,16 @@
 <template>
   <div
-    class="modals"
     id="modal-impact-climat1"
+    class="modals"
     tabindex="-1"
     role="dialog"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
-    <div class="modal-dialog" role="document">
+    <div
+      class="modal-dialog"
+      role="document"
+    >
       <div class="modal-content modal-repart-cat-detail">
         <component :is="modalId" />
       </div>

@@ -9,7 +9,7 @@
 import { getSurfaceAMobiliser } from "@/plugins/getSurfacesNecessaires";
 
 export default {
-  name: "testBenjamin",
+  name: "TestBenjamin",
   data() {
     return {
       surfaces: null,

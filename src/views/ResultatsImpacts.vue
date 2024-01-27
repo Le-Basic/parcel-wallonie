@@ -1,14 +1,20 @@
 <template>
-  <div class="asy-wrapper" style="flex-direction: row">
+  <div
+    class="asy-wrapper"
+    style="flex-direction: row"
+  >
     <div>
       <BarreNavigation
-        @montrerModalAffinage="montrerModalAffiner"
         :active="4"
+        @montrer-modal-affinage="montrerModalAffiner"
       />
 
       <div class="content">
         <!-- <?php include '../partials/nav2.php'; ?> -->
-        <div class="section centrervh" id="section0">
+        <div
+          id="section0"
+          class="section centrervh"
+        >
           <div class="container">
             <h1 class="animated fadeInUp fast h1-result">
               Quels sont les impacts écologiques associés à mes choix
@@ -16,8 +22,14 @@
             </h1>
             <div class="ss-titre-impacts row">
               <resumeChoix />
-              <div class="accordion ml-auto mr-auto" id="accordeon-Impact">
-                <div class="w-100 h-auto" id="headingImpact">
+              <div
+                id="accordeon-Impact"
+                class="accordion ml-auto mr-auto"
+              >
+                <div
+                  id="headingImpact"
+                  class="w-100 h-auto"
+                >
                   <button
                     class="w-100 btn btn-link collapsed"
                     type="button"
@@ -44,11 +56,9 @@
                         1
                       </div>
                       <div class="puce-text">
-                        <strong
-                          >Les impacts écologiques varient en fonction des choix
+                        <strong>Les impacts écologiques varient en fonction des choix
                           de changement de régime alimentaire, de part en bio ou
-                          de réduction des pertes et gaspillage</strong
-                        >. Les effets de la relocalisation ne peuvent pas encore
+                          de réduction des pertes et gaspillage</strong>. Les effets de la relocalisation ne peuvent pas encore
                         être calculés au vu des données existantes.
                       </div>
                     </div>
@@ -61,11 +71,9 @@
                         2
                       </div>
                       <div class="puce-text">
-                        <strong
-                          >Les impacts sont exprimés en pourcentage par rapport
+                        <strong>Les impacts sont exprimés en pourcentage par rapport
                           à une situation de relocalisation de l’alimentation
-                          sans changement de la part en bio</strong
-                        >, ni du régime alimentaire, ni des réductions de pertes
+                          sans changement de la part en bio</strong>, ni du régime alimentaire, ni des réductions de pertes
                         et gaspillage (le tiret indique qu’aucun n’impact n’a pu
                         être calculé) ;
                       </div>
@@ -83,16 +91,12 @@
                         en bio et du régime alimentaire peut soit :
                         <ul>
                           <li>
-                            <strong
-                              >Réduire les impacts, ce qui est positif :</strong
-                            >
+                            <strong>Réduire les impacts, ce qui est positif :</strong>
                             flèche verte vers le bas et pourcentage négatif ;
                           </li>
                           <li>
-                            <strong
-                              >Augmenter les impacts, ce qui est négatif
-                              :</strong
-                            >
+                            <strong>Augmenter les impacts, ce qui est négatif
+                              :</strong>
                             flèche rouge vers le haut et pourcentage positif ;
                           </li>
                         </ul>
@@ -107,10 +111,8 @@
                         4
                       </div>
                       <div class="puce-text">
-                        <strong
-                          >Cette page donne des ordres de grandeurs moyens, à
-                          l’échelle nationale</strong
-                        >, qui ne reflètent pas les spécificités locales ;
+                        <strong>Cette page donne des ordres de grandeurs moyens, à
+                          l’échelle nationale</strong>, qui ne reflètent pas les spécificités locales ;
                       </div>
                     </div>
                     <div
@@ -122,10 +124,8 @@
                         5
                       </div>
                       <div class="puce-text">
-                        <strong
-                          >Les indicateurs peuvent parfois être exprimés par
-                          hectare ou par personne</strong
-                        >. Par défaut, ils sont présentés par hectare lorsque
+                        <strong>Les indicateurs peuvent parfois être exprimés par
+                          hectare ou par personne</strong>. Par défaut, ils sont présentés par hectare lorsque
                         les deux unités sont possibles. L’estimation « par
                         personne », quand elle existe, est visible en cliquant
                         sur l’indicateur.
@@ -149,8 +149,7 @@
                     <div class="impact-titre cereales">
                       <span
                         class="icon-impact-climat ico-medium cereales"
-                      ></span
-                      >Impacts sur le climat
+                      />Impacts sur le climat
                     </div>
                     <div
                       class="impacts justify-content-around align-items-center flex-column flex-sm-row"
@@ -159,7 +158,7 @@
                         <div class="impact-graph">
                           <span
                             class="icon-impact-co2 ico-medium ico-impact"
-                          ></span>
+                          />
                         </div>
                         <div class="impact-nom">
                           Emissions de gaz à effet de serre
@@ -174,25 +173,23 @@
                               <strong>par personne</strong>
                             </div>
                             <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodalair2"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodalair2" class="impact-nbr"
-                                  ><span
-                                    id="gaz_effet_serre4"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 1
-                                        )["EcoImpact_Indicator_Value_Person"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
+                              <span class="impact-result"><span
+                                id="flechemodalair2"
+                                class="ico-medium"
+                              /><span
+                                id="impactmodalair2"
+                                class="impact-nbr"
+                              ><span
+                                v-if="impacts.length > 0"
+                                id="gaz_effet_serre4"
+                              >{{
+                                Math.round(
+                                  impacts.find(
+                                    (el) => el.ID_EcoImpact_Indicator == 1
+                                  )["EcoImpact_Indicator_Value_Person"]
+                                )
+                              }}</span>%
+                              </span></span>
                             </div>
                           </div>
                         </div>
@@ -202,25 +199,23 @@
                               <strong>par hectare</strong>
                             </div>
                             <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodalair1"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodalair1" class="impact-nbr"
-                                  ><span
-                                    id="gaz_effet_serre3"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 1
-                                        )["EcoImpact_Indicator_Value_Hectare"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
+                              <span class="impact-result"><span
+                                id="flechemodalair1"
+                                class="ico-medium"
+                              /><span
+                                id="impactmodalair1"
+                                class="impact-nbr"
+                              ><span
+                                v-if="impacts.length > 0"
+                                id="gaz_effet_serre3"
+                              >{{
+                                Math.round(
+                                  impacts.find(
+                                    (el) => el.ID_EcoImpact_Indicator == 1
+                                  )["EcoImpact_Indicator_Value_Hectare"]
+                                )
+                              }}</span>%
+                              </span></span>
                             </div>
                           </div>
                         </div>
@@ -229,8 +224,7 @@
                         class="col-sm-3 result-plus d-flex flex-column justify-content-center text-center"
                         @click="ouvrirModal('ImpactGes')"
                       >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
+                        <span class="icon-ico_fleche_detail_gros icon" /><span class="explain">Explications</span>
                       </div>
                     </div>
                   </div>
@@ -240,8 +234,7 @@
                     <div class="impact-titre legumes">
                       <span
                         class="icon-impact-biodiversite ico-medium climat2"
-                      ></span
-                      >Impacts sur la biodiversité
+                      />Impacts sur la biodiversité
                     </div>
                     <div
                       class="impacts justify-content-around align-items-center flex-column flex-sm-row"
@@ -254,9 +247,11 @@
                         <div class="impact-graph">
                           <span
                             class="icon-impact-especes ico-medium ico-impact"
-                          ></span>
+                          />
                         </div>
-                        <div class="impact-nom">Destruction des espèces</div>
+                        <div class="impact-nom">
+                          Destruction des espèces
+                        </div>
                       </div>
                       <div
                         class="impact-item2 col-sm-6 d-flex justify-content-around align-items-center"
@@ -267,19 +262,23 @@
                               <strong>par personne</strong>
                             </div>
                             <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span id="" class="ico-medium"></span
-                                ><span id="" class="impact-nbr"
-                                  ><span id="" v-if="impacts.length > 0">{{
-                                    Math.round(
-                                      impacts.find(
-                                        (el) => el.ID_EcoImpact_Indicator == 2
-                                      )["EcoImpact_Indicator_Value_Person"]
-                                    )
-                                  }}</span
-                                  >%
-                                </span></span
-                              >
+                              <span class="impact-result"><span
+                                id=""
+                                class="ico-medium"
+                              /><span
+                                id=""
+                                class="impact-nbr"
+                              ><span
+                                v-if="impacts.length > 0"
+                                id=""
+                              >{{
+                                Math.round(
+                                  impacts.find(
+                                    (el) => el.ID_EcoImpact_Indicator == 2
+                                  )["EcoImpact_Indicator_Value_Person"]
+                                )
+                              }}</span>%
+                              </span></span>
                             </div>
                           </div>
                         </div>
@@ -289,25 +288,23 @@
                               <strong>par hectare</strong>
                             </div>
                             <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodaldeclin"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodaldeclin" class="impact-nbr"
-                                  ><span
-                                    id="declin_especes2"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 2
-                                        )["EcoImpact_Indicator_Value_Hectare"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
+                              <span class="impact-result"><span
+                                id="flechemodaldeclin"
+                                class="ico-medium"
+                              /><span
+                                id="impactmodaldeclin"
+                                class="impact-nbr"
+                              ><span
+                                v-if="impacts.length > 0"
+                                id="declin_especes2"
+                              >{{
+                                Math.round(
+                                  impacts.find(
+                                    (el) => el.ID_EcoImpact_Indicator == 2
+                                  )["EcoImpact_Indicator_Value_Hectare"]
+                                )
+                              }}</span>%
+                              </span></span>
                             </div>
                           </div>
                         </div>
@@ -316,11 +313,10 @@
                         class="col-sm-3 result-plus d-flex flex-column justify-content-center text-center"
                         @click="ouvrirModal('impactBiodiv')"
                       >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
+                        <span class="icon-ico_fleche_detail_gros icon" /><span class="explain">Explications</span>
                       </div>
                     </div>
-                    <div class="impact-line"></div>
+                    <div class="impact-line" />
                     <div
                       class="impacts justify-content-around align-items-center flex-column flex-sm-row"
                       onclick=""
@@ -332,9 +328,11 @@
                         <div class="impact-graph">
                           <span
                             class="icon-impact-deforest ico-medium ico-impact"
-                          ></span>
+                          />
                         </div>
-                        <div class="impact-nom">Déforestation importée</div>
+                        <div class="impact-nom">
+                          Déforestation importée
+                        </div>
                         <div class="note text-center">
                           L’impact du bio n’est pas calculé.
                         </div>
@@ -348,25 +346,23 @@
                               <strong>par personne</strong>
                             </div>
                             <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodalbiodiv"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodalbiodiv" class="impact-nbr"
-                                  ><span
-                                    id="deforestation2"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 3
-                                        )["EcoImpact_Indicator_Value_Person"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
+                              <span class="impact-result"><span
+                                id="flechemodalbiodiv"
+                                class="ico-medium"
+                              /><span
+                                id="impactmodalbiodiv"
+                                class="impact-nbr"
+                              ><span
+                                v-if="impacts.length > 0"
+                                id="deforestation2"
+                              >{{
+                                Math.round(
+                                  impacts.find(
+                                    (el) => el.ID_EcoImpact_Indicator == 3
+                                  )["EcoImpact_Indicator_Value_Person"]
+                                )
+                              }}</span>%
+                              </span></span>
                             </div>
                           </div>
                         </div>
@@ -376,19 +372,23 @@
                               <strong>par hectare</strong>
                             </div>
                             <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span id="" class="ico-medium"></span
-                                ><span id="" class="impact-nbr"
-                                  ><span id="" v-if="impacts.length > 0">{{
-                                    Math.round(
-                                      impacts.find(
-                                        (el) => el.ID_EcoImpact_Indicator == 3
-                                      )["EcoImpact_Indicator_Value_Hectare"]
-                                    )
-                                  }}</span
-                                  >%
-                                </span></span
-                              >
+                              <span class="impact-result"><span
+                                id=""
+                                class="ico-medium"
+                              /><span
+                                id=""
+                                class="impact-nbr"
+                              ><span
+                                v-if="impacts.length > 0"
+                                id=""
+                              >{{
+                                Math.round(
+                                  impacts.find(
+                                    (el) => el.ID_EcoImpact_Indicator == 3
+                                  )["EcoImpact_Indicator_Value_Hectare"]
+                                )
+                              }}</span>%
+                              </span></span>
                             </div>
                           </div>
                         </div>
@@ -397,15 +397,14 @@
                         class="col-sm-3 result-plus align-items-center d-flex flex-column justify-content-center text-center"
                         @click="ouvrirModal('impactEau')"
                       >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
+                        <span class="icon-ico_fleche_detail_gros icon" /><span class="explain">Explications</span>
                       </div>
                     </div>
                   </div>
                   <!-- ----------------->
                   <div class="col-12 cadre-impacts cadre-categorie eau">
                     <div class="impact-titre eau">
-                      <span class="icon-impact-eau ico-medium eau"></span>
+                      <span class="icon-impact-eau ico-medium eau" />
                       Impacts sur la ressource eau
                     </div>
 
@@ -420,9 +419,11 @@
                         <div class="impact-graph">
                           <span
                             class="icon-impact-eaupol ico-medium ico-impact"
-                          ></span>
+                          />
                         </div>
-                        <div class="impact-nom">Pollution de l’eau</div>
+                        <div class="impact-nom">
+                          Pollution de l’eau
+                        </div>
                       </div>
                       <div
                         class="impact-item2 col-sm-6 d-flex justify-content-around align-items-center"
@@ -433,25 +434,23 @@
                               <strong>par personne</strong>
                             </div>
                             <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodaleau4"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodaleau4" class="impact-nbr"
-                                  ><span
-                                    id="qualite_eau4"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 4
-                                        )["EcoImpact_Indicator_Value_Person"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
+                              <span class="impact-result"><span
+                                id="flechemodaleau4"
+                                class="ico-medium"
+                              /><span
+                                id="impactmodaleau4"
+                                class="impact-nbr"
+                              ><span
+                                v-if="impacts.length > 0"
+                                id="qualite_eau4"
+                              >{{
+                                Math.round(
+                                  impacts.find(
+                                    (el) => el.ID_EcoImpact_Indicator == 4
+                                  )["EcoImpact_Indicator_Value_Person"]
+                                )
+                              }}</span>%
+                              </span></span>
                             </div>
                           </div>
                         </div>
@@ -461,25 +460,23 @@
                               <strong>par hectare</strong>
                             </div>
                             <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodaleau3"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodaleau3" class="impact-nbr"
-                                  ><span
-                                    id="qualite_eau2"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 4
-                                        )["EcoImpact_Indicator_Value_Hectare"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
+                              <span class="impact-result"><span
+                                id="flechemodaleau3"
+                                class="ico-medium"
+                              /><span
+                                id="impactmodaleau3"
+                                class="impact-nbr"
+                              ><span
+                                v-if="impacts.length > 0"
+                                id="qualite_eau2"
+                              >{{
+                                Math.round(
+                                  impacts.find(
+                                    (el) => el.ID_EcoImpact_Indicator == 4
+                                  )["EcoImpact_Indicator_Value_Hectare"]
+                                )
+                              }}</span>%
+                              </span></span>
                             </div>
                           </div>
                         </div>
@@ -487,11 +484,10 @@
                       <div
                         class="col-sm-3 result-plus d-flex flex-column justify-content-center text-center"
                       >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
+                        <span class="icon-ico_fleche_detail_gros icon" /><span class="explain">Explications</span>
                       </div>
                     </div>
-                    <div class="impact-line"></div>
+                    <div class="impact-line" />
                     <div
                       class="impacts justify-content-around align-items-center flex-column flex-sm-row"
                       onclick=""
@@ -503,9 +499,11 @@
                         <div class="impact-graph">
                           <span
                             class="icon-impact-eau-conso ico-medium ico-impact"
-                          ></span>
+                          />
                         </div>
-                        <div class="impact-nom">Consommation d’eau</div>
+                        <div class="impact-nom">
+                          Consommation d’eau
+                        </div>
                         <div class="note text-center">
                           L’impact du bio n’est pas calculé.
                         </div>
@@ -519,25 +517,23 @@
                               <strong>par personne</strong>
                             </div>
                             <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodaleau1"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodaleau1" class="impact-nbr"
-                                  ><span
-                                    id="consommation_eau2"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 5
-                                        )["EcoImpact_Indicator_Value_Person"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
+                              <span class="impact-result"><span
+                                id="flechemodaleau1"
+                                class="ico-medium"
+                              /><span
+                                id="impactmodaleau1"
+                                class="impact-nbr"
+                              ><span
+                                v-if="impacts.length > 0"
+                                id="consommation_eau2"
+                              >{{
+                                Math.round(
+                                  impacts.find(
+                                    (el) => el.ID_EcoImpact_Indicator == 5
+                                  )["EcoImpact_Indicator_Value_Person"]
+                                )
+                              }}</span>%
+                              </span></span>
                             </div>
                           </div>
                         </div>
@@ -548,25 +544,23 @@
                             </div>
 
                             <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodaleau2"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodaleau2" class="impact-nbr"
-                                  ><span
-                                    id="consommation_eau3"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 5
-                                        )["EcoImpact_Indicator_Value_Hectare"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
+                              <span class="impact-result"><span
+                                id="flechemodaleau2"
+                                class="ico-medium"
+                              /><span
+                                id="impactmodaleau2"
+                                class="impact-nbr"
+                              ><span
+                                v-if="impacts.length > 0"
+                                id="consommation_eau3"
+                              >{{
+                                Math.round(
+                                  impacts.find(
+                                    (el) => el.ID_EcoImpact_Indicator == 5
+                                  )["EcoImpact_Indicator_Value_Hectare"]
+                                )
+                              }}</span>%
+                              </span></span>
                             </div>
                           </div>
                         </div>
@@ -574,8 +568,7 @@
                       <div
                         class="col-sm-3 result-plus d-flex flex-column justify-content-center text-center"
                       >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
+                        <span class="icon-ico_fleche_detail_gros icon" /><span class="explain">Explications</span>
                       </div>
                     </div>
                   </div>
@@ -583,8 +576,7 @@
                   <!-- ----------------->
                   <div class="col-12 cadre-impacts cadre-categorie viande">
                     <div class="impact-titre viande">
-                      <span class="icon-impact-sol ico-medium viande"></span
-                      >Impacts sur le sol
+                      <span class="icon-impact-sol ico-medium viande" />Impacts sur le sol
                     </div>
                     <div
                       class="impacts justify-content-around align-items-center flex-column flex-sm-row"
@@ -597,9 +589,11 @@
                         <div class="impact-graph">
                           <span
                             class="icon-impact-empreinte ico-medium ico-impact"
-                          ></span>
+                          />
                         </div>
-                        <div class="impact-nom">Empreinte au sol</div>
+                        <div class="impact-nom">
+                          Empreinte au sol
+                        </div>
                       </div>
                       <div
                         class="impact-item2 col-sm-6 d-flex justify-content-around align-items-center"
@@ -610,25 +604,23 @@
                               <strong>par personne</strong>
                             </div>
                             <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodalsol1"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodalsol1" class="impact-nbr"
-                                  ><span
-                                    id="empreinte_sol2"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 6
-                                        )["EcoImpact_Indicator_Value_Person"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
+                              <span class="impact-result"><span
+                                id="flechemodalsol1"
+                                class="ico-medium"
+                              /><span
+                                id="impactmodalsol1"
+                                class="impact-nbr"
+                              ><span
+                                v-if="impacts.length > 0"
+                                id="empreinte_sol2"
+                              >{{
+                                Math.round(
+                                  impacts.find(
+                                    (el) => el.ID_EcoImpact_Indicator == 6
+                                  )["EcoImpact_Indicator_Value_Person"]
+                                )
+                              }}</span>%
+                              </span></span>
                             </div>
                           </div>
                         </div>
@@ -638,19 +630,23 @@
                               <strong>par hectare</strong>
                             </div>
                             <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span id=" " class="ico-medium"></span
-                                ><span id="" class="impact-nbr"
-                                  ><span id="" v-if="impacts.length > 0">{{
-                                    Math.round(
-                                      impacts.find(
-                                        (el) => el.ID_EcoImpact_Indicator == 6
-                                      )["EcoImpact_Indicator_Value_Hectare"]
-                                    )
-                                  }}</span
-                                  >%
-                                </span></span
-                              >
+                              <span class="impact-result"><span
+                                id=" "
+                                class="ico-medium"
+                              /><span
+                                id=""
+                                class="impact-nbr"
+                              ><span
+                                v-if="impacts.length > 0"
+                                id=""
+                              >{{
+                                Math.round(
+                                  impacts.find(
+                                    (el) => el.ID_EcoImpact_Indicator == 6
+                                  )["EcoImpact_Indicator_Value_Hectare"]
+                                )
+                              }}</span>%
+                              </span></span>
                             </div>
                           </div>
                         </div>
@@ -658,11 +654,10 @@
                       <div
                         class="col-sm-3 result-plus d-flex flex-column justify-content-center text-center"
                       >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
+                        <span class="icon-ico_fleche_detail_gros icon" /><span class="explain">Explications</span>
                       </div>
                     </div>
-                    <div class="impact-line"></div>
+                    <div class="impact-line" />
                     <div
                       class="impacts justify-content-around align-items-center flex-column flex-sm-row"
                       onclick=""
@@ -674,9 +669,11 @@
                         <div class="impact-graph">
                           <span
                             class="icon-impact-solqualit ico-medium ico-impact"
-                          ></span>
+                          />
                         </div>
-                        <div class="impact-nom">Pauvreté des sols</div>
+                        <div class="impact-nom">
+                          Pauvreté des sols
+                        </div>
                       </div>
                       <div
                         class="impact-item2 col-sm-6 d-flex justify-content-around align-items-center"
@@ -687,22 +684,23 @@
                               <strong>par personne</strong>
                             </div>
                             <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span id="" class="ico-medium"></span
-                                ><span id="" class="impact-nbr"
-                                  ><span
-                                    id="gaz_effet_serre4"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 7
-                                        )["EcoImpact_Indicator_Value_Person"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
+                              <span class="impact-result"><span
+                                id=""
+                                class="ico-medium"
+                              /><span
+                                id=""
+                                class="impact-nbr"
+                              ><span
+                                v-if="impacts.length > 0"
+                                id="gaz_effet_serre4"
+                              >{{
+                                Math.round(
+                                  impacts.find(
+                                    (el) => el.ID_EcoImpact_Indicator == 7
+                                  )["EcoImpact_Indicator_Value_Person"]
+                                )
+                              }}</span>%
+                              </span></span>
                             </div>
                           </div>
                         </div>
@@ -712,25 +710,23 @@
                               <strong>par hectare</strong>
                             </div>
                             <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodalsol2"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodalsol2" class="impact-nbr"
-                                  ><span
-                                    id="degradation_sols2"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 7
-                                        )["EcoImpact_Indicator_Value_Hectare"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
+                              <span class="impact-result"><span
+                                id="flechemodalsol2"
+                                class="ico-medium"
+                              /><span
+                                id="impactmodalsol2"
+                                class="impact-nbr"
+                              ><span
+                                v-if="impacts.length > 0"
+                                id="degradation_sols2"
+                              >{{
+                                Math.round(
+                                  impacts.find(
+                                    (el) => el.ID_EcoImpact_Indicator == 7
+                                  )["EcoImpact_Indicator_Value_Hectare"]
+                                )
+                              }}</span>%
+                              </span></span>
                             </div>
                           </div>
                         </div>
@@ -738,8 +734,7 @@
                       <div
                         class="col-sm-3 result-plus d-flex flex-column justify-content-center text-center"
                       >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
+                        <span class="icon-ico_fleche_detail_gros icon" /><span class="explain">Explications</span>
                       </div>
                     </div>
                   </div>
@@ -748,11 +743,12 @@
               </div>
               <!--end mt-5-->
               <div class="w-100 div-continuer mb-big text-center">
-                <a href="/agir-pour-une-relocalisation-durable"
-                  ><button type="button" class="btn btn-principal mt-5">
-                    Agir
-                  </button></a
+                <a href="/agir-pour-une-relocalisation-durable"><button
+                  type="button"
+                  class="btn btn-principal mt-5"
                 >
+                  Agir
+                </button></a>
               </div>
             </div>
             <!--end ss-titre-impacts-->
@@ -762,28 +758,38 @@
         <!--end section-->
       </div>
       <!--end content-->
-      <nav id="asy-sidebar" :class="montrerClasse">
-        <modal-affiner-choix @fermerModalAffiner="fermerModal" />
+      <nav
+        id="asy-sidebar"
+        :class="montrerClasse"
+      >
+        <modal-affiner-choix @fermer-modal-affiner="fermerModal" />
       </nav>
     </div>
     <!--asy-wrapper-->
     <div
-      class="modal fade"
       id=""
+      class="modal fade"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog" role="document">
+      <div
+        class="modal-dialog"
+        role="document"
+      >
         <div class="modal-content modal-repart-cat-detail">
           <div class="modal-header d-flex align-items-center">
             <div>
-              <span class="icon-ico_CATEGORIES_legumes icon legumes"></span>
+              <span class="icon-ico_CATEGORIES_legumes icon legumes" />
             </div>
             <div class="d-flex flex-column">
-              <div class="titre-categorie">Légumes</div>
-              <div class="hectares">10 436 hectares</div>
+              <div class="titre-categorie">
+                Légumes
+              </div>
+              <div class="hectares">
+                10 436 hectares
+              </div>
             </div>
             <button
               type="button"
@@ -791,11 +797,14 @@
               data-dismiss="modal"
               aria-label="Close"
             >
-              <span class="icon-ico_fermer icon"></span>
+              <span class="icon-ico_fermer icon" />
             </button>
           </div>
           <div class="modal-body">
-            <div id="accordion" class="accordeon-detail">
+            <div
+              id="accordion"
+              class="accordeon-detail"
+            >
               <div class="card">
                 <div class="card-header">
                   <a
@@ -803,7 +812,7 @@
                     data-toggle="collapse"
                     href="#collapseOne"
                   >
-                    <div><span class="icon-ico_calcul2 icon white"></span></div>
+                    <div><span class="icon-ico_calcul2 icon white" /></div>
                     <div>Méthodologie de calcul</div>
                   </a>
                 </div>
@@ -823,16 +832,10 @@
                     >
                       <span
                         class="col-6 d-flex flex-column justify-content-center"
-                        ><span class="icon-ico_poids icon legumes"></span
-                        ><span class="nbr-ha"> 7 742 kg</span
-                        ><span class="hectares"> nécessitant </span></span
-                      >
+                      ><span class="icon-ico_poids icon legumes" /><span class="nbr-ha"> 7 742 kg</span><span class="hectares"> nécessitant </span></span>
                       <span
                         class="col-6 d-flex flex-column justify-content-center"
-                        ><span class="icon-ico_champ icon legumes"></span
-                        ><span class="nbr-ha"> 3 249</span
-                        ><span class="hectares"> hectares </span></span
-                      >
+                      ><span class="icon-ico_champ icon legumes" /><span class="nbr-ha"> 3 249</span><span class="hectares"> hectares </span></span>
                     </div>
                   </div>
                 </div>
@@ -844,66 +847,42 @@
                     data-toggle="collapse"
                     href="#collapseTwo"
                   >
-                    <span class="icon-ico_detail icon white"></span> Détail par
+                    <span class="icon-ico_detail icon white" /> Détail par
                     produit
                   </a>
                 </div>
-                <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                <div
+                  id="collapseTwo"
+                  class="collapse"
+                  data-parent="#accordion"
+                >
                   <div class="card-body">
-                    <span class="mb-2"
-                      ><strong
-                        >en pourcentage de surfaces cultivées</strong
-                      ></span
-                    >
+                    <span class="mb-2"><strong>en pourcentage de surfaces cultivées</strong></span>
                     <div class="list-produits">
                       <ul>
                         <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit"
-                            >Ail, échalottes, oignons</span
-                          >
+                          <span class="badge-detail-produit bg-legumes-fonce">0,13</span><span class="nom-produit">Ail, échalottes, oignons</span>
                         </li>
                         <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit">Artichauts</span>
+                          <span class="badge-detail-produit bg-legumes-fonce">0,13</span><span class="nom-produit">Artichauts</span>
                         </li>
                         <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit">Asperges</span>
+                          <span class="badge-detail-produit bg-legumes-fonce">0,13</span><span class="nom-produit">Asperges</span>
                         </li>
                         <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit">Aubergines</span>
+                          <span class="badge-detail-produit bg-legumes-fonce">0,13</span><span class="nom-produit">Aubergines</span>
                         </li>
                         <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit"
-                            >Betteraves, Radis, Salsifis, Similaires</span
-                          >
+                          <span class="badge-detail-produit bg-legumes-fonce">0,13</span><span class="nom-produit">Betteraves, Radis, Salsifis, Similaires</span>
                         </li>
                         <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit"
-                            >Bettes, Cardes, Brèdes, Christophine</span
-                          >
+                          <span class="badge-detail-produit bg-legumes-fonce">0,13</span><span class="nom-produit">Bettes, Cardes, Brèdes, Christophine</span>
                         </li>
                         <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit"
-                            >Carottes, Navets potagers, Céleris raves</span
-                          >
+                          <span class="badge-detail-produit bg-legumes-fonce">0,13</span><span class="nom-produit">Carottes, Navets potagers, Céleris raves</span>
                         </li>
                         <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit">Céleris branche</span>
+                          <span class="badge-detail-produit bg-legumes-fonce">0,13</span><span class="nom-produit">Céleris branche</span>
                         </li>
                       </ul>
                     </div>
@@ -916,22 +895,29 @@
       </div>
     </div>
     <div
-      class="modal fade"
       id="modal-fruits"
+      class="modal fade"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog" role="document">
+      <div
+        class="modal-dialog"
+        role="document"
+      >
         <div class="modal-content modal-repart-cat-detail">
           <div class="modal-header d-flex align-items-center">
             <div>
-              <span class="icon-ico_CATEGORIES_fruits icon fruits"></span>
+              <span class="icon-ico_CATEGORIES_fruits icon fruits" />
             </div>
             <div class="d-flex flex-column">
-              <div class="titre-categorie">Fruits</div>
-              <div class="hectares">10 436 hectares</div>
+              <div class="titre-categorie">
+                Fruits
+              </div>
+              <div class="hectares">
+                10 436 hectares
+              </div>
             </div>
             <button
               type="button"
@@ -939,11 +925,14 @@
               data-dismiss="modal"
               aria-label="Close"
             >
-              <span class="icon-ico_fermer icon"></span>
+              <span class="icon-ico_fermer icon" />
             </button>
           </div>
           <div class="modal-body">
-            <div id="accordion" class="accordeon-detail fruits-fonce">
+            <div
+              id="accordion"
+              class="accordeon-detail fruits-fonce"
+            >
               <div class="card">
                 <div class="card-header">
                   <a
@@ -951,7 +940,7 @@
                     data-toggle="collapse"
                     href="#collapseOne"
                   >
-                    <div><span class="icon-ico_calcul2 icon white"></span></div>
+                    <div><span class="icon-ico_calcul2 icon white" /></div>
                     <div>Méthodologie de calcul</div>
                   </a>
                 </div>
@@ -971,16 +960,10 @@
                     >
                       <span
                         class="col-6 d-flex flex-column justify-content-center"
-                        ><span class="icon-ico_poids icon fruits"></span
-                        ><span class="nbr-ha"> 7 742 kg</span
-                        ><span class="hectares"> nécessitant </span></span
-                      >
+                      ><span class="icon-ico_poids icon fruits" /><span class="nbr-ha"> 7 742 kg</span><span class="hectares"> nécessitant </span></span>
                       <span
                         class="col-6 d-flex flex-column justify-content-center"
-                        ><span class="icon-ico_champ icon fruits"></span
-                        ><span class="nbr-ha"> 3 249</span
-                        ><span class="hectares"> hectares </span></span
-                      >
+                      ><span class="icon-ico_champ icon fruits" /><span class="nbr-ha"> 3 249</span><span class="hectares"> hectares </span></span>
                     </div>
                   </div>
                 </div>
@@ -992,66 +975,42 @@
                     data-toggle="collapse"
                     href="#collapseTwo"
                   >
-                    <span class="icon-ico_detail icon white"></span> Détail par
+                    <span class="icon-ico_detail icon white" /> Détail par
                     produit
                   </a>
                 </div>
-                <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                <div
+                  id="collapseTwo"
+                  class="collapse"
+                  data-parent="#accordion"
+                >
                   <div class="card-body">
-                    <span class="mb-2"
-                      ><strong
-                        >en pourcentage de surfaces cultivées</strong
-                      ></span
-                    >
+                    <span class="mb-2"><strong>en pourcentage de surfaces cultivées</strong></span>
                     <div class="list-produits">
                       <ul>
                         <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit"
-                            >Ail, échalottes, oignons</span
-                          >
+                          <span class="badge-detail-produit bg-legumes-fonce">0,13</span><span class="nom-produit">Ail, échalottes, oignons</span>
                         </li>
                         <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit">Artichauts</span>
+                          <span class="badge-detail-produit bg-legumes-fonce">0,13</span><span class="nom-produit">Artichauts</span>
                         </li>
                         <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit">Asperges</span>
+                          <span class="badge-detail-produit bg-legumes-fonce">0,13</span><span class="nom-produit">Asperges</span>
                         </li>
                         <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit">Aubergines</span>
+                          <span class="badge-detail-produit bg-legumes-fonce">0,13</span><span class="nom-produit">Aubergines</span>
                         </li>
                         <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit"
-                            >Betteraves, Radis, Salsifis, Similaires</span
-                          >
+                          <span class="badge-detail-produit bg-legumes-fonce">0,13</span><span class="nom-produit">Betteraves, Radis, Salsifis, Similaires</span>
                         </li>
                         <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit"
-                            >Bettes, Cardes, Brèdes, Christophine</span
-                          >
+                          <span class="badge-detail-produit bg-legumes-fonce">0,13</span><span class="nom-produit">Bettes, Cardes, Brèdes, Christophine</span>
                         </li>
                         <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit"
-                            >Carottes, Navets potagers, Céleris raves</span
-                          >
+                          <span class="badge-detail-produit bg-legumes-fonce">0,13</span><span class="nom-produit">Carottes, Navets potagers, Céleris raves</span>
                         </li>
                         <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit">Céleris branche</span>
+                          <span class="badge-detail-produit bg-legumes-fonce">0,13</span><span class="nom-produit">Céleris branche</span>
                         </li>
                       </ul>
                     </div>
@@ -1063,9 +1022,15 @@
         </div>
       </div>
     </div>
-    <modalImpact v-if="modalActive" :modalId="modalActive" />
-    <nav id="asy-sidebar" :class="montrerClasse">
-      <modal-affiner-choix @fermerModalAffiner="fermerModal" />
+    <modalImpact
+      v-if="modalActive"
+      :modal-id="modalActive"
+    />
+    <nav
+      id="asy-sidebar"
+      :class="montrerClasse"
+    >
+      <modal-affiner-choix @fermer-modal-affiner="fermerModal" />
     </nav>
   </div>
 </template>
@@ -1090,6 +1055,10 @@ export default {
       modalActive: null,
     };
   },
+  async mounted() {
+    this.impacts = await getImpacts();
+    console.log(this.impacts);
+  },
   methods: {
     montrerModalAffiner() {
       this.montrerClasse = "show";
@@ -1102,10 +1071,6 @@ export default {
       console.log(id);
       this.modalActive = id;
     },
-  },
-  async mounted() {
-    this.impacts = await getImpacts();
-    console.log(this.impacts);
   },
 };
 </script>

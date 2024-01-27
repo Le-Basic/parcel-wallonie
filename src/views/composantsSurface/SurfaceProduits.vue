@@ -2,21 +2,26 @@
   <div class="bloc-surface">
     <modalDetail
       v-if="modalDetails"
-      :modalId="modalDetails"
-      @fermerModal="fermerModal"
-    ></modalDetail>
-    <h3 class="text-center">Surface agricole à mobiliser</h3>
+      :modal-id="modalDetails"
+      @fermer-modal="fermerModal"
+    />
+    <h3 class="text-center">
+      Surface agricole à mobiliser
+    </h3>
 
     <div
       class="cadre-resultat resultat-ha animated flipInX delay-05s bg-vert-clair"
     >
       <div class="d-inline-flex align-items-center">
         <div
-          class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_potentiel"
           id="surface_potentiel6"
+          class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_potentiel"
         >
-          <div class="odometer-inside" v-if="surfaces_a_mobiliser">
-            {{ this.surfaces_a_mobiliser["surfaces_a_mobiliser"] }}
+          <div
+            v-if="surfaces_a_mobiliser"
+            class="odometer-inside"
+          >
+            {{ surfaces_a_mobiliser["surfaces_a_mobiliser"] }}
           </div>
         </div>
         <div class="hectares animated fadeIn delay-1-5s">
@@ -29,7 +34,10 @@
       la population choisie
     </div>
 
-    <div class="no-data no-data-viz" v-if="false">
+    <div
+      v-if="false"
+      class="no-data no-data-viz"
+    >
       Désolé, nous n'avons pas de données suffisantes pour afficher ce graphique
     </div>
 
@@ -45,28 +53,31 @@
       >
         <div
           id="viz"
-          class="viz"
           ref="viz1"
+          class="viz"
           style="
             background-color: #fff;
             height: 100%;
             margin-top: 20px;
             min-height: 550px;
           "
-        ></div>
+        />
       </div>
       <div class="wrap-viz resultats-categories repartition">
         <table
+          v-if="surfaces_a_mobiliser"
+          id="CategoryresultsTable"
           summary="Resultats"
           class="auto-style1 w-100"
-          id="CategoryresultsTable"
           border="1"
-          v-if="surfaces_a_mobiliser"
         >
-          <thead></thead>
+          <thead />
           <tbody>
             <tr>
-              <td colspan="5" @click="ouvrirModal('detailsLegumes')">
+              <td
+                colspan="5"
+                @click="ouvrirModal('detailsLegumes')"
+              >
                 <div
                   class="cadre-categorie legumes animated fadeIn delay-1s"
                   onclick=""
@@ -75,8 +86,8 @@
                   style="cursor: pointer"
                 >
                   <div
-                    class="result-graph"
                     id="pc1"
+                    class="result-graph"
                     style="width: 65px; height: 65px"
                   >
                     <jaugeChart
@@ -85,16 +96,17 @@
                           .part_surface_a_mobiliser
                       "
                       couleur="#91C423"
-                    ></jaugeChart>
+                    />
                   </div>
                   <div class="result-type">
                     <span
                       class="icon-ico_CATEGORIES_legumes ico-medium legumes"
-                    >
-                    </span>
+                    />
                   </div>
                   <div class="result-chiffres">
-                    <div class="titre-categorie">Légumes</div>
+                    <div class="titre-categorie">
+                      Légumes
+                    </div>
                     <div class="hectares">
                       {{
                         formatterSurfacesNecessaires(
@@ -107,17 +119,19 @@
                   </div>
                   <div class="result-plus">
                     <span
-                      @click="ouvrirModal('detailsFruits')"
                       class="icon-ico_fleche_detail_gros icon legumes"
-                    >
-                    </span>
+                      @click="ouvrirModal('detailsFruits')"
+                    />
                   </div>
                 </div>
               </td>
             </tr>
 
             <tr>
-              <td colspan="5" @click="ouvrirModal('detailsFruits')">
+              <td
+                colspan="5"
+                @click="ouvrirModal('detailsFruits')"
+              >
                 <div
                   class="cadre-categorie fruits animated fadeIn delay-1-5s"
                   onclick=""
@@ -126,8 +140,8 @@
                   style="cursor: pointer"
                 >
                   <div
-                    class="result-graph"
                     id="pc2"
+                    class="result-graph"
                     style="width: 65px; height: 65px"
                   >
                     <jaugeChart
@@ -136,15 +150,17 @@
                           .part_surface_a_mobiliser
                       "
                       couleur="#A261C0"
-                    ></jaugeChart>
+                    />
                   </div>
                   <div class="result-type">
                     <span
                       class="icon-ico_CATEGORIES_fruits ico-medium fruits"
-                    ></span>
+                    />
                   </div>
                   <div class="result-chiffres">
-                    <div class="titre-categorie">Fruits</div>
+                    <div class="titre-categorie">
+                      Fruits
+                    </div>
                     <div class="hectares">
                       {{
                         formatterSurfacesNecessaires(
@@ -158,13 +174,16 @@
                   <div class="result-plus">
                     <span
                       class="icon-ico_fleche_detail_gros icon fruits"
-                    ></span>
+                    />
                   </div>
                 </div>
               </td>
             </tr>
             <tr>
-              <td colspan="5" @click="ouvrirModal('detailsCereales')">
+              <td
+                colspan="5"
+                @click="ouvrirModal('detailsCereales')"
+              >
                 <div
                   class="cadre-categorie cereales animated fadeIn delay-2s"
                   onclick=""
@@ -173,8 +192,8 @@
                   style="cursor: pointer"
                 >
                   <div
-                    class="result-graph"
                     id="pc3"
+                    class="result-graph"
                     style="width: 65px; height: 65px"
                   >
                     <jaugeChart
@@ -183,12 +202,12 @@
                           .part_surface_a_mobiliser
                       "
                       couleur="#F9B233"
-                    ></jaugeChart>
+                    />
                   </div>
                   <div class="result-type">
                     <span
                       class="icon-ico_CATEGORIES_cereales ico-medium cereales"
-                    ></span>
+                    />
                   </div>
                   <div class="result-chiffres">
                     <div class="titre-categorie">
@@ -207,13 +226,16 @@
                   <div class="result-plus">
                     <span
                       class="icon-ico_fleche_detail_gros icon cereales"
-                    ></span>
+                    />
                   </div>
                 </div>
               </td>
             </tr>
             <tr>
-              <td colspan="5" @click="ouvrirModal('detailsViande')">
+              <td
+                colspan="5"
+                @click="ouvrirModal('detailsViande')"
+              >
                 <div
                   class="cadre-categorie viande animated fadeIn delay-2-5s"
                   onclick=""
@@ -222,8 +244,8 @@
                   style="cursor: pointer"
                 >
                   <div
-                    class="result-graph"
                     id="pc4"
+                    class="result-graph"
                     style="width: 65px; height: 65px"
                   >
                     <jaugeChart
@@ -232,15 +254,17 @@
                           .part_surface_a_mobiliser
                       "
                       couleur="#B57A60"
-                    ></jaugeChart>
+                    />
                   </div>
                   <div class="result-type">
                     <span
                       class="icon-ico_CATEGORIES_viande ico-medium viande"
-                    ></span>
+                    />
                   </div>
                   <div class="result-chiffres">
-                    <div class="titre-categorie">Elevage</div>
+                    <div class="titre-categorie">
+                      Elevage
+                    </div>
                     <div class="hectares">
                       {{
                         formatterSurfacesNecessaires(
@@ -256,7 +280,7 @@
                   <div class="result-plus">
                     <span
                       class="icon-ico_fleche_detail_gros icon viande"
-                    ></span>
+                    />
                   </div>
                 </div>
               </td>
@@ -267,18 +291,20 @@
     </div>
   </div>
   <div class="bloc-surface">
-    <h3 class="text-center">Surface agricole actuelle du territoire</h3>
+    <h3 class="text-center">
+      Surface agricole actuelle du territoire
+    </h3>
     <div class="map-content mb-4">
       En vis-à-vis, le territoire dispose actuellement de
     </div>
     <div class="cadre-resultat resultat-ha animated flipInX delay-05s">
       <div class="d-inline-flex align-items-center">
         <div
-          class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme"
           id="surface_act8"
+          class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme"
         >
           <div class="odometer-inside">
-            {{ this.occupationActuelleTotale }}
+            {{ occupationActuelleTotale }}
           </div>
         </div>
         <div class="hectares animated fadeIn delay-1-5s">
@@ -287,7 +313,10 @@
       </div>
     </div>
 
-    <div class="no-data no-data-viz2" v-if="false">
+    <div
+      v-if="false"
+      class="no-data no-data-viz2"
+    >
       Désolé, nous n'avons pas de données suffisantes pour afficher ce graphique
     </div>
 
@@ -304,45 +333,48 @@
         <div
           id="viz2"
           style="background-color: #fff; height: 100%; min-height: 550px"
-        ></div>
+        />
       </div>
       <div class="wrap-viz2 resultats-categories repartition delay-1s">
         <table
+          v-if="occupationActuelle"
+          id="ProdCategoryresultsTable"
           summary="Resultats"
           class="auto-style1 w-100"
-          id="ProdCategoryresultsTable"
           border="1"
-          v-if="this.occupationActuelle"
         >
-          <thead></thead>
+          <thead />
           <tbody>
             <tr>
               <td colspan="5">
                 <div class="cadre-categorie cereales animated fadeIn delay-1s">
                   <div
-                    class="result-graph"
                     id="ppc1"
+                    class="result-graph"
                     style="width: 65px; height: 65px"
                   >
                     <jaugeChart
-                      v-if="this.surfacesActuelles[0]"
-                      :value="this.surfacesActuelles[0].part"
-                      :couleur="this.surfacesActuelles[0].color"
-                    ></jaugeChart>
+                      v-if="surfacesActuelles[0]"
+                      :value="surfacesActuelles[0].part"
+                      :couleur="surfacesActuelles[0].color"
+                    />
                   </div>
                   <div class="result-type">
                     <span
                       class="icon-ico_CATEGORIES_cereales ico-medium cereales"
-                    ></span>
+                    />
                   </div>
                   <div class="result-chiffres">
                     <div class="titre-categorie">
                       Cultures annuelles pour alimentation humaine
                     </div>
-                    <div class="hectares" v-if="this.occupationActuelle[0]">
+                    <div
+                      v-if="occupationActuelle[0]"
+                      class="hectares"
+                    >
                       {{
                         formatterSurfacesNecessaires(
-                          this.occupationActuelle[0]["surface"]
+                          occupationActuelle[0]["surface"]
                         )
                       }}
                     </div>
@@ -354,29 +386,32 @@
               <td colspan="5">
                 <div class="cadre-categorie viande animated fadeIn delay-1s">
                   <div
-                    class="result-graph"
                     id="ppc2"
+                    class="result-graph"
                     style="width: 65px; height: 65px"
                   >
                     <jaugeChart
-                      v-if="this.surfacesActuelles[1]"
-                      :value="this.surfacesActuelles[1].part"
-                      :couleur="this.surfacesActuelles[1].color"
-                    ></jaugeChart>
+                      v-if="surfacesActuelles[1]"
+                      :value="surfacesActuelles[1].part"
+                      :couleur="surfacesActuelles[1].color"
+                    />
                   </div>
                   <div class="result-type">
                     <span
                       class="icon-ico_CATEGORIES_viande ico-medium viande"
-                    ></span>
+                    />
                   </div>
                   <div class="result-chiffres">
                     <div class="titre-categorie">
                       Elevage (dont alimentation & estives et landes)
                     </div>
-                    <div class="hectares" v-if="this.occupationActuelle[1]">
+                    <div
+                      v-if="occupationActuelle[1]"
+                      class="hectares"
+                    >
                       {{
                         formatterSurfacesNecessaires(
-                          this.occupationActuelle[1]["surface"]
+                          occupationActuelle[1]["surface"]
                         )
                       }}
                     </div>
@@ -388,27 +423,32 @@
               <td colspan="5">
                 <div class="cadre-categorie fruits animated fadeIn delay-1s">
                   <div
-                    class="result-graph"
                     id="ppc3"
+                    class="result-graph"
                     style="width: 65px; height: 65px"
                   >
                     <jaugeChart
-                      v-if="this.surfacesActuelles[3]"
-                      :value="this.surfacesActuelles[3].part"
-                      :couleur="this.surfacesActuelles[3].color"
-                    ></jaugeChart>
+                      v-if="surfacesActuelles[3]"
+                      :value="surfacesActuelles[3].part"
+                      :couleur="surfacesActuelles[3].color"
+                    />
                   </div>
                   <div class="result-type">
                     <span
                       class="icon-ico_CATEGORIES_fruits ico-medium fruits"
-                    ></span>
+                    />
                   </div>
                   <div class="result-chiffres">
-                    <div class="titre-categorie">Fruits</div>
-                    <div class="hectares" v-if="this.occupationActuelle[3]">
+                    <div class="titre-categorie">
+                      Fruits
+                    </div>
+                    <div
+                      v-if="occupationActuelle[3]"
+                      class="hectares"
+                    >
                       {{
                         formatterSurfacesNecessaires(
-                          this.occupationActuelle[3]["surface"]
+                          occupationActuelle[3]["surface"]
                         )
                       }}
                     </div>
@@ -420,27 +460,32 @@
               <td colspan="5">
                 <div class="cadre-categorie legumes animated fadeIn delay-1s">
                   <div
-                    class="result-graph"
                     id="ppc4"
+                    class="result-graph"
                     style="width: 65px; height: 65px"
                   >
                     <jaugeChart
-                      v-if="this.surfacesActuelles[4]"
-                      :value="this.surfacesActuelles[4].part"
-                      :couleur="this.surfacesActuelles[4].color"
-                    ></jaugeChart>
+                      v-if="surfacesActuelles[4]"
+                      :value="surfacesActuelles[4].part"
+                      :couleur="surfacesActuelles[4].color"
+                    />
                   </div>
                   <div class="result-type">
                     <span
                       class="icon-ico_CATEGORIES_legumes ico-medium legumes"
-                    ></span>
+                    />
                   </div>
                   <div class="result-chiffres">
-                    <div class="titre-categorie">Légumes</div>
-                    <div class="hectares" v-if="this.occupationActuelle[4]">
+                    <div class="titre-categorie">
+                      Légumes
+                    </div>
+                    <div
+                      v-if="occupationActuelle[4]"
+                      class="hectares"
+                    >
                       {{
                         formatterSurfacesNecessaires(
-                          this.occupationActuelle[4]["surface"]
+                          occupationActuelle[4]["surface"]
                         )
                       }}
                     </div>
@@ -452,25 +497,30 @@
               <td colspan="5">
                 <div class="cadre-categorie jachere animated fadeIn delay-1s">
                   <div
-                    class="result-graph"
                     id="ppc5"
+                    class="result-graph"
                     style="width: 65px; height: 65px"
                   >
                     <jaugeChart
-                      v-if="this.surfacesActuelles[5]"
-                      :value="this.surfacesActuelles[5].part"
-                      :couleur="this.surfacesActuelles[5].color"
-                    ></jaugeChart>
+                      v-if="surfacesActuelles[5]"
+                      :value="surfacesActuelles[5].part"
+                      :couleur="surfacesActuelles[5].color"
+                    />
                   </div>
                   <div class="result-type">
-                    <span class="icon-jachere ico-medium jachere"></span>
+                    <span class="icon-jachere ico-medium jachere" />
                   </div>
                   <div class="result-chiffres">
-                    <div class="titre-categorie">Jachères</div>
-                    <div class="hectares" v-if="this.occupationActuelle[5]">
+                    <div class="titre-categorie">
+                      Jachères
+                    </div>
+                    <div
+                      v-if="occupationActuelle[5]"
+                      class="hectares"
+                    >
                       {{
                         formatterSurfacesNecessaires(
-                          this.occupationActuelle[5]["surface"]
+                          occupationActuelle[5]["surface"]
                         )
                       }}
                     </div>
@@ -513,16 +563,20 @@
     </div>
   </div>
   <div class="bloc-surface">
-    <h3 class="text-center">Potentiel nourricier</h3>
+    <h3 class="text-center">
+      Potentiel nourricier
+    </h3>
     <div
       class="cadre-resultat resultat-ha animated flipInX delay-05s bg-vert-clair"
     >
       <div class="d-inline-flex align-items-center">
         <div
-          class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme"
           id="potentiel4"
-        ></div>
-        <div class="hectares animated fadeIn delay-1-5s">%</div>
+          class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme"
+        />
+        <div class="hectares animated fadeIn delay-1-5s">
+          %
+        </div>
       </div>
     </div>
     <div id="bar-pn">
@@ -530,32 +584,35 @@
         <div class="row align-items-center bar-line mx-0">
           <div class="col-legend">
             <div class="row align-items-center">
-              <div class="order-1 order-md-0 col-12 col-md-7 text-right"></div>
+              <div class="order-1 order-md-0 col-12 col-md-7 text-right" />
               <div class="order-0 order-md-1 col-12 col-md-5">
                 <div class="d-flex align-items-center justify-content-end">
                   <div class="col-icon">
-                    <span class="ico-medium legumes"></span>
+                    <span class="ico-medium legumes" />
                   </div>
-                  <div class="col-pourcent legumes"></div>
+                  <div class="col-pourcent legumes" />
                 </div>
               </div>
             </div>
           </div>
           <div class="col-8">
-            <div class="position-relative" style="width: 100%">
+            <div
+              class="position-relative"
+              style="width: 100%"
+            >
               <div
                 id="line-pn"
                 class="position-absolute"
                 style="left: calc(50% - 20px)"
               >
                 <div class="text-center">
-                  <div class="vertical-line"></div>
+                  <div class="vertical-line" />
                   <div>
                     <img
                       :src="require('@/assets/img/elements/pointer.svg')"
                       alt=""
                       style="margin-top: -8px"
-                    />
+                    >
                   </div>
                   <div>100%</div>
                 </div>
@@ -564,8 +621,14 @@
           </div>
         </div>
       </div>
-      <div id="horizontal-bar-pn" class="mt-3">
-        <div class="row align-items-center bar-line mx-0" id="bar-legumes">
+      <div
+        id="horizontal-bar-pn"
+        class="mt-3"
+      >
+        <div
+          id="bar-legumes"
+          class="row align-items-center bar-line mx-0"
+        >
           <div class="col-legend">
             <div class="row align-items-center">
               <div class="order-1 order-md-0 col-12 col-md text-right col-text">
@@ -576,21 +639,27 @@
                   <div class="col-icon">
                     <span
                       class="icon-ico_CATEGORIES_legumes ico-medium legumes"
-                    ></span>
+                    />
                   </div>
                   <div
-                    class="col-pourcent legumes"
                     id="potentiel_legumes"
-                  ></div>
+                    class="col-pourcent legumes"
+                  />
                 </div>
               </div>
             </div>
           </div>
           <div class="col-8">
-            <div class="bar bg-vert-clair" style="width: 0%"></div>
+            <div
+              class="bar bg-vert-clair"
+              style="width: 0%"
+            />
           </div>
         </div>
-        <div class="row align-items-center bar-line mx-0" id="bar-fruits">
+        <div
+          id="bar-fruits"
+          class="row align-items-center bar-line mx-0"
+        >
           <div class="col-legend">
             <div class="row align-items-center">
               <div class="order-1 order-md-0 col-12 col-md text-right col-text">
@@ -601,18 +670,30 @@
                   <div class="col-icon">
                     <span
                       class="icon-ico_CATEGORIES_fruits ico-medium fruits"
-                    ></span>
+                    />
                   </div>
-                  <div class="col-pourcent fruits" id="potentiel_fruits"></div>
+                  <div
+                    id="potentiel_fruits"
+                    class="col-pourcent fruits"
+                  />
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-8" id="bar_pot_container">
-            <div class="bar bg-fruits" style="width: 0%"></div>
+          <div
+            id="bar_pot_container"
+            class="col-8"
+          >
+            <div
+              class="bar bg-fruits"
+              style="width: 0%"
+            />
           </div>
         </div>
-        <div class="row align-items-center bar-line mx-0" id="bar-cereales">
+        <div
+          id="bar-cereales"
+          class="row align-items-center bar-line mx-0"
+        >
           <div class="col-legend">
             <div class="row align-items-center">
               <div class="order-1 order-md-0 col-12 col-md text-right col-text">
@@ -623,21 +704,27 @@
                   <div class="col-icon">
                     <span
                       class="icon-ico_CATEGORIES_cereales ico-medium cereales"
-                    ></span>
+                    />
                   </div>
                   <div
-                    class="col-pourcent cereales"
                     id="potentiel_cereales"
-                  ></div>
+                    class="col-pourcent cereales"
+                  />
                 </div>
               </div>
             </div>
           </div>
           <div class="col-8">
-            <div class="bar bg-cereales" style="width: 0%"></div>
+            <div
+              class="bar bg-cereales"
+              style="width: 0%"
+            />
           </div>
         </div>
-        <div class="row align-items-center bar-line mx-0" id="bar-viande">
+        <div
+          id="bar-viande"
+          class="row align-items-center bar-line mx-0"
+        >
           <div class="col-legend">
             <div class="row align-items-center">
               <div class="order-1 order-md-0 col-12 col-md text-right col-text">
@@ -648,15 +735,21 @@
                   <div class="col-icon">
                     <span
                       class="icon-ico_CATEGORIES_viande ico-medium viande"
-                    ></span>
+                    />
                   </div>
-                  <div class="col-pourcent viande" id="potentiel_elevage"></div>
+                  <div
+                    id="potentiel_elevage"
+                    class="col-pourcent viande"
+                  />
                 </div>
               </div>
             </div>
           </div>
           <div class="col-8">
-            <div class="bar bg-viande" style="width: 0%"></div>
+            <div
+              class="bar bg-viande"
+              style="width: 0%"
+            />
           </div>
         </div>
       </div>
@@ -667,13 +760,10 @@
           :src="require('@/assets/img/elements/pointer.svg')"
           alt=""
           style="margin-top: -8px; margin-right: 0.5rem"
-        /><span>surface nécessaire pour nourrir la population</span>
+        ><span>surface nécessaire pour nourrir la population</span>
       </div>
       <div class="col-12 col-sm-auto d-flex align-items-center">
-        <span class="legende bg-legumes"></span
-        ><span class="legende bg-fruits"></span
-        ><span class="legende bg-cereales"></span
-        ><span class="legende bg-viande"></span> surfaces actuelles
+        <span class="legende bg-legumes" /><span class="legende bg-fruits" /><span class="legende bg-cereales" /><span class="legende bg-viande" /> surfaces actuelles
       </div>
     </div>
     <div class="div-continuer">
@@ -682,28 +772,35 @@
         class="btn btn-principal mt-5"
         @click="nextStep('landscape')"
       >
-        <router-link :to="{ hash: '#landscapeView' }"> Suivant </router-link>
+        <router-link :to="{ hash: '#landscapeView' }">
+          Suivant
+        </router-link>
       </button>
     </div>
   </div>
 
   <div
-    class="modal fade"
     id="modal-legumes"
+    class="modal fade"
     tabindex="-1"
     role="dialog"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
-    <div class="modal-dialog" role="document">
+    <div
+      class="modal-dialog"
+      role="document"
+    >
       <div class="modal-content modal-repart-cat-detail">
         <div class="modal-header d-flex align-items-center">
           <div>
-            <span class="icon-ico_CATEGORIES_legumes icon legumes"></span>
+            <span class="icon-ico_CATEGORIES_legumes icon legumes" />
           </div>
           <div class="d-flex flex-column">
-            <div class="titre-categorie">Légumes</div>
-            <div class="hectares"></div>
+            <div class="titre-categorie">
+              Légumes
+            </div>
+            <div class="hectares" />
           </div>
           <button
             type="button"
@@ -711,21 +808,27 @@
             data-dismiss="modal"
             aria-label="Close"
           >
-            <span class="icon-ico_fermer icon"></span>
+            <span class="icon-ico_fermer icon" />
           </button>
         </div>
         <div class="modal-body">
-          <div id="accordeon-fiche" class="accordeon-detail legumes-fonce">
+          <div
+            id="accordeon-fiche"
+            class="accordeon-detail legumes-fonce"
+          >
             <!-- <?php include '../partials/modal-detail-legume.php'; ?> -->
             <div class="card">
-              <div class="card-header" id="heading2">
+              <div
+                id="heading2"
+                class="card-header"
+              >
                 <button
                   class="btn btn-link collapsed"
                   data-toggle="collapse"
                   href="#collapseDetail"
                   aria-expanded="false"
                 >
-                  <span class="icon-ico_detail icon white"></span> Détail par
+                  <span class="icon-ico_detail icon white" /> Détail par
                   produit
                 </button>
               </div>
@@ -736,23 +839,33 @@
                 aria-labelledby="heading2"
               >
                 <div class="card-body">
-                  <span class="mb-2"
-                    ><strong>en pourcentage de surfaces cultivées</strong></span
-                  >
+                  <span class="mb-2"><strong>en pourcentage de surfaces cultivées</strong></span>
                   <div class="list-produits">
                     <table
+                      id="ProductresultsTable1"
                       summary="Resultats"
                       class="auto-style1 w-100"
-                      id="ProductresultsTable1"
                     >
                       <tbody>
                         <tr style="display: none">
-                          <td class="auto-style15">&nbsp;</td>
-                          <td class="auto-style12">&nbsp;</td>
-                          <td class="auto-style14">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
+                          <td class="auto-style15">
+&nbsp;
+                          </td>
+                          <td class="auto-style12">
+&nbsp;
+                          </td>
+                          <td class="auto-style14">
+&nbsp;
+                          </td>
+                          <td class="auto-style8">
+&nbsp;
+                          </td>
+                          <td class="auto-style8">
+&nbsp;
+                          </td>
+                          <td class="auto-style8">
+&nbsp;
+                          </td>
                         </tr>
                       </tbody>
                     </table>
@@ -766,22 +879,27 @@
     </div>
   </div>
   <div
-    class="modal fade"
     id="modal-fruits"
+    class="modal fade"
     tabindex="-1"
     role="dialog"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
-    <div class="modal-dialog" role="document">
+    <div
+      class="modal-dialog"
+      role="document"
+    >
       <div class="modal-content modal-repart-cat-detail">
         <div class="modal-header d-flex align-items-center">
           <div>
-            <span class="icon-ico_CATEGORIES_fruits icon fruits"></span>
+            <span class="icon-ico_CATEGORIES_fruits icon fruits" />
           </div>
           <div class="d-flex flex-column">
-            <div class="titre-categorie">Fruits</div>
-            <div class="hectares"></div>
+            <div class="titre-categorie">
+              Fruits
+            </div>
+            <div class="hectares" />
           </div>
           <button
             type="button"
@@ -789,21 +907,27 @@
             data-dismiss="modal"
             aria-label="Close"
           >
-            <span class="icon-ico_fermer icon"></span>
+            <span class="icon-ico_fermer icon" />
           </button>
         </div>
         <div class="modal-body">
-          <div id="accordeon-fiche" class="accordeon-detail fruits-fonce">
+          <div
+            id="accordeon-fiche"
+            class="accordeon-detail fruits-fonce"
+          >
             <!-- <?php include '../partials/modal-detail-fruits.php'; ?> -->
             <div class="card">
-              <div class="card-header" id="heading2">
+              <div
+                id="heading2"
+                class="card-header"
+              >
                 <button
                   class="btn btn-link collapsed"
                   data-toggle="collapse"
                   href="#collapseDetail"
                   aria-expanded="false"
                 >
-                  <span class="icon-ico_detail icon white"></span> Détail par
+                  <span class="icon-ico_detail icon white" /> Détail par
                   produit
                 </button>
               </div>
@@ -814,35 +938,37 @@
                 aria-labelledby="heading2"
               >
                 <div class="card-body">
-                  <span class="mb-2"
-                    ><strong>en pourcentage de surfaces cultivées</strong></span
-                  >
+                  <span class="mb-2"><strong>en pourcentage de surfaces cultivées</strong></span>
                   <div class="list-produits">
                     <table
+                      id="ProductresultsTable2"
                       summary="Resultats"
                       class="auto-style1 w-100"
-                      id="ProductresultsTable2"
                     >
                       <tbody>
                         <tr style="display: block">
                           <td class="auto-style15">
-                            <span id="totalcereales"
-                              >Environ ' + round(alim_humaine,
-                              0).toLocaleString() + '</span
-                            >
+                            <span id="totalcereales">Environ ' + round(alim_humaine,
+                              0).toLocaleString() + '</span>
                             hectares';
                           </td>
                           <td class="auto-style12">
-                            <span id="totalcereales"
-                              >Environ ' + round(alim_humaine,
-                              0).toLocaleString() + '</span
-                            >
+                            <span id="totalcereales">Environ ' + round(alim_humaine,
+                              0).toLocaleString() + '</span>
                             hectares'
                           </td>
-                          <td class="auto-style14">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
+                          <td class="auto-style14">
+&nbsp;
+                          </td>
+                          <td class="auto-style8">
+&nbsp;
+                          </td>
+                          <td class="auto-style8">
+&nbsp;
+                          </td>
+                          <td class="auto-style8">
+&nbsp;
+                          </td>
                         </tr>
                       </tbody>
                     </table>
@@ -856,21 +982,26 @@
     </div>
   </div>
   <div
-    class="modal fade"
     id="modal-cereales"
+    class="modal fade"
     tabindex="-1"
     role="dialog"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
-    <div class="modal-dialog" role="document">
+    <div
+      class="modal-dialog"
+      role="document"
+    >
       <div class="modal-content modal-repart-cat-detail">
         <div class="modal-header d-flex align-items-center">
           <div>
-            <span class="icon-ico_CATEGORIES_cereales icon cereales"></span>
+            <span class="icon-ico_CATEGORIES_cereales icon cereales" />
           </div>
           <div class="d-flex flex-column">
-            <div class="titre-categorie">Céréales et autres cultures</div>
+            <div class="titre-categorie">
+              Céréales et autres cultures
+            </div>
             <div class="hectares">
               Consommés directement (pain, lentilles, huiles, etc.)
             </div>
@@ -881,21 +1012,27 @@
             data-dismiss="modal"
             aria-label="Close"
           >
-            <span class="icon-ico_fermer icon"></span>
+            <span class="icon-ico_fermer icon" />
           </button>
         </div>
         <div class="modal-body">
-          <div id="accordeon-fiche" class="accordeon-detail cereales-fonce">
+          <div
+            id="accordeon-fiche"
+            class="accordeon-detail cereales-fonce"
+          >
             <!-- <?php include '../partials/modal-detail-cereales.php'; ?> -->
             <div class="card">
-              <div class="card-header" id="heading2">
+              <div
+                id="heading2"
+                class="card-header"
+              >
                 <button
                   class="btn btn-link collapsed"
                   data-toggle="collapse"
                   href="#collapseDetail"
                   aria-expanded="false"
                 >
-                  <span class="icon-ico_detail icon white"></span> Détail par
+                  <span class="icon-ico_detail icon white" /> Détail par
                   produit
                 </button>
               </div>
@@ -906,29 +1043,35 @@
                 aria-labelledby="heading2"
               >
                 <div class="card-body">
-                  <span class="mb-2"
-                    ><strong>en pourcentage de surfaces cultivées</strong></span
-                  >
+                  <span class="mb-2"><strong>en pourcentage de surfaces cultivées</strong></span>
                   <div class="list-produits">
                     <table
+                      id="ProductresultsTable3"
                       summary="Resultats"
                       class="auto-style1 w-100"
-                      id="ProductresultsTable3"
                     >
                       <tbody>
                         <tr style="display: block">
                           <td class="auto-style15">
-                            <span id="totalcereales"
-                              >Environ ' + round(alim_humaine,
-                              0).toLocaleString() + '</span
-                            >
+                            <span id="totalcereales">Environ ' + round(alim_humaine,
+                              0).toLocaleString() + '</span>
                             hectares'; ;
                           </td>
-                          <td class="auto-style12">&nbsp;</td>
-                          <td class="auto-style14">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
+                          <td class="auto-style12">
+&nbsp;
+                          </td>
+                          <td class="auto-style14">
+&nbsp;
+                          </td>
+                          <td class="auto-style8">
+&nbsp;
+                          </td>
+                          <td class="auto-style8">
+&nbsp;
+                          </td>
+                          <td class="auto-style8">
+&nbsp;
+                          </td>
                         </tr>
                       </tbody>
                     </table>
@@ -942,21 +1085,26 @@
     </div>
   </div>
   <div
-    class="modal fade"
     id="modal-viande"
+    class="modal fade"
     tabindex="-1"
     role="dialog"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
-    <div class="modal-dialog" role="document">
+    <div
+      class="modal-dialog"
+      role="document"
+    >
       <div class="modal-content modal-repart-cat-detail">
         <div class="modal-header d-flex align-items-center">
           <div>
-            <span class="icon-ico_CATEGORIES_viande icon viande"></span>
+            <span class="icon-ico_CATEGORIES_viande icon viande" />
           </div>
           <div class="d-flex flex-column">
-            <div class="titre-categorie">Elevage</div>
+            <div class="titre-categorie">
+              Elevage
+            </div>
             <div class="hectares">
               Intègre l'ensemble des surfaces de cultures destinées à
               l’alimentation de l’élevage (prairies, céréales, tourteaux, etc.)
@@ -968,21 +1116,27 @@
             data-dismiss="modal"
             aria-label="Close"
           >
-            <span class="icon-ico_fermer icon"></span>
+            <span class="icon-ico_fermer icon" />
           </button>
         </div>
         <div class="modal-body">
-          <div id="accordeon-fiche" class="accordeon-detail viande-fonce">
+          <div
+            id="accordeon-fiche"
+            class="accordeon-detail viande-fonce"
+          >
             <!-- <?php include '../partials/modal-detail-viande.php'; ?> -->
             <div class="card">
-              <div class="card-header" id="heading2">
+              <div
+                id="heading2"
+                class="card-header"
+              >
                 <button
                   class="btn btn-link collapsed"
                   data-toggle="collapse"
                   href="#collapseDetail"
                   aria-expanded="false"
                 >
-                  <span class="icon-ico_detail icon white"></span> Détail par
+                  <span class="icon-ico_detail icon white" /> Détail par
                   produit
                 </button>
               </div>
@@ -993,30 +1147,40 @@
                 aria-labelledby="heading2"
               >
                 <div class="card-body">
-                  <span class="mb-2"
-                    ><strong>en pourcentage de surfaces cultivées</strong></span
-                  >
+                  <span class="mb-2"><strong>en pourcentage de surfaces cultivées</strong></span>
                   <div class="list-produits">
                     <table
+                      id="ProductresultsTable4"
                       summary="Resultats"
                       class="auto-style1 w-100"
-                      id="ProductresultsTable4"
                     >
                       <tbody>
                         <tr style="display: none">
-                          <td class="auto-style15">&nbsp;</td>
-                          <td class="auto-style12">&nbsp;</td>
-                          <td class="auto-style14">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
+                          <td class="auto-style15">
+&nbsp;
+                          </td>
+                          <td class="auto-style12">
+&nbsp;
+                          </td>
+                          <td class="auto-style14">
+&nbsp;
+                          </td>
+                          <td class="auto-style8">
+&nbsp;
+                          </td>
+                          <td class="auto-style8">
+&nbsp;
+                          </td>
+                          <td class="auto-style8">
+&nbsp;
+                          </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
-                  <hr />
+                  <hr>
                   En plus de ces surfaces à mobiliser, ces productions animales
-                  nécessitent environ <span id="surfaceimport"></span> hectares
+                  nécessitent environ <span id="surfaceimport" /> hectares
                   de surfaces importées (tourteaux etc.)
                 </div>
               </div>
@@ -1036,11 +1200,11 @@ import modalDetail from "../modal/modalDetail.vue";
 import jaugeChart from "@/components/jaugeChart.vue";
 import axios from "axios";
 export default {
-  inject: ["$axios"],
   components: {
     modalDetail,
     jaugeChart,
   },
+  inject: ["$axios"],
   data() {
     return {
       data: {
@@ -1051,6 +1215,53 @@ export default {
       surfaces_a_mobiliser: null,
       modalDetails: "",
     };
+  },
+  computed: {
+    surfaces_emplois_a_mobiliser_parcel_niveau_1_data() {
+      return this.surfaces_emplois_a_mobiliser_parcel_niveau_1;
+    },
+    occupationActuelleTotale() {
+      return Math.round(
+        this.occupationActuelle.reduce((acc, item) => acc + item.surface, 0)
+      );
+    },
+    surfacesActuelles() {
+      return this.occupationActuelle.map((item) => {
+        return {
+          ...item,
+          part: Math.round(
+            (item.surface * 100) / this.occupationActuelleTotale
+          ),
+        };
+      });
+    },
+  },
+  watch: {
+    surfaces_a_mobiliser(nouvellevaleur) {
+      if (nouvellevaleur) {
+        this.surfaces_emplois_a_mobiliser_parcel_niveau_1 = nouvellevaleur[
+          "surfaces_emplois_a_mobiliser_parcel_niveau_1"
+        ].map((item) => {
+          return {
+            ...item,
+            part_surface_a_mobiliser: Math.round(
+              (item.surface_necessaire_conventionnel * 100) /
+                nouvellevaleur["surfaces_a_mobiliser"]
+            ),
+          };
+        });
+      }
+    },
+  },
+
+  async mounted() {
+    this.recupererDonnees();
+    await getSurfaceAMobiliser()
+      .then((res) => (this.surfaces_a_mobiliser = res))
+      .then((res) => {
+        pushDataViz(res["surfaces_emplois_a_mobiliser_parcel_niveau_1"]);
+      });
+    this.test = await getSurfaceAMobiliser();
   },
   methods: {
     ouvrirModal(id) {
@@ -1173,53 +1384,6 @@ export default {
     },
     fermerModal() {
       this.modalDetails = "";
-    },
-  },
-
-  async mounted() {
-    this.recupererDonnees();
-    await getSurfaceAMobiliser()
-      .then((res) => (this.surfaces_a_mobiliser = res))
-      .then((res) => {
-        pushDataViz(res["surfaces_emplois_a_mobiliser_parcel_niveau_1"]);
-      });
-    this.test = await getSurfaceAMobiliser();
-  },
-  computed: {
-    surfaces_emplois_a_mobiliser_parcel_niveau_1_data() {
-      return this.surfaces_emplois_a_mobiliser_parcel_niveau_1;
-    },
-    occupationActuelleTotale() {
-      return Math.round(
-        this.occupationActuelle.reduce((acc, item) => acc + item.surface, 0)
-      );
-    },
-    surfacesActuelles() {
-      return this.occupationActuelle.map((item) => {
-        return {
-          ...item,
-          part: Math.round(
-            (item.surface * 100) / this.occupationActuelleTotale
-          ),
-        };
-      });
-    },
-  },
-  watch: {
-    surfaces_a_mobiliser(nouvellevaleur) {
-      if (nouvellevaleur) {
-        this.surfaces_emplois_a_mobiliser_parcel_niveau_1 = nouvellevaleur[
-          "surfaces_emplois_a_mobiliser_parcel_niveau_1"
-        ].map((item) => {
-          return {
-            ...item,
-            part_surface_a_mobiliser: Math.round(
-              (item.surface_necessaire_conventionnel * 100) /
-                nouvellevaleur["surfaces_a_mobiliser"]
-            ),
-          };
-        });
-      }
     },
   },
 };

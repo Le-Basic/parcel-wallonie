@@ -1,10 +1,12 @@
 <template>
   <div class="modal-content modal-repart-cat-detail">
     <div class="modal-header d-flex align-items-center">
-      <div><span class="icon-ico_CATEGORIES_legumes icon legumes"></span></div>
+      <div><span class="icon-ico_CATEGORIES_legumes icon legumes" /></div>
       <div class="d-flex flex-column">
-        <div class="titre-categorie">Légumes</div>
-        <div class="hectares"></div>
+        <div class="titre-categorie">
+          Légumes
+        </div>
+        <div class="hectares" />
       </div>
       <button
         type="button"
@@ -12,11 +14,14 @@
         data-dismiss="modal"
         @click="fermerModal"
       >
-        <span class="icon-ico_fermer icon"></span>
+        <span class="icon-ico_fermer icon" />
       </button>
     </div>
     <div class="card">
-      <div class="card-header" id="Reperes">
+      <div
+        id="Reperes"
+        class="card-header"
+      >
         <button
           class="btn btn-link-open"
           data-toggle="collapse show"
@@ -24,7 +29,7 @@
           aria-expanded="true"
           data-target="#collapseReperes"
         >
-          <div><span class="icon-repere icon white"></span></div>
+          <div><span class="icon-repere icon white" /></div>
           <div>Repères</div>
         </button>
       </div>
@@ -40,48 +45,25 @@
           >
             <span
               class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-              ><span class="icon-ico_poids icon legumes"></span>
+            ><span class="icon-ico_poids icon legumes" />
               <div class="info-infos">
-                <span class="d-flex flex-column info-intro"
-                  ><span class="info-entete">Production</span
-                  ><span class="info-verbe">=</span></span
-                ><span class="d-flex flex-column info-detail"
-                  ><span class="nbr-ha"> 0,8% </span
-                  ><span class="hectares"
-                    >de la surface agricole en France métropolitaine</span
-                  ></span
-                >
+                <span class="d-flex flex-column info-intro"><span class="info-entete">Production</span><span class="info-verbe">=</span></span><span class="d-flex flex-column info-detail"><span class="nbr-ha"> 0,8% </span><span class="hectares">de la surface agricole en France métropolitaine</span></span>
               </div>
             </span>
             <span
               class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-              ><span class="icon-ico_champ icon legumes"></span>
+            ><span class="icon-ico_champ icon legumes" />
               <div class="info-infos">
-                <span class="d-flex flex-column info-intro"
-                  ><span class="info-entete">Consommation</span
-                  ><span class="info-verbe">=</span></span
-                ><span class="d-flex flex-column info-detail"
-                  ><span class="nbr-ha"> 11% </span
-                  ><span class="hectares"
-                    >de l’assiette d’un Français moyen (en volume)</span
-                  ></span
-                >
+                <span class="d-flex flex-column info-intro"><span class="info-entete">Consommation</span><span class="info-verbe">=</span></span><span class="d-flex flex-column info-detail"><span class="nbr-ha"> 11% </span><span class="hectares">de l’assiette d’un Français moyen (en volume)</span></span>
               </div>
             </span>
             <span
               class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-              ><span class="icon-ico_CATEGORIES_legumes icon legumes"></span>
+            ><span class="icon-ico_CATEGORIES_legumes icon legumes" />
               <div class="info-infos">
-                <span class="d-flex flex-column info-intro"
-                  ><span class="info-entete">Importation</span
-                  ><span class="info-verbe">=</span></span
-                ><span class="d-flex flex-column info-detail"
-                  ><span class="nbr-ha"> 33,6% </span
-                  ><span class="hectares">
-                    des légumes consommés en France métropolitaine sont
-                    importés</span
-                  ></span
-                >
+                <span class="d-flex flex-column info-intro"><span class="info-entete">Importation</span><span class="info-verbe">=</span></span><span class="d-flex flex-column info-detail"><span class="nbr-ha"> 33,6% </span><span class="hectares">
+                  des légumes consommés en France métropolitaine sont
+                  importés</span></span>
               </div>
             </span>
           </div>
@@ -89,7 +71,10 @@
       </div>
     </div>
     <div class="card">
-      <div class="card-header" id="perimetre">
+      <div
+        id="perimetre"
+        class="card-header"
+      >
         <button
           class="btn btn-link-open"
           data-toggle="collapse show"
@@ -97,7 +82,7 @@
           aria-expanded="false"
           data-target="#collapsePerimetre"
         >
-          <div><span class="icon-perimetre icon white"></span></div>
+          <div><span class="icon-perimetre icon white" /></div>
           <div>Domaine de validité</div>
         </button>
       </div>
@@ -112,17 +97,13 @@
             <ul>
               <li>
                 La donnée de surface donne un ordre de grandeur
-                <strong
-                  >des hectares de terres agricoles qu’il faudrait mobiliser
-                  pour satisfaire la consommation en légumes</strong
-                >, compte tenu des paramètres choisis par l’utilisateur (%
+                <strong>des hectares de terres agricoles qu’il faudrait mobiliser
+                  pour satisfaire la consommation en légumes</strong>, compte tenu des paramètres choisis par l’utilisateur (%
                 relocalisation, % bio, assiette).
               </li>
               <li>
-                <strong
-                  >Les produits pris en compte par PARCEL représentent environ
-                  91% de notre alimentation (en volume)</strong
-                >. Ce sont les produits recensés par la Statistique Agricole
+                <strong>Les produits pris en compte par PARCEL représentent environ
+                  91% de notre alimentation (en volume)</strong>. Ce sont les produits recensés par la Statistique Agricole
                 Annuelle d’Agreste. PARCEL ne prend pas en compte :
                 <ul>
                   <li>
@@ -146,7 +127,10 @@
       </div>
     </div>
     <div class="card">
-      <div class="card-header" id="methode">
+      <div
+        id="methode"
+        class="card-header"
+      >
         <button
           class="btn btn-link-open"
           data-toggle="collapse show"
@@ -154,7 +138,7 @@
           aria-expanded="false"
           data-target="#collapseMethod"
         >
-          <div><span class="icon-ico_calcul2 icon white"></span></div>
+          <div><span class="icon-ico_calcul2 icon white" /></div>
           <div>Quelques points de méthode</div>
         </button>
       </div>
@@ -218,16 +202,17 @@
             </li>
             <li>
               Pour plus d’éléments sur la méthode de calcul, se référer à la
-              <a href="/methodologie-de-calcul-de-la-relocalisation-alimentaire"
-                >page annexe méthodologique</a
-              >, accessible par le menu principal.
+              <a href="/methodologie-de-calcul-de-la-relocalisation-alimentaire">page annexe méthodologique</a>, accessible par le menu principal.
             </li>
           </ul>
         </div>
       </div>
     </div>
     <div class="card">
-      <div class="card-header" id="sources">
+      <div
+        id="sources"
+        class="card-header"
+      >
         <button
           class="btn btn-link-open"
           data-toggle="collapse show"
@@ -235,7 +220,7 @@
           aria-expanded="false"
           data-target="#collapseSource"
         >
-          <div><span class="icon-source icon white"></span></div>
+          <div><span class="icon-source icon white" /></div>
           <div>Principales sources de données</div>
         </button>
       </div>
@@ -248,88 +233,78 @@
         <div class="card-body">
           <ul>
             <li>
-              <div class="h1-liste">Production et surface</div>
+              <div class="h1-liste">
+                Production et surface
+              </div>
               <ul>
                 <li>
-                  ­<span class="source-titre"
-                    >La Statistique Agricole Annuelle d’Agreste</span
-                  ><span class="source-auteur">
-                    – Ministère de l’Agriculture et de l’Alimentation</span
-                  ><span class="source-année"></span>
+                  ­<span class="source-titre">La Statistique Agricole Annuelle d’Agreste</span><span class="source-auteur">
+                    – Ministère de l’Agriculture et de l’Alimentation</span><span class="source-année" />
                   <div>
                     <a
                       class=""
                       href="http://agreste.agriculture.gouv.fr/donnees-de-synthese/statistique-agricole-annuelle-saa/"
-                      >Voir la page de statistiques</a
-                    >
+                    >Voir la page de statistiques</a>
                   </div>
                 </li>
                 <li>
-                  ­<span class="source-titre"
-                    >Enquête Teruti-Lucas d’Agreste</span
-                  ><span class="source-auteur">
-                    – Ministère de l’Agriculture et de l’Alimentation</span
-                  >
+                  ­<span class="source-titre">Enquête Teruti-Lucas d’Agreste</span><span class="source-auteur">
+                    – Ministère de l’Agriculture et de l’Alimentation</span>
                   <div>
                     <a
                       class=""
                       href="http://agreste.agriculture.gouv.fr/enquetes/territoire-prix-des-terres/teruti-lucas-utilisation-du/"
-                      >Voir l'enquête</a
-                    >
+                    >Voir l'enquête</a>
                   </div>
                 </li>
                 <li>­<span class="source-titre">Entretiens d’experts</span></li>
               </ul>
             </li>
             <li>
-              <div class="h1-liste">Consommation</div>
+              <div class="h1-liste">
+                Consommation
+              </div>
               <ul>
                 <li>
-                  ­<span class="source-titre">­Douanes françaises </span
-                  ><span class="source-auteur">
-                    – ­Ministère de l’Action et de comptes publics </span
-                  ><span class="source-année"></span>
+                  ­<span class="source-titre">­Douanes françaises </span><span class="source-auteur">
+                    – ­Ministère de l’Action et de comptes publics </span><span class="source-année" />
                   <div>
-                    <a class="" href="http://www.douane.gouv.fr/"
-                      >Voir le site des Douanes</a
-                    >
+                    <a
+                      class=""
+                      href="http://www.douane.gouv.fr/"
+                    >Voir le site des Douanes</a>
                   </div>
                 </li>
                 <li>
-                  <span class="source-titre">­Données de l'INSEE</span
-                  ><span class="source-auteur">
+                  <span class="source-titre">­Données de l'INSEE</span><span class="source-auteur">
                     - Institut national de la statistique et des études
-                    économiques (INSEE)</span
-                  >
+                    économiques (INSEE)</span>
                   <div>
-                    <a class="" href="https://www.insee.fr/fr/accueil"
-                      >Voir le site de l'INSEE</a
-                    >
+                    <a
+                      class=""
+                      href="https://www.insee.fr/fr/accueil"
+                    >Voir le site de l'INSEE</a>
                   </div>
                 </li>
                 <li>
-                  <span class="source-titre"
-                    >­Étude individuelle nationale des consommations
-                    alimentaires 3 (INCA 3)</span
-                  ><span class="source-auteur"> - ANSES</span
-                  ><span class="source-année"> - 2017</span>
+                  <span class="source-titre">­Étude individuelle nationale des consommations
+                    alimentaires 3 (INCA 3)</span><span class="source-auteur"> - ANSES</span><span class="source-année"> - 2017</span>
                   <div>
                     <a
                       class=""
                       href="https://www.anses.fr/fr/system/files/NUT2014SA0234Ra.pdf"
-                      >Voir l'étude</a
-                    >
+                    >Voir l'étude</a>
                   </div>
                 </li>
               </ul>
             </li>
             <li>
-              <div class="h1-liste">• Agriculture Biologique</div>
+              <div class="h1-liste">
+                • Agriculture Biologique
+              </div>
               <ul>
                 <li>
-                  ­<span class="source-titre"
-                    >­­Fiches techniques régionales</span
-                  >
+                  ­<span class="source-titre">­­Fiches techniques régionales</span>
                 </li>
                 <li>
                   ­<span class="source-titre">­Entretiens d’experts</span>
@@ -345,7 +320,7 @@
 
 <script>
 export default {
-  name: "detailsLegumes",
+  name: "DetailsLegumes",
   methods: {
     fermerModal() {
       this.$emit("fermerModal");

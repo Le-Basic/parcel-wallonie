@@ -1,54 +1,19 @@
 <template>
   <div>
     <div class="bloc-surface">
-      <h3 class="text-center">Surface agricole à mobiliser</h3>
+      <h3 class="text-center">
+        Surface agricole à mobiliser
+      </h3>
       <div
         class="cadre-resultat resultat-ha animated flipInX delay-05s bg-vert-clair"
       >
         <div class="d-inline-flex align-items-center">
           <div
-            class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_potentiel"
             id="surface_potentiel4"
+            class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_potentiel"
           >
             <div class="odometer-inside">
-              <span class="odometer-digit"
-                ><span class="odometer-digit-spacer">8</span
-                ><span class="odometer-digit-inner"
-                  ><span class="odometer-ribbon"
-                    ><span class="odometer-ribbon-inner"
-                      ><span class="odometer-value">4</span></span
-                    ></span
-                  ></span
-                ></span
-              ><span class="odometer-formatting-mark"> </span
-              ><span class="odometer-digit"
-                ><span class="odometer-digit-spacer">8</span
-                ><span class="odometer-digit-inner"
-                  ><span class="odometer-ribbon"
-                    ><span class="odometer-ribbon-inner"
-                      ><span class="odometer-value">6</span></span
-                    ></span
-                  ></span
-                ></span
-              ><span class="odometer-digit"
-                ><span class="odometer-digit-spacer">8</span
-                ><span class="odometer-digit-inner"
-                  ><span class="odometer-ribbon"
-                    ><span class="odometer-ribbon-inner"
-                      ><span class="odometer-value">8</span></span
-                    ></span
-                  ></span
-                ></span
-              ><span class="odometer-digit"
-                ><span class="odometer-digit-spacer">8</span
-                ><span class="odometer-digit-inner"
-                  ><span class="odometer-ribbon"
-                    ><span class="odometer-ribbon-inner"
-                      ><span class="odometer-value">0</span></span
-                    ></span
-                  ></span
-                ></span
-              >
+              <span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">4</span></span></span></span></span><span class="odometer-formatting-mark" /><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">6</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">8</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">0</span></span></span></span></span>
             </div>
           </div>
           <div class="hectares animated fadeIn delay-1-5s">
@@ -61,7 +26,10 @@
         de la population choisie
       </div>
 
-      <div class="no-data no-data-viz3" v-if="false">
+      <div
+        v-if="false"
+        class="no-data no-data-viz3"
+      >
         Désolé, nous n'avons pas de données suffisantes pour afficher ce
         graphique
       </div>
@@ -76,17 +44,17 @@
             min-height: 550px;
           "
         >
-          <div id="viz3"></div>
+          <div id="viz3" />
         </div>
         <div class="wrap-viz3 resultats-categories repartition">
           <table
-            summary="Resultats"
+            v-if="data.occupationActuelle.length > 0"
             id="PaysSpatCategoryresultsTable"
+            summary="Resultats"
             class="auto-style1 w-100"
             border="1"
-            v-if="data.occupationActuelle.length > 0"
           >
-            <thead></thead>
+            <thead />
             <tbody>
               <tr>
                 <td colspan="5">
@@ -98,7 +66,7 @@
                     style="cursor: pointer"
                   >
                     <div class="result-type">
-                      <span class="icon-prairie ico-medium prairie"></span>
+                      <span class="icon-prairie ico-medium prairie" />
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col titre-categorie mb-0">
@@ -121,7 +89,7 @@
                     style="cursor: pointer"
                   >
                     <div class="result-type">
-                      <span class="icon-fourragere ico-medium fourrage"></span>
+                      <span class="icon-fourragere ico-medium fourrage" />
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">
@@ -146,10 +114,12 @@
                     <div class="result-type">
                       <span
                         class="icon-legumineuses ico-medium legumineuse"
-                      ></span>
+                      />
                     </div>
                     <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">Légumineuses</div>
+                      <div class="col mb-0 titre-categorie">
+                        Légumineuses
+                      </div>
                       <div class="col-auto ml-auto hectares">
                         {{ data.occupationActuelle[3]["surface"] }}
                       </div>
@@ -169,7 +139,7 @@
                     <div class="result-type">
                       <span
                         class="icon-oleagineux ico-medium oleagineux"
-                      ></span>
+                      />
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">
@@ -192,7 +162,7 @@
                     style="cursor: pointer"
                   >
                     <div class="result-type">
-                      <span class="icon-cereales2 ico-medium pdt"></span>
+                      <span class="icon-cereales2 ico-medium pdt" />
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">
@@ -218,10 +188,12 @@
                     <div class="result-type">
                       <span
                         class="icon-ico_CATEGORIES_fruits ico-medium fruitssurface"
-                      ></span>
+                      />
                     </div>
                     <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">Fruits</div>
+                      <div class="col mb-0 titre-categorie">
+                        Fruits
+                      </div>
                       <div class="col-auto ml-auto hectares">
                         {{ data.occupationActuelle[6]["surface"] }}
                       </div>
@@ -241,10 +213,12 @@
                     <div class="result-type">
                       <span
                         class="icon-ico_CATEGORIES_legumes ico-medium legumessurface"
-                      ></span>
+                      />
                     </div>
                     <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">Légumes</div>
+                      <div class="col mb-0 titre-categorie">
+                        Légumes
+                      </div>
                       <div class="col-auto ml-auto hectares">
                         {{ data.occupationActuelle[7]["surface"] }}
                       </div>
@@ -258,55 +232,20 @@
       </div>
     </div>
     <div class="bloc-surface">
-      <h3 class="text-center">Surface agricole actuelle du territoire</h3>
+      <h3 class="text-center">
+        Surface agricole actuelle du territoire
+      </h3>
       <div class="map-content mb-4">
         En vis-à-vis, le territoire dispose actuellement de
       </div>
       <div class="cadre-resultat resultat-ha animated flipInX delay-05s">
         <div class="d-inline-flex align-items-center">
           <div
-            class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme"
             id="surface_act9"
+            class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme"
           >
             <div class="odometer-inside">
-              <span class="odometer-digit"
-                ><span class="odometer-digit-spacer">8</span
-                ><span class="odometer-digit-inner"
-                  ><span class="odometer-ribbon"
-                    ><span class="odometer-ribbon-inner"
-                      ><span class="odometer-value">4</span></span
-                    ></span
-                  ></span
-                ></span
-              ><span class="odometer-formatting-mark"> </span
-              ><span class="odometer-digit"
-                ><span class="odometer-digit-spacer">8</span
-                ><span class="odometer-digit-inner"
-                  ><span class="odometer-ribbon"
-                    ><span class="odometer-ribbon-inner"
-                      ><span class="odometer-value">6</span></span
-                    ></span
-                  ></span
-                ></span
-              ><span class="odometer-digit"
-                ><span class="odometer-digit-spacer">8</span
-                ><span class="odometer-digit-inner"
-                  ><span class="odometer-ribbon"
-                    ><span class="odometer-ribbon-inner"
-                      ><span class="odometer-value">8</span></span
-                    ></span
-                  ></span
-                ></span
-              ><span class="odometer-digit"
-                ><span class="odometer-digit-spacer">8</span
-                ><span class="odometer-digit-inner"
-                  ><span class="odometer-ribbon"
-                    ><span class="odometer-ribbon-inner"
-                      ><span class="odometer-value">0</span></span
-                    ></span
-                  ></span
-                ></span
-              >
+              <span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">4</span></span></span></span></span><span class="odometer-formatting-mark" /><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">6</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">8</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">0</span></span></span></span></span>
             </div>
           </div>
           <div class="hectares animated fadeIn delay-1-5s">
@@ -315,7 +254,10 @@
         </div>
       </div>
 
-      <div class="no-data no-data-viz4" v-if="false">
+      <div
+        v-if="false"
+        class="no-data no-data-viz4"
+      >
         Désolé, nous n'avons pas de données suffisantes pour afficher ce
         graphique
       </div>
@@ -330,17 +272,17 @@
             min-height: 550px;
           "
         >
-          <div id="viz4"></div>
+          <div id="viz4" />
         </div>
         <div class="wrap-viz4 resultats-categories repartition">
           <table
-            summary="Resultats"
+            v-if="data.occupationActuelle.length > 0"
             id="PaysSpatCategoryresultsTable"
+            summary="Resultats"
             class="auto-style1 w-100"
             border="1"
-            v-if="data.occupationActuelle.length > 0"
           >
-            <thead></thead>
+            <thead />
             <tbody>
               <tr>
                 <td colspan="5">
@@ -352,7 +294,7 @@
                     style="cursor: pointer"
                   >
                     <div class="result-type">
-                      <span class="icon-prairie ico-medium prairie"></span>
+                      <span class="icon-prairie ico-medium prairie" />
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col titre-categorie mb-0">
@@ -375,7 +317,7 @@
                     style="cursor: pointer"
                   >
                     <div class="result-type">
-                      <span class="icon-fourragere ico-medium fourrage"></span>
+                      <span class="icon-fourragere ico-medium fourrage" />
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">
@@ -400,10 +342,12 @@
                     <div class="result-type">
                       <span
                         class="icon-legumineuses ico-medium legumineuse"
-                      ></span>
+                      />
                     </div>
                     <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">Légumineuses</div>
+                      <div class="col mb-0 titre-categorie">
+                        Légumineuses
+                      </div>
                       <div class="col-auto ml-auto hectares">
                         {{ data.occupationActuelle[3]["surface"] }}
                       </div>
@@ -423,7 +367,7 @@
                     <div class="result-type">
                       <span
                         class="icon-oleagineux ico-medium oleagineux"
-                      ></span>
+                      />
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">
@@ -446,7 +390,7 @@
                     style="cursor: pointer"
                   >
                     <div class="result-type">
-                      <span class="icon-cereales2 ico-medium pdt"></span>
+                      <span class="icon-cereales2 ico-medium pdt" />
                     </div>
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">
@@ -472,10 +416,12 @@
                     <div class="result-type">
                       <span
                         class="icon-ico_CATEGORIES_fruits ico-medium fruitssurface"
-                      ></span>
+                      />
                     </div>
                     <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">Fruits</div>
+                      <div class="col mb-0 titre-categorie">
+                        Fruits
+                      </div>
                       <div class="col-auto ml-auto hectares">
                         {{ data.occupationActuelle[6]["surface"] }}
                       </div>
@@ -495,10 +441,12 @@
                     <div class="result-type">
                       <span
                         class="icon-ico_CATEGORIES_legumes ico-medium legumessurface"
-                      ></span>
+                      />
                     </div>
                     <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">Légumes</div>
+                      <div class="col mb-0 titre-categorie">
+                        Légumes
+                      </div>
                       <div class="col-auto ml-auto hectares">
                         {{ data.occupationActuelle[7]["surface"] }}
                       </div>
@@ -512,11 +460,12 @@
       </div>
       <div class="row justify-content-center mt-3 mb-3">
         <div class="col-auto">
-          <a href="/emplois-crees-par-la-relocalisation"
-            ><button type="button" class="btn btn-principal mt-5">
-              Emplois agricoles nécessaires
-            </button></a
+          <a href="/emplois-crees-par-la-relocalisation"><button
+            type="button"
+            class="btn btn-principal mt-5"
           >
+            Emplois agricoles nécessaires
+          </button></a>
         </div>
       </div>
     </div>
@@ -535,6 +484,66 @@ export default {
         potentielNourricier: [],
       },
     };
+  },
+  mounted() {
+    this.recupererDonnees();
+    var data3 = [
+      {
+        surface: 881877,
+        name: "Prairies",
+        color: "#D1F18C",
+      },
+      {
+        surface: 402398,
+        name: "Cultures fourragères",
+        color: "#F1CF98",
+      },
+      {
+        surface: 54540,
+        name: "Légumineuses",
+        color: "#FDD084",
+      },
+      {
+        surface: 170505,
+        name: "Céréales..",
+        color: "#FBCDC2",
+      },
+      {
+        surface: 18180,
+        name: "Cult. indus..",
+        color: "#88D9D9",
+      },
+      {
+        surface: 27400,
+        name: "Fruits",
+        color: "#FB97C7",
+      },
+      {
+        surface: 20200,
+        name: "Légumes",
+        color: "#EABDFF",
+      },
+      {
+        surface: 64,
+        name: "Autres..",
+        color: "#9CE6FA",
+        background: "#F1F9E0",
+      },
+      {
+        surface: 26,
+        name: "Jachères..",
+        color: "#BDD687",
+      },
+    ];
+    new Treemap()
+      .select("#viz3")
+      .data(data3)
+      .groupBy("name")
+      .sum("surface")
+      .color("color")
+      .height(500)
+      .legend(0)
+      .render();
   },
   methods: {
     recupererDonnees() {
@@ -632,66 +641,6 @@ export default {
           console.log(error);
         });
     },
-  },
-  mounted() {
-    this.recupererDonnees();
-    var data3 = [
-      {
-        surface: 881877,
-        name: "Prairies",
-        color: "#D1F18C",
-      },
-      {
-        surface: 402398,
-        name: "Cultures fourragères",
-        color: "#F1CF98",
-      },
-      {
-        surface: 54540,
-        name: "Légumineuses",
-        color: "#FDD084",
-      },
-      {
-        surface: 170505,
-        name: "Céréales..",
-        color: "#FBCDC2",
-      },
-      {
-        surface: 18180,
-        name: "Cult. indus..",
-        color: "#88D9D9",
-      },
-      {
-        surface: 27400,
-        name: "Fruits",
-        color: "#FB97C7",
-      },
-      {
-        surface: 20200,
-        name: "Légumes",
-        color: "#EABDFF",
-      },
-      {
-        surface: 64,
-        name: "Autres..",
-        color: "#9CE6FA",
-        background: "#F1F9E0",
-      },
-      {
-        surface: 26,
-        name: "Jachères..",
-        color: "#BDD687",
-      },
-    ];
-    new Treemap()
-      .select("#viz3")
-      .data(data3)
-      .groupBy("name")
-      .sum("surface")
-      .color("color")
-      .height(500)
-      .legend(0)
-      .render();
   },
 };
 </script>
