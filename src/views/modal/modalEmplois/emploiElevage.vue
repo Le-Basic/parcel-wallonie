@@ -2,25 +2,26 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content modal-repart-cat-detail">
       <div class="modal-header d-flex align-items-center">
-        <div>
-          <span class="icon-ico_CATEGORIES_legumes icon legumes"></span>
-        </div>
+        <div><span class="icon-ico_CATEGORIES_viande icon viande"></span></div>
         <div class="d-flex flex-column">
-          <div class="titre-categorie">Emplois en maraîchage</div>
-          <div class="hectares" id="-totaljoblegumes2"></div>
+          <div class="titre-categorie">Emplois en élevage</div>
+          <div class="hectares" id="-totaljobviande2">
+            Intègre l'ensemble des emplois agricoles liés aux cultures destinées
+            à l’alimentation de l’élevage (prairies, céréales, tourteaux, etc.)
+          </div>
         </div>
         <button
-          @click="fermerModal"
           type="button"
           class="close"
           data-dismiss="modal"
           aria-label="Close"
+          @click="fermerModal"
         >
           <span class="icon-ico_fermer icon"></span>
         </button>
       </div>
       <div class="modal-body">
-        <div id="accordeon-fiche" class="accordeon-detail legumes-fonce">
+        <div id="accordeon-fiche" class="accordeon-detail viande-fonce">
           <div class="card">
             <div class="card-header" id="Reperes">
               <button
@@ -42,17 +43,17 @@
             >
               <div class="card-body">
                 <div
-                  class="cadre-resultat methodo-detail d-flex flex-sm-row flex-column justify-content-around infographie-detail"
+                  class="cadre-resultat methodo-detail d-flex flex-sm-row flex-column justify-content-around infographie-detail viande-fonce"
                 >
                   <span
                     class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-                    ><span class="icon-ico_groupe icon legumes"></span>
+                    ><span class="icon-ico_groupe icon viande"></span>
                     <div class="info-infos">
                       <span class="d-flex flex-column info-intro"
-                        ><span class="info-entete">Emplois maraîchers </span
+                        ><span class="info-entete">Emplois en élevage</span
                         ><span class="info-verbe">=</span></span
                       ><span class="d-flex flex-column info-detail"
-                        ><span class="nbr-ha"> 3% </span
+                        ><span class="nbr-ha"> 40% </span
                         ><span class="hectares"
                           >(environ) de l’emploi agricole total en France
                           métropolitaine</span
@@ -63,30 +64,30 @@
                   <span
                     class="col-4 d-flex flex-sm-column flex-row justify-content-center"
                     ><span
-                      class="icon-ico_navigation_surface icon legumes"
+                      class="icon-ico_navigation_surface icon viande"
                     ></span>
                     <div class="info-infos">
                       <span class="d-flex flex-column info-intro"
                         ><span class="info-entete">Surface par emploi</span
                         ><span class="info-verbe">=</span></span
                       ><span class="d-flex flex-column info-detail"
-                        ><span class="nbr-ha"> 2,8 ha </span
+                        ><span class="nbr-ha"> 39 ha </span
                         ><span class="hectares">par emploi agricole</span></span
                       >
                     </div>
                   </span>
                   <span
                     class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-                    ><span class="icon-ico_filtres-reloc icon legumes"></span>
+                    ><span class="icon-ico_filtres-reloc icon viande"></span>
                     <div class="info-infos">
                       <span class="d-flex flex-column info-intro"
                         ><span class="info-entete">Salariés </span
                         ><span class="info-verbe">=</span></span
                       ><span class="d-flex flex-column info-detail"
-                        ><span class="nbr-ha"> 64% </span
+                        ><span class="nbr-ha"> 15% </span
                         ><span class="hectares"
-                          >de l’ensemble de la main d’œuvre des exploitations
-                          maraîchères</span
+                          >de l’ensemble de la main d’œuvre des exploitations en
+                          élevage est salariée</span
                         ></span
                       >
                     </div>
@@ -119,12 +120,18 @@
                   <ul>
                     <li>
                       La donnée d’emploi agricole donne un ordre de grandeur du
-                      <strong>
-                        nombre de personnes travaillant à temps plein qu’il
-                        faudrait mobiliser pour satisfaire la consommation en
-                        légumes</strong
+                      <strong
+                        >nombre de personnes travaillant à temps plein qu’il
+                        faudrait mobiliser pour satisfaire la consommation
+                        humaine en produits de l’élevage</strong
                       >, compte tenu des paramètres choisis par l’utilisateur (%
                       relocalisation, % bio, assiette).
+                    </li>
+                    <li>
+                      Au sein de PARCEL, les emplois liés aux productions de
+                      céréales et autres grandes cultures destinées à
+                      l’alimentation animale sont comptabilisés dans cette
+                      catégorie « Elevage ».
                     </li>
                     <li>
                       <strong
@@ -143,7 +150,6 @@
                       emplois du milieu et de l’aval des chaînes alimentaires.
                       Ces modifications ne sont pas quantifiées.
                     </li>
-
                     <li>
                       <strong
                         >Les produits pris en compte par PARCEL représentent
@@ -166,16 +172,6 @@
                           indicateur d’empreinte spatiale) ;
                         </li>
                       </ul>
-                    </li>
-                    <li>
-                      <strong
-                        >Parcel prend en compte les produits qui ont
-                        actuellement une production représentative en France </strong
-                      >(dont la production est recensée au sein des statistiques
-                      agricoles). La nomenclature retenue de 63 produits, ne
-                      représente pas l’ensemble de l’alimentation des français
-                      (il manque notamment les boissons et les produits
-                      tropicaux).
                     </li>
                   </ul>
                 </div>
@@ -206,14 +202,15 @@
                   <li>
                     <strong
                       >On utilise les données du dernier recensement agricole
-                      (2010), qui donne par Orientations technico-économique,
-                      les Unités de travail annuel par hectare</strong
+                      (2010) qui comptabilise les Unité de travail annuel par
+                      hectare en fonction des Orientations technico-économique
+                      (OTEX).</strong
                     >. Les données seront mises à jour avec le prochain
                     recensement agricole.
                   </li>
                   <li>
                     <strong
-                      >Une exploitation est spécialisée au sein d’un
+                      >Une exploitation est spécialisée au sein d’une
                       OTEX</strong
                     >
                     si la Production Brute Standard (indicateur économique sur
@@ -222,8 +219,9 @@
                   </li>
                   <li>
                     <strong
-                      >Pour le maraîchage, on utilise l’indicateur UTA/ha de
-                      l’OTEX « Légumes et champignons ».</strong
+                      >Pour l’élevage, on utilise l’indicateur UTA/ha des OTEX :
+                      « Bovins lait », « Bovins viande », « Ovins et caprins »,
+                      « Elevages porcins », « Elevage avicole »</strong
                     >
                   </li>
                   <li>
@@ -300,7 +298,7 @@
 
 <script>
 export default {
-  name: "emploiLegumes",
+  name: "emploiElevage",
   methods: {
     fermerModal() {
       this.$emit("fermerModal");
@@ -318,13 +316,13 @@ export default {
 .btn-link-open {
   display: flex;
   flex-direction: row;
-  background-color: #015a5a !important;
+  background-color: #463025 !important;
   color: #fff !important;
   gap: 8px;
 }
 
 .card-header {
-  background-color: #015a5a !important;
+  background-color: #463025 !important;
   color: #fff !important;
 }
 

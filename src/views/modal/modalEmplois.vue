@@ -16,18 +16,16 @@
 </template>
 
 <script>
-import detailsCereales from "./modalDetails/detailsCereales.vue";
-import detailsFruits from "./modalDetails/detailsFruits.vue";
-import detailsViande from "./modalDetails/detailsViande.vue";
-import detailsLegumes from "./modalDetails/detailsLegumes.vue";
 import emploiLegumes from "./modalEmplois/emploiLegumes.vue";
+import emploiFruits from "./modalEmplois/emploiFruits.vue";
+import emploiElevage from "./modalEmplois/emploiElevage.vue";
+import emploiCereales from "./modalEmplois/emploiCereales.vue";
 export default {
   components: {
-    detailsCereales,
-    detailsFruits,
-    detailsViande,
-    detailsLegumes,
+    emploiElevage,
+    emploiFruits,
     emploiLegumes,
+    emploiCereales,
   },
   props: {
     modalId: {

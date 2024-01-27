@@ -330,7 +330,7 @@ export default {
       var codesTerritoireParcel = this.$store.state.geoList.map(
         (el) => el.code_territoire
       );
-      codesTerritoireParcel = this.$store.getters.codesTerritoireParcel;
+      codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
 
       console.log(codesTerritoireParcel);
       bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);

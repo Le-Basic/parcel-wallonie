@@ -3,24 +3,28 @@
     <div class="modal-content modal-repart-cat-detail">
       <div class="modal-header d-flex align-items-center">
         <div>
-          <span class="icon-ico_CATEGORIES_legumes icon legumes"></span>
+          <span class="icon-ico_CATEGORIES_cereales icon cereales"></span>
         </div>
         <div class="d-flex flex-column">
-          <div class="titre-categorie">Emplois en maraîchage</div>
-          <div class="hectares" id="-totaljoblegumes2"></div>
+          <div class="titre-categorie">
+            Emplois en cultures céréalières et autres cultures…
+          </div>
+          <div class="hectares" id="-totaljobcereales2">
+            Consommés directement (pain, lentilles, huiles, etc.)
+          </div>
         </div>
         <button
-          @click="fermerModal"
           type="button"
           class="close"
           data-dismiss="modal"
           aria-label="Close"
+          @click="fermerModal"
         >
           <span class="icon-ico_fermer icon"></span>
         </button>
       </div>
       <div class="modal-body">
-        <div id="accordeon-fiche" class="accordeon-detail legumes-fonce">
+        <div id="accordeon-fiche" class="accordeon-detail cereales-fonce">
           <div class="card">
             <div class="card-header" id="Reperes">
               <button
@@ -42,17 +46,18 @@
             >
               <div class="card-body">
                 <div
-                  class="cadre-resultat methodo-detail d-flex flex-sm-row flex-column justify-content-around infographie-detail"
+                  class="cadre-resultat methodo-detail d-flex flex-sm-row flex-column justify-content-around infographie-detail cereales-fonce"
                 >
                   <span
                     class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-                    ><span class="icon-ico_groupe icon legumes"></span>
+                    ><span class="icon-ico_groupe icon cereales"></span>
                     <div class="info-infos">
                       <span class="d-flex flex-column info-intro"
-                        ><span class="info-entete">Emplois maraîchers </span
+                        ><span class="info-entete"
+                          >emplois en céréales <sup>1</sup> </span
                         ><span class="info-verbe">=</span></span
                       ><span class="d-flex flex-column info-detail"
-                        ><span class="nbr-ha"> 3% </span
+                        ><span class="nbr-ha"> 11% </span
                         ><span class="hectares"
                           >(environ) de l’emploi agricole total en France
                           métropolitaine</span
@@ -63,35 +68,36 @@
                   <span
                     class="col-4 d-flex flex-sm-column flex-row justify-content-center"
                     ><span
-                      class="icon-ico_navigation_surface icon legumes"
+                      class="icon-ico_navigation_surface icon cereales"
                     ></span>
                     <div class="info-infos">
                       <span class="d-flex flex-column info-intro"
                         ><span class="info-entete">Surface par emploi</span
                         ><span class="info-verbe">=</span></span
                       ><span class="d-flex flex-column info-detail"
-                        ><span class="nbr-ha"> 2,8 ha </span
+                        ><span class="nbr-ha"> 85 ha </span
                         ><span class="hectares">par emploi agricole</span></span
                       >
                     </div>
                   </span>
                   <span
                     class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-                    ><span class="icon-ico_filtres-reloc icon legumes"></span>
+                    ><span class="icon-ico_filtres-reloc icon cereales"></span>
                     <div class="info-infos">
                       <span class="d-flex flex-column info-intro"
                         ><span class="info-entete">Salariés </span
                         ><span class="info-verbe">=</span></span
                       ><span class="d-flex flex-column info-detail"
-                        ><span class="nbr-ha"> 64% </span
+                        ><span class="nbr-ha"> 15% </span
                         ><span class="hectares"
-                          >de l’ensemble de la main d’œuvre des exploitations
-                          maraîchères</span
+                          >de l’ensemble de la main d’œuvre des exploitations en
+                          céréales et autres grandes cultures est salariée</span
                         ></span
                       >
                     </div>
                   </span>
                 </div>
+                1. et autres grandes cultures
               </div>
             </div>
           </div>
@@ -105,7 +111,7 @@
                 data-target="#collapsePerimetre"
               >
                 <div><span class="icon-perimetre icon white"></span></div>
-                <div>Domaine de validité</div>
+                <div>Périmètre</div>
               </button>
             </div>
             <div
@@ -118,11 +124,37 @@
                 <div class="mb-3">
                   <ul>
                     <li>
+                      La production de céréales et autres grandes cultures a
+                      plusieurs destination :
+                      <ul>
+                        <li>l’alimentation humaine (37%),</li>
+                        <li>l’alimentation animale (40%)</li>
+                        <li>les usages industriels (18%).</li>
+                      </ul>
+                    </li>
+                    <li>
+                      Au sein de Parcel :
+                      <ul>
+                        <li>
+                          Les emplois liés aux productions de céréales et autres
+                          grandes cultures destinées directement à
+                          l’alimentation humaine est prise en compte dans la
+                          catégorie « Céréales et autres cultures »
+                        </li>
+                        <li>
+                          Les emplois liés aux productions de céréales et autres
+                          grandes cultures destinées à l’alimentation animale
+                          est quant à elle prise en compte dans la catégorie «
+                          Élevage ».
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
                       La donnée d’emploi agricole donne un ordre de grandeur du
-                      <strong>
-                        nombre de personnes travaillant à temps plein qu’il
-                        faudrait mobiliser pour satisfaire la consommation en
-                        légumes</strong
+                      <strong
+                        >nombre de personnes travaillant à temps plein qu’il
+                        faudrait mobiliser pour satisfaire la consommation
+                        humaine en céréales et autres grandes cultures</strong
                       >, compte tenu des paramètres choisis par l’utilisateur (%
                       relocalisation, % bio, assiette).
                     </li>
@@ -143,7 +175,6 @@
                       emplois du milieu et de l’aval des chaînes alimentaires.
                       Ces modifications ne sont pas quantifiées.
                     </li>
-
                     <li>
                       <strong
                         >Les produits pris en compte par PARCEL représentent
@@ -166,16 +197,6 @@
                           indicateur d’empreinte spatiale) ;
                         </li>
                       </ul>
-                    </li>
-                    <li>
-                      <strong
-                        >Parcel prend en compte les produits qui ont
-                        actuellement une production représentative en France </strong
-                      >(dont la production est recensée au sein des statistiques
-                      agricoles). La nomenclature retenue de 63 produits, ne
-                      représente pas l’ensemble de l’alimentation des français
-                      (il manque notamment les boissons et les produits
-                      tropicaux).
                     </li>
                   </ul>
                 </div>
@@ -206,14 +227,15 @@
                   <li>
                     <strong
                       >On utilise les données du dernier recensement agricole
-                      (2010), qui donne par Orientations technico-économique,
-                      les Unités de travail annuel par hectare</strong
+                      (2010) qui comptabilise les Unité de travail annuel par
+                      hectare en fonction des Orientations technico-économique
+                      (OTEX)</strong
                     >. Les données seront mises à jour avec le prochain
                     recensement agricole.
                   </li>
                   <li>
                     <strong
-                      >Une exploitation est spécialisée au sein d’un
+                      >Une exploitation est spécialisée au sein d’une
                       OTEX</strong
                     >
                     si la Production Brute Standard (indicateur économique sur
@@ -222,8 +244,9 @@
                   </li>
                   <li>
                     <strong
-                      >Pour le maraîchage, on utilise l’indicateur UTA/ha de
-                      l’OTEX « Légumes et champignons ».</strong
+                      >Pour les céréales et autres grandes cultures, on utilise
+                      l’indicateur UTA/ha de l’OTEX « Céréales et
+                      oléoprotéagineux ».</strong
                     >
                   </li>
                   <li>
@@ -238,7 +261,6 @@
               </div>
             </div>
           </div>
-
           <div class="card">
             <div class="card-header" id="sources">
               <button
@@ -300,7 +322,7 @@
 
 <script>
 export default {
-  name: "emploiLegumes",
+  name: "emploiElevage",
   methods: {
     fermerModal() {
       this.$emit("fermerModal");
@@ -318,13 +340,13 @@ export default {
 .btn-link-open {
   display: flex;
   flex-direction: row;
-  background-color: #015a5a !important;
+  background-color: #874e00 !important;
   color: #fff !important;
   gap: 8px;
 }
 
 .card-header {
-  background-color: #015a5a !important;
+  background-color: #874e00 !important;
   color: #fff !important;
 }
 
@@ -336,5 +358,10 @@ export default {
 .card-body ul li {
   list-style: none;
   margin-bottom: 10px;
+}
+
+.modal-dialog {
+  max-width: 100%;
+  margin: 1.75rem auto;
 }
 </style>

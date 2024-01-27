@@ -3,24 +3,24 @@
     <div class="modal-content modal-repart-cat-detail">
       <div class="modal-header d-flex align-items-center">
         <div>
-          <span class="icon-ico_CATEGORIES_legumes icon legumes"></span>
+          <span class="icon-ico_CATEGORIES_fruits icon fruits"></span>
         </div>
         <div class="d-flex flex-column">
-          <div class="titre-categorie">Emplois en maraîchage</div>
-          <div class="hectares" id="-totaljoblegumes2"></div>
+          <div class="titre-categorie">Emplois en arboriculture</div>
+          <div class="hectares" id="-totaljobfruits2"></div>
         </div>
         <button
-          @click="fermerModal"
           type="button"
           class="close"
           data-dismiss="modal"
           aria-label="Close"
+          @click="fermerModal"
         >
           <span class="icon-ico_fermer icon"></span>
         </button>
       </div>
       <div class="modal-body">
-        <div id="accordeon-fiche" class="accordeon-detail legumes-fonce">
+        <div id="accordeon-fiche" class="accordeon-detail fruits-fonce">
           <div class="card">
             <div class="card-header" id="Reperes">
               <button
@@ -42,17 +42,17 @@
             >
               <div class="card-body">
                 <div
-                  class="cadre-resultat methodo-detail d-flex flex-sm-row flex-column justify-content-around infographie-detail"
+                  class="cadre-resultat methodo-detail d-flex flex-sm-row flex-column justify-content-around infographie-detail fruits-fonce"
                 >
                   <span
                     class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-                    ><span class="icon-ico_groupe icon legumes"></span>
+                    ><span class="icon-ico_groupe icon fruits"></span>
                     <div class="info-infos">
                       <span class="d-flex flex-column info-intro"
-                        ><span class="info-entete">Emplois maraîchers </span
+                        ><span class="info-entete">Emplois arboricole</span
                         ><span class="info-verbe">=</span></span
                       ><span class="d-flex flex-column info-detail"
-                        ><span class="nbr-ha"> 3% </span
+                        ><span class="nbr-ha"> 5% </span
                         ><span class="hectares"
                           >(environ) de l’emploi agricole total en France
                           métropolitaine</span
@@ -63,30 +63,30 @@
                   <span
                     class="col-4 d-flex flex-sm-column flex-row justify-content-center"
                     ><span
-                      class="icon-ico_navigation_surface icon legumes"
+                      class="icon-ico_navigation_surface icon fruits"
                     ></span>
                     <div class="info-infos">
                       <span class="d-flex flex-column info-intro"
                         ><span class="info-entete">Surface par emploi</span
                         ><span class="info-verbe">=</span></span
                       ><span class="d-flex flex-column info-detail"
-                        ><span class="nbr-ha"> 2,8 ha </span
+                        ><span class="nbr-ha"> 7,5 ha </span
                         ><span class="hectares">par emploi agricole</span></span
                       >
                     </div>
                   </span>
                   <span
                     class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-                    ><span class="icon-ico_filtres-reloc icon legumes"></span>
+                    ><span class="icon-ico_filtres-reloc icon fruits"></span>
                     <div class="info-infos">
                       <span class="d-flex flex-column info-intro"
                         ><span class="info-entete">Salariés </span
                         ><span class="info-verbe">=</span></span
                       ><span class="d-flex flex-column info-detail"
-                        ><span class="nbr-ha"> 64% </span
+                        ><span class="nbr-ha"> 60% </span
                         ><span class="hectares"
                           >de l’ensemble de la main d’œuvre des exploitations
-                          maraîchères</span
+                          arboricoles</span
                         ></span
                       >
                     </div>
@@ -118,11 +118,11 @@
                 <div class="mb-3">
                   <ul>
                     <li>
-                      La donnée d’emploi agricole donne un ordre de grandeur du
-                      <strong>
+                      La donnée d’emploi agricole donne un ordre de grandeur
+                      du<strong>
                         nombre de personnes travaillant à temps plein qu’il
                         faudrait mobiliser pour satisfaire la consommation en
-                        légumes</strong
+                        fruits</strong
                       >, compte tenu des paramètres choisis par l’utilisateur (%
                       relocalisation, % bio, assiette).
                     </li>
@@ -143,7 +143,6 @@
                       emplois du milieu et de l’aval des chaînes alimentaires.
                       Ces modifications ne sont pas quantifiées.
                     </li>
-
                     <li>
                       <strong
                         >Les produits pris en compte par PARCEL représentent
@@ -166,16 +165,6 @@
                           indicateur d’empreinte spatiale) ;
                         </li>
                       </ul>
-                    </li>
-                    <li>
-                      <strong
-                        >Parcel prend en compte les produits qui ont
-                        actuellement une production représentative en France </strong
-                      >(dont la production est recensée au sein des statistiques
-                      agricoles). La nomenclature retenue de 63 produits, ne
-                      représente pas l’ensemble de l’alimentation des français
-                      (il manque notamment les boissons et les produits
-                      tropicaux).
                     </li>
                   </ul>
                 </div>
@@ -206,14 +195,15 @@
                   <li>
                     <strong
                       >On utilise les données du dernier recensement agricole
-                      (2010), qui donne par Orientations technico-économique,
-                      les Unités de travail annuel par hectare</strong
+                      (2010) qui comptabilise les Unité de travail annuel par
+                      hectare en fonction des Orientations technico-économique
+                      (OTEX). </strong
                     >. Les données seront mises à jour avec le prochain
                     recensement agricole.
                   </li>
                   <li>
                     <strong
-                      >Une exploitation est spécialisée au sein d’un
+                      >Une exploitation est spécialisée au sein d’une
                       OTEX</strong
                     >
                     si la Production Brute Standard (indicateur économique sur
@@ -222,8 +212,8 @@
                   </li>
                   <li>
                     <strong
-                      >Pour le maraîchage, on utilise l’indicateur UTA/ha de
-                      l’OTEX « Légumes et champignons ».</strong
+                      >Pour l'arboriculture, on utilise l’indicateur UTA/ha de
+                      l’OTEX « Fruits et autres cultures permanentes ».</strong
                     >
                   </li>
                   <li>
@@ -300,7 +290,7 @@
 
 <script>
 export default {
-  name: "emploiLegumes",
+  name: "emploiFruits",
   methods: {
     fermerModal() {
       this.$emit("fermerModal");
@@ -318,13 +308,13 @@ export default {
 .btn-link-open {
   display: flex;
   flex-direction: row;
-  background-color: #015a5a !important;
+  background-color: #4f2065 !important;
   color: #fff !important;
   gap: 8px;
 }
 
 .card-header {
-  background-color: #015a5a !important;
+  background-color: #4f2065 !important;
   color: #fff !important;
 }
 

@@ -2,6 +2,7 @@
   <div>
     <div class="bloc-surface">
       <h3 class="text-center">Surface agricole à mobiliser</h3>
+      <pre> {{ data }}</pre>
       <div
         class="cadre-resultat resultat-ha animated flipInX delay-05s bg-vert-clair"
       >
@@ -10,46 +11,7 @@
             class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_potentiel"
             id="surface_potentiel4"
           >
-            <div class="odometer-inside">
-              <span class="odometer-digit"
-                ><span class="odometer-digit-spacer">8</span
-                ><span class="odometer-digit-inner"
-                  ><span class="odometer-ribbon"
-                    ><span class="odometer-ribbon-inner"
-                      ><span class="odometer-value">4</span></span
-                    ></span
-                  ></span
-                ></span
-              ><span class="odometer-formatting-mark"> </span
-              ><span class="odometer-digit"
-                ><span class="odometer-digit-spacer">8</span
-                ><span class="odometer-digit-inner"
-                  ><span class="odometer-ribbon"
-                    ><span class="odometer-ribbon-inner"
-                      ><span class="odometer-value">6</span></span
-                    ></span
-                  ></span
-                ></span
-              ><span class="odometer-digit"
-                ><span class="odometer-digit-spacer">8</span
-                ><span class="odometer-digit-inner"
-                  ><span class="odometer-ribbon"
-                    ><span class="odometer-ribbon-inner"
-                      ><span class="odometer-value">8</span></span
-                    ></span
-                  ></span
-                ></span
-              ><span class="odometer-digit"
-                ><span class="odometer-digit-spacer">8</span
-                ><span class="odometer-digit-inner"
-                  ><span class="odometer-ribbon"
-                    ><span class="odometer-ribbon-inner"
-                      ><span class="odometer-value">0</span></span
-                    ></span
-                  ></span
-                ></span
-              >
-            </div>
+            {{ occupationActuelle }}
           </div>
           <div class="hectares animated fadeIn delay-1-5s">
             hectares agricoles
@@ -105,7 +67,11 @@
                         Prairie, estives, landes
                       </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[0]["surface"] }}
+                        {{
+                          formatterSurfacesNecessaires(
+                            data.occupationActuelle[0]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -128,7 +94,11 @@
                         Cultures fourragères
                       </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[1]["surface"] }}
+                        {{
+                          formatterSurfacesNecessaires(
+                            data.occupationActuelle[1]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -151,7 +121,11 @@
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">Légumineuses</div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[3]["surface"] }}
+                        {{
+                          formatterSurfacesNecessaires(
+                            data.occupationActuelle[3]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -176,7 +150,11 @@
                         Céréales, Oléagineux, protéagineux
                       </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[4]["surface"] }}
+                        {{
+                          formatterSurfacesNecessaires(
+                            data.occupationActuelle[4]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -200,7 +178,11 @@
                         betterave à sucre…)
                       </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[5]["surface"] }}
+                        {{
+                          formatterSurfacesNecessaires(
+                            data.occupationActuelle[5]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -223,7 +205,11 @@
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">Fruits</div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[6]["surface"] }}
+                        {{
+                          formatterSurfacesNecessaires(
+                            data.occupationActuelle[6]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -246,7 +232,11 @@
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">Légumes</div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[7]["surface"] }}
+                        {{
+                          formatterSurfacesNecessaires(
+                            data.occupationActuelle[7]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -268,46 +258,7 @@
             class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme"
             id="surface_act9"
           >
-            <div class="odometer-inside">
-              <span class="odometer-digit"
-                ><span class="odometer-digit-spacer">8</span
-                ><span class="odometer-digit-inner"
-                  ><span class="odometer-ribbon"
-                    ><span class="odometer-ribbon-inner"
-                      ><span class="odometer-value">4</span></span
-                    ></span
-                  ></span
-                ></span
-              ><span class="odometer-formatting-mark"> </span
-              ><span class="odometer-digit"
-                ><span class="odometer-digit-spacer">8</span
-                ><span class="odometer-digit-inner"
-                  ><span class="odometer-ribbon"
-                    ><span class="odometer-ribbon-inner"
-                      ><span class="odometer-value">6</span></span
-                    ></span
-                  ></span
-                ></span
-              ><span class="odometer-digit"
-                ><span class="odometer-digit-spacer">8</span
-                ><span class="odometer-digit-inner"
-                  ><span class="odometer-ribbon"
-                    ><span class="odometer-ribbon-inner"
-                      ><span class="odometer-value">8</span></span
-                    ></span
-                  ></span
-                ></span
-              ><span class="odometer-digit"
-                ><span class="odometer-digit-spacer">8</span
-                ><span class="odometer-digit-inner"
-                  ><span class="odometer-ribbon"
-                    ><span class="odometer-ribbon-inner"
-                      ><span class="odometer-value">0</span></span
-                    ></span
-                  ></span
-                ></span
-              >
-            </div>
+            {{ formatterChiffres(occupationActuelleTotale) }}
           </div>
           <div class="hectares animated fadeIn delay-1-5s">
             hectares agricoles
@@ -359,7 +310,11 @@
                         Prairie, estives, landes
                       </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[0]["surface"] }}
+                        {{
+                          formatterSurfacesNecessaires(
+                            data.occupationActuelle[0]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -382,7 +337,11 @@
                         Cultures fourragères
                       </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[1]["surface"] }}
+                        {{
+                          formatterSurfacesNecessaires(
+                            data.occupationActuelle[1]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -405,7 +364,11 @@
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">Légumineuses</div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[3]["surface"] }}
+                        {{
+                          formatterSurfacesNecessaires(
+                            data.occupationActuelle[3]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -430,7 +393,11 @@
                         Céréales, Oléagineux, protéagineux
                       </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[4]["surface"] }}
+                        {{
+                          formatterSurfacesNecessaires(
+                            data.occupationActuelle[4]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -454,7 +421,11 @@
                         betterave à sucre…)
                       </div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[5]["surface"] }}
+                        {{
+                          formatterSurfacesNecessaires(
+                            data.occupationActuelle[5]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -477,7 +448,11 @@
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">Fruits</div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[6]["surface"] }}
+                        {{
+                          formatterSurfacesNecessaires(
+                            data.occupationActuelle[6]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -500,7 +475,11 @@
                     <div class="result-chiffres row align-items-center">
                       <div class="col mb-0 titre-categorie">Légumes</div>
                       <div class="col-auto ml-auto hectares">
-                        {{ data.occupationActuelle[7]["surface"] }}
+                        {{
+                          formatterSurfacesNecessaires(
+                            data.occupationActuelle[7]["surface"]
+                          )
+                        }}
                       </div>
                     </div>
                   </div>
@@ -525,6 +504,10 @@
 
 <script>
 import { Treemap } from "d3plus-hierarchy";
+import {
+  formatterSurfacesNecessaires,
+  formatterChiffres,
+} from "@/plugins/surfaceProduits";
 
 export default {
   inject: ["$axios"],
@@ -537,6 +520,8 @@ export default {
     };
   },
   methods: {
+    formatterSurfacesNecessaires,
+    formatterChiffres,
     recupererDonnees() {
       var data4 = [
         {
@@ -590,7 +575,7 @@ export default {
       var codesTerritoireParcel = this.$store.state.geoList.map(
         (el) => el.code_territoire
       );
-      codesTerritoireParcel = ["mun91114"];
+      codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
       console.log(codesTerritoireParcel);
       bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
       this.$axios
@@ -692,6 +677,11 @@ export default {
       .height(500)
       .legend(0)
       .render();
+  },
+  computed: {
+    occupationActuelleTotale() {
+      return this.$store.state.resultatSimulation.surfacesActuelles;
+    },
   },
 };
 </script>

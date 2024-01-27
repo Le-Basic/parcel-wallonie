@@ -1104,8 +1104,18 @@ export default {
     },
   },
   async mounted() {
-    this.impacts = await getImpacts();
+    this.impacts = await getImpacts(this.$store.state.partpertes);
     console.log(this.impacts);
+  },
+  // TODO: store les impacts dans le state
+  watch: {
+    "$store.state.resultatSimulation": function () {
+      getImpacts(this.$store.state.partpertes).then((res) => {
+        this.impacts = res;
+      });
+      console.log(this.impacts);
+    },
+    deep: true,
   },
 };
 </script>

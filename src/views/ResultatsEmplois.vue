@@ -54,7 +54,7 @@
                     <thead></thead>
                     <tbody>
                       <tr class="rowHtmljob">
-                        <td colspan="4" @click="ouvrirModal('detailsLegumes')">
+                        <td colspan="4" @click="ouvrirModal('emploiLegumes')">
                           <div
                             class="cadre-categorie legumes animated fadeIn fast"
                             data-toggle="modal"
@@ -107,7 +107,7 @@
                       </tr>
 
                       <tr class="rowHtmljob">
-                        <td colspan="4">
+                        <td colspan="4" @click="ouvrirModal('emploiFruits')">
                           <div
                             class="cadre-categorie fruits animated fadeIn fast"
                             data-toggle="modal"
@@ -161,7 +161,7 @@
                         </td>
                       </tr>
                       <tr class="rowHtmljob">
-                        <td colspan="4">
+                        <td colspan="4" @click="ouvrirModal('emploiCereales')">
                           <div
                             class="cadre-categorie cereales animated fadeIn fast"
                             data-toggle="modal"
@@ -215,7 +215,7 @@
                         </td>
                       </tr>
                       <tr class="rowHtmljob">
-                        <td colspan="4">
+                        <td colspan="4" @click="ouvrirModal('emploiElevage')">
                           <div
                             class="cadre-categorie viande animated fadeIn fast"
                             data-toggle="modal"
@@ -487,7 +487,7 @@
       @fermerModal="fermerModal"
     ></modalEmplois>
     <nav id="asy-sidebar" :class="montrerClasse">
-      <modal-affiner-choix @fermerModalAffiner="fermerModal" />
+      <modal-affiner-choix @fermerModalAffiner="fermerModalAffiner" />
     </nav>
   </div>
 </template>
@@ -520,14 +520,17 @@ export default {
     montrerModalAffiner() {
       this.montrerClasse = "show";
     },
-    fermerModal() {
+    fermerModalAffiner() {
       this.montrerClasse = "";
     },
     trouverChiffre,
     ouvrirModal(id) {
       console.log(id);
-      this.modalDetails = id;
+      this.modalEmplois = id;
       console.log(this.modalDetails);
+    },
+    fermerModal() {
+      this.modalEmplois = null;
     },
   },
 };

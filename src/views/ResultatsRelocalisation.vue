@@ -192,6 +192,7 @@ export default {
     };
   },
   methods: {
+    getImpacts,
     montrerModalAffiner() {
       this.montrerClasse = "show";
     },
@@ -204,7 +205,7 @@ export default {
       "actionChoisirRegimeAlimentaire",
       this.$store.state.regime_alimentaire
     );
-    this.impacts = await getImpacts();
+    this.impacts = await getImpacts(this.$store.state.partpertes);
   },
   computed: {
     surfaceAMobiliser() {
@@ -216,6 +217,19 @@ export default {
     emploisAMobiliser() {
       return this.$store.state.resultatSimulation.emploisAMobiliser;
     },
+    partpertes() {
+      return this.$store.state.partpertes;
+    },
+  },
+  // TODO: REFACTO DU GET IMPACT
+  watch: {
+    "$store.state.resultatSimulation": function () {
+      getImpacts(this.$store.state.partpertes).then((res) => {
+        this.impacts = res;
+      });
+      console.log(this.impacts);
+    },
+    deep: true,
   },
 };
 </script>
