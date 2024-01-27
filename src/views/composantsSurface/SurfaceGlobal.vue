@@ -50,7 +50,11 @@
             class="animate__animated"
             :style="{
               opacity: 0,
-              'z-index': data.sau > data.surfaces_a_mobiliser ? 10 : 0,
+              'z-index':
+                data.sau >
+                this.$store.state.resultatSimulation.surfaceAMobiliser
+                  ? 10
+                  : 0,
             }"
           >
             <img
@@ -58,7 +62,9 @@
               class="mx-auto"
               :style="{
                 width:
-                  (data.surfaces_a_mobiliser / max_potentiel_surface) * 100 +
+                  (this.$store.state.resultatSimulation.surfaceAMobiliser /
+                    max_potentiel_surface) *
+                    100 +
                   '%',
                 opacity: 1,
               }"
@@ -245,7 +251,7 @@
                 id="surface_potentiel"
               >
                 <div class="odometer-inside" v-if="data.potentiel_nourricier">
-                  {{ data.surfaces_a_mobiliser }}
+                  {{ this.$store.state.resultatSimulation.surfaceAMobiliser }}
                   <!-- <span class="odometer-digit"
                     ><span class="odometer-digit-spacer">8</span
                     ><span class="odometer-digit-inner"
@@ -372,7 +378,9 @@
             <div class="col">
               <div>
                 <span class="surface_potentiel" id="surface_potentiel2">
-                  {{ data.surfaces_a_mobiliser }}</span
+                  {{
+                    this.$store.state.resultatSimulation.surfaceAMobiliser
+                  }}</span
                 >
                 hectares
               </div>
@@ -384,7 +392,10 @@
                     class="bar bg-vert-clair animate__animated"
                     :style="{
                       width:
-                        (data.surfaces_a_mobiliser / max_potentiel_sau) * 100 +
+                        (this.$store.state.resultatSimulation
+                          .surfaceAMobiliser /
+                          max_potentiel_sau) *
+                          100 +
                         '%',
                     }"
                   ></div>
@@ -453,10 +464,7 @@
 </template>
 
 <script>
-import {
-  fetchSurfaceActuelle,
-  getSurfaceAMobiliser,
-} from "@/plugins/getSurfacesNecessaires";
+import { fetchSurfaceActuelle } from "@/plugins/getSurfacesNecessaires";
 
 export default {
   inject: ["$axios"],
@@ -467,7 +475,6 @@ export default {
         surface: 0,
         sau: 0,
         potentiel_nourricier: 0,
-        surfaces_a_mobiliser: 0,
       },
     };
   },
@@ -523,7 +530,9 @@ export default {
         imageSurfaceTerritoire.style.opacity = 0;
         imageSurfaceTerritoire.classList.remove("fadeIn");
         imageSurfaceTerritoire.classList.add("fadeOut");
-        if (this.data.sau > this.data.surfaces_a_mobiliser) {
+        if (
+          this.data.sau > this.$store.state.resultatSimulation.surfaceAMobiliser
+        ) {
           imageSauActuelle.classList.add("position-devant2");
         }
       } else if (
@@ -580,15 +589,13 @@ export default {
   },
   async mounted() {
     window.addEventListener("scroll", this.gererVisibiliteImage);
-    this.data.surfaces_a_mobiliser = Math.round(
-      await getSurfaceAMobiliser().then((res) => res["surfaces_a_mobiliser"])
-    );
     const surface_actuelle = await fetchSurfaceActuelle();
     console.log("ACTUELLE", surface_actuelle);
     this.data.surface = surface_actuelle["surface_ha"];
     this.data.sau = surface_actuelle["sau_ha"];
     this.data.potentiel_nourricier = Math.round(
-      (this.data.sau * 100) / this.data.surfaces_a_mobiliser
+      (this.data.sau * 100) /
+        this.$store.state.resultatSimulation.surfaceAMobiliser
     );
     console.log(this.data);
     this.recupererDonnees();

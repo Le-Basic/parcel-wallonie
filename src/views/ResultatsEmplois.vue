@@ -19,9 +19,8 @@
                   <div
                     class="nbr-ha animated flipInY delay-05s fast"
                     id="emplois_repartition"
-                    v-if="surfaces_emplois"
                   >
-                    {{ surfaces_emplois.emplois_a_mobiliser }}
+                    {{ this.$store.state.resultatSimulation.emploisAMobiliser }}
                   </div>
                   <div class="hectares animated fadeIn delay-1s fast">
                     emplois agricoles directs
@@ -55,7 +54,7 @@
                     <thead></thead>
                     <tbody>
                       <tr class="rowHtmljob">
-                        <td colspan="4">
+                        <td colspan="4" @click="ouvrirModal('detailsLegumes')">
                           <div
                             class="cadre-categorie legumes animated fadeIn fast"
                             data-toggle="modal"
@@ -84,13 +83,16 @@
                               <div
                                 class="chiffre-emploi legumes animated flipInX"
                                 id="totaljoblegumes"
-                                v-if="surfaces_emplois"
+                                v-if="this.$store.state.resultatSimulation"
                               >
                                 {{
                                   trouverChiffre(
-                                    surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1,
-                                    CATEGORIE_PRODUITS.LEGUMES.libelle,
-                                    "emploi_conventionnel"
+                                    this.$store.state.resultatSimulation
+                                      .surfacesEmploisAMobiliser,
+                                    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
+                                      .LEGUMES.libelle,
+                                    "emploi_conventionnel",
+                                    "libelle_parcel_niveau_1"
                                   )
                                 }}
                               </div>
@@ -136,13 +138,16 @@
                               <div
                                 class="chiffre-emploi fruits animated flipInX"
                                 id="totaljobfruits"
-                                v-if="surfaces_emplois"
+                                v-if="this.$store.state.resultatSimulation"
                               >
                                 {{
                                   trouverChiffre(
-                                    surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1,
-                                    CATEGORIE_PRODUITS.FRUITS.libelle,
-                                    "emploi_conventionnel"
+                                    this.$store.state.resultatSimulation
+                                      .surfacesEmploisAMobiliser,
+                                    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
+                                      .FRUITS.libelle,
+                                    "emploi_conventionnel",
+                                    "libelle_parcel_niveau_1"
                                   )
                                 }}
                               </div>
@@ -187,13 +192,16 @@
                               <div
                                 class="chiffre-emploi cereales animated flipInX"
                                 id="totaljobgcultures"
-                                v-if="surfaces_emplois"
+                                v-if="this.$store.state.resultatSimulation"
                               >
                                 {{
                                   trouverChiffre(
-                                    surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1,
-                                    CATEGORIE_PRODUITS.CEREALES.libelle,
-                                    "emploi_conventionnel"
+                                    this.$store.state.resultatSimulation
+                                      .surfacesEmploisAMobiliser,
+                                    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
+                                      .CEREALES.libelle,
+                                    "emploi_conventionnel",
+                                    "libelle_parcel_niveau_1"
                                   )
                                 }}
                               </div>
@@ -246,13 +254,16 @@
                               <div
                                 class="chiffre-emploi viande animated flipInX"
                                 id="totaljobelevage"
-                                v-if="surfaces_emplois"
+                                v-if="this.$store.state.resultatSimulation"
                               >
                                 {{
                                   trouverChiffre(
-                                    surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1,
-                                    CATEGORIE_PRODUITS.ELEVAGE.libelle,
-                                    "emploi_conventionnel"
+                                    this.$store.state.resultatSimulation
+                                      .surfacesEmploisAMobiliser,
+                                    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
+                                      .ELEVAGE.libelle,
+                                    "emploi_conventionnel",
+                                    "libelle_parcel_niveau_1"
                                   )
                                 }}
                               </div>
@@ -277,61 +288,81 @@
                       class="auto-style1"
                       border="0"
                       style="width: 100%"
-                      v-if="surfaces_emplois"
+                      v-if="this.$store.state.resultatSimulation"
                     >
                       <tr style="height: 110px" class="animated fadeIn">
                         <td valign="middle" id="man_legumes">
                           <vizEmploi
-                            :couleur="CATEGORIE_PRODUITS.LEGUMES.couleur"
+                            :couleur="
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES
+                                .couleur
+                            "
                             :objetEmplois="
-                              surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1
+                              this.$store.state.resultatSimulation
+                                .surfacesEmploisAMobiliser
                             "
                             :categorieProduitLibelle="
-                              CATEGORIE_PRODUITS.LEGUMES.libelle
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES
+                                .libelle
                             "
-                            v-if="surfaces_emplois"
+                            v-if="this.$store.state.resultatSimulation"
                           />
                         </td>
                       </tr>
                       <tr style="height: 110px" class="animated fadeIn">
                         <td valign="middle" id="man_fruits">
                           <vizEmploi
-                            :couleur="CATEGORIE_PRODUITS.FRUITS.couleur"
+                            :couleur="
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS
+                                .couleur
+                            "
                             :objetEmplois="
-                              surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1
+                              this.$store.state.resultatSimulation
+                                .surfacesEmploisAMobiliser
                             "
                             :categorieProduitLibelle="
-                              CATEGORIE_PRODUITS.FRUITS.libelle
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS
+                                .libelle
                             "
-                            v-if="surfaces_emplois"
+                            v-if="this.$store.state.resultatSimulation"
                           />
                         </td>
                       </tr>
                       <tr style="height: 110px" class="animated fadeIn">
                         <td valign="middle" id="man_cereales">
                           <vizEmploi
-                            :couleur="CATEGORIE_PRODUITS.CEREALES.couleur"
+                            :couleur="
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES
+                                .couleur
+                            "
                             :objetEmplois="
-                              surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1
+                              this.$store.state.resultatSimulation
+                                .surfacesEmploisAMobiliser
                             "
                             :categorieProduitLibelle="
-                              CATEGORIE_PRODUITS.CEREALES.libelle
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES
+                                .libelle
                             "
-                            v-if="surfaces_emplois"
+                            v-if="this.$store.state.resultatSimulation"
                           />
                         </td>
                       </tr>
                       <tr style="height: 110px" class="animated fadeIn">
                         <td valign="middle" id="man_elevage">
                           <vizEmploi
-                            :couleur="CATEGORIE_PRODUITS.ELEVAGE.couleur"
+                            :couleur="
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE
+                                .couleur
+                            "
                             :objetEmplois="
-                              surfaces_emplois.surfaces_emplois_a_mobiliser_parcel_niveau_1
+                              this.$store.state.resultatSimulation
+                                .surfacesEmploisAMobiliser
                             "
                             :categorieProduitLibelle="
-                              CATEGORIE_PRODUITS.ELEVAGE.libelle
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE
+                                .libelle
                             "
-                            v-if="surfaces_emplois"
+                            v-if="this.$store.state.resultatSimulation"
                           />
                         </td>
                       </tr>
@@ -450,6 +481,11 @@
         </div>
       </div>
     </div>
+    <modalEmplois
+      v-if="modalEmplois"
+      :modalId="modalEmplois"
+      @fermerModal="fermerModal"
+    ></modalEmplois>
     <nav id="asy-sidebar" :class="montrerClasse">
       <modal-affiner-choix @fermerModalAffiner="fermerModal" />
     </nav>
@@ -460,22 +496,23 @@
 import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
 import resumeChoix from "./modal/resumeChoix.vue";
 import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
+import modalEmplois from "./modal/modalEmplois.vue";
 import vizEmploi from "./viz/vizEmploi.vue";
-import { getSurfaceAMobiliser } from "@/plugins/getSurfacesNecessaires";
-import { CATEGORIE_PRODUITS } from "@/config/categorieProduits";
+import { CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER } from "@/config/categorieProduitsPotentielNourricier";
 import { trouverChiffre } from "@/plugins/utils";
 export default {
   components: {
     BarreNavigation,
     resumeChoix,
     ModalAffinerChoix,
+    modalEmplois,
     vizEmploi,
   },
   data() {
     return {
       montrerClasse: "",
-      surfaces_emplois: null,
-      CATEGORIE_PRODUITS,
+      modalEmplois: null,
+      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER,
       emploi_conventionnel: "emploi_conventionnel",
     };
   },
@@ -487,22 +524,15 @@ export default {
       this.montrerClasse = "";
     },
     trouverChiffre,
+    ouvrirModal(id) {
+      console.log(id);
+      this.modalDetails = id;
+      console.log(this.modalDetails);
+    },
   },
   async mounted() {
-    this.surfaces_emplois = await getSurfaceAMobiliser().then((res) => {
-      return {
-        emplois_a_mobiliser: res.emplois_a_mobiliser,
-        surfaces_emplois_a_mobiliser_parcel_niveau_1:
-          res.surfaces_emplois_a_mobiliser_parcel_niveau_1.map((item) => {
-            return {
-              ...item,
-              part_emplois: Math.round(
-                (item.emploi_conventionnel * 100) / res.emplois_a_mobiliser
-              ),
-            };
-          }),
-      };
-    });
+    this.this.$store.state.resultatSimulation =
+      this.$store.state.resultatSimulation.surfacesEmploisAMobiliser;
   },
 };
 </script>

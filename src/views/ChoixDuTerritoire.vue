@@ -125,7 +125,7 @@ export default {
   name: "HomeView",
   data() {
     return {
-      pointGeoAPI: "https://convertisseur.azurewebsites.net/API/GeoData/",
+      pointGeoAPI: window.apiURL + "/parcel/GeoData/",
       rechercheInput: "",
       list_geo: [],
     };
@@ -146,7 +146,7 @@ export default {
       console.log(valeur);
       if (valeur.length > 3) {
         axios
-          .get(this.pointGeoAPI + valeur)
+          .get(this.pointGeoAPI + valeur + "?pays=belgique")
           .then((response) => {
             this.list_geo = response.data;
             console.log(this.list_geo);

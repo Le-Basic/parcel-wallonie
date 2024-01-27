@@ -14,6 +14,7 @@
           <div class="text-h2 animated fadeInDown delay-05s">
             Estimation des effets associés :
           </div>
+          a
           <div class="resultats-generaux row">
             <div
               class="col-12 col-sm-12 col-lg-6 mb-2"
@@ -37,9 +38,7 @@
                         class="nbr-ha animated flipInX delay-1s odometer"
                         id="surface6"
                       >
-                        {{
-                          this.$store.state.resultatSimulation.surfaceAMobiliser
-                        }}
+                        {{ surfaceAMobiliser }}
                       </div>
                       <div class="hectares">hectares</div>
                     </div>
@@ -55,8 +54,8 @@
                       <span
                         class="nbr-ha animated flipInY delay-1s odometer"
                         id="potentiel0"
-                        v-if="potentiel_nourricier"
-                        >{{ potentiel_nourricier }}</span
+                        v-if="potentielNourricier"
+                        >{{ potentielNourricier }}</span
                       >
                       <span class="hectares ml-1">%</span>
                     </div>
@@ -179,7 +178,6 @@
 import Nav from "@/components/Nav/BarreNavigation.vue";
 import resumeChoix from "./modal/resumeChoix.vue";
 import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
-import { fetchSurfaceActuelle } from "@/plugins/getSurfacesNecessaires";
 
 import { getImpacts } from "@/plugins/getImpacts";
 import { IDS_IMPACTS } from "@/config/ImpactIds";
@@ -189,8 +187,6 @@ export default {
   data() {
     return {
       donnees: {},
-      // FIX surface_actuelle doit être aussi stockée dans le store et nulle part ailleurs
-      surface_actuelle: 0,
       montrerClasse: "",
       impacts: [],
       IDS_IMPACTS,
@@ -205,23 +201,18 @@ export default {
     },
   },
   async mounted() {
-    this.surface_actuelle = await fetchSurfaceActuelle();
     this.$store.dispatch(
       "actionChoisirRegimeAlimentaire",
       this.$store.state.regime_alimentaire
     );
-    this.potentiel_nourricier = Math.round(
-      (this.surface_actuelle["sau_ha"] * 100) /
-        this.$store.state.resultatSimulation.surfaceAMobiliser
-    );
     this.impacts = await getImpacts();
   },
   computed: {
-    potentiel_nourricier() {
-      return Math.round(
-        (this.surface_actuelle["sau_ha"] * 100) /
-          this.$store.state.resultatSimulation.surfaceAMobiliser
-      );
+    surfaceAMobiliser() {
+      return this.$store.state.resultatSimulation.surfaceAMobiliser;
+    },
+    potentielNourricier() {
+      return this.$store.state.resultatSimulation.potentielNourricier;
     },
   },
 };

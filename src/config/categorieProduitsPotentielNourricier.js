@@ -1,5 +1,4 @@
-// Note : fichier séparé de regimeListe pour l'instant, car regimeListe.js utilise des require() qui posent pb dans les tests
-export const CATEGORIE_PRODUITS = {
+export const CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER = {
   ELEVAGE: {
     couleur: "#B57A60",
     libelle: "Elevage",

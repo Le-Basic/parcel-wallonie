@@ -1,5 +1,4 @@
 import axios from "axios";
-import { IDS_REGIMES_ALIMENTAIRES } from "../config/regimeIds";
 
 async function fetchData(api_route) {
   const bodyFormData = new FormData();
@@ -29,6 +28,22 @@ export async function fetchSurfaceActuelle() {
   return data[0];
 }
 
+export async function fetchSurfacesActuelles(url, codesTerritoireParcel) {
+  const bodyFormData = new FormData();
+  bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
+  const response = await axios.post(
+    `${url}`,
+    codesTerritoireParcel, // Request body data
+    {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return response.data;
+}
+
 export async function fetchSurfaceNecessaire(
   url,
   codesTerritoireParcel,
@@ -51,6 +66,7 @@ export async function fetchSurfaceNecessaire(
 
 // TODO : fait partie des règles de calcul => a bouger dans le plugin calculResultatSimulation.js
 export function calculerSurfacesEtEmploisAMobiliser(
+  surfaceActuelleResponseApi,
   surfaceNecessaireResponseApi
 ) {
   const surfaces_a_mobiliser = surfaceNecessaireResponseApi
@@ -73,6 +89,8 @@ export function calculerSurfacesEtEmploisAMobiliser(
         surface_necessaire_bio: 0,
         emploi_conventionnel: 0,
         emploi_bio: 0,
+        part_surfaces_a_mobiliser: 0,
+        part_emplois_a_mobiliser: 0,
       };
       surfaces_emplois_a_mobiliser_parcel_niveau_1.push(
         res[valeur.libelle_parcel_niveau_1]
@@ -85,28 +103,30 @@ export function calculerSurfacesEtEmploisAMobiliser(
     res[valeur.libelle_parcel_niveau_1].emploi_conventionnel +=
       valeur.emploi_conventionnel;
     res[valeur.libelle_parcel_niveau_1].emploi_bio += valeur.emploi_bio;
+    res[valeur.libelle_parcel_niveau_1].part_surfaces_a_mobiliser +=
+      valeur.surface_necessaire_conventionnel / surfaces_a_mobiliser;
+    res[valeur.libelle_parcel_niveau_1].part_emplois_a_mobiliser +=
+      valeur.emploi_conventionnel / emplois_a_mobiliser;
     return res;
   }, {});
 
+  const surfaces_actuelles = surfaceActuelleResponseApi
+    .map((item) => {
+      return item.sau_ha;
+    })
+    .reduce((somme, surface) => somme + surface, 0);
+  const surfaces_actuelles_parcel_niveau_1 = surfaceActuelleResponseApi.map(
+    (item) => ({
+      ...item,
+      part_surfaces_actuelles: item.sau_ha / surfaces_actuelles,
+    })
+  );
   return {
     surfaces_a_mobiliser: surfaces_a_mobiliser,
     emplois_a_mobiliser: emplois_a_mobiliser,
     surfaces_emplois_a_mobiliser_parcel_niveau_1:
       surfaces_emplois_a_mobiliser_parcel_niveau_1,
+    surfaces_actuelles: surfaces_actuelles,
+    surfaces_actuelles_parcel_niveau_1: surfaces_actuelles_parcel_niveau_1,
   };
-}
-
-// TODO : Fonction DEPRECATED => ce point d'entrée est async car il enchaine l'appel d'api + règle de calcul
-// Bascule progressive à faire sur fetchSurfaceNecessaire et calculerSurfaceAMobiliser, qui sont appelés par les actions du store
-export async function getSurfaceAMobiliser(
-  idRegimeAlimentaire = IDS_REGIMES_ALIMENTAIRES.ACTUEL
-) {
-  const url = window.apiURL + "parcel/belgique/surfaces_necessaires";
-  const codesTerritoireParcel = ["mun91114"];
-  var surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
-    url,
-    codesTerritoireParcel,
-    idRegimeAlimentaire
-  );
-  return calculerSurfacesEtEmploisAMobiliser(surfaceNecessaireResponseApi);
 }
