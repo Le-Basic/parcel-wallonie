@@ -14,7 +14,6 @@
           <div class="text-h2 animated fadeInDown delay-05s">
             Estimation des effets associés :
           </div>
-          a
           <div class="resultats-generaux row">
             <div
               class="col-12 col-sm-12 col-lg-6 mb-2"
@@ -84,7 +83,7 @@
                     id="emplois4"
                     style="float: none"
                   >
-                    -
+                    {{ emploisAMobiliser }}
                   </div>
                   <div class="hectares">
                     emplois <span id="emplois_inf_1"></span>
@@ -213,6 +212,9 @@ export default {
     },
     potentielNourricier() {
       return this.$store.state.resultatSimulation.potentielNourricier;
+    },
+    emploisAMobiliser() {
+      return this.$store.state.resultatSimulation.emploisAMobiliser;
     },
   },
 };

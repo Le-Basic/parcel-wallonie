@@ -5,12 +5,14 @@ describe("Test du calcul du resultat de la simulation", () => {
   it("Test appel API surfaces_necessaires, Régime alimentaire ACTUEL", () => {
     const resultatSimulation = calculerResultatSimulation(
       REPONSE_API_SURFACE_ACTUELLE,
-      REPONSE_API_SURFACE_NECESSAIRE
+      REPONSE_API_SURFACE_NECESSAIRE,
+      3,
+      5
     );
-    expect(resultatSimulation.surfaceAMobiliser).toEqual(3335);
+    expect(resultatSimulation.surfaceAMobiliser).toBeCloseTo(44657.2, 0);
     expect(resultatSimulation.emploisAMobiliser).toEqual(120);
     expect(resultatSimulation.surfacesActuelles).toEqual(300);
-    expect(resultatSimulation.potentielNourricier).toEqual(9);
+    expect(resultatSimulation.potentielNourricier).toEqual(1);
     let eltSurfacesEmploisAMobiliser =
       resultatSimulation.surfacesEmploisAMobiliser.find(
         (e) => e.libelle_parcel_niveau_1 === "Elevage"

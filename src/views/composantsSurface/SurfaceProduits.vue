@@ -18,7 +18,11 @@
             class="odometer-inside"
             v-if="this.$store.state.resultatSimulation.surfaceAMobiliser"
           >
-            {{ this.$store.state.resultatSimulation.surfaceAMobiliser }}
+            {{
+              formatterChiffres(
+                this.$store.state.resultatSimulation.surfaceAMobiliser
+              )
+            }}
           </div>
         </div>
         <div class="hectares animated fadeIn delay-1-5s">
@@ -87,6 +91,7 @@
                           .surfacesEmploisAMobiliser[3].part_surface_a_mobiliser
                       "
                       couleur="#91C423"
+                      :key="this.$store.state.resultatSimulation"
                     ></jaugeChart>
                   </div>
                   <div class="result-type">
@@ -101,8 +106,7 @@
                       {{
                         formatterSurfacesNecessaires(
                           this.$store.state.resultatSimulation
-                            .surfacesEmploisAMobiliser[3]
-                            .surface_necessaire_conventionnel
+                            .surfacesEmploisAMobiliser[3].surface_a_mobiliser
                         )
                       }}
                     </div>
@@ -138,6 +142,7 @@
                           .surfacesEmploisAMobiliser[1].part_surface_a_mobiliser
                       "
                       couleur="#A261C0"
+                      :key="this.$store.state.resultatSimulation"
                     ></jaugeChart>
                   </div>
                   <div class="result-type">
@@ -151,8 +156,7 @@
                       {{
                         formatterSurfacesNecessaires(
                           this.$store.state.resultatSimulation
-                            .surfacesEmploisAMobiliser[1]
-                            .surface_necessaire_conventionnel
+                            .surfacesEmploisAMobiliser[1].surface_a_mobiliser
                         )
                       }}
                     </div>
@@ -185,6 +189,7 @@
                           .surfacesEmploisAMobiliser[2].part_surface_a_mobiliser
                       "
                       couleur="#F9B233"
+                      :key="this.$store.state.resultatSimulation"
                     ></jaugeChart>
                   </div>
                   <div class="result-type">
@@ -200,8 +205,7 @@
                       {{
                         formatterSurfacesNecessaires(
                           this.$store.state.resultatSimulation
-                            .surfacesEmploisAMobiliser[2]
-                            .surface_necessaire_conventionnel
+                            .surfacesEmploisAMobiliser[2].surface_a_mobiliser
                         )
                       }}
                     </div>
@@ -234,6 +238,7 @@
                           .surfacesEmploisAMobiliser[0].part_surface_a_mobiliser
                       "
                       couleur="#B57A60"
+                      :key="this.$store.state.resultatSimulation"
                     ></jaugeChart>
                   </div>
                   <div class="result-type">
@@ -248,7 +253,7 @@
                         formatterSurfacesNecessaires(
                           this.$store.state.resultatSimulation.surfacesEmploisAMobiliser.find(
                             (item) => item.libelle_parcel_niveau_1 == "Elevage"
-                          ).surface_necessaire_conventionnel
+                          ).surface_a_mobiliser
                         )
                       }}
                     </div>
@@ -279,7 +284,9 @@
         >
           <div class="odometer-inside">
             {{
-              Math.round(this.$store.state.resultatSimulation.surfacesActuelles)
+              formatterChiffres(
+                this.$store.state.resultatSimulation.surfacesActuelles
+              )
             }}
           </div>
         </div>
@@ -1161,6 +1168,7 @@
 </template>
 
 <script>
+import { formatterChiffres } from "@/plugins/surfaceProduits";
 import { Treemap } from "d3plus-hierarchy";
 import { CATEGORIE_PRODUITS_SURFACES_ACTUELLES } from "@/config/categorieProduitsActuel";
 import { trouverChiffre } from "@/plugins/utils";
@@ -1187,6 +1195,7 @@ export default {
   },
   methods: {
     trouverChiffre,
+    formatterChiffres,
     ouvrirModal(id) {
       console.log(id);
       this.modalDetails = id;
@@ -1335,6 +1344,14 @@ export default {
           ),
         };
       });
+    },
+  },
+  watch: {
+    "$store.state.resultatSimulation.surfacesEmploisAMobiliser": function () {
+      console.log("test");
+      pushDataViz(
+        this.$store.state.resultatSimulation.surfacesEmploisAMobiliser
+      );
     },
   },
 };
