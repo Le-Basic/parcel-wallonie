@@ -2,7 +2,6 @@
   <div>
     <div class="bloc-surface">
       <h3 class="text-center">Surface agricole à mobiliser</h3>
-      <pre> {{ data }}</pre>
       <div
         class="cadre-resultat resultat-ha animated flipInX delay-05s bg-vert-clair"
       >
@@ -11,7 +10,7 @@
             class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_potentiel"
             id="surface_potentiel4"
           >
-            {{ occupationActuelle }}
+            {{ $store.state.resultatSimulation.surfaceAMobiliser }}
           </div>
           <div class="hectares animated fadeIn delay-1-5s">
             hectares agricoles
@@ -69,7 +68,16 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            data.occupationActuelle[0]["surface"]
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfaceNecessairePaysage,
+                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.PRAIRIES
+                                  .libelle,
+                                "surface_a_mobiliser",
+                                "libelle_parcel_paysage_actuel"
+                              )
+                            )
                           )
                         }}
                       </div>
@@ -96,7 +104,16 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            data.occupationActuelle[1]["surface"]
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfaceNecessairePaysage,
+                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FOURRAGES
+                                  .libelle,
+                                "surface_a_mobiliser",
+                                "libelle_parcel_paysage_actuel"
+                              )
+                            )
                           )
                         }}
                       </div>
@@ -123,7 +140,16 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            data.occupationActuelle[3]["surface"]
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfaceNecessairePaysage,
+                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMINEUSES
+                                  .libelle,
+                                "surface_a_mobiliser",
+                                "libelle_parcel_paysage_actuel"
+                              )
+                            )
                           )
                         }}
                       </div>
@@ -152,7 +178,16 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            data.occupationActuelle[4]["surface"]
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfaceNecessairePaysage,
+                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.CEREALES
+                                  .libelle,
+                                "surface_a_mobiliser",
+                                "libelle_parcel_paysage_actuel"
+                              )
+                            )
                           )
                         }}
                       </div>
@@ -180,7 +215,16 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            data.occupationActuelle[5]["surface"]
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfaceNecessairePaysage,
+                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
+                                  .CULTURES_INDUSTRIELLES_ALIMENTAIRES.libelle,
+                                "surface_a_mobiliser",
+                                "libelle_parcel_paysage_actuel"
+                              )
+                            )
                           )
                         }}
                       </div>
@@ -207,7 +251,16 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            data.occupationActuelle[6]["surface"]
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfaceNecessairePaysage,
+                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FRUITS
+                                  .libelle,
+                                "surface_a_mobiliser",
+                                "libelle_parcel_paysage_actuel"
+                              )
+                            )
                           )
                         }}
                       </div>
@@ -234,7 +287,16 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            data.occupationActuelle[7]["surface"]
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfaceNecessairePaysage,
+                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMES
+                                  .libelle,
+                                "surface_a_mobiliser",
+                                "libelle_parcel_paysage_actuel"
+                              )
+                            )
                           )
                         }}
                       </div>
@@ -312,7 +374,16 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            data.occupationActuelle[0]["surface"]
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfacesActuellesPaysage,
+                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.PRAIRIES
+                                  .libelle,
+                                "sau_ha",
+                                "libelle_parcel_paysage_actuel"
+                              )
+                            )
                           )
                         }}
                       </div>
@@ -339,7 +410,16 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            data.occupationActuelle[1]["surface"]
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfacesActuellesPaysage,
+                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FOURRAGES
+                                  .libelle,
+                                "sau_ha",
+                                "libelle_parcel_paysage_actuel"
+                              )
+                            )
                           )
                         }}
                       </div>
@@ -366,7 +446,16 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            data.occupationActuelle[3]["surface"]
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfacesActuellesPaysage,
+                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMINEUSES
+                                  .libelle,
+                                "sau_ha",
+                                "libelle_parcel_paysage_actuel"
+                              )
+                            )
                           )
                         }}
                       </div>
@@ -395,7 +484,16 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            data.occupationActuelle[4]["surface"]
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfacesActuellesPaysage,
+                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.CEREALES
+                                  .libelle,
+                                "sau_ha",
+                                "libelle_parcel_paysage_actuel"
+                              )
+                            )
                           )
                         }}
                       </div>
@@ -423,7 +521,16 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            data.occupationActuelle[5]["surface"]
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfacesActuellesPaysage,
+                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
+                                  .CULTURES_INDUSTRIELLES_ALIMENTAIRES.libelle,
+                                "sau_ha",
+                                "libelle_parcel_paysage_actuel"
+                              )
+                            )
                           )
                         }}
                       </div>
@@ -450,7 +557,16 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            data.occupationActuelle[6]["surface"]
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfacesActuellesPaysage,
+                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FRUITS
+                                  .libelle,
+                                "sau_ha",
+                                "libelle_parcel_paysage_actuel"
+                              )
+                            )
                           )
                         }}
                       </div>
@@ -477,7 +593,16 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            data.occupationActuelle[7]["surface"]
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfacesActuellesPaysage,
+                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMES
+                                  .libelle,
+                                "sau_ha",
+                                "libelle_parcel_paysage_actuel"
+                              )
+                            )
                           )
                         }}
                       </div>
@@ -508,11 +633,15 @@ import {
   formatterSurfacesNecessaires,
   formatterChiffres,
 } from "@/plugins/surfaceProduits";
+import { trouverChiffre } from "@/plugins/utils";
+
+import { CATEGORIE_PRODUITS_ACTUELS_PAYSAGE } from "@/config/categorieProduitsActuelsPaysage";
 
 export default {
   inject: ["$axios"],
   data() {
     return {
+      CATEGORIE_PRODUITS_ACTUELS_PAYSAGE,
       data: {
         occupationActuelle: [],
         potentielNourricier: [],
@@ -520,6 +649,7 @@ export default {
     };
   },
   methods: {
+    trouverChiffre,
     formatterSurfacesNecessaires,
     formatterChiffres,
     recupererDonnees() {
@@ -620,60 +750,11 @@ export default {
   },
   mounted() {
     this.recupererDonnees();
-    var data3 = [
-      {
-        surface: 881877,
-        name: "Prairies",
-        color: "#D1F18C",
-      },
-      {
-        surface: 402398,
-        name: "Cultures fourragères",
-        color: "#F1CF98",
-      },
-      {
-        surface: 54540,
-        name: "Légumineuses",
-        color: "#FDD084",
-      },
-      {
-        surface: 170505,
-        name: "Céréales..",
-        color: "#FBCDC2",
-      },
-      {
-        surface: 18180,
-        name: "Cult. indus..",
-        color: "#88D9D9",
-      },
-      {
-        surface: 27400,
-        name: "Fruits",
-        color: "#FB97C7",
-      },
-      {
-        surface: 20200,
-        name: "Légumes",
-        color: "#EABDFF",
-      },
-      {
-        surface: 64,
-        name: "Autres..",
-        color: "#9CE6FA",
-        background: "#F1F9E0",
-      },
-      {
-        surface: 26,
-        name: "Jachères..",
-        color: "#BDD687",
-      },
-    ];
     new Treemap()
       .select("#viz3")
-      .data(data3)
-      .groupBy("name")
-      .sum("surface")
-      .color("color")
+      .data(this.$store.state.resultatSimulation.surfaceNecessairePaysage)
+      .groupBy("libelle_parcel_paysage_actuel")
+      .sum("surface_a_mobiliser")
       .height(500)
       .legend(0)
       .render();
@@ -681,6 +762,20 @@ export default {
   computed: {
     occupationActuelleTotale() {
       return this.$store.state.resultatSimulation.surfacesActuelles;
+    },
+  },
+  watch: {
+    "$store.state.resultatSimulation.surfacesEmploisAMobiliser": function () {
+      var container = document.getElementById("viz3");
+      container.innerHTML = "";
+      new Treemap()
+        .select("#viz3")
+        .data(this.$store.state.resultatSimulation.surfaceNecessairePaysage)
+        .groupBy("libelle_parcel_paysage_actuel")
+        .sum("surface_a_mobiliser")
+        .height(500)
+        .legend(0)
+        .render();
     },
   },
 };

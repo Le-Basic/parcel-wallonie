@@ -602,10 +602,16 @@ export default {
       return this.$store.state.resultatSimulation.surfacesActuelles;
     },
     max_potentiel_sau() {
-      return Math.max(this.surfaces_actuelles, this.data.potentiel_nourricier);
+      return Math.max(
+        this.$store.state.resultatSimulation.surfacesActuelles,
+        this.$store.state.resultatSimulation.surfaceAMobiliser
+      );
     },
     max_potentiel_surface() {
-      return Math.max(this.data.surface, this.data.potentiel_nourricier);
+      return Math.max(
+        this.data.surface,
+        this.$store.state.resultatSimulation.surfaceAMobiliser
+      );
     },
   },
   async mounted() {

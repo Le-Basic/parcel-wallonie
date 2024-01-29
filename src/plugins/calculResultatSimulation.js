@@ -6,7 +6,9 @@ export function calculerResultatSimulation(
   partBioFruits,
   partBioLegumes,
   partBioCereales,
-  partPertes
+  partPertes,
+  surfaceActuelleResponseApiPaysage,
+  surfaceNecessairePaysageResponseApi
 ) {
   const {
     surfaces_a_mobiliser,
@@ -14,6 +16,8 @@ export function calculerResultatSimulation(
     surfaces_emplois_a_mobiliser_parcel_niveau_1,
     surfaces_actuelles,
     surfaces_actuelles_parcel_niveau_1,
+    surfaces_actuelles_paysage,
+    surfaces_a_mobiliser_paysage,
   } = calculerSurfacesEtEmploisAMobiliser(
     surfaceActuelleReponseApi,
     surfaceNecessaireResponseApi,
@@ -21,7 +25,10 @@ export function calculerResultatSimulation(
     partBioFruits,
     partBioLegumes,
     partBioCereales,
-    partPertes
+    partPertes,
+    //TODO RENAME CELUI CI
+    surfaceActuelleResponseApiPaysage,
+    surfaceNecessairePaysageResponseApi
   );
   const potentielNourricier = Math.round(
     (surfaces_actuelles * 100) / surfaces_a_mobiliser
@@ -34,6 +41,8 @@ export function calculerResultatSimulation(
     surfacesActuelles: surfaces_actuelles,
     surfacesActuellesParcelNiveau1: surfaces_actuelles_parcel_niveau_1,
     potentielNourricier: potentielNourricier,
+    surfacesActuellesPaysage: surfaces_actuelles_paysage,
+    surfaceNecessairePaysage: surfaces_a_mobiliser_paysage,
   };
 }
 
@@ -44,7 +53,9 @@ function calculerSurfacesEtEmploisAMobiliser(
   partBioFruits,
   partBioLegumes,
   partBioCereales,
-  partPertes
+  partPertes,
+  surfaceActuelleResponseApiPaysage,
+  surfaceNecessairePaysageResponseApi
 ) {
   let surfaces_emplois_a_mobiliser_parcel_niveau_1 = [];
   surfaceNecessaireResponseApi.reduce(function (res, valeur) {
@@ -111,6 +122,7 @@ function calculerSurfacesEtEmploisAMobiliser(
       return item.sau_ha;
     })
     .reduce((somme, surface) => somme + surface, 0);
+
   const surfaces_actuelles_parcel_niveau_1 = surfaceActuelleResponseApi.map(
     (item) => ({
       ...item,
@@ -118,6 +130,36 @@ function calculerSurfacesEtEmploisAMobiliser(
     })
   );
 
+  const surfaces_actuelles_paysage = surfaceActuelleResponseApiPaysage.map(
+    (item) => ({
+      ...item,
+      part_surfaces_actuelles: item.sau_ha / surfaces_actuelles,
+    })
+  );
+  const groupedData = {};
+  surfaceNecessairePaysageResponseApi
+    .map((item) => ({
+      ...item,
+      surface_a_mobiliser: calculSurfAMobiliser(
+        item.libelle_parcel_niveau_1,
+        item.surface_necessaire_bio,
+        item.surface_necessaire_conventionnel,
+        partBioElevage,
+        partBioFruits,
+        partBioLegumes,
+        partBioCereales,
+        partPertes
+      ),
+    }))
+    .forEach((entry) => {
+      const key = entry.libelle_parcel_paysage_actuel;
+      groupedData[key] = groupedData[key] || {
+        libelle_parcel_paysage_actuel: key,
+        surface_a_mobiliser: 0,
+      };
+      groupedData[key].surface_a_mobiliser += entry.surface_a_mobiliser;
+    });
+  const surfaces_a_mobiliser_paysage = Object.values(groupedData);
   surfaces_emplois_a_mobiliser_parcel_niveau_1 =
     surfaces_emplois_a_mobiliser_parcel_niveau_1.map((item) => ({
       ...item,
@@ -135,6 +177,8 @@ function calculerSurfacesEtEmploisAMobiliser(
       surfaces_emplois_a_mobiliser_parcel_niveau_1,
     surfaces_actuelles: surfaces_actuelles,
     surfaces_actuelles_parcel_niveau_1: surfaces_actuelles_parcel_niveau_1,
+    surfaces_actuelles_paysage: surfaces_actuelles_paysage,
+    surfaces_a_mobiliser_paysage: surfaces_a_mobiliser_paysage,
   };
 }
 

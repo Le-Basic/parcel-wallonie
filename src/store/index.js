@@ -4,6 +4,7 @@ import { regimeListe } from "@/config/regimeListe.js";
 import {
   fetchSurfaceNecessaire,
   fetchSurfacesActuelles,
+  fetchSurfacesActuellesPaysage,
 } from "@/plugins/getSurfacesNecessaires";
 import { calculerResultatSimulation } from "../plugins/calculResultatSimulation";
 const getDefaultState = () => {
@@ -31,6 +32,7 @@ const getDefaultState = () => {
       surfacesActuelles: 0,
       surfacesActuellesParcelNiveau1: [],
       potentielNourricier: 0,
+      surfacesActuellesPaysage: 0,
     },
   };
 };
@@ -63,8 +65,22 @@ async function recalculerResultatSimulation(
     actuelles_url,
     codesTerritoireParcel
   );
+  const actuellespaysage__url =
+    window.apiURL + "parcel/belgique/surfaces_actuels_paysage";
+  var surfaceActuelleResponseApiPaysage = await fetchSurfacesActuellesPaysage(
+    actuellespaysage__url,
+    codesTerritoireParcel
+  );
   var surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
     url,
+    codesTerritoireParcel,
+    idRegimeAlimentaire
+  );
+
+  const necessaires_paysage__url =
+    window.apiURL + "parcel/belgique/surfaces_necessaires_paysage";
+  var surfaceNecessairePaysageResponseApi = await fetchSurfaceNecessaire(
+    necessaires_paysage__url,
     codesTerritoireParcel,
     idRegimeAlimentaire
   );
@@ -75,7 +91,9 @@ async function recalculerResultatSimulation(
     partBioFruits,
     partBioLegumes,
     partBioCereales,
-    partPertes
+    partPertes,
+    surfaceActuelleResponseApiPaysage,
+    surfaceNecessairePaysageResponseApi
   );
   return resultatSimulation;
 }

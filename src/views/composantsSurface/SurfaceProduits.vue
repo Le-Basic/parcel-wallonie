@@ -87,8 +87,16 @@
                   >
                     <jaugeChart
                       :value="
-                        this.$store.state.resultatSimulation
-                          .surfacesEmploisAMobiliser[3].part_surface_a_mobiliser
+                        Math.round(
+                          trouverChiffre(
+                            this.$store.state.resultatSimulation
+                              .surfacesEmploisAMobiliser,
+                            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES
+                              .libelle,
+                            'part_surface_a_mobiliser',
+                            'libelle_parcel_niveau_1'
+                          )
+                        )
                       "
                       couleur="#91C423"
                       :key="this.$store.state.resultatSimulation"
@@ -105,8 +113,16 @@
                     <div class="hectares">
                       {{
                         formatterSurfacesNecessaires(
-                          this.$store.state.resultatSimulation
-                            .surfacesEmploisAMobiliser[3].surface_a_mobiliser
+                          Math.round(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesEmploisAMobiliser,
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES
+                                .libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_niveau_1"
+                            )
+                          )
                         )
                       }}
                     </div>
@@ -138,8 +154,16 @@
                   >
                     <jaugeChart
                       :value="
-                        this.$store.state.resultatSimulation
-                          .surfacesEmploisAMobiliser[1].part_surface_a_mobiliser
+                        Math.round(
+                          trouverChiffre(
+                            this.$store.state.resultatSimulation
+                              .surfacesEmploisAMobiliser,
+                            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS
+                              .libelle,
+                            'part_surface_a_mobiliser',
+                            'libelle_parcel_niveau_1'
+                          )
+                        )
                       "
                       couleur="#A261C0"
                       :key="this.$store.state.resultatSimulation"
@@ -155,8 +179,16 @@
                     <div class="hectares">
                       {{
                         formatterSurfacesNecessaires(
-                          this.$store.state.resultatSimulation
-                            .surfacesEmploisAMobiliser[1].surface_a_mobiliser
+                          Math.round(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesEmploisAMobiliser,
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS
+                                .libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_niveau_1"
+                            )
+                          )
                         )
                       }}
                     </div>
@@ -185,8 +217,16 @@
                   >
                     <jaugeChart
                       :value="
-                        this.$store.state.resultatSimulation
-                          .surfacesEmploisAMobiliser[2].part_surface_a_mobiliser
+                        Math.round(
+                          trouverChiffre(
+                            this.$store.state.resultatSimulation
+                              .surfacesEmploisAMobiliser,
+                            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES
+                              .libelle,
+                            'part_surface_a_mobiliser',
+                            'libelle_parcel_niveau_1'
+                          )
+                        )
                       "
                       couleur="#F9B233"
                       :key="this.$store.state.resultatSimulation"
@@ -204,8 +244,16 @@
                     <div class="hectares">
                       {{
                         formatterSurfacesNecessaires(
-                          this.$store.state.resultatSimulation
-                            .surfacesEmploisAMobiliser[2].surface_a_mobiliser
+                          Math.round(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesEmploisAMobiliser,
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES
+                                .libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_niveau_1"
+                            )
+                          )
                         )
                       }}
                     </div>
@@ -234,8 +282,16 @@
                   >
                     <jaugeChart
                       :value="
-                        this.$store.state.resultatSimulation
-                          .surfacesEmploisAMobiliser[0].part_surface_a_mobiliser
+                        Math.round(
+                          trouverChiffre(
+                            this.$store.state.resultatSimulation
+                              .surfacesEmploisAMobiliser,
+                            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE
+                              .libelle,
+                            'part_surface_a_mobiliser',
+                            'libelle_parcel_niveau_1'
+                          )
+                        )
                       "
                       couleur="#B57A60"
                       :key="this.$store.state.resultatSimulation"
@@ -251,9 +307,16 @@
                     <div class="hectares">
                       {{
                         formatterSurfacesNecessaires(
-                          this.$store.state.resultatSimulation.surfacesEmploisAMobiliser.find(
-                            (item) => item.libelle_parcel_niveau_1 == "Elevage"
-                          ).surface_a_mobiliser
+                          Math.round(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesEmploisAMobiliser,
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE
+                                .libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_niveau_1"
+                            )
+                          )
                         )
                       }}
                     </div>
@@ -1171,6 +1234,7 @@
 import { formatterChiffres } from "@/plugins/surfaceProduits";
 import { Treemap } from "d3plus-hierarchy";
 import { CATEGORIE_PRODUITS_SURFACES_ACTUELLES } from "@/config/categorieProduitsActuel";
+import { CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER } from "@/config/categorieProduitsPotentielNourricier";
 import { trouverChiffre } from "@/plugins/utils";
 import { pushDataViz } from "@/plugins/pushDataViz";
 import modalDetail from "../modal/modalDetail.vue";
@@ -1185,6 +1249,7 @@ export default {
   data() {
     return {
       CATEGORIE_PRODUITS_SURFACES_ACTUELLES,
+      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER,
       data: {
         potentielNourricier: [],
       },
