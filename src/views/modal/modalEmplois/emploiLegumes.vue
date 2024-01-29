@@ -54,8 +54,8 @@
                       ><span class="d-flex flex-column info-detail"
                         ><span class="nbr-ha"> 3% </span
                         ><span class="hectares"
-                          >(environ) de l’emploi agricole total en France
-                          métropolitaine</span
+                          >(environ) de l’emploi agricole total en Région
+                          wallonne métropolitaine</span
                         ></span
                       >
                     </div>
@@ -154,8 +154,8 @@
                       <ul>
                         <li>
                           Les produits qui ne possèdent pas de potentiel de
-                          production en France métropolitaine (café, cacao,
-                          fruits exotiques etc.) ;
+                          production en Région wallonne (café, cacao, fruits
+                          exotiques etc.) ;
                         </li>
                         <li>
                           Les boissons (bières, vins etc.) qui pourraient être
@@ -170,12 +170,12 @@
                     <li>
                       <strong
                         >Parcel prend en compte les produits qui ont
-                        actuellement une production représentative en France </strong
+                        actuellement une production représentative en Région
+                        wallonne </strong
                       >(dont la production est recensée au sein des statistiques
                       agricoles). La nomenclature retenue de 63 produits, ne
-                      représente pas l’ensemble de l’alimentation des français
-                      (il manque notamment les boissons et les produits
-                      tropicaux).
+                      représente pas l’ensemble de l’alimentation des wallon (il
+                      manque notamment les boissons et les produits tropicaux).
                     </li>
                   </ul>
                 </div>

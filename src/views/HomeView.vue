@@ -109,10 +109,10 @@
                   </div>
                   <pre>{{ rechercheInput }}</pre>
                   <p>
-                    Saisissez le nom d’une ou plusieurs région(s),
-                    département(s), commune(s) ou leur code postal
+                    Saisissez le nom d’une ou plusieurs région(s), province(s),
+                    arrondissement(s) commune(s)
                     <strong class="vert-fonce"
-                      >au sein de la France métropolitaine</strong
+                      >au sein de la Région wallonne</strong
                     >
                   </p>
                   <!-- <div class="mt-4 input-info">
@@ -138,7 +138,7 @@
                         ><a
                           href="#"
                           class="info"
-                          data-tooltip="Les Parcs naturels régionaux sont créés pour protéger et mettre en valeur de grands espaces ruraux habités. Peut être classé “Parc naturel régional” un territoire à dominante rurale dont les paysages, les milieux naturels et le patrimoine culturel sont de grande qualité, mais dont l’équilibre est fragile. (Source : Parcs Naturels Régionaux de France)"
+                          data-tooltip="Les Parcs naturels régionaux sont créés pour protéger et mettre en valeur de grands espaces ruraux habités. Peut être classé “Parc naturel régional” un territoire à dominante rurale dont les paysages, les milieux naturels et le patrimoine culturel sont de grande qualité, mais dont l’équilibre est fragile. (Source : Parcs Naturels Régionaux de Région wallonne)"
                           data-placement="left"
                           ><span class="icon-ico_element_info"></span
                         ></a>
@@ -287,8 +287,8 @@
           </p>
           <p>
             L’estimation des impacts écologiques se base sur les méta-études et
-            les bases de données les plus récentes publiées au niveau français
-            et international. Elles permettent d’évaluer les principales
+            les bases de données les plus récentes publiées au niveau wallon et
+            international. Elles permettent d’évaluer les principales
             conséquences sur l’environnement liées à la conversion en bio de la
             production agricole et à la baisse de consommation de produits
             animaux.

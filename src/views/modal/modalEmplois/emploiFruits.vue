@@ -54,8 +54,8 @@
                       ><span class="d-flex flex-column info-detail"
                         ><span class="nbr-ha"> 5% </span
                         ><span class="hectares"
-                          >(environ) de l’emploi agricole total en France
-                          métropolitaine</span
+                          >(environ) de l’emploi agricole total en Région
+                          wallonne métropolitaine</span
                         ></span
                       >
                     </div>
@@ -153,8 +153,8 @@
                       <ul>
                         <li>
                           Les produits qui ne possèdent pas de potentiel de
-                          production en France métropolitaine (café, cacao,
-                          fruits exotiques etc.) ;
+                          production en Région wallonne (café, cacao, fruits
+                          exotiques etc.) ;
                         </li>
                         <li>
                           Les boissons (bières, vins etc.) qui pourraient être

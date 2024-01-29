@@ -48,7 +48,7 @@
                 ><span class="d-flex flex-column info-detail"
                   ><span class="nbr-ha"> 0,8% </span
                   ><span class="hectares"
-                    >de la surface agricole en France métropolitaine</span
+                    >de la surface agricole en Région wallonne</span
                   ></span
                 >
               </div>
@@ -78,8 +78,7 @@
                 ><span class="d-flex flex-column info-detail"
                   ><span class="nbr-ha"> 33,6% </span
                   ><span class="hectares">
-                    des légumes consommés en France métropolitaine sont
-                    importés</span
+                    des légumes consommés en Région wallonne sont importés</span
                   ></span
                 >
               </div>
@@ -127,8 +126,8 @@
                 <ul>
                   <li>
                     ­Les produits qui ne possèdent pas de potentiel de
-                    production en France métropolitaine (café, cacao, fruits
-                    exotiques etc.) ;
+                    production en Région wallonne (café, cacao, fruits exotiques
+                    etc.) ;
                   </li>
                   <li>
                     ­Les boissons (bières, vins etc.) qui pourraient être
@@ -285,7 +284,7 @@
               <div class="h1-liste">Consommation</div>
               <ul>
                 <li>
-                  ­<span class="source-titre">­Douanes françaises </span
+                  ­<span class="source-titre">­Douanes belges </span
                   ><span class="source-auteur">
                     – ­Ministère de l’Action et de comptes publics </span
                   ><span class="source-année"></span>

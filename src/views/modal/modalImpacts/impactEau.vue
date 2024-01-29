@@ -416,8 +416,8 @@
                         ><span class="d-flex flex-column info-detail"
                           ><span class="nbr-ha">50%</span
                           ><span class="hectares"
-                            >de la consommation d'eau en France (en période
-                            ordinaire)</span
+                            >de la consommation d'eau en Région wallonne (en
+                            période ordinaire)</span
                           ></span
                         >
                       </div>

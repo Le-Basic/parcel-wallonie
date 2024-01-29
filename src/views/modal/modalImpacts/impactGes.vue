@@ -412,7 +412,7 @@
                   ><span class="d-flex flex-column info-detail"
                     ><span class="nbr-ha"> 24 %</span
                     ><span class="hectares"
-                      >de l’empreinte carbone des ménages français</span
+                      >de l’empreinte carbone des ménages wallon</span
                     ></span
                   >
                 </div>
@@ -428,7 +428,8 @@
                   ><span class="d-flex flex-column info-detail"
                     ><span class="nbr-ha"> 2/3</span
                     ><span class="hectares"
-                      >de l’empreinte carbone de l’alimentation en France</span
+                      >de l’empreinte carbone de l’alimentation en Région
+                      wallonne</span
                     ></span
                   >
                 </div>
@@ -444,7 +445,7 @@
                     ><span class="nbr-ha"> 80% </span
                     ><span class="hectares">
                       de l’empreinte carbone de l’alimentation des ménages
-                      français</span
+                      wallon</span
                     ></span
                   >
                 </div>
@@ -538,7 +539,7 @@
               <li>
                 ­<span class="source-titre"
                   >L’empreinte énergétique et carbone de l’alimentation en
-                  France – de la production à la consommation</span
+                  Région wallonne – de la production à la consommation</span
                 ><span class="source-auteur">
                   – Barbier, C., Couturier C. et al.</span
                 ><span class="source-année">– 2019</span>

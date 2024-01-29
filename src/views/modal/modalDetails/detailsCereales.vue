@@ -51,7 +51,7 @@
                 ><span class="d-flex flex-column info-detail"
                   ><span class="nbr-ha"> 46% </span
                   ><span class="hectares"
-                    >de la surface agricole en France métropolitaine</span
+                    >de la surface agricole en Région wallonne</span
                   ></span
                 >
               </div>
@@ -81,8 +81,8 @@
                 ><span class="d-flex flex-column info-detail"
                   ><span class="nbr-ha"> 8% </span
                   ><span class="hectares">
-                    des céréales et autres grandes cultures consommées en France
-                    métropolitaine sont importés</span
+                    des céréales et autres grandes cultures consommées en Région
+                    wallonne métropolitaine sont importés</span
                   ></span
                 >
               </div>
@@ -146,8 +146,7 @@
                   ­
                   <li>
                     Les produits qui ne possèdent pas de potentiel de production
-                    en France métropolitaine (café, cacao, fruits exotiques
-                    etc.) ;
+                    en Région wallonne (café, cacao, fruits exotiques etc.) ;
                   </li>
                   ­
                   <li>
@@ -321,7 +320,7 @@
                   </div>
                 </li>
                 <li>
-                  ­<span class="source-titre">­Douanes françaises </span
+                  ­<span class="source-titre">­Douanes belges </span
                   ><span class="source-auteur">
                     – ­Ministère de l’Action et de comptes publics </span
                   ><span class="source-année"></span>

@@ -49,7 +49,7 @@
                 ><span class="d-flex flex-column info-detail"
                   ><span class="nbr-ha"> 64% </span
                   ><span class="hectares"
-                    >de la surface agricole en France métropolitaine</span
+                    >de la surface agricole en Région wallonne</span
                   ></span
                 >
               </div>
@@ -79,8 +79,8 @@
                 ><span class="d-flex flex-column info-detail"
                   ><span class="nbr-ha"> 29% </span
                   ><span class="hectares">
-                    des produits de l’élevage consommés en France métropolitaine
-                    sont importés</span
+                    des produits de l’élevage consommés en Région wallonne sont
+                    importés</span
                   ></span
                 >
               </div>
@@ -150,9 +150,9 @@
                 </ul>
               </li>
               <li>
-                Actuellement en France métropolitaine, la production
-                d’alimentation pour les animaux se répartit environ entre 37% de
-                prairies et 63% de cultures.
+                Actuellement en Région wallonne, la production d’alimentation
+                pour les animaux se répartit environ entre 37% de prairies et
+                63% de cultures.
               </li>
               <li>
                 Au sein des systèmes d’élevage, une partie de l’alimentation
@@ -175,8 +175,7 @@
                 <ul>
                   <li>
                     Les produits qui ne possèdent pas de potentiel de production
-                    en France métropolitaine (café, cacao, fruits exotiques
-                    etc.) ;
+                    en Région wallonne (café, cacao, fruits exotiques etc.) ;
                   </li>
                   ­
                   <li>
@@ -219,7 +218,7 @@
             <li>
               On calcul la surface nécessaire pour produire 1 kg d’un certain
               produit animal. Pour ce faire, on identifie les surfaces
-              actuellement mobilisées pour les productions d’élevage françaises
+              actuellement mobilisées pour les productions d’élevage wallonnes
               (prairies, cultures fourragères, céréales etc.). Ces surfaces sont
               ensuite réparties entre les différentes espèces d’animaux selon
               leur besoin.

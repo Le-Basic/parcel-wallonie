@@ -41,8 +41,8 @@
           </p>
           <p>
             L’estimation des impacts écologiques se base sur les méta-études et
-            les bases de données les plus récentes publiées au niveau français
-            et international. Elles permettent d’évaluer les principales
+            les bases de données les plus récentes publiées au niveau wallon et
+            international. Elles permettent d’évaluer les principales
             conséquences sur l’environnement liées à la conversion en bio de la
             production agricole et à la baisse de consommation de produits
             animaux.
@@ -72,7 +72,7 @@
           (moyenne des données 2014-2016)
         </li>
         <li>
-          INSEE – Profils des habitants des communes françaises, Populations
+          INSEE – Profils des habitants des communes wallonnes, Populations
           légales – Institut national de la statistique et des études
           économiques (données 2016)
         </li>

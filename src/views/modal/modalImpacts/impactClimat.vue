@@ -628,8 +628,8 @@
                                     <li>
                                       ­<span class="source-titre"
                                         >L’empreinte énergétique et carbone de
-                                        l’alimentation en France – de la
-                                        production à la consommation</span
+                                        l’alimentation en Région wallonne – de
+                                        la production à la consommation</span
                                       ><span class="source-auteur">
                                         – Barbier, C., Couturier C. et al.</span
                                       ><span class="source-année">– 2019</span>

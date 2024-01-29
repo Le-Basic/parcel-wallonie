@@ -63,9 +63,7 @@
             <p>
               Saisissez le nom d’une ou plusieurs région(s), département(s),
               commune(s) ou leur code postal
-              <strong class="vert-fonce"
-                >au sein de la France métropolitaine</strong
-              >
+              <strong class="vert-fonce">au sein de la Région wallonne</strong>
             </p>
             <div class="mt-4 input-info">
               <label class="container-checkbox">
@@ -90,7 +88,7 @@
                   ><a
                     href="#"
                     class="info"
-                    data-tooltip="Les Parcs naturels régionaux sont créés pour protéger et mettre en valeur de grands espaces ruraux habités. Peut être classé “Parc naturel régional” un territoire à dominante rurale dont les paysages, les milieux naturels et le patrimoine culturel sont de grande qualité, mais dont l’équilibre est fragile. (Source : Parcs Naturels Régionaux de France)"
+                    data-tooltip="Les Parcs naturels régionaux sont créés pour protéger et mettre en valeur de grands espaces ruraux habités. Peut être classé “Parc naturel régional” un territoire à dominante rurale dont les paysages, les milieux naturels et le patrimoine culturel sont de grande qualité, mais dont l’équilibre est fragile. (Source : Parcs Naturels Régionaux de Région wallonne)"
                     data-placement="left"
                     ><span class="icon-ico_element_info"></span
                   ></a>
