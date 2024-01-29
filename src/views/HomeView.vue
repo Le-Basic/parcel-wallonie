@@ -204,7 +204,8 @@
                 <div class="">
                   <a
                     onclick="localStorage.clear();"
-                    href="/1-relocaliser-une-surface-disponible"
+                    href="https://parcel-app.org/1-relocaliser-une-surface-disponible"
+                    target="_blank"
                     class="btn-go"
                     ><button type="button" class="btn btn-principal mt-3">
                       Commencer
