@@ -1,4 +1,5 @@
 import axios from "axios";
+import store from "@/store";
 
 async function fetchData(api_route) {
   const bodyFormData = new FormData();
@@ -49,10 +50,18 @@ export async function fetchSurfaceNecessaire(
   codesTerritoireParcel,
   idRegimeAlimentaire
 ) {
+  const part_population = store.state["population"].part;
+  const population = store.state["population"];
+  var groupes = "";
+  if (part_population == "groupe") {
+    groupes = `&nombre_enfants=${population.nombreEnfants}&nombre_adultes=${population.nombreAdultes}&nombre_seniors=${population.nombreSeniors}`;
+  } else {
+    groupes = "";
+  }
   const bodyFormData = new FormData();
   bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
   const response = await axios.post(
-    `${url}?id_menu=${idRegimeAlimentaire}`,
+    `${url}?id_menu=${idRegimeAlimentaire}${groupes}`,
     codesTerritoireParcel, // Request body data
     {
       headers: {

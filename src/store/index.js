@@ -10,7 +10,12 @@ const getDefaultState = () => {
   return {
     regimeListe: regimeListe,
     geoList: [],
-    population: null,
+    population: {
+      part: "toute",
+      nombreEnfants: 150,
+      nombreAdultes: 150,
+      nombreSeniors: 150,
+    },
     part_relocalisee: 100,
     part_bio: null,
     regime_alimentaire: regimeListe.find((el) => el.default == true),
@@ -81,6 +86,15 @@ export default createStore({
     getcodesTerritoireParcel: (state) => {
       return state.geoList.map((item) => item.code_territoire);
     },
+    getPopulationTexte: (state) => {
+      if (state.population.part == "toute") {
+        return "Toute la population";
+      } else if (state.population.part == "groupe") {
+        return `Groupe de ${state.population.nombreEnfants} enfants, ${state.population.nombreAdultes} adultes et ${state.population.nombreSeniors} seniors`;
+      } else {
+        return "";
+      }
+    },
   },
   mutations: {
     addGeo(state, geo) {
@@ -93,7 +107,7 @@ export default createStore({
       Object.assign(state, getDefaultState());
     },
     choisirPopulation(state, population) {
-      state.population = population;
+      state.population.part = population;
     },
     partRelocalisee(state, part_relocalisee) {
       state.part_relocalisee = part_relocalisee;

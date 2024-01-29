@@ -61,7 +61,10 @@
       </div>
       <!--<div class="result-plus"><span class="icon-ico_fleche_detail_gros icon vert-clair"></span></div>-->
     </div>
-    <div class="prereglage text-center" v-if="$store.state.population">
+    <div
+      class="prereglage text-center"
+      v-if="$store.getters.getPopulationTexte"
+    >
       <div class="result-type mr-0">
         <span
           class="icon-ico_navigation_population icon vert-clair mr-1"
@@ -70,7 +73,7 @@
       <div class="result-chiffres">
         <span class="vert-clair">Population : </span>
         <span id="population2" class="territoire">
-          {{ $store.state.population }}</span
+          {{ $store.getters.getPopulationTexte }}</span
         >
       </div>
       <!--Lycée : 150 couverts-->
