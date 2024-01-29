@@ -137,15 +137,21 @@
               to="/agir-pour-une-relocalisation-durable"
               >Agir</router-link
             >
-            <router-link class="list-group-item" to="/partenaires-du-projet"
+            <router-link
+              class="list-group-item"
+              to="/partenaires-du-projet"
+              v-if="false"
               >Partenaires</router-link
             >
             <router-link
               class="list-group-item"
               to="/ressources-sur-lalimentation-durable"
+              v-if="false"
               >Ressources</router-link
             >
-            <router-link class="list-group-item" to="/faq">FAQ</router-link>
+            <router-link class="list-group-item" to="/faq" v-if="false"
+              >FAQ
+            </router-link>
             <router-link class="list-group-item" to="/contacter-parcel"
               >Nous contacter</router-link
             >

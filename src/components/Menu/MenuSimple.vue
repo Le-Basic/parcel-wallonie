@@ -90,16 +90,20 @@
               href="/agir-pour-une-relocalisation-durable"
               >Agir</a
             >
-            <a class="list-group-item" href="/partenaires-du-projet"
+            <a
+              class="list-group-item"
+              href="/partenaires-du-projet"
+              v-if="false"
               >Partenaires</a
             >
             <a
               class="list-group-item"
               href="/ressources-sur-lalimentation-durable"
+              v-if="false"
               >Ressources</a
             >
-            <a class="list-group-item" href="/faq">FAQ</a>
-            <a class="list-group-item" href="/contacter-parcel"
+            <a class="list-group-item" href="/faq" v-if="false">FAQ</a>
+            <a class="list-group-item" href="/contacter-parcel" v-if="false"
               >Nous contacter</a
             >
           </nav>

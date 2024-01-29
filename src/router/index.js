@@ -8,6 +8,7 @@ import ResultatsRelocalisation from "../views/ResultatsRelocalisation.vue";
 import ResultatsSurfaces from "../views/ResultatsSurfaces.vue";
 import ResultatsEmplois from "../views/ResultatsEmplois.vue";
 import ResultatsAgir from "../views/ResultatsAgir.vue";
+import PageMethodologie from "../views/PageMethodologie.vue";
 
 const routes = [
   {
@@ -54,6 +55,11 @@ const routes = [
     path: "/impacts-ecologiques-de-la-relocatisation",
     name: "impacts ecolos",
     component: ResultatsImpacts,
+  },
+  {
+    path: "/methodologie-de-calcul-de-la-relocalisation-alimentaire",
+    name: "Methodologie",
+    component: PageMethodologie,
   },
 ];
 
