@@ -9,7 +9,7 @@
   >
     <div class="modal-dialog" role="document">
       <div class="modal-content modal-repart-cat-detail">
-        <component :is="modalId" />
+        <component :is="modalId" @closeModal="fermerModal" />
       </div>
     </div>
   </div>
@@ -26,6 +26,12 @@ export default {
     modalId: {
       type: String,
       required: true,
+    },
+  },
+  methods: {
+    fermerModal() {
+      console.log("fermerModal");
+      this.$emit("fermerModal");
     },
   },
 };

@@ -26,6 +26,7 @@
             class="close"
             data-dismiss="modal"
             aria-label="Close"
+            @click="closeModal"
           >
             <span class="icon-ico_fermer icon"></span>
           </button>
@@ -695,3 +696,14 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    closeModal() {
+      console.log("close modal");
+      this.$emit("closeModal");
+    },
+  },
+};
+</script>

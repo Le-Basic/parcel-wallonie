@@ -1063,9 +1063,13 @@
         </div>
       </div>
     </div>
-    <modalImpact v-if="modalActive" :modalId="modalActive" />
+    <modalImpact
+      v-if="modalActive"
+      :modalId="modalActive"
+      @fermerModal="fermerModal"
+    />
     <nav id="asy-sidebar" :class="montrerClasse">
-      <modal-affiner-choix @fermerModalAffiner="fermerModal" />
+      <modal-affiner-choix @fermerModalAffiner="fermerModalAffiner" />
     </nav>
   </div>
 </template>
@@ -1095,12 +1099,15 @@ export default {
       this.montrerClasse = "show";
       console.log("montrerModalAffinage");
     },
-    fermerModal() {
+    fermerModalAffiner() {
       this.montrerClasse = "";
     },
     ouvrirModal(id) {
       console.log(id);
       this.modalActive = id;
+    },
+    fermerModal() {
+      this.modalActive = null;
     },
   },
   async mounted() {

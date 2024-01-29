@@ -314,18 +314,10 @@
           <a href="https://terredeliens.org/" target="_blank"
             ><img
               alt="logo-partenaire"
-              :src="require('@/assets/img/logos/partenaires/tdl.png')"
-              width="160px"
-              height="auto"
-              class="pt-3"
-          /></a>
-        </div>
-        <div class="item">
-          <a href="https://www.fnab.org/" target="_blank">
-            <img
-              alt="logo-partenaire"
-              :src="require('@/assets/img/logos/partenaires/fnab.png')"
-              width="160px"
+              :src="
+                require('@/assets/img/logos/partenaires/Logo-Sytra-horizontal.png')
+              "
+              width="400px"
               height="auto"
               class="pt-3"
           /></a>

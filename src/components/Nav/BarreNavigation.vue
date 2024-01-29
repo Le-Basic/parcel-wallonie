@@ -20,7 +20,7 @@
             >
               <span class="icon-ico_menu_affiner icon"></span>Affiner
             </button>
-            <router-link to="/recommencer<?php echo $parcours; ?>"
+            <router-link to="/recommencer<?php echo $parcours; ?>" v-if="false"
               ><button type="button" class="btn btn-principal btn-menu-new">
                 Nouvelle recherche
               </button></router-link
@@ -39,20 +39,6 @@
           <div
             class="col-2 col-sm-4 d-flex ml-auto justify-content-end align-items-center pr-0"
           >
-            <router-link
-              class="btn btn-notification"
-              id="btn-notification"
-              data-toggle="collapse"
-              to="#modalNotification"
-              role="button"
-              aria-expanded="false"
-              aria-controls="modalNotification"
-            >
-              <img
-                :src="require('@/assets/img/icons/notification.svg')"
-                class="bell"
-              /><span>PARCEL évolue</span>
-            </router-link>
             <button
               class="btn navbar-btn btn-link text-right mt-1"
               data-target="#modalNavigation"
@@ -94,6 +80,7 @@
               <router-link
                 class="btn-exporter"
                 to="/agir-pour-une-relocalisation-durable#export"
+                v-if="false"
               >
                 <div class="<?php echo $active; ?> sticky-top">
                   <div>

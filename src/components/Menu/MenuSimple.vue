@@ -35,20 +35,6 @@
           </a>
           <div class="d-flex align-items-center btns-menu">
             <!-- <a href="#" class="btn-notification d-flex align-items-center px-2" data-toggle="collapse" href="#modalNotification" role="button" aria-expanded="false" aria-controls="modalNotification"><img src="assets/img/icons/notification.svg" class="mr-2"/>PARCEL évolue</a>  -->
-            <a
-              class="btn btn-notification"
-              id="btn-notification"
-              data-toggle="collapse"
-              href="#modalNotification"
-              role="button"
-              aria-expanded="false"
-              aria-controls="modalNotification"
-            >
-              <img
-                :src="require('@/assets/img/icons/notification.svg')"
-                class="bell"
-              /><span class="notification-text">PARCEL évolue</span>
-            </a>
             <button
               class="btn navbar-btn btn-link text-right mt-0"
               data-target="#modalNavigation"

@@ -7,7 +7,7 @@ import ResultatsImpacts from "../views/ResultatsImpacts.vue";
 import ResultatsRelocalisation from "../views/ResultatsRelocalisation.vue";
 import ResultatsSurfaces from "../views/ResultatsSurfaces.vue";
 import ResultatsEmplois from "../views/ResultatsEmplois.vue";
-import testBenjamin from "../views/testBenjamin.vue";
+import ResultatsAgir from "../views/ResultatsAgir.vue";
 
 const routes = [
   {
@@ -31,6 +31,11 @@ const routes = [
     component: ChoixParametres,
   },
   {
+    path: "/agir-pour-une-relocalisation-durable",
+    name: "agir",
+    component: ResultatsAgir,
+  },
+  {
     path: "/resultats-de-votre-relocalisation",
     name: "resultats-relocalisation",
     component: ResultatsRelocalisation,
@@ -49,11 +54,6 @@ const routes = [
     path: "/impacts-ecologiques-de-la-relocatisation",
     name: "impacts ecolos",
     component: ResultatsImpacts,
-  },
-  {
-    path: "/test",
-    name: "test",
-    component: testBenjamin,
   },
 ];
 

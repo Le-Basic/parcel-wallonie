@@ -9,7 +9,13 @@
       </div>
       <div class="hectares"></div>
     </div>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <button
+      type="button"
+      class="close"
+      data-dismiss="modal"
+      aria-label="Close"
+      @click="closeModal"
+    >
       <span class="icon-ico_fermer icon"></span>
     </button>
   </div>
@@ -797,6 +803,9 @@ export default {
   methods: {
     toggle() {
       this.ouvert = !this.ouvert;
+    },
+    closeModal() {
+      this.$emit("closeModal");
     },
   },
 };
