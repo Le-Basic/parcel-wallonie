@@ -160,8 +160,9 @@
               <div class="cadreImage text-center ml-auto mr-auto">
                 <div class="">
                   <a
-                    href="/1-relocaliser-une-surface-disponible"
+                    href="https://parcel-app.org/1-relocaliser-une-surface-disponible"
                     onclick="localStorage.clear();"
+                    target="_blank"
                   >
                     <img
                       alt="parcours2"
@@ -180,7 +181,8 @@
                 </div>
                 <div>
                   <a
-                    href="/1-relocaliser-une-surface-disponible"
+                    href="https://parcel-app.org/1-relocaliser-une-surface-disponible"
+                    target="_blank"
                     onclick="localStorage.clear();"
                     ><button type="button" class="btn btn-principal mt-3">
                       Commencer
