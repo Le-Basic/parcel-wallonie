@@ -8,7 +8,8 @@ export function calculerResultatSimulation(
   partBioCereales,
   partPertes,
   surfaceActuelleResponseApiPaysage,
-  surfaceNecessairePaysageResponseApi
+  surfaceNecessairePaysageResponseApi,
+  part_relocalisee
 ) {
   const {
     surfaces_a_mobiliser,
@@ -28,7 +29,8 @@ export function calculerResultatSimulation(
     partPertes,
     //TODO RENAME CELUI CI
     surfaceActuelleResponseApiPaysage,
-    surfaceNecessairePaysageResponseApi
+    surfaceNecessairePaysageResponseApi,
+    part_relocalisee
   );
   const potentielNourricier = Math.round(
     (surfaces_actuelles * 100) / surfaces_a_mobiliser
@@ -55,7 +57,8 @@ function calculerSurfacesEtEmploisAMobiliser(
   partBioCereales,
   partPertes,
   surfaceActuelleResponseApiPaysage,
-  surfaceNecessairePaysageResponseApi
+  surfaceNecessairePaysageResponseApi,
+  part_relocalisee
 ) {
   let surfaces_emplois_a_mobiliser_parcel_niveau_1 = [];
   surfaceNecessaireResponseApi.reduce(function (res, valeur) {
@@ -89,7 +92,8 @@ function calculerSurfacesEtEmploisAMobiliser(
         partBioFruits,
         partBioLegumes,
         partBioCereales,
-        partPertes
+        partPertes,
+        part_relocalisee
       );
     res[valeur.libelle_parcel_niveau_1].emplois_a_mobiliser +=
       calculSurfAMobiliser(
@@ -100,7 +104,8 @@ function calculerSurfacesEtEmploisAMobiliser(
         partBioFruits,
         partBioLegumes,
         partBioCereales,
-        partPertes
+        partPertes,
+        part_relocalisee
       );
     return res;
   }, {});
@@ -148,7 +153,8 @@ function calculerSurfacesEtEmploisAMobiliser(
         partBioFruits,
         partBioLegumes,
         partBioCereales,
-        partPertes
+        partPertes,
+        part_relocalisee
       ),
     }))
     .forEach((entry) => {
@@ -192,7 +198,8 @@ function calculSurfAMobiliser(
   partBioFruits,
   partBioLegumes,
   partBioCereales,
-  partPertes
+  partPertes,
+  part_relocalisee
 ) {
   var partBio;
   if (
@@ -216,10 +223,13 @@ function calculSurfAMobiliser(
   ) {
     partBio = partBioCereales / 100;
   }
+  console.log("part_relocalisee", part_relocalisee);
   const surfaces_a_mobiliser =
-    ((partBio * surfaces_a_mobiliser_bio +
+    ((((partBio * surfaces_a_mobiliser_bio +
       (1 - partBio) * surfaces_a_mobiliser_conventionnel) *
       (1 - 0.18)) /
-    (1 - 0.18 * (1 - partPertes / 100));
+      (1 - 0.18 * (1 - partPertes / 100))) *
+      part_relocalisee) /
+    100;
   return Math.round(surfaces_a_mobiliser);
 }

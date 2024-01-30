@@ -38,7 +38,7 @@
                       id="partlocaleval"
                     ></span
                     ><span class="text-bold legumes"
-                      >{{ $store.state.part_relocalisee }} %</span
+                      >{{ part_relocalisee }} %</span
                     ></output
                   >
                 </div>
@@ -50,7 +50,7 @@
                   step="1.000"
                   value="100"
                   id="partlocale"
-                  v-model="$store.state.part_relocalisee"
+                  v-model="part_relocalisee"
                 />
                 <div class="range-values">
                   <span class="range-min">0</span
@@ -528,6 +528,7 @@ export default {
       partBioElevage: this.$store.state.partbioelevage,
       showParametres: true,
       regimeChoisi: this.$store.state.regime_alimentaire.nomCourt,
+      part_relocalisee: this.$store.state.part_relocalisee,
     };
   },
   methods: {
@@ -559,6 +560,10 @@ export default {
       // TODO : choix pour utiliser nomCourt ou id comme clé partout pour les régimes
       const regimeChoisi = getRegimeParNomCourt(nomCourtRegime);
       this.$store.dispatch("actionChoisirRegimeAlimentaire", regimeChoisi);
+    },
+    part_relocalisee: function (part_relocalisee) {
+      console.log("test");
+      this.$store.dispatch("actionModifierPartRElocalisee", part_relocalisee);
     },
   },
 };
