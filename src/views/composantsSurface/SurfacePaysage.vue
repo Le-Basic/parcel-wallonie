@@ -2,7 +2,6 @@
   <div>
     <div class="bloc-surface">
       <h3 class="text-center">Surface agricole à mobiliser</h3>
-      <pre> {{ $store.state.resultatSimulation }}</pre>
       <div
         class="cadre-resultat resultat-ha animated flipInX delay-05s bg-vert-clair"
       >
