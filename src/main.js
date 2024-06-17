@@ -16,11 +16,14 @@ import "./css/style-range.css";
 import "./css/style-font.css";
 import ECharts from "vue-echarts";
 import $axios from "./plugins/axios.js";
+import PrimeVue from "primevue/config";
+import "primevue/resources/themes/aura-light-green/theme.css";
 
 window.apiURL = "https://lebasic.nohost.me/api/";
 createApp(App)
   .use(store)
   .use(router)
   .use($axios)
+  .use(PrimeVue)
   .component("v-chart", ECharts)
   .mount("#app");

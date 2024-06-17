@@ -96,6 +96,11 @@
             </div>
             <MenuResultats v-if="menuType == 'resultats'" :active="active" />
             <MenuRecherche v-if="menuType == 'recherche'" :active="active" />
+            <MenuSurface v-if="menuType == 'surface'" :active="active" />
+            <MenuResultatsSurface
+              v-if="menuType == 'resultats-surface'"
+              :active="active"
+            />
           </nav>
         </div>
       </div>
@@ -250,11 +255,15 @@
 <script>
 import MenuResultats from "@/components/Menu/MenuResultats.vue";
 import MenuRecherche from "@/components/Menu/MenuRecherche.vue";
+import MenuSurface from "@/components/Menu/MenuSurface.vue";
+import MenuResultatsSurface from "../Menu/MenuResultatsSurface.vue";
 
 export default {
   components: {
     MenuResultats,
     MenuRecherche,
+    MenuSurface,
+    MenuResultatsSurface,
   },
   name: "BarreNavigation",
   props: {

@@ -80,17 +80,18 @@
                         ><span class="text-bold legumes">%</span></output
                       >
                     </div>
-                    <input
-                      type="range"
-                      id="partbio"
-                      class="slider-range"
-                      min="0"
-                      max="100"
-                      step="1.000"
-                      value="1.8"
+
+                    <VueSlider
                       v-model="partbio"
-                      ref="partbioSlider"
-                    />
+                      :process-style="{ backgroundColor: '#91c423' }"
+                      :tooltip="'none'"
+                      :height="10"
+                      :dot-size="20"
+                    >
+                      <template v-slot:dot>
+                        <div :class="['custom-dot']"></div>
+                      </template>
+                    </VueSlider>
                     <div class="range-values">
                       <span class="range-min">0</span
                       ><span class="range-max">100</span>
@@ -228,16 +229,18 @@
                         ><span class="text-bold legumes">%</span></output
                       >
                     </div>
-                    <input
-                      type="range"
-                      id="partpertes"
-                      class="slider-range"
-                      min="0"
-                      max="100"
-                      step="1.000"
-                      value="1.8"
+
+                    <VueSlider
                       v-model="partpertes"
-                    />
+                      :process-style="{ backgroundColor: '#91c423' }"
+                      :tooltip="'none'"
+                      :height="10"
+                      :dot-size="20"
+                    >
+                      <template v-slot:dot>
+                        <div :class="['custom-dot']"></div>
+                      </template>
+                    </VueSlider>
                     <div class="range-values">
                       <span class="range-min">0</span
                       ><span class="range-max">100</span>
@@ -274,6 +277,8 @@ import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
 import resumeChoix from "./modal/resumeChoix.vue";
 import "rangeslider.js/dist/rangeslider.css";
 import modalBioCurseur from "./modal/modalBioCurseur.vue";
+import VueSlider from "vue-3-slider-component";
+
 export default {
   inject: ["$axios"],
   name: "ChoixParametres",
@@ -282,6 +287,7 @@ export default {
     listeRegime,
     resumeChoix,
     modalBioCurseur,
+    VueSlider,
   },
   data() {
     return {
@@ -911,5 +917,13 @@ export default {
   font-weight: bold;
   color: #015a5a;
   display: block;
+}
+
+.custom-dot {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #91c423;
+  margin: auto;
 }
 </style>

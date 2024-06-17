@@ -9,7 +9,15 @@ import ResultatsSurfaces from "../views/ResultatsSurfaces.vue";
 import ResultatsEmplois from "../views/ResultatsEmplois.vue";
 import ResultatsAgir from "../views/ResultatsAgir.vue";
 import PageMethodologie from "../views/PageMethodologie.vue";
-
+import PageRelocalisationSurface from "@/views/parcours-surface/PageRelocalisationSurface.vue";
+import ChoixDuTerritoireSurface from "@/views/parcours-surface/ChoixDuTerritoireSurface.vue";
+import ChoixTypeAlimentationSurface from "@/views/parcours-surface/ChoixTypeAlimentationSurface.vue";
+import ResultatsEffetsSurface from "@/views/parcours-surface/ResultatsEffetsSurface.vue";
+import ResultatsAssiettesSurface from "@/views/parcours-surface/ResultatsAssiettesSurface.vue";
+import ResultatsRepartitionSurface from "@/views/parcours-surface/ResultatsRepartitionSurface.vue";
+import testBenjamin from "@/views/testBenjamin.vue";
+import PageDiagnostic from "@/views/PageDiagnostic.vue";
+import ResultatsImpactsv2 from "@/views/ResultatsImpactsv2.vue";
 const routes = [
   {
     path: "/",
@@ -57,9 +65,54 @@ const routes = [
     component: ResultatsImpacts,
   },
   {
+    path: "/impacts",
+    name: "Impacts v3",
+    component: ResultatsImpactsv2,
+  },
+  {
     path: "/methodologie-de-calcul-de-la-relocalisation-alimentaire",
     name: "Methodologie",
     component: PageMethodologie,
+  },
+  {
+    path: "/1-relocaliser-une-surface-disponible",
+    name: "Relocalisation d'une surface disponible",
+    component: PageRelocalisationSurface,
+  },
+  {
+    path: "/2-choix-du-territoire",
+    name: "Choix du Territoire pour surface",
+    component: ChoixDuTerritoireSurface,
+  },
+  {
+    path: "/2-choix-du-type-dalimentation",
+    name: "Choix du type d'alimentation pour surface",
+    component: ChoixTypeAlimentationSurface,
+  },
+  {
+    path: "/resultats-de-la-relocalisation-de-surface",
+    name: "Résultat de la relocalisation de Surface",
+    component: ResultatsEffetsSurface,
+  },
+  {
+    path: "/composition-des-assiettes-relocalisees",
+    name: "Assiettes relocalisées",
+    component: ResultatsAssiettesSurface,
+  },
+  {
+    path: "/repartition-des-cultures-dans-la-relocalisation",
+    name: "Repartition des produits relocalisés surface",
+    component: ResultatsRepartitionSurface,
+  },
+  {
+    path: "/test",
+    name: "test benjamin",
+    component: testBenjamin,
+  },
+  {
+    path: "/diagnostic",
+    name: "diagnostic",
+    component: PageDiagnostic,
   },
 ];
 

@@ -257,7 +257,7 @@
                 class="animate__animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_potentiel"
                 id="surface_potentiel"
               >
-                <div class="odometer-inside" v-if="data.potentiel_nourricier">
+                <div class="odometer-inside" v-if="potentiel_nourricier">
                   {{
                     formatterChiffres(
                       this.$store.state.resultatSimulation.surfaceAMobiliser
@@ -336,7 +336,7 @@
                 id="potentiel"
               >
                 <div class="odometer-inside">
-                  {{ data.potentiel_nourricier }}
+                  {{ potentiel_nourricier }}
                   <!-- <span class="odometer-digit"
                     ><span class="odometer-digit-spacer">8</span
                     ><span class="odometer-digit-inner"
@@ -460,7 +460,7 @@
             Sur la base de la part de bio et des régimes alimentaires actuels,
             le potentiel nourricier du territoire est de
             <span class="potentiel" id="potentiel2">{{
-              data.potentiel_nourricier
+              potentiel_nourricier
             }}</span
             >%.
           </div>
@@ -598,6 +598,9 @@ export default {
     },
   },
   computed: {
+    potentiel_nourricier() {
+      return this.$store.state.resultatSimulation.potentielNourricier;
+    },
     surfaces_actuelles() {
       return this.$store.state.resultatSimulation.surfacesActuelles;
     },

@@ -10,3 +10,16 @@ export function trouverChiffre(
   });
   return objet ? objet[champ] : 0;
 }
+
+export function AfficherEntier(nombre) {
+  return nombre.toLocaleString("fr-FR", {
+    maximumFractionDigits: 0,
+  });
+}
+
+export function FormatterPourcentage(nombre) {
+  return nombre.toLocaleString("fr-FR", {
+    style: "percent",
+    maximumFractionDigits: 0,
+  });
+}

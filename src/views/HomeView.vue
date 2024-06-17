@@ -107,7 +107,6 @@
                       </ul>
                     </form>
                   </div>
-                  <pre>{{ rechercheInput }}</pre>
                   <p>
                     Saisissez le nom d’une ou plusieurs région(s), province(s),
                     arrondissement(s) commune(s)
@@ -202,14 +201,13 @@
                   </div>
                 </div>
                 <div class="">
-                  <a
-                    onclick="localStorage.clear();"
-                    href="https://parcel-app.org/1-relocaliser-une-surface-disponible"
-                    target="_blank"
-                    class="btn-go"
-                    ><button type="button" class="btn btn-principal mt-3">
+                  <router-link
+                    to="/1-relocaliser-une-surface-disponible"
+                    id="suite"
+                  >
+                    <button type="button" class="btn btn-principal mt-3">
                       Commencer
-                    </button></a
+                    </button></router-link
                   >
                 </div>
               </div>
@@ -369,7 +367,7 @@ export default {
   watch: {
     rechercheInput: function (valeur) {
       console.log(valeur);
-      if (valeur.length > 2) {
+      if (valeur.length > 1) {
         axios
           .get(this.pointGeoAPI + valeur + "?pays=belgique")
           .then((response) => {

@@ -5,8 +5,10 @@ import {
   fetchSurfaceNecessaire,
   fetchSurfacesActuelles,
   fetchSurfacesActuellesPaysage,
+  fetchIndicateursActuels,
 } from "@/plugins/getSurfacesNecessaires";
 import { calculerResultatSimulation } from "../plugins/calculResultatSimulation";
+import { calculerResultatSimulationAvecSurface } from "@/plugins/calculResultatsSimulationAvecSurface";
 const getDefaultState = () => {
   return {
     regimeListe: regimeListe,
@@ -34,6 +36,11 @@ const getDefaultState = () => {
       potentielNourricier: 0,
       surfacesActuellesPaysage: 0,
     },
+    resultatSimulationSurface: {
+      population: 0,
+      populationAvecBesoinComblé: 0,
+    },
+    surfacesMobilisables: 0,
   };
 };
 
@@ -62,7 +69,7 @@ async function recalculerResultatSimulation(
   const url = window.apiURL + "parcel/belgique/surfaces_necessaires";
   const actuelles_url =
     window.apiURL + "parcel/belgique/surfaces_actuels_produit";
-  // TODO : mun91114 en dur ici, mais on pourrait déjà le remonter au niveau du défault state et du mutateur
+
   var surfaceActuelleResponseApi = await fetchSurfacesActuelles(
     actuelles_url,
     codesTerritoireParcel
@@ -98,6 +105,84 @@ async function recalculerResultatSimulation(
     surfaceNecessairePaysageResponseApi,
     part_relocalisee
   );
+  return resultatSimulation;
+}
+async function recalculerResultatSimulationPourSurfaceDonnée(
+  codesTerritoireParcel,
+  idRegimeAlimentaire,
+  partBioElevage,
+  partBioFruits,
+  partBioLegumes,
+  partBioCereales,
+  partPertes,
+  part_relocalisee,
+  surfacesMobilisables
+) {
+  console.log(
+    "recalculerResultatSimulation",
+    codesTerritoireParcel,
+    idRegimeAlimentaire,
+    partBioElevage,
+    partBioFruits,
+    partBioLegumes,
+    partBioCereales,
+    partPertes,
+    part_relocalisee
+  );
+
+  const url = window.apiURL + "parcel/belgique/surfaces_necessaires";
+  const actuelles_url =
+    window.apiURL + "parcel/belgique/surfaces_actuels_produit";
+
+  var surfaceActuelleResponseApi = await fetchSurfacesActuelles(
+    actuelles_url,
+    codesTerritoireParcel
+  );
+  const actuellespaysage__url =
+    window.apiURL + "parcel/belgique/surfaces_actuels_paysage";
+  var surfaceActuelleResponseApiPaysage = await fetchSurfacesActuellesPaysage(
+    actuellespaysage__url,
+    codesTerritoireParcel
+  );
+  var surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
+    url,
+    codesTerritoireParcel,
+    idRegimeAlimentaire
+  );
+
+  const necessaires_paysage__url =
+    window.apiURL + "parcel/belgique/surfaces_necessaires_paysage";
+  var surfaceNecessairePaysageResponseApi = await fetchSurfaceNecessaire(
+    necessaires_paysage__url,
+    codesTerritoireParcel,
+    idRegimeAlimentaire
+  );
+
+  var indicateursactuels__url =
+    window.apiURL + "parcel/belgique/surfaces_agregees";
+
+  var indicateursActuelsResponseApi = await fetchIndicateursActuels(
+    indicateursactuels__url,
+    codesTerritoireParcel
+  );
+  console.log("indicateursActuelsResponseApi", indicateursActuelsResponseApi);
+  const population = indicateursActuelsResponseApi["population"];
+  console.log("Popu pour calcul", population);
+  let resultatSimulation = calculerResultatSimulationAvecSurface(
+    surfaceActuelleResponseApi,
+    surfaceNecessaireResponseApi,
+    partBioElevage,
+    partBioFruits,
+    partBioLegumes,
+    partBioCereales,
+    partPertes,
+    surfaceActuelleResponseApiPaysage,
+    surfaceNecessairePaysageResponseApi,
+    part_relocalisee,
+    surfacesMobilisables,
+    population
+  );
+
   return resultatSimulation;
 }
 
@@ -154,6 +239,9 @@ export default createStore({
     partPertes(state, partpertes) {
       state.partpertes = partpertes;
     },
+    mutationSurfacesMobilisables(state, surfacesMobilisables) {
+      state.surfacesMobilisables = surfacesMobilisables;
+    },
     choisirRegimeAlimentaire(state, regime_alimentaire_nomCourt) {
       state.regime_alimentaire = state.regimeListe.find(
         (el) => el.nomCourt == regime_alimentaire_nomCourt
@@ -181,6 +269,9 @@ export default createStore({
     },
     mutationResultatSimulation(state, resultatSimulation) {
       state.resultatSimulation = resultatSimulation;
+    },
+    mutationResultatSimulationSurface(state, resultatSimulationSurface) {
+      state.resultatSimulationSurface = resultatSimulationSurface;
     },
     mutationPartRelocalisee(state, part_relocalisee) {
       state.part_relocalisee = part_relocalisee;
@@ -240,6 +331,22 @@ export default createStore({
         this.state.partpertes,
         this.state.part_relocalisee
       );
+      if (this.state.surfacesMobilisables > 0) {
+        let resultatSimulationSurface =
+          await recalculerResultatSimulationPourSurfaceDonnée(
+            this.getters.getcodesTerritoireParcel,
+            this.state.regime_alimentaire.id,
+            this.state.partbioelevage,
+            this.state.partbiofruits,
+            this.state.partbiolegumes,
+            this.state.partbiocereales,
+            this.state.partpertes,
+            this.state.part_relocalisee,
+            this.state.surfacesMobilisables
+          );
+        console.log("resultatSimulationSurface", resultatSimulationSurface);
+        commit("mutationResultatSimulationSurface", resultatSimulationSurface);
+      }
       commit("mutationResultatSimulation", resultatSimulation);
     },
     async actionModifierPartBioElevage({ commit }, partBioElevage) {
@@ -254,6 +361,21 @@ export default createStore({
         this.state.partpertes,
         this.state.part_relocalisee
       );
+      if (this.state.surfacesMobilisables > 0) {
+        let resultatSimulationSurface =
+          await recalculerResultatSimulationPourSurfaceDonnée(
+            this.getters.getcodesTerritoireParcel,
+            this.state.regime_alimentaire.id,
+            this.state.partbioelevage,
+            this.state.partbiofruits,
+            this.state.partbiolegumes,
+            this.state.partbiocereales,
+            this.state.partpertes,
+            this.state.part_relocalisee,
+            this.state.surfacesMobilisables
+          );
+        commit("mutationResultatSimulationSurface", resultatSimulationSurface);
+      }
       commit("mutationResultatSimulation", resultatSimulation);
     },
     async actionModifierPartBioFruits({ commit }, partBioFruits) {
@@ -268,6 +390,21 @@ export default createStore({
         this.state.partpertes,
         this.state.part_relocalisee
       );
+      if (this.state.surfacesMobilisables > 0) {
+        let resultatSimulationSurface =
+          await recalculerResultatSimulationPourSurfaceDonnée(
+            this.getters.getcodesTerritoireParcel,
+            this.state.regime_alimentaire.id,
+            this.state.partbioelevage,
+            this.state.partbiofruits,
+            this.state.partbiolegumes,
+            this.state.partbiocereales,
+            this.state.partpertes,
+            this.state.part_relocalisee,
+            this.state.surfacesMobilisables
+          );
+        commit("mutationResultatSimulationSurface", resultatSimulationSurface);
+      }
       commit("mutationResultatSimulation", resultatSimulation);
     },
     async actionModifierPartRElocalisee({ commit }, partRelocalisee) {
@@ -283,6 +420,21 @@ export default createStore({
         this.state.part_relocalisee
       );
       commit("mutationResultatSimulation", resultatSimulation);
+      if (this.state.surfacesMobilisables > 0) {
+        let resultatSimulationSurface =
+          await recalculerResultatSimulationPourSurfaceDonnée(
+            this.getters.getcodesTerritoireParcel,
+            this.state.regime_alimentaire.id,
+            this.state.partbioelevage,
+            this.state.partbiofruits,
+            this.state.partbiolegumes,
+            this.state.partbiocereales,
+            this.state.partpertes,
+            this.state.part_relocalisee,
+            this.state.surfacesMobilisables
+          );
+        commit("mutationResultatSimulationSurface", resultatSimulationSurface);
+      }
     },
     async actionModifierPartBioLegumes({ commit }, partBioLegumes) {
       console.log("actionModifierPartBioLegumes", partBioLegumes);
@@ -326,6 +478,9 @@ export default createStore({
         this.state.part_relocalisee
       );
       commit("mutationResultatSimulation", resultatSimulation);
+    },
+    actionModifierSurfacesMobilisables({ commit }, surfacesMobilisables) {
+      commit("mutationSurfacesMobilisables", surfacesMobilisables);
     },
   },
   plugins: [new VuexPersistence().plugin],

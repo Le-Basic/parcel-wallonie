@@ -1,8 +1,10 @@
 <template>
   <div class="asy-wrapper">
     <div class="content">
-      <BarreNavigation menuType="recherche" active="1" />
+      <BarreNavigation menuType="surface" active="2" />
+
       <div class="section centrervh" id="section0">
+        <h1 class="animated fadeInUp">Choisissez la zone géographique</h1>
         <div id="preselection" class="text-center animated delay-05s fadeIn">
           <div
             class="alert alert-success mb-5"
@@ -66,7 +68,7 @@
           </p>
 
           <div class="div-continuer">
-            <router-link to="/2-choix-de-la-population" id="suite">
+            <router-link to="/2-choix-du-type-dalimentation" id="suite">
               <button type="button" class="btn btn-principal mt-5">
                 Continuer
               </button>
@@ -97,9 +99,6 @@ export default {
       rechercheInput: "",
       list_geo: [],
     };
-  },
-  beforeMount: function () {
-    this.$store.commit("RESET_STORE");
   },
   methods: {
     ajouter(item) {

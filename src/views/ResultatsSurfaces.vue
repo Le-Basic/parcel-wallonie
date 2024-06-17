@@ -114,7 +114,7 @@
       <modal-affiner-choix @fermerModalAffiner="fermerModal" />
     </nav>
   </div>
-  <!-- <?php include '../partials/scripts-footer.php'; ?> -->
+  <BandeauResultat />
 </template>
 
 <script>
@@ -124,9 +124,10 @@ import resumeChoix from "./modal/resumeChoix.vue";
 import SurfaceGlobal from "./composantsSurface/SurfaceGlobal.vue";
 import SurfacePaysage from "./composantsSurface/SurfacePaysage.vue";
 import SurfaceProduits from "./composantsSurface/SurfaceProduits.vue";
-
+import BandeauResultat from "@/components/BandeauResultat.vue";
 export default {
   components: {
+    BandeauResultat,
     BarreNavigation,
     ModalAffinerChoix,
     resumeChoix,

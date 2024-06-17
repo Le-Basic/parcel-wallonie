@@ -16,20 +16,26 @@
         :class="['nav-item', { active: active == 1 }]"
         data-menuanchor="3rdPage"
       >
-        <router-link class="nav-link" to="/resultats-de-votre-relocalisation"
+        <router-link
+          class="nav-link"
+          to="/resultats-de-la-relocalisation-de-surface"
           ><span class="icon-ico_navigation_resultats ico-menu"></span
           ><span class="entree-menu">Effets</span></router-link
         >
       </li>
-      <li class="nav-arrow"><FlecheBoutonVert /></li>
+      <li class="nav-arrow">
+        <FlecheBoutonVert />
+      </li>
       <li
         :class="['nav-item', { active: active == 2 }]"
         id="menu_surface"
         data-menuanchor="3rdPage"
       >
-        <router-link class="nav-link" to="/repartition-des-produits-relocalises"
+        <router-link
+          class="nav-link"
+          to="/repartition-des-cultures-dans-la-relocalisation"
           ><span class="icon-ico_navigation_repartition ico-menu"></span
-          ><span class="entree-menu">Surfaces</span></router-link
+          ><span class="entree-menu">Cultures</span></router-link
         >
       </li>
       <li class="nav-arrow"><FlecheBoutonVert /></li>
@@ -37,26 +43,17 @@
         :class="['nav-item', { active: active == 3 }]"
         data-menuanchor="secondPage"
       >
-        <router-link class="nav-link" to="/emplois-crees-par-la-relocalisation"
+        <router-link
+          class="nav-link"
+          to="/composition-des-assiettes-relocalisees"
           ><span class="icon-ico_navigation_emploi ico-menu"></span
-          ><span class="entree-menu">Emplois</span></router-link
+          ><span class="entree-menu">Assiettes</span></router-link
         >
       </li>
+
       <li class="nav-arrow"><FlecheBoutonVert /></li>
       <li
         :class="['nav-item', { active: active == 4 }]"
-        data-menuanchor="3rdPage"
-      >
-        <router-link
-          class="nav-link"
-          to="/impacts-ecologiques-de-la-relocatisation"
-          ><span class="icon-ico_navigation_impacts ico-menu"></span
-          ><span class="entree-menu">Impacts</span></router-link
-        >
-      </li>
-      <li class="nav-arrow"><FlecheBoutonVert /></li>
-      <li
-        :class="['nav-item', { active: active == 5 }]"
         data-menuanchor="3rdPage"
       >
         <router-link class="nav-link" to="/agir-pour-une-relocalisation-durable"
