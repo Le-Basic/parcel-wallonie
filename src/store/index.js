@@ -6,6 +6,7 @@ import {
   fetchSurfacesActuelles,
   fetchSurfacesActuellesPaysage,
   fetchIndicateursActuels,
+  fetchPortrait,
 } from "@/plugins/getSurfacesNecessaires";
 import { calculerResultatSimulation } from "../plugins/calculResultatSimulation";
 import { calculerResultatSimulationAvecSurface } from "@/plugins/calculResultatsSimulationAvecSurface";
@@ -13,6 +14,11 @@ const getDefaultState = () => {
   return {
     regimeListe: regimeListe,
     geoList: [],
+    indicateurPortraits: {
+      surface_ha: 0,
+      sau_ha: 0,
+      population: 0,
+    },
     population: {
       part: "toute",
       nombreEnfants: 150,
@@ -201,6 +207,18 @@ export default createStore({
         return "";
       }
     },
+    getCarteTerritoireParcel: (state) => {
+      let codeTerritoireListe = state.geoList.map((item) => item.localeKey);
+      if (codeTerritoireListe.length == 1) {
+        return (
+          "/img/cartes/" +
+          codeTerritoireListe[0].slice(0, 3) +
+          "/" +
+          codeTerritoireListe[0] +
+          ".svg"
+        );
+      }
+    },
   },
   mutations: {
     addGeo(state, geo) {
@@ -209,9 +227,16 @@ export default createStore({
     removeGeo(state, geo) {
       state.geoList = state.geoList.filter((item) => item !== geo);
     },
+    getIndicateursPortraits(state, geoList) {
+      let apiURL = window.apiURL + "parcel/belgique/portrait";
+      fetchPortrait(apiURL, geoList).then((response) => {
+        state.indicateurPortraits = response[0];
+      });
+    },
     RESET_STORE(state) {
       Object.assign(state, getDefaultState());
     },
+
     choisirPopulation(state, population) {
       state.population.part = population;
     },
@@ -283,6 +308,9 @@ export default createStore({
     },
     removeGeo({ commit }, geo) {
       commit("removeGeo", geo);
+    },
+    getIndicateursPortraits({ commit }, geoList) {
+      commit("getIndicateursPortraits", geoList);
     },
     RESET_STORE({ commit }) {
       commit("RESET_STORE");

@@ -170,7 +170,9 @@
                       >
                         <div class="cadre-impact">
                           <div class="cadre-impact-detail">
-                            <div class="impact-nom text-center"></div>
+                            <div class="impact-nom text-center">
+                              <strong>par personne</strong>
+                            </div>
                             <div class="impact-graph text-center">
                               <span class="impact-result"
                                 ><span

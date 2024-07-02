@@ -8,6 +8,11 @@
             Et si l’alimentation de votre territoire devenait locale et durable
             ?
           </h1>
+          <router-link to="/diagnostic">
+            <button type="button" class="btn btn-principal mt-3">
+              Commencer
+            </button>
+          </router-link>
         </div>
       </div>
       <div class="container-fluid" id="accueil-couv">
@@ -65,7 +70,7 @@
                         style="cursor: pointer"
                         >{{ geo.localeName }}
                         <span
-                          @click="this.$store.commit('removeGeo', geo)"
+                          @click="enleverGeo(geo)"
                           class="icon-ico_fermer icon"
                           style="font-size: 8px; color: white"
                         ></span>
@@ -148,7 +153,7 @@
                   </div> -->
                   <div class="mt-5"></div>
                   <div class="div-continuer">
-                    <router-link to="/2-choix-de-la-population" id="suite">
+                    <router-link to="/choix-du-parcours" id="suite">
                       <button type="button" class="btn btn-principal mt-5">
                         Continuer
                       </button>
@@ -361,7 +366,14 @@ export default {
       this.rechercheInput = "";
       this.list_geo = [];
       this.$store.commit("addGeo", item);
+      let codesTerritoiresListe = this.$store.getters.getcodesTerritoireParcel;
+      this.$store.commit("getIndicateursPortraits", codesTerritoiresListe);
       console.log("store", this.$store.state);
+    },
+    enleverGeo(geo) {
+      this.$store.commit("removeGeo", geo);
+      let codesTerritoiresListe = this.$store.getters.getcodesTerritoireParcel;
+      this.$store.commit("getIndicateursPortraits", codesTerritoiresListe);
     },
   },
   watch: {

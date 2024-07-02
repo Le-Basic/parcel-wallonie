@@ -486,6 +486,25 @@ button,
   cursor: pointer;
 }
 
+.btn-secondaire {
+  padding: 5px 40px 7px 20px;
+  border-radius: 25px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  padding-right: 60px;
+  background-color: white;
+  border: 1px solid var(--vert);
+  color: var(--vert);
+}
+
+.btn-secondaire:hover {
+  background-color: var(--vert);
+  -webkit-transform: translateX(5px);
+
+  color: white;
+}
+
 .btn-principal:hover {
   background-color: #015a5a;
   -webkit-transform: translateX(5px);
@@ -620,7 +639,8 @@ a > button.btn-recommencer:hover {
   text-align: center;
 }
 
-.div-continuer .btn-principal {
+.div-continuer .btn-principal,
+.div-continuer .btn-secondaire {
   font-size: 25px;
   line-height: 1;
   height: 56px;

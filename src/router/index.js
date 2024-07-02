@@ -15,7 +15,7 @@ import ChoixTypeAlimentationSurface from "@/views/parcours-surface/ChoixTypeAlim
 import ResultatsEffetsSurface from "@/views/parcours-surface/ResultatsEffetsSurface.vue";
 import ResultatsAssiettesSurface from "@/views/parcours-surface/ResultatsAssiettesSurface.vue";
 import ResultatsRepartitionSurface from "@/views/parcours-surface/ResultatsRepartitionSurface.vue";
-import testBenjamin from "@/views/testBenjamin.vue";
+import PageChoix from "@/views/PageChoix.vue";
 import PageDiagnostic from "@/views/PageDiagnostic.vue";
 import ResultatsImpactsv2 from "@/views/ResultatsImpactsv2.vue";
 const routes = [
@@ -105,9 +105,9 @@ const routes = [
     component: ResultatsRepartitionSurface,
   },
   {
-    path: "/test",
-    name: "test benjamin",
-    component: testBenjamin,
+    path: "/choix-du-parcours",
+    name: "Choix du Parcours",
+    component: PageChoix,
   },
   {
     path: "/diagnostic",

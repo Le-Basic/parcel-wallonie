@@ -78,6 +78,23 @@ export async function fetchSurfacesActuellesPaysage(
   return response.data;
 }
 
+export async function fetchPortrait(url, codesTerritoireParcel) {
+  const bodyFormData = new FormData();
+  console.log("terr", codesTerritoireParcel);
+  bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
+  const response = await axios.post(
+    `${url}`,
+    codesTerritoireParcel, // Request body data
+    {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return response.data;
+}
+
 export async function fetchSurfaceNecessaire(
   url,
   codesTerritoireParcel,
