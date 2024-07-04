@@ -219,6 +219,20 @@ export default createStore({
         );
       }
     },
+    getCarteColoreeTerritoireParcel: (state) => (couleur) => {
+      let codeTerritoireListe = state.geoList.map((item) => item.localeKey);
+      if (codeTerritoireListe.length == 1) {
+        return (
+          "/img/cartes_" +
+          couleur +
+          "/" +
+          codeTerritoireListe[0].slice(0, 3) +
+          "/" +
+          codeTerritoireListe[0] +
+          ".svg"
+        );
+      }
+    },
   },
   mutations: {
     addGeo(state, geo) {

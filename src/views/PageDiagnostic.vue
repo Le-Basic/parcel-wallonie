@@ -3,7 +3,7 @@
     <div class="content">
       <BarreNavigation
         @montrerModalAffinage="montrerModalAffiner"
-        :active="2"
+        menuType=""
       />
 
       <div class="section centrervh" id="section0" style="width: 100%">
@@ -99,7 +99,8 @@
                     de la surface du territoire est consacré à l'agriculture
                   </div>
                   <p class="subtext">
-                    en dessous de la moyenne nationale de xx %
+                    en dessous de la moyenne nationale de
+                    {{ pctSauSuperficieWallonie }}
                   </p>
                 </div>
               </div>
@@ -240,7 +241,7 @@
 
 <script setup>
 import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
-import { AfficherEntier } from "@/plugins/utils";
+import { AfficherEntier, FormatterPourcentage } from "@/plugins/utils";
 
 import { ref } from "vue";
 import { useStore } from "vuex";
@@ -279,8 +280,12 @@ const pct_sau = ref(
   )
 );
 const surface_km2 = ref(store.state.indicateurPortraits.surface_ha / 100);
-const densite = population.value / surface_km2.value;
+const densite = ref(
+  store.state.indicateurPortraits.population /
+    store.state.indicateurPortraits.surface_ha
+);
 const densiteWallonie = 217.8; // https://www.iweps.be/indicateur-statistique/densite-de-population/#:~:text=Au%201er%20janvier%202023%2C%20la,217%2C8%20habitants%20au%20km%C2%B2.
+const pctSauSuperficieWallonie = FormatterPourcentage(0.54); // https://etat-agriculture.wallonie.be/contents/indicatorsheets/EAW-1.html
 const differencePctDensitePhrase = getPhraseDensiteComparaison(
   densite,
   densiteWallonie

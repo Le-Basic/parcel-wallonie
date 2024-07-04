@@ -18,6 +18,7 @@ import ResultatsRepartitionSurface from "@/views/parcours-surface/ResultatsRepar
 import PageChoix from "@/views/PageChoix.vue";
 import PageDiagnostic from "@/views/PageDiagnostic.vue";
 import ResultatsImpactsv2 from "@/views/ResultatsImpactsv2.vue";
+import testMotion from "@/views/testMotion.vue";
 const routes = [
   {
     path: "/",
@@ -113,6 +114,11 @@ const routes = [
     path: "/diagnostic",
     name: "diagnostic",
     component: PageDiagnostic,
+  },
+  {
+    path: "/motion",
+    name: "momo",
+    component: testMotion,
   },
 ];
 

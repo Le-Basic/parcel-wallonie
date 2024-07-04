@@ -92,7 +92,7 @@ const option = {
 
 <style scoped>
 .chart {
-  width: 550px;
+  width: 100%;
   height: 450px;
   max-width: 100%;
   max-height: 100%;

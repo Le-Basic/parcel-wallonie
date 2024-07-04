@@ -101,6 +101,7 @@
               v-if="menuType == 'resultats-surface'"
               :active="active"
             />
+            <MenuDiagnostic v-if="menuType == 'diagnostic'" :active="active" />
           </nav>
         </div>
       </div>
@@ -257,6 +258,7 @@ import MenuResultats from "@/components/Menu/MenuResultats.vue";
 import MenuRecherche from "@/components/Menu/MenuRecherche.vue";
 import MenuSurface from "@/components/Menu/MenuSurface.vue";
 import MenuResultatsSurface from "../Menu/MenuResultatsSurface.vue";
+import MenuDiagnostic from "../Menu/MenuDiagnostic.vue";
 
 export default {
   components: {
@@ -264,6 +266,7 @@ export default {
     MenuRecherche,
     MenuSurface,
     MenuResultatsSurface,
+    MenuDiagnostic,
   },
   name: "BarreNavigation",
   props: {

@@ -18,6 +18,7 @@ import ECharts from "vue-echarts";
 import $axios from "./plugins/axios.js";
 import PrimeVue from "primevue/config";
 import "primevue/resources/themes/aura-light-green/theme.css";
+import { MotionPlugin } from "@vueuse/motion";
 
 window.apiURL = "https://lebasic.nohost.me/api/";
 createApp(App)
@@ -25,5 +26,6 @@ createApp(App)
   .use(router)
   .use($axios)
   .use(PrimeVue)
+  .use(MotionPlugin)
   .component("v-chart", ECharts)
   .mount("#app");

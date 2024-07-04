@@ -24,15 +24,27 @@
       <div class="col-12 col-lg-auto map-surface is-flex">
         <div id="globalView-images" class="my-auto">
           <div id="div-image-surface-territoire" class="animate__animated">
-            <img
+            <svg
               alt=""
               class="mx-auto"
               :style="{
                 width: (data.surface / max_potentiel_surface) * 100 + '%',
                 opacity: 1,
+                fill: '#000',
               }"
-              :src="require('@/assets/img/surfaces/circle1.svg')"
-            />
+              fill="#000"
+            >
+              <image
+                :href="
+                  this.$store.getters.getCarteColoreeTerritoireParcel('grises')
+                "
+                x="0"
+                y="0"
+                width="100%"
+                height="100%"
+                fill="red"
+              />
+            </svg>
           </div>
           <div id="div-image-sau-actuelle" class="animate__animated">
             <img
@@ -42,7 +54,9 @@
                 width: (surfaces_actuelles / max_potentiel_surface) * 100 + '%',
                 opacity: 1,
               }"
-              :src="require('@/assets/img/surfaces/circle-agricole.svg')"
+              :src="
+                this.$store.getters.getCarteColoreeTerritoireParcel('bleues')
+              "
             />
           </div>
           <div
@@ -68,7 +82,9 @@
                   '%',
                 opacity: 1,
               }"
-              :src="require('@/assets/img/surfaces/circle-empreinte.svg')"
+              :src="
+                this.$store.getters.getCarteColoreeTerritoireParcel('vertes')
+              "
             />
           </div>
           <div id="div-image-potentiel-nourricier" class="animate__animated">
@@ -487,11 +503,12 @@ export default {
   inject: ["$axios"],
   data() {
     return {
-      codesTerritoireParcel: this.$store.state.geoList,
+      codesTerritoireParcel: this.$store.getters.getcodesTerritoireParcel,
       data: {
         surface: 0,
         sau: 0,
         potentiel_nourricier: 0,
+        geoList: this.$store.state.geoList,
       },
     };
   },
@@ -615,6 +632,13 @@ export default {
         this.data.surface,
         this.$store.state.resultatSimulation.surfaceAMobiliser
       );
+    },
+    carteURL() {
+      if (this.codesTerritoireParcel.length === 1) {
+        return this.$store.getters.getCarteColoreeTerritoireParcel("grise");
+      } else {
+        return require("@/assets/img/surfaces/circle-agricole.svg");
+      }
     },
   },
   async mounted() {
