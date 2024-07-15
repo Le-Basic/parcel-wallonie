@@ -46,7 +46,9 @@
                   style="margin: auto auto"
                 />
                 <div class="scenario-texte">
-                  <div class="text-h4"><b>Scénario actuel</b></div>
+                  <div class="text-h4">
+                    <b>Promotion agriculture biologique</b>
+                  </div>
                   <div class="">
                     Consultez un diagnotic simple sur les thématiques agricoles
                     et alimentaires de votre territoire. Tout cela en moins de
@@ -69,11 +71,12 @@
                   style="margin: auto auto"
                 />
                 <div class="scenario-texte">
-                  <div class="text-h4"><b>Scénario actuel</b></div>
+                  <div class="text-h4">
+                    <b>Changement de régime alimentaire</b>
+                  </div>
                   <div class="">
-                    Consultez un diagnotic simple sur les thématiques agricoles
-                    et alimentaires de votre territoire. Tout cela en moins de
-                    10 chiffres.
+                    Diminuez la consommation de viande de 50% et passez 20% de
+                    l'alimentation du territoire en bio.
                   </div>
                 </div>
                 <div class="div-continuer delay-5-1s">
@@ -100,12 +103,11 @@
               ou
             </p>
           </div>
-          <div class="cadre">
+          <div class="cadre cadre-simulation">
             <img
               :src="require('@/assets/img/illustrations/dashboard.svg')"
               alt="diagnostic"
               height="200px"
-              style="margin: auto auto"
             />
             <div class="text-h4 text-center">
               <b
@@ -113,7 +115,12 @@
                 mesure</b
               >
             </div>
-            <p>Lorem ipsum sin dolor</p>
+            <div><p>Lorem ipsum sin dolor</p></div>
+            <div class="div-continuer delay-5-1s">
+              <button type="button" class="btn btn-secondaire mt-0">
+                Démarrer la simulation
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -130,11 +137,12 @@ import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
 .cartes-parcours {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
   padding: 0px 64px;
   justify-content: stretch;
   border-right: 1px solid var(--bleu);
-  width: 60%;
+  width: 70%;
+  align-items: stretch;
 }
 
 .cadre {
@@ -142,13 +150,17 @@ import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
   box-shadow: 0 4px 12px 0 rgba(193, 193, 193, 0.5);
   border-radius: 5px;
   padding: 24px;
-  margin: auto;
+}
+
+.cadre-simulation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-choix {
   background: #ffffff;
   box-shadow: 0 4px 12px 0 rgba(193, 193, 193, 0.5);
-  border-radius: 5px;
   padding: 24px;
   height: 100%;
   margin: auto;
