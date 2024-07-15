@@ -344,6 +344,7 @@
 <script>
 import axios from "axios";
 import MenuSimple from "@/components/Menu/MenuSimple.vue";
+import { getPartdeBio } from "@/plugins/getPartdeBio";
 
 export default {
   name: "HomeView",
@@ -369,11 +370,23 @@ export default {
       let codesTerritoiresListe = this.$store.getters.getcodesTerritoireParcel;
       this.$store.commit("getIndicateursPortraits", codesTerritoiresListe);
       console.log("store", this.$store.state);
+      let url = window.apiURL + "parcel/belgique/curseurs_bio";
+      let codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
+
+      getPartdeBio(url, codesTerritoireParcel).then((data) => {
+        this.$store.dispatch("partBio", data[0].curseur_bio);
+      });
     },
     enleverGeo(geo) {
       this.$store.commit("removeGeo", geo);
-      let codesTerritoiresListe = this.$store.getters.getcodesTerritoireParcel;
-      this.$store.commit("getIndicateursPortraits", codesTerritoiresListe);
+      let codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
+      this.$store.commit("getIndicateursPortraits", codesTerritoireParcel);
+      let url = window.apiURL + "parcel/belgique/curseurs_bio";
+
+      getPartdeBio(url, codesTerritoireParcel).then((data) => {
+        this.$store.dispatch("partBio", data[0].curseur_bio);
+      });
+      this.$store.dispatch("actionRecupererElementsDIagnostic");
     },
   },
   watch: {

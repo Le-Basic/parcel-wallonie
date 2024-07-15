@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@turf/bbox": "^7.0.0",
     "@vueuse/motion": "^2.2.3",
     "axios": "^1.6.5",
     "core-js": "^3.8.3",
@@ -15,6 +16,7 @@
     "d3plus": "^2.1.1",
     "echarts": "^5.4.3",
     "jquery": "^3.7.1",
+    "maplibre-gl": "^4.5.0",
     "primevue": "^3.52.0",
     "radix-vue": "^1.8.3",
     "rangeslider.js": "^2.3.3",

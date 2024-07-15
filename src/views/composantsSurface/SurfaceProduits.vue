@@ -60,6 +60,7 @@
             min-height: 550px;
           "
         ></div>
+        <RepartitionSurface :serieDonnees="repartitionSurfacePourGraphique" />
       </div>
       <div class="wrap-viz resultats-categories repartition">
         <table
@@ -723,7 +724,9 @@
         <div
           class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme"
           id="potentiel4"
-        ></div>
+        >
+          {{ this.potentielNourricier }}
+        </div>
         <div class="hectares animated fadeIn delay-1-5s">%</div>
       </div>
     </div>
@@ -748,7 +751,7 @@
               <div
                 id="line-pn"
                 class="position-absolute"
-                style="left: calc(50% - 20px)"
+                :style="{ left: this.positionGaucheBarreVerticale }"
               >
                 <div class="text-center">
                   <div class="vertical-line"></div>
@@ -780,16 +783,21 @@
                       class="icon-ico_CATEGORIES_legumes ico-medium legumes"
                     ></span>
                   </div>
-                  <div
-                    class="col-pourcent legumes"
-                    id="potentiel_legumes"
-                  ></div>
+                  <div class="col-pourcent legumes" id="potentiel_legumes">
+                    {{ FormatterPourcentage(potentielNourricierLegumes) }}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="col-8">
-            <div class="bar bg-vert-clair" style="width: 0%"></div>
+            <div
+              class="bar bg-vert-clair"
+              :style="{
+                width:
+                  (potentielNourricierLegumes / maxPotentielsEt1) * 100 + '%',
+              }"
+            ></div>
           </div>
         </div>
         <div class="row align-items-center bar-line mx-0" id="bar-fruits">
@@ -805,13 +813,21 @@
                       class="icon-ico_CATEGORIES_fruits ico-medium fruits"
                     ></span>
                   </div>
-                  <div class="col-pourcent fruits" id="potentiel_fruits"></div>
+                  <div class="col-pourcent fruits" id="potentiel_fruits">
+                    {{ FormatterPourcentage(potentielNourricierFruits) }}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="col-8" id="bar_pot_container">
-            <div class="bar bg-fruits" style="width: 0%"></div>
+            <div
+              class="bar bg-fruits"
+              :style="{
+                width:
+                  (potentielNourricierFruits / maxPotentielsEt1) * 100 + '%',
+              }"
+            ></div>
           </div>
         </div>
         <div class="row align-items-center bar-line mx-0" id="bar-cereales">
@@ -827,16 +843,21 @@
                       class="icon-ico_CATEGORIES_cereales ico-medium cereales"
                     ></span>
                   </div>
-                  <div
-                    class="col-pourcent cereales"
-                    id="potentiel_cereales"
-                  ></div>
+                  <div class="col-pourcent cereales" id="potentiel_cereales">
+                    {{ FormatterPourcentage(potentielNourricierCereales) }}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="col-8">
-            <div class="bar bg-cereales" style="width: 0%"></div>
+            <div
+              class="bar bg-cereales"
+              :style="{
+                width:
+                  (potentielNourricierCereales / maxPotentielsEt1) * 100 + '%',
+              }"
+            ></div>
           </div>
         </div>
         <div class="row align-items-center bar-line mx-0" id="bar-viande">
@@ -852,13 +873,21 @@
                       class="icon-ico_CATEGORIES_viande ico-medium viande"
                     ></span>
                   </div>
-                  <div class="col-pourcent viande" id="potentiel_elevage"></div>
+                  <div class="col-pourcent viande" id="potentiel_elevage">
+                    {{ FormatterPourcentage(potentielNourricierElevage) }}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="col-8">
-            <div class="bar bg-viande" style="width: 0%"></div>
+            <div
+              class="bar bg-viande"
+              :style="{
+                width:
+                  (potentielNourricierElevage / maxPotentielsEt1) * 100 + '%',
+              }"
+            ></div>
           </div>
         </div>
       </div>
@@ -884,7 +913,7 @@
         class="btn btn-principal mt-5"
         @click="nextStep('landscape')"
       >
-        <router-link :to="{ hash: '#landscapeView' }"> Suivant </router-link>
+        Suivant
       </button>
     </div>
   </div>
@@ -1240,19 +1269,20 @@ import { pushDataViz } from "@/plugins/pushDataViz";
 import modalDetail from "../modal/modalDetail.vue";
 import jaugeChart from "@/components/jaugeChart.vue";
 import axios from "axios";
+import RepartitionSurface from "@/components/visualisation/RepartitionSurface.vue";
+import { FormatterPourcentage } from "@/plugins/utils";
+
 export default {
   inject: ["$axios"],
   components: {
     modalDetail,
     jaugeChart,
+    RepartitionSurface,
   },
   data() {
     return {
       CATEGORIE_PRODUITS_SURFACES_ACTUELLES,
       CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER,
-      data: {
-        potentielNourricier: [],
-      },
       occupationActuelle: [],
       surfaces_emplois_a_mobiliser_parcel_niveau_1: [],
       modalDetails: "",
@@ -1261,6 +1291,7 @@ export default {
   methods: {
     trouverChiffre,
     formatterChiffres,
+    FormatterPourcentage,
     ouvrirModal(id) {
       console.log(id);
       this.modalDetails = id;
@@ -1373,6 +1404,8 @@ export default {
         });
     },
     nextStep(hash) {
+      console.log("nextStep", hash);
+      window.scrollTo(0, 0);
       this.$emit("nextStep", hash);
     },
     formatterSurfacesNecessaires(chiffreSurface) {
@@ -1409,6 +1442,112 @@ export default {
           ),
         };
       });
+    },
+    repartitionSurfacePourGraphique() {
+      let data = [];
+      for (const [key, value] of Object.entries(
+        CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
+      )) {
+        console.log(key);
+        value.partAMobiliser = Math.round(
+          trouverChiffre(
+            this.$store.state.resultatSimulation.surfacesEmploisAMobiliser,
+            value.libelle,
+            "part_surface_a_mobiliser",
+            "libelle_parcel_niveau_1"
+          )
+        );
+        let donnePourGraphique = {
+          value: value.partAMobiliser,
+          name: value.libelle,
+          itemStyle: {
+            color: value.couleur,
+          },
+        };
+        data = [...data, donnePourGraphique];
+      }
+      return data;
+    },
+    potentielNourricier() {
+      return this.$store.state.resultatSimulation.potentielNourricier;
+    },
+    potentielNourricierCereales() {
+      return (
+        trouverChiffre(
+          this.$store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
+          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES.libelle,
+          "sau_ha",
+          "libelle_parcel_produit_actuel"
+        ) /
+        trouverChiffre(
+          this.$store.state.resultatSimulation.surfacesEmploisAMobiliser,
+          CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
+          "surface_a_mobiliser",
+          "libelle_parcel_niveau_1"
+        )
+      );
+    },
+    potentielNourricierLegumes() {
+      return (
+        trouverChiffre(
+          this.$store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
+          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.LEGUMES.libelle,
+          "sau_ha",
+          "libelle_parcel_produit_actuel"
+        ) /
+        trouverChiffre(
+          this.$store.state.resultatSimulation.surfacesEmploisAMobiliser,
+          CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
+          "surface_a_mobiliser",
+          "libelle_parcel_niveau_1"
+        )
+      );
+    },
+    potentielNourricierFruits() {
+      return (
+        trouverChiffre(
+          this.$store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
+          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS.libelle,
+          "sau_ha",
+          "libelle_parcel_produit_actuel"
+        ) /
+        trouverChiffre(
+          this.$store.state.resultatSimulation.surfacesEmploisAMobiliser,
+          CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle,
+          "surface_a_mobiliser",
+          "libelle_parcel_niveau_1"
+        )
+      );
+    },
+    potentielNourricierElevage() {
+      return (
+        trouverChiffre(
+          this.$store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
+          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE.libelle,
+          "sau_ha",
+          "libelle_parcel_produit_actuel"
+        ) /
+        trouverChiffre(
+          this.$store.state.resultatSimulation.surfacesEmploisAMobiliser,
+          CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle,
+          "surface_a_mobiliser",
+          "libelle_parcel_niveau_1"
+        )
+      );
+    },
+    maxPotentielsEt1() {
+      return Math.max(
+        this.potentielNourricierCereales,
+        this.potentielNourricierElevage,
+        this.potentielNourricierFruits,
+        this.potentielNourricierLegumes,
+        1
+      );
+    },
+    positionGaucheBarreVerticale() {
+      return (
+        "calc(" + Math.min(0.5, 1 / this.maxPotentielsEt1) * 100 + "% - 20px)"
+      );
     },
   },
   watch: {

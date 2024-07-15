@@ -19,6 +19,8 @@ import PageChoix from "@/views/PageChoix.vue";
 import PageDiagnostic from "@/views/PageDiagnostic.vue";
 import ResultatsImpactsv2 from "@/views/ResultatsImpactsv2.vue";
 import testMotion from "@/views/testMotion.vue";
+import PageRecommencer from "@/views/PageRecommencer.vue";
+import TestCarte from "@/views/TestCarte.vue";
 const routes = [
   {
     path: "/",
@@ -119,6 +121,16 @@ const routes = [
     path: "/motion",
     name: "momo",
     component: testMotion,
+  },
+  {
+    path: "/recommencer",
+    name: "Recommencer",
+    component: PageRecommencer,
+  },
+  {
+    path: "/test-carte",
+    name: "Carte",
+    component: TestCarte,
   },
 ];
 

@@ -88,6 +88,7 @@ import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
   align-items: stretch;
   gap: 32px;
   height: 555px;
+  color: black;
 }
 
 .card-alim:hover {
@@ -97,6 +98,8 @@ import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
 }
 
 .card-alim:hover .btn-secondaire {
+  background: url("/public/img/fleches/fleche-bouton.svg") no-repeat right 15px
+    center;
   background-color: var(--vert);
   -webkit-transform: translateX(5px);
 

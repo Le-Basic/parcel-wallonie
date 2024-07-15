@@ -93,7 +93,7 @@
 }
 
 .bg-grey-light {
-  background-color: #f1edea;
+  background-color: #f1edea !important;
 }
 
 .bg-vert-fonce {
@@ -114,7 +114,6 @@
 }
 
 .content-map {
-
   background-image: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 0%,
@@ -159,10 +158,8 @@
   top: 220px;
 }
 
-
 #div-image-surface-a-mobiliser,
 #div-image-potentiel-nourricier,
-
 #zone-surface-a-mobiliser,
 #zone-potentiel-nourricier {
 }
@@ -209,7 +206,7 @@
 .bigmap #div-image-surface-a-mobiliser,
 .bigmap #div-image-potentiel-nourricier {
   width: 650px;
-  height: 650px;
+  height: 550px;
   left: 0;
 }
 
@@ -299,7 +296,6 @@
 }
 
 .containerSurface {
-
   visibility: hidden;
   height: 0px;
 }
@@ -325,7 +321,7 @@
 
 .bg-vert-clair,
 .bg-legumes {
-  background-color: #91c423;
+  background-color: #91c423 !important;
   color: #fff;
 }
 
@@ -364,7 +360,6 @@
 }
 
 .col-icon {
-
   width: 64px;
   text-align: center;
   padding-right: 5px;
@@ -415,7 +410,6 @@
 .col-pourcent {
   font-weight: bold;
 
-
   width: 100px;
   text-align: right;
   padding-left: 0.5rem;
@@ -465,8 +459,6 @@
   margin-top: 4rem;
   padding-bottom: 5rem;
 }
-
-
 
 .grey {
   color: #585757;
@@ -530,7 +522,6 @@
   color: #a9a9a9;
   border-color: #a9a9a9;
 }
-
 
 #productView .cadre-categorie,
 #landscapeView .cadre-categorie {
@@ -611,6 +602,7 @@
 
   #globalView-images {
     padding: 0rem;
+    max-height: 550px;
   }
 
   .bigmap#zone-surface-actuelle,
@@ -770,12 +762,10 @@
   }
 
   .spacer-bottom {
-
     height: 76rem;
   }
 
   .content-map {
-
     background-image: linear-gradient(
       180deg,
       rgba(255, 252, 252, 0) 0%,
@@ -1053,7 +1043,6 @@
 }
 
 .down-arrow {
-
   width: 0;
   height: 30px;
   animation: jumpInfinite 1.5s infinite;

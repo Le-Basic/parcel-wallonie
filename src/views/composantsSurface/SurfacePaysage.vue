@@ -10,7 +10,9 @@
             class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_potentiel"
             id="surface_potentiel4"
           >
-            {{ $store.state.resultatSimulation.surfaceAMobiliser }}
+            {{
+              AfficherEntier($store.state.resultatSimulation.surfaceAMobiliser)
+            }}
           </div>
           <div class="hectares animated fadeIn delay-1-5s">
             hectares agricoles
@@ -633,7 +635,7 @@ import {
   formatterSurfacesNecessaires,
   formatterChiffres,
 } from "@/plugins/surfaceProduits";
-import { trouverChiffre } from "@/plugins/utils";
+import { trouverChiffre, AfficherEntier } from "@/plugins/utils";
 
 import { CATEGORIE_PRODUITS_ACTUELS_PAYSAGE } from "@/config/categorieProduitsActuelsPaysage";
 
@@ -649,6 +651,7 @@ export default {
     };
   },
   methods: {
+    AfficherEntier,
     trouverChiffre,
     formatterSurfacesNecessaires,
     formatterChiffres,

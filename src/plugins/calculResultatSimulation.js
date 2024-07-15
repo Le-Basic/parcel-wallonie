@@ -14,6 +14,7 @@ export function calculerResultatSimulation(
   const {
     surfaces_a_mobiliser,
     emplois_a_mobiliser,
+    consommation_kg,
     surfaces_emplois_a_mobiliser_parcel_niveau_1,
     surfaces_actuelles,
     surfaces_actuelles_parcel_niveau_1,
@@ -39,6 +40,7 @@ export function calculerResultatSimulation(
   return {
     surfaceAMobiliser: surfaces_a_mobiliser,
     emploisAMobiliser: emplois_a_mobiliser,
+    consommation_kg: consommation_kg,
     surfacesEmploisAMobiliser: surfaces_emplois_a_mobiliser_parcel_niveau_1,
     surfacesActuelles: surfaces_actuelles,
     surfacesActuellesParcelNiveau1: surfaces_actuelles_parcel_niveau_1,
@@ -71,6 +73,7 @@ function calculerSurfacesEtEmploisAMobiliser(
         emploi_bio: 0,
         surface_a_mobiliser: 0,
         emplois_a_mobiliser: 0,
+        consommation_kg: 0,
       };
       surfaces_emplois_a_mobiliser_parcel_niveau_1.push(
         res[valeur.libelle_parcel_niveau_1]
@@ -83,6 +86,8 @@ function calculerSurfacesEtEmploisAMobiliser(
     res[valeur.libelle_parcel_niveau_1].emploi_conventionnel +=
       valeur.emploi_conventionnel;
     res[valeur.libelle_parcel_niveau_1].emploi_bio += valeur.emploi_bio;
+    res[valeur.libelle_parcel_niveau_1].consommation_kg +=
+      valeur.consommation_kg;
     res[valeur.libelle_parcel_niveau_1].surface_a_mobiliser +=
       calculSurfAMobiliser(
         valeur.libelle_parcel_niveau_1,
@@ -119,6 +124,11 @@ function calculerSurfacesEtEmploisAMobiliser(
   const emplois_a_mobiliser = surfaces_emplois_a_mobiliser_parcel_niveau_1
     .map((item) => {
       return item.emplois_a_mobiliser;
+    })
+    .reduce((somme, emplois_a_mobiliser) => somme + emplois_a_mobiliser, 0);
+  const consommation_kg = surfaces_emplois_a_mobiliser_parcel_niveau_1
+    .map((item) => {
+      return item.consommation_kg;
     })
     .reduce((somme, emplois_a_mobiliser) => somme + emplois_a_mobiliser, 0);
 
@@ -179,6 +189,7 @@ function calculerSurfacesEtEmploisAMobiliser(
   return {
     surfaces_a_mobiliser: surfaces_a_mobiliser,
     emplois_a_mobiliser: emplois_a_mobiliser,
+    consommation_kg: consommation_kg,
     surfaces_emplois_a_mobiliser_parcel_niveau_1:
       surfaces_emplois_a_mobiliser_parcel_niveau_1,
     surfaces_actuelles: surfaces_actuelles,

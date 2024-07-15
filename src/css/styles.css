@@ -472,8 +472,23 @@ input#partbio {
   font-size: 14px;
   color: #ffffff;
   letter-spacing: 0.4px;
-  background-color: #91c423;
   padding-right: 60px;
+  white-space: normal;
+  background: url("/public/img/fleches/fleche-bouton.svg") no-repeat right 15px
+    center;
+  background-color: #91c423;
+}
+
+.btn-secondaire {
+  background: url("/public/img/fleches/fleche-droite.svg") no-repeat right 15px
+    center;
+}
+
+.btn-secondaire:hover {
+  background: url("/public/img/fleches/fleche-bouton.svg") no-repeat right 15px
+    center;
+
+  background-color: #91c423;
 }
 
 button,
@@ -5158,10 +5173,6 @@ a.url-simple {
     padding-left: 20px;
     padding-right: 20px;
   }
-}
-
-.btn-principal {
-  white-space: normal;
 }
 
 .mb-big {

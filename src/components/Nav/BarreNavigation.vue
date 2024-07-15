@@ -20,8 +20,8 @@
             >
               <span class="icon-ico_menu_affiner icon"></span>Affiner
             </button>
-            <router-link to="/recommencer<?php echo $parcours; ?>" v-if="false"
-              ><button type="button" class="btn btn-principal btn-menu-new">
+            <router-link to="/recommencer">
+              <button type="button" class="btn btn-principal btn-menu-new">
                 Nouvelle recherche
               </button></router-link
             >
@@ -50,7 +50,7 @@
             </button>
           </div>
         </div>
-        <div class="w-100">
+        <div class="w-100" v-if="menuType != ''">
           <!-- ajouter active -->
           <nav
             class="navbar-expand menu-icons text-center justify-content-center"

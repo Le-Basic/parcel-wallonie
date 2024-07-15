@@ -33,20 +33,23 @@ const props = defineProps({
 
 const option = {
   grid: {
-    left: "10%",
-    right: "10%",
+    left: "0%",
+    right: "0%",
     top: 0,
     bottom: 0,
+    containLabel: true,
   },
   label: {
     show: true,
+    overflow: "break",
     fontSize: 18,
   },
   tooltip: {
     borderRadius: 0,
     formatter: function (categorieProduit) {
       let nomProduit = categorieProduit.name;
-      let partTotal = categorieProduit.data.part ?? 0;
+      console.log(categorieProduit);
+      let partTotal = categorieProduit.value / 100 ?? 0;
       let couleur = categorieProduit.data.itemStyle.color ?? "#00a8ff";
       let tooltip = `<div class="tooltip-title" style="color:${couleur}">`;
 
@@ -61,30 +64,13 @@ const option = {
     {
       type: "treemap",
       roam: "move",
+      width: "100%",
+      height: "100%",
       nodeClick: false,
       breadcrumb: {
         show: false,
       },
       data: props.serieDonnees,
-      //   [
-      //     {
-      //       name: "nodeA",
-      //       value: 40,
-      //       part: 0.1,
-      //       itemStyle: {
-      //         color: "#B57A60",
-      //       },
-      //     },
-      //     {
-      //       name: "nodeB",
-      //       value: 20,
-      //       part: 0.2,
-      //       // choose color of nodeB
-      //       itemStyle: {
-      //         color: "#ff0000",
-      //       },
-      //     },
-      //   ],
     },
   ],
 };

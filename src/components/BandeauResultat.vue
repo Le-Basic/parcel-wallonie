@@ -18,7 +18,7 @@
       </button>
     </div>
     <div
-      id="bandeau-ouvrir"
+      id="bandeau-fermer"
       v-if="!this.bandeauOuvrir"
       @click="
         this.bandeauOuvrir = !this.bandeauOuvrir;
@@ -49,7 +49,9 @@
                   </div>
                   <div class="result-chiffres">
                     <span><strong>Surfaces : </strong></span
-                    ><span id="surface5">- ha</span>
+                    ><span id="surface5"
+                      >{{ AfficherEntier(surfaceAMobiliser) }} ha</span
+                    >
                   </div>
                 </div>
               </a>
@@ -62,7 +64,10 @@
                   </div>
                   <div class="result-chiffres">
                     <span><strong>Potentiel nourricier : </strong></span
-                    ><span><span id="potentiel3">-</span>&nbsp;%</span>
+                    ><span
+                      ><span id="potentiel3">{{ potentielNourricier }}</span
+                      >&nbsp;%</span
+                    >
                   </div>
                 </div>
               </a>
@@ -77,7 +82,9 @@
                   </div>
                   <div class="result-chiffres">
                     <span><strong>Emplois : </strong></span
-                    ><span id="emplois3">-</span>
+                    ><span id="emplois3">{{
+                      AfficherEntier(emploisAMobiliser)
+                    }}</span>
                   </div>
                 </div>
               </a>
@@ -107,12 +114,25 @@
 </template>
 
 <script>
+import { FormatterPourcentage, AfficherEntier } from "@/plugins/utils";
 export default {
   name: "BandeauResultat",
   data() {
     return {
       bandeauOuvrir: true,
     };
+  },
+  methods: { FormatterPourcentage, AfficherEntier },
+  computed: {
+    surfaceAMobiliser() {
+      return this.$store.state.resultatSimulation.surfaceAMobiliser;
+    },
+    potentielNourricier() {
+      return this.$store.state.resultatSimulation.potentielNourricier;
+    },
+    emploisAMobiliser() {
+      return this.$store.state.resultatSimulation.emploisAMobiliser;
+    },
   },
 };
 </script>

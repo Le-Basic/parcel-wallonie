@@ -605,4 +605,8 @@ input:checked + .slider.viande {
 .viande.icon {
   color: #b57a60 !important;
 }
+
+.revoir-select {
+  background-image: url("/public/img/fleches/fleche-gch-blanc.svg");
+}
 </style>

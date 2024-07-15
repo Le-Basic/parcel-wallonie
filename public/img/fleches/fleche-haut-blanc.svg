@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="13px" viewBox="0 0 22 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>fleche-bas-blanc</title>
+    <desc>Created with Sketch.</desc>
+    <g id="MOBILE" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="MOBILE-/-8-2-detail-methode-calcul-copy" transform="translate(-277.000000, -142.000000)" fill="#FFFFFF">
+            <g id="ELEMENTS-/-fleche-droite" transform="translate(288.000000, 148.000000) scale(1, -1) rotate(-270.000000) translate(-288.000000, -148.000000) translate(281.000000, 137.500000)">
+                <path d="M12.0033907,11.5356903 L2.61643389,20.5620199 C2.01931005,21.1365 1.0511761,21.1365 0.454342147,20.5620199 C-0.142540118,19.9880509 1.41301544,19.0571283 2.0098977,18.4832058 L10.3159053,10.4962832 L2.01013928,2.50963938 C1.41325701,1.93543805 -0.142298544,1.00460841 0.454583721,0.430639381 C1.05146599,-0.143561947 2.01955162,-0.143561947 2.61667546,0.430639381 L12.0036323,9.45710841 C12.3020734,9.7442323 12.4511249,10.1201416 12.4511249,10.4962367 C12.4511249,10.8725177 12.3017835,11.2487058 12.0033907,11.5356903 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

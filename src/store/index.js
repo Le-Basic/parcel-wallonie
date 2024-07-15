@@ -18,6 +18,9 @@ const getDefaultState = () => {
       surface_ha: 0,
       sau_ha: 0,
       population: 0,
+      nb_exploitations_1990: 0,
+      nb_exploitations_2021: 0,
+      emploi_agricole_uta: 0,
     },
     population: {
       part: "toute",
@@ -36,6 +39,7 @@ const getDefaultState = () => {
     resultatSimulation: {
       surfaceAMobiliser: 0,
       emploisAMobiliser: 0,
+      consommation_kg: 0,
       surfacesEmploisAMobiliser: 0,
       surfacesActuelles: 0,
       surfacesActuellesParcelNiveau1: [],
@@ -315,6 +319,9 @@ export default createStore({
     mutationPartRelocalisee(state, part_relocalisee) {
       state.part_relocalisee = part_relocalisee;
     },
+    mutationResultatsDiagnostic(state, diagnostic) {
+      state.diagnostic = diagnostic;
+    },
   },
   actions: {
     addGeo({ commit }, geo) {
@@ -335,8 +342,23 @@ export default createStore({
     partRelocalisee({ commit }, part_relocalisee) {
       commit("partRelocalisee", part_relocalisee);
     },
-    partBio({ commit }, part_bio) {
+    async partBio({ commit }, part_bio) {
       commit("partBio", part_bio);
+      commit("partBioLegumes", part_bio);
+      commit("partBioFruits", part_bio);
+      commit("partBioCereales", part_bio);
+      commit("partBioElevage", part_bio);
+      let resultatSimulation = await recalculerResultatSimulation(
+        this.getters.getcodesTerritoireParcel,
+        this.state.regime_alimentaire.id,
+        this.state.partbioelevage,
+        this.state.partbiofruits,
+        this.state.partbiolegumes,
+        this.state.partbiocereales,
+        this.state.partpertes,
+        this.state.part_relocalisee
+      );
+      commit("mutationResultatSimulation", resultatSimulation);
     },
     regimeAlimentaire({ commit }, regime_alimentaire) {
       commit("regimeAlimentaire", regime_alimentaire);
