@@ -21,6 +21,7 @@ import ResultatsImpactsv2 from "@/views/ResultatsImpactsv2.vue";
 import testMotion from "@/views/testMotion.vue";
 import PageRecommencer from "@/views/PageRecommencer.vue";
 import TestCarte from "@/views/TestCarte.vue";
+import RegimePersonnalise from "@/views/parcours-parametres/PageRegimePersonnalise.vue";
 const routes = [
   {
     path: "/",
@@ -131,6 +132,11 @@ const routes = [
     path: "/test-carte",
     name: "Carte",
     component: TestCarte,
+  },
+  {
+    path: "/regime-personnalise",
+    name: "Regime Personnalise",
+    component: RegimePersonnalise,
   },
 ];
 

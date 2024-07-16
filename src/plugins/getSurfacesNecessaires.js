@@ -108,11 +108,43 @@ export async function fetchSurfaceNecessaire(
   } else {
     groupes = "";
   }
-  const bodyFormData = new FormData();
-  bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
   const response = await axios.post(
     `${url}?id_menu=${idRegimeAlimentaire}${groupes}`,
     codesTerritoireParcel, // Request body data
+    {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return response.data;
+}
+export async function fetchSurfaceNecessairePourRegimePersonnalise(
+  url,
+  codesTerritoireParcel,
+  idRegimeAlimentaire,
+  pctDiffRegimePersonnalise = null
+) {
+  const part_population = store.state["population"].part;
+  const population = store.state["population"];
+  var groupes = "";
+  if (part_population == "groupe") {
+    groupes = `&nombre_enfants=${population.nombreEnfants}&nombre_adultes=${population.nombreAdultes}&nombre_seniors=${population.nombreSeniors}`;
+  } else {
+    groupes = "";
+  }
+  const bodyFormData = new FormData();
+  console.log("terr", codesTerritoireParcel);
+  console.log("pctDiffRegimePersonnalise", pctDiffRegimePersonnalise);
+  bodyFormData.append("Codes_territoire_parcel", [codesTerritoireParcel]);
+  bodyFormData.append("pctDiffRegimePersonnalise", pctDiffRegimePersonnalise);
+  const response = await axios.post(
+    `${url}?id_menu=${idRegimeAlimentaire}${groupes}`,
+    {
+      Codes_territoire_parcel: codesTerritoireParcel,
+      pctDiffRegimePersonnalise: pctDiffRegimePersonnalise,
+    }, // Request body data
     {
       headers: {
         Accept: "application/json",

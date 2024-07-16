@@ -185,9 +185,11 @@
                 </div>
                 <!-- <div class="text-center w-100"><a href="/regime-personnalise" class="mx-auto btn-line">Composer vous-même<br>votre régime alimentaire</a></div> -->
                 <div class="text-center w-100">
-                  <a href="/regime-personnalise" class="mx-auto url-simple"
+                  <router-link
+                    to="/regime-personnalise"
+                    class="mx-auto url-simple"
                     >Professionnels ? Accédez au choix de régimes alimentaires
-                    détaillés</a
+                    détaillés</router-link
                   >
                 </div>
               </div>
@@ -272,12 +274,13 @@
 </template>
 
 <script>
-import listeRegime from "./modal/listeRegime.vue";
-import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
-import resumeChoix from "./modal/resumeChoix.vue";
 import "rangeslider.js/dist/rangeslider.css";
-import modalBioCurseur from "./modal/modalBioCurseur.vue";
 import VueSlider from "vue-3-slider-component";
+
+import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
+import listeRegime from "@/views/modal/listeRegime.vue";
+import resumeChoix from "@/views/modal/resumeChoix.vue";
+import modalBioCurseur from "@/views/modal/modalBioCurseur.vue";
 
 export default {
   inject: ["$axios"],
@@ -325,6 +328,11 @@ export default {
           nom: "VÉGÉTALIEN",
           img: require("@/assets/img/parcours/regime-vegetalien.svg"),
           nomCourt: "vegetalien",
+        },
+        {
+          nom: "Régime personnalisé",
+          img: require("@/assets/img/parcours/regime-personnalise.svg"),
+          nomCourt: "personnalise",
         },
       ],
     };

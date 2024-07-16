@@ -1,7 +1,6 @@
 <template>
   <div>
     <MenuSimple></MenuSimple>
-    <pre>{{ this.$store.state }}</pre>
     <div class="section flex-column" id="accueil">
       <div class="accueil-texte">
         <div class="titre animated fadeInUp mb-3">
@@ -9,11 +8,6 @@
             Et si l’alimentation de votre territoire devenait locale et durable
             ?
           </h1>
-          <router-link to="/diagnostic">
-            <button type="button" class="btn btn-principal mt-3">
-              Commencer
-            </button>
-          </router-link>
         </div>
       </div>
       <div class="container-fluid" id="accueil-couv">

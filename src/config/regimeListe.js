@@ -36,6 +36,12 @@ export const regimeListe = [
     nomCourt: "vegetalien",
     id: IDS_REGIMES_ALIMENTAIRES.VEGETALIEN,
   },
+  {
+    nom: "Régime personnalisé",
+    img: require("@/assets/img/parcours/regime-personnalise.svg"),
+    nomCourt: "personnalisé",
+    id: IDS_REGIMES_ALIMENTAIRES.PERSONNALISE,
+  },
 ];
 
 export function getRegimeParId(idRegime) {

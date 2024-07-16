@@ -3,6 +3,7 @@ import VuexPersistence from "vuex-persist";
 import { regimeListe } from "@/config/regimeListe.js";
 import {
   fetchSurfaceNecessaire,
+  fetchSurfaceNecessairePourRegimePersonnalise,
   fetchSurfacesActuelles,
   fetchSurfacesActuellesPaysage,
   fetchIndicateursActuels,
@@ -53,6 +54,7 @@ const getDefaultState = () => {
       populationAvecBesoinComblé: 0,
     },
     surfacesMobilisables: 0,
+    pctDiffRegimePersonnalise: {},
   };
 };
 
@@ -65,7 +67,8 @@ async function recalculerResultatSimulation(
   partBioCereales,
   partPertes,
   part_relocalisee,
-  resultatReference
+  resultatReference,
+  pctDiffRegimePersonnalise
 ) {
   console.log(
     "recalculerResultatSimulation",
@@ -77,10 +80,30 @@ async function recalculerResultatSimulation(
     partBioCereales,
     partPertes,
     part_relocalisee,
-    resultatReference
+    resultatReference,
+    pctDiffRegimePersonnalise
   );
 
-  const url = window.apiURL + "parcel/belgique/surfaces_necessaires";
+  let url = window.apiURL + "parcel/belgique/surfaces_necessaires";
+  let surfaceNecessaireResponseApi = null;
+  if (idRegimeAlimentaire === 4) {
+    url =
+      window.apiURL +
+      "parcel/belgique/surfaces_necessaires_regime_personnalise";
+    surfaceNecessaireResponseApi =
+      await fetchSurfaceNecessairePourRegimePersonnalise(
+        url,
+        codesTerritoireParcel,
+        idRegimeAlimentaire,
+        pctDiffRegimePersonnalise
+      );
+  } else {
+    surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
+      url,
+      codesTerritoireParcel,
+      idRegimeAlimentaire
+    );
+  }
   const actuelles_url =
     window.apiURL + "parcel/belgique/surfaces_actuels_produit";
 
@@ -93,11 +116,6 @@ async function recalculerResultatSimulation(
   var surfaceActuelleResponseApiPaysage = await fetchSurfacesActuellesPaysage(
     actuellespaysage__url,
     codesTerritoireParcel
-  );
-  var surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
-    url,
-    codesTerritoireParcel,
-    idRegimeAlimentaire
   );
 
   const necessaires_paysage__url =
@@ -330,6 +348,9 @@ export default createStore({
     mutationResultatsDiagnostic(state, diagnostic) {
       state.diagnostic = diagnostic;
     },
+    mutationPctDiffRegimePersonnalise(state, pctDiffRegimePersonnalise) {
+      state.pctDiffRegimePersonnalise = pctDiffRegimePersonnalise;
+    },
   },
   actions: {
     addGeo({ commit }, geo) {
@@ -365,7 +386,8 @@ export default createStore({
         this.state.partbiocereales,
         this.state.partpertes,
         this.state.part_relocalisee,
-        this.state.resultatReference
+        this.state.resultatReference,
+        this.state.pctDiffRegimePersonnalise
       );
       commit("mutationResultatReference", resultatSimulation);
       resultatSimulation = await recalculerResultatSimulation(
@@ -377,7 +399,8 @@ export default createStore({
         this.state.partbiocereales,
         this.state.partpertes,
         this.state.part_relocalisee,
-        this.state.resultatReference
+        this.state.resultatReference,
+        this.state.pctDiffRegimePersonnalise
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },
@@ -415,7 +438,8 @@ export default createStore({
         this.state.partbiocereales,
         this.state.partpertes,
         this.state.part_relocalisee,
-        this.state.resultatReference
+        this.state.resultatReference,
+        this.state.pctDiffRegimePersonnalise
       );
       if (this.state.surfacesMobilisables > 0) {
         let resultatSimulationSurface =
@@ -428,7 +452,8 @@ export default createStore({
             this.state.partbiocereales,
             this.state.partpertes,
             this.state.part_relocalisee,
-            this.state.surfacesMobilisables
+            this.state.surfacesMobilisables,
+            this.state.pctDiffRegimePersonnalise
           );
         console.log("resultatSimulationSurface", resultatSimulationSurface);
         commit("mutationResultatSimulationSurface", resultatSimulationSurface);
@@ -446,7 +471,8 @@ export default createStore({
         this.state.partbiocereales,
         this.state.partpertes,
         this.state.part_relocalisee,
-        this.state.resultatReference
+        this.state.resultatReference,
+        this.state.pctDiffRegimePersonnalise
       );
       if (this.state.surfacesMobilisables > 0) {
         let resultatSimulationSurface =
@@ -459,7 +485,8 @@ export default createStore({
             this.state.partbiocereales,
             this.state.partpertes,
             this.state.part_relocalisee,
-            this.state.surfacesMobilisables
+            this.state.surfacesMobilisables,
+            this.state.pctDiffRegimePersonnalise
           );
         commit("mutationResultatSimulationSurface", resultatSimulationSurface);
       }
@@ -476,7 +503,8 @@ export default createStore({
         this.state.partbiocereales,
         this.state.partpertes,
         this.state.part_relocalisee,
-        this.state.resultatReference
+        this.state.resultatReference,
+        this.state.pctDiffRegimePersonnalise
       );
       if (this.state.surfacesMobilisables > 0) {
         let resultatSimulationSurface =
@@ -507,7 +535,8 @@ export default createStore({
         this.state.partbiocereales,
         this.state.partpertes,
         this.state.part_relocalisee,
-        this.state.resultatReference
+        this.state.resultatReference,
+        this.state.pctDiffRegimePersonnalise
       );
       commit("mutationResultatSimulation", resultatSimulation);
       if (this.state.surfacesMobilisables > 0) {
@@ -538,7 +567,8 @@ export default createStore({
         this.state.partbiocereales,
         this.state.partpertes,
         this.state.part_relocalisee,
-        this.state.resultatReference
+        this.state.resultatReference,
+        this.state.pctDiffRegimePersonnalise
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },
@@ -552,7 +582,8 @@ export default createStore({
         this.state.partbiolegumes,
         this.state.partbiocereales,
         this.state.partpertes,
-        this.state.part_relocalisee
+        this.state.part_relocalisee,
+        this.state.pctDiffRegimePersonnalise
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },
@@ -567,7 +598,8 @@ export default createStore({
         this.state.partbiocereales,
         this.state.partpertes,
         this.state.part_relocalisee,
-        this.state.resultatReference
+        this.state.resultatReference,
+        this.state.pctDiffRegimePersonnalise
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },

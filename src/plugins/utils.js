@@ -23,3 +23,18 @@ export function FormatterPourcentage(nombre) {
     maximumFractionDigits: 0,
   });
 }
+
+// permet pour les régimes personnalisés de mapper les coefficients multiplicateurs avec la lisste de produits détaillée de PARCEL
+export function MapProduitsCoefficientMultiplicateurRegime(
+  ProduitCategorieMapping,
+  produitcoefficientMultiplicateur
+) {
+  let mapping = ProduitCategorieMapping;
+  mapping.map((produit) => {
+    produit.coefficientMultiplicateur =
+      produitcoefficientMultiplicateur[produit.id_categorieRegime];
+    console.log(produit);
+    return produit;
+  });
+  return mapping;
+}
