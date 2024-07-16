@@ -168,7 +168,7 @@ import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
   flex-direction: row;
   justify-content: center;
   align-items: stretch;
-  gap: 12px;
+  gap: 24px;
   color: black;
 }
 

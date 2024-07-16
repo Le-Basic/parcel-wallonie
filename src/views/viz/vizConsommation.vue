@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p class="text-h3">Consommation en matière première de la population</p>
     <v-chart class="graphique" :option="options" autoresize />
   </div>
 </template>
@@ -90,6 +91,10 @@ use([GridComponent, BarChart, CanvasRenderer]);
 const options = ref({
   grid: {
     containLabel: true,
+    left: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
   },
   xAxis: {
     splitLine: {

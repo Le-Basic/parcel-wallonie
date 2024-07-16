@@ -1,5 +1,7 @@
 <template>
   <div>
+    <p class="text-h3">Occupation du sol sur le territoire</p>
+
     <v-chart class="graphique" :option="option" autoresize />
   </div>
 </template>
@@ -20,8 +22,8 @@ const colors = ["#91C423", "#025A5C", "#0c1321"];
 const grid = {
   left: 100,
   right: 100,
-  top: 50,
-  bottom: 50,
+  top: 0,
+  bottom: 0,
 };
 const series = [
   "Surface Agricole",

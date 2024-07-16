@@ -1,6 +1,7 @@
 <template>
   <div>
     <MenuSimple></MenuSimple>
+    <pre>{{ this.$store.state }}</pre>
     <div class="section flex-column" id="accueil">
       <div class="accueil-texte">
         <div class="titre animated fadeInUp mb-3">
@@ -373,9 +374,14 @@ export default {
       let url = window.apiURL + "parcel/belgique/curseurs_bio";
       let codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
 
-      getPartdeBio(url, codesTerritoireParcel).then((data) => {
-        this.$store.dispatch("partBio", data[0].curseur_bio);
-      });
+      getPartdeBio(url, codesTerritoireParcel)
+        .then((data) => {
+          let partBio = Math.round(data[0].curseur_bio * 100);
+          this.$store.dispatch("changerPartBio", partBio);
+        })
+        .then(() => {
+          this.$store.dispatch("creerDonneesReference");
+        });
     },
     enleverGeo(geo) {
       this.$store.commit("removeGeo", geo);
@@ -383,9 +389,13 @@ export default {
       this.$store.commit("getIndicateursPortraits", codesTerritoireParcel);
       let url = window.apiURL + "parcel/belgique/curseurs_bio";
 
-      getPartdeBio(url, codesTerritoireParcel).then((data) => {
-        this.$store.dispatch("partBio", data[0].curseur_bio);
-      });
+      getPartdeBio(url, codesTerritoireParcel)
+        .then((data) => {
+          this.$store.dispatch("changerPartBio", data[0].curseur_bio);
+        })
+        .then(() => {
+          this.$store.dispath("creerDonnesReference");
+        });
       this.$store.dispatch("actionRecupererElementsDIagnostic");
     },
   },

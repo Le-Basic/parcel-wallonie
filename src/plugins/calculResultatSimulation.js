@@ -9,12 +9,14 @@ export function calculerResultatSimulation(
   partPertes,
   surfaceActuelleResponseApiPaysage,
   surfaceNecessairePaysageResponseApi,
-  part_relocalisee
+  part_relocalisee,
+  donneesReference
 ) {
   const {
     surfaces_a_mobiliser,
     emplois_a_mobiliser,
     consommation_kg,
+    emission_kg_co2e,
     surfaces_emplois_a_mobiliser_parcel_niveau_1,
     surfaces_actuelles,
     surfaces_actuelles_parcel_niveau_1,
@@ -37,16 +39,26 @@ export function calculerResultatSimulation(
     (surfaces_actuelles * 100) / surfaces_a_mobiliser
   );
 
+  console.log("DR", donneesReference);
+
+  let pct_difference_emission_kg_co2e = null;
+  if (donneesReference?.emission_kg_co2e) {
+    pct_difference_emission_kg_co2e =
+      emission_kg_co2e / donneesReference.emission_kg_co2e - 1;
+  }
+
   return {
     surfaceAMobiliser: surfaces_a_mobiliser,
     emploisAMobiliser: emplois_a_mobiliser,
     consommation_kg: consommation_kg,
+    emission_kg_co2e: emission_kg_co2e,
     surfacesEmploisAMobiliser: surfaces_emplois_a_mobiliser_parcel_niveau_1,
     surfacesActuelles: surfaces_actuelles,
     surfacesActuellesParcelNiveau1: surfaces_actuelles_parcel_niveau_1,
     potentielNourricier: potentielNourricier,
     surfacesActuellesPaysage: surfaces_actuelles_paysage,
     surfaceNecessairePaysage: surfaces_a_mobiliser_paysage,
+    pctDifferenceEmissionKGCo2: pct_difference_emission_kg_co2e,
   };
 }
 
@@ -74,6 +86,7 @@ function calculerSurfacesEtEmploisAMobiliser(
         surface_a_mobiliser: 0,
         emplois_a_mobiliser: 0,
         consommation_kg: 0,
+        emission_kg_co2e: 0,
       };
       surfaces_emplois_a_mobiliser_parcel_niveau_1.push(
         res[valeur.libelle_parcel_niveau_1]
@@ -112,6 +125,19 @@ function calculerSurfacesEtEmploisAMobiliser(
         partPertes,
         part_relocalisee
       );
+
+    res[valeur.libelle_parcel_niveau_1].emission_kg_co2e +=
+      calculSurfAMobiliser(
+        valeur.libelle_parcel_niveau_1,
+        valeur.emission_kg_co2e,
+        valeur.emission_kg_co2e_bio,
+        partBioElevage,
+        partBioFruits,
+        partBioLegumes,
+        partBioCereales,
+        partPertes,
+        part_relocalisee
+      );
     return res;
   }, {});
 
@@ -126,11 +152,18 @@ function calculerSurfacesEtEmploisAMobiliser(
       return item.emplois_a_mobiliser;
     })
     .reduce((somme, emplois_a_mobiliser) => somme + emplois_a_mobiliser, 0);
+
   const consommation_kg = surfaces_emplois_a_mobiliser_parcel_niveau_1
     .map((item) => {
       return item.consommation_kg;
     })
-    .reduce((somme, emplois_a_mobiliser) => somme + emplois_a_mobiliser, 0);
+    .reduce((somme, consommation_kg) => somme + consommation_kg, 0);
+
+  const emission_kg_co2e = surfaces_emplois_a_mobiliser_parcel_niveau_1
+    .map((item) => {
+      return item.emission_kg_co2e;
+    })
+    .reduce((somme, emission_kg_co2e) => somme + emission_kg_co2e, 0);
 
   const surfaces_actuelles = surfaceActuelleResponseApi
     .map((item) => {
@@ -190,6 +223,7 @@ function calculerSurfacesEtEmploisAMobiliser(
     surfaces_a_mobiliser: surfaces_a_mobiliser,
     emplois_a_mobiliser: emplois_a_mobiliser,
     consommation_kg: consommation_kg,
+    emission_kg_co2e: emission_kg_co2e,
     surfaces_emplois_a_mobiliser_parcel_niveau_1:
       surfaces_emplois_a_mobiliser_parcel_niveau_1,
     surfaces_actuelles: surfaces_actuelles,

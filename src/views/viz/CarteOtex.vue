@@ -1,4 +1,6 @@
 <template>
+  <p class="text-h3">Carte des spécialisations par commune</p>
+
   <div id="map" ref="map"></div>
   <div>
     <p v-for="label in labelsUtilisesAvecCouleur" :key="label">{{ label }}</p>

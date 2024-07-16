@@ -112,14 +112,7 @@
                         id="gaz_effet_serre3"
                         v-if="impacts.length > 0"
                       >
-                        {{
-                          Math.round(
-                            impacts.find(
-                              (el) =>
-                                el.ID_EcoImpact_Indicator == IDS_IMPACTS.GES
-                            )["EcoImpact_Indicator_Value_Hectare"]
-                          )
-                        }}
+                        {{ Math.round(pctDifferenceEmissionKGCo2 * 100) }}
                       </div>
                       <span class="impact-pourcent">%</span>
                     </div>
@@ -216,6 +209,9 @@ export default {
     },
     emploisAMobiliser() {
       return this.$store.state.resultatSimulation.emploisAMobiliser;
+    },
+    pctDifferenceEmissionKGCo2() {
+      return this.$store.state.resultatSimulation.pctDifferenceEmissionKGCo2;
     },
     partpertes() {
       return this.$store.state.partpertes;
