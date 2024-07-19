@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="graphique-container">
     <p class="text-h3">Consommation en matière première de la population</p>
     <v-chart class="graphique" :option="options" autoresize />
   </div>
@@ -139,8 +139,16 @@ const options = ref({
 </script>
 
 <style scoped>
+.graphique-container {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 50;
+}
+
 .graphique {
-  height: 450px;
-  max-width: 600px;
+  min-height: 200px;
+  width: 500px;
 }
 </style>

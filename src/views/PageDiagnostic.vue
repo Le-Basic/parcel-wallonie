@@ -6,6 +6,10 @@
         menuType=""
       />
       <div class="section centrervh" id="section0" style="width: 100%">
+        <div class="section-boutons-controles-diapo">
+          <button @click="RevenirDiapoPrecedente">Précédent</button>
+          <button @click="PasserProchaineDiapo">Suivant</button>
+        </div>
         <div class="container-grand">
           <div>
             <transition :name="slideTransition" @after-enter="transitionEnd">
@@ -62,25 +66,36 @@
               </div>
             </transition>
             <transition :name="slideTransition" @after-enter="transitionEnd">
-              <div
-                class="partie-diagnostic-pleine-page container-principal slide-diagnostic"
-                v-if="index == 1"
-              >
-                <p class="titre-grand text-h2 flex-grow-1 flex-shrink-1">
-                  Ces
-                  <b class="gros-chiffre-diagnostic">{{ population }}</b>
-                  habitants consomment en moyenne par jour XXX g de viande, XXX
-                  g de pain etc. <br />soit une équivalence de
-                  <b class="gros-chiffre-diagnostic">{{ consommation_t }} </b
-                  >tonnes de matière première agricole réparties ainsi:
+              <div class="slide-diagnostic" v-if="index == 1">
+                <p
+                  class="animated fadeInUp fast p-result mb-1 map-content titre-moyen"
+                  style="text-align: center"
+                >
+                  Si on commençait par mieux connaître votre territoire ?
                 </p>
-
-                <div style="margin: auto" class="flex-grow-1 flex-shrink-100">
-                  <vizConsommation />
-                  <p>
-                    En savoir plus sur le régime moyen d'une personne résidente
-                    Belge
-                  </p>
+                <div class="partie-diagnostic" v-if="index == 1">
+                  <div
+                    class="sous-partie titre-grand text-h2 flex-grow-1 flex-shrink-1"
+                  >
+                    <p>
+                      Ces
+                      <b class="gros-chiffre-diagnostic">{{ population }}</b>
+                      habitants consomment en moyenne par jour XXX g de viande,
+                      XXX g de pain etc. <br />soit une équivalence de
+                      <b class="gros-chiffre-diagnostic"
+                        >{{ consommation_t }} </b
+                      >tonnes de matière première agricole réparties ainsi:
+                    </p>
+                    <p>
+                      En savoir plus sur le régime moyen d'une personne
+                      résidente Belge
+                    </p>
+                  </div>
+                  <div
+                    class="flex-grow-1 flex-shrink-100 section-graphique-consommation"
+                  >
+                    <vizConsommation />
+                  </div>
                 </div>
               </div>
             </transition>
@@ -125,6 +140,12 @@
                   <div style="width: 100%; margin: auto">
                     <CarteOtex :geojson="geojsonData" v-if="geojsonData" />
                   </div>
+                </div>
+              </div>
+            </transition>
+            <transition :name="slideTransition" @after-enter="transitionEnd">
+              <div v-if="index == 4">
+                <div>
                   <p class="texte-centre titre-grand">
                     Sur le territoire choisi, l'activité agricole (élevage et
                     culture) est responsable de:
@@ -145,7 +166,7 @@
               </div>
             </transition>
             <transition :name="slideTransition" @after-enter="transitionEnd">
-              <div id="potentiel" v-if="index == 4">
+              <div id="potentiel" v-if="index == 5">
                 <p class="titre-grand texte-centre">
                   Alors pourrais-je nourrir l'ensemble de ma population avec les
                   surfaces actuelles agricoles ?
@@ -285,7 +306,7 @@ geojsonData.features = featuresAvecOtex.value;
 const dernierDeltaY = ref(0);
 const slideTransition = ref("slide-fade");
 const index = ref(0);
-const maxIndex = 4;
+const maxIndex = 5;
 function GererUnEvenementWheel(event) {
   // Any code to be executed when the user scrolls with the wheel
   console.log("Calling handleWheel");
@@ -303,6 +324,16 @@ function GererUnEvenementWheel(event) {
   console.log("delta", event.deltaY);
 }
 
+function PasserProchaineDiapo() {
+  index.value = index.value === maxIndex ? maxIndex : index.value + 1;
+  slideTransition.value = "slide-fade";
+}
+
+function RevenirDiapoPrecedente() {
+  index.value = index.value === 0 ? 0 : index.value - 1;
+  slideTransition.value = "slide-fade-down";
+}
+
 const handleDebouncedWheel = throttle(GererUnEvenementWheel, 800); // Adjust throttle delay as needed
 
 onMounted(() => {
@@ -315,6 +346,26 @@ onMounted(() => {
   margin-top: 0px;
   margin-bottom: 0px;
 }
+.section-boutons-controles-diapo {
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.section-boutons-controles-diapo button {
+  background-color: #91c423;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
 
 .slide-diagnostic {
   height: calc(100vh - 135px);
@@ -323,16 +374,7 @@ onMounted(() => {
 .text-h2 {
   margin-top: 16px;
   margin-bottom: 16px;
-}
-
-.is-active {
-  display: block !important;
-  visibility: visible !important;
-}
-
-.card-active {
-  background-color: #91c423;
-  color: white;
+  text-align: left;
 }
 
 .non-active {
@@ -347,6 +389,12 @@ onMounted(() => {
   opacity: 1 !important;
 }
 
+.section-graphique-consommation {
+  display: flex;
+  flex-direction: column;
+  max-height: 80%;
+}
+
 .diagnostic {
   display: flex;
   flex-direction: column;
@@ -357,6 +405,9 @@ onMounted(() => {
   flex-direction: row;
   justify-content: flex-start;
   flex-grow: 1;
+  flex-shrink: 100;
+  align-items: center;
+  gap: 16px;
 }
 
 .sous-partie {
@@ -428,6 +479,7 @@ onMounted(() => {
   color: var(--vert);
 }
 
+/* transition */
 .slide-fade-enter-active {
   transition: all 0.9s ease-out;
 }

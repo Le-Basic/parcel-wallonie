@@ -2,8 +2,18 @@
   <p class="text-h3">Carte des spécialisations par commune</p>
 
   <div id="map" ref="map"></div>
-  <div>
-    <p v-for="label in labelsUtilisesAvecCouleur" :key="label">{{ label }}</p>
+  <div class="legende-palette">
+    <div
+      v-for="label in labelsUtilisesAvecCouleur"
+      :key="label"
+      class="element-legende"
+    >
+      <div
+        class="carre-couleur"
+        :style="{ 'background-color': label.couleur }"
+      ></div>
+      <div>{{ label.label }}</div>
+    </div>
   </div>
 </template>
 
@@ -145,5 +155,24 @@ function creerCarte(attributionHtml) {
   display: flex;
   position: relative !important;
   margin: auto;
+}
+
+.legende-palette {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.element-legende {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px;
+  gap: 4px;
+}
+
+.carre-couleur {
+  height: 16px;
+  width: 16px;
 }
 </style>
