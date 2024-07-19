@@ -1263,7 +1263,10 @@
 import { formatterChiffres } from "@/plugins/surfaceProduits";
 import { Treemap } from "d3plus-hierarchy";
 import { CATEGORIE_PRODUITS_SURFACES_ACTUELLES } from "@/config/categorieProduitsActuel";
-import { CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER } from "@/config/categorieProduitsPotentielNourricier";
+import {
+  CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER,
+  CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE,
+} from "@/config/categorieProduitsPotentielNourricier";
 import { trouverChiffre } from "@/plugins/utils";
 import { pushDataViz } from "@/plugins/pushDataViz";
 import modalDetail from "../modal/modalDetail.vue";
@@ -1446,7 +1449,7 @@ export default {
     repartitionSurfacePourGraphique() {
       let data = [];
       for (const [key, value] of Object.entries(
-        CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
+        CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE
       )) {
         console.log(key);
         value.partAMobiliser = Math.round(
@@ -1454,7 +1457,7 @@ export default {
             this.$store.state.resultatSimulation.surfacesEmploisAMobiliser,
             value.libelle,
             "part_surface_a_mobiliser",
-            "libelle_parcel_niveau_1"
+            "libelle_parcel_niveau_2"
           )
         );
         let donnePourGraphique = {

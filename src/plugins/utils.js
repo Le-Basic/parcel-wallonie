@@ -5,10 +5,13 @@ export function trouverChiffre(
   champ,
   champ_libelle = "libelle_parcel_niveau_1"
 ) {
-  const objet = listeObjets.find((item) => {
+  const listeFiltree = listeObjets.filter((item) => {
     return item[champ_libelle] === libelle;
   });
-  return objet ? objet[champ] : 0;
+  const valeur = listeFiltree.reduce((acc, item) => {
+    return acc + item[champ] ?? 0;
+  }, 0);
+  return valeur;
 }
 
 export function AfficherEntier(nombre) {

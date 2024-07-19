@@ -84,22 +84,42 @@ async function recalculerResultatSimulation(
     pctDiffRegimePersonnalise
   );
 
-  let url = window.apiURL + "parcel/belgique/surfaces_necessaires";
+  let necessaires__url = window.apiURL + "parcel/belgique/surfaces_necessaires";
+  let necessaires_paysage__url =
+    window.apiURL + "parcel/belgique/surfaces_necessaires_paysage";
+
   let surfaceNecessaireResponseApi = null;
+  let surfaceNecessairePaysageResponseApi = null;
+
   if (idRegimeAlimentaire === 4) {
-    url =
+    necessaires__url =
+      window.apiURL +
+      "parcel/belgique/surfaces_necessaires_paysage_regime_personnalise";
+    necessaires_paysage__url =
       window.apiURL +
       "parcel/belgique/surfaces_necessaires_regime_personnalise";
     surfaceNecessaireResponseApi =
       await fetchSurfaceNecessairePourRegimePersonnalise(
-        url,
+        necessaires__url,
+        codesTerritoireParcel,
+        idRegimeAlimentaire,
+        pctDiffRegimePersonnalise
+      );
+    surfaceNecessairePaysageResponseApi =
+      await fetchSurfaceNecessairePourRegimePersonnalise(
+        necessaires_paysage__url,
         codesTerritoireParcel,
         idRegimeAlimentaire,
         pctDiffRegimePersonnalise
       );
   } else {
     surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
-      url,
+      necessaires__url,
+      codesTerritoireParcel,
+      idRegimeAlimentaire
+    );
+    surfaceNecessairePaysageResponseApi = await fetchSurfaceNecessaire(
+      necessaires_paysage__url,
       codesTerritoireParcel,
       idRegimeAlimentaire
     );
@@ -107,24 +127,17 @@ async function recalculerResultatSimulation(
   const actuelles_url =
     window.apiURL + "parcel/belgique/surfaces_actuels_produit";
 
-  var surfaceActuelleResponseApi = await fetchSurfacesActuelles(
-    actuelles_url,
-    codesTerritoireParcel
-  );
   const actuellespaysage__url =
     window.apiURL + "parcel/belgique/surfaces_actuels_paysage";
   var surfaceActuelleResponseApiPaysage = await fetchSurfacesActuellesPaysage(
     actuellespaysage__url,
     codesTerritoireParcel
   );
-
-  const necessaires_paysage__url =
-    window.apiURL + "parcel/belgique/surfaces_necessaires_paysage";
-  var surfaceNecessairePaysageResponseApi = await fetchSurfaceNecessaire(
-    necessaires_paysage__url,
-    codesTerritoireParcel,
-    idRegimeAlimentaire
+  var surfaceActuelleResponseApi = await fetchSurfacesActuelles(
+    actuelles_url,
+    codesTerritoireParcel
   );
+
   let resultatSimulation = calculerResultatSimulation(
     surfaceActuelleResponseApi,
     surfaceNecessaireResponseApi,

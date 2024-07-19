@@ -417,6 +417,17 @@
                 />
                 <span class="checkmark checkmark-radio"></span>
               </label>
+              <label class="container-checkbox"
+                ><strong>Régime perso</strong> <br />
+                <input
+                  type="radio"
+                  name="id_assiette2"
+                  value="vegetarien"
+                  id="2vegetarienne"
+                  @input="$router.push('/regime-personnalise')"
+                />
+                <span class="checkmark checkmark-radio"></span>
+              </label>
               <!--label class="container-checkbox"><strong>Végétalien</strong> <br />
               <input type="radio" name="id_assiette2" value="vegetalienne" id="2vegetalienne">
               <span class="checkmark checkmark-radio"></span>

@@ -711,6 +711,7 @@ export default {
       codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
       console.log(codesTerritoireParcel);
       bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
+      //TODO REFACTO NECESSAIRE
       this.$axios
         .post(
           window.apiURL + "parcel/belgique/surfaces_actuels_paysage",
