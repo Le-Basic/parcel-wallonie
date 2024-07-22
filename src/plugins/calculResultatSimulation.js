@@ -74,10 +74,11 @@ function calculerSurfacesEtEmploisAMobiliser(
 ) {
   let surfaces_emplois_a_mobiliser_parcel_niveau_1 = [];
   surfaceNecessaireResponseApi.reduce(function (res, valeur) {
-    if (!res[valeur.libelle_parcel_niveau_2]) {
-      res[valeur.libelle_parcel_niveau_2] = {
+    if (!res[valeur.libelle_parcel_niveau_3]) {
+      res[valeur.libelle_parcel_niveau_3] = {
         libelle_parcel_niveau_1: valeur.libelle_parcel_niveau_1,
         libelle_parcel_niveau_2: valeur.libelle_parcel_niveau_2,
+        libelle_parcel_niveau_3: valeur.libelle_parcel_niveau_3,
         surface_necessaire_conventionnel: 0,
         surface_necessaire_bio: 0,
         emploi_conventionnel: 0,
@@ -88,20 +89,20 @@ function calculerSurfacesEtEmploisAMobiliser(
         emission_kg_co2e: 0,
       };
       surfaces_emplois_a_mobiliser_parcel_niveau_1.push(
-        res[valeur.libelle_parcel_niveau_2]
+        res[valeur.libelle_parcel_niveau_3]
       );
     }
-    res[valeur.libelle_parcel_niveau_2].surface_necessaire_conventionnel +=
+    res[valeur.libelle_parcel_niveau_3].surface_necessaire_conventionnel +=
       valeur.surface_necessaire_conventionnel;
 
-    res[valeur.libelle_parcel_niveau_2].surface_necessaire_bio +=
+    res[valeur.libelle_parcel_niveau_3].surface_necessaire_bio +=
       valeur.surface_necessaire_bio;
-    res[valeur.libelle_parcel_niveau_2].emploi_conventionnel +=
+    res[valeur.libelle_parcel_niveau_3].emploi_conventionnel +=
       valeur.emploi_conventionnel;
-    res[valeur.libelle_parcel_niveau_2].emploi_bio += valeur.emploi_bio;
-    res[valeur.libelle_parcel_niveau_2].consommation_kg +=
+    res[valeur.libelle_parcel_niveau_3].emploi_bio += valeur.emploi_bio;
+    res[valeur.libelle_parcel_niveau_3].consommation_kg +=
       valeur.consommation_kg;
-    res[valeur.libelle_parcel_niveau_2].surface_a_mobiliser +=
+    res[valeur.libelle_parcel_niveau_3].surface_a_mobiliser +=
       calculSurfAMobiliser(
         valeur.libelle_parcel_niveau_1,
         valeur.surface_necessaire_bio,
@@ -113,7 +114,7 @@ function calculerSurfacesEtEmploisAMobiliser(
         partPertes,
         part_relocalisee
       );
-    res[valeur.libelle_parcel_niveau_2].emplois_a_mobiliser +=
+    res[valeur.libelle_parcel_niveau_3].emplois_a_mobiliser +=
       calculSurfAMobiliser(
         valeur.libelle_parcel_niveau_1,
         valeur.emploi_bio,
@@ -126,7 +127,7 @@ function calculerSurfacesEtEmploisAMobiliser(
         part_relocalisee
       );
 
-    res[valeur.libelle_parcel_niveau_2].emission_kg_co2e +=
+    res[valeur.libelle_parcel_niveau_3].emission_kg_co2e +=
       calculSurfAMobiliser(
         valeur.libelle_parcel_niveau_1,
         valeur.emission_kg_co2e,

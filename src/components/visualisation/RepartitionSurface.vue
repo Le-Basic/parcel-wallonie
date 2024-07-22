@@ -48,7 +48,6 @@ const option = {
     borderRadius: 0,
     formatter: function (categorieProduit) {
       let nomProduit = categorieProduit.name;
-      console.log(categorieProduit);
       let partTotal = categorieProduit.value / 100 ?? 0;
       let couleur = categorieProduit.data.itemStyle.color ?? "#00a8ff";
       let tooltip = `<div class="tooltip-title" style="color:${couleur}">`;

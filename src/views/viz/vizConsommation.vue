@@ -12,75 +12,102 @@ import { GridComponent } from "echarts/components";
 import { CanvasRenderer } from "echarts/renderers";
 import { ref } from "vue";
 import { useStore } from "vuex";
-import { CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER } from "@/config/categorieProduitsPotentielNourricier";
+import { CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3 } from "@/config/categorieProduitsPotentielNourricier";
 import { AfficherEntier, trouverChiffre } from "@/plugins/utils";
 const store = useStore();
 const LIBELLE_XAXIS = [
   "Céréales",
-  "Fruits",
   "Légumes",
+  "Fruits",
   "Produits laitiers",
-  "Viande",
+  "Viande Rouge",
+  "Viande Blanche",
 ];
 
 const data = ref([
   {
     value: trouverChiffre(
       store.state.resultatSimulation.surfacesEmploisAMobiliser,
-      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
+      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.CEREALES.libelle,
       "consommation_kg",
-      "libelle_parcel_niveau_1"
+      "libelle_parcel_niveau_3"
     ),
     itemStyle: {
-      color: CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.couleur,
+      color:
+        CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.CEREALES
+          .couleur,
     },
     label: { show: true, position: "top" },
   },
   {
     value: trouverChiffre(
       store.state.resultatSimulation.surfacesEmploisAMobiliser,
-      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
+      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.LEGUMES.libelle,
       "consommation_kg",
-      "libelle_parcel_niveau_1"
+      "libelle_parcel_niveau_3"
     ),
     itemStyle: {
-      color: CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.couleur,
+      color:
+        CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.LEGUMES
+          .couleur,
     },
     label: { show: true, position: "top" },
   },
   {
     value: trouverChiffre(
       store.state.resultatSimulation.surfacesEmploisAMobiliser,
-      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle,
+      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.FRUITS.libelle,
       "consommation_kg",
-      "libelle_parcel_niveau_1"
+      "libelle_parcel_niveau_3"
     ),
     itemStyle: {
-      color: CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.couleur,
+      color:
+        CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.FRUITS.couleur,
     },
     label: { show: true, position: "top" },
   },
   {
     value: trouverChiffre(
       store.state.resultatSimulation.surfacesEmploisAMobiliser,
-      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
+      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.PRODUITS_LAITIERS
+        .libelle,
       "consommation_kg",
-      "libelle_parcel_niveau_1"
+      "libelle_parcel_niveau_3"
     ),
     itemStyle: {
-      color: CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.couleur,
+      color:
+        CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3
+          .PRODUITS_LAITIERS.couleur,
     },
     label: { show: true, position: "top" },
   },
   {
     value: trouverChiffre(
       store.state.resultatSimulation.surfacesEmploisAMobiliser,
-      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle,
+      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.VIANDE_ROUGE
+        .libelle,
       "consommation_kg",
-      "libelle_parcel_niveau_1"
+      "libelle_parcel_niveau_3"
     ),
     itemStyle: {
-      color: CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.couleur,
+      color:
+        CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.VIANDE_ROUGE
+          .couleur,
+    },
+    label: { show: true, position: "top" },
+  },
+  {
+    value: trouverChiffre(
+      store.state.resultatSimulation.surfacesEmploisAMobiliser,
+      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.VIANDE_BLANCHE
+        .libelle,
+      "consommation_kg",
+      "libelle_parcel_niveau_3"
+    ),
+    itemStyle: {
+      color:
+        CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.VIANDE_BLANCHE
+          .couleur,
     },
     label: { show: true, position: "top" },
   },
@@ -140,7 +167,7 @@ const options = ref({
 
 <style scoped>
 .graphique-container {
-  height: 400px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;

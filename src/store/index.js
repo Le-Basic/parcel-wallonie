@@ -22,6 +22,9 @@ const getDefaultState = () => {
       nb_exploitations_1990: 0,
       nb_exploitations_2021: 0,
       emploi_agricole_uta: 0,
+      walstat_espace_artificialise_ha: 0,
+      walstat_espace_agricoles_ha: 0,
+      walstat_espaces_naturels_ha: 0,
     },
     population: {
       part: "toute",

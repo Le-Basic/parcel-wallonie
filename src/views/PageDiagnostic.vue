@@ -15,7 +15,7 @@
             <transition :name="slideTransition" @after-enter="transitionEnd">
               <div v-if="index == 0" class="slide-diagnostic">
                 <p
-                  class="animated fadeInUp fast p-result mb-1 map-content titre-moyen"
+                  class="animated fadeInUp fast p-result mb-1 map-content titre-moyen titre-slide"
                   style="text-align: center"
                 >
                   Si on commençait par mieux connaître votre territoire ?
@@ -71,7 +71,7 @@
                   class="animated fadeInUp fast p-result mb-1 map-content titre-moyen"
                   style="text-align: center"
                 >
-                  Si on commençait par mieux connaître votre territoire ?
+                  Alors on consomme quoi sur votre territoire ?
                 </p>
                 <div class="partie-diagnostic" v-if="index == 1">
                   <div
@@ -100,7 +100,10 @@
               </div>
             </transition>
             <transition :name="slideTransition" @after-enter="transitionEnd">
-              <div class="partie-diagnostic-pleine-page" v-if="index == 2">
+              <div
+                class="partie-diagnostic-pleine-page slide-diagnostic"
+                v-if="index == 2"
+              >
                 <p class="texte-centre titre-grand">
                   Le territoire sélectionné a également une activité agricole:
                 </p>
@@ -150,7 +153,7 @@
                     Sur le territoire choisi, l'activité agricole (élevage et
                     culture) est responsable de:
                   </p>
-                  <p class="gros-chiffre-diagnostic">
+                  <p class="gros-chiffre-diagnostic texte-centre">
                     {{ nb_emploi_agricole_uta }} emplois
                   </p>
                   <p class="texte-centre titre-grand">
@@ -290,12 +293,17 @@ const featuresAvecOtex = ref(
       properties: {
         code_belgique_municipalite:
           feature.properties.code_belgique_municipalite,
+        centroid: [
+          feature.properties.centroid[0],
+          feature.properties.centroid[1],
+        ],
         value:
           otex_dominant_par_commune.find(
             (otex) =>
               otex.code_belgique_municipalite ===
               feature.properties.code_belgique_municipalite
           )?.otex_dominant ?? "Non disponible",
+        libelle_commune: feature.properties.libelle_commune,
       },
       geometry: feature.geometry,
     };
@@ -342,6 +350,10 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.asy-wrapper {
+  height: 100vh;
+  overflow: hidden;
+}
 .section {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -369,6 +381,10 @@ onMounted(() => {
 
 .slide-diagnostic {
   height: calc(100vh - 135px);
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .text-h2 {
@@ -398,13 +414,14 @@ onMounted(() => {
 .diagnostic {
   display: flex;
   flex-direction: column;
+  flex-grow: 4;
 }
 
 .partie-diagnostic {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  flex-grow: 1;
+  flex-grow: 3;
   flex-shrink: 100;
   align-items: center;
   gap: 16px;
@@ -415,8 +432,9 @@ onMounted(() => {
   flex-direction: column;
   justify-content: center;
   flex-grow: 1;
-  max-width: 50%;
-  align-items: flex-start;
+  align-items: center;
+  position: relative;
+  height: 100%;
 }
 
 .partie-diagnostic-pleine-page {
@@ -470,6 +488,7 @@ onMounted(() => {
 
 .titre-moyen {
   padding: 32px 0;
+  flex-grow: 1;
 }
 
 .gros-chiffre-diagnostic {

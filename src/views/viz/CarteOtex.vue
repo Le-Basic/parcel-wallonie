@@ -19,9 +19,12 @@
 
 <script setup>
 import "maplibre-gl/dist/maplibre-gl.css";
+import { useStore } from "vuex";
 import maplibregl from "maplibre-gl";
 import { onMounted, defineProps } from "vue";
 import bbox from "@turf/bbox";
+
+const store = useStore();
 // add props geojson
 const props = defineProps({
   geojson: {
@@ -63,6 +66,10 @@ const otexEtCouleurDict = [
     label: "Non disponible",
     couleur: "#F1EDEA",
   },
+  {
+    label: "Hors scope",
+    couleur: "#F1EDEA",
+  },
 ];
 
 const otexEtCouleur = otexEtCouleurDict.flatMap((item) => [
@@ -92,7 +99,43 @@ onMounted(() => {
         ],
 
         "fill-opacity": 1,
+        "fill-outline-color": "#F1EDEA40",
       },
+    });
+    let popup = new maplibregl.Popup({
+      closeButton: false,
+      closeOnClick: false,
+    });
+
+    carte.on("mousemove", "geojson-layer", (e) => {
+      if (
+        store.state.indicateurPortraits.otex_dominant_par_commune.find(
+          (mun) => {
+            return (
+              mun.code_belgique_municipalite ===
+              e.features[0].properties.code_belgique_municipalite
+            );
+          }
+        ) ??
+        [].length > 0
+      ) {
+        console.log(e.features[0].properties);
+        console.log(e.features);
+        carte.getCanvas().style.cursor = "pointer";
+        popup = popup
+          .setLngLat([4.3, 50.8])
+          .setHTML(
+            e.features[0].properties.libelle_commune +
+              "</br>" +
+              e.features[0].properties.value
+          )
+          .setLngLat(JSON.parse(e.features[0].properties.centroid))
+          .addTo(carte);
+        return popup;
+      }
+    });
+    carte.on("mouseleave", "geojson-layer", () => {
+      return popup.remove();
     });
   });
 });

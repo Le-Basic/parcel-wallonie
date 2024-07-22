@@ -1,27 +1,32 @@
 <template>
-  <div>
-    <p class="text-h3">Occupation du sol sur le territoire</p>
-
-    <v-chart class="graphique" :option="option" autoresize />
+  <p class="text-h3">Occupation du sol sur le territoire</p>
+  <div class="graphique">
+    <v-chart :option="option" style="width: 100%" />
   </div>
 </template>
 
 <script setup>
-// There should not be negative values in rawData
-const rawData = [[100], [320], [220], [150], [820]];
-const totalData = [];
-for (let i = 0; i < rawData[0].length; ++i) {
-  let sum = 0;
-  for (let j = 0; j < rawData.length; ++j) {
-    sum += rawData[j][i];
-  }
-  totalData.push(sum);
+import { useStore } from "vuex";
+
+const store = useStore();
+
+const dataOccupationDuSol = [
+  store.state.indicateurPortraits.walstat_espace_agricoles_ha,
+  store.state.indicateurPortraits.walstat_espaces_naturels_ha,
+  store.state.indicateurPortraits.walstat_espace_artificialise_ha,
+];
+
+console.log(dataOccupationDuSol);
+let totalData = 0;
+
+for (let j = 0; j < dataOccupationDuSol.length; ++j) {
+  totalData += dataOccupationDuSol[j];
 }
 
 const colors = ["#91C423", "#025A5C", "#0c1321"];
 const grid = {
   left: 100,
-  right: 100,
+  right: 0,
   top: 0,
   bottom: 0,
 };
@@ -34,7 +39,7 @@ const series = [
     name,
     type: "bar",
     stack: "total",
-    barWidth: "60%",
+    barWidth: "50%",
     color: colors[sid],
     label: {
       show: true,
@@ -44,17 +49,12 @@ const series = [
       formatter: (params) =>
         name + "\n" + Math.round(params.value * 1000) / 10 + "%",
     },
-    labelLine: {
-      show: true,
-      lineStyle: {
-        join: "miter",
-      },
-    },
-    data: rawData[sid].map((d, did) =>
-      totalData[did] <= 0 ? 0 : d / totalData[did]
-    ),
+
+    data: [dataOccupationDuSol[sid] / totalData],
   };
 });
+
+console.log(series);
 const option = {
   grid,
   yAxis: {
@@ -63,7 +63,7 @@ const option = {
   },
   xAxis: {
     type: "category",
-    data: ["Mon"],
+    data: ["Occupation du sol"],
     show: false,
   },
   series,
@@ -72,7 +72,14 @@ const option = {
 
 <style scoped>
 .graphique {
-  height: 450px;
-  width: 600px;
+  min-width: 100px;
+  height: 100%;
+  min-width: 200px;
+  width: 100%;
+  margin: auto;
+}
+
+.echarts-inner {
+  margin: auto;
 }
 </style>
