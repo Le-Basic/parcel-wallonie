@@ -59,8 +59,11 @@
             margin-top: 20px;
             min-height: 550px;
           "
-        ></div>
-        <RepartitionSurface :serieDonnees="repartitionSurfacePourGraphique" />
+        >
+          <RepartitionSurface
+            :serieDonnees="repartitionSurfacePotentielNourricier"
+          />
+        </div>
       </div>
       <div class="wrap-viz resultats-categories repartition">
         <table
@@ -377,7 +380,9 @@
         <div
           id="viz2"
           style="background-color: #fff; height: 100%; min-height: 550px"
-        ></div>
+        >
+          <RepartitionSurface :serieDonnees="repartitionSurfaceActuelles" />
+        </div>
       </div>
       <div class="wrap-viz2 resultats-categories repartition delay-1s">
         <table
@@ -1261,17 +1266,14 @@
 
 <script>
 import { formatterChiffres } from "@/plugins/surfaceProduits";
-import { Treemap } from "d3plus-hierarchy";
 import { CATEGORIE_PRODUITS_SURFACES_ACTUELLES } from "@/config/categorieProduitsActuel";
 import {
   CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER,
   CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE,
 } from "@/config/categorieProduitsPotentielNourricier";
 import { trouverChiffre } from "@/plugins/utils";
-import { pushDataViz } from "@/plugins/pushDataViz";
 import modalDetail from "@/views/modal/modalDetail.vue";
 import jaugeChart from "@/components/visualisation/jaugeChart.vue";
-import axios from "axios";
 import RepartitionSurface from "@/components/visualisation/RepartitionSurface.vue";
 import { FormatterPourcentage } from "@/plugins/utils";
 
@@ -1300,112 +1302,7 @@ export default {
       this.modalDetails = id;
       console.log(this.modalDetails);
     },
-    recupererDonnees() {
-      const bodyFormData = new FormData();
-      var codesTerritoireParcel = this.$store.state.geoList.map(
-        (el) => el.code_territoire
-      );
-      codesTerritoireParcel = ["mun91114"];
-      console.log(codesTerritoireParcel);
-      bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
-      axios
-        .post(
-          window.apiURL + "parcel/belgique/surfaces_actuels_produit",
-          codesTerritoireParcel, // Request body data
-          {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-          }
-        )
-        .catch((error) => {
-          console.log(error);
-        })
-        .then((response) => {
-          this.occupationActuelle = [
-            {
-              surface: response.data.find(
-                (el) =>
-                  el.libelle_parcel_produit_actuel ==
-                  "Cultures annuelles pour alimentation humaine"
-              ).sau_ha,
-              name: "Cultures annuelles pour alimentation humaine",
-              image: "/assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
-              color: "#F5A623",
-            },
-            {
-              surface: response.data.find(
-                (el) =>
-                  el.libelle_parcel_produit_actuel ==
-                  "Elevage (dont alimentation & estives et landes)"
-              ).sau_ha,
-              name: "Elevage (dont alimentation & estives et landes)",
-              image: "/assets/img/icons/cat/ico_CATEGORIES_viande.svg",
-              color: "#B57A60",
-            },
-            {
-              surface: response.data.find(
-                (el) => el.libelle_parcel_produit_actuel == "Fruits"
-              ).sau_ha,
-              name: "fruits",
-              image: "/assets/img/icons/cat/ico_CATEGORIES_fruits.svg",
-              color: "#A261C0",
-            },
-            {
-              surface: response.data.find(
-                (el) => el.libelle_parcel_produit_actuel == "Légumes"
-              ).sau_ha,
-              name: "légumes",
-              image: "/assets/img/icons/cat/ico_CATEGORIES_legumes.svg",
-              color: "#91C423",
-            },
-            {
-              surface: response.data.find(
-                (el) => el.libelle_parcel_produit_actuel == "Jachères"
-              ).sau_ha,
-              name: "Jachères",
-              image: "/assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
-              color: "#9CC347",
-            },
-            {
-              surface: response.data.find(
-                (el) =>
-                  el.libelle_parcel_produit_actuel ==
-                  "Cultures industrielles hors alimentation"
-              ).sau_ha,
-              name: "Cultures industrielles hors alimentation",
-              image: "/assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
-              color: "#62D5F3",
-            },
-            // {
-            //   surface: round(autres_espaces, 0),
-            //   name: "Autres surfaces agricoles",
-            //   image: "/assets/img/icons/cat/ico_CATEGORIES_viande.svg",
-            //   color: "#a9a9a9",
-            // },
-          ];
 
-          new Treemap()
-            .select("#viz2")
-            .data(
-              this.$store.state.resultatSimulation
-                .surfacesActuellesParcelNiveau1
-            )
-            .groupBy("libelle_parcel_produit_actuel")
-            .sum("sau_ha")
-            .color("couleur")
-            .height(500)
-            .legend(0)
-            .tooltip({
-              share: false,
-            })
-            .render();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
     nextStep(hash) {
       console.log("nextStep", hash);
       window.scrollTo(0, 0);
@@ -1423,10 +1320,6 @@ export default {
     },
   },
 
-  async mounted() {
-    pushDataViz(this.$store.state.resultatSimulation.surfacesEmploisAMobiliser);
-    this.recupererDonnees();
-  },
   computed: {
     surfaces_emplois_a_mobiliser_parcel_niveau_1_data() {
       return this.surfaces_emplois_a_mobiliser_parcel_niveau_1;
@@ -1446,7 +1339,7 @@ export default {
         };
       });
     },
-    repartitionSurfacePourGraphique() {
+    repartitionSurfacePotentielNourricier() {
       let data = [];
       for (const [key, value] of Object.entries(
         CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE
@@ -1462,6 +1355,41 @@ export default {
         );
         let donnePourGraphique = {
           value: value.partAMobiliser,
+          name: value.libelle,
+          itemStyle: {
+            color: value.couleur,
+          },
+        };
+        data = [...data, donnePourGraphique];
+      }
+      return data;
+    },
+    //   Math.round(
+    // trouverChiffre(
+    //   this.$store.state.resultatSimulation
+    //     .surfacesActuellesParcelNiveau1,
+    //   CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES
+    //     .libelle,
+    //   'part_surfaces_actuelles',
+    //   'libelle_parcel_produit_actuel'
+    // ) * 100
+    repartitionSurfaceActuelles() {
+      let data = [];
+      for (const [key, value] of Object.entries(
+        CATEGORIE_PRODUITS_SURFACES_ACTUELLES
+      )) {
+        console.log(key);
+        console.log(value);
+        value.part_surfaces_actuelles = Math.round(
+          trouverChiffre(
+            this.$store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
+            value.libelle,
+            "part_surfaces_actuelles",
+            "libelle_parcel_produit_actuel"
+          ) * 100
+        );
+        let donnePourGraphique = {
+          value: value.part_surfaces_actuelles,
           name: value.libelle,
           itemStyle: {
             color: value.couleur,
@@ -1550,14 +1478,6 @@ export default {
     positionGaucheBarreVerticale() {
       return (
         "calc(" + Math.min(0.5, 1 / this.maxPotentielsEt1) * 100 + "% - 20px)"
-      );
-    },
-  },
-  watch: {
-    "$store.state.resultatSimulation.surfacesEmploisAMobiliser": function () {
-      console.log("test");
-      pushDataViz(
-        this.$store.state.resultatSimulation.surfacesEmploisAMobiliser
       );
     },
   },

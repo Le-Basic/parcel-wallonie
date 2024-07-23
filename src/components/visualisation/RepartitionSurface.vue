@@ -16,6 +16,17 @@ import {
 } from "echarts/components";
 import { FormatterPourcentage } from "@/plugins/utils";
 
+function enrichirSeriesAvecLabels(serieArray) {
+  let series = serieArray.map((serie) => {
+    serie.label = {
+      fontSize: serie.value > 20 ? 40 : 16,
+      overflow: "break",
+    };
+    return { ...serie };
+  });
+  return series;
+}
+
 use([
   CanvasRenderer,
   TreemapChart,
@@ -39,10 +50,12 @@ const option = {
     bottom: 0,
     containLabel: true,
   },
+  textStyle: { fontFamily: "Work Sans" },
   label: {
     show: true,
-    overflow: "break",
-    fontSize: 18,
+    textStyle: {
+      overflow: "break",
+    },
   },
   tooltip: {
     borderRadius: 0,
@@ -69,7 +82,7 @@ const option = {
       breadcrumb: {
         show: false,
       },
-      data: props.serieDonnees,
+      data: enrichirSeriesAvecLabels(props.serieDonnees),
     },
   ],
 };

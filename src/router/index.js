@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/PageAccueil.vue";
+import PageAccueil from "../views/PageAccueil.vue";
 import PageMethodologie from "@/views/PageMethodologie.vue";
 
 import ChoixDuTerritoire from "@/views/parcours-parametres/ChoixDuTerritoire.vue";
 import ChoixDePopulation from "@/views/parcours-parametres/ChoixDePopulation.vue";
 import ChoixParametres from "@/views/parcours-parametres/ChoixParametres.vue";
-import PageChoix from "@/views/parcours-parametres/ChoixDiagnosticvsSimulation";
+import ChoixDiagnosticvsSimulation from "@/views/parcours-parametres/ChoixDiagnosticvsSimulation";
 import RegimePersonnalise from "@/views/parcours-parametres/ChoixRegimePersonnalise.vue";
 
 import ResultatsImpacts from "@/views/parcours-principal-resultats/ResultatsImpacts.vue";
@@ -32,7 +32,7 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: HomeView,
+    component: PageAccueil,
   },
   {
     path: "/1-choix-du-territoire",
@@ -117,7 +117,7 @@ const routes = [
   {
     path: "/choix-du-parcours",
     name: "Choix du Parcours",
-    component: PageChoix,
+    component: ChoixDiagnosticvsSimulation,
   },
   {
     path: "/diagnostic",
