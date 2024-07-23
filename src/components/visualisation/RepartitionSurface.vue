@@ -40,6 +40,10 @@ const props = defineProps({
     type: Array,
     required: true,
   },
+  couleurLabels: {
+    type: String,
+    default: "#000",
+  },
 });
 
 const option = {
@@ -50,11 +54,12 @@ const option = {
     bottom: 0,
     containLabel: true,
   },
-  textStyle: { fontFamily: "Work Sans" },
+  textStyle: { fontFamily: "Work Sans", color: "#000" },
   label: {
     show: true,
     textStyle: {
       overflow: "break",
+      color: "#000",
     },
   },
   tooltip: {
@@ -62,10 +67,10 @@ const option = {
     formatter: function (categorieProduit) {
       let nomProduit = categorieProduit.name;
       let partTotal = categorieProduit.value / 100 ?? 0;
-      let couleur = categorieProduit.data.itemStyle.color ?? "#00a8ff";
+      let couleur = categorieProduit.data.itemStyle?.color ?? "#00a8ff";
       let tooltip = `<div class="tooltip-title" style="color:${couleur}">`;
 
-      console.log(tooltip);
+      console.log("tooltip", tooltip);
       return [
         tooltip + nomProduit + "</div>",
         "Part : " + FormatterPourcentage(partTotal),

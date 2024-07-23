@@ -39,7 +39,9 @@
             min-height: 550px;
           "
         >
-          <div id="viz3"></div>
+          <div stye="height: 250px; width: 250px">
+            <RepartitionSurface :serieDonnees="repartitionSurfaceNecessaires" />
+          </div>
         </div>
         <div class="wrap-viz3 resultats-categories repartition">
           <table
@@ -47,7 +49,6 @@
             id="PaysSpatCategoryresultsTable"
             class="auto-style1 w-100"
             border="1"
-            v-if="data.occupationActuelle.length > 0"
           >
             <thead></thead>
             <tbody>
@@ -345,7 +346,10 @@
             min-height: 550px;
           "
         >
-          <div id="viz4"></div>
+          <RepartitionSurface
+            :serieDonnees="repartitionSurfacesActuelles"
+            couleurLabels="black"
+          />
         </div>
         <div class="wrap-viz4 resultats-categories repartition">
           <table
@@ -353,7 +357,6 @@
             id="PaysSpatCategoryresultsTable"
             class="auto-style1 w-100"
             border="1"
-            v-if="data.occupationActuelle.length > 0"
           >
             <thead></thead>
             <tbody>
@@ -638,9 +641,13 @@ import {
 import { trouverChiffre, AfficherEntier } from "@/plugins/utils";
 
 import { CATEGORIE_PRODUITS_ACTUELS_PAYSAGE } from "@/config/categorieProduitsActuelsPaysage";
+import RepartitionSurface from "@/components/visualisation/RepartitionSurface.vue";
 
 export default {
   inject: ["$axios"],
+  components: {
+    RepartitionSurface,
+  },
   data() {
     return {
       CATEGORIE_PRODUITS_ACTUELS_PAYSAGE,
@@ -752,34 +759,64 @@ export default {
         });
     },
   },
-  mounted() {
-    this.recupererDonnees();
-    new Treemap()
-      .select("#viz3")
-      .data(this.$store.state.resultatSimulation.surfaceNecessairePaysage)
-      .groupBy("libelle_parcel_paysage_actuel")
-      .sum("surface_a_mobiliser")
-      .height(500)
-      .legend(0)
-      .render();
-  },
   computed: {
     occupationActuelleTotale() {
       return this.$store.state.resultatSimulation.surfacesActuelles;
     },
-  },
-  watch: {
-    "$store.state.resultatSimulation.surfacesEmploisAMobiliser": function () {
-      var container = document.getElementById("viz3");
-      container.innerHTML = "";
-      new Treemap()
-        .select("#viz3")
-        .data(this.$store.state.resultatSimulation.surfaceNecessairePaysage)
-        .groupBy("libelle_parcel_paysage_actuel")
-        .sum("surface_a_mobiliser")
-        .height(500)
-        .legend(0)
-        .render();
+
+    repartitionSurfaceNecessaires() {
+      let data = [];
+      for (const [key, value] of Object.entries(
+        CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
+      )) {
+        console.log(key);
+        value.part_surface_a_mobiliser = Math.round(
+          trouverChiffre(
+            this.$store.state.resultatSimulation.surfaceNecessairePaysage,
+            value.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_paysage_actuel"
+          ) * 100
+        );
+        let donnePourGraphique = {
+          value: value.part_surface_a_mobiliser,
+          name: value.libelle,
+          itemStyle: {
+            color: value.couleur ? value.couleur : "red",
+          },
+        };
+        data = [...data, donnePourGraphique];
+      }
+      let total = data.reduce((acc, el) => acc + el.value, 0);
+      data.map((el) => (el.value = (el.value / total) * 100));
+      return data;
+    },
+    repartitionSurfacesActuelles() {
+      let data = [];
+      for (const [key, value] of Object.entries(
+        CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
+      )) {
+        console.log(key);
+        value.part_surface_a_mobiliser = Math.round(
+          trouverChiffre(
+            this.$store.state.resultatSimulation.surfacesActuellesPaysage,
+            value.libelle,
+            "sau_ha",
+            "libelle_parcel_paysage_actuel"
+          ) * 100
+        );
+        let donnePourGraphique = {
+          value: value.part_surface_a_mobiliser,
+          name: value.libelle,
+          itemStyle: {
+            color: value.couleur ? value.couleur : "red",
+          },
+        };
+        data = [...data, donnePourGraphique];
+      }
+      let total = data.reduce((acc, el) => acc + el.value, 0);
+      data.map((el) => (el.value = (el.value / total) * 100));
+      return data;
     },
   },
 };

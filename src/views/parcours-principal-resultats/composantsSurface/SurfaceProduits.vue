@@ -1364,15 +1364,7 @@ export default {
       }
       return data;
     },
-    //   Math.round(
-    // trouverChiffre(
-    //   this.$store.state.resultatSimulation
-    //     .surfacesActuellesParcelNiveau1,
-    //   CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES
-    //     .libelle,
-    //   'part_surfaces_actuelles',
-    //   'libelle_parcel_produit_actuel'
-    // ) * 100
+
     repartitionSurfaceActuelles() {
       let data = [];
       for (const [key, value] of Object.entries(
