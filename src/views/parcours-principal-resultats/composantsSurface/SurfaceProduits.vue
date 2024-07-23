@@ -1269,8 +1269,8 @@ import {
 } from "@/config/categorieProduitsPotentielNourricier";
 import { trouverChiffre } from "@/plugins/utils";
 import { pushDataViz } from "@/plugins/pushDataViz";
-import modalDetail from "../modal/modalDetail.vue";
-import jaugeChart from "@/components/jaugeChart.vue";
+import modalDetail from "@/views/modal/modalDetail.vue";
+import jaugeChart from "@/components/visualisation/jaugeChart.vue";
 import axios from "axios";
 import RepartitionSurface from "@/components/visualisation/RepartitionSurface.vue";
 import { FormatterPourcentage } from "@/plugins/utils";

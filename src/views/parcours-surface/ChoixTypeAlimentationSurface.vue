@@ -170,7 +170,7 @@
 </template>
 
 <script>
-import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
+import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import { getRegimeParNomCourt } from "@/config/regimeListe";
 import { getPartdeBio } from "@/plugins/getPartdeBio";
 

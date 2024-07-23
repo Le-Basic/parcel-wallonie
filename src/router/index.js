@@ -1,27 +1,33 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import ChoixDuTerritoire from "../views/ChoixDuTerritoire.vue";
-import ChoixDePopulation from "../views/ChoixDePopulation.vue";
-import ChoixParametres from "../views/ChoixParametres.vue";
-import ResultatsImpacts from "../views/ResultatsImpacts.vue";
-import ResultatsRelocalisation from "../views/ResultatsRelocalisation.vue";
-import ResultatsSurfaces from "../views/ResultatsSurfaces.vue";
-import ResultatsEmplois from "../views/ResultatsEmplois.vue";
-import ResultatsAgir from "../views/ResultatsAgir.vue";
-import PageMethodologie from "../views/PageMethodologie.vue";
+import HomeView from "../views/PageAccueil.vue";
+import PageMethodologie from "@/views/PageMethodologie.vue";
+
+import ChoixDuTerritoire from "@/views/parcours-parametres/ChoixDuTerritoire.vue";
+import ChoixDePopulation from "@/views/parcours-parametres/ChoixDePopulation.vue";
+import ChoixParametres from "@/views/parcours-parametres/ChoixParametres.vue";
+import PageChoix from "@/views/parcours-parametres/ChoixDiagnosticvsSimulation";
+import RegimePersonnalise from "@/views/parcours-parametres/ChoixRegimePersonnalise.vue";
+
+import ResultatsImpacts from "@/views/parcours-principal-resultats/ResultatsImpacts.vue";
+import ResultatsRelocalisation from "@/views/parcours-principal-resultats/ResultatsRelocalisation.vue";
+import ResultatsSurfaces from "@/views/parcours-principal-resultats/ResultatsSurfaces.vue";
+import ResultatsEmplois from "@/views/parcours-principal-resultats/ResultatsEmplois.vue";
+import ResultatsAgir from "@/views/parcours-principal-resultats/ResultatsAgir.vue";
+
 import PageRelocalisationSurface from "@/views/parcours-surface/PageRelocalisationSurface.vue";
 import ChoixDuTerritoireSurface from "@/views/parcours-surface/ChoixDuTerritoireSurface.vue";
 import ChoixTypeAlimentationSurface from "@/views/parcours-surface/ChoixTypeAlimentationSurface.vue";
 import ResultatsEffetsSurface from "@/views/parcours-surface/ResultatsEffetsSurface.vue";
 import ResultatsAssiettesSurface from "@/views/parcours-surface/ResultatsAssiettesSurface.vue";
 import ResultatsRepartitionSurface from "@/views/parcours-surface/ResultatsRepartitionSurface.vue";
-import PageChoix from "@/views/PageChoix.vue";
+
 import PageDiagnostic from "@/views/PageDiagnostic.vue";
-import ResultatsImpactsv2 from "@/views/ResultatsImpactsv2.vue";
-import testMotion from "@/views/testMotion.vue";
 import PageRecommencer from "@/views/PageRecommencer.vue";
+
+import ResultatsImpactsv2 from "@/views/parcours-principal-resultats/ResultatsImpactsv2.vue";
+import testMotion from "@/views/testMotion.vue";
 import TestCarte from "@/views/TestCarte.vue";
-import RegimePersonnalise from "@/views/parcours-parametres/PageRegimePersonnalise.vue";
+
 const routes = [
   {
     path: "/",

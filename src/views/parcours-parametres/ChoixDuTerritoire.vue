@@ -84,7 +84,7 @@
 
 <script>
 import axios from "axios";
-import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
+import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 
 export default {
   name: "HomeView",

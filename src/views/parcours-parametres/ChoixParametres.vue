@@ -277,7 +277,7 @@
 import "rangeslider.js/dist/rangeslider.css";
 import VueSlider from "vue-3-slider-component";
 
-import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
+import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import listeRegime from "@/views/modal/listeRegime.vue";
 import resumeChoix from "@/views/modal/resumeChoix.vue";
 import modalBioCurseur from "@/views/modal/modalBioCurseur.vue";

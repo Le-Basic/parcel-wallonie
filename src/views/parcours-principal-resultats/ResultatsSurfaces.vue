@@ -118,12 +118,12 @@
 </template>
 
 <script>
-import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
-import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
-import resumeChoix from "./modal/resumeChoix.vue";
-import SurfaceGlobal from "./composantsSurface/SurfaceGlobal.vue";
-import SurfacePaysage from "./composantsSurface/SurfacePaysage.vue";
-import SurfaceProduits from "./composantsSurface/SurfaceProduits.vue";
+import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
+import ModalAffinerChoix from "@/views/modal/modalAffinerChoix.vue";
+import resumeChoix from "@/views/modal/resumeChoix.vue";
+import SurfaceGlobal from "@/views/parcours-principal-resultats/composantsSurface/SurfaceGlobal.vue";
+import SurfacePaysage from "@/views/parcours-principal-resultats/composantsSurface/SurfacePaysage.vue";
+import SurfaceProduits from "@/views/parcours-principal-resultats/composantsSurface/SurfaceProduits.vue";
 import BandeauResultat from "@/components/BandeauResultat.vue";
 export default {
   components: {

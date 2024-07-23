@@ -101,7 +101,7 @@
 </template>
 
 <script>
-import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
+import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import resumeChoixSurface from "@/views/parcours-surface/ResumeChoixSurface.vue";
 
 export default {

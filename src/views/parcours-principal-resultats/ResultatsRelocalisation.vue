@@ -167,9 +167,9 @@
 </template>
 
 <script>
-import Nav from "@/components/Nav/BarreNavigation.vue";
-import resumeChoix from "./modal/resumeChoix.vue";
-import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
+import Nav from "@/components/navigation/BarreNavigation.vue";
+import resumeChoix from "@/views/modal/resumeChoix.vue";
+import ModalAffinerChoix from "@/views/modal/modalAffinerChoix.vue";
 
 import { getImpacts } from "@/plugins/getImpacts";
 import { IDS_IMPACTS } from "@/config/ImpactIds";

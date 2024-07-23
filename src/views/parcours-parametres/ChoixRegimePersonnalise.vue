@@ -914,7 +914,7 @@ import listeRegime from "@/views/modal/listeRegime.vue";
 import { ref, computed, watch } from "vue";
 import { useStore } from "vuex";
 import { regimeListe } from "@/config/regimeListe";
-import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
+import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import { MapProduitsCoefficientMultiplicateurRegime } from "@/plugins/utils";
 const store = useStore();
 

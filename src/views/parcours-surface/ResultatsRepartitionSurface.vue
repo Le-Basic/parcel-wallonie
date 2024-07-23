@@ -684,7 +684,7 @@ import { formatterChiffres } from "@/plugins/surfaceProduits";
 import { CATEGORIE_PRODUITS_SURFACES_ACTUELLES } from "@/config/categorieProduitsActuel";
 import { CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER } from "@/config/categorieProduitsPotentielNourricier";
 import { trouverChiffre } from "@/plugins/utils";
-import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
+import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import resumeChoixSurface from "@/views/parcours-surface/ResumeChoixSurface.vue";
 import RepartitionSurface from "@/components/visualisation/RepartitionSurface.vue";
 

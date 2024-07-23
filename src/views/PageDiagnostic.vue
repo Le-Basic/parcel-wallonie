@@ -207,11 +207,11 @@
 </template>
 
 <script setup>
-import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
+import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import { AfficherEntier, FormatterPourcentage } from "@/plugins/utils";
-import vizConsommation from "./viz/vizConsommation.vue";
-import CarteOtex from "@/views/viz/CarteOtex.vue";
-import vizOccupationDuSol from "@/views/viz/vizOccupationDuSol.vue";
+import vizConsommation from "../components/visualisation/vizConsommation.vue";
+import CarteOtex from "@/components/visualisation/CarteOtex.vue";
+import vizOccupationDuSol from "@/components/visualisation/vizOccupationDuSol.vue";
 import geojsonData from "/public/data.json";
 import { onMounted, ref } from "vue";
 import { useStore } from "vuex";

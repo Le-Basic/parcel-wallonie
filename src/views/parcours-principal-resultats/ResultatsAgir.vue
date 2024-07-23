@@ -832,8 +832,8 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
 </template>
 
 <script>
-import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
-import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
+import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
+import ModalAffinerChoix from "@/views/modal/modalAffinerChoix.vue";
 import { getImpacts } from "@/plugins/getImpacts.js";
 export default {
   components: {

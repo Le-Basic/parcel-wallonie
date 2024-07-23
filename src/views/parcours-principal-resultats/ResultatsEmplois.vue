@@ -494,11 +494,11 @@
 </template>
 
 <script>
-import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
-import resumeChoix from "./modal/resumeChoix.vue";
-import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
-import modalEmplois from "./modal/modalEmplois.vue";
-import vizEmploi from "./viz/vizEmploi.vue";
+import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
+import resumeChoix from "@/views/modal/resumeChoix.vue";
+import ModalAffinerChoix from "@/views/modal/modalAffinerChoix.vue";
+import modalEmplois from "@/views/modal/modalEmplois.vue";
+import vizEmploi from "@/components/visualisation/vizEmploi.vue";
 import { CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER } from "@/config/categorieProduitsPotentielNourricier";
 import { trouverChiffre } from "@/plugins/utils";
 import BandeauResultat from "@/components/BandeauResultat.vue";

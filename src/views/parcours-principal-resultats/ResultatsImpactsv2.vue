@@ -17,18 +17,6 @@
             <div class="ss-titre-impacts row">
               <resumeChoix />
               <div class="accordion ml-auto mr-auto" id="accordeon-Impact">
-                <div class="w-100 h-auto" id="headingImpact">
-                  <button
-                    class="w-100 btn btn-link collapsed"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#collapseImpact"
-                    aria-expanded="false"
-                    aria-controls="collapseImpact"
-                  >
-                    Les 5 clés pour bien comprendre les impacts écologiques
-                  </button>
-                </div>
                 <!--end heading accordeon-->
                 <div
                   id="collapseImpact"
@@ -140,7 +128,7 @@
                 <div class="repartition row">
                   <!-- ----------------->
                   <div
-                    class="col-12 cadre-impacts cadre-categorie cereales"
+                    class="col-12 cadre-impacts cadre-categorie"
                     onclick=""
                     data-toggle="modal"
                     data-target="#modal-impact-climat1"
@@ -155,7 +143,7 @@
                     <div
                       class="impacts justify-content-around align-items-center flex-column flex-sm-row"
                     >
-                      <div class="impact-item2 col-sm-3">
+                      <div class="impact-item2 col-sm-2 titre-impact">
                         <div class="impact-graph">
                           <span
                             class="icon-impact-co2 ico-medium ico-impact"
@@ -166,67 +154,278 @@
                         </div>
                       </div>
                       <div
-                        class="impact-item2 col-sm-6 d-flex justify-content-around align-items-center"
+                        class="impact-item2 col-sm-8 d-flex justify-content-around align-items-center"
                       >
                         <div class="cadre-impact">
-                          <div class="cadre-impact-detail">
-                            <div class="impact-nom text-center">
-                              <strong>par personne</strong>
-                            </div>
-                            <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodalair2"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodalair2" class="impact-nbr"
-                                  ><span
-                                    id="gaz_effet_serre4"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 1
-                                        )["EcoImpact_Indicator_Value_Person"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
-                            </div>
-                          </div>
+                          <span class="impact-result texte-droite"
+                            ><p class="texte-data texte-droite">
+                              400 millions t CO2eq
+                            </p>
+                            Soit 15% de la consommation annuelle du territoire
+                          </span>
                         </div>
                         <div class="cadre-impact">
-                          <div class="cadre-impact-detail">
-                            <div class="impact-nom text-center">
-                              <strong>par hectare</strong>
-                            </div>
-                            <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodalair1"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodalair1" class="impact-nbr"
-                                  ><span
-                                    id="gaz_effet_serre3"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 1
-                                        )["EcoImpact_Indicator_Value_Hectare"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
-                            </div>
-                          </div>
+                          <span class="impact-result texte-gauche"
+                            ><p class="texte-data texte-gauche vert-clair">
+                              -40<span class="texte-unite">%</span>
+                            </p>
+                            Soit 15% de la consommation annuelle du
+                            territoire<br />
+                            Objectif national de réduction:
+                          </span>
                         </div>
                       </div>
                       <div
-                        class="col-sm-3 result-plus d-flex flex-column justify-content-center text-center"
+                        class="col-sm-2 result-plus d-flex flex-column justify-content-center text-center"
+                        @click="ouvrirModal('ImpactGes')"
+                      >
+                        <span class="icon-ico_fleche_detail_gros icon"></span
+                        ><span class="explain">Explications</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-12 cadre-impacts cadre-categorie"
+                    onclick=""
+                    data-toggle="modal"
+                    data-target="#modal-impact-climat1"
+                    style="cursor: pointer"
+                  >
+                    <div class="impact-titre legumes">
+                      <span
+                        class="icon-impact-biodiversite ico-medium climat2"
+                      ></span
+                      >Impacts sur le biodiversité
+                    </div>
+                    <div
+                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
+                    >
+                      <div class="impact-item2 col-sm-2 titre-impact">
+                        <div class="impact-graph">
+                          <span
+                            class="icon-impact-especes ico-medium ico-impact"
+                          ></span>
+                        </div>
+                        <div class="impact-nom">Destruction des espèces</div>
+                      </div>
+                      <div
+                        class="impact-item2 col-sm-8 d-flex justify-content-around align-items-center"
+                      >
+                        <div class="cadre-impact">
+                          <span class="impact-result texte-droite"
+                            ><div class="texte-data texte-droite">
+                              Une biodiversité fortement dégradée
+                            </div>
+                          </span>
+                        </div>
+                        <div class="cadre-impact">
+                          <span class="impact-result texte-gauche"
+                            ><p class="texte-data texte-gauche vert-clair">
+                              +45<span class="texte-unite">%</span
+                              ><span class="texte-legende"
+                                >abondance d'espèces par hectare</span
+                              >
+                            </p>
+                            Soit 15% de la consommation annuelle du
+                            territoire<br />
+                            Objectif national de réduction:
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="col-sm-2 result-plus d-flex flex-column justify-content-center text-center"
+                        @click="ouvrirModal('ImpactGes')"
+                      >
+                        <span class="icon-ico_fleche_detail_gros icon"></span
+                        ><span class="explain">Explications</span>
+                      </div>
+                    </div>
+                    <div
+                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
+                    >
+                      <div class="impact-item2 col-sm-2 titre-impact">
+                        <div class="impact-graph">
+                          <span
+                            class="icon-impact-especes ico-medium ico-impact"
+                          ></span>
+                        </div>
+                        <div class="impact-nom">Déforestation importée</div>
+                      </div>
+                      <div
+                        class="impact-item2 col-sm-8 d-flex justify-content-around align-items-center"
+                      >
+                        <div class="cadre-impact">
+                          <span class="impact-result texte-droite"
+                            ><p class="texte-data texte-droite">
+                              120 000 ha déforestés liés aux importations de
+                              soja
+                            </p>
+                          </span>
+                        </div>
+                        <div class="cadre-impact">
+                          <span class="impact-result texte-gauche"
+                            ><p class="texte-data texte-gauche vert-clair">
+                              -45<span class="texte-unite">%</span
+                              ><span class="texte-legende"
+                                >d'hectares de déforestation</span
+                              >
+                            </p>
+                            Soit l'équivalent de XX terrains de football<br />
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="col-sm-2 result-plus d-flex flex-column justify-content-center text-center"
+                        @click="ouvrirModal('ImpactGes')"
+                      >
+                        <span class="icon-ico_fleche_detail_gros icon"></span
+                        ><span class="explain">Explications</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-12 cadre-impacts cadre-categorie"
+                    onclick=""
+                    data-toggle="modal"
+                    data-target="#modal-impact-climat1"
+                    style="cursor: pointer"
+                  >
+                    <div class="impact-titre eau">
+                      <span class="icon-impact-eau ico-medium climat2"></span
+                      >Impacts sur la ressource eau
+                    </div>
+                    <div
+                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
+                    >
+                      <div class="impact-item2 col-sm-2 titre-impact">
+                        <div class="impact-graph">
+                          <span
+                            class="icon-impact-eaupol ico-medium ico-impact"
+                          ></span>
+                        </div>
+                        <div class="impact-nom">Pollution de l'eau</div>
+                      </div>
+                      <div
+                        class="impact-item2 col-sm-8 d-flex justify-content-around align-items-center"
+                      >
+                        <div class="cadre-impact">
+                          <span class="impact-result texte-droite"
+                            ><div class="texte-data texte-droite">
+                              120 000 € de coût de dépolution
+                            </div>
+                          </span>
+                        </div>
+                        <div class="cadre-impact">
+                          <span class="impact-result texte-gauche"
+                            ><p class="texte-data texte-gauche vert-clair">
+                              -50<span class="texte-unite">%</span
+                              ><span class="texte-legende"
+                                >en coûts de dépollution</span
+                              >
+                            </p>
+                            Soit XXX 000 € économisés chaque année<br />
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="col-sm-2 result-plus d-flex flex-column justify-content-center text-center"
+                        @click="ouvrirModal('ImpactGes')"
+                      >
+                        <span class="icon-ico_fleche_detail_gros icon"></span
+                        ><span class="explain">Explications</span>
+                      </div>
+                    </div>
+                    <div
+                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
+                    >
+                      <div class="impact-item2 col-sm-2 titre-impact">
+                        <div class="impact-graph">
+                          <span
+                            class="icon-impact-eau-conso ico-medium ico-impact"
+                          ></span>
+                        </div>
+                        <div class="impact-nom">Consommation d'eau</div>
+                      </div>
+                      <div
+                        class="impact-item2 col-sm-8 d-flex justify-content-around align-items-center"
+                      >
+                        <div class="cadre-impact">
+                          <span class="impact-result texte-droite"
+                            ><p class="texte-data texte-droite">
+                              120 000 m3 d'eau consommés en irrigation chaque
+                              année (rivières et nappes)
+                            </p>
+                          </span>
+                        </div>
+                        <div class="cadre-impact">
+                          <span class="impact-result texte-gauche"
+                            ><p class="texte-data texte-gauche vert-clair">
+                              -35<span class="texte-unite">%</span
+                              ><span class="texte-legende"
+                                >sur les prélèvement en eau</span
+                              >
+                            </p>
+                            Soit XXX XXX m3<br />
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="col-sm-2 result-plus d-flex flex-column justify-content-center text-center"
+                        @click="ouvrirModal('ImpactGes')"
+                      >
+                        <span class="icon-ico_fleche_detail_gros icon"></span
+                        ><span class="explain">Explications</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-12 cadre-impacts cadre-categorie"
+                    onclick=""
+                    data-toggle="modal"
+                    data-target="#modal-impact-climat1"
+                    style="cursor: pointer"
+                  >
+                    <div class="impact-titre viande">
+                      <span class="icon-impact-sol ico-medium climat2"></span
+                      >Impacts sur les sols
+                    </div>
+                    <div
+                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
+                    >
+                      <div class="impact-item2 col-sm-2 titre-impact">
+                        <div class="impact-graph">
+                          <span
+                            class="icon-impact-solqualit ico-medium ico-impact"
+                          ></span>
+                        </div>
+                        <div class="impact-nom">Pauvreté des sols</div>
+                      </div>
+                      <div
+                        class="impact-item2 col-sm-8 d-flex justify-content-around align-items-center"
+                      >
+                        <div class="cadre-impact">
+                          <span class="impact-result texte-droite"
+                            ><div class="texte-data texte-droite">
+                              Etat très dégradé
+                            </div>
+                          </span>
+                        </div>
+                        <div class="cadre-impact">
+                          <span class="impact-result texte-gauche"
+                            ><p class="texte-data texte-gauche vert-clair">
+                              +5<span class="texte-unite">%</span
+                              ><span class="texte-legende"
+                                >de manière organique dans le sol</span
+                              >
+                            </p>
+                            Soit 15% de la consommation annuelle du
+                            territoire<br />
+                            Objectif national de réduction:
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="col-sm-2 result-plus d-flex flex-column justify-content-center text-center"
                         @click="ouvrirModal('ImpactGes')"
                       >
                         <span class="icon-ico_fleche_detail_gros icon"></span
@@ -236,513 +435,7 @@
                   </div>
                   <!-- ----------------->
 
-                  <div class="col-12 cadre-impacts cadre-categorie legumes">
-                    <div class="impact-titre legumes">
-                      <span
-                        class="icon-impact-biodiversite ico-medium climat2"
-                      ></span
-                      >Impacts sur la biodiversité
-                    </div>
-                    <div
-                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
-                      onclick=""
-                      data-toggle="modal"
-                      data-target="#modal-impact-biodiversite1"
-                      style="cursor: pointer"
-                    >
-                      <div class="impact-item2 col-sm-3">
-                        <div class="impact-graph">
-                          <span
-                            class="icon-impact-especes ico-medium ico-impact"
-                          ></span>
-                        </div>
-                        <div class="impact-nom">Destruction des espèces</div>
-                      </div>
-                      <div
-                        class="impact-item2 col-sm-6 d-flex justify-content-around align-items-center"
-                      >
-                        <div class="cadre-impact">
-                          <div class="cadre-impact-detail">
-                            <div class="impact-nom text-center">
-                              <strong>par personne</strong>
-                            </div>
-                            <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span id="" class="ico-medium"></span
-                                ><span id="" class="impact-nbr"
-                                  ><span id="" v-if="impacts.length > 0">{{
-                                    Math.round(
-                                      impacts.find(
-                                        (el) => el.ID_EcoImpact_Indicator == 2
-                                      )["EcoImpact_Indicator_Value_Person"]
-                                    )
-                                  }}</span
-                                  >%
-                                </span></span
-                              >
-                            </div>
-                          </div>
-                        </div>
-                        <div class="cadre-impact">
-                          <div class="cadre-impact-detail">
-                            <div class="impact-nom text-center">
-                              <strong>par hectare</strong>
-                            </div>
-                            <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodaldeclin"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodaldeclin" class="impact-nbr"
-                                  ><span
-                                    id="declin_especes2"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 2
-                                        )["EcoImpact_Indicator_Value_Hectare"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="col-sm-3 result-plus d-flex flex-column justify-content-center text-center"
-                        @click="ouvrirModal('impactBiodiv')"
-                      >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
-                      </div>
-                    </div>
-                    <div class="impact-line"></div>
-                    <div
-                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
-                      onclick=""
-                      data-toggle="modal"
-                      data-target="#modal-impact-biodiversite2"
-                      style="cursor: pointer"
-                    >
-                      <div class="impact-item2 col-sm-3">
-                        <div class="impact-graph">
-                          <span
-                            class="icon-impact-deforest ico-medium ico-impact"
-                          ></span>
-                        </div>
-                        <div class="impact-nom">Déforestation importée</div>
-                        <div class="note text-center">
-                          L’impact du bio n’est pas calculé.
-                        </div>
-                      </div>
-                      <div
-                        class="impact-item2 col-sm-6 d-flex justify-content-around align-items-center"
-                      >
-                        <div class="cadre-impact">
-                          <div class="cadre-impact-detail">
-                            <div class="impact-nom text-center">
-                              <strong>par personne</strong>
-                            </div>
-                            <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodalbiodiv"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodalbiodiv" class="impact-nbr"
-                                  ><span
-                                    id="deforestation2"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 3
-                                        )["EcoImpact_Indicator_Value_Person"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
-                            </div>
-                          </div>
-                        </div>
-                        <div class="cadre-impact">
-                          <div class="cadre-impact-detail">
-                            <div class="impact-nom text-center">
-                              <strong>par hectare</strong>
-                            </div>
-                            <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span id="" class="ico-medium"></span
-                                ><span id="" class="impact-nbr"
-                                  ><span id="" v-if="impacts.length > 0">{{
-                                    Math.round(
-                                      impacts.find(
-                                        (el) => el.ID_EcoImpact_Indicator == 3
-                                      )["EcoImpact_Indicator_Value_Hectare"]
-                                    )
-                                  }}</span
-                                  >%
-                                </span></span
-                              >
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="col-sm-3 result-plus align-items-center d-flex flex-column justify-content-center text-center"
-                        @click="ouvrirModal('impactEau')"
-                      >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
-                      </div>
-                    </div>
-                  </div>
                   <!-- ----------------->
-                  <div class="col-12 cadre-impacts cadre-categorie eau">
-                    <div class="impact-titre eau">
-                      <span class="icon-impact-eau ico-medium eau"></span>
-                      Impacts sur la ressource eau
-                    </div>
-
-                    <div
-                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
-                      onclick=""
-                      data-toggle="modal"
-                      data-target="#modal-impact-eau2"
-                      style="cursor: pointer"
-                    >
-                      <div class="impact-item2 col-sm-3">
-                        <div class="impact-graph">
-                          <span
-                            class="icon-impact-eaupol ico-medium ico-impact"
-                          ></span>
-                        </div>
-                        <div class="impact-nom">Pollution de l’eau</div>
-                      </div>
-                      <div
-                        class="impact-item2 col-sm-6 d-flex justify-content-around align-items-center"
-                      >
-                        <div class="cadre-impact">
-                          <div class="cadre-impact-detail">
-                            <div class="impact-nom text-center">
-                              <strong>par personne</strong>
-                            </div>
-                            <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodaleau4"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodaleau4" class="impact-nbr"
-                                  ><span
-                                    id="qualite_eau4"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 4
-                                        )["EcoImpact_Indicator_Value_Person"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
-                            </div>
-                          </div>
-                        </div>
-                        <div class="cadre-impact">
-                          <div class="cadre-impact-detail">
-                            <div class="impact-nom text-center">
-                              <strong>par hectare</strong>
-                            </div>
-                            <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodaleau3"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodaleau3" class="impact-nbr"
-                                  ><span
-                                    id="qualite_eau2"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 4
-                                        )["EcoImpact_Indicator_Value_Hectare"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="col-sm-3 result-plus d-flex flex-column justify-content-center text-center"
-                      >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
-                      </div>
-                    </div>
-                    <div class="impact-line"></div>
-                    <div
-                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
-                      onclick=""
-                      data-toggle="modal"
-                      data-target="#modal-impact-eau1"
-                      style="cursor: pointer"
-                    >
-                      <div class="impact-item2 col-sm-3">
-                        <div class="impact-graph">
-                          <span
-                            class="icon-impact-eau-conso ico-medium ico-impact"
-                          ></span>
-                        </div>
-                        <div class="impact-nom">Consommation d’eau</div>
-                        <div class="note text-center">
-                          L’impact du bio n’est pas calculé.
-                        </div>
-                      </div>
-                      <div
-                        class="impact-item2 col-sm-6 d-flex justify-content-around align-items-center"
-                      >
-                        <div class="cadre-impact">
-                          <div class="cadre-impact-detail">
-                            <div class="impact-nom text-center">
-                              <strong>par personne</strong>
-                            </div>
-                            <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodaleau1"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodaleau1" class="impact-nbr"
-                                  ><span
-                                    id="consommation_eau2"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 5
-                                        )["EcoImpact_Indicator_Value_Person"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
-                            </div>
-                          </div>
-                        </div>
-                        <div class="cadre-impact">
-                          <div class="cadre-impact-detail">
-                            <div class="impact-nom text-center">
-                              <strong>par hectare</strong>
-                            </div>
-
-                            <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodaleau2"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodaleau2" class="impact-nbr"
-                                  ><span
-                                    id="consommation_eau3"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 5
-                                        )["EcoImpact_Indicator_Value_Hectare"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="col-sm-3 result-plus d-flex flex-column justify-content-center text-center"
-                      >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- ----------------->
-                  <div class="col-12 cadre-impacts cadre-categorie viande">
-                    <div class="impact-titre viande">
-                      <span class="icon-impact-sol ico-medium viande"></span
-                      >Impacts sur le sol
-                    </div>
-                    <div
-                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
-                      nclick=""
-                      data-toggle="modal"
-                      data-target="#modal-impact-sols1"
-                      style="cursor: pointer"
-                    >
-                      <div class="impact-item2 col-sm-3">
-                        <div class="impact-graph">
-                          <span
-                            class="icon-impact-empreinte ico-medium ico-impact"
-                          ></span>
-                        </div>
-                        <div class="impact-nom">Empreinte au sol</div>
-                      </div>
-                      <div
-                        class="impact-item2 col-sm-6 d-flex justify-content-around align-items-center"
-                      >
-                        <div class="cadre-impact">
-                          <div class="cadre-impact-detail">
-                            <div class="impact-nom text-center">
-                              <strong>par personne</strong>
-                            </div>
-                            <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodalsol1"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodalsol1" class="impact-nbr"
-                                  ><span
-                                    id="empreinte_sol2"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 6
-                                        )["EcoImpact_Indicator_Value_Person"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
-                            </div>
-                          </div>
-                        </div>
-                        <div class="cadre-impact">
-                          <div class="cadre-impact-detail">
-                            <div class="impact-nom text-center">
-                              <strong>par hectare</strong>
-                            </div>
-                            <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span id=" " class="ico-medium"></span
-                                ><span id="" class="impact-nbr"
-                                  ><span id="" v-if="impacts.length > 0">{{
-                                    Math.round(
-                                      impacts.find(
-                                        (el) => el.ID_EcoImpact_Indicator == 6
-                                      )["EcoImpact_Indicator_Value_Hectare"]
-                                    )
-                                  }}</span
-                                  >%
-                                </span></span
-                              >
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="col-sm-3 result-plus d-flex flex-column justify-content-center text-center"
-                      >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
-                      </div>
-                    </div>
-                    <div class="impact-line"></div>
-                    <div
-                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
-                      onclick=""
-                      data-toggle="modal"
-                      data-target="#modal-impact-sols2"
-                      style="cursor: pointer"
-                    >
-                      <div class="impact-item2 col-sm-3">
-                        <div class="impact-graph">
-                          <span
-                            class="icon-impact-solqualit ico-medium ico-impact"
-                          ></span>
-                        </div>
-                        <div class="impact-nom">Pauvreté des sols</div>
-                      </div>
-                      <div
-                        class="impact-item2 col-sm-6 d-flex justify-content-around align-items-center"
-                      >
-                        <div class="cadre-impact">
-                          <div class="cadre-impact-detail">
-                            <div class="impact-nom text-center">
-                              <strong>par personne</strong>
-                            </div>
-                            <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span id="" class="ico-medium"></span
-                                ><span id="" class="impact-nbr"
-                                  ><span
-                                    id="gaz_effet_serre4"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 7
-                                        )["EcoImpact_Indicator_Value_Person"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
-                            </div>
-                          </div>
-                        </div>
-                        <div class="cadre-impact">
-                          <div class="cadre-impact-detail">
-                            <div class="impact-nom text-center">
-                              <strong>par hectare</strong>
-                            </div>
-                            <div class="impact-graph text-center">
-                              <span class="impact-result"
-                                ><span
-                                  id="flechemodalsol2"
-                                  class="ico-medium"
-                                ></span
-                                ><span id="impactmodalsol2" class="impact-nbr"
-                                  ><span
-                                    id="degradation_sols2"
-                                    v-if="impacts.length > 0"
-                                    >{{
-                                      Math.round(
-                                        impacts.find(
-                                          (el) => el.ID_EcoImpact_Indicator == 7
-                                        )["EcoImpact_Indicator_Value_Hectare"]
-                                      )
-                                    }}</span
-                                  >%
-                                </span></span
-                              >
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="col-sm-3 result-plus d-flex flex-column justify-content-center text-center"
-                      >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
-                      </div>
-                    </div>
-                  </div>
                 </div>
                 <!--end repartition-->
               </div>
@@ -1076,10 +769,10 @@
 </template>
 
 <script>
-import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
-import resumeChoix from "./modal/resumeChoix.vue";
-import ModalAffinerChoix from "./modal/modalAffinerChoix.vue";
-import modalImpact from "./modal/modalImpact.vue";
+import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
+import resumeChoix from "@/views/modal/resumeChoix.vue";
+import ModalAffinerChoix from "@/views/modal/modalAffinerChoix.vue";
+import modalImpact from "@/views/modal/modalImpact.vue";
 import BandeauResultat from "@/components/BandeauResultat.vue";
 import { getImpacts } from "@/plugins/getImpacts.js";
 export default {
@@ -1136,5 +829,17 @@ export default {
   display: block !important;
   padding: 0px !important;
   opacity: 1 !important;
+}
+
+.texte-legende {
+  font-size: 16px;
+  font-weight: 300;
+  padding-left: 8px;
+}
+
+.titre-impact,
+.impact-result,
+.texte-droite {
+  padding: 32px 32px !important;
 }
 </style>

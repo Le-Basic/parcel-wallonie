@@ -77,14 +77,12 @@
     v-if="modalActive == 'groupe'"
     @fermerModale="this.modalActive = null"
   ></modalGroupePersonnes>
-  <!-- modal-content -->
-  <!-- modal-dialog -->
 </template>
 
 <script>
-import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
-import resumeChoix from "./modal/resumeChoix.vue";
-import modalGroupePersonnes from "./modal/modalGroupePersonnes.vue";
+import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
+import resumeChoix from "@/views/modal/resumeChoix.vue";
+import modalGroupePersonnes from "@/views/modal/modalGroupePersonnes.vue";
 export default {
   components: {
     BarreNavigation,

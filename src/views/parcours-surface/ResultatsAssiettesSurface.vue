@@ -392,7 +392,7 @@
 </template>
 
 <script setup>
-import BarreNavigation from "@/components/Nav/BarreNavigation.vue";
+import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import resumeChoixSurface from "@/views/parcours-surface/ResumeChoixSurface.vue";
 import VueSlider from "vue-3-slider-component";
 import { AfficherEntier } from "@/plugins/utils";
