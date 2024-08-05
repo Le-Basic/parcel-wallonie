@@ -143,6 +143,14 @@ h1,
   color: var(--bleu);
 }
 
+.text-bleu {
+  color: var(--bleu);
+}
+
+.text-center {
+  text-align: center;
+}
+
 .h1-result {
   margin-bottom: 20px;
 }

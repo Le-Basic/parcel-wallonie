@@ -16,6 +16,29 @@
             </h1>
             <div class="ss-titre-impacts row">
               <resumeChoix />
+              <section class="titre-comparaison-matieres-premieres">
+                <section class="titre-visualisation">
+                  <p class="text-h2" style="position: sticky">
+                    Besoins alimentaires actuels
+                  </p>
+                  <p class="text-bleu text-center">
+                    Tonnes de matière première nécessaire pour nourrir la
+                    population
+                  </p>
+                </section>
+                <section class="titre-visualisation">
+                  <p class="text-h2" style="position: sticky">
+                    Besoins alimentaires avec les paramètres choisis
+                  </p>
+                  <p class="text-bleu text-center">
+                    50% de bio, -50% de produits animaux, -50% de gaspillage
+                  </p>
+                </section>
+              </section>
+              <section class="comparaison-matieres-premieres">
+                <vizConsommationVerticalReference />
+                <vizConsommationVerticalSimulation />
+              </section>
               <div class="accordion ml-auto mr-auto" id="accordeon-Impact">
                 <!--end heading accordeon-->
                 <div
@@ -775,6 +798,8 @@ import ModalAffinerChoix from "@/views/modal/modalAffinerChoix.vue";
 import modalImpact from "@/views/modal/modalImpact.vue";
 import BandeauResultat from "@/components/BandeauResultat.vue";
 import { getImpacts } from "@/plugins/getImpacts.js";
+import vizConsommationVerticalSimulation from "@/components/visualisation/vizConsommationVerticalSimulation.vue";
+import vizConsommationVerticalReference from "@/components/visualisation/vizConsommationVerticalReference.vue";
 export default {
   components: {
     BandeauResultat,
@@ -782,6 +807,8 @@ export default {
     resumeChoix,
     ModalAffinerChoix,
     modalImpact,
+    vizConsommationVerticalSimulation,
+    vizConsommationVerticalReference,
   },
   data() {
     return {
@@ -824,6 +851,29 @@ export default {
 </script>
 
 <style scoped>
+.titre-comparaison-matieres-premieres {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  position: sticky;
+  gap: 32px;
+  top: 0px;
+  background-color: white;
+  z-index: 100;
+}
+.comparaison-matieres-premieres {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 32px;
+}
+
+.titre-visualisation {
+  border-bottom: 1px solid var(--bleu);
+  flex-grow: 1;
+  width: 50%;
+}
+
 .show {
   margin-right: 0px !important;
   display: block !important;
