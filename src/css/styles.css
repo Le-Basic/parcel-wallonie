@@ -147,6 +147,10 @@ h1,
   color: var(--bleu);
 }
 
+.text-vert-bio {
+  color: #38a13f;
+}
+
 .text-center {
   text-align: center;
 }

@@ -45,6 +45,7 @@ const getDefaultState = () => {
       emploisAMobiliser: 0,
       consommation_kg: 0,
       emission_kg_co2e: 0,
+      empreinte_eau_bleue_m3: 0,
       surfacesEmploisAMobiliser: 0,
       surfacesActuelles: 0,
       surfacesActuellesParcelNiveau1: [],

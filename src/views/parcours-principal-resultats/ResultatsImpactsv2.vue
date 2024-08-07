@@ -31,12 +31,22 @@
                     Besoins alimentaires avec les paramètres choisis
                   </p>
                   <p class="text-bleu text-center">
-                    50% de bio, -50% de produits animaux, -50% de gaspillage
+                    {{ phraseSousTitreConsommationSimulation }}
                   </p>
                 </section>
               </section>
               <section class="comparaison-matieres-premieres">
                 <vizConsommationVerticalReference />
+                <div style="margin: auto">
+                  <svg
+                    height="220"
+                    width="50"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <polygon points="0,10 50,100 0,200" style="fill: #f4f4e2" />
+                  </svg>
+                </div>
+
                 <vizConsommationVerticalSimulation />
               </section>
               <div class="accordion ml-auto mr-auto" id="accordeon-Impact">
@@ -182,15 +192,26 @@
                         <div class="cadre-impact">
                           <span class="impact-result texte-droite"
                             ><p class="texte-data texte-droite">
-                              400 millions t CO2eq
+                              {{
+                                formatterNombres(
+                                  this.donneesImpacts.ges.donneesReference /
+                                    1000
+                                )
+                              }}
+                              t CO2eq
                             </p>
-                            Soit 15% de la consommation annuelle du territoire
+                            Soit 5% de la consommation annuelle du territoire
                           </span>
                         </div>
                         <div class="cadre-impact">
                           <span class="impact-result texte-gauche"
                             ><p class="texte-data texte-gauche vert-clair">
-                              -40<span class="texte-unite">%</span>
+                              {{
+                                AfficherEntier(
+                                  this.donneesImpacts.ges
+                                    .differenceSimulationReference
+                                )
+                              }}<span class="texte-unite">%</span>
                             </p>
                             Soit 15% de la consommation annuelle du
                             territoire<br />
@@ -375,15 +396,26 @@
                         <div class="cadre-impact">
                           <span class="impact-result texte-droite"
                             ><p class="texte-data texte-droite">
-                              120 000 m3 d'eau consommés en irrigation chaque
-                              année (rivières et nappes)
+                              {{
+                                formatterNombres(
+                                  this.donneesImpacts.empreinte_eau_bleue
+                                    .donneesReference
+                                )
+                              }}
+                              m3 d'eau consommés en irrigation chaque année
+                              (rivières et nappes)
                             </p>
                           </span>
                         </div>
                         <div class="cadre-impact">
                           <span class="impact-result texte-gauche"
                             ><p class="texte-data texte-gauche vert-clair">
-                              -35<span class="texte-unite">%</span
+                              {{
+                                formatterNombres(
+                                  this.donneesImpacts.empreinte_eau_bleue
+                                    .differenceSimulationReference
+                                )
+                              }}<span class="texte-unite">%</span
                               ><span class="texte-legende"
                                 >sur les prélèvement en eau</span
                               >
@@ -800,6 +832,7 @@ import BandeauResultat from "@/components/BandeauResultat.vue";
 import { getImpacts } from "@/plugins/getImpacts.js";
 import vizConsommationVerticalSimulation from "@/components/visualisation/vizConsommationVerticalSimulation.vue";
 import vizConsommationVerticalReference from "@/components/visualisation/vizConsommationVerticalReference.vue";
+import { AfficherEntier } from "@/plugins/utils";
 export default {
   components: {
     BandeauResultat,
@@ -818,6 +851,7 @@ export default {
     };
   },
   methods: {
+    AfficherEntier,
     montrerModalAffiner() {
       this.montrerClasse = "show";
       console.log("montrerModalAffinage");
@@ -831,6 +865,15 @@ export default {
     },
     fermerModal() {
       this.modalActive = null;
+    },
+    formatterNombres(nombre) {
+      if (nombre > Math.pow(10, 9)) {
+        return Math.round((nombre / Math.pow(10, 9)) * 10) / 10 + " milliards";
+      } else if (nombre > Math.pow(10, 6)) {
+        return Math.round((nombre / Math.pow(10, 6)) * 10) / 10 + " millions";
+      } else if (nombre > Math.pow(10, 3)) {
+        return Math.round((nombre / Math.pow(10, 4)) * 10) / 10 + " milliers";
+      } else return Math.round(nombre, 2);
     },
   },
   async mounted() {
@@ -846,6 +889,37 @@ export default {
       console.log(this.impacts);
     },
     deep: true,
+  },
+  computed: {
+    phraseSousTitreConsommationSimulation() {
+      return `${this.$store.state.part_bio}% de bio, ${this.$store.state.regime_alimentaire["libelle"]}, -${this.$store.state.partpertes} % de gaspillage`;
+    },
+    donneesImpacts() {
+      let donneesImpacts = {
+        ges: {
+          donneesReference:
+            this.$store.state.resultatReference.emission_kg_co2e,
+          donneesSimulation:
+            this.$store.state.resultatSimulation.emission_kg_co2e,
+          differenceSimulationReference:
+            (this.$store.state.resultatSimulation.emission_kg_co2e * 100) /
+              this.$store.state.resultatReference.emission_kg_co2e -
+            100,
+        },
+        empreinte_eau_bleue: {
+          donneesReference:
+            this.$store.state.resultatReference.empreinte_eau_bleue_m3,
+          donneesSimulation:
+            this.$store.state.resultatSimulation.empreinte_eau_bleue_m3,
+          differenceSimulationReference:
+            (this.$store.state.resultatSimulation.empreinte_eau_bleue_m3 *
+              100) /
+              this.$store.state.resultatReference.empreinte_eau_bleue_m3 -
+            100,
+        },
+      };
+      return donneesImpacts;
+    },
   },
 };
 </script>
@@ -864,8 +938,9 @@ export default {
 .comparaison-matieres-premieres {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 40%;
   gap: 32px;
+  flex-basis: 100%;
 }
 
 .titre-visualisation {

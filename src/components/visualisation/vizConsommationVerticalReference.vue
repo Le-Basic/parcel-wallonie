@@ -19,8 +19,7 @@ const LIBELLE_XAXIS = [
   "Légumes",
   "Fruits",
   "Produits laitiers",
-  "Viande Rouge",
-  "Viande Blanche",
+  "Viande \net oeufs",
 ];
 
 const data = ref([
@@ -121,6 +120,7 @@ const options = ref({
     },
     axisLabel: { show: false },
     type: "value",
+    max: 1000000000,
   },
   series: [
     {
@@ -130,7 +130,7 @@ const options = ref({
       barGap: "0%",
       barCategoryGap: "5%",
       label: {
-        show: true,
+        show: false,
       },
     },
     {
@@ -156,9 +156,11 @@ const options = ref({
   flex-direction: column;
   flex-grow: 1;
   flex-shrink: 50;
+  width: 1000px;
+  align-items: flex-start;
 }
 
 .graphique {
-  min-height: 500px;
+  height: 450px;
 }
 </style>

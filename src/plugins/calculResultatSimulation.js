@@ -17,6 +17,7 @@ export function calculerResultatSimulation(
     emplois_a_mobiliser,
     consommation_kg,
     emission_kg_co2e,
+    empreinte_eau_bleue_m3,
     surfaces_emplois_a_mobiliser_parcel_niveau_1,
     surfaces_actuelles,
     surfaces_actuelles_parcel_niveau_1,
@@ -50,6 +51,7 @@ export function calculerResultatSimulation(
     emploisAMobiliser: emplois_a_mobiliser,
     consommation_kg: consommation_kg,
     emission_kg_co2e: emission_kg_co2e,
+    empreinte_eau_bleue_m3: empreinte_eau_bleue_m3,
     surfacesEmploisAMobiliser: surfaces_emplois_a_mobiliser_parcel_niveau_1,
     surfacesActuelles: surfaces_actuelles,
     surfacesActuellesParcelNiveau1: surfaces_actuelles_parcel_niveau_1,
@@ -87,6 +89,7 @@ function calculerSurfacesEtEmploisAMobiliser(
         emplois_a_mobiliser: 0,
         consommation_kg: 0,
         emission_kg_co2e: 0,
+        empreinte_eau_bleue_m3: 0,
       };
       surfaces_emplois_a_mobiliser_parcel_niveau_1.push(
         res[valeur.libelle_parcel_niveau_3]
@@ -101,7 +104,8 @@ function calculerSurfacesEtEmploisAMobiliser(
       valeur.emploi_conventionnel;
     res[valeur.libelle_parcel_niveau_3].emploi_bio += valeur.emploi_bio;
     res[valeur.libelle_parcel_niveau_3].consommation_kg +=
-      valeur.consommation_kg;
+      (valeur.consommation_kg * (1 - 0.18)) /
+      (1 - 0.18 * (1 - partPertes / 100));
     res[valeur.libelle_parcel_niveau_3].surface_a_mobiliser +=
       calculSurfAMobiliser(
         valeur.libelle_parcel_niveau_1,
@@ -139,6 +143,8 @@ function calculerSurfacesEtEmploisAMobiliser(
         partPertes,
         part_relocalisee
       );
+    res[valeur.libelle_parcel_niveau_3].empreinte_eau_bleue_m3 +=
+      valeur.empreinte_eau_bleue_m3;
     return res;
   }, {});
 
@@ -163,6 +169,12 @@ function calculerSurfacesEtEmploisAMobiliser(
   const emission_kg_co2e = surfaces_emplois_a_mobiliser_parcel_niveau_1
     .map((item) => {
       return item.emission_kg_co2e;
+    })
+    .reduce((somme, emission_kg_co2e) => somme + emission_kg_co2e, 0);
+
+  const empreinte_eau_bleue_m3 = surfaces_emplois_a_mobiliser_parcel_niveau_1
+    .map((item) => {
+      return item.empreinte_eau_bleue_m3;
     })
     .reduce((somme, emission_kg_co2e) => somme + emission_kg_co2e, 0);
 
@@ -225,6 +237,7 @@ function calculerSurfacesEtEmploisAMobiliser(
     emplois_a_mobiliser: emplois_a_mobiliser,
     consommation_kg: consommation_kg,
     emission_kg_co2e: emission_kg_co2e,
+    empreinte_eau_bleue_m3: empreinte_eau_bleue_m3,
     surfaces_emplois_a_mobiliser_parcel_niveau_1:
       surfaces_emplois_a_mobiliser_parcel_niveau_1,
     surfaces_actuelles: surfaces_actuelles,
