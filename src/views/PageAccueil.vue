@@ -339,7 +339,6 @@
 <script>
 import axios from "axios";
 import MenuSimple from "@/components/Menu/MenuSimple.vue";
-import { getPartdeBio } from "@/plugins/getPartdeBio";
 
 export default {
   name: "HomeView",
@@ -364,32 +363,17 @@ export default {
       this.$store.commit("addGeo", item);
       let codesTerritoiresListe = this.$store.getters.getcodesTerritoireParcel;
       this.$store.commit("getIndicateursPortraits", codesTerritoiresListe);
-      console.log("store", this.$store.state);
-      let url = window.apiURL + "parcel/belgique/curseurs_bio";
-      let codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
-
-      getPartdeBio(url, codesTerritoireParcel)
-        .then((data) => {
-          let partBio = Math.round(data[0].curseur_bio * 100);
-          this.$store.dispatch("changerPartBio", partBio);
-        })
-        .then(() => {
-          this.$store.dispatch("creerDonneesReference");
-        });
+      this.$store.dispatch("creerDonneesReference");
+      this.$store.dispatch("actionModifierGeo");
     },
     enleverGeo(geo) {
-      this.$store.commit("removeGeo", geo);
       let codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
+      this.$store.commit("removeGeo", geo);
       this.$store.commit("getIndicateursPortraits", codesTerritoireParcel);
-      let url = window.apiURL + "parcel/belgique/curseurs_bio";
-
-      getPartdeBio(url, codesTerritoireParcel)
-        .then((data) => {
-          this.$store.dispatch("changerPartBio", data[0].curseur_bio);
-        })
-        .then(() => {
-          this.$store.dispath("creerDonnesReference");
-        });
+      let codesTerritoiresListe = this.$store.getters.getcodesTerritoireParcel;
+      this.$store.commit("getIndicateursPortraits", codesTerritoiresListe);
+      this.$store.dispatch("creerDonneesReference");
+      this.$store.dispatch("actionModifierGeo");
       this.$store.dispatch("actionRecupererElementsDIagnostic");
     },
   },

@@ -527,6 +527,7 @@
 import "rangeslider.js";
 import "rangeslider.js/dist/rangeslider.css";
 import { getRegimeParNomCourt } from "@/config/regimeListe";
+import calculerPartBio from "@/plugins/calculPartBio";
 export default {
   name: "MenuAffinerChoix",
   data: function () {
@@ -555,17 +556,54 @@ export default {
     partPertes: function (partPertes) {
       this.$store.dispatch("actionModifierPartPertes", partPertes);
     },
-    partbiocereales: function (partBioCereales) {
-      this.$store.dispatch("actionModifierPartBioCereales", partBioCereales);
+    partbiocereales: function (partBioCereales, ancienneValeur) {
+      setTimeout(() => {
+        if (partBioCereales !== ancienneValeur) {
+          let nouvelleValeur = calculerPartBio(
+            partBioCereales,
+            "partbiocereales",
+            "actionModifierPartBioCereales"
+          );
+
+          this.partbiocereales = nouvelleValeur;
+        }
+      }, 200);
     },
-    partBioElevage: function (partBioElevage) {
-      this.$store.dispatch("actionModifierPartBioElevage", partBioElevage);
+    partBioElevage: function (partBioElevage, ancienneValeur) {
+      setTimeout(() => {
+        if (partBioElevage !== ancienneValeur) {
+          let nouvelleValeur = calculerPartBio(
+            partBioElevage,
+            "partbioelevage",
+            "actionModifierPartBioElevage"
+          );
+          this.partbioelevage = nouvelleValeur;
+        }
+      }, 200);
     },
-    partbiofruits: function (partBioFruits) {
-      this.$store.dispatch("actionModifierPartBioFruits", partBioFruits);
+    partbiofruits: function (partBioFruits, ancienneValeur) {
+      setTimeout(() => {
+        if (partBioFruits !== ancienneValeur) {
+          let nouvelleValeur = calculerPartBio(
+            partBioFruits,
+            "partbiofruits",
+            "actionModifierPartBioFruits"
+          );
+          this.partbiofruits = nouvelleValeur;
+        }
+      }, 200);
     },
-    partbiolegumes: function (partBioLegumes) {
-      this.$store.dispatch("actionModifierPartBioLegumes", partBioLegumes);
+    partbiolegumes: function (partBioLegumes, ancienneValeur) {
+      setTimeout(() => {
+        if (partBioLegumes !== ancienneValeur) {
+          let nouvelleValeur = calculerPartBio(
+            partBioLegumes,
+            "partbiolegumes",
+            "actionModifierPartBioLegumes"
+          );
+          this.partbiolegumes = nouvelleValeur;
+        }
+      }, 200);
     },
     regimeChoisi: function (nomCourtRegime) {
       // TODO : choix pour utiliser nomCourt ou id comme clé partout pour les régimes

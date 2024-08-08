@@ -154,3 +154,20 @@ export async function fetchSurfaceNecessairePourRegimePersonnalise(
   );
   return response.data;
 }
+
+export async function fetchCurseurs(url, codesTerritoireParcel) {
+  const bodyFormData = new FormData();
+  bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
+  const response = await axios.post(
+    `${url}`,
+    codesTerritoireParcel, // Request body data
+    {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  console.log("curseurs", response.data);
+  return response.data;
+}

@@ -1,10 +1,8 @@
 import axios from "axios";
 
-export async function getPartdeBio(url, codesTerritoireParcel) {
+export async function fetchCurseurBio(url, codesTerritoireParcel) {
   const bodyFormData = new FormData();
   bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
-  let uri = "parcel/belgique/curseurs_bio";
-  console.log("uri", uri);
   const response = await axios.post(
     `${url}`,
     codesTerritoireParcel, // Request body data

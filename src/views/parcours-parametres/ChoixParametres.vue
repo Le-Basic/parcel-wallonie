@@ -281,6 +281,7 @@ import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import listeRegime from "@/views/modal/listeRegime.vue";
 import resumeChoix from "@/views/modal/resumeChoix.vue";
 import modalBioCurseur from "@/views/modal/modalBioCurseur.vue";
+import calculerPartBio from "@/plugins/calculPartBio";
 
 export default {
   inject: ["$axios"],
@@ -390,12 +391,28 @@ export default {
     },
   },
   watch: {
-    partbio: function (val) {
-      this.$store.commit("partBio", val);
-      this.$store.commit("partBioLegumes", val);
-      this.$store.commit("partBioFruits", val);
-      this.$store.commit("partBioElevage", val);
-      this.$store.commit("partBioCereales", val);
+    partbio: function (partBioValeur) {
+      this.$store.commit("partBio", partBioValeur);
+      calculerPartBio(
+        partBioValeur,
+        "partbiolegumes",
+        "actionModifierPartBioLegumes"
+      );
+      calculerPartBio(
+        partBioValeur,
+        "partbiofruits",
+        "actionModifierPartBioFruits"
+      );
+      calculerPartBio(
+        partBioValeur,
+        "partbioelevage",
+        "actionModifierPartBioElevage"
+      );
+      calculerPartBio(
+        partBioValeur,
+        "partbiocereales",
+        "actionModifierPartBioCereales"
+      );
     },
     partpertes: function (val) {
       this.$store.commit("partPertes", val);

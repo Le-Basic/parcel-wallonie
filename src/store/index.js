@@ -8,7 +8,9 @@ import {
   fetchSurfacesActuellesPaysage,
   fetchIndicateursActuels,
   fetchPortrait,
+  fetchCurseurs,
 } from "@/plugins/getSurfacesNecessaires";
+import { fetchCurseurBio } from "@/plugins/getPartdeBio";
 import { calculerResultatSimulation } from "../plugins/calculResultatSimulation";
 import { calculerResultatSimulationAvecSurface } from "@/plugins/calculResultatsSimulationAvecSurface";
 const getDefaultState = () => {
@@ -31,6 +33,12 @@ const getDefaultState = () => {
       nombreEnfants: 150,
       nombreAdultes: 150,
       nombreSeniors: 150,
+    },
+    curseursBioMin: {
+      partbiocereales: 0,
+      partbioelevage: 0,
+      partbiofruits: 0,
+      partbiolegumes: 0,
     },
     part_relocalisee: 100,
     part_bio: null,
@@ -305,16 +313,34 @@ export default createStore({
       state.part_bio = part_bio;
     },
     partBioLegumes(state, partbiolegumes) {
-      state.partbiolegumes = partbiolegumes;
+      state.partbiolegumes = Math.max(partbiolegumes, state.partbiolegumes);
     },
     partBioFruits(state, partbiofruits) {
-      state.partbiofruits = partbiofruits;
+      state.partbiofruits = Math.max(partbiofruits, state.partbiofruits);
     },
     partBioCereales(state, partbiocereales) {
-      state.partbiocereales = partbiocereales;
+      state.partbiocereales = Math.max(partbiocereales, state.partbiocereales);
     },
     partBioElevage(state, partbioelevage) {
-      state.partbioelevage = partbioelevage;
+      state.partbioelevage = Math.max(partbioelevage, state.partbioelevage);
+    },
+    curseursMin(state, curseursBioMin) {
+      state.curseursBioMin.partbiocereales = Math.round(
+        curseursBioMin.find((item) => item.code_parcel_niveau_1 == "GC")
+          .part_bio * 100
+      );
+      state.curseursBioMin.partbioelevage = Math.round(
+        curseursBioMin.find((item) => item.code_parcel_niveau_1 == "EL")
+          .part_bio * 100
+      );
+      state.curseursBioMin.partbiofruits = Math.round(
+        curseursBioMin.find((item) => item.code_parcel_niveau_1 == "FR")
+          .part_bio * 100
+      );
+      state.curseursBioMin.partbiolegumes = Math.round(
+        curseursBioMin.find((item) => item.code_parcel_niveau_1 == "LG")
+          .part_bio * 100
+      );
     },
     regimeAlimentaire(state, regime_alimentaire) {
       state.regime_alimentaire = regime_alimentaire;
@@ -336,16 +362,28 @@ export default createStore({
       state.regime_alimentaire = regimeAlimentaire;
     },
     mutationPartBioElevage(state, partBioElevage) {
-      state.partbioelevage = partBioElevage;
+      state.partbioelevage = Math.max(
+        partBioElevage,
+        state.curseursBioMin.partbioelevage
+      );
     },
     mutationPartBioFruits(state, partBioFruits) {
-      state.partbiofruits = partBioFruits;
+      state.partbiofruits = Math.max(
+        partBioFruits,
+        state.curseursBioMin.partbiofruits
+      );
     },
     mutationPartBioLegumes(state, partBioLegumes) {
-      state.partbiolegumes = partBioLegumes;
+      state.partbiolegumes = Math.max(
+        partBioLegumes,
+        state.curseursBioMin.partbiolegumes
+      );
     },
     mutationPartBioCereales(state, partBioCereales) {
-      state.partbiocereales = partBioCereales;
+      state.partbiocereales = Math.max(
+        partBioCereales,
+        state.curseursBioMin.partbiocereales
+      );
     },
     mutationPartPertes(state, partPertes) {
       state.partpertes = partPertes;
@@ -622,6 +660,75 @@ export default createStore({
     },
     actionModifierSurfacesMobilisables({ commit }, surfacesMobilisables) {
       commit("mutationSurfacesMobilisables", surfacesMobilisables);
+    },
+    async actionModifierGeo({ commit }) {
+      let codesTerritoireParcel = this.getters.getcodesTerritoireParcel;
+      let curseurs_bio__url = window.apiURL + "parcel/belgique/curseurs_bio";
+      fetchCurseurBio(curseurs_bio__url, codesTerritoireParcel).then((data) => {
+        let partBio = Math.round(data * 100);
+        commit("partBio", partBio);
+      });
+      let curseurs_bio_categorie__url =
+        window.apiURL + "parcel/belgique/curseurs_bio_par_categorie";
+      fetchCurseurs(curseurs_bio_categorie__url, codesTerritoireParcel).then(
+        (curseursPartBio) => {
+          commit("curseursMin", curseursPartBio);
+          commit(
+            "partBioLegumes",
+            Math.round(
+              curseursPartBio.find((item) => item.code_parcel_niveau_1 == "LG")
+                .part_bio * 100
+            )
+          );
+          commit(
+            "partBioCereales",
+            Math.round(
+              curseursPartBio.find((item) => item.code_parcel_niveau_1 == "GC")
+                .part_bio * 100
+            )
+          );
+          commit(
+            "partBioElevage",
+            Math.round(
+              curseursPartBio.find((item) => item.code_parcel_niveau_1 == "EL")
+                .part_bio * 100
+            )
+          );
+          commit(
+            "partBioFruits",
+            Math.round(
+              curseursPartBio.find((item) => item.code_parcel_niveau_1 == "FR")
+                .part_bio * 100
+            )
+          );
+        }
+      );
+      let resultatSimulation = await recalculerResultatSimulation(
+        this.getters.getcodesTerritoireParcel,
+        this.state.regime_alimentaire.id,
+        this.state.partbioelevage,
+        this.state.partbiofruits,
+        this.state.partbiolegumes,
+        this.state.partbiocereales,
+        this.state.partpertes,
+        this.state.part_relocalisee,
+        this.state.resultatReference,
+        this.state.pctDiffRegimePersonnalise
+      );
+      commit("mutationResultatReference", resultatSimulation);
+      resultatSimulation = await recalculerResultatSimulation(
+        this.getters.getcodesTerritoireParcel,
+        this.state.regime_alimentaire.id,
+        this.state.partbioelevage,
+        this.state.partbiofruits,
+        this.state.partbiolegumes,
+        this.state.partbiocereales,
+        this.state.partpertes,
+        this.state.part_relocalisee,
+        this.state.resultatReference,
+        this.state.pctDiffRegimePersonnalise
+      );
+      commit("mutationResultatSimulation", resultatSimulation);
     },
   },
   plugins: [new VuexPersistence().plugin],
