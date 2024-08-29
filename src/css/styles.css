@@ -352,9 +352,16 @@ button.navbar-btn:focus {
 .cereales {
   color: #f5a623 !important;
 }
+.fond-cereales {
+  background-color: #874e00 !important;
+}
 
 .viande {
   color: #b57a60 !important;
+}
+
+.fond-viande {
+  background-color: #463025 !important;
 }
 input#partbio {
   color: #91c423 !important;
@@ -364,8 +371,16 @@ input#partbio {
   color: #91c423 !important;
 }
 
+.fond-legumes {
+  background-color: #015a5a !important;
+}
+
 .fruits {
-  color: #a261c0;
+  color: #a261c0 !important;
+}
+
+.fond-fruits {
+  background-color: #4f2065 !important;
 }
 
 .vert-fonce {

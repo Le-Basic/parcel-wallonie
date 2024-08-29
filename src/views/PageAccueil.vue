@@ -395,3 +395,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.section-categorie-alimentaire {
+  display: flex;
+  justify-content: center;
+}
+</style>

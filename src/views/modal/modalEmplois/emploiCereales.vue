@@ -330,7 +330,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .modal-repart-cat-detail .modal-header .icon {
   font-size: 50px;
   margin-right: 20px;

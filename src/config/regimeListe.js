@@ -40,6 +40,7 @@ export const regimeListe = [
     nom: "Régime personnalisé",
     img: require("@/assets/img/parcours/regime-personnalise.svg"),
     nomCourt: "personnalisé",
+    libelle: "Régime personnalisé",
     id: IDS_REGIMES_ALIMENTAIRES.PERSONNALISE,
   },
 ];

@@ -528,6 +528,8 @@ import "rangeslider.js";
 import "rangeslider.js/dist/rangeslider.css";
 import { getRegimeParNomCourt } from "@/config/regimeListe";
 import calculerPartBio from "@/plugins/calculPartBio";
+import lodash from "lodash";
+
 export default {
   name: "MenuAffinerChoix",
   data: function () {
@@ -556,55 +558,52 @@ export default {
     partPertes: function (partPertes) {
       this.$store.dispatch("actionModifierPartPertes", partPertes);
     },
-    partbiocereales: function (partBioCereales, ancienneValeur) {
-      setTimeout(() => {
-        if (partBioCereales !== ancienneValeur) {
-          let nouvelleValeur = calculerPartBio(
-            partBioCereales,
-            "partbiocereales",
-            "actionModifierPartBioCereales"
-          );
+    partbiocereales: lodash.debounce(function (
+      partBioCereales,
+      ancienneValeur
+    ) {
+      if (partBioCereales !== ancienneValeur) {
+        let nouvelleValeur = calculerPartBio(
+          partBioCereales,
+          "partbiocereales",
+          "actionModifierPartBioCereales"
+        );
 
-          this.partbiocereales = nouvelleValeur;
-        }
-      }, 200);
+        this.partbiocereales = nouvelleValeur;
+        console.log("ready", partBioCereales);
+      }
     },
-    partBioElevage: function (partBioElevage, ancienneValeur) {
-      setTimeout(() => {
-        if (partBioElevage !== ancienneValeur) {
-          let nouvelleValeur = calculerPartBio(
-            partBioElevage,
-            "partbioelevage",
-            "actionModifierPartBioElevage"
-          );
-          this.partbioelevage = nouvelleValeur;
-        }
-      }, 200);
-    },
-    partbiofruits: function (partBioFruits, ancienneValeur) {
-      setTimeout(() => {
-        if (partBioFruits !== ancienneValeur) {
-          let nouvelleValeur = calculerPartBio(
-            partBioFruits,
-            "partbiofruits",
-            "actionModifierPartBioFruits"
-          );
-          this.partbiofruits = nouvelleValeur;
-        }
-      }, 200);
-    },
-    partbiolegumes: function (partBioLegumes, ancienneValeur) {
-      setTimeout(() => {
-        if (partBioLegumes !== ancienneValeur) {
-          let nouvelleValeur = calculerPartBio(
-            partBioLegumes,
-            "partbiolegumes",
-            "actionModifierPartBioLegumes"
-          );
-          this.partbiolegumes = nouvelleValeur;
-        }
-      }, 200);
-    },
+    1000),
+    partBioElevage: lodash.debounce(function (partBioElevage, ancienneValeur) {
+      if (partBioElevage !== ancienneValeur) {
+        let nouvelleValeur = calculerPartBio(
+          partBioElevage,
+          "partbioelevage",
+          "actionModifierPartBioElevage"
+        );
+        this.partbioelevage = nouvelleValeur;
+      }
+    }, 200),
+    partbiofruits: lodash.debounce(function (partBioFruits, ancienneValeur) {
+      if (partBioFruits !== ancienneValeur) {
+        let nouvelleValeur = calculerPartBio(
+          partBioFruits,
+          "partbiofruits",
+          "actionModifierPartBioFruits"
+        );
+        this.partbiofruits = nouvelleValeur;
+      }
+    }, 200),
+    partbiolegumes: lodash.debounce(function (partBioLegumes, ancienneValeur) {
+      if (partBioLegumes !== ancienneValeur) {
+        let nouvelleValeur = calculerPartBio(
+          partBioLegumes,
+          "partbiolegumes",
+          "actionModifierPartBioLegumes"
+        );
+        this.partbiolegumes = nouvelleValeur;
+      }
+    }, 200),
     regimeChoisi: function (nomCourtRegime) {
       // TODO : choix pour utiliser nomCourt ou id comme clé partout pour les régimes
       const regimeChoisi = getRegimeParNomCourt(nomCourtRegime);

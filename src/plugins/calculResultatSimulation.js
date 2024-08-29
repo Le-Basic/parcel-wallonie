@@ -134,8 +134,8 @@ function calculerSurfacesEtEmploisAMobiliser(
     res[valeur.libelle_parcel_niveau_3].emission_kg_co2e +=
       calculSurfAMobiliser(
         valeur.libelle_parcel_niveau_1,
-        valeur.emission_kg_co2e,
         valeur.emission_kg_co2e_bio,
+        valeur.emission_kg_co2e,
         partBioElevage,
         partBioFruits,
         partBioLegumes,

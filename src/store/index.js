@@ -103,7 +103,7 @@ async function recalculerResultatSimulation(
   let surfaceNecessaireResponseApi = null;
   let surfaceNecessairePaysageResponseApi = null;
 
-  if (idRegimeAlimentaire === 4) {
+  if (idRegimeAlimentaire === 5) {
     necessaires__url =
       window.apiURL +
       "parcel/belgique/surfaces_necessaires_paysage_regime_personnalise";
@@ -202,12 +202,15 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
     actuellespaysage__url,
     codesTerritoireParcel
   );
+
+  // TODO: ajouter le cas du régime spécialisé
   var surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
     url,
     codesTerritoireParcel,
     idRegimeAlimentaire
   );
 
+  // TODO: ajouter le cas du régime spécialisé
   const necessaires_paysage__url =
     window.apiURL + "parcel/belgique/surfaces_necessaires_paysage";
   var surfaceNecessairePaysageResponseApi = await fetchSurfaceNecessaire(

@@ -8,6 +8,7 @@
             Choisissez le régime alimentaire de votre simulation de
             relocalisation
           </h1>
+
           <div class="note text-center">
             Le choix du régime choisi est un régime moyen pour la population. Il
             peut masquer de fortes disparités selon les individus.
@@ -58,7 +59,14 @@
                   <div class="product">
                     <div class="d-flex justify-content-end w-100">
                       <div class="badge mr-auto" id="coeff_tx_cereales">
-                        x {{ creerCoefficientMultiplicateur(cereales) }}
+                        x
+                        {{
+                          creerCoefficientMultiplicateur(
+                            valeursChangementGroupeAlimentaire[
+                              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES
+                            ]
+                          )
+                        }}
                       </div>
                       <a
                         data-toggle="modal"
@@ -89,8 +97,16 @@
                             type="number"
                             class="nombre groupe"
                             id="tx_cereales"
-                            :value="cereales"
-                            @input="cereales = Number($event.target.value)"
+                            :value="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES
+                              ]
+                            "
+                            @input="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES
+                              ] = Number($event.target.value)
+                            "
                           />
                           <span
                             class="btn-plus counter-plus"
@@ -106,7 +122,14 @@
                   <div class="product">
                     <div class="d-flex justify-content-end w-100">
                       <div class="badge mr-auto" id="coeff_tx_huile">
-                        x {{ creerCoefficientMultiplicateur(huile) }}
+                        x
+                        {{
+                          creerCoefficientMultiplicateur(
+                            valeursChangementGroupeAlimentaire[
+                              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE
+                            ]
+                          )
+                        }}
                       </div>
                       <a
                         data-toggle="modal"
@@ -137,8 +160,16 @@
                             type="number"
                             class="nombre groupe"
                             id="tx_huile"
-                            :value="huile"
-                            @input="huile = Number($event.target.value)"
+                            :value="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE
+                              ]
+                            "
+                            @input="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE
+                              ] = Number($event.target.value)
+                            "
                           />
                           <span
                             class="btn-plus counter-plus"
@@ -154,7 +185,14 @@
                   <div class="product">
                     <div class="d-flex justify-content-end w-100">
                       <div class="badge mr-auto" id="coeff_tx_patates">
-                        x {{ creerCoefficientMultiplicateur(patate) }}
+                        x
+                        {{
+                          creerCoefficientMultiplicateur(
+                            valeursChangementGroupeAlimentaire[
+                              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE
+                            ]
+                          )
+                        }}
                       </div>
                       <a
                         data-toggle="modal"
@@ -185,8 +223,16 @@
                             type="number"
                             class="nombre groupe"
                             id="tx_patate"
-                            :value="patate"
-                            @input="patate = Number($event.target.value)"
+                            :value="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE
+                              ]
+                            "
+                            @input="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE
+                              ] = Number($event.target.value)
+                            "
                           />
                           <span
                             class="btn-plus counter-plus"
@@ -202,7 +248,14 @@
                   <div class="product">
                     <div class="d-flex justify-content-end w-100">
                       <div class="badge mr-auto" id="coeff_tx_legumineuses">
-                        x {{ creerCoefficientMultiplicateur(legumineuses) }}
+                        x
+                        {{
+                          creerCoefficientMultiplicateur(
+                            valeursChangementGroupeAlimentaire[
+                              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES
+                            ]
+                          )
+                        }}
                       </div>
                       <a
                         data-toggle="modal"
@@ -233,8 +286,16 @@
                             type="number"
                             class="nombre groupe"
                             id="tx_legumineuses"
-                            :value="legumineuses"
-                            @input="legumineuses = Number($event.target.value)"
+                            :value="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES
+                              ]
+                            "
+                            @input="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES
+                              ] = Number($event.target.value)
+                            "
                           />
                           <span
                             class="btn-plus counter-plus"
@@ -250,7 +311,14 @@
                   <div class="product">
                     <div class="d-flex justify-content-end w-100">
                       <div class="badge mr-auto" id="coeff_tx_legumes">
-                        x {{ creerCoefficientMultiplicateur(legumes) }}
+                        x
+                        {{
+                          creerCoefficientMultiplicateur(
+                            valeursChangementGroupeAlimentaire[
+                              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES
+                            ]
+                          )
+                        }}
                       </div>
                       <a
                         data-toggle="modal"
@@ -282,8 +350,16 @@
                             class="nombre groupe"
                             name="tx_legumes"
                             id="tx_legumes"
-                            :value="legumes"
-                            @input="legumes = Number($event.target.value)"
+                            :value="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES
+                              ]
+                            "
+                            @input="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES
+                              ] = Number($event.target.value)
+                            "
                           />
                           <span
                             class="btn-plus counter-plus"
@@ -299,7 +375,14 @@
                   <div class="product">
                     <div class="d-flex justify-content-end w-100">
                       <div class="badge mr-auto" id="coeff_tx_fruits">
-                        x {{ creerCoefficientMultiplicateur(fruits) }}
+                        x
+                        {{
+                          creerCoefficientMultiplicateur(
+                            valeursChangementGroupeAlimentaire[
+                              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS
+                            ]
+                          )
+                        }}
                       </div>
                       <a
                         data-toggle="modal"
@@ -336,8 +419,16 @@
                             class="nombre groupe"
                             name="tx_fruits"
                             id="tx_fruits"
-                            :value="fruits"
-                            @input="fruits = Number($event.target.value)"
+                            :value="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS
+                              ]
+                            "
+                            @input="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS
+                              ] = Number($event.target.value)
+                            "
                           />
                           <span
                             class="btn-plus counter-plus"
@@ -353,7 +444,14 @@
                   <div class="product">
                     <div class="d-flex justify-content-end w-100">
                       <div class="badge mr-auto" id="coeff_tx_oleagineux">
-                        x {{ creerCoefficientMultiplicateur(oleagineux) }}
+                        x
+                        {{
+                          creerCoefficientMultiplicateur(
+                            valeursChangementGroupeAlimentaire[
+                              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX
+                            ]
+                          )
+                        }}
                       </div>
                       <a
                         data-toggle="modal"
@@ -385,8 +483,16 @@
                             class="nombre groupe"
                             name="tx_oleagineux"
                             id="tx_oleagineux"
-                            :value="oleagineux"
-                            @input="oleagineux = Number($event.target.value)"
+                            :value="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX
+                              ]
+                            "
+                            @input="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX
+                              ] = Number($event.target.value)
+                            "
                           />
                           <span
                             class="btn-plus counter-plus"
@@ -402,7 +508,14 @@
                   <div class="product">
                     <div class="d-flex justify-content-end w-100">
                       <div class="badge mr-auto" id="coeff_tx_viande_rouge">
-                        x {{ creerCoefficientMultiplicateur(viandeRouge) }}
+                        x
+                        {{
+                          creerCoefficientMultiplicateur(
+                            valeursChangementGroupeAlimentaire[
+                              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE
+                            ]
+                          )
+                        }}
                       </div>
                       <a
                         data-toggle="modal"
@@ -434,8 +547,16 @@
                             class="nombre groupe"
                             name="tx_viande_rouge"
                             id="tx_viande_rouge"
-                            :value="viandeRouge"
-                            @input="viandeRouge = Number($event.target.value)"
+                            :value="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE
+                              ]
+                            "
+                            @input="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE
+                              ] = Number($event.target.value)
+                            "
                           />
                           <span
                             class="btn-plus counter-plus"
@@ -451,7 +572,14 @@
                   <div class="product">
                     <div class="d-flex justify-content-end w-100">
                       <div class="badge mr-auto" id="coeff_tx_viande_blanche">
-                        x {{ creerCoefficientMultiplicateur(viandeBlanche) }}
+                        x
+                        {{
+                          creerCoefficientMultiplicateur(
+                            valeursChangementGroupeAlimentaire[
+                              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE
+                            ]
+                          )
+                        }}
                       </div>
                       <a
                         data-toggle="modal"
@@ -483,8 +611,17 @@
                             class="nombre groupe"
                             name="tx_viande_blanche"
                             id="tx_viande_blanche"
-                            :value="viandeBlanche"
-                            @input="viandeBlanche = Number($event.target.value)"
+                            :value="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES
+                                  .VIANDE_BLANCHE
+                              ]
+                            "
+                            @input="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE
+                              ] = Number($event.target.value)
+                            "
                           />
                           <span
                             class="btn-plus counter-plus"
@@ -503,7 +640,15 @@
                         class="badge mr-auto"
                         id="coeff_tx_produits_laitiers"
                       >
-                        x {{ creerCoefficientMultiplicateur(produitsLaitiers) }}
+                        x
+                        {{
+                          creerCoefficientMultiplicateur(
+                            valeursChangementGroupeAlimentaire[
+                              IDS_CATEGORIES_REGIMES_ALIMENTAIRES
+                                .PRODUITS_LAITIERS
+                            ]
+                          )
+                        }}
                       </div>
                       <a
                         data-toggle="modal"
@@ -535,9 +680,16 @@
                             class="nombre groupe"
                             name="tx_produits_laitiers"
                             id="tx_produits_laitiers"
-                            :value="produitsLaitiers"
+                            :value="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES
+                                  .PRODUITS_LAITIERS
+                              ]
+                            "
                             @input="
-                              produitsLaitiers = Number($event.target.value)
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS
+                              ] = Number($event.target.value)
                             "
                           />
                           <span
@@ -554,7 +706,14 @@
                   <div class="product">
                     <div class="d-flex justify-content-end w-100">
                       <div class="badge mr-auto" id="coeff_tx_oeufs">
-                        x {{ creerCoefficientMultiplicateur(oeufs) }}
+                        x
+                        {{
+                          creerCoefficientMultiplicateur(
+                            valeursChangementGroupeAlimentaire[
+                              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS
+                            ]
+                          )
+                        }}
                       </div>
                       <a
                         data-toggle="modal"
@@ -586,8 +745,16 @@
                             class="nombre groupe"
                             name="tx_oeufs"
                             id="tx_oeufs"
-                            :value="oeufs"
-                            @input="oeufs = Number($event.target.value)"
+                            :value="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS
+                              ]
+                            "
+                            @input="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS
+                              ] = Number($event.target.value)
+                            "
                           />
                           <span
                             class="btn-plus counter-plus"
@@ -603,7 +770,14 @@
                   <div class="product">
                     <div class="d-flex justify-content-end w-100">
                       <div class="badge mr-auto" id="coeff_tx_oeufs">
-                        x {{ creerCoefficientMultiplicateur(sucre) }}
+                        x
+                        {{
+                          creerCoefficientMultiplicateur(
+                            valeursChangementGroupeAlimentaire[
+                              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE
+                            ]
+                          )
+                        }}
                       </div>
 
                       <a
@@ -636,8 +810,16 @@
                             class="nombre groupe"
                             name="tx_sucre"
                             id="tx_sucre"
-                            :value="sucre"
-                            @input="sucre = Number($event.target.value)"
+                            :value="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE
+                              ]
+                            "
+                            @input="
+                              valeursChangementGroupeAlimentaire[
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE
+                              ] = Number($event.target.value)
+                            "
                           />
                           <span
                             class="btn-plus counter-plus"
@@ -671,153 +853,72 @@
               </div>
             </div>
           </div>
-
           <!-- conditionnal message danger-->
-          <div id="message-diet" class="danger opacity-0">
+          <div
+            v-if="conclusionRegimeAlimentaireMessage === -1"
+            id="message-diet"
+            class="danger opacity-0"
+          >
             Le régime que vous avez choisi <br />
             <b>s’éloigne trop des recommandations nutritionnelles</b>
           </div>
-          <!-- end conditionnal message-->
 
           <!-- conditionnal message warning-->
-          <!-- <div id="message-diet" class="warning">Le régime que vous avez choisi
-            <br /> <b>est éloigné des recommandations nutritionnelles </b>
-          </div> -->
-          <!-- end conditionnal message-->
+          <div
+            v-if="conclusionRegimeAlimentaireMessage === 0"
+            id="message-diet"
+            class="warning"
+          >
+            Le régime que vous avez choisi <br />
+            <b>est éloigné des recommandations nutritionnelles </b>
+          </div>
 
           <div class="container d-block mx-auto" style="max-width: 1200px">
             <div class="jauges row justify-content-center">
-              <div class="col-auto jauge-card justify-content-center">
-                <div class="d-flex w-100">
-                  <div class="align-items-center d-flex mx-auto">
-                    <span class="icon-energie icon-medium"></span> energie
-                    totale
-                  </div>
-                </div>
-                <div class="jauge">
-                  <canvas
-                    id="energie"
-                    height="100"
-                    width="200"
-                    style="width: 180px; height: auto"
-                  ></canvas>
-
-                  <div id="badge_energie" class="badge">correct</div>
-                </div>
-                <div class="collapse" id="collapseProducts">
-                  <div class="detailProducts d-flex justify-content-center">
-                    <div class="iconProduct icon-cereales2"></div>
-                    <div class="iconProduct icon-oleagineux"></div>
-                    <div class="iconProduct icon-viande-rouge"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-auto jauge-card justify-content-center">
-                <div class="d-flex w-100">
-                  <div class="align-items-center d-flex mx-auto">
-                    <span class="icon-proteine icon-medium"></span> protéines
-                  </div>
-                </div>
-                <div class="jauge">
-                  <canvas
-                    id="proteine"
-                    height="100"
-                    width="200"
-                    style="width: 180px; height: auto"
-                  ></canvas>
-                  <div id="badge_proteines" class="badge">correct</div>
-                </div>
-                <div class="collapse" id="collapseProducts">
-                  <div class="detailProducts d-flex justify-content-center">
-                    <div class="iconProduct icon-oeufs"></div>
-                    <div class="iconProduct icon-viande-blanche"></div>
-                    <div class="iconProduct icon-viande-rouge"></div>
-                    <div class="iconProduct icon-lait"></div>
-                    <div class="iconProduct icon-sec"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-auto jauge-card justify-content-center">
-                <div class="d-flex w-100">
-                  <div class="align-items-center d-flex mx-auto">
-                    <span class="icon-sucre icon-medium"></span> glucides
-                  </div>
-                </div>
-                <div class="jauge">
-                  <canvas
-                    id="glucides"
-                    height="100"
-                    width="200"
-                    style="width: 180px; height: auto"
-                  ></canvas>
-                  <div id="badge_glucides" class="badge">correct</div>
-                </div>
-                <div class="collapse" id="collapseProducts">
-                  <div class="detailProducts d-flex justify-content-center">
-                    <div class="iconProduct icon-pdt"></div>
-                    <div class="iconProduct icon-huile"></div>
-                    <div class="iconProduct icon-cereales2"></div>
-                    <div class="iconProduct icon-lait"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-auto jauge-card justify-content-center">
-                <div class="d-flex w-100">
-                  <div class="align-items-center d-flex mx-auto">
-                    <span class="icon-lipides icon-medium"></span> lipides
-                  </div>
-                </div>
-                <div class="jauge">
-                  <canvas
-                    id="lipides"
-                    height="100"
-                    width="200"
-                    style="width: 180px; height: auto"
-                  ></canvas>
-                  <div id="badge_lipides" class="badge">correct</div>
-                </div>
-                <div class="collapse" id="collapseProducts">
-                  <div class="detailProducts d-flex justify-content-center">
-                    <div class="iconProduct icon-sucre"></div>
-                    <div class="iconProduct icon-cereales2"></div>
-                    <div class="iconProduct icon-huile"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-auto jauge-card justify-content-center">
-                <div class="d-flex w-100">
-                  <div class="align-items-center d-flex mx-auto">
-                    <span class="icon-fibres icon-medium"></span> fibres
-                  </div>
-                </div>
-                <div class="jauge">
-                  <canvas
-                    id="fibres"
-                    height="100"
-                    width="200"
-                    style="width: 180px; height: auto"
-                  ></canvas>
-                  <div id="badge_fibres" class="badge">correct</div>
-                </div>
-                <div class="collapse" id="collapseProducts">
-                  <div class="detailProducts d-flex justify-content-center">
-                    <div class="iconProduct icon-legumes2"></div>
-                    <div class="iconProduct icon-fruit2"></div>
-                  </div>
-                </div>
-              </div>
+              <jaugeRegimeAlimentaire
+                iconeCategorieAlimentaire="icon-energie"
+                @update:categoriesAlimentaires="
+                  changerConclusionRegimeParCategorie($event, 'energieTotale')
+                "
+                :valeurJauge="oeufs"
+                :montreDetailProduits="montreDetailProduits"
+              />
+              <jaugeRegimeAlimentaire
+                titreCategorieAlimentaire="Protéines"
+                iconeCategorieAlimentaire="icon-proteine"
+                :montreDetailProduits="montreDetailProduits"
+                :listeIconesProduits="getListeIconesProduits('Protéines')"
+              />
+              <jaugeRegimeAlimentaire
+                titreCategorieAlimentaire="Glucides"
+                iconeCategorieAlimentaire="icon-sucre"
+                :montreDetailProduits="montreDetailProduits"
+                :listeIconesProduits="getListeIconesProduits('Glucides')"
+              />
+              <jaugeRegimeAlimentaire
+                titreCategorieAlimentaire="Lipides"
+                iconeCategorieAlimentaire="icon-lipides"
+                :montreDetailProduits="montreDetailProduits"
+                :listeIconesProduits="getListeIconesProduits('Lipides')"
+              />
+              <jaugeRegimeAlimentaire
+                titreCategorieAlimentaire="Fibres"
+                iconeCategorieAlimentaire="icon-fibres"
+                :montreDetailProduits="montreDetailProduits"
+                :listeIconesProduits="getListeIconesProduits('Fibres')"
+              />
             </div>
           </div>
           <div class="text-center">
             <a
               class="d-flex justify-content-center detailproductscollapse"
               data-toggle="collapse"
-              href="#collapseProducts"
               role="button"
               aria-expanded="false"
               aria-controls="collapseProducts"
+              @click="montreDetailProduits = !montreDetailProduits"
             >
-              <div class="">Quels aliments contribuent à chaque apport ?</div>
+              <div>Quels aliments contribuent à chaque apport ?</div>
             </a>
           </div>
           <!--
@@ -910,13 +1011,18 @@
 
 import { IDS_CATEGORIES_REGIMES_ALIMENTAIRES } from "@/config/categorieRegimeIds";
 import { MAP_CATEGORIE_PRODUITS_DETAILLES } from "@/config/categorieProduitsDetaillés";
+import { GROUPES_ALIMENTAIRES } from "@/config/GroupesAlimentaires";
 import listeRegime from "@/views/modal/listeRegime.vue";
 import { ref, computed, watch } from "vue";
 import { useStore } from "vuex";
 import { regimeListe } from "@/config/regimeListe";
 import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import { MapProduitsCoefficientMultiplicateurRegime } from "@/plugins/utils";
+import jaugeRegimeAlimentaire from "@/components/visualisation/jaugeRegimeAlimentaire.vue";
+import { getListeIconesProduits } from "@/config/categorieApports.js";
+import { fetchCoefficientsGroupesAlimentaires } from "@/plugins/getCoefficientsGroupesAlimentaires";
 const store = useStore();
+const _ = require("lodash");
 
 // TODO: mettre ca en configuration
 const regimeChoisi = ref({
@@ -925,128 +1031,417 @@ const regimeChoisi = ref({
   nomCourt: "actuel",
 });
 
-const cereales = ref(0);
-const huile = ref(0);
-const patate = ref(0);
-const legumineuses = ref(0);
-const legumes = ref(0);
-const fruits = ref(0);
-const oleagineux = ref(0);
-const viandeRouge = ref(0);
-const viandeBlanche = ref(0);
-const produitsLaitiers = ref(0);
 const oeufs = ref(0);
-const sucre = ref(0);
+
+const valeursChangementGroupeAlimentaire = ref({
+  [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE]: 0,
+  [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES]: 0,
+  [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE]: 0,
+  [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES]: 0,
+  [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES]: 0,
+  [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS]: 0,
+  [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX]: 0,
+  [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE]: 0,
+  [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE]: 0,
+  [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS]: 0,
+  [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS]: 0,
+  [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE]: 0,
+});
 
 const coefficientMultiplicateurVolumeCategorieRegime = computed(() => {
   return {
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES]:
-      creerCoefficientMultiplicateur(cereales.value),
+      creerCoefficientMultiplicateur(
+        valeursChangementGroupeAlimentaire.value[
+          IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES
+        ]
+      ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE]: creerCoefficientMultiplicateur(
-      huile.value
+      valeursChangementGroupeAlimentaire.value[
+        IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE
+      ]
     ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE]:
-      creerCoefficientMultiplicateur(patate.value),
+      creerCoefficientMultiplicateur(
+        valeursChangementGroupeAlimentaire.value[
+          IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE
+        ]
+      ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES]:
-      creerCoefficientMultiplicateur(legumineuses.value),
+      creerCoefficientMultiplicateur(
+        valeursChangementGroupeAlimentaire.value[
+          IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES
+        ]
+      ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES]:
-      creerCoefficientMultiplicateur(legumes.value),
+      creerCoefficientMultiplicateur(
+        valeursChangementGroupeAlimentaire.value[
+          IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES
+        ]
+      ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS]:
-      creerCoefficientMultiplicateur(fruits.value),
+      creerCoefficientMultiplicateur(
+        valeursChangementGroupeAlimentaire.value[
+          IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS
+        ]
+      ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX]:
-      creerCoefficientMultiplicateur(oleagineux.value),
+      creerCoefficientMultiplicateur(
+        valeursChangementGroupeAlimentaire.value[
+          IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX
+        ]
+      ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE]:
-      creerCoefficientMultiplicateur(viandeRouge.value),
+      creerCoefficientMultiplicateur(
+        valeursChangementGroupeAlimentaire.value[
+          IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE
+        ]
+      ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE]:
-      creerCoefficientMultiplicateur(viandeBlanche.value),
+      creerCoefficientMultiplicateur(
+        valeursChangementGroupeAlimentaire.value[
+          IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE
+        ]
+      ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS]:
-      creerCoefficientMultiplicateur(produitsLaitiers.value),
+      creerCoefficientMultiplicateur(
+        valeursChangementGroupeAlimentaire.value[
+          IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS
+        ]
+      ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS]: creerCoefficientMultiplicateur(
-      oeufs.value
+      valeursChangementGroupeAlimentaire.value[
+        IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS
+      ]
     ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE]: creerCoefficientMultiplicateur(
-      sucre.value
+      valeursChangementGroupeAlimentaire.value[
+        IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE
+      ]
     ),
   };
 });
 
+// régime par défaut, tous les coefficients multiplicateurs sont à 1
+const coefficientMultiplicateurVolumeCategorieRegimeChoisi = ref(
+  coefficientMultiplicateurVolumeCategorieRegime.value
+);
+
 watch(
   coefficientMultiplicateurVolumeCategorieRegime,
-  (coefficientMultiplicateur) => {
-    changementRegime("personnalisé");
-    let coefficientMultiplicateurProduits =
-      MapProduitsCoefficientMultiplicateurRegime(
-        MAP_CATEGORIE_PRODUITS_DETAILLES,
-        coefficientMultiplicateur
+  (nouveauCoefficientMultiplicateur) => {
+    console.log(
+      _.isEqual(
+        nouveauCoefficientMultiplicateur,
+        coefficientMultiplicateurVolumeCategorieRegimeChoisi.value
+      )
+    ); // true
+
+    if (
+      _.isEqual(
+        nouveauCoefficientMultiplicateur,
+        coefficientMultiplicateurVolumeCategorieRegimeChoisi.value
+      )
+    ) {
+      console.log("chgt de régime");
+    } else {
+      console.log("chgt de valeurs", nouveauCoefficientMultiplicateur);
+      changementRegime("personnalisé");
+      let coefficientMultiplicateurProduits =
+        MapProduitsCoefficientMultiplicateurRegime(
+          MAP_CATEGORIE_PRODUITS_DETAILLES,
+          nouveauCoefficientMultiplicateur
+        );
+      store.commit(
+        "mutationPctDiffRegimePersonnalise",
+        coefficientMultiplicateurProduits
       );
-    store.commit(
-      "mutationPctDiffRegimePersonnalise",
-      coefficientMultiplicateurProduits
-    );
+    }
   }
 );
 
 watch(regimeChoisi, (nouvelleValeur) => {
   store.commit("mutationRegimeAlimentaire", nouvelleValeur);
-});
+  console.log("regimeChoisi", nouvelleValeur.id);
 
-// refacto doit exister quelque part
+  // TODO: REFACTO ET SIMPLIFICATION
+  fetchCoefficientsGroupesAlimentaires({
+    url: "https://lebasic.nohost.me/api/parcel/belgique/coefficients_groupes_alimentaires",
+    idRegimeAlimentaire: nouvelleValeur.id,
+  })
+    .then((coefficients) => {
+      console.log("coefficients", coefficients);
+      let coefficientsMultiplaceteursNouveauxRegimes = {
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES]: coefficients.find(
+          (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.CEREALES.id
+        ).valeur,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE]: coefficients.find(
+          (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.HUILE.id
+        ).valeur,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE]: coefficients.find(
+          (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.PATATE.id
+        ).valeur,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES]: coefficients.find(
+          (c) =>
+            c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.LEGUMINEUSES.id
+        ).valeur,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES]: coefficients.find(
+          (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.LEGUMES.id
+        ).valeur,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS]: coefficients.find(
+          (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.FRUITS.id
+        ).valeur,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX]: coefficients.find(
+          (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.OLEAGINEUX.id
+        ).valeur,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE]: coefficients.find(
+          (c) =>
+            c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.VIANDE_ROUGE.id
+        ).valeur,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE]: coefficients.find(
+          (c) =>
+            c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.VIANDE_BLANCHE.id
+        ).valeur,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS]:
+          coefficients.find(
+            (c) =>
+              c.id_groupe_alimentaire ===
+              GROUPES_ALIMENTAIRES.PRODUITS_LAITIERS.id
+          ).valeur,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS]: coefficients.find(
+          (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.OEUFS.id
+        ).valeur,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE]: coefficients.find(
+          (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.SUCRE.id
+        ).valeur,
+      };
+      coefficientMultiplicateurVolumeCategorieRegimeChoisi.value =
+        coefficientsMultiplaceteursNouveauxRegimes;
+      return coefficientsMultiplaceteursNouveauxRegimes;
+    })
+    .then((coefficientsMultiplaceteursNouveauxRegimes) => {
+      valeursChangementGroupeAlimentaire.value = {
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE]:
+          coefficientsMultiplaceteursNouveauxRegimes[
+            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE
+          ] *
+            100 -
+          100,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES]:
+          coefficientsMultiplaceteursNouveauxRegimes[
+            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES
+          ] *
+            100 -
+          100,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE]:
+          coefficientsMultiplaceteursNouveauxRegimes[
+            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE
+          ] *
+            100 -
+          100,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES]:
+          coefficientsMultiplaceteursNouveauxRegimes[
+            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES
+          ] *
+            100 -
+          100,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES]:
+          coefficientsMultiplaceteursNouveauxRegimes[
+            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES
+          ] *
+            100 -
+          100,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS]:
+          coefficientsMultiplaceteursNouveauxRegimes[
+            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS
+          ] *
+            100 -
+          100,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX]:
+          coefficientsMultiplaceteursNouveauxRegimes[
+            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX
+          ] *
+            100 -
+          100,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE]:
+          coefficientsMultiplaceteursNouveauxRegimes[
+            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE
+          ] *
+            100 -
+          100,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE]:
+          (coefficientsMultiplaceteursNouveauxRegimes[
+            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE
+          ] -
+            1) *
+          100,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS]:
+          coefficientsMultiplaceteursNouveauxRegimes[
+            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS
+          ] *
+            100 -
+          100,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS]:
+          coefficientsMultiplaceteursNouveauxRegimes[
+            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS
+          ] *
+            100 -
+          100,
+        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE]:
+          coefficientsMultiplaceteursNouveauxRegimes[
+            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE
+          ] *
+            100 -
+          100,
+      };
+    });
+});
+// TODO refacto doit exister quelque part
 function changementRegime(regime) {
-  console.log(regime);
   regimeChoisi.value = regimeListe.find((r) => r.nomCourt === regime);
 }
 
 const ChangerCompteurSucre = (sens) => {
-  sucre.value += 5 * sens;
+  valeursChangementGroupeAlimentaire.value[
+    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE
+  ] += 5 * sens;
 };
 
 const ChangerCompteurCereales = (sens) => {
-  cereales.value += 5 * sens;
+  valeursChangementGroupeAlimentaire.value[
+    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES
+  ] += 5 * sens;
 };
 
 const ChangerCompteurHuile = (sens) => {
-  huile.value += 5 * sens;
+  valeursChangementGroupeAlimentaire.value[
+    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE
+  ] += 5 * sens;
 };
 
 const ChangerCompteurPatate = (sens) => {
-  patate.value += 5 * sens;
+  valeursChangementGroupeAlimentaire.value[
+    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE
+  ] += 5 * sens;
 };
 
 const ChangerCompteurLegumineuses = (sens) => {
-  legumineuses.value += 5 * sens;
+  valeursChangementGroupeAlimentaire.value[
+    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES
+  ] += 5 * sens;
 };
 
 const ChangerCompteurLegumes = (sens) => {
-  legumes.value += 5 * sens;
+  valeursChangementGroupeAlimentaire.value[
+    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES
+  ] += 5 * sens;
 };
 
 const ChangerCompteurFruits = (sens) => {
-  fruits.value += 5 * sens;
+  valeursChangementGroupeAlimentaire.value[
+    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS
+  ] += 5 * sens;
 };
 
 const ChangerCompteurOleagineux = (sens) => {
-  oleagineux.value += 5 * sens;
+  valeursChangementGroupeAlimentaire.value[
+    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX
+  ] += 5 * sens;
 };
 
 const ChangerCompteurViandeRouge = (sens) => {
-  viandeRouge.value += 5 * sens;
+  valeursChangementGroupeAlimentaire.value[
+    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE
+  ] += 5 * sens;
 };
 
 const ChangerCompteurViandeBlanche = (sens) => {
-  viandeBlanche.value += 5 * sens;
+  valeursChangementGroupeAlimentaire.value[
+    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE
+  ] += 5 * sens;
 };
 
 const ChangerCompteurProduitsLaitiers = (sens) => {
-  produitsLaitiers.value += 5 * sens;
+  valeursChangementGroupeAlimentaire.value[
+    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS
+  ] += 5 * sens;
 };
 
 const ChangerCompteurOeufs = (sens) => {
-  oeufs.value += 5 * sens;
+  valeursChangementGroupeAlimentaire.value[
+    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS
+  ] += 5 * sens;
 };
 
 function creerCoefficientMultiplicateur(compteur) {
   return 1 + Number(compteur / 100);
 }
+
+const conclusionRegime = ref([
+  {
+    categorieApportRegimeAlimentaire: "energieTotale",
+    valeur: 0,
+  },
+  {
+    categorieApportRegimeAlimentaire: "proteines",
+    valeur: 0,
+  },
+  {
+    categorieApportRegimeAlimentaire: "glucides",
+    valeur: 0,
+  },
+  {
+    categorieApportRegimeAlimentaire: "lipides",
+    valeur: 0,
+  },
+  {
+    categorieApportRegimeAlimentaire: "fibres",
+    valeur: 0,
+  },
+]);
+
+// Fonction pour passer si on a assez ou pas d'un certain apport
+// -1 fort déficit, 0 léger déficit, 1 correct
+function changerConclusionRegimeParCategorie(valeur, categorieRegimeAChanger) {
+  console.log("changerValeur", valeur);
+  let nouvelleValeur = 0;
+  switch (valeur) {
+    case "fort":
+      nouvelleValeur = -1;
+      break;
+    case "leger":
+      nouvelleValeur = 0;
+      break;
+    case "correct":
+      nouvelleValeur = 1;
+      break;
+  }
+  conclusionRegime.value = conclusionRegime.value.map((categorie) => {
+    if (
+      categorie.categorieApportRegimeAlimentaire !== categorieRegimeAChanger
+    ) {
+      return categorie;
+    }
+    return {
+      categorieApportRegimeAlimentaire:
+        categorie.categorieApportRegimeAlimentaire,
+      valeur: nouvelleValeur,
+    };
+  });
+}
+
+function categorieApportRegimeAlimentaire() {
+  return conclusionRegime.value.reduce(
+    (acc, categorie) => Math.min(acc, categorie.valeur),
+    0
+  );
+}
+
+const conclusionRegimeAlimentaireMessage = computed(() => {
+  return categorieApportRegimeAlimentaire();
+});
+
+const montreDetailProduits = ref(false);
 </script>
 
 <style scoped>
@@ -1058,5 +1453,22 @@ function creerCoefficientMultiplicateur(compteur) {
   width: 80%;
   margin: auto;
   margin-bottom: 64px;
+}
+
+.detailproductscollapse {
+  background: url("/public/img/fleches/fleche-bouton-vert.svg") no-repeat left
+    15px center;
+  text-decoration: none;
+  max-width: 465px;
+  margin: 0 auto 4rem;
+  text-align: left;
+  margin-top: 2rem;
+  font-size: 16px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  color: #4a4a4a;
+  letter-spacing: 0;
+  line-height: 21px;
+  cursor: pointer;
 }
 </style>

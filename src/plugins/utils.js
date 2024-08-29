@@ -36,7 +36,6 @@ export function MapProduitsCoefficientMultiplicateurRegime(
   mapping.map((produit) => {
     produit.coefficientMultiplicateur =
       produitcoefficientMultiplicateur[produit.id_categorieRegime];
-    console.log(produit);
     return produit;
   });
   return mapping;

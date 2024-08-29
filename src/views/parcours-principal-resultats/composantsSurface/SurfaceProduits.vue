@@ -1,58 +1,53 @@
 <template>
-  <div class="bloc-surface">
-    <modalDetail
-      v-if="modalDetails"
-      :modalId="modalDetails"
-      @fermerModal="fermerModal"
-    ></modalDetail>
-    <h3 class="text-center">Surface agricole à mobiliser</h3>
-    <div
-      class="cadre-resultat resultat-ha animated flipInX delay-05s bg-vert-clair"
-    >
-      <div class="d-inline-flex align-items-center">
-        <div
-          class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_potentiel"
-          id="surface_potentiel6"
-        >
+  <section
+    :class="{
+      'main-sans-modal': modalDetails != null,
+    }"
+  >
+    <div class="bloc-surface">
+      <modalDetail
+        v-if="modalDetails"
+        :modalId="modalDetails"
+        @fermerModal="fermerModalDetails"
+      ></modalDetail>
+      <h3 class="text-center">Surface agricole à mobiliser</h3>
+      <div
+        class="cadre-resultat resultat-ha animated flipInX delay-05s bg-vert-clair"
+      >
+        <div class="d-inline-flex align-items-center">
           <div
-            class="odometer-inside"
-            v-if="this.$store.state.resultatSimulation.surfaceAMobiliser"
+            class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme surface_potentiel"
+            id="surface_potentiel6"
           >
-            {{
-              formatterChiffres(
-                this.$store.state.resultatSimulation.surfaceAMobiliser
-              )
-            }}
+            <div
+              class="odometer-inside"
+              v-if="this.$store.state.resultatSimulation.surfaceAMobiliser"
+            >
+              {{
+                formatterChiffres(
+                  this.$store.state.resultatSimulation.surfaceAMobiliser
+                )
+              }}
+            </div>
+          </div>
+          <div class="hectares animated fadeIn delay-1-5s">
+            hectares agricoles
           </div>
         </div>
-        <div class="hectares animated fadeIn delay-1-5s">
-          hectares agricoles
-        </div>
       </div>
-    </div>
-    <div class="map-content">
-      sont théoriquement nécessaires pour satisfaire les besoins alimentaires de
-      la population choisie
-    </div>
+      <div class="map-content">
+        sont théoriquement nécessaires pour satisfaire les besoins alimentaires
+        de la population choisie
+      </div>
 
-    <div class="no-data no-data-viz" v-if="false">
-      Désolé, nous n'avons pas de données suffisantes pour afficher ce graphique
-    </div>
+      <div class="no-data no-data-viz" v-if="false">
+        Désolé, nous n'avons pas de données suffisantes pour afficher ce
+        graphique
+      </div>
 
-    <div class="wrap-viz cadre-graphique mt-5">
-      <div
-        class="resultats-categories repartition graph row"
-        style="
-          background-color: #fff;
-          height: 100%;
-          margin-top: 20px;
-          min-height: 550px;
-        "
-      >
+      <div class="wrap-viz cadre-graphique mt-5">
         <div
-          id="viz"
-          class="viz"
-          ref="viz1"
+          class="resultats-categories repartition graph row"
           style="
             background-color: #fff;
             height: 100%;
@@ -60,654 +55,600 @@
             min-height: 550px;
           "
         >
-          <RepartitionSurface
-            :serieDonnees="repartitionSurfacePotentielNourricier"
-          />
+          <div
+            id="viz"
+            class="viz"
+            ref="viz1"
+            style="
+              background-color: #fff;
+              height: 100%;
+              margin-top: 20px;
+              min-height: 550px;
+            "
+          >
+            <RepartitionSurface
+              :serieDonnees="repartitionSurfacePotentielNourricier"
+            />
+          </div>
         </div>
-      </div>
-      <div class="wrap-viz resultats-categories repartition">
-        <table
-          summary="Resultats"
-          class="auto-style1 w-100"
-          id="CategoryresultsTable"
-          border="1"
-          v-if="this.$store.state.resultatSimulation.surfacesEmploisAMobiliser"
-        >
-          <thead></thead>
-          <tbody>
-            <tr>
-              <td colspan="5" @click="ouvrirModal('detailsLegumes')">
-                <div
-                  class="cadre-categorie legumes animated fadeIn delay-1s"
-                  onclick=""
-                  data-toggle="modal"
-                  data-target="#modal-legumes"
-                  style="cursor: pointer"
-                >
+        <div class="wrap-viz resultats-categories repartition">
+          <table
+            summary="Resultats"
+            class="auto-style1 w-100"
+            id="CategoryresultsTable"
+            border="1"
+            v-if="
+              this.$store.state.resultatSimulation.surfacesEmploisAMobiliser
+            "
+          >
+            <thead></thead>
+            <tbody>
+              <tr>
+                <td colspan="5" @click="ouvrirModal('detailsLegumes')">
                   <div
-                    class="result-graph"
-                    id="pc1"
-                    style="width: 65px; height: 65px"
+                    class="cadre-categorie legumes animated fadeIn delay-1s"
+                    onclick=""
+                    data-toggle="modal"
+                    data-target="#modal-legumes"
+                    style="cursor: pointer"
                   >
-                    <jaugeChart
-                      :value="
-                        Math.round(
-                          trouverChiffre(
-                            this.$store.state.resultatSimulation
-                              .surfacesEmploisAMobiliser,
-                            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES
-                              .libelle,
-                            'part_surface_a_mobiliser',
-                            'libelle_parcel_niveau_1'
-                          )
-                        )
-                      "
-                      couleur="#91C423"
-                      :key="this.$store.state.resultatSimulation"
-                    ></jaugeChart>
-                  </div>
-                  <div class="result-type">
-                    <span
-                      class="icon-ico_CATEGORIES_legumes ico-medium legumes"
-                    >
-                    </span>
-                  </div>
-                  <div class="result-chiffres">
-                    <div class="titre-categorie">Légumes</div>
-                    <div class="hectares">
-                      {{
-                        formatterSurfacesNecessaires(
+                    <div class="" id="pc1" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
                           Math.round(
                             trouverChiffre(
                               this.$store.state.resultatSimulation
                                 .surfacesEmploisAMobiliser,
                               CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES
                                 .libelle,
-                              "surface_a_mobiliser",
-                              "libelle_parcel_niveau_1"
+                              'part_surface_a_mobiliser',
+                              'libelle_parcel_niveau_1'
                             )
                           )
-                        )
-                      }}
+                        "
+                        couleur="#91C423"
+                        :key="this.$store.state.resultatSimulation"
+                      ></jaugeChart>
+                    </div>
+                    <div class="">
+                      <span
+                        class="icon-ico_CATEGORIES_legumes ico-medium legumes"
+                      >
+                      </span>
+                    </div>
+                    <div class="cadre-titre-categorie">
+                      <div class="titre-categorie">Légumes</div>
+                      <div class="hectares">
+                        {{
+                          formatterSurfacesNecessaires(
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfacesEmploisAMobiliser,
+                                CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES
+                                  .libelle,
+                                "surface_a_mobiliser",
+                                "libelle_parcel_niveau_1"
+                              )
+                            )
+                          )
+                        }}
+                      </div>
+                    </div>
+                    <div class="result-plus">
+                      <span
+                        @click="ouvrirModal('detailsFruits')"
+                        class="icon-ico_fleche_detail_gros icon legumes"
+                      >
+                      </span>
                     </div>
                   </div>
-                  <div class="result-plus">
-                    <span
-                      @click="ouvrirModal('detailsFruits')"
-                      class="icon-ico_fleche_detail_gros icon legumes"
-                    >
-                    </span>
-                  </div>
-                </div>
-              </td>
-            </tr>
+                </td>
+              </tr>
 
-            <tr>
-              <td colspan="5" @click="ouvrirModal('detailsFruits')">
-                <div
-                  class="cadre-categorie fruits animated fadeIn delay-1-5s"
-                  onclick=""
-                  data-toggle="modal"
-                  data-target="#modal-fruits"
-                  style="cursor: pointer"
-                >
+              <tr>
+                <td colspan="5" @click="ouvrirModal('detailsFruits')">
                   <div
-                    class="result-graph"
-                    id="pc2"
-                    style="width: 65px; height: 65px"
+                    class="cadre-categorie fruits animated fadeIn delay-1-5s"
+                    onclick=""
+                    data-toggle="modal"
+                    data-target="#modal-fruits"
+                    style="cursor: pointer"
                   >
-                    <jaugeChart
-                      :value="
-                        Math.round(
-                          trouverChiffre(
-                            this.$store.state.resultatSimulation
-                              .surfacesEmploisAMobiliser,
-                            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS
-                              .libelle,
-                            'part_surface_a_mobiliser',
-                            'libelle_parcel_niveau_1'
-                          )
-                        )
-                      "
-                      couleur="#A261C0"
-                      :key="this.$store.state.resultatSimulation"
-                    ></jaugeChart>
-                  </div>
-                  <div class="result-type">
-                    <span
-                      class="icon-ico_CATEGORIES_fruits ico-medium fruits"
-                    ></span>
-                  </div>
-                  <div class="result-chiffres">
-                    <div class="titre-categorie">Fruits</div>
-                    <div class="hectares">
-                      {{
-                        formatterSurfacesNecessaires(
+                    <div class="" id="pc2" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
                           Math.round(
                             trouverChiffre(
                               this.$store.state.resultatSimulation
                                 .surfacesEmploisAMobiliser,
                               CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS
                                 .libelle,
-                              "surface_a_mobiliser",
-                              "libelle_parcel_niveau_1"
+                              'part_surface_a_mobiliser',
+                              'libelle_parcel_niveau_1'
                             )
                           )
-                        )
-                      }}
+                        "
+                        couleur="#A261C0"
+                        :key="this.$store.state.resultatSimulation"
+                      ></jaugeChart>
                     </div>
-                  </div>
-                  <div class="result-plus">
-                    <span
-                      class="icon-ico_fleche_detail_gros icon fruits"
-                    ></span>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="5" @click="ouvrirModal('detailsCereales')">
-                <div
-                  class="cadre-categorie cereales animated fadeIn delay-2s"
-                  onclick=""
-                  data-toggle="modal"
-                  data-target="#modal-cereales"
-                  style="cursor: pointer"
-                >
-                  <div
-                    class="result-graph"
-                    id="pc3"
-                    style="width: 65px; height: 65px"
-                  >
-                    <jaugeChart
-                      :value="
-                        Math.round(
-                          trouverChiffre(
-                            this.$store.state.resultatSimulation
-                              .surfacesEmploisAMobiliser,
-                            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES
-                              .libelle,
-                            'part_surface_a_mobiliser',
-                            'libelle_parcel_niveau_1'
+                    <div class="">
+                      <span
+                        class="icon-ico_CATEGORIES_fruits ico-medium fruits"
+                      ></span>
+                    </div>
+                    <div class="cadre-titre-categorie">
+                      <div class="titre-categorie">Fruits</div>
+                      <div class="hectares">
+                        {{
+                          formatterSurfacesNecessaires(
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfacesEmploisAMobiliser,
+                                CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS
+                                  .libelle,
+                                "surface_a_mobiliser",
+                                "libelle_parcel_niveau_1"
+                              )
+                            )
                           )
-                        )
-                      "
-                      couleur="#F9B233"
-                      :key="this.$store.state.resultatSimulation"
-                    ></jaugeChart>
-                  </div>
-                  <div class="result-type">
-                    <span
-                      class="icon-ico_CATEGORIES_cereales ico-medium cereales"
-                    ></span>
-                  </div>
-                  <div class="result-chiffres">
-                    <div class="titre-categorie">
-                      Céréales et autres cultures...
+                        }}
+                      </div>
                     </div>
-                    <div class="hectares">
-                      {{
-                        formatterSurfacesNecessaires(
+                    <div class="result-plus">
+                      <span
+                        class="icon-ico_fleche_detail_gros icon fruits"
+                      ></span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5" @click="ouvrirModal('detailsCereales')">
+                  <div
+                    class="cadre-categorie cereales animated fadeIn delay-2s"
+                    onclick=""
+                    data-toggle="modal"
+                    data-target="#modal-cereales"
+                    style="cursor: pointer"
+                  >
+                    <div class="" id="pc3" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
                           Math.round(
                             trouverChiffre(
                               this.$store.state.resultatSimulation
                                 .surfacesEmploisAMobiliser,
                               CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES
                                 .libelle,
-                              "surface_a_mobiliser",
-                              "libelle_parcel_niveau_1"
+                              'part_surface_a_mobiliser',
+                              'libelle_parcel_niveau_1'
                             )
                           )
-                        )
-                      }}
+                        "
+                        couleur="#F9B233"
+                        :key="this.$store.state.resultatSimulation"
+                      ></jaugeChart>
+                    </div>
+                    <div class="">
+                      <span
+                        class="icon-ico_CATEGORIES_cereales ico-medium cereales"
+                      ></span>
+                    </div>
+                    <div class="cadre-titre-categorie">
+                      <div class="titre-categorie">
+                        Céréales et autres cultures...
+                      </div>
+                      <div class="hectares">
+                        {{
+                          formatterSurfacesNecessaires(
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfacesEmploisAMobiliser,
+                                CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES
+                                  .libelle,
+                                "surface_a_mobiliser",
+                                "libelle_parcel_niveau_1"
+                              )
+                            )
+                          )
+                        }}
+                      </div>
+                    </div>
+                    <div class="result-plus">
+                      <span
+                        class="icon-ico_fleche_detail_gros icon cereales"
+                      ></span>
                     </div>
                   </div>
-                  <div class="result-plus">
-                    <span
-                      class="icon-ico_fleche_detail_gros icon cereales"
-                    ></span>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="5" @click="ouvrirModal('detailsViande')">
-                <div
-                  class="cadre-categorie viande animated fadeIn delay-2-5s"
-                  onclick=""
-                  data-toggle="modal"
-                  data-target="#modal-viande"
-                  style="cursor: pointer"
-                >
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5" @click="ouvrirModal('detailsViande')">
                   <div
-                    class="result-graph"
-                    id="pc4"
-                    style="width: 65px; height: 65px"
+                    class="cadre-categorie viande animated fadeIn delay-2-5s"
+                    onclick=""
+                    data-toggle="modal"
+                    data-target="#modal-viande"
+                    style="cursor: pointer"
                   >
-                    <jaugeChart
-                      :value="
-                        Math.round(
-                          trouverChiffre(
-                            this.$store.state.resultatSimulation
-                              .surfacesEmploisAMobiliser,
-                            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE
-                              .libelle,
-                            'part_surface_a_mobiliser',
-                            'libelle_parcel_niveau_1'
-                          )
-                        )
-                      "
-                      couleur="#B57A60"
-                      :key="this.$store.state.resultatSimulation"
-                    ></jaugeChart>
-                  </div>
-                  <div class="result-type">
-                    <span
-                      class="icon-ico_CATEGORIES_viande ico-medium viande"
-                    ></span>
-                  </div>
-                  <div class="result-chiffres">
-                    <div class="titre-categorie">Elevage</div>
-                    <div class="hectares">
-                      {{
-                        formatterSurfacesNecessaires(
+                    <div class="" id="pc4" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
                           Math.round(
                             trouverChiffre(
                               this.$store.state.resultatSimulation
                                 .surfacesEmploisAMobiliser,
                               CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE
                                 .libelle,
-                              "surface_a_mobiliser",
-                              "libelle_parcel_niveau_1"
+                              'part_surface_a_mobiliser',
+                              'libelle_parcel_niveau_1'
                             )
                           )
-                        )
-                      }}
+                        "
+                        couleur="#B57A60"
+                        :key="this.$store.state.resultatSimulation"
+                      ></jaugeChart>
+                    </div>
+                    <div class="">
+                      <span
+                        class="icon-ico_CATEGORIES_viande ico-medium viande"
+                      ></span>
+                    </div>
+                    <div class="cadre-titre-categorie">
+                      <div class="titre-categorie">Elevage</div>
+                      <div class="hectares">
+                        {{
+                          formatterSurfacesNecessaires(
+                            Math.round(
+                              trouverChiffre(
+                                this.$store.state.resultatSimulation
+                                  .surfacesEmploisAMobiliser,
+                                CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE
+                                  .libelle,
+                                "surface_a_mobiliser",
+                                "libelle_parcel_niveau_1"
+                              )
+                            )
+                          )
+                        }}
+                      </div>
+                    </div>
+                    <div class="result-plus">
+                      <span
+                        class="icon-ico_fleche_detail_gros icon viande"
+                      ></span>
                     </div>
                   </div>
-                  <div class="result-plus">
-                    <span
-                      class="icon-ico_fleche_detail_gros icon viande"
-                    ></span>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="bloc-surface">
-    <h3 class="text-center">Surface agricole actuelle du territoire</h3>
-    <div class="map-content mb-4">
-      En vis-à-vis, le territoire dispose actuellement de
-    </div>
-    <div class="cadre-resultat resultat-ha animated flipInX delay-05s">
-      <div class="d-inline-flex align-items-center">
-        <div
-          class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme"
-          id="surface_act8"
-        >
-          <div class="odometer-inside">
-            {{
-              formatterChiffres(
-                this.$store.state.resultatSimulation.surfacesActuelles
-              )
-            }}
+    <div class="bloc-surface">
+      <h3 class="text-center">Surface agricole actuelle du territoire</h3>
+      <div class="map-content mb-4">
+        En vis-à-vis, le territoire dispose actuellement de
+      </div>
+      <div class="cadre-resultat resultat-ha animated flipInX delay-05s">
+        <div class="d-inline-flex align-items-center">
+          <div
+            class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme"
+            id="surface_act8"
+          >
+            <div class="odometer-inside">
+              {{
+                formatterChiffres(
+                  this.$store.state.resultatSimulation.surfacesActuelles
+                )
+              }}
+            </div>
+          </div>
+          <div class="hectares animated fadeIn delay-1-5s">
+            hectares agricoles
           </div>
         </div>
-        <div class="hectares animated fadeIn delay-1-5s">
-          hectares agricoles
-        </div>
       </div>
-    </div>
 
-    <div class="no-data no-data-viz2" v-if="false">
-      Désolé, nous n'avons pas de données suffisantes pour afficher ce graphique
-    </div>
+      <div class="no-data no-data-viz2" v-if="false">
+        Désolé, nous n'avons pas de données suffisantes pour afficher ce
+        graphique
+      </div>
 
-    <div class="cadre-graphique mt-5 delay-1s">
-      <div
-        class="wrap-viz2 resultats-categories repartition graph"
-        style="
-          background-color: #fff;
-          height: 100%;
-          margin-top: 20px;
-          min-height: 550px;
-        "
-      >
+      <div class="cadre-graphique mt-5 delay-1s">
         <div
-          id="viz2"
-          style="background-color: #fff; height: 100%; min-height: 550px"
-        >
-          <RepartitionSurface :serieDonnees="repartitionSurfaceActuelles" />
-        </div>
-      </div>
-      <div class="wrap-viz2 resultats-categories repartition delay-1s">
-        <table
-          summary="Resultats"
-          class="auto-style1 w-100"
-          id="ProdCategoryresultsTable"
-          border="1"
-          v-if="
-            this.$store.state.resultatSimulation.surfacesActuellesParcelNiveau1
+          class="wrap-viz2 resultats-categories repartition graph"
+          style="
+            background-color: #fff;
+            height: 100%;
+            margin-top: 20px;
+            min-height: 550px;
           "
         >
-          <thead></thead>
-          <tbody>
-            <tr>
-              <td colspan="5">
-                <div class="cadre-categorie cereales animated fadeIn delay-1s">
+          <div
+            id="viz2"
+            style="background-color: #fff; height: 100%; min-height: 550px"
+          >
+            <RepartitionSurface :serieDonnees="repartitionSurfaceActuelles" />
+          </div>
+        </div>
+        <div class="wrap-viz2 resultats-categories repartition delay-1s">
+          <table
+            summary="Resultats"
+            class="auto-style1 w-100"
+            id="ProdCategoryresultsTable"
+            border="1"
+            v-if="
+              this.$store.state.resultatSimulation
+                .surfacesActuellesParcelNiveau1
+            "
+          >
+            <thead></thead>
+            <tbody>
+              <tr>
+                <td colspan="5">
                   <div
-                    class="result-graph"
-                    id="ppc1"
-                    style="width: 65px; height: 65px"
+                    class="cadre-categorie cereales animated fadeIn delay-1s"
                   >
-                    <jaugeChart
-                      :value="
-                        Math.round(
-                          trouverChiffre(
-                            this.$store.state.resultatSimulation
-                              .surfacesActuellesParcelNiveau1,
-                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES
-                              .libelle,
-                            'part_surfaces_actuelles',
-                            'libelle_parcel_produit_actuel'
-                          ) * 100
-                        )
-                      "
-                      :couleur="
-                        trouverChiffre(
-                          this.$store.state.resultatSimulation
-                            .surfacesActuellesParcelNiveau1,
-                          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES
-                            .libelle,
-                          'couleur',
-                          'libelle_parcel_produit_actuel'
-                        )
-                      "
-                    ></jaugeChart>
-                  </div>
-                  <div class="result-type">
-                    <span
-                      class="icon-ico_CATEGORIES_cereales ico-medium cereales"
-                    ></span>
-                  </div>
-                  <div class="result-chiffres">
-                    <div class="titre-categorie">
-                      Cultures annuelles pour alimentation humaine
-                    </div>
-                    <div class="hectares" v-if="this.occupationActuelle[0]">
-                      {{
-                        formatterSurfacesNecessaires(
-                          trouverChiffre(
-                            this.$store.state.resultatSimulation
-                              .surfacesActuellesParcelNiveau1,
-                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES
-                              .libelle,
-                            "sau_ha",
-                            "libelle_parcel_produit_actuel"
+                    <div class="" id="ppc1" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
+                          Math.round(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesParcelNiveau1,
+                              CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES
+                                .libelle,
+                              'part_surfaces_actuelles',
+                              'libelle_parcel_produit_actuel'
+                            ) * 100
                           )
-                        )
-                      }}
+                        "
+                        couleur="#F9B233"
+                      ></jaugeChart>
                     </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="5">
-                <div class="cadre-categorie viande animated fadeIn delay-1s">
-                  <div
-                    class="result-graph"
-                    id="ppc2"
-                    style="width: 65px; height: 65px"
-                  >
-                    <jaugeChart
-                      :value="
-                        Math.round(
-                          trouverChiffre(
-                            this.$store.state.resultatSimulation
-                              .surfacesActuellesParcelNiveau1,
-                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE
-                              .libelle,
-                            'part_surfaces_actuelles',
-                            'libelle_parcel_produit_actuel'
-                          ) * 100
-                        )
-                      "
-                      :couleur="
-                        trouverChiffre(
-                          this.$store.state.resultatSimulation
-                            .surfacesActuellesParcelNiveau1,
-                          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE.libelle,
-                          'couleur',
-                          'libelle_parcel_produit_actuel'
-                        )
-                      "
-                    ></jaugeChart>
-                  </div>
-                  <div class="result-type">
-                    <span
-                      class="icon-ico_CATEGORIES_viande ico-medium viande"
-                    ></span>
-                  </div>
-                  <div class="result-chiffres">
-                    <div class="titre-categorie">
-                      Elevage (dont alimentation & estives et landes)
+                    <div class="">
+                      <span
+                        class="icon-ico_CATEGORIES_cereales ico-medium cereales"
+                      ></span>
                     </div>
-                    <div class="hectares" v-if="this.occupationActuelle[1]">
-                      {{
-                        formatterSurfacesNecessaires(
-                          trouverChiffre(
-                            this.$store.state.resultatSimulation
-                              .surfacesActuellesParcelNiveau1,
-                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE
-                              .libelle,
-                            "sau_ha",
-                            "libelle_parcel_produit_actuel"
+                    <div class="cadre-titre-categorie">
+                      <div class="titre-categorie">
+                        Cultures annuelles pour alimentation humaine
+                      </div>
+                      <div class="hectares">
+                        {{
+                          formatterSurfacesNecessaires(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesParcelNiveau1,
+                              CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES
+                                .libelle,
+                              "sau_ha",
+                              "libelle_parcel_produit_actuel"
+                            )
                           )
-                        )
-                      }}
+                        }}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="5">
-                <div class="cadre-categorie fruits animated fadeIn delay-1s">
-                  <div
-                    class="result-graph"
-                    id="ppc3"
-                    style="width: 65px; height: 65px"
-                  >
-                    <jaugeChart
-                      :value="
-                        Math.round(
-                          trouverChiffre(
-                            this.$store.state.resultatSimulation
-                              .surfacesActuellesParcelNiveau1,
-                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS
-                              .libelle,
-                            'part_surfaces_actuelles',
-                            'libelle_parcel_produit_actuel'
-                          ) * 100
-                        )
-                      "
-                      :couleur="
-                        trouverChiffre(
-                          this.$store.state.resultatSimulation
-                            .surfacesActuellesParcelNiveau1,
-                          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS.libelle,
-                          'couleur',
-                          'libelle_parcel_produit_actuel'
-                        )
-                      "
-                    ></jaugeChart>
-                  </div>
-                  <div class="result-type">
-                    <span
-                      class="icon-ico_CATEGORIES_fruits ico-medium fruits"
-                    ></span>
-                  </div>
-                  <div class="result-chiffres">
-                    <div class="titre-categorie">Fruits</div>
-                    <div class="hectares" v-if="this.occupationActuelle[3]">
-                      {{
-                        formatterSurfacesNecessaires(
-                          trouverChiffre(
-                            this.$store.state.resultatSimulation
-                              .surfacesActuellesParcelNiveau1,
-                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS
-                              .libelle,
-                            "sau_ha",
-                            "libelle_parcel_produit_actuel"
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5">
+                  <div class="cadre-categorie viande animated fadeIn delay-1s">
+                    <div class="" id="ppc2" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
+                          Math.round(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesParcelNiveau1,
+                              CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE
+                                .libelle,
+                              'part_surfaces_actuelles',
+                              'libelle_parcel_produit_actuel'
+                            ) * 100
                           )
-                        )
-                      }}
+                        "
+                        :couleur="
+                          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE.couleur
+                        "
+                      ></jaugeChart>
                     </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="5">
-                <div class="cadre-categorie legumes animated fadeIn delay-1s">
-                  <div
-                    class="result-graph"
-                    id="ppc4"
-                    style="width: 65px; height: 65px"
-                  >
-                    <jaugeChart
-                      :value="
-                        Math.round(
-                          trouverChiffre(
-                            this.$store.state.resultatSimulation
-                              .surfacesActuellesParcelNiveau1,
-                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.LEGUMES
-                              .libelle,
-                            'part_surfaces_actuelles',
-                            'libelle_parcel_produit_actuel'
-                          ) * 100
-                        )
-                      "
-                      :couleur="
-                        trouverChiffre(
-                          this.$store.state.resultatSimulation
-                            .surfacesActuellesParcelNiveau1,
-                          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.LEGUMES.libelle,
-                          'couleur',
-                          'libelle_parcel_produit_actuel'
-                        )
-                      "
-                    ></jaugeChart>
-                  </div>
-                  <div class="result-type">
-                    <span
-                      class="icon-ico_CATEGORIES_legumes ico-medium legumes"
-                    ></span>
-                  </div>
-                  <div class="result-chiffres">
-                    <div class="titre-categorie">Légumes</div>
-                    <div class="hectares" v-if="this.occupationActuelle[4]">
-                      {{
-                        formatterSurfacesNecessaires(
-                          trouverChiffre(
-                            this.$store.state.resultatSimulation
-                              .surfacesActuellesParcelNiveau1,
-                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.LEGUMES
-                              .libelle,
-                            "sau_ha",
-                            "libelle_parcel_produit_actuel"
+                    <div class="">
+                      <span
+                        class="icon-ico_CATEGORIES_viande ico-medium viande"
+                      ></span>
+                    </div>
+                    <div class="cadre-titre-categorie">
+                      <div class="titre-categorie">
+                        Elevage (dont alimentation & estives et landes)
+                      </div>
+                      <div class="hectares">
+                        {{
+                          formatterSurfacesNecessaires(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesParcelNiveau1,
+                              CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE
+                                .libelle,
+                              "sau_ha",
+                              "libelle_parcel_produit_actuel"
+                            )
                           )
-                        )
-                      }}
+                        }}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="5">
-                <div class="cadre-categorie jachere animated fadeIn delay-1s">
-                  <div
-                    class="result-graph"
-                    id="ppc5"
-                    style="width: 65px; height: 65px"
-                  >
-                    <jaugeChart
-                      v-if="this.surfacesActuelles[5]"
-                      :value="
-                        Math.round(
-                          trouverChiffre(
-                            this.$store.state.resultatSimulation
-                              .surfacesActuellesParcelNiveau1,
-                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.JACHERES
-                              .libelle,
-                            'part_surfaces_actuelles',
-                            'libelle_parcel_produit_actuel'
-                          ) * 100
-                        )
-                      "
-                      :couleur="
-                        trouverChiffre(
-                          this.$store.state.resultatSimulation
-                            .surfacesActuellesParcelNiveau1,
-                          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.JACHERES
-                            .libelle,
-                          'couleur',
-                          'libelle_parcel_produit_actuel'
-                        )
-                      "
-                    ></jaugeChart>
-                  </div>
-                  <div class="result-type">
-                    <span class="icon-jachere ico-medium jachere"></span>
-                  </div>
-                  <div class="result-chiffres">
-                    <div class="titre-categorie">Jachères</div>
-                    <div class="hectares" v-if="this.occupationActuelle[5]">
-                      {{
-                        formatterSurfacesNecessaires(
-                          trouverChiffre(
-                            this.$store.state.resultatSimulation
-                              .surfacesActuellesParcelNiveau1,
-                            CATEGORIE_PRODUITS_SURFACES_ACTUELLES.JACHERES
-                              .libelle,
-                            "sau_ha",
-                            "libelle_parcel_produit_actuel"
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5">
+                  <div class="cadre-categorie fruits animated fadeIn delay-1s">
+                    <div class="" id="ppc3" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
+                          Math.round(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesParcelNiveau1,
+                              CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS
+                                .libelle,
+                              'part_surfaces_actuelles',
+                              'libelle_parcel_produit_actuel'
+                            ) * 100
                           )
-                        )
-                      }}
+                        "
+                        :couleur="
+                          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS.couleur
+                        "
+                      ></jaugeChart>
+                    </div>
+                    <div class="">
+                      <span
+                        class="icon-ico_CATEGORIES_fruits ico-medium fruits"
+                      ></span>
+                    </div>
+                    <div class="cadre-titre-categorie">
+                      <div class="titre-categorie">Fruits</div>
+                      <div class="hectares">
+                        {{
+                          formatterSurfacesNecessaires(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesParcelNiveau1,
+                              CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS
+                                .libelle,
+                              "sau_ha",
+                              "libelle_parcel_produit_actuel"
+                            )
+                          )
+                        }}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </td>
-            </tr>
-            <!-- <tr>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5">
+                  <div class="cadre-categorie legumes animated fadeIn delay-1s">
+                    <div class="" id="ppc4" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
+                          Math.round(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesParcelNiveau1,
+                              CATEGORIE_PRODUITS_SURFACES_ACTUELLES.LEGUMES
+                                .libelle,
+                              'part_surfaces_actuelles',
+                              'libelle_parcel_produit_actuel'
+                            ) * 100
+                          )
+                        "
+                        :couleur="
+                          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.LEGUMES.couleur
+                        "
+                      ></jaugeChart>
+                    </div>
+                    <div class="">
+                      <span
+                        class="icon-ico_CATEGORIES_legumes ico-medium legumes"
+                      ></span>
+                    </div>
+                    <div class="cadre-titre-categorie">
+                      <div class="titre-categorie">Légumes</div>
+                      <div class="hectares">
+                        {{
+                          formatterSurfacesNecessaires(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesParcelNiveau1,
+                              CATEGORIE_PRODUITS_SURFACES_ACTUELLES.LEGUMES
+                                .libelle,
+                              "sau_ha",
+                              "libelle_parcel_produit_actuel"
+                            )
+                          )
+                        }}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5">
+                  <div class="cadre-categorie jachere animated fadeIn delay-1s">
+                    <div class="" id="ppc5" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
+                          Math.round(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesParcelNiveau1,
+                              CATEGORIE_PRODUITS_SURFACES_ACTUELLES.JACHERES
+                                .libelle,
+                              'part_surfaces_actuelles',
+                              'libelle_parcel_produit_actuel'
+                            ) * 100
+                          )
+                        "
+                        :couleur="
+                          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.JACHERES.couleur
+                        "
+                      ></jaugeChart>
+                    </div>
+                    <div class="">
+                      <span class="icon-jachere ico-medium jachere"></span>
+                    </div>
+                    <div class="cadre-titre-categorie">
+                      <div class="titre-categorie">Jachères</div>
+                      <div class="hectares">
+                        {{
+                          formatterSurfacesNecessaires(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesParcelNiveau1,
+                              CATEGORIE_PRODUITS_SURFACES_ACTUELLES.JACHERES
+                                .libelle,
+                              "sau_ha",
+                              "libelle_parcel_produit_actuel"
+                            )
+                          )
+                        }}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <!-- <tr>
               <td colspan="5">
                 <div
                   class="cadre-categorie autreindus animated fadeIn delay-1s"
                 >
                   <div
-                    class="result-graph"
+                    class=""
                     id="ppc6"
                     style="width: 65px; height: 65px"
                   ></div>
-                  <div class="result-type">
+                  <div class="">
                     <span
                       class="icon-autres-cultures ico-medium autreindus"
                     ></span>
                   </div>
-                  <div class="result-chiffres">
+                  <div class="">
                     <div class="titre-categorie">
                       Cultures industrielles hors alimentation
                     </div>
                     <div
                       class="hectares"
-                      v-if="this.occupationActuelle[6]"
+
                     >
                       {{ this.occupationActuelle[6]["surface"] }}
                     </div>
@@ -715,283 +656,297 @@
                 </div>
               </td>
             </tr> -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="bloc-surface">
-    <h3 class="text-center">Potentiel nourricier</h3>
-    <div
-      class="cadre-resultat resultat-ha animated flipInX delay-05s bg-vert-clair"
-    >
-      <div class="d-inline-flex align-items-center">
-        <div
-          class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme"
-          id="potentiel4"
-        >
-          {{ this.potentielNourricier }}
-        </div>
-        <div class="hectares animated fadeIn delay-1-5s">%</div>
-      </div>
-    </div>
-    <div id="bar-pn">
-      <div id="horizontal-bar-pn">
-        <div class="row align-items-center bar-line mx-0">
-          <div class="col-legend">
-            <div class="row align-items-center">
-              <div class="order-1 order-md-0 col-12 col-md-7 text-right"></div>
-              <div class="order-0 order-md-1 col-12 col-md-5">
-                <div class="d-flex align-items-center justify-content-end">
-                  <div class="col-icon">
-                    <span class="ico-medium legumes"></span>
-                  </div>
-                  <div class="col-pourcent legumes"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-8">
-            <div class="position-relative" style="width: 100%">
-              <div
-                id="line-pn"
-                class="position-absolute"
-                :style="{ left: this.positionGaucheBarreVerticale }"
-              >
-                <div class="text-center">
-                  <div class="vertical-line"></div>
-                  <div>
-                    <img
-                      :src="require('@/assets/img/elements/pointer.svg')"
-                      alt=""
-                      style="margin-top: -8px"
-                    />
-                  </div>
-                  <div>100%</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="horizontal-bar-pn" class="mt-3">
-        <div class="row align-items-center bar-line mx-0" id="bar-legumes">
-          <div class="col-legend">
-            <div class="row align-items-center">
-              <div class="order-1 order-md-0 col-12 col-md text-right col-text">
-                <b>Légumes</b>
-              </div>
-              <div class="order-0 order-md-1 col-12 col-md-auto">
-                <div class="d-flex align-items-center justify-content-end">
-                  <div class="col-icon">
-                    <span
-                      class="icon-ico_CATEGORIES_legumes ico-medium legumes"
-                    ></span>
-                  </div>
-                  <div class="col-pourcent legumes" id="potentiel_legumes">
-                    {{ FormatterPourcentage(potentielNourricierLegumes) }}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-8">
-            <div
-              class="bar bg-vert-clair"
-              :style="{
-                width:
-                  (potentielNourricierLegumes / maxPotentielsEt1) * 100 + '%',
-              }"
-            ></div>
-          </div>
-        </div>
-        <div class="row align-items-center bar-line mx-0" id="bar-fruits">
-          <div class="col-legend">
-            <div class="row align-items-center">
-              <div class="order-1 order-md-0 col-12 col-md text-right col-text">
-                <b>Fruits</b>
-              </div>
-              <div class="order-0 order-md-1 col-12 col-md-auto">
-                <div class="d-flex align-items-center justify-content-end">
-                  <div class="col-icon">
-                    <span
-                      class="icon-ico_CATEGORIES_fruits ico-medium fruits"
-                    ></span>
-                  </div>
-                  <div class="col-pourcent fruits" id="potentiel_fruits">
-                    {{ FormatterPourcentage(potentielNourricierFruits) }}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-8" id="bar_pot_container">
-            <div
-              class="bar bg-fruits"
-              :style="{
-                width:
-                  (potentielNourricierFruits / maxPotentielsEt1) * 100 + '%',
-              }"
-            ></div>
-          </div>
-        </div>
-        <div class="row align-items-center bar-line mx-0" id="bar-cereales">
-          <div class="col-legend">
-            <div class="row align-items-center">
-              <div class="order-1 order-md-0 col-12 col-md text-right col-text">
-                <b>Céréales et autres grandes cultures</b>
-              </div>
-              <div class="order-0 order-md-1 col-12 col-md-auto">
-                <div class="d-flex align-items-center justify-content-end">
-                  <div class="col-icon">
-                    <span
-                      class="icon-ico_CATEGORIES_cereales ico-medium cereales"
-                    ></span>
-                  </div>
-                  <div class="col-pourcent cereales" id="potentiel_cereales">
-                    {{ FormatterPourcentage(potentielNourricierCereales) }}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-8">
-            <div
-              class="bar bg-cereales"
-              :style="{
-                width:
-                  (potentielNourricierCereales / maxPotentielsEt1) * 100 + '%',
-              }"
-            ></div>
-          </div>
-        </div>
-        <div class="row align-items-center bar-line mx-0" id="bar-viande">
-          <div class="col-legend">
-            <div class="row align-items-center">
-              <div class="order-1 order-md-0 col-12 col-md text-right col-text">
-                <b>Élevage</b>
-              </div>
-              <div class="order-0 order-md-1 col-12 col-md-auto">
-                <div class="d-flex align-items-center justify-content-end">
-                  <div class="col-icon">
-                    <span
-                      class="icon-ico_CATEGORIES_viande ico-medium viande"
-                    ></span>
-                  </div>
-                  <div class="col-pourcent viande" id="potentiel_elevage">
-                    {{ FormatterPourcentage(potentielNourricierElevage) }}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-8">
-            <div
-              class="bar bg-viande"
-              :style="{
-                width:
-                  (potentielNourricierElevage / maxPotentielsEt1) * 100 + '%',
-              }"
-            ></div>
-          </div>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
-    <div class="bar-legende row justify-content-between">
-      <div class="mb-2 col-12 col-sm-6 d-flex align-items-center">
-        <img
-          :src="require('@/assets/img/elements/pointer.svg')"
-          alt=""
-          style="margin-top: -8px; margin-right: 0.5rem"
-        /><span>surface nécessaire pour nourrir la population</span>
-      </div>
-      <div class="col-12 col-sm-auto d-flex align-items-center">
-        <span class="legende bg-legumes"></span
-        ><span class="legende bg-fruits"></span
-        ><span class="legende bg-cereales"></span
-        ><span class="legende bg-viande"></span> surfaces actuelles
-      </div>
-    </div>
-    <div class="div-continuer">
-      <button
-        type="button"
-        class="btn btn-principal mt-5"
-        @click="nextStep('landscape')"
+    <div class="bloc-surface">
+      <h3 class="text-center">Potentiel nourricier</h3>
+      <div
+        class="cadre-resultat resultat-ha animated flipInX delay-05s bg-vert-clair"
       >
-        Suivant
-      </button>
+        <div class="d-inline-flex align-items-center">
+          <div
+            class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme"
+            id="potentiel4"
+          >
+            {{ this.potentielNourricier }}
+          </div>
+          <div class="hectares animated fadeIn delay-1-5s">%</div>
+        </div>
+      </div>
+      <div id="bar-pn">
+        <div id="horizontal-bar-pn">
+          <div class="row align-items-center bar-line mx-0">
+            <div class="col-legend">
+              <div class="row align-items-center">
+                <div
+                  class="order-1 order-md-0 col-12 col-md-7 text-right"
+                ></div>
+                <div class="order-0 order-md-1 col-12 col-md-5">
+                  <div class="d-flex align-items-center justify-content-end">
+                    <div class="col-icon">
+                      <span class="ico-medium legumes"></span>
+                    </div>
+                    <div class="col-pourcent legumes"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="position-relative" style="width: 100%">
+                <div
+                  id="line-pn"
+                  class="position-absolute"
+                  :style="{ left: this.positionGaucheBarreVerticale }"
+                >
+                  <div class="text-center">
+                    <div class="vertical-line"></div>
+                    <div>
+                      <img
+                        :src="require('@/assets/img/elements/pointer.svg')"
+                        alt=""
+                        style="margin-top: -8px"
+                      />
+                    </div>
+                    <div>100%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="horizontal-bar-pn" class="mt-3">
+          <div class="row align-items-center bar-line mx-0" id="bar-legumes">
+            <div class="col-legend">
+              <div class="row align-items-center">
+                <div
+                  class="order-1 order-md-0 col-12 col-md text-right col-text"
+                >
+                  <b>Légumes</b>
+                </div>
+                <div class="order-0 order-md-1 col-12 col-md-auto">
+                  <div class="d-flex align-items-center justify-content-end">
+                    <div class="col-icon">
+                      <span
+                        class="icon-ico_CATEGORIES_legumes ico-medium legumes"
+                      ></span>
+                    </div>
+                    <div class="col-pourcent legumes" id="potentiel_legumes">
+                      {{ FormatterPourcentage(potentielNourricierLegumes) }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-8">
+              <div
+                class="bar bg-vert-clair"
+                :style="{
+                  width:
+                    (potentielNourricierLegumes / maxPotentielsEt1) * 100 + '%',
+                }"
+              ></div>
+            </div>
+          </div>
+          <div class="row align-items-center bar-line mx-0" id="bar-fruits">
+            <div class="col-legend">
+              <div class="row align-items-center">
+                <div
+                  class="order-1 order-md-0 col-12 col-md text-right col-text"
+                >
+                  <b>Fruits</b>
+                </div>
+                <div class="order-0 order-md-1 col-12 col-md-auto">
+                  <div class="d-flex align-items-center justify-content-end">
+                    <div class="col-icon">
+                      <span
+                        class="icon-ico_CATEGORIES_fruits ico-medium fruits"
+                      ></span>
+                    </div>
+                    <div class="col-pourcent fruits" id="potentiel_fruits">
+                      {{ FormatterPourcentage(potentielNourricierFruits) }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-8" id="bar_pot_container">
+              <div
+                class="bar bg-fruits"
+                :style="{
+                  width:
+                    (potentielNourricierFruits / maxPotentielsEt1) * 100 + '%',
+                }"
+              ></div>
+            </div>
+          </div>
+          <div class="row align-items-center bar-line mx-0" id="bar-cereales">
+            <div class="col-legend">
+              <div class="row align-items-center">
+                <div
+                  class="order-1 order-md-0 col-12 col-md text-right col-text"
+                >
+                  <b>Céréales et autres grandes cultures</b>
+                </div>
+                <div class="order-0 order-md-1 col-12 col-md-auto">
+                  <div class="d-flex align-items-center justify-content-end">
+                    <div class="col-icon">
+                      <span
+                        class="icon-ico_CATEGORIES_cereales ico-medium cereales"
+                      ></span>
+                    </div>
+                    <div class="col-pourcent cereales" id="potentiel_cereales">
+                      {{ FormatterPourcentage(potentielNourricierCereales) }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-8">
+              <div
+                class="bar bg-cereales"
+                :style="{
+                  width:
+                    (potentielNourricierCereales / maxPotentielsEt1) * 100 +
+                    '%',
+                }"
+              ></div>
+            </div>
+          </div>
+          <div class="row align-items-center bar-line mx-0" id="bar-viande">
+            <div class="col-legend">
+              <div class="row align-items-center">
+                <div
+                  class="order-1 order-md-0 col-12 col-md text-right col-text"
+                >
+                  <b>Élevage</b>
+                </div>
+                <div class="order-0 order-md-1 col-12 col-md-auto">
+                  <div class="d-flex align-items-center justify-content-end">
+                    <div class="col-icon">
+                      <span
+                        class="icon-ico_CATEGORIES_viande ico-medium viande"
+                      ></span>
+                    </div>
+                    <div class="col-pourcent viande" id="potentiel_elevage">
+                      {{ FormatterPourcentage(potentielNourricierElevage) }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-8">
+              <div
+                class="bar bg-viande"
+                :style="{
+                  width:
+                    (potentielNourricierElevage / maxPotentielsEt1) * 100 + '%',
+                }"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bar-legende row justify-content-between">
+        <div class="mb-2 col-12 col-sm-6 d-flex align-items-center">
+          <img
+            :src="require('@/assets/img/elements/pointer.svg')"
+            alt=""
+            style="margin-top: -8px; margin-right: 0.5rem"
+          /><span>surface nécessaire pour nourrir la population</span>
+        </div>
+        <div class="col-12 col-sm-auto d-flex align-items-center">
+          <span class="legende bg-legumes"></span
+          ><span class="legende bg-fruits"></span
+          ><span class="legende bg-cereales"></span
+          ><span class="legende bg-viande"></span> surfaces actuelles
+        </div>
+      </div>
+      <div class="div-continuer">
+        <button
+          type="button"
+          class="btn btn-principal mt-5"
+          @click="nextStep('landscape')"
+        >
+          Suivant
+        </button>
+      </div>
     </div>
-  </div>
 
-  <div
-    class="modal fade"
-    id="modal-legumes"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content modal-repart-cat-detail">
-        <div class="modal-header d-flex align-items-center">
-          <div>
-            <span class="icon-ico_CATEGORIES_legumes icon legumes"></span>
+    <div
+      class="modal fade"
+      id="modal-legumes"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content modal-repart-cat-detail">
+          <div class="modal-header d-flex align-items-center">
+            <div>
+              <span class="icon-ico_CATEGORIES_legumes icon legumes"></span>
+            </div>
+            <div class="d-flex flex-column">
+              <div class="titre-categorie">Légumes</div>
+              <div class="hectares"></div>
+            </div>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span class="icon-ico_fermer icon"></span>
+            </button>
           </div>
-          <div class="d-flex flex-column">
-            <div class="titre-categorie">Légumes</div>
-            <div class="hectares"></div>
-          </div>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span class="icon-ico_fermer icon"></span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div id="accordeon-fiche" class="accordeon-detail legumes-fonce">
-            <!-- <?php include '../partials/modal-detail-legume.php'; ?> -->
-            <div class="card">
-              <div class="card-header" id="heading2">
-                <button
-                  class="btn btn-link collapsed"
-                  data-toggle="collapse"
-                  href="#collapseDetail"
-                  aria-expanded="false"
-                >
-                  <span class="icon-ico_detail icon white"></span> Détail par
-                  produit
-                </button>
-              </div>
-              <div
-                id="collapseDetail"
-                class="collapse"
-                data-parent="#accordion"
-                aria-labelledby="heading2"
-              >
-                <div class="card-body">
-                  <span class="mb-2"
-                    ><strong>en pourcentage de surfaces cultivées</strong></span
+          <div class="modal-body">
+            <div id="accordeon-fiche" class="accordeon-detail legumes-fonce">
+              <!-- <?php include '../partials/modal-detail-legume.php'; ?> -->
+              <div class="card">
+                <div class="card-header" id="heading2">
+                  <button
+                    class="btn btn-link collapsed"
+                    data-toggle="collapse"
+                    href="#collapseDetail"
+                    aria-expanded="false"
                   >
-                  <div class="list-produits">
-                    <table
-                      summary="Resultats"
-                      class="auto-style1 w-100"
-                      id="ProductresultsTable1"
+                    <span class="icon-ico_detail icon white"></span> Détail par
+                    produit
+                  </button>
+                </div>
+                <div
+                  id="collapseDetail"
+                  class="collapse"
+                  data-parent="#accordion"
+                  aria-labelledby="heading2"
+                >
+                  <div class="card-body">
+                    <span class="mb-2"
+                      ><strong
+                        >en pourcentage de surfaces cultivées</strong
+                      ></span
                     >
-                      <tbody>
-                        <tr style="display: none">
-                          <td class="auto-style15">&nbsp;</td>
-                          <td class="auto-style12">&nbsp;</td>
-                          <td class="auto-style14">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div class="list-produits">
+                      <table
+                        summary="Resultats"
+                        class="auto-style1 w-100"
+                        id="ProductresultsTable1"
+                      >
+                        <tbody>
+                          <tr style="display: none">
+                            <td class="auto-style15">&nbsp;</td>
+                            <td class="auto-style12">&nbsp;</td>
+                            <td class="auto-style14">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1000,88 +955,90 @@
         </div>
       </div>
     </div>
-  </div>
-  <div
-    class="modal fade"
-    id="modal-fruits"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content modal-repart-cat-detail">
-        <div class="modal-header d-flex align-items-center">
-          <div>
-            <span class="icon-ico_CATEGORIES_fruits icon fruits"></span>
+    <div
+      class="modal fade"
+      id="modal-fruits"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content modal-repart-cat-detail">
+          <div class="modal-header d-flex align-items-center">
+            <div>
+              <span class="icon-ico_CATEGORIES_fruits icon fruits"></span>
+            </div>
+            <div class="d-flex flex-column">
+              <div class="titre-categorie">Fruits</div>
+              <div class="hectares"></div>
+            </div>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span class="icon-ico_fermer icon"></span>
+            </button>
           </div>
-          <div class="d-flex flex-column">
-            <div class="titre-categorie">Fruits</div>
-            <div class="hectares"></div>
-          </div>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span class="icon-ico_fermer icon"></span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div id="accordeon-fiche" class="accordeon-detail fruits-fonce">
-            <!-- <?php include '../partials/modal-detail-fruits.php'; ?> -->
-            <div class="card">
-              <div class="card-header" id="heading2">
-                <button
-                  class="btn btn-link collapsed"
-                  data-toggle="collapse"
-                  href="#collapseDetail"
-                  aria-expanded="false"
-                >
-                  <span class="icon-ico_detail icon white"></span> Détail par
-                  produit
-                </button>
-              </div>
-              <div
-                id="collapseDetail"
-                class="collapse"
-                data-parent="#accordion"
-                aria-labelledby="heading2"
-              >
-                <div class="card-body">
-                  <span class="mb-2"
-                    ><strong>en pourcentage de surfaces cultivées</strong></span
+          <div class="modal-body">
+            <div id="accordeon-fiche" class="accordeon-detail fruits-fonce">
+              <!-- <?php include '../partials/modal-detail-fruits.php'; ?> -->
+              <div class="card">
+                <div class="card-header" id="heading2">
+                  <button
+                    class="btn btn-link collapsed"
+                    data-toggle="collapse"
+                    href="#collapseDetail"
+                    aria-expanded="false"
                   >
-                  <div class="list-produits">
-                    <table
-                      summary="Resultats"
-                      class="auto-style1 w-100"
-                      id="ProductresultsTable2"
+                    <span class="icon-ico_detail icon white"></span> Détail par
+                    produit
+                  </button>
+                </div>
+                <div
+                  id="collapseDetail"
+                  class="collapse"
+                  data-parent="#accordion"
+                  aria-labelledby="heading2"
+                >
+                  <div class="card-body">
+                    <span class="mb-2"
+                      ><strong
+                        >en pourcentage de surfaces cultivées</strong
+                      ></span
                     >
-                      <tbody>
-                        <tr style="display: block">
-                          <td class="auto-style15">
-                            <span id="totalcereales"
-                              >Environ ' + round(alim_humaine,
-                              0).toLocaleString() + '</span
-                            >
-                            hectares';
-                          </td>
-                          <td class="auto-style12">
-                            <span id="totalcereales"
-                              >Environ ' + round(alim_humaine,
-                              0).toLocaleString() + '</span
-                            >
-                            hectares'
-                          </td>
-                          <td class="auto-style14">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div class="list-produits">
+                      <table
+                        summary="Resultats"
+                        class="auto-style1 w-100"
+                        id="ProductresultsTable2"
+                      >
+                        <tbody>
+                          <tr style="display: block">
+                            <td class="auto-style15">
+                              <span id="totalcereales"
+                                >Environ ' + round(alim_humaine,
+                                0).toLocaleString() + '</span
+                              >
+                              hectares';
+                            </td>
+                            <td class="auto-style12">
+                              <span id="totalcereales"
+                                >Environ ' + round(alim_humaine,
+                                0).toLocaleString() + '</span
+                              >
+                              hectares'
+                            </td>
+                            <td class="auto-style14">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1090,84 +1047,86 @@
         </div>
       </div>
     </div>
-  </div>
-  <div
-    class="modal fade"
-    id="modal-cereales"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content modal-repart-cat-detail">
-        <div class="modal-header d-flex align-items-center">
-          <div>
-            <span class="icon-ico_CATEGORIES_cereales icon cereales"></span>
-          </div>
-          <div class="d-flex flex-column">
-            <div class="titre-categorie">Céréales et autres cultures</div>
-            <div class="hectares">
-              Consommés directement (pain, lentilles, huiles, etc.)
+    <div
+      class="modal fade"
+      id="modal-cereales"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content modal-repart-cat-detail">
+          <div class="modal-header d-flex align-items-center">
+            <div>
+              <span class="icon-ico_CATEGORIES_cereales icon cereales"></span>
             </div>
-          </div>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span class="icon-ico_fermer icon"></span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div id="accordeon-fiche" class="accordeon-detail cereales-fonce">
-            <!-- <?php include '../partials/modal-detail-cereales.php'; ?> -->
-            <div class="card">
-              <div class="card-header" id="heading2">
-                <button
-                  class="btn btn-link collapsed"
-                  data-toggle="collapse"
-                  href="#collapseDetail"
-                  aria-expanded="false"
-                >
-                  <span class="icon-ico_detail icon white"></span> Détail par
-                  produit
-                </button>
+            <div class="d-flex flex-column">
+              <div class="titre-categorie">Céréales et autres cultures</div>
+              <div class="hectares">
+                Consommés directement (pain, lentilles, huiles, etc.)
               </div>
-              <div
-                id="collapseDetail"
-                class="collapse"
-                data-parent="#accordion"
-                aria-labelledby="heading2"
-              >
-                <div class="card-body">
-                  <span class="mb-2"
-                    ><strong>en pourcentage de surfaces cultivées</strong></span
+            </div>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span class="icon-ico_fermer icon"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="accordeon-fiche" class="accordeon-detail cereales-fonce">
+              <!-- <?php include '../partials/modal-detail-cereales.php'; ?> -->
+              <div class="card">
+                <div class="card-header" id="heading2">
+                  <button
+                    class="btn btn-link collapsed"
+                    data-toggle="collapse"
+                    href="#collapseDetail"
+                    aria-expanded="false"
                   >
-                  <div class="list-produits">
-                    <table
-                      summary="Resultats"
-                      class="auto-style1 w-100"
-                      id="ProductresultsTable3"
+                    <span class="icon-ico_detail icon white"></span> Détail par
+                    produit
+                  </button>
+                </div>
+                <div
+                  id="collapseDetail"
+                  class="collapse"
+                  data-parent="#accordion"
+                  aria-labelledby="heading2"
+                >
+                  <div class="card-body">
+                    <span class="mb-2"
+                      ><strong
+                        >en pourcentage de surfaces cultivées</strong
+                      ></span
                     >
-                      <tbody>
-                        <tr style="display: block">
-                          <td class="auto-style15">
-                            <span id="totalcereales"
-                              >Environ ' + round(alim_humaine,
-                              0).toLocaleString() + '</span
-                            >
-                            hectares'; ;
-                          </td>
-                          <td class="auto-style12">&nbsp;</td>
-                          <td class="auto-style14">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div class="list-produits">
+                      <table
+                        summary="Resultats"
+                        class="auto-style1 w-100"
+                        id="ProductresultsTable3"
+                      >
+                        <tbody>
+                          <tr style="display: block">
+                            <td class="auto-style15">
+                              <span id="totalcereales"
+                                >Environ ' + round(alim_humaine,
+                                0).toLocaleString() + '</span
+                              >
+                              hectares'; ;
+                            </td>
+                            <td class="auto-style12">&nbsp;</td>
+                            <td class="auto-style14">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1176,84 +1135,88 @@
         </div>
       </div>
     </div>
-  </div>
-  <div
-    class="modal fade"
-    id="modal-viande"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content modal-repart-cat-detail">
-        <div class="modal-header d-flex align-items-center">
-          <div>
-            <span class="icon-ico_CATEGORIES_viande icon viande"></span>
-          </div>
-          <div class="d-flex flex-column">
-            <div class="titre-categorie">Elevage</div>
-            <div class="hectares">
-              Intègre l'ensemble des surfaces de cultures destinées à
-              l’alimentation de l’élevage (prairies, céréales, tourteaux, etc.)
+    <div
+      class="modal fade"
+      id="modal-viande"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content modal-repart-cat-detail">
+          <div class="modal-header d-flex align-items-center">
+            <div>
+              <span class="icon-ico_CATEGORIES_viande icon viande"></span>
             </div>
-          </div>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span class="icon-ico_fermer icon"></span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div id="accordeon-fiche" class="accordeon-detail viande-fonce">
-            <!-- <?php include '../partials/modal-detail-viande.php'; ?> -->
-            <div class="card">
-              <div class="card-header" id="heading2">
-                <button
-                  class="btn btn-link collapsed"
-                  data-toggle="collapse"
-                  href="#collapseDetail"
-                  aria-expanded="false"
-                >
-                  <span class="icon-ico_detail icon white"></span> Détail par
-                  produit
-                </button>
+            <div class="d-flex flex-column">
+              <div class="titre-categorie">Elevage</div>
+              <div class="hectares">
+                Intègre l'ensemble des surfaces de cultures destinées à
+                l’alimentation de l’élevage (prairies, céréales, tourteaux,
+                etc.)
               </div>
-              <div
-                id="collapseDetail"
-                class="collapse"
-                data-parent="#accordion"
-                aria-labelledby="heading2"
-              >
-                <div class="card-body">
-                  <span class="mb-2"
-                    ><strong>en pourcentage de surfaces cultivées</strong></span
+            </div>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span class="icon-ico_fermer icon"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="accordeon-fiche" class="accordeon-detail viande-fonce">
+              <!-- <?php include '../partials/modal-detail-viande.php'; ?> -->
+              <div class="card">
+                <div class="card-header" id="heading2">
+                  <button
+                    class="btn btn-link collapsed"
+                    data-toggle="collapse"
+                    href="#collapseDetail"
+                    aria-expanded="false"
                   >
-                  <div class="list-produits">
-                    <table
-                      summary="Resultats"
-                      class="auto-style1 w-100"
-                      id="ProductresultsTable4"
+                    <span class="icon-ico_detail icon white"></span> Détail par
+                    produit
+                  </button>
+                </div>
+                <div
+                  id="collapseDetail"
+                  class="collapse"
+                  data-parent="#accordion"
+                  aria-labelledby="heading2"
+                >
+                  <div class="card-body">
+                    <span class="mb-2"
+                      ><strong
+                        >en pourcentage de surfaces cultivées</strong
+                      ></span
                     >
-                      <tbody>
-                        <tr style="display: none">
-                          <td class="auto-style15">&nbsp;</td>
-                          <td class="auto-style12">&nbsp;</td>
-                          <td class="auto-style14">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div class="list-produits">
+                      <table
+                        summary="Resultats"
+                        class="auto-style1 w-100"
+                        id="ProductresultsTable4"
+                      >
+                        <tbody>
+                          <tr style="display: none">
+                            <td class="auto-style15">&nbsp;</td>
+                            <td class="auto-style12">&nbsp;</td>
+                            <td class="auto-style14">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <hr />
+                    En plus de ces surfaces à mobiliser, ces productions
+                    animales nécessitent environ
+                    <span id="surfaceimport"></span> hectares de surfaces
+                    importées (tourteaux etc.)
                   </div>
-                  <hr />
-                  En plus de ces surfaces à mobiliser, ces productions animales
-                  nécessitent environ <span id="surfaceimport"></span> hectares
-                  de surfaces importées (tourteaux etc.)
                 </div>
               </div>
             </div>
@@ -1261,7 +1224,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -1279,6 +1242,7 @@ import { FormatterPourcentage } from "@/plugins/utils";
 
 export default {
   inject: ["$axios"],
+  emits: ["nextStep", "fermerModal", "ouvrirModal"],
   components: {
     modalDetail,
     jaugeChart,
@@ -1301,6 +1265,7 @@ export default {
       console.log(id);
       this.modalDetails = id;
       console.log(this.modalDetails);
+      this.$emit("ouvrirModal");
     },
 
     nextStep(hash) {
@@ -1315,8 +1280,10 @@ export default {
         " hectares"
       );
     },
-    fermerModal() {
+    fermerModalDetails() {
       this.modalDetails = "";
+      this.$emit("fermerModal");
+      console.log("hello", this.modalDetails);
     },
   },
 
@@ -1475,3 +1442,34 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.main-sans-modal {
+  overflow: hidden;
+}
+
+.cadre-categorie {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 20px 20px;
+  gap: 16px;
+}
+
+.cadre-titre-categorie {
+  flex-grow: 1;
+  margin: auto;
+}
+
+.cadre-titre-categorie .hectares {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #0c1321;
+  letter-spacing: 0;
+}
+
+.result-plus {
+  margin: auto;
+}
+</style>

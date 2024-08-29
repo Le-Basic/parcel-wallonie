@@ -52,27 +52,36 @@ export default defineComponent({
   },
   setup(props) {
     const option = ref({
+      grid: {
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+      },
       series: [
         {
-          name: "Traffic Sources",
           type: "pie",
           color: [props.couleur, "#EEEEEE"],
-          radius: ["50%", "70%"],
+          radius: ["80%", "100%"],
           data: [
-            { value: props.value, name: String(props.value) + "%" },
+            {
+              value: props.value,
+              name: String(props.value) + "%",
+              itemStyle: {
+                borderRadius: 5,
+                borderColor: "#fff",
+              },
+            },
             { value: 100 - props.value, name: "" },
           ],
           label: {
             show: true,
             position: "center",
-            fontSize: 10,
-            fontWeight: "bold",
+            fontSize: 13,
+            color: "#0c1321",
           },
-          itemStyle: {
-            borderRadius: 1,
-            borderColor: "#fff",
-            borderWidth: 1,
-          },
+          hoverAnimation: false,
+          silent: true,
         },
       ],
     });
@@ -84,6 +93,7 @@ export default defineComponent({
 
 <style scoped>
 .chart {
-  height: 100px;
+  height: 100%;
+  position: relative;
 }
 </style>

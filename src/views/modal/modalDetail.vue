@@ -19,7 +19,7 @@
 import detailsCereales from "./modalDetails/detailsCereales.vue";
 import detailsFruits from "./modalDetails/detailsFruits.vue";
 import detailsViande from "./modalDetails/detailsViande.vue";
-import detailsLegumes from "./modalDetails/detailsLegumes.vue";
+import detailsLegumes from "./modalDetails/detailsTemplate.vue";
 export default {
   components: { detailsCereales, detailsFruits, detailsViande, detailsLegumes },
   props: {
@@ -37,12 +37,13 @@ export default {
 
 <style scoped>
 .modals {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: fit-content;
+  height: 100vh;
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
 }
 </style>

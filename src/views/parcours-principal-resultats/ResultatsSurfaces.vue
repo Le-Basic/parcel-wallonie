@@ -88,6 +88,8 @@
                 active: cardSurfaceActive == 'product',
               }"
               @nextStep="changeCarte"
+              @ouvrirModal="enleverScroll"
+              @fermerModal="ajouterScroll"
             />
           </div>
           <div
@@ -111,7 +113,7 @@
     </div>
 
     <nav id="asy-sidebar" :class="montrerClasse">
-      <modal-affiner-choix @fermerModalAffiner="fermerModal" />
+      <modal-affiner-choix @fermerModalAffiner="fermerModalAffiner" />
     </nav>
   </div>
   <BandeauResultat />
@@ -150,8 +152,15 @@ export default {
       this.montrerClasse = "show";
       console.log("montrerModalAffinage");
     },
-    fermerModal() {
+    fermerModalAffiner() {
       this.montrerClasse = "";
+    },
+    enleverScroll() {
+      document.body.style.overflow = "hidden";
+    },
+    ajouterScroll() {
+      console.log("ajouterScroll");
+      document.body.style.overflow = "auto";
     },
   },
 };

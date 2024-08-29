@@ -21,6 +21,13 @@ import "primevue/resources/themes/aura-light-green/theme.css";
 import { MotionPlugin } from "@vueuse/motion";
 
 window.apiURL = "https://lebasic.nohost.me/api/";
+const resizeObserverErrMsg = "ResizeObserver loop limit exceeded";
+
+window.addEventListener("error", (e) => {
+  if (e.message === resizeObserverErrMsg) {
+    e.stopImmediatePropagation();
+  }
+});
 createApp(App)
   .use(store)
   .use(router)
