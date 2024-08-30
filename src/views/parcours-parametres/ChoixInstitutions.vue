@@ -15,19 +15,20 @@
               class="container-checkbox"
               data-toggle="modal"
               onclick="majitem('maternelle',$('#nbmaternelle').val());"
+              @change="if ($event.target.checked) montrerModal(institution.id);"
               >{{ institution.libelle_pluriel }}
-              <input
-                type="checkbox"
-                name="maternelle"
-                id="maternelle"
-                value="Maternelle"
-              />
+              <input type="checkbox" :name="institution.libelle_singulier" />
               <span class="checkmark"></span>
             </label>
-            <div id="nbrcouvertsmaternelle">
+            <div>
               <span class="nbr-couverts">50</span
               ><span class="couverts">couverts</span>
             </div>
+            <modalInstitutionCouverts
+              v-if="modalActive === institution.id"
+              :nomInstitution="institution.libelle_singulier"
+              @fermerModale="modalActive = -1"
+            />
           </div>
 
           <div class="div-continuer">
@@ -45,107 +46,44 @@
         </div>
       </div>
       <!-- Modal -->
-      <div
-        class="modal fade modal-simple-petit"
-        id="modal-population-etablissementmaternelle"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content modal-repart-cat-detail">
-            <div class="modal-header d-flex align-items-center">
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span class="icon-ico_fermer icon"></span>
-              </button>
-            </div>
-            <div class="modal-body text-center">
-              <div class="titre-categorie">Maternelle</div>
-              <div class="">Nombre de couverts à la cantine par jour</div>
-              <div class="text-center mt-4">
-                <div
-                  class="nombres-ajout nbr-ajout-big d-flex flex-row justify-content-center"
-                >
-                  <div class="handle-counter" id="handleCountermaternelle">
-                    <span class="btn-moins counter-minus">-</span>
-                    <input
-                      type="text"
-                      class="nombre"
-                      name="nbmaternelle"
-                      id="nbmaternelle"
-                      value="150"
-                    />
-                    <span class="btn-plus counter-plus">+</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- modal body-->
-        </div>
-        <!-- modal-content -->
-      </div>
       <!-- modal-dialog -->
     </div>
-    <!-- modal -->
-    <!-- Modal -->
-    <div
-      class="modal fade modal-simple-petit"
-      id="modal-population-etablissementprimaire"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content modal-repart-cat-detail">
-          <div class="modal-header d-flex align-items-center">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span class="icon-ico_fermer icon"></span>
-            </button>
-          </div>
-          <div class="modal-body text-center">
-            <div class="titre-categorie">Ecole primaire</div>
-            <div class="">Nombre de couverts à la cantine par jour</div>
-            <div class="text-center mt-4">
-              <div
-                class="nombres-ajout nbr-ajout-big d-flex flex-row justify-content-center"
-              >
-                <div class="handle-counter" id="handleCounterprimaire">
-                  <span class="btn-moins counter-minus">-</span>
-                  <input
-                    type="text"
-                    class="nombre"
-                    name="nbprimaire"
-                    id="nbprimaire"
-                    value="150"
-                  />
-                  <span class="btn-plus counter-plus">+</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- modal body-->
-      </div>
-      <!-- modal-content -->
-    </div>
-    <!-- modal-dialog -->
   </div>
   <!-- modal -->
 </template>
 
 <script setup>
-import { INSTITUTIONS } from "@/config/Institutions";
+import { INSTITUTIONS, INSTITUTIONS_IDS } from "@/config/Institutions";
+import { ref } from "vue";
+import modalInstitutionCouverts from "@/views/modal/modalInstitutionCouverts.vue";
+
+const modalActive = ref(null);
+
+const montrerModal = (id) => {
+  console.log("montrerModal", id);
+  modalActive.value = id;
+};
+
+const nbCouvertsParInstitution = ref([
+  {
+    institutionId: INSTITUTIONS_IDS.MATERNELLE,
+    nbCouverts: 0,
+  },
+  {
+    institutionId: INSTITUTIONS_IDS.PRIMAIRE,
+    nbCouverts: 0,
+  },
+  {
+    institutionId: INSTITUTIONS_IDS.COLLEGE,
+    nbCouverts: 0,
+  },
+  {
+    institutionId: INSTITUTIONS_IDS.LYCEE,
+    nbCouverts: 0,
+  },
+  {
+    institutionId: INSTITUTIONS_IDS.ETABLISSEMENT_SPECIALISE,
+    nbCouverts: 0,
+  },
+]);
 </script>
