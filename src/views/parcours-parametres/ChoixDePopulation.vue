@@ -27,17 +27,9 @@
                 href="/2-choix-de-la-population-par-etablissement"
                 id="type"
                 onclick="majitem('population','type');"
-                ><button
-                  type="button "
-                  class="btn btn-big-light btn-disabled"
-                  style="
-                    cursor: not-allowed;
-                    color: grey;
-                    border: 1px solid grey;
-                  "
-                >
-                  A VENIR: Ou les consommateurs d’un ou plusieurs établissements
-                  (école, hôpital…)
+                ><button type="button " class="btn btn-big-light">
+                  Ou les consommateurs d’un ou plusieurs établissements (école,
+                  hôpital…)
                 </button></a
               >
             </div>

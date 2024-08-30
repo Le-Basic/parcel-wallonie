@@ -6,6 +6,7 @@ import ChoixDuTerritoire from "@/views/parcours-parametres/ChoixDuTerritoire.vue
 import ChoixDePopulation from "@/views/parcours-parametres/ChoixDePopulation.vue";
 import ChoixParametres from "@/views/parcours-parametres/ChoixParametres.vue";
 import ChoixDiagnosticvsSimulation from "@/views/parcours-parametres/ChoixDiagnosticvsSimulation";
+import ChoixInstitutions from "@/views/parcours-parametres/ChoixInstitutions.vue";
 import RegimePersonnalise from "@/views/parcours-parametres/ChoixRegimePersonnalise.vue";
 
 import ResultatsImpacts from "@/views/parcours-principal-resultats/ResultatsImpacts.vue";
@@ -118,6 +119,11 @@ const routes = [
     path: "/choix-du-parcours",
     name: "Choix du Parcours",
     component: ChoixDiagnosticvsSimulation,
+  },
+  {
+    path: "/2-choix-de-la-population-par-etablissement",
+    name: "Choix des Institutions",
+    component: ChoixInstitutions,
   },
   {
     path: "/diagnostic",
