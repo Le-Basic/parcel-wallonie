@@ -20,12 +20,14 @@
           </button>
         </div>
         <div class="modal-body" id="textTooltip">
-          Cette donnée est calculée uniquement sur les produits de PARCEL, à
-          partir des surfaces agricoles (bio et non bio) du département et
-          intègre les différences de rendements entre agriculture biologique et
-          agriculture conventionnelle. Il ne s'agit ni du pourcentage de la
-          surface agricole (SAU) en bio sur le territoire ni de la consommation
-          actuelle de produits bio sur le territoire
+          Aujourd'hui 18% de la production est perdue ou gaspillée entre le
+          stade de la production agricole et celui de la consommation. La
+          production agricole est responsable pour un peu moins d’1/4 des
+          pertes, tandis que la consommation est responsable de plus d’1/3. Il
+          est important lorsque l’on cherche à réduire les pertes et gaspillage
+          de réfléchir à des actions concernant l’ensemble des maillons des
+          filières agricoles et alimentaires. En effet, les pertes et gaspillage
+          d’un maillon peuvent être liés aux contraintes d’un autre maillon.
         </div>
       </div>
     </div>
@@ -45,9 +47,14 @@ export default {
 
 <style scoped>
 .modal {
+  position: fixed;
   display: block !important;
+  top: 0;
+  left: 0;
   opacity: 1 !important;
   background: rgba(0, 0, 0, 0.5);
   height: 100vh;
+  z-index: 9999;
+  width: 100%;
 }
 </style>

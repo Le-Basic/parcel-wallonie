@@ -104,21 +104,15 @@
                   <br /><br />En relocalisant, votre alimentation contient a
                   minima cette part de produits bio.
                   <a
-                    href="#bio"
                     class="info pb-3"
                     style="font-style: normal"
-                    data-toggle="modal"
-                    data-target="#tooltipDetail"
                     @click="showTooltip('bio')"
                     ><span class="icon-ico_element_info"></span
                   ></a>
                 </div>
               </div>
             </div>
-            <modalBioCurseur
-              v-if="montrerModal == 'bio'"
-              @close="fermerModal"
-            ></modalBioCurseur>
+
             <div
               class="col-lg-4 col-12 bloc-3col animated fadeIn delay-1s"
               style="z-index: 2"
@@ -210,12 +204,10 @@
                     consommation.
                     <a
                       class="info pb-3"
-                      data-toggle="modal"
-                      data-target="#tooltipDetail"
-                      onclick="tooltip('waste')"
-                      ><span class="icon-ico_element_info vert-fonce"></span
+                      style="font-style: normal"
+                      @click="showTooltip('gaspillage')"
+                      ><span class="icon-ico_element_info"></span
                     ></a>
-                    <!-- <a href="#waste" class="info pb-3" style="font-style:normal;" data-tooltip="Cette donnée est calculée uniquement sur les produits de PARCEL, à partir des surfaces agricoles (bio et non bio) du département et intègre les différences de rendements entre agriculture biologique et agriculture conventionnelle.  Il ne s'agit ni du pourcentage de la surface agricole (SAU) en bio sur le territoire ni de la consommation actuelle de produits bio sur le territoire." data-placement="left"><span class="icon-ico_element_info"></span></a></p> -->
                   </p>
                 </div>
 
@@ -270,6 +262,14 @@
         </div>
       </div>
     </div>
+    <modalBioCurseur
+      v-if="montrerModal == 'bio'"
+      @close="fermerModal"
+    ></modalBioCurseur>
+    <modalGaspillage
+      v-if="montrerModal == 'gaspillage'"
+      @close="fermerModal"
+    ></modalGaspillage>
   </div>
 </template>
 
@@ -280,7 +280,8 @@ import VueSlider from "vue-3-slider-component";
 import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import listeRegime from "@/views/modal/listeRegime.vue";
 import resumeChoix from "@/views/modal/resumeChoix.vue";
-import modalBioCurseur from "@/views/modal/modalBioCurseur.vue";
+import modalBioCurseur from "@/views/modal/modalChoixParamètres/modalBioCurseur.vue";
+import modalGaspillage from "@/views/modal/modalChoixParamètres/modalGaspillage.vue";
 import calculerPartBio from "@/plugins/calculPartBio";
 
 export default {
@@ -291,6 +292,7 @@ export default {
     listeRegime,
     resumeChoix,
     modalBioCurseur,
+    modalGaspillage,
     VueSlider,
   },
   data() {
