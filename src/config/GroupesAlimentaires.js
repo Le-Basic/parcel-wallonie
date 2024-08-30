@@ -1,50 +1,65 @@
+export const GROUPES_ALIMENTAIRES_IDS = {
+  CEREALES: 1,
+  FRUITS: 2,
+  OLEAGINEUX: 3,
+  HUILE: 4,
+  LEGUMES: 5,
+  LEGUMINEUSES: 6,
+  OEUFS: 7,
+  PATATE: 8,
+  PRODUITS_LAITIERS: 9,
+  SUCRE: 10,
+  VIANDE_BLANCHE: 11,
+  VIANDE_ROUGE: 12,
+};
+
 export const GROUPES_ALIMENTAIRES = {
   CEREALES: {
     libelle: "Céréales",
-    id: 1,
+    id: GROUPES_ALIMENTAIRES_IDS.CEREALES,
   },
   FRUITS: {
     libelle: "Fruits",
-    id: 2,
+    id: GROUPES_ALIMENTAIRES_IDS.FRUITS,
   },
   OLEAGINEUX: {
     libelle: "Fruits oléagineux",
-    id: 3,
+    id: GROUPES_ALIMENTAIRES_IDS.OLEAGINEUX,
   },
   HUILE: {
     libelle: "Huiles",
-    id: 4,
+    id: GROUPES_ALIMENTAIRES_IDS.HUILE,
   },
   LEGUMES: {
     libelle: "Légumes",
-    id: 5,
+    id: GROUPES_ALIMENTAIRES_IDS.LEGUMES,
   },
   LEGUMINEUSES: {
     libelle: "Légumineuses",
-    id: 6,
+    id: GROUPES_ALIMENTAIRES_IDS.LEGUMINEUSES,
   },
   OEUFS: {
     libelle: "Oeufs",
-    id: 7,
+    id: GROUPES_ALIMENTAIRES_IDS.OEUFS,
   },
   PATATE: {
     libelle: "Pommes de terre",
-    id: 8,
+    id: GROUPES_ALIMENTAIRES_IDS.PATATE,
   },
   PRODUITS_LAITIERS: {
     libelle: "Produits laitiers",
-    id: 9,
+    id: GROUPES_ALIMENTAIRES_IDS.PRODUITS_LAITIERS,
   },
   SUCRE: {
     libelle: "Sucre",
-    id: 10,
+    id: GROUPES_ALIMENTAIRES_IDS.SUCRE,
   },
   VIANDE_BLANCHE: {
     libelle: "Viande blanche",
-    id: 11,
+    id: GROUPES_ALIMENTAIRES_IDS.VIANDE_BLANCHE,
   },
   VIANDE_ROUGE: {
     libelle: "Viande rouge",
-    id: 12,
+    id: GROUPES_ALIMENTAIRES_IDS.VIANDE_ROUGE,
   },
 };
