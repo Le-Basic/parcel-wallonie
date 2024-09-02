@@ -72,39 +72,39 @@ const getDefaultState = () => {
     pctDiffRegimePersonnalise: {},
     nbCouvertsParInstitution: [
       {
-        institutionId: INSTITUTIONS_IDS.MATERNELLES,
+        id: INSTITUTIONS_IDS.MATERNELLES,
         nbCouverts: 0,
       },
       {
-        institutionId: INSTITUTIONS_IDS.PRIMAIRES,
+        id: INSTITUTIONS_IDS.PRIMAIRES,
         nbCouverts: 0,
       },
       {
-        institutionId: INSTITUTIONS_IDS.COLLEGES,
+        id: INSTITUTIONS_IDS.COLLEGES,
         nbCouverts: 0,
       },
       {
-        institutionId: INSTITUTIONS_IDS.LYCEES,
+        id: INSTITUTIONS_IDS.LYCEES,
         nbCouverts: 0,
       },
       {
-        institutionId: INSTITUTIONS_IDS.UNIVERSITES,
+        id: INSTITUTIONS_IDS.UNIVERSITES,
         nbCouverts: 0,
       },
       {
-        institutionId: INSTITUTIONS_IDS.HOPITAUX,
+        id: INSTITUTIONS_IDS.HOPITAUX,
         nbCouverts: 0,
       },
       {
-        institutionId: INSTITUTIONS_IDS.MAISONS_DE_RETRAITE,
+        id: INSTITUTIONS_IDS.MAISONS_DE_RETRAITE,
         nbCouverts: 0,
       },
       {
-        institutionId: INSTITUTIONS_IDS.ENTREPRISES,
+        id: INSTITUTIONS_IDS.ENTREPRISES,
         nbCouverts: 0,
       },
       {
-        institutionId: INSTITUTIONS_IDS.AUTRES,
+        id: INSTITUTIONS_IDS.AUTRES,
         nbCouverts: 0,
       },
     ],
@@ -346,7 +346,7 @@ export default createStore({
         state.nbCouvertsParInstitution.map((item) => {
           let institutionLibelle = null;
           institutionLibelle = INSTITUTIONS.find(
-            (institution) => institution.id == item.institutionId
+            (institution) => institution.id == item.id
           ).libelle_singulier;
           console.log("institutionLibelle", institutionLibelle);
           item.nbCouverts > 0

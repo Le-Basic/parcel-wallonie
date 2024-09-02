@@ -28,7 +28,7 @@
                 :name="institution.libelle_singulier"
                 :checked="
                   nbCouvertsParInstitution.find(
-                    (instit) => instit.institutionId == institution.id
+                    (instit) => instit.id == institution.id
                   ).nbCouverts > 0
                 "
               />
@@ -37,7 +37,7 @@
             <div
               v-if="
                 nbCouvertsParInstitution.find(
-                  (instit) => instit.institutionId == institution.id
+                  (instit) => instit.id == institution.id
                 ).nbCouverts > 0
               "
             >
@@ -99,17 +99,16 @@ const nbCouvertsParInstitution = ref(store.state.nbCouvertsParInstitution);
 const changerCouverts = (eventValue) => {
   const { nbCouverts, idInstitution } = eventValue;
   nbCouvertsParInstitution.value = nbCouvertsParInstitution.value.map((item) =>
-    item.institutionId === idInstitution
-      ? { institutionId: idInstitution, nbCouverts: nbCouverts }
+    item.id === idInstitution
+      ? { id: idInstitution, nbCouverts: nbCouverts }
       : item
   );
 };
 
 const trouverNbCouverts = (idInstitution) => {
   return (
-    nbCouvertsParInstitution.value.find(
-      (item) => item.institutionId === idInstitution
-    ).nbCouverts ?? 0
+    nbCouvertsParInstitution.value.find((item) => item.id === idInstitution)
+      .nbCouverts ?? 0
   );
 };
 
