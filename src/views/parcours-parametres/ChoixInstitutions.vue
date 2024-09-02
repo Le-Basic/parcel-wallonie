@@ -42,7 +42,7 @@
           </div>
 
           <div class="div-continuer">
-            <a href="/3-type-dalimentation"
+            <router-link to="/3-type-dalimentation"
               ><button
                 type="button"
                 onclick="initEgalim()"
@@ -50,8 +50,8 @@
                 href="/3-type-dalimentation"
               >
                 Continuer
-              </button></a
-            >
+              </button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -133,6 +133,4 @@ const trouverNbCouverts = (idInstitution) => {
 };
 
 //TODO: Faire le commit dans le store
-//TODO: Changer les liens pour des router-link
-//TODO: Ajouter dans le chapeau résumé informations les données pour les couverts
 </script>

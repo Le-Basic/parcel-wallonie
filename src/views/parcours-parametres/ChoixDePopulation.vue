@@ -23,14 +23,14 @@
               >
             </div>
             <div class="animated fadeInUp delay-1s">
-              <a
-                href="/2-choix-de-la-population-par-etablissement"
+              <router-link
+                to="/2-choix-de-la-population-par-etablissement"
                 id="type"
                 onclick="majitem('population','type');"
                 ><button type="button " class="btn btn-big-light">
                   Ou les consommateurs d’un ou plusieurs établissements (école,
                   hôpital…)
-                </button></a
+                </button></router-link
               >
             </div>
             <div class="animated fadeInUp delay-1-5s">
