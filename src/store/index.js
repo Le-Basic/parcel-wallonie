@@ -13,7 +13,7 @@ import {
 import { fetchCurseurBio } from "@/plugins/getPartdeBio";
 import { calculerResultatSimulation } from "../plugins/calculResultatSimulation";
 import { calculerResultatSimulationAvecSurface } from "@/plugins/calculResultatsSimulationAvecSurface";
-import { INSTITUTIONS } from "@/config/Institutions.js";
+import { INSTITUTIONS, INSTITUTIONS_IDS } from "@/config/Institutions.js";
 import { CHOIX_POPULATION_IDS } from "@/config/TypeChoixPopulation";
 import store from ".";
 const getDefaultState = () => {
@@ -70,7 +70,44 @@ const getDefaultState = () => {
     },
     surfacesMobilisables: 0,
     pctDiffRegimePersonnalise: {},
-    nbCouvertsParInstitution: [],
+    nbCouvertsParInstitution: [
+      {
+        institutionId: INSTITUTIONS_IDS.MATERNELLES,
+        nbCouverts: 0,
+      },
+      {
+        institutionId: INSTITUTIONS_IDS.PRIMAIRES,
+        nbCouverts: 0,
+      },
+      {
+        institutionId: INSTITUTIONS_IDS.COLLEGES,
+        nbCouverts: 0,
+      },
+      {
+        institutionId: INSTITUTIONS_IDS.LYCEES,
+        nbCouverts: 0,
+      },
+      {
+        institutionId: INSTITUTIONS_IDS.UNIVERSITES,
+        nbCouverts: 0,
+      },
+      {
+        institutionId: INSTITUTIONS_IDS.HOPITAUX,
+        nbCouverts: 0,
+      },
+      {
+        institutionId: INSTITUTIONS_IDS.MAISONS_DE_RETRAITE,
+        nbCouverts: 0,
+      },
+      {
+        institutionId: INSTITUTIONS_IDS.ENTREPRISES,
+        nbCouverts: 0,
+      },
+      {
+        institutionId: INSTITUTIONS_IDS.AUTRES,
+        nbCouverts: 0,
+      },
+    ],
   };
 };
 

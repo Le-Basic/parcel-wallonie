@@ -14,7 +14,6 @@
             <label
               class="container-checkbox"
               data-toggle="modal"
-              onclick="majitem('maternelle',$('#nbmaternelle').val());"
               @change="
                 $event.target.checked
                   ? montrerModal(institution.id)
@@ -24,10 +23,24 @@
                     })
               "
               >{{ institution.libelle_pluriel }}
-              <input type="checkbox" :name="institution.libelle_singulier" />
+              <input
+                type="checkbox"
+                :name="institution.libelle_singulier"
+                :checked="
+                  nbCouvertsParInstitution.find(
+                    (instit) => instit.institutionId == institution.id
+                  ).nbCouverts > 0
+                "
+              />
               <span class="checkmark"></span>
             </label>
-            <div>
+            <div
+              v-if="
+                nbCouvertsParInstitution.find(
+                  (instit) => instit.institutionId == institution.id
+                ).nbCouverts > 0
+              "
+            >
               <span class="nbr-couverts" v-if="nbCouvertsParInstitution">
                 {{ trouverNbCouverts(institution.id) }}</span
               ><span class="couverts">couverts</span>
@@ -69,7 +82,7 @@
 <script setup>
 import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import resumeChoix from "@/views/modal/resumeChoix.vue";
-import { INSTITUTIONS, INSTITUTIONS_IDS } from "@/config/Institutions.js";
+import { INSTITUTIONS } from "@/config/Institutions.js";
 import { ref } from "vue";
 import modalInstitutionCouverts from "@/views/modal/modalInstitutionCouverts.vue";
 import { useStore } from "vuex";
@@ -81,44 +94,7 @@ const montrerModal = (id) => {
   modalActive.value = id;
 };
 
-const nbCouvertsParInstitution = ref([
-  {
-    institutionId: INSTITUTIONS_IDS.MATERNELLES,
-    nbCouverts: 0,
-  },
-  {
-    institutionId: INSTITUTIONS_IDS.PRIMAIRES,
-    nbCouverts: 0,
-  },
-  {
-    institutionId: INSTITUTIONS_IDS.COLLEGES,
-    nbCouverts: 0,
-  },
-  {
-    institutionId: INSTITUTIONS_IDS.LYCEES,
-    nbCouverts: 0,
-  },
-  {
-    institutionId: INSTITUTIONS_IDS.UNIVERSITES,
-    nbCouverts: 0,
-  },
-  {
-    institutionId: INSTITUTIONS_IDS.HOPITAUX,
-    nbCouverts: 0,
-  },
-  {
-    institutionId: INSTITUTIONS_IDS.MAISONS_DE_RETRAITE,
-    nbCouverts: 0,
-  },
-  {
-    institutionId: INSTITUTIONS_IDS.ENTREPRISES,
-    nbCouverts: 0,
-  },
-  {
-    institutionId: INSTITUTIONS_IDS.AUTRES,
-    nbCouverts: 0,
-  },
-]);
+const nbCouvertsParInstitution = ref(store.state.nbCouvertsParInstitution);
 
 const changerCouverts = (eventValue) => {
   const { nbCouverts, idInstitution } = eventValue;
