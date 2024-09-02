@@ -13,6 +13,8 @@ import {
 import { fetchCurseurBio } from "@/plugins/getPartdeBio";
 import { calculerResultatSimulation } from "../plugins/calculResultatSimulation";
 import { calculerResultatSimulationAvecSurface } from "@/plugins/calculResultatsSimulationAvecSurface";
+import { INSTITUTIONS } from "@/config/Institutions.js";
+
 const getDefaultState = () => {
   return {
     regimeListe: regimeListe,
@@ -255,10 +257,26 @@ export default createStore({
       return state.geoList.map((item) => item.code_territoire);
     },
     getPopulationTexte: (state) => {
+      //TODO: Le state.population.part doit être adossé à une configuration de texte
       if (state.population.part == "toute") {
         return "Toute la population";
       } else if (state.population.part == "groupe") {
         return `Groupe de ${state.population.nombreEnfants} enfants, ${state.population.nombreAdultes} adultes et ${state.population.nombreSeniors} seniors`;
+      } else if (state.population.part == "institution") {
+        const texte = [];
+
+        state.nbCouvertsParInstitution.map((item) => {
+          let institutionLibelle = null;
+          institutionLibelle = INSTITUTIONS.find(
+            (institution) => institution.id == item.institutionId
+          ).libelle_singulier;
+          console.log("institutionLibelle", institutionLibelle);
+          item.nbCouverts > 0
+            ? texte.push(`${institutionLibelle}: ${item.nbCouverts} couverts`)
+            : null;
+        });
+        console.log("texte", texte);
+        return texte.join(", ");
       } else {
         return "";
       }

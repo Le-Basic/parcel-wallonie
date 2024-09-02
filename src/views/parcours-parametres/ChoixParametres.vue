@@ -7,7 +7,6 @@
           <h1 class="animated fadeInUp mb-5">
             Choisissez l’alimentation liée à votre simulation de relocalisation
           </h1>
-          <pre>{{ this.$store.state }}</pre>
           <resumeChoix />
           <div id="egalimWarning" class="egalimBox d-none">
             <div class="row align-items-center">
