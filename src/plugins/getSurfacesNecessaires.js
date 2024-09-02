@@ -1,5 +1,6 @@
 import axios from "axios";
 import store from "@/store";
+import _ from "lodash";
 
 async function fetchData(api_route) {
   const bodyFormData = new FormData();
@@ -120,6 +121,12 @@ export async function fetchSurfaceNecessaire(
   );
   return response.data;
 }
+
+export const throttledfetchSurfaceNecessaire = _.throttle(
+  fetchSurfaceNecessaire,
+  200
+);
+
 export async function fetchSurfaceNecessairePourRegimePersonnalise(
   url,
   codesTerritoireParcel,

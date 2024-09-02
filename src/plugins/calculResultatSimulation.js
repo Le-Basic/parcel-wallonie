@@ -282,7 +282,6 @@ function calculSurfAMobiliser(
   ) {
     partBio = partBioCereales / 100;
   }
-  console.log("part_relocalisee", part_relocalisee);
   const surfaces_a_mobiliser =
     ((((partBio * surfaces_a_mobiliser_bio +
       (1 - partBio) * surfaces_a_mobiliser_conventionnel) *

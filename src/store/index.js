@@ -1,8 +1,8 @@
-import { createStore, useStore } from "vuex";
+import { createStore } from "vuex";
 import VuexPersistence from "vuex-persist";
 import { regimeListe } from "@/config/regimeListe.js";
 import {
-  fetchSurfaceNecessaire,
+  throttledfetchSurfaceNecessaire,
   fetchSurfaceNecessairePourRegimePersonnalise,
   fetchSurfacesActuelles,
   fetchSurfacesActuellesPaysage,
@@ -129,16 +129,17 @@ async function recalculerResultatSimulation(
           pctDiffRegimePersonnalise
         );
     } else {
-      surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
+      surfaceNecessaireResponseApi = await throttledfetchSurfaceNecessaire(
         necessaires__url,
         codesTerritoireParcel,
         idRegimeAlimentaire
       );
-      surfaceNecessairePaysageResponseApi = await fetchSurfaceNecessaire(
-        necessaires_paysage__url,
-        codesTerritoireParcel,
-        idRegimeAlimentaire
-      );
+      surfaceNecessairePaysageResponseApi =
+        await throttledfetchSurfaceNecessaire(
+          necessaires_paysage__url,
+          codesTerritoireParcel,
+          idRegimeAlimentaire
+        );
     }
   } else if (store.state.population.part == CHOIX_POPULATION_IDS.INSTITUTIONS) {
     if (idRegimeAlimentaire === 5) {
@@ -165,16 +166,17 @@ async function recalculerResultatSimulation(
     } else {
       necessaires__url =
         window.apiURL + "parcel/belgique/surfaces_necessaires/institutions";
-      surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
+      surfaceNecessaireResponseApi = await throttledfetchSurfaceNecessaire(
         necessaires__url,
         codesTerritoireParcel,
         idRegimeAlimentaire
       );
-      surfaceNecessairePaysageResponseApi = await fetchSurfaceNecessaire(
-        necessaires_paysage__url,
-        codesTerritoireParcel,
-        idRegimeAlimentaire
-      );
+      surfaceNecessairePaysageResponseApi =
+        await throttledfetchSurfaceNecessaire(
+          necessaires_paysage__url,
+          codesTerritoireParcel,
+          idRegimeAlimentaire
+        );
     }
   }
   const actuelles_url =
@@ -245,7 +247,7 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
   );
 
   // TODO: ajouter le cas du régime spécialisé
-  var surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
+  var surfaceNecessaireResponseApi = await throttledfetchSurfaceNecessaire(
     url,
     codesTerritoireParcel,
     idRegimeAlimentaire
@@ -254,11 +256,12 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
   // TODO: ajouter le cas du régime spécialisé
   const necessaires_paysage__url =
     window.apiURL + "parcel/belgique/surfaces_necessaires_paysage";
-  var surfaceNecessairePaysageResponseApi = await fetchSurfaceNecessaire(
-    necessaires_paysage__url,
-    codesTerritoireParcel,
-    idRegimeAlimentaire
-  );
+  var surfaceNecessairePaysageResponseApi =
+    await throttledfetchSurfaceNecessaire(
+      necessaires_paysage__url,
+      codesTerritoireParcel,
+      idRegimeAlimentaire
+    );
 
   var indicateursactuels__url =
     window.apiURL + "parcel/belgique/surfaces_agregees";
