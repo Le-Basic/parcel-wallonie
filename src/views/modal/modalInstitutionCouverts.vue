@@ -18,25 +18,17 @@
         <div
           class="nombres-ajout nbr-ajout-big d-flex flex-row justify-content-center"
         >
-          <div class="handle-counter" id="handleCountermaternelle">
-            <span class="btn-moins counter-minus">-</span>
-            <input
-              type="text"
-              class="nombre"
-              name="nbmaternelle"
-              id="nbmaternelle"
-              value="150"
-            />
-            <span class="btn-plus counter-plus">+</span>
-          </div>
+          <CompteurPersonnes
+            nbCouvertsDefaut="50"
+            @changerNbCouverts="nbCouverts = $event"
+          />
         </div>
       </div>
       <div class="div-continuer">
         <button
           type="button"
-          onclick="initEgalim()"
           class="btn btn-principal mt-5"
-          href="/3-type-dalimentation"
+          @click="confirmNbCouverts"
         >
           Continuer
         </button>
@@ -48,16 +40,32 @@
   <!-- modal-dialog -->
 </template>
 <script setup>
-import { defineProps, defineEmits } from "vue";
+import { defineProps, defineEmits, ref } from "vue";
+import CompteurPersonnes from "@/components/bas-niveau/CompteurPersonnes.vue";
 
-const emits = defineEmits(["fermerModale"]);
+const emits = defineEmits({
+  fermerModale: null,
+  changerNbCouverts: { nbCouverts: Number, idInstitution: Number },
+});
 const props = defineProps({
   nomInstitution: String,
+  idInstitution: Number,
 });
+
+const nbCouverts = ref(150);
 
 const fermerModale = () => {
   console.log("fermerModale");
   emits("fermerModale");
+};
+
+const confirmNbCouverts = () => {
+  console.log("confirmNbCouverts", nbCouverts.value);
+  emits("fermerModale");
+  emits("changerNbCouverts", {
+    nbCouverts: nbCouverts.value,
+    idInstitution: props.idInstitution,
+  });
 };
 </script>
 
