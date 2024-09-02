@@ -26,7 +26,7 @@
               <router-link
                 to="/2-choix-de-la-population-par-etablissement"
                 id="type"
-                @click="choisirPopulation('institution')"
+                @click="choisirPopulation('institutions')"
                 ><button type="button " class="btn btn-big-light">
                   Ou les consommateurs d’un ou plusieurs établissements (école,
                   hôpital…)

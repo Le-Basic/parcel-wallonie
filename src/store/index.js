@@ -1,4 +1,4 @@
-import { createStore } from "vuex";
+import { createStore, useStore } from "vuex";
 import VuexPersistence from "vuex-persist";
 import { regimeListe } from "@/config/regimeListe.js";
 import {
@@ -14,7 +14,8 @@ import { fetchCurseurBio } from "@/plugins/getPartdeBio";
 import { calculerResultatSimulation } from "../plugins/calculResultatSimulation";
 import { calculerResultatSimulationAvecSurface } from "@/plugins/calculResultatsSimulationAvecSurface";
 import { INSTITUTIONS } from "@/config/Institutions.js";
-
+import { CHOIX_POPULATION_IDS } from "@/config/TypeChoixPopulation";
+import store from ".";
 const getDefaultState = () => {
   return {
     regimeListe: regimeListe,
@@ -105,39 +106,76 @@ async function recalculerResultatSimulation(
 
   let surfaceNecessaireResponseApi = null;
   let surfaceNecessairePaysageResponseApi = null;
-
-  if (idRegimeAlimentaire === 5) {
-    necessaires__url =
-      window.apiURL +
-      "parcel/belgique/surfaces_necessaires_paysage_regime_personnalise";
-    necessaires_paysage__url =
-      window.apiURL +
-      "parcel/belgique/surfaces_necessaires_regime_personnalise";
-    surfaceNecessaireResponseApi =
-      await fetchSurfaceNecessairePourRegimePersonnalise(
+  if (store.state.population.part != CHOIX_POPULATION_IDS.INSTITUTIONS) {
+    if (idRegimeAlimentaire === 5) {
+      necessaires__url =
+        window.apiURL +
+        "parcel/belgique/surfaces_necessaires_paysage_regime_personnalise";
+      necessaires_paysage__url =
+        window.apiURL +
+        "parcel/belgique/surfaces_necessaires_regime_personnalise";
+      surfaceNecessaireResponseApi =
+        await fetchSurfaceNecessairePourRegimePersonnalise(
+          necessaires__url,
+          codesTerritoireParcel,
+          idRegimeAlimentaire,
+          pctDiffRegimePersonnalise
+        );
+      surfaceNecessairePaysageResponseApi =
+        await fetchSurfaceNecessairePourRegimePersonnalise(
+          necessaires_paysage__url,
+          codesTerritoireParcel,
+          idRegimeAlimentaire,
+          pctDiffRegimePersonnalise
+        );
+    } else {
+      surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
         necessaires__url,
         codesTerritoireParcel,
-        idRegimeAlimentaire,
-        pctDiffRegimePersonnalise
+        idRegimeAlimentaire
       );
-    surfaceNecessairePaysageResponseApi =
-      await fetchSurfaceNecessairePourRegimePersonnalise(
+      surfaceNecessairePaysageResponseApi = await fetchSurfaceNecessaire(
         necessaires_paysage__url,
         codesTerritoireParcel,
-        idRegimeAlimentaire,
-        pctDiffRegimePersonnalise
+        idRegimeAlimentaire
       );
-  } else {
-    surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
-      necessaires__url,
-      codesTerritoireParcel,
-      idRegimeAlimentaire
-    );
-    surfaceNecessairePaysageResponseApi = await fetchSurfaceNecessaire(
-      necessaires_paysage__url,
-      codesTerritoireParcel,
-      idRegimeAlimentaire
-    );
+    }
+  } else if (store.state.population.part == CHOIX_POPULATION_IDS.INSTITUTIONS) {
+    if (idRegimeAlimentaire === 5) {
+      necessaires__url =
+        window.apiURL +
+        "parcel/belgique/surfaces_necessaires_regime_personnalise";
+      necessaires_paysage__url =
+        window.apiURL +
+        "parcel/belgique/surfaces_necessaires_paysage_regime_personnalise";
+      surfaceNecessaireResponseApi =
+        await fetchSurfaceNecessairePourRegimePersonnalise(
+          necessaires__url,
+          codesTerritoireParcel,
+          idRegimeAlimentaire,
+          pctDiffRegimePersonnalise
+        );
+      surfaceNecessairePaysageResponseApi =
+        await fetchSurfaceNecessairePourRegimePersonnalise(
+          necessaires_paysage__url,
+          codesTerritoireParcel,
+          idRegimeAlimentaire,
+          pctDiffRegimePersonnalise
+        );
+    } else {
+      necessaires__url =
+        window.apiURL + "parcel/belgique/surfaces_necessaires/institutions";
+      surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
+        necessaires__url,
+        codesTerritoireParcel,
+        idRegimeAlimentaire
+      );
+      surfaceNecessairePaysageResponseApi = await fetchSurfaceNecessaire(
+        necessaires_paysage__url,
+        codesTerritoireParcel,
+        idRegimeAlimentaire
+      );
+    }
   }
   const actuelles_url =
     window.apiURL + "parcel/belgique/surfaces_actuels_produit";
@@ -613,6 +651,19 @@ export default createStore({
         nbCouvertsParInstitution
       );
       commit("mutationNbCouvertsParInstitution", nbCouvertsParInstitution);
+      let resultatSimulation = await recalculerResultatSimulation(
+        this.getters.getcodesTerritoireParcel,
+        this.state.regime_alimentaire.id,
+        this.state.partbioelevage,
+        this.state.partbiofruits,
+        this.state.partbiolegumes,
+        this.state.partbiocereales,
+        this.state.partpertes,
+        this.state.part_relocalisee,
+        this.state.resultatReference,
+        this.state.pctDiffRegimePersonnalise
+      );
+      commit("mutationResultatSimulation", resultatSimulation);
     },
     async actionModifierPartRElocalisee({ commit }, partRelocalisee) {
       commit("mutationPartRelocalisee", partRelocalisee);
