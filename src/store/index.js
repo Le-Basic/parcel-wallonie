@@ -67,6 +67,7 @@ const getDefaultState = () => {
     },
     surfacesMobilisables: 0,
     pctDiffRegimePersonnalise: {},
+    nbCouvertsParInstitution: [],
   };
 };
 
@@ -409,6 +410,9 @@ export default createStore({
     mutationPctDiffRegimePersonnalise(state, pctDiffRegimePersonnalise) {
       state.pctDiffRegimePersonnalise = pctDiffRegimePersonnalise;
     },
+    mutationNbCouvertsParInstitution(state, nbCouvertsParInstitution) {
+      state.nbCouvertsParInstitution = nbCouvertsParInstitution;
+    },
   },
   actions: {
     addGeo({ commit }, geo) {
@@ -581,6 +585,16 @@ export default createStore({
         commit("mutationResultatSimulationSurface", resultatSimulationSurface);
       }
       commit("mutationResultatSimulation", resultatSimulation);
+    },
+    async actionModifierNbCouvertsParInstitution(
+      { commit },
+      nbCouvertsParInstitution
+    ) {
+      console.log(
+        "actionModifierNbCouvertsParInstitution",
+        nbCouvertsParInstitution
+      );
+      commit("mutationNbCouvertsParInstitution", nbCouvertsParInstitution);
     },
     async actionModifierPartRElocalisee({ commit }, partRelocalisee) {
       commit("mutationPartRelocalisee", partRelocalisee);

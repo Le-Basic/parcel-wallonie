@@ -45,9 +45,13 @@
             <router-link to="/3-type-dalimentation"
               ><button
                 type="button"
-                onclick="initEgalim()"
                 class="btn btn-principal mt-5"
                 href="/3-type-dalimentation"
+                @click="
+                  dispatchActionModifierNbCouvertsInstitution(
+                    nbCouvertsParInstitution
+                  )
+                "
               >
                 Continuer
               </button>
@@ -68,11 +72,12 @@ import resumeChoix from "@/views/modal/resumeChoix.vue";
 import { INSTITUTIONS, INSTITUTIONS_IDS } from "@/config/Institutions.js";
 import { ref } from "vue";
 import modalInstitutionCouverts from "@/views/modal/modalInstitutionCouverts.vue";
+import { useStore } from "vuex";
 
+const store = useStore();
 const modalActive = ref(null);
 
 const montrerModal = (id) => {
-  console.log("montrerModal", id);
   modalActive.value = id;
 };
 
@@ -132,5 +137,12 @@ const trouverNbCouverts = (idInstitution) => {
   );
 };
 
-//TODO: Faire le commit dans le store
+const dispatchActionModifierNbCouvertsInstitution = (
+  nbCouvertsParInstitution
+) => {
+  store.dispatch(
+    "actionModifierNbCouvertsParInstitution",
+    nbCouvertsParInstitution
+  );
+};
 </script>
