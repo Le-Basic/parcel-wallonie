@@ -1,11 +1,11 @@
 <template>
   <div class="asy-wrapper">
     <div class="content">
-      <!-- <?php include '../partials/nav2.php'; ?> -->
+      <BarreNavigation menuType="recherche" active="2" />
       <div class="section centrervh" id="section0">
         <div class="container">
           <h1>Choisissez la population concernée</h1>
-          <!-- <?php include '../partials/resum-result.php'; ?> -->
+          <resumeChoix />
           <div
             class="select-etablissement"
             v-for="institution in INSTITUTIONS"
@@ -63,6 +63,8 @@
 </template>
 
 <script setup>
+import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
+import resumeChoix from "@/views/modal/resumeChoix.vue";
 import { INSTITUTIONS, INSTITUTIONS_IDS } from "@/config/Institutions.js";
 import { ref } from "vue";
 import modalInstitutionCouverts from "@/views/modal/modalInstitutionCouverts.vue";
@@ -131,7 +133,6 @@ const trouverNbCouverts = (idInstitution) => {
 };
 
 //TODO: Faire le commit dans le store
-//TODO: Ajouter les parties header etc
 //TODO: Changer les liens pour des router-link
 //TODO: Ajouter dans le chapeau résumé informations les données pour les couverts
 </script>
