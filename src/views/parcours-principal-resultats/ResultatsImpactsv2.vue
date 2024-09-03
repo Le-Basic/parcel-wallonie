@@ -159,7 +159,67 @@
 
               <div class="mt-5 mb-3">
                 <div class="repartition row">
-                  <!-- ----------------->
+                  <div
+                    class="col-12 cadre-impacts cadre-categorie"
+                    style="cursor: pointer"
+                    v-for="categorie in CATEGORIES_IMPACT"
+                    :key="categorie.id"
+                  >
+                    <div
+                      class="impact-titre"
+                      :class="categorie.couleur"
+                      @click="ouvrirModal(categorie.id)"
+                    >
+                      <span :class="categorie.icon"></span>
+                      {{ categorie.libelle }}
+                    </div>
+                    <div
+                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
+                      v-for="impact in categorie.impacts"
+                      v-bind:key="impact.id"
+                    >
+                      <div class="impact-item2 col-sm-2 titre-impact">
+                        <div class="impact-graph">
+                          <span :class="impact.icon"></span>
+                        </div>
+                        <div class="impact-nom">
+                          {{ impact.libelle }}
+                        </div>
+                      </div>
+                      <div
+                        class="impact-item2 col-sm-8 d-flex justify-content-around align-items-center"
+                      >
+                        <div class="cadre-impact">
+                          <span class="impact-result texte-droite"
+                            ><p class="texte-data texte-droite">
+                              {{ impact.titreSituationReference }}
+                            </p>
+                            {{ impact.sousTitreSituationReference }}
+                          </span>
+                        </div>
+                        <div class="cadre-impact">
+                          <span class="impact-result texte-gauche"
+                            ><p class="texte-data texte-gauche vert-clair">
+                              {{
+                                AfficherEntier(
+                                  donneesImpacts.ges
+                                    .differenceSimulationReference
+                                )
+                              }}<span class="texte-unite">%</span>
+                            </p>
+                            {{ impact.sousTitreSimulation }}
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="col-sm-2 result-plus d-flex flex-column justify-content-center text-center"
+                        @click="ouvrirModal(impact.modal)"
+                      >
+                        <span class="icon-ico_fleche_detail_gros icon"></span
+                        ><span class="explain">Explications</span>
+                      </div>
+                    </div>
+                  </div>
                   <div
                     class="col-12 cadre-impacts cadre-categorie"
                     onclick=""
@@ -833,6 +893,96 @@ import vizConsommationVerticalReference from "@/components/visualisation/vizCons
 import { AfficherEntier } from "@/plugins/utils";
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
+
+const CATEGORIES_IMPACT = [
+  {
+    id: "climat",
+    libelle: "Impact sur le climat",
+    icon: "icon-impact-climat ico-medium cereales",
+    couleur: "cereales",
+    impacts: [
+      {
+        id: "ges",
+        libelle: "Emissions de gaz à effet de serre",
+        icon: "icon-impact-co2 ico-medium ico-impact",
+        titreSituationReference: "Une biodiversité fortement dégradée",
+        sousTitreSituationReference: "Soit 5%",
+        titreSimulation: "+15%",
+        sousTitreSimulation: "Soit 15%",
+        couleurTitreSimulation: "vert-clair",
+        modal: "ImpactGes",
+      },
+    ],
+  },
+  {
+    id: "biodiversite",
+    libelle: "Impact sur la biodiversité",
+    icon: "icon-impact-biodiversite ico-medium climat2",
+    couleur: "legumes",
+    impacts: [
+      {
+        id: "especes",
+        libelle: "Destruction des espèces",
+        icon: "icon-impact-especes ico-medium ico-impact",
+        titreSituationReference: "Une biodiversité fortement dégradée",
+        sousTitreSituationReference: "Soit 5%",
+        titreSimulation: "+15%",
+        sousTitreSimulation: "Soit 15%",
+        couleurTitreSimulation: "vert-clair",
+        modal: "ImpactGes",
+      },
+      {
+        id: "soja",
+        libelle: "Déforestation importée",
+        icon: "icon-impact-deforest ico-medium ico-impact",
+        titreSituationReference: "Une biodiversité fortement dégradée",
+        sousTitreSituationReference: "Soit 5%",
+        titreSimulation: "+15%",
+        sousTitreSimulation: "Soit 15%",
+        couleurTitreSimulation: "vert-clair",
+        modal: "ImpactGes",
+      },
+    ],
+  },
+  {
+    id: "eau",
+    libelle: "Impact sur la ressource eau",
+    icon: "icon-impact-eau ico-medium climat2",
+    couleur: "eau",
+    impacts: [
+      {
+        id: "consommation-eau",
+        libelle: "Consommation d'eau",
+        icon: "icon-impact-eau-conso ico-medium ico-impact",
+        titreSituationReference: "Une biodiversité fortement dégradée",
+        sousTitreSituationReference: "Soit 5%",
+        titreSimulation: "+15%",
+        sousTitreSimulation: "Soit 15%",
+        couleurTitreSimulation: "vert-clair",
+        modal: "ImpactGes",
+      },
+    ],
+  },
+  {
+    id: "sols",
+    libelle: "Impact sur les sols",
+    icon: "icon-impact-sol ico-medium climat2",
+    couleur: "viande",
+    impacts: [
+      {
+        id: "pauvrete-sols",
+        libelle: "Pauvreté des sols",
+        icon: "icon-impact-solqualit ico-medium ico-impact",
+        titreSituationReference: "Une biodiversité fortement dégradée",
+        sousTitreSituationReference: "Soit 5%",
+        titreSimulation: "+15%",
+        sousTitreSimulation: "Soit 15%",
+        couleurTitreSimulation: "vert-clair",
+        modal: "ImpactGes",
+      },
+    ],
+  },
+];
 
 const montrerClasse = ref("");
 const modalActive = ref(null);
