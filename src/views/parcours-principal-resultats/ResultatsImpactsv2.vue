@@ -194,8 +194,7 @@
                             ><p class="texte-data texte-droite">
                               {{
                                 formatterNombres(
-                                  this.donneesImpacts.ges.donneesReference /
-                                    1000
+                                  donneesImpacts.ges.donneesReference / 1000
                                 )
                               }}
                               t CO2eq
@@ -208,7 +207,7 @@
                             ><p class="texte-data texte-gauche vert-clair">
                               {{
                                 AfficherEntier(
-                                  this.donneesImpacts.ges
+                                  donneesImpacts.ges
                                     .differenceSimulationReference
                                 )
                               }}<span class="texte-unite">%</span>
@@ -239,7 +238,7 @@
                       <span
                         class="icon-impact-biodiversite ico-medium climat2"
                       ></span
-                      >Impacts sur le biodiversité
+                      >Impacts sur la biodiversité
                     </div>
                     <div
                       class="impacts justify-content-around align-items-center flex-column flex-sm-row"
@@ -398,7 +397,7 @@
                             ><p class="texte-data texte-droite">
                               {{
                                 formatterNombres(
-                                  this.donneesImpacts.empreinte_eau_bleue
+                                  donneesImpacts.empreinte_eau_bleue
                                     .donneesReference
                                 )
                               }}
@@ -412,7 +411,7 @@
                             ><p class="texte-data texte-gauche vert-clair">
                               {{
                                 formatterNombres(
-                                  this.donneesImpacts.empreinte_eau_bleue
+                                  donneesImpacts.empreinte_eau_bleue
                                     .differenceSimulationReference
                                 )
                               }}<span class="texte-unite">%</span
@@ -823,105 +822,73 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import resumeChoix from "@/views/modal/resumeChoix.vue";
 import ModalAffinerChoix from "@/views/modal/modalAffinerChoix.vue";
 import modalImpact from "@/views/modal/modalImpact.vue";
 import BandeauResultat from "@/components/BandeauResultat.vue";
-import { getImpacts } from "@/plugins/getImpacts.js";
 import vizConsommationVerticalSimulation from "@/components/visualisation/vizConsommationVerticalSimulation.vue";
 import vizConsommationVerticalReference from "@/components/visualisation/vizConsommationVerticalReference.vue";
 import { AfficherEntier } from "@/plugins/utils";
-export default {
-  components: {
-    BandeauResultat,
-    BarreNavigation,
-    resumeChoix,
-    ModalAffinerChoix,
-    modalImpact,
-    vizConsommationVerticalSimulation,
-    vizConsommationVerticalReference,
-  },
-  data() {
-    return {
-      montrerClasse: "",
-      impacts: [],
-      modalActive: null,
-    };
-  },
-  methods: {
-    AfficherEntier,
-    montrerModalAffiner() {
-      this.montrerClasse = "show";
-      console.log("montrerModalAffinage");
-    },
-    fermerModalAffiner() {
-      this.montrerClasse = "";
-    },
-    ouvrirModal(id) {
-      console.log(id);
-      this.modalActive = id;
-    },
-    fermerModal() {
-      this.modalActive = null;
-    },
-    formatterNombres(nombre) {
-      if (nombre > Math.pow(10, 9)) {
-        return Math.round((nombre / Math.pow(10, 9)) * 10) / 10 + " milliards";
-      } else if (nombre > Math.pow(10, 6)) {
-        return Math.round((nombre / Math.pow(10, 6)) * 10) / 10 + " millions";
-      } else if (nombre > Math.pow(10, 3)) {
-        return Math.round((nombre / Math.pow(10, 4)) * 10) / 10 + " milliers";
-      } else return Math.round(nombre, 2);
-    },
-  },
-  async mounted() {
-    this.impacts = await getImpacts(this.$store.state.partpertes);
-    console.log(this.impacts);
-  },
-  // TODO: store les impacts dans le state
-  watch: {
-    "$store.state.resultatSimulation": function () {
-      getImpacts(this.$store.state.partpertes).then((res) => {
-        this.impacts = res;
-      });
-      console.log(this.impacts);
-    },
-    deep: true,
-  },
-  computed: {
-    phraseSousTitreConsommationSimulation() {
-      return `${this.$store.state.part_bio}% de bio, ${this.$store.state.regime_alimentaire["libelle"]}, -${this.$store.state.partpertes} % de gaspillage`;
-    },
-    donneesImpacts() {
-      let donneesImpacts = {
-        ges: {
-          donneesReference:
-            this.$store.state.resultatReference.emission_kg_co2e,
-          donneesSimulation:
-            this.$store.state.resultatSimulation.emission_kg_co2e,
-          differenceSimulationReference:
-            (this.$store.state.resultatSimulation.emission_kg_co2e * 100) /
-              this.$store.state.resultatReference.emission_kg_co2e -
-            100,
-        },
-        empreinte_eau_bleue: {
-          donneesReference:
-            this.$store.state.resultatReference.empreinte_eau_bleue_m3,
-          donneesSimulation:
-            this.$store.state.resultatSimulation.empreinte_eau_bleue_m3,
-          differenceSimulationReference:
-            (this.$store.state.resultatSimulation.empreinte_eau_bleue_m3 *
-              100) /
-              this.$store.state.resultatReference.empreinte_eau_bleue_m3 -
-            100,
-        },
-      };
-      return donneesImpacts;
-    },
-  },
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
+
+const montrerClasse = ref("");
+const modalActive = ref(null);
+
+const montrerModalAffiner = () => {
+  montrerClasse.value = "show";
 };
+
+const fermerModalAffiner = () => {
+  montrerClasse.value = "";
+};
+
+const ouvrirModal = (id) => {
+  console.log(id);
+  modalActive.value = id;
+};
+const fermerModal = () => {
+  modalActive.value = null;
+};
+const formatterNombres = (nombre) => {
+  if (nombre > Math.pow(10, 9)) {
+    return Math.round((nombre / Math.pow(10, 9)) * 10) / 10 + " milliards";
+  } else if (nombre > Math.pow(10, 6)) {
+    return Math.round((nombre / Math.pow(10, 6)) * 10) / 10 + " millions";
+  } else if (nombre > Math.pow(10, 3)) {
+    return Math.round((nombre / Math.pow(10, 4)) * 10) / 10 + " milliers";
+  } else return Math.round(nombre, 2);
+};
+
+const store = useStore(); // Access Vuex store
+
+// Computed properties
+const phraseSousTitreConsommationSimulation = computed(() => {
+  return `${store.state.part_bio}% de bio, ${store.state.regime_alimentaire["libelle"]}, -${store.state.partpertes} % de gaspillage`;
+});
+
+const donneesImpacts = computed(() => {
+  return {
+    ges: {
+      donneesReference: store.state.resultatReference.emission_kg_co2e,
+      donneesSimulation: store.state.resultatSimulation.emission_kg_co2e,
+      differenceSimulationReference:
+        (store.state.resultatSimulation.emission_kg_co2e * 100) /
+          store.state.resultatReference.emission_kg_co2e -
+        100,
+    },
+    empreinte_eau_bleue: {
+      donneesReference: store.state.resultatReference.empreinte_eau_bleue_m3,
+      donneesSimulation: store.state.resultatSimulation.empreinte_eau_bleue_m3,
+      differenceSimulationReference:
+        (store.state.resultatSimulation.empreinte_eau_bleue_m3 * 100) /
+          store.state.resultatReference.empreinte_eau_bleue_m3 -
+        100,
+    },
+  };
+});
 </script>
 
 <style scoped>
