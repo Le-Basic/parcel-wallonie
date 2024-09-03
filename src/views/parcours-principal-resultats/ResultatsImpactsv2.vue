@@ -213,7 +213,7 @@
                       </div>
                       <div
                         class="col-sm-2 result-plus d-flex flex-column justify-content-center text-center"
-                        @click="ouvrirModal(impact.modal)"
+                        @click="ouvrirModal(impact.modal, impact.dossierModal)"
                       >
                         <span class="icon-ico_fleche_detail_gros icon"></span
                         ><span class="explain">Explications</span>
@@ -875,6 +875,13 @@
       :modalId="modalActive"
       @fermerModal="fermerModal"
     />
+    <ModalComposant
+      v-if="modalActive"
+      :modalId="modalActive"
+      :dossierModal="dossierModalActive"
+      @fermerModal="fermerModal"
+    />
+
     <nav id="asy-sidebar" :class="montrerClasse">
       <modal-affiner-choix @fermerModalAffiner="fermerModalAffiner" />
     </nav>
@@ -887,6 +894,7 @@ import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import resumeChoix from "@/views/modal/resumeChoix.vue";
 import ModalAffinerChoix from "@/views/modal/modalAffinerChoix.vue";
 import modalImpact from "@/views/modal/modalImpact.vue";
+import ModalComposant from "@/views/modal/ModalComposant.vue";
 import BandeauResultat from "@/components/BandeauResultat.vue";
 import vizConsommationVerticalSimulation from "@/components/visualisation/vizConsommationVerticalSimulation.vue";
 import vizConsommationVerticalReference from "@/components/visualisation/vizConsommationVerticalReference.vue";
@@ -910,7 +918,8 @@ const CATEGORIES_IMPACT = [
         titreSimulation: "+15%",
         sousTitreSimulation: "Soit 15%",
         couleurTitreSimulation: "vert-clair",
-        modal: "ImpactGes",
+        modal: "impactGes",
+        dossierModal: "modalImpacts",
       },
     ],
   },
@@ -986,6 +995,7 @@ const CATEGORIES_IMPACT = [
 
 const montrerClasse = ref("");
 const modalActive = ref(null);
+const dossierModalActive = ref(null);
 
 const montrerModalAffiner = () => {
   montrerClasse.value = "show";
@@ -995,12 +1005,15 @@ const fermerModalAffiner = () => {
   montrerClasse.value = "";
 };
 
-const ouvrirModal = (id) => {
-  console.log(id);
+const ouvrirModal = (id, dossierModal) => {
   modalActive.value = id;
+  dossierModalActive.value = dossierModal;
+  enleverScroll();
 };
 const fermerModal = () => {
   modalActive.value = null;
+  dossierModalActive.value = null;
+  ajouterScroll();
 };
 const formatterNombres = (nombre) => {
   if (nombre > Math.pow(10, 9)) {
@@ -1039,6 +1052,14 @@ const donneesImpacts = computed(() => {
     },
   };
 });
+
+const enleverScroll = () => {
+  document.body.style.overflow = "hidden";
+};
+const ajouterScroll = () => {
+  console.log("ajouterScroll");
+  document.body.style.overflow = "auto";
+};
 </script>
 
 <style scoped>

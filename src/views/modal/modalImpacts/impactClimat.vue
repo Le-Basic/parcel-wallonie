@@ -26,7 +26,7 @@
             class="close"
             data-dismiss="modal"
             aria-label="Close"
-            @click="closeModal"
+            @click="fermerModal"
           >
             <span class="icon-ico_fermer icon"></span>
           </button>
@@ -700,9 +700,9 @@
 <script>
 export default {
   methods: {
-    closeModal() {
+    fermerModal() {
       console.log("close modal");
-      this.$emit("closeModal");
+      this.$emit("fermerModal");
     },
   },
 };

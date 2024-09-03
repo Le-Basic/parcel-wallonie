@@ -14,7 +14,7 @@
       class="close"
       data-dismiss="modal"
       aria-label="Close"
-      @click="closeModal"
+      @click="fermerModal"
     >
       <span class="icon-ico_fermer icon"></span>
     </button>
@@ -605,8 +605,8 @@ export default {
     toggle() {
       this.ouvert = !this.ouvert;
     },
-    closeModal() {
-      this.$emit("closeModal");
+    fermerModal() {
+      this.$emit("fermerModal");
     },
   },
 };
