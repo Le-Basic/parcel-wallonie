@@ -4,6 +4,7 @@ import { regimeListe } from "@/config/regimeListe.js";
 import {
   throttledfetchSurfaceNecessaire,
   fetchSurfaceNecessairePourRegimePersonnalise,
+  fetchSurfaceNecessaireInstitutions,
   fetchSurfacesActuelles,
   fetchSurfacesActuellesPaysage,
   fetchIndicateursActuels,
@@ -73,39 +74,39 @@ const getDefaultState = () => {
     nbCouvertsParInstitution: [
       {
         id: INSTITUTIONS_IDS.MATERNELLES,
-        nbCouverts: 0,
+        nb_couverts: 0,
       },
       {
         id: INSTITUTIONS_IDS.PRIMAIRES,
-        nbCouverts: 0,
+        nb_couverts: 0,
       },
       {
         id: INSTITUTIONS_IDS.COLLEGES,
-        nbCouverts: 0,
+        nb_couverts: 0,
       },
       {
         id: INSTITUTIONS_IDS.LYCEES,
-        nbCouverts: 0,
+        nb_couverts: 0,
       },
       {
         id: INSTITUTIONS_IDS.UNIVERSITES,
-        nbCouverts: 0,
+        nb_couverts: 0,
       },
       {
         id: INSTITUTIONS_IDS.HOPITAUX,
-        nbCouverts: 0,
+        nb_couverts: 0,
       },
       {
         id: INSTITUTIONS_IDS.MAISONS_DE_RETRAITE,
-        nbCouverts: 0,
+        nb_couverts: 0,
       },
       {
         id: INSTITUTIONS_IDS.ENTREPRISES,
-        nbCouverts: 0,
+        nb_couverts: 0,
       },
       {
         id: INSTITUTIONS_IDS.AUTRES,
-        nbCouverts: 0,
+        nb_couverts: 0,
       },
     ],
   };
@@ -179,42 +180,18 @@ async function recalculerResultatSimulation(
         );
     }
   } else if (store.state.population.part == CHOIX_POPULATION_IDS.INSTITUTIONS) {
-    if (idRegimeAlimentaire === 5) {
-      necessaires__url =
-        window.apiURL +
-        "parcel/belgique/surfaces_necessaires_regime_personnalise";
-      necessaires_paysage__url =
-        window.apiURL +
-        "parcel/belgique/surfaces_necessaires_paysage_regime_personnalise";
-      surfaceNecessaireResponseApi =
-        await fetchSurfaceNecessairePourRegimePersonnalise(
-          necessaires__url,
-          codesTerritoireParcel,
-          idRegimeAlimentaire,
-          pctDiffRegimePersonnalise
-        );
-      surfaceNecessairePaysageResponseApi =
-        await fetchSurfaceNecessairePourRegimePersonnalise(
-          necessaires_paysage__url,
-          codesTerritoireParcel,
-          idRegimeAlimentaire,
-          pctDiffRegimePersonnalise
-        );
-    } else {
-      necessaires__url =
-        window.apiURL + "parcel/belgique/surfaces_necessaires/institutions";
-      surfaceNecessaireResponseApi = await throttledfetchSurfaceNecessaire(
-        necessaires__url,
-        codesTerritoireParcel,
-        idRegimeAlimentaire
-      );
-      surfaceNecessairePaysageResponseApi =
-        await throttledfetchSurfaceNecessaire(
-          necessaires_paysage__url,
-          codesTerritoireParcel,
-          idRegimeAlimentaire
-        );
-    }
+    necessaires__url =
+      window.apiURL + "parcel/belgique/surfaces_necessaires/institutions";
+    surfaceNecessaireResponseApi = await fetchSurfaceNecessaireInstitutions(
+      necessaires__url,
+      idRegimeAlimentaire,
+      pctDiffRegimePersonnalise
+    );
+    surfaceNecessairePaysageResponseApi = await throttledfetchSurfaceNecessaire(
+      necessaires_paysage__url,
+      codesTerritoireParcel,
+      idRegimeAlimentaire
+    );
   }
   const actuelles_url =
     window.apiURL + "parcel/belgique/surfaces_actuels_produit";
@@ -340,7 +317,7 @@ export default createStore({
         return "Toute la population";
       } else if (state.population.part == "groupe") {
         return `Groupe de ${state.population.nombreEnfants} enfants, ${state.population.nombreAdultes} adultes et ${state.population.nombreSeniors} seniors`;
-      } else if (state.population.part == "institution") {
+      } else if (state.population.part == "institutions") {
         const texte = [];
 
         state.nbCouvertsParInstitution.map((item) => {
@@ -349,8 +326,9 @@ export default createStore({
             (institution) => institution.id == item.id
           ).libelle_singulier;
           console.log("institutionLibelle", institutionLibelle);
-          item.nbCouverts > 0
-            ? texte.push(`${institutionLibelle}: ${item.nbCouverts} couverts`)
+          console.log("item.nbCouverts", item.nb_couverts);
+          item.nb_couverts > 0
+            ? texte.push(`${institutionLibelle}: ${item.nb_couverts} couverts`)
             : null;
         });
         console.log("texte", texte);
@@ -508,6 +486,10 @@ export default createStore({
     },
     mutationNbCouvertsParInstitution(state, nbCouvertsParInstitution) {
       state.nbCouvertsParInstitution = nbCouvertsParInstitution;
+      console.log(
+        "state.nbCouvertsParInstitution",
+        state.nbCouvertsParInstitution
+      );
     },
   },
   actions: {
@@ -686,10 +668,6 @@ export default createStore({
       { commit },
       nbCouvertsParInstitution
     ) {
-      console.log(
-        "actionModifierNbCouvertsParInstitution",
-        nbCouvertsParInstitution
-      );
       commit("mutationNbCouvertsParInstitution", nbCouvertsParInstitution);
       let resultatSimulation = await recalculerResultatSimulation(
         this.getters.getcodesTerritoireParcel,
@@ -704,6 +682,7 @@ export default createStore({
         this.state.pctDiffRegimePersonnalise
       );
       commit("mutationResultatSimulation", resultatSimulation);
+      commit("mutationResultatReference", resultatSimulation);
     },
     async actionModifierPartRElocalisee({ commit }, partRelocalisee) {
       commit("mutationPartRelocalisee", partRelocalisee);

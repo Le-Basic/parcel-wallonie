@@ -18,8 +18,8 @@
                 $event.target.checked
                   ? montrerModal(institution.id)
                   : changerCouverts({
-                      nbCouverts: 0,
-                      idInstitution: institution.id,
+                      nb_couverts: 0,
+                      id: institution.id,
                     })
               "
               >{{ institution.libelle_pluriel }}
@@ -29,7 +29,7 @@
                 :checked="
                   nbCouvertsParInstitution.find(
                     (instit) => instit.id == institution.id
-                  ).nbCouverts > 0
+                  ).nb_couverts > 0
                 "
               />
               <span class="checkmark"></span>
@@ -38,7 +38,7 @@
               v-if="
                 nbCouvertsParInstitution.find(
                   (instit) => instit.id == institution.id
-                ).nbCouverts > 0
+                ).nb_couverts > 0
               "
             >
               <span class="nbr-couverts" v-if="nbCouvertsParInstitution">
@@ -97,18 +97,18 @@ const montrerModal = (id) => {
 const nbCouvertsParInstitution = ref(store.state.nbCouvertsParInstitution);
 
 const changerCouverts = (eventValue) => {
-  const { nbCouverts, idInstitution } = eventValue;
+  const { nb_couverts, id } = eventValue;
+
   nbCouvertsParInstitution.value = nbCouvertsParInstitution.value.map((item) =>
-    item.id === idInstitution
-      ? { id: idInstitution, nbCouverts: nbCouverts }
-      : item
+    item.id === id ? { id: id, nb_couverts: parseInt(nb_couverts) } : item
   );
+  console.log("nbCouvertsParInstitution", nbCouvertsParInstitution.value);
 };
 
 const trouverNbCouverts = (idInstitution) => {
   return (
     nbCouvertsParInstitution.value.find((item) => item.id === idInstitution)
-      .nbCouverts ?? 0
+      .nb_couverts ?? 0
   );
 };
 

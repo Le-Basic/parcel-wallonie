@@ -6,7 +6,7 @@
         {{ props.titreCategorieAlimentaire }}
       </p>
     </section>
-    <v-chart class="chart" :option="options" />
+    <v-chart class="chart" :option="options" autoresize ref="jauge" />
     <p class="badge-categorie-alimentaire" :class="[labelClasse]">
       {{ labelJauge }}
     </p>
@@ -38,24 +38,32 @@ const props = defineProps({
     type: String,
     default: "icon-lipides",
   },
+  valeurMax: {
+    type: Number,
+    default: 100,
+  },
+  valeurMin: {
+    type: Number,
+    default: 0,
+  },
   categoriesAlimentaires: {
     type: Array,
     default: () => [
       {
         nom: "Fort déficit",
-        valeur: 10,
+        valeurMax: 10,
         couleur: "#FF0000",
         classe: "fort",
       },
       {
         nom: "Léger déficit",
-        valeur: 70,
+        valeurMax: 70,
         couleur: "#FFE337",
         classe: "leger",
       },
       {
         nom: "Correct",
-        valeur: 110,
+        valeurMax: 110,
         couleur: "#8BC903",
         classe: "correct",
       },
@@ -77,23 +85,25 @@ const props = defineProps({
 const emit = defineEmits(["update:categoriesAlimentaires"]);
 
 use([GaugeChart, CanvasRenderer]);
-const maxValeur = props.categoriesAlimentaires.reduce(
-  (acc, categorie) => Math.max(acc, categorie.valeur),
-  0
-);
 const data = props.categoriesAlimentaires.map((categorie) => {
-  return [categorie.valeur / maxValeur, categorie.couleur];
+  return [
+    (categorie.valeurMax - props.valeurMin) /
+      (props.valeurMax - props.valeurMin),
+    categorie.couleur,
+  ];
 });
+
+console.log("data", data);
 
 const labelJauge = ref(
   props.categoriesAlimentaires.find(
-    (categorie) => props.valeurJauge <= categorie.valeur
+    (categorie) => props.valeurJauge <= categorie.valeurMax
   ).nom
 );
 
 const labelClasse = ref(
   props.categoriesAlimentaires.find(
-    (categorie) => props.valeurJauge <= categorie.valeur
+    (categorie) => props.valeurJauge <= categorie.valeurMax
   ).classe
 );
 
@@ -101,10 +111,10 @@ watch(
   () => props.valeurJauge,
   (newValue) => {
     const label = props.categoriesAlimentaires.find(
-      (categorie) => newValue <= categorie.valeur
+      (categorie) => newValue <= categorie.valeurMax
     ).nom;
     const classe = props.categoriesAlimentaires.find(
-      (categorie) => newValue <= categorie.valeur
+      (categorie) => newValue <= categorie.valeurMax
     ).classe;
     labelJauge.value = label;
     labelClasse.value = classe;
@@ -126,8 +136,8 @@ const options = computed(() => {
         startAngle: 180,
         endAngle: 0,
         radius: "120%",
-        min: 0,
-        max: maxValeur,
+        min: props.valeurMin,
+        max: props.valeurMax,
 
         center: ["50%", "80%"],
         axisLine: {

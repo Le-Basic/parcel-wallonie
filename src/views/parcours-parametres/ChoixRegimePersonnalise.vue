@@ -8,11 +8,13 @@
             Choisissez le régime alimentaire de votre simulation de
             relocalisation
           </h1>
+          <pre>{{ $store.state }}</pre>
 
           <div class="note text-center">
             Le choix du régime choisi est un régime moyen pour la population. Il
             peut masquer de fortes disparités selon les individus.
           </div>
+
           <div class="mt-5 section-80" id="partviande">
             <div
               class="card-diet d-flex align-items-center"
@@ -90,7 +92,12 @@
                         >
                           <span
                             class="btn-moins counter-minus"
-                            @click="ChangerCompteurCereales(-1)"
+                            @click="
+                              ChangerCompteur(
+                                -1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES
+                              )
+                            "
                             >-</span
                           >
                           <input
@@ -110,7 +117,12 @@
                           />
                           <span
                             class="btn-plus counter-plus"
-                            @click="ChangerCompteurCereales(1)"
+                            @click="
+                              ChangerCompteur(
+                                1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES
+                              )
+                            "
                             >+</span
                           >
                         </div>
@@ -153,7 +165,12 @@
                         >
                           <span
                             class="btn-moins counter-minus"
-                            @click="ChangerCompteurHuile(-1)"
+                            @click="
+                              ChangerCompteur(
+                                -1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE
+                              )
+                            "
                             >-</span
                           >
                           <input
@@ -173,7 +190,12 @@
                           />
                           <span
                             class="btn-plus counter-plus"
-                            @click="ChangerCompteurHuile(1)"
+                            @click="
+                              ChangerCompteur(
+                                1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE
+                              )
+                            "
                             >+</span
                           >
                         </div>
@@ -216,7 +238,12 @@
                         >
                           <span
                             class="btn-moins counter-minus"
-                            @click="ChangerCompteurPatate(-1)"
+                            @click="
+                              ChangerCompteur(
+                                -1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE
+                              )
+                            "
                             >-</span
                           >
                           <input
@@ -236,7 +263,12 @@
                           />
                           <span
                             class="btn-plus counter-plus"
-                            @click="ChangerCompteurPatate(1)"
+                            @click="
+                              ChangerCompteur(
+                                1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE
+                              )
+                            "
                             >+</span
                           >
                         </div>
@@ -278,7 +310,12 @@
                           id="handleCounterlegumineuses"
                         >
                           <span
-                            @click="ChangerCompteurLegumineuses(-1)"
+                            @click="
+                              ChangerCompteur(
+                                -1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES
+                              )
+                            "
                             class="btn-moins counter-minus"
                             >-</span
                           >
@@ -299,7 +336,12 @@
                           />
                           <span
                             class="btn-plus counter-plus"
-                            @click="ChangerCompteurLegumineuses(1)"
+                            @click="
+                              ChangerCompteur(
+                                1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES
+                              )
+                            "
                             >+</span
                           >
                         </div>
@@ -341,7 +383,12 @@
                           id="handleCounterlegumes"
                         >
                           <span
-                            @click="ChangerCompteurLegumes(-1)"
+                            @click="
+                              ChangerCompteur(
+                                -1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES
+                              )
+                            "
                             class="btn-moins counter-minus"
                             >-</span
                           >
@@ -363,7 +410,12 @@
                           />
                           <span
                             class="btn-plus counter-plus"
-                            @click="ChangerCompteurLegumes(1)"
+                            @click="
+                              ChangerCompteur(
+                                1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES
+                              )
+                            "
                             >+</span
                           >
                         </div>
@@ -410,7 +462,12 @@
                           id="handleCounterfruits"
                         >
                           <span
-                            @click="ChangerCompteurFruits(-1)"
+                            @click="
+                              ChangerCompteur(
+                                -1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS
+                              )
+                            "
                             class="btn-moins counter-minus"
                             >-</span
                           >
@@ -432,7 +489,12 @@
                           />
                           <span
                             class="btn-plus counter-plus"
-                            @click="ChangerCompteurFruits(1)"
+                            @click="
+                              ChangerCompteur(
+                                1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS
+                              )
+                            "
                             >+</span
                           >
                         </div>
@@ -474,7 +536,12 @@
                           id="handleCounteroleagineux"
                         >
                           <span
-                            @click="ChangerCompteurOleagineux(-1)"
+                            @click="
+                              ChangerCompteur(
+                                -1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX
+                              )
+                            "
                             class="btn-moins counter-minus"
                             >-</span
                           >
@@ -496,7 +563,12 @@
                           />
                           <span
                             class="btn-plus counter-plus"
-                            @click="ChangerCompteurOleagineux(1)"
+                            @click="
+                              ChangerCompteur(
+                                1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX
+                              )
+                            "
                             >+</span
                           >
                         </div>
@@ -538,7 +610,12 @@
                           id="handleCounterviande_rouge"
                         >
                           <span
-                            @click="ChangerCompteurViandeRouge(-1)"
+                            @click="
+                              ChangerCompteur(
+                                -1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE
+                              )
+                            "
                             class="btn-moins counter-minus"
                             >-</span
                           >
@@ -560,7 +637,12 @@
                           />
                           <span
                             class="btn-plus counter-plus"
-                            @click="ChangerCompteurViandeRouge(1)"
+                            @click="
+                              ChangerCompteur(
+                                1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE
+                              )
+                            "
                             >+</span
                           >
                         </div>
@@ -602,7 +684,12 @@
                           id="handleCounterviande_blanche"
                         >
                           <span
-                            @click="ChangerCompteurViandeBlanche(-1)"
+                            @click="
+                              ChangerCompteur(
+                                -1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE
+                              )
+                            "
                             class="btn-moins counter-minus"
                             >-</span
                           >
@@ -625,7 +712,12 @@
                           />
                           <span
                             class="btn-plus counter-plus"
-                            @click="ChangerCompteurViandeBlanche(1)"
+                            @click="
+                              ChangerCompteur(
+                                1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE
+                              )
+                            "
                             >+</span
                           >
                         </div>
@@ -671,7 +763,12 @@
                           id="handleCounterproduits_laitiers"
                         >
                           <span
-                            @click="ChangerCompteurProduitsLaitiers(-1)"
+                            @click="
+                              ChangerCompteur(
+                                -1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS
+                              )
+                            "
                             class="btn-moins counter-minus"
                             >-</span
                           >
@@ -694,7 +791,12 @@
                           />
                           <span
                             class="btn-plus counter-plus"
-                            @click="ChangerCompteurProduitsLaitiers(1)"
+                            @click="
+                              ChangerCompteur(
+                                1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS
+                              )
+                            "
                             >+</span
                           >
                         </div>
@@ -736,7 +838,12 @@
                           id="handleCounteroeufs"
                         >
                           <span
-                            @click="ChangerCompteurOeufs(-1)"
+                            @click="
+                              ChangerCompteur(
+                                -1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS
+                              )
+                            "
                             class="btn-moins counter-minus"
                             >-</span
                           >
@@ -758,7 +865,12 @@
                           />
                           <span
                             class="btn-plus counter-plus"
-                            @click="ChangerCompteurOeufs(1)"
+                            @click="
+                              ChangerCompteur(
+                                1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS
+                              )
+                            "
                             >+</span
                           >
                         </div>
@@ -801,7 +913,12 @@
                           id="handleCountersucre"
                         >
                           <span
-                            @click="ChangerCompteurSucre(-1)"
+                            @click="
+                              ChangerCompteur(
+                                -1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE
+                              )
+                            "
                             class="btn-moins counter-minus"
                             >-</span
                           >
@@ -823,7 +940,12 @@
                           />
                           <span
                             class="btn-plus counter-plus"
-                            @click="ChangerCompteurSucre(1)"
+                            @click="
+                              ChangerCompteur(
+                                1,
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE
+                              )
+                            "
                             >+</span
                           >
                         </div>
@@ -880,32 +1002,119 @@
                 @update:categoriesAlimentaires="
                   changerConclusionRegimeParCategorie($event, 'energieTotale')
                 "
-                :valeurJauge="oeufs"
                 :montreDetailProduits="montreDetailProduits"
+                :listeIconesProduits="getListeIconesProduits('Energie Totale')"
+                :categoriesAlimentaires="
+                  getCategoriesJaugeAlimentaire(CATEGORIE_APPORT_IDS.ENERGIE)
+                "
+                :valeurMax="
+                  getMinMaxJaugeAlimentaire(CATEGORIE_APPORT_IDS.ENERGIE).max
+                "
+                :valeurMin="
+                  getMinMaxJaugeAlimentaire(CATEGORIE_APPORT_IDS.ENERGIE).min
+                "
+                :valeurJauge="
+                  apportsEnergetiques.find(
+                    (apport) =>
+                      apport.id_apport_energetique ===
+                      CATEGORIE_APPORT_IDS.ENERGIE
+                  )?.valeur
+                "
               />
               <jaugeRegimeAlimentaire
                 titreCategorieAlimentaire="Protéines"
                 iconeCategorieAlimentaire="icon-proteine"
                 :montreDetailProduits="montreDetailProduits"
                 :listeIconesProduits="getListeIconesProduits('Protéines')"
+                :categoriesAlimentaires="
+                  getCategoriesJaugeAlimentaire(CATEGORIE_APPORT_IDS.PROTEINES)
+                "
+                :valeurMax="
+                  getMinMaxJaugeAlimentaire(CATEGORIE_APPORT_IDS.PROTEINES).max
+                "
+                :valeurMin="
+                  getMinMaxJaugeAlimentaire(CATEGORIE_APPORT_IDS.PROTEINES).min
+                "
+                :valeurJauge="
+                  apportsEnergetiques.find(
+                    (apport) =>
+                      apport.id_apport_energetique ===
+                      CATEGORIE_APPORT_IDS.PROTEINES
+                  )?.valeur ?? 70
+                "
               />
+
               <jaugeRegimeAlimentaire
                 titreCategorieAlimentaire="Glucides"
                 iconeCategorieAlimentaire="icon-sucre"
                 :montreDetailProduits="montreDetailProduits"
                 :listeIconesProduits="getListeIconesProduits('Glucides')"
+                :categoriesAlimentaires="
+                  getCategoriesJaugeAlimentaire(CATEGORIE_APPORT_IDS.GLUCIDES)
+                "
+                :valeurMax="
+                  getMinMaxJaugeAlimentaire(CATEGORIE_APPORT_IDS.GLUCIDES).max
+                "
+                :valeurMin="
+                  getMinMaxJaugeAlimentaire(CATEGORIE_APPORT_IDS.GLUCIDES).min
+                "
+                :valeurJauge="
+                  apportsEnergetiques.find(
+                    (apport) =>
+                      apport.id_apport_energetique ===
+                      CATEGORIE_APPORT_IDS.GLUCIDES
+                  )?.valeur ?? 300
+                "
               />
               <jaugeRegimeAlimentaire
                 titreCategorieAlimentaire="Lipides"
                 iconeCategorieAlimentaire="icon-lipides"
                 :montreDetailProduits="montreDetailProduits"
                 :listeIconesProduits="getListeIconesProduits('Lipides')"
+                :categoriesAlimentaires="
+                  getCategoriesJaugeAlimentaire(CATEGORIE_APPORT_IDS.LIPIDES)
+                "
+                :valeurMax="
+                  getMinMaxJaugeAlimentaire(CATEGORIE_APPORT_IDS.LIPIDES).max
+                "
+                :valeurMin="
+                  getMinMaxJaugeAlimentaire(CATEGORIE_APPORT_IDS.LIPIDES).min
+                "
+                :valeurJauge="
+                  apportsEnergetiques.find(
+                    (apport) =>
+                      apport.id_apport_energetique ===
+                      CATEGORIE_APPORT_IDS.LIPIDES
+                  )?.valeur ?? 70
+                "
               />
               <jaugeRegimeAlimentaire
                 titreCategorieAlimentaire="Fibres"
                 iconeCategorieAlimentaire="icon-fibres"
                 :montreDetailProduits="montreDetailProduits"
                 :listeIconesProduits="getListeIconesProduits('Fibres')"
+                :categoriesAlimentaires="
+                  getCategoriesJaugeAlimentaire(
+                    CATEGORIE_APPORT_IDS.FIBRES_ALIMENTAIRES
+                  )
+                "
+                :valeurMax="
+                  getMinMaxJaugeAlimentaire(
+                    CATEGORIE_APPORT_IDS.FIBRES_ALIMENTAIRES
+                  ).max
+                "
+                :valeurMin="
+                  getMinMaxJaugeAlimentaire(
+                    CATEGORIE_APPORT_IDS.FIBRES_ALIMENTAIRES
+                  ).min
+                "
+                :valeurJauge="
+                  apportsEnergetiques.find(
+                    (apport) =>
+                      apport.id_apport_energetique ===
+                      CATEGORIE_APPORT_IDS.FIBRES_ALIMENTAIRES
+                  )?.valeur ?? 20
+                "
               />
             </div>
           </div>
@@ -1019,8 +1228,15 @@ import { regimeListe } from "@/config/regimeListe";
 import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import { MapProduitsCoefficientMultiplicateurRegime } from "@/plugins/utils";
 import jaugeRegimeAlimentaire from "@/components/visualisation/jaugeRegimeAlimentaire.vue";
-import { getListeIconesProduits } from "@/config/categorieApports.js";
+import {
+  getListeIconesProduits,
+  getCategoriesJaugeAlimentaire,
+  getMinMaxJaugeAlimentaire,
+  CATEGORIE_APPORT_IDS,
+} from "@/config/categorieApports.js";
 import { fetchCoefficientsGroupesAlimentaires } from "@/plugins/getCoefficientsGroupesAlimentaires";
+import { fetchApportsEnergetiques } from "@/plugins/getApportsEnergetiques";
+
 const store = useStore();
 const _ = require("lodash");
 
@@ -1030,8 +1246,6 @@ const regimeChoisi = ref({
   img: require("@/assets/img/parcours/regime-actuel.svg"),
   nomCourt: "actuel",
 });
-
-const oeufs = ref(0);
 
 const valeursChangementGroupeAlimentaire = ref({
   [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE]: 0,
@@ -1047,6 +1261,8 @@ const valeursChangementGroupeAlimentaire = ref({
   [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS]: 0,
   [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE]: 0,
 });
+
+const apportsEnergetiques = ref([]);
 
 const coefficientMultiplicateurVolumeCategorieRegime = computed(() => {
   return {
@@ -1296,85 +1512,21 @@ watch(regimeChoisi, (nouvelleValeur) => {
       };
     });
 });
+
 // TODO refacto doit exister quelque part
 function changementRegime(regime) {
   regimeChoisi.value = regimeListe.find((r) => r.nomCourt === regime);
 }
 
-const ChangerCompteurSucre = (sens) => {
-  valeursChangementGroupeAlimentaire.value[
-    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE
-  ] += 5 * sens;
-};
-
-const ChangerCompteurCereales = (sens) => {
-  valeursChangementGroupeAlimentaire.value[
-    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES
-  ] += 5 * sens;
-};
-
-const ChangerCompteurHuile = (sens) => {
-  valeursChangementGroupeAlimentaire.value[
-    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE
-  ] += 5 * sens;
-};
-
-const ChangerCompteurPatate = (sens) => {
-  valeursChangementGroupeAlimentaire.value[
-    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE
-  ] += 5 * sens;
-};
-
-const ChangerCompteurLegumineuses = (sens) => {
-  valeursChangementGroupeAlimentaire.value[
-    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES
-  ] += 5 * sens;
-};
-
-const ChangerCompteurLegumes = (sens) => {
-  valeursChangementGroupeAlimentaire.value[
-    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES
-  ] += 5 * sens;
-};
-
-const ChangerCompteurFruits = (sens) => {
-  valeursChangementGroupeAlimentaire.value[
-    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS
-  ] += 5 * sens;
-};
-
-const ChangerCompteurOleagineux = (sens) => {
-  valeursChangementGroupeAlimentaire.value[
-    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX
-  ] += 5 * sens;
-};
-
-const ChangerCompteurViandeRouge = (sens) => {
-  valeursChangementGroupeAlimentaire.value[
-    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE
-  ] += 5 * sens;
-};
-
-const ChangerCompteurViandeBlanche = (sens) => {
-  valeursChangementGroupeAlimentaire.value[
-    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE
-  ] += 5 * sens;
-};
-
-const ChangerCompteurProduitsLaitiers = (sens) => {
-  valeursChangementGroupeAlimentaire.value[
-    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS
-  ] += 5 * sens;
-};
-
-const ChangerCompteurOeufs = (sens) => {
-  valeursChangementGroupeAlimentaire.value[
-    IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS
-  ] += 5 * sens;
+const ChangerCompteur = (sens, cle) => {
+  valeursChangementGroupeAlimentaire.value[cle] += 5 * sens;
+  coefficientMultiplicateurVolumeCategorieRegimeChoisi.value[cle] +=
+    (5 * sens) / 100;
 };
 
 function creerCoefficientMultiplicateur(compteur) {
-  return 1 + Number(compteur / 100);
+  let valeur = 1 + Number(compteur / 100);
+  return valeur;
 }
 
 const conclusionRegime = ref([
@@ -1404,6 +1556,7 @@ const conclusionRegime = ref([
 // -1 fort déficit, 0 léger déficit, 1 correct
 function changerConclusionRegimeParCategorie(valeur, categorieRegimeAChanger) {
   console.log("changerValeur", valeur);
+  console.log("changerValeur", categorieRegimeAChanger);
   let nouvelleValeur = 0;
   switch (valeur) {
     case "fort":
@@ -1428,6 +1581,7 @@ function changerConclusionRegimeParCategorie(valeur, categorieRegimeAChanger) {
       valeur: nouvelleValeur,
     };
   });
+  console.log("conclusionRegime", conclusionRegime.value);
 }
 
 function categorieApportRegimeAlimentaire() {
@@ -1440,6 +1594,39 @@ function categorieApportRegimeAlimentaire() {
 const conclusionRegimeAlimentaireMessage = computed(() => {
   return categorieApportRegimeAlimentaire();
 });
+
+const listeCoefficientMultiplicateurVolumeCategorieRegimeChoisi = computed(
+  () => {
+    //parse json dict
+    return Object.keys(
+      coefficientMultiplicateurVolumeCategorieRegimeChoisi.value
+    ).map((key) => ({
+      id_groupe_alimentaire: key,
+      coefficient_multiplicateur:
+        coefficientMultiplicateurVolumeCategorieRegimeChoisi.value[key],
+    }));
+  }
+);
+
+watch(
+  listeCoefficientMultiplicateurVolumeCategorieRegimeChoisi,
+  (nouveauCoefficientMultiplicateur) => {
+    fetchApportsEnergetiques(
+      "https://lebasic.nohost.me/api/parcel/belgique/apports_energetiques",
+      nouveauCoefficientMultiplicateur
+    ).then((nouveauxApports) => {
+      apportsEnergetiques.value = nouveauxApports;
+      console.log(
+        "apportsEnergetiques",
+        apportsEnergetiques.value.find(
+          (apport) =>
+            apport.id_apport_energetique === CATEGORIE_APPORT_IDS.ENERGIE
+        )
+      );
+    });
+  },
+  { immediate: true }
+);
 
 const montreDetailProduits = ref(false);
 </script>

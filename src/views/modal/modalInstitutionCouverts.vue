@@ -45,7 +45,7 @@ import CompteurPersonnes from "@/components/bas-niveau/CompteurPersonnes.vue";
 
 const emits = defineEmits({
   fermerModale: null,
-  changerNbCouverts: { nbCouverts: Number, idInstitution: Number },
+  changerNbCouverts: { nb_couverts: Number, id: Number },
 });
 const props = defineProps({
   nomInstitution: String,
@@ -63,8 +63,8 @@ const confirmNbCouverts = () => {
   console.log("confirmNbCouverts", nbCouverts.value);
   emits("fermerModale");
   emits("changerNbCouverts", {
-    nbCouverts: nbCouverts.value,
-    idInstitution: props.idInstitution,
+    nb_couverts: nbCouverts.value,
+    id: props.idInstitution,
   });
 };
 </script>

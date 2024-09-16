@@ -162,6 +162,32 @@ export async function fetchSurfaceNecessairePourRegimePersonnalise(
   return response.data;
 }
 
+export async function fetchSurfaceNecessaireInstitutions(
+  url,
+  idRegimeAlimentaire,
+  pctDiffRegimePersonnalise = []
+) {
+  const nbCouvertsParInstitution = store.state["nbCouvertsParInstitution"];
+
+  const bodyFormData = new FormData();
+  bodyFormData.append("pctDiffRegimePersonnalise", pctDiffRegimePersonnalise);
+  const response = await axios.post(
+    `${url}`,
+
+    {
+      Institutions: nbCouvertsParInstitution,
+      pctDiffRegimePersonnalise: pctDiffRegimePersonnalise,
+    }, // Request body data
+    {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return response.data;
+}
+
 export async function fetchCurseurs(url, codesTerritoireParcel) {
   const bodyFormData = new FormData();
   bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
