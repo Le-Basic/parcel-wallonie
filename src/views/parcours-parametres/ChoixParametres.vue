@@ -301,7 +301,7 @@ export default {
         curseur_bio: 0,
       },
       montrerModal: "",
-      partbio: 1.8,
+      partbio: this.$store.state.part_bio,
       partpertes: 0,
       partviande: "actuel",
       partviandeText: "Régime actuel",
@@ -342,36 +342,7 @@ export default {
   },
   methods: {
     recupererDonnees() {
-      console.log("recupererDonnees");
-      const bodyFormData = new FormData();
-      var codesTerritoireParcel = this.$store.state.geoList.map(
-        (el) => el.code_territoire
-      );
-      codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
-
-      console.log(codesTerritoireParcel);
-      bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
-      this.$axios
-        .post(
-          window.apiURL + "parcel/belgique/curseurs_bio",
-          codesTerritoireParcel, // Request body data
-          {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-          }
-        )
-        .then((response) => {
-          this.data.curseur_bio = response.data[0]["curseur_bio"];
-          if (!this.$store.state.part_bio) {
-            this.partbio = Math.round(this.data.curseur_bio * 100);
-          }
-          console.log(this.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      this.data.curseur_bio = this.$store.state.part_bio;
     },
     changementRegime(regime) {
       console.log(regime);
@@ -394,6 +365,7 @@ export default {
   },
   watch: {
     partbio: function (partBioValeur) {
+      console.log("partbio", partBioValeur);
       this.$store.commit("partBio", partBioValeur);
       calculerPartBio(
         partBioValeur,
@@ -421,7 +393,6 @@ export default {
     },
   },
   mounted() {
-    this.recupererDonnees();
     this.regime = this.$store.state.regime_alimentaire;
     if (this.$store.state.partpertes) {
       this.partpertes = this.$store.state.partpertes;
