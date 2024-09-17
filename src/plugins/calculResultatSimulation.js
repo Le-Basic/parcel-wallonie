@@ -18,6 +18,8 @@ export function calculerResultatSimulation(
     consommation_kg,
     emission_kg_co2e,
     empreinte_eau_bleue_m3,
+    abondances_especes,
+    richesses_des_sols,
     surfaces_emplois_a_mobiliser_parcel_niveau_1,
     surfaces_actuelles,
     surfaces_actuelles_parcel_niveau_1,
@@ -39,7 +41,6 @@ export function calculerResultatSimulation(
   const potentielNourricier = Math.round(
     (surfaces_actuelles * 100) / surfaces_a_mobiliser
   );
-
   let pct_difference_emission_kg_co2e = null;
   if (donneesReference?.emission_kg_co2e) {
     pct_difference_emission_kg_co2e =
@@ -52,6 +53,8 @@ export function calculerResultatSimulation(
     consommation_kg: consommation_kg,
     emission_kg_co2e: emission_kg_co2e,
     empreinte_eau_bleue_m3: empreinte_eau_bleue_m3,
+    abondancesEspeces: abondances_especes,
+    richessesDesSols: richesses_des_sols,
     surfacesEmploisAMobiliser: surfaces_emplois_a_mobiliser_parcel_niveau_1,
     surfacesActuelles: surfaces_actuelles,
     surfacesActuellesParcelNiveau1: surfaces_actuelles_parcel_niveau_1,
@@ -90,6 +93,8 @@ function calculerSurfacesEtEmploisAMobiliser(
         consommation_kg: 0,
         emission_kg_co2e: 0,
         empreinte_eau_bleue_m3: 0,
+        abondances_especes: 0,
+        richesses_des_sols: 0,
       };
       surfaces_emplois_a_mobiliser_parcel_niveau_1.push(
         res[valeur.libelle_parcel_niveau_3]
@@ -145,6 +150,10 @@ function calculerSurfacesEtEmploisAMobiliser(
       );
     res[valeur.libelle_parcel_niveau_3].empreinte_eau_bleue_m3 +=
       valeur.empreinte_eau_bleue_m3;
+    res[valeur.libelle_parcel_niveau_3].abondances_especes =
+      valeur.abondance_des_especes_ratio_impact_bio;
+    res[valeur.libelle_parcel_niveau_3].richesses_des_sols =
+      valeur.richesse_des_sols_ratio_impact_bio;
     return res;
   }, {});
 
@@ -178,6 +187,87 @@ function calculerSurfacesEtEmploisAMobiliser(
     })
     .reduce((somme, emission_kg_co2e) => somme + emission_kg_co2e, 0);
 
+  const abondances_especes =
+    surfaces_emplois_a_mobiliser_parcel_niveau_1
+      .map((item) => {
+        switch (item.libelle_parcel_niveau_1) {
+          case CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle:
+            return (
+              partBioElevage *
+                item.surface_a_mobiliser *
+                item.abondances_especes +
+              (100 - partBioElevage) * item.surface_a_mobiliser
+            );
+          case CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle:
+            return (
+              partBioFruits *
+                item.surface_a_mobiliser *
+                item.abondances_especes +
+              (100 - partBioFruits) * item.surface_a_mobiliser
+            );
+          case CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle:
+            return (
+              partBioLegumes *
+                item.surface_a_mobiliser *
+                item.abondances_especes +
+              (100 - partBioLegumes) * item.surface_a_mobiliser
+            );
+          case CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle:
+            return (
+              partBioCereales *
+                item.surface_a_mobiliser *
+                item.abondances_especes +
+              (100 - partBioCereales) * item.surface_a_mobiliser
+            );
+        }
+      })
+      .reduce((somme, surface_a_mobiliser) => somme + surface_a_mobiliser, 0) /
+    surfaces_emplois_a_mobiliser_parcel_niveau_1
+      .map((item) => {
+        return item.surface_a_mobiliser;
+      })
+      .reduce((somme, surfaceAMobiliser) => somme + surfaceAMobiliser, 0);
+
+  const richesses_des_sols =
+    surfaces_emplois_a_mobiliser_parcel_niveau_1
+      .map((item) => {
+        switch (item.libelle_parcel_niveau_1) {
+          case CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle:
+            return (
+              partBioElevage *
+                item.surface_a_mobiliser *
+                item.richesses_des_sols +
+              (100 - partBioElevage) * item.surface_a_mobiliser
+            );
+          case CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle:
+            return (
+              partBioFruits *
+                item.surface_a_mobiliser *
+                item.richesses_des_sols +
+              (100 - partBioFruits) * item.surface_a_mobiliser
+            );
+          case CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle:
+            return (
+              partBioLegumes *
+                item.surface_a_mobiliser *
+                item.richesses_des_sols +
+              (100 - partBioLegumes) * item.surface_a_mobiliser
+            );
+          case CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle:
+            return (
+              partBioCereales *
+                item.surface_a_mobiliser *
+                item.richesses_des_sols +
+              (100 - partBioCereales) * item.surface_a_mobiliser
+            );
+        }
+      })
+      .reduce((somme, surface_a_mobiliser) => somme + surface_a_mobiliser, 0) /
+    surfaces_emplois_a_mobiliser_parcel_niveau_1
+      .map((item) => {
+        return item.surface_a_mobiliser;
+      })
+      .reduce((somme, surfaceAMobiliser) => somme + surfaceAMobiliser, 0);
   const surfaces_actuelles = surfaceActuelleResponseApi
     .map((item) => {
       return item.sau_ha;
@@ -238,6 +328,8 @@ function calculerSurfacesEtEmploisAMobiliser(
     consommation_kg: consommation_kg,
     emission_kg_co2e: emission_kg_co2e,
     empreinte_eau_bleue_m3: empreinte_eau_bleue_m3,
+    abondances_especes: abondances_especes,
+    richesses_des_sols: richesses_des_sols,
     surfaces_emplois_a_mobiliser_parcel_niveau_1:
       surfaces_emplois_a_mobiliser_parcel_niveau_1,
     surfaces_actuelles: surfaces_actuelles,
@@ -289,5 +381,51 @@ function calculSurfAMobiliser(
       (1 - 0.18 * (1 - partPertes / 100))) *
       part_relocalisee) /
     100;
+
+  return Math.round(surfaces_a_mobiliser);
+}
+
+function calculRatioAmeliorationImpact(
+  libelle_parcel_niveau_1,
+  surfaces_a_mobiliser_bio,
+  surfaces_a_mobiliser_conventionnel,
+  partBioElevage,
+  partBioFruits,
+  partBioLegumes,
+  partBioCereales,
+  part_relocalisee,
+  ratioImpactConventionnel = 1,
+  ratioImpactBio = 1.1
+) {
+  var partBio;
+  if (
+    libelle_parcel_niveau_1 ===
+    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle
+  ) {
+    partBio = partBioElevage / 100;
+  } else if (
+    libelle_parcel_niveau_1 ===
+    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle
+  ) {
+    partBio = partBioFruits / 100;
+  } else if (
+    libelle_parcel_niveau_1 ===
+    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle
+  ) {
+    partBio = partBioLegumes / 100;
+  } else if (
+    libelle_parcel_niveau_1 ===
+    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle
+  ) {
+    partBio = partBioCereales / 100;
+  }
+  const surfaces_a_mobiliser =
+    ((partBio * surfaces_a_mobiliser_bio * ratioImpactBio +
+      (1 - partBio) *
+        surfaces_a_mobiliser_conventionnel *
+        ratioImpactConventionnel) *
+      part_relocalisee) /
+    (100 * (surfaces_a_mobiliser_bio + surfaces_a_mobiliser_conventionnel));
+
   return Math.round(surfaces_a_mobiliser);
 }
