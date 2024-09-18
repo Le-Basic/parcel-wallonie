@@ -21,7 +21,7 @@ export const regimeListe = [
     img: require("@/assets/img/parcours/regime-moitie.svg"),
     nomCourt: "moitie",
     libelle: "Diminution de moitié des produits animaux",
-    id: IDS_REGIMES_ALIMENTAIRES.MOINS_50_POURCENTS,
+    id: IDS_REGIMES_ALIMENTAIRES.TYFA,
   },
   {
     nom: "VÉGÉTARIEN",

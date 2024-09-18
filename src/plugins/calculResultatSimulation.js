@@ -18,6 +18,7 @@ export function calculerResultatSimulation(
     consommation_kg,
     emission_kg_co2e,
     empreinte_eau_bleue_m3,
+    surfaces_ha_soja_importes,
     abondances_especes,
     richesses_des_sols,
     surfaces_emplois_a_mobiliser_parcel_niveau_1,
@@ -53,6 +54,7 @@ export function calculerResultatSimulation(
     consommation_kg: consommation_kg,
     emission_kg_co2e: emission_kg_co2e,
     empreinte_eau_bleue_m3: empreinte_eau_bleue_m3,
+    surfaces_ha_soja_importes: surfaces_ha_soja_importes,
     abondancesEspeces: abondances_especes,
     richessesDesSols: richesses_des_sols,
     surfacesEmploisAMobiliser: surfaces_emplois_a_mobiliser_parcel_niveau_1,
@@ -93,6 +95,7 @@ function calculerSurfacesEtEmploisAMobiliser(
         consommation_kg: 0,
         emission_kg_co2e: 0,
         empreinte_eau_bleue_m3: 0,
+        surfaces_ha_soja_importes: 0,
         abondances_especes: 0,
         richesses_des_sols: 0,
       };
@@ -148,6 +151,20 @@ function calculerSurfacesEtEmploisAMobiliser(
         partPertes,
         part_relocalisee
       );
+
+    // TODO: A VOIR POUR LA RELOC...
+    res[valeur.libelle_parcel_niveau_3].surfaces_ha_soja_importes +=
+      calculSurfAMobiliser(
+        valeur.libelle_parcel_niveau_1,
+        valeur.surfaces_ha_soja_importes,
+        valeur.surfaces_ha_soja_importes,
+        partBioElevage,
+        partBioFruits,
+        partBioLegumes,
+        partBioCereales,
+        partPertes,
+        part_relocalisee
+      );
     res[valeur.libelle_parcel_niveau_3].empreinte_eau_bleue_m3 +=
       valeur.empreinte_eau_bleue_m3;
     res[valeur.libelle_parcel_niveau_3].abondances_especes =
@@ -185,7 +202,19 @@ function calculerSurfacesEtEmploisAMobiliser(
     .map((item) => {
       return item.empreinte_eau_bleue_m3;
     })
-    .reduce((somme, emission_kg_co2e) => somme + emission_kg_co2e, 0);
+    .reduce(
+      (somme, empreinte_eau_bleue_m3) => somme + empreinte_eau_bleue_m3,
+      0
+    );
+
+  const surfaces_ha_soja_importes = surfaces_emplois_a_mobiliser_parcel_niveau_1
+    .map((item) => {
+      return item.surfaces_ha_soja_importes;
+    })
+    .reduce(
+      (somme, surfaces_ha_soja_importes) => somme + surfaces_ha_soja_importes,
+      0
+    );
 
   const abondances_especes =
     surfaces_emplois_a_mobiliser_parcel_niveau_1
@@ -328,6 +357,7 @@ function calculerSurfacesEtEmploisAMobiliser(
     consommation_kg: consommation_kg,
     emission_kg_co2e: emission_kg_co2e,
     empreinte_eau_bleue_m3: empreinte_eau_bleue_m3,
+    surfaces_ha_soja_importes: surfaces_ha_soja_importes,
     abondances_especes: abondances_especes,
     richesses_des_sols: richesses_des_sols,
     surfaces_emplois_a_mobiliser_parcel_niveau_1:
@@ -381,51 +411,6 @@ function calculSurfAMobiliser(
       (1 - 0.18 * (1 - partPertes / 100))) *
       part_relocalisee) /
     100;
-
-  return Math.round(surfaces_a_mobiliser);
-}
-
-function calculRatioAmeliorationImpact(
-  libelle_parcel_niveau_1,
-  surfaces_a_mobiliser_bio,
-  surfaces_a_mobiliser_conventionnel,
-  partBioElevage,
-  partBioFruits,
-  partBioLegumes,
-  partBioCereales,
-  part_relocalisee,
-  ratioImpactConventionnel = 1,
-  ratioImpactBio = 1.1
-) {
-  var partBio;
-  if (
-    libelle_parcel_niveau_1 ===
-    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle
-  ) {
-    partBio = partBioElevage / 100;
-  } else if (
-    libelle_parcel_niveau_1 ===
-    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle
-  ) {
-    partBio = partBioFruits / 100;
-  } else if (
-    libelle_parcel_niveau_1 ===
-    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle
-  ) {
-    partBio = partBioLegumes / 100;
-  } else if (
-    libelle_parcel_niveau_1 ===
-    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle
-  ) {
-    partBio = partBioCereales / 100;
-  }
-  const surfaces_a_mobiliser =
-    ((partBio * surfaces_a_mobiliser_bio * ratioImpactBio +
-      (1 - partBio) *
-        surfaces_a_mobiliser_conventionnel *
-        ratioImpactConventionnel) *
-      part_relocalisee) /
-    (100 * (surfaces_a_mobiliser_bio + surfaces_a_mobiliser_conventionnel));
 
   return Math.round(surfaces_a_mobiliser);
 }
