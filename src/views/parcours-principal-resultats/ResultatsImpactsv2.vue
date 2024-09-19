@@ -7,7 +7,12 @@
       />
 
       <div class="content">
-        <!-- <?php include '../partials/nav2.php'; ?> -->
+        <ModalComposant
+          :modalId="modalActive"
+          dossierModal="modalImpacts"
+          v-if="modalActive"
+          @fermerModal="fermerModal"
+        ></ModalComposant>
         <div class="section centrervh" id="section0">
           <div class="container">
             <h1 class="animated fadeInUp fast h1-result">
@@ -156,7 +161,6 @@
                 </div>
               </div>
               <!--end accordeon-->
-
               <div class="mt-5 mb-3">
                 <div class="repartition row">
                   <div
@@ -200,11 +204,7 @@
                         <div class="cadre-impact">
                           <span class="impact-result texte-gauche"
                             ><p class="texte-data texte-gauche vert-clair">
-                              {{
-                                AfficherEntier(
-                                  donneesImpacts.ges
-                                    .differenceSimulationReference
-                                )
+                              {{ impact.titreSimulation
                               }}<span class="texte-unite">%</span>
                             </p>
                             {{ impact.sousTitreSimulation }}
@@ -220,333 +220,7 @@
                       </div>
                     </div>
                   </div>
-                  <div
-                    class="col-12 cadre-impacts cadre-categorie"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-impact-climat1"
-                    style="cursor: pointer"
-                  >
-                    <div class="impact-titre cereales">
-                      <span
-                        class="icon-impact-climat ico-medium cereales"
-                      ></span
-                      >Impacts sur le climat
-                    </div>
-                    <div
-                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
-                    >
-                      <div class="impact-item2 col-sm-2 titre-impact">
-                        <div class="impact-graph">
-                          <span
-                            class="icon-impact-co2 ico-medium ico-impact"
-                          ></span>
-                        </div>
-                        <div class="impact-nom">
-                          Emissions de gaz à effet de serre
-                        </div>
-                      </div>
-                      <div
-                        class="impact-item2 col-sm-8 d-flex justify-content-around align-items-center"
-                      >
-                        <div class="cadre-impact">
-                          <span class="impact-result texte-droite"
-                            ><p class="texte-data texte-droite">
-                              {{
-                                formatterNombres(
-                                  donneesImpacts.ges.donneesReference / 1000
-                                )
-                              }}
-                              t CO2eq
-                            </p>
-                            Soit 5% de la consommation annuelle du territoire
-                          </span>
-                        </div>
-                        <div class="cadre-impact">
-                          <span class="impact-result texte-gauche"
-                            ><p class="texte-data texte-gauche vert-clair">
-                              {{
-                                AfficherEntier(
-                                  donneesImpacts.ges
-                                    .differenceSimulationReference
-                                )
-                              }}<span class="texte-unite">%</span>
-                            </p>
-                            Soit 15% de la consommation annuelle du
-                            territoire<br />
-                            Objectif national de réduction:
-                          </span>
-                        </div>
-                      </div>
-                      <div
-                        class="col-sm-2 result-plus d-flex flex-column justify-content-center text-center"
-                        @click="ouvrirModal('ImpactGes')"
-                      >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-12 cadre-impacts cadre-categorie"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-impact-climat1"
-                    style="cursor: pointer"
-                  >
-                    <div class="impact-titre legumes">
-                      <span
-                        class="icon-impact-biodiversite ico-medium climat2"
-                      ></span
-                      >Impacts sur la biodiversité
-                    </div>
-                    <div
-                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
-                    >
-                      <div class="impact-item2 col-sm-2 titre-impact">
-                        <div class="impact-graph">
-                          <span
-                            class="icon-impact-especes ico-medium ico-impact"
-                          ></span>
-                        </div>
-                        <div class="impact-nom">Destruction des espèces</div>
-                      </div>
-                      <div
-                        class="impact-item2 col-sm-8 d-flex justify-content-around align-items-center"
-                      >
-                        <div class="cadre-impact">
-                          <span class="impact-result texte-droite"
-                            ><div class="texte-data texte-droite">
-                              Une biodiversité fortement dégradée
-                            </div>
-                          </span>
-                        </div>
-                        <div class="cadre-impact">
-                          <span class="impact-result texte-gauche"
-                            ><p class="texte-data texte-gauche vert-clair">
-                              +45<span class="texte-unite">%</span
-                              ><span class="texte-legende"
-                                >abondance d'espèces par hectare</span
-                              >
-                            </p>
-                            Soit 15% de la consommation annuelle du
-                            territoire<br />
-                            Objectif national de réduction:
-                          </span>
-                        </div>
-                      </div>
-                      <div
-                        class="col-sm-2 result-plus d-flex flex-column justify-content-center text-center"
-                        @click="ouvrirModal('ImpactGes')"
-                      >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
-                      </div>
-                    </div>
-                    <div
-                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
-                    >
-                      <div class="impact-item2 col-sm-2 titre-impact">
-                        <div class="impact-graph">
-                          <span
-                            class="icon-impact-especes ico-medium ico-impact"
-                          ></span>
-                        </div>
-                        <div class="impact-nom">Déforestation importée</div>
-                      </div>
-                      <div
-                        class="impact-item2 col-sm-8 d-flex justify-content-around align-items-center"
-                      >
-                        <div class="cadre-impact">
-                          <span class="impact-result texte-droite"
-                            ><p class="texte-data texte-droite">
-                              120 000 ha déforestés liés aux importations de
-                              soja
-                            </p>
-                          </span>
-                        </div>
-                        <div class="cadre-impact">
-                          <span class="impact-result texte-gauche"
-                            ><p class="texte-data texte-gauche vert-clair">
-                              -45<span class="texte-unite">%</span
-                              ><span class="texte-legende"
-                                >d'hectares de déforestation</span
-                              >
-                            </p>
-                            Soit l'équivalent de XX terrains de football<br />
-                          </span>
-                        </div>
-                      </div>
-                      <div
-                        class="col-sm-2 result-plus d-flex flex-column justify-content-center text-center"
-                        @click="ouvrirModal('ImpactGes')"
-                      >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-12 cadre-impacts cadre-categorie"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-impact-climat1"
-                    style="cursor: pointer"
-                  >
-                    <div class="impact-titre eau">
-                      <span class="icon-impact-eau ico-medium climat2"></span
-                      >Impacts sur la ressource eau
-                    </div>
-                    <div
-                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
-                    >
-                      <div class="impact-item2 col-sm-2 titre-impact">
-                        <div class="impact-graph">
-                          <span
-                            class="icon-impact-eaupol ico-medium ico-impact"
-                          ></span>
-                        </div>
-                        <div class="impact-nom">Pollution de l'eau</div>
-                      </div>
-                      <div
-                        class="impact-item2 col-sm-8 d-flex justify-content-around align-items-center"
-                      >
-                        <div class="cadre-impact">
-                          <span class="impact-result texte-droite"
-                            ><div class="texte-data texte-droite">
-                              120 000 € de coût de dépolution
-                            </div>
-                          </span>
-                        </div>
-                        <div class="cadre-impact">
-                          <span class="impact-result texte-gauche"
-                            ><p class="texte-data texte-gauche vert-clair">
-                              -50<span class="texte-unite">%</span
-                              ><span class="texte-legende"
-                                >en coûts de dépollution</span
-                              >
-                            </p>
-                            Soit XXX 000 € économisés chaque année<br />
-                          </span>
-                        </div>
-                      </div>
-                      <div
-                        class="col-sm-2 result-plus d-flex flex-column justify-content-center text-center"
-                        @click="ouvrirModal('ImpactGes')"
-                      >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
-                      </div>
-                    </div>
-                    <div
-                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
-                    >
-                      <div class="impact-item2 col-sm-2 titre-impact">
-                        <div class="impact-graph">
-                          <span
-                            class="icon-impact-eau-conso ico-medium ico-impact"
-                          ></span>
-                        </div>
-                        <div class="impact-nom">Consommation d'eau</div>
-                      </div>
-                      <div
-                        class="impact-item2 col-sm-8 d-flex justify-content-around align-items-center"
-                      >
-                        <div class="cadre-impact">
-                          <span class="impact-result texte-droite"
-                            ><p class="texte-data texte-droite">
-                              {{
-                                formatterNombres(
-                                  donneesImpacts.empreinte_eau_bleue
-                                    .donneesReference
-                                )
-                              }}
-                              m3 d'eau consommés en irrigation chaque année
-                              (rivières et nappes)
-                            </p>
-                          </span>
-                        </div>
-                        <div class="cadre-impact">
-                          <span class="impact-result texte-gauche"
-                            ><p class="texte-data texte-gauche vert-clair">
-                              {{
-                                formatterNombres(
-                                  donneesImpacts.empreinte_eau_bleue
-                                    .differenceSimulationReference
-                                )
-                              }}<span class="texte-unite">%</span
-                              ><span class="texte-legende"
-                                >sur les prélèvement en eau</span
-                              >
-                            </p>
-                            Soit XXX XXX m3<br />
-                          </span>
-                        </div>
-                      </div>
-                      <div
-                        class="col-sm-2 result-plus d-flex flex-column justify-content-center text-center"
-                        @click="ouvrirModal('ImpactGes')"
-                      >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-12 cadre-impacts cadre-categorie"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-impact-climat1"
-                    style="cursor: pointer"
-                  >
-                    <div class="impact-titre viande">
-                      <span class="icon-impact-sol ico-medium climat2"></span
-                      >Impacts sur les sols
-                    </div>
-                    <div
-                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
-                    >
-                      <div class="impact-item2 col-sm-2 titre-impact">
-                        <div class="impact-graph">
-                          <span
-                            class="icon-impact-solqualit ico-medium ico-impact"
-                          ></span>
-                        </div>
-                        <div class="impact-nom">Pauvreté des sols</div>
-                      </div>
-                      <div
-                        class="impact-item2 col-sm-8 d-flex justify-content-around align-items-center"
-                      >
-                        <div class="cadre-impact">
-                          <span class="impact-result texte-droite"
-                            ><div class="texte-data texte-droite">
-                              Etat très dégradé
-                            </div>
-                          </span>
-                        </div>
-                        <div class="cadre-impact">
-                          <span class="impact-result texte-gauche"
-                            ><p class="texte-data texte-gauche vert-clair">
-                              +5<span class="texte-unite">%</span
-                              ><span class="texte-legende"
-                                >de manière organique dans le sol</span
-                              >
-                            </p>
-                            Soit 15% de la consommation annuelle du
-                            territoire<br />
-                            Objectif national de réduction:
-                          </span>
-                        </div>
-                      </div>
-                      <div
-                        class="col-sm-2 result-plus d-flex flex-column justify-content-center text-center"
-                        @click="ouvrirModal('ImpactGes')"
-                      >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
-                      </div>
-                    </div>
-                  </div>
+
                   <!-- ----------------->
 
                   <!-- ----------------->
@@ -870,17 +544,6 @@
         </div>
       </div>
     </div>
-    <modalImpact
-      v-if="modalActive"
-      :modalId="modalActive"
-      @fermerModal="fermerModal"
-    />
-    <ModalComposant
-      v-if="modalActive"
-      :modalId="modalActive"
-      :dossierModal="dossierModalActive"
-      @fermerModal="fermerModal"
-    />
 
     <nav id="asy-sidebar" :class="montrerClasse">
       <modal-affiner-choix @fermerModalAffiner="fermerModalAffiner" />
@@ -893,7 +556,6 @@
 import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import resumeChoix from "@/views/modal/resumeChoix.vue";
 import ModalAffinerChoix from "@/views/modal/modalAffinerChoix.vue";
-import modalImpact from "@/views/modal/modalImpact.vue";
 import ModalComposant from "@/views/modal/ModalComposant.vue";
 import BandeauResultat from "@/components/BandeauResultat.vue";
 import vizConsommationVerticalSimulation from "@/components/visualisation/vizConsommationVerticalSimulation.vue";
@@ -902,96 +564,167 @@ import { AfficherEntier } from "@/plugins/utils";
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
 
-const CATEGORIES_IMPACT = [
-  {
-    id: "climat",
-    libelle: "Impact sur le climat",
-    icon: "icon-impact-climat ico-medium cereales",
-    couleur: "cereales",
-    impacts: [
-      {
-        id: "ges",
-        libelle: "Emissions de gaz à effet de serre",
-        icon: "icon-impact-co2 ico-medium ico-impact",
-        titreSituationReference: "Une biodiversité fortement dégradée",
-        sousTitreSituationReference: "Soit 5%",
-        titreSimulation: "+15%",
-        sousTitreSimulation: "Soit 15%",
-        couleurTitreSimulation: "vert-clair",
-        modal: "impactGes",
-        dossierModal: "modalImpacts",
-      },
-    ],
-  },
-  {
-    id: "biodiversite",
-    libelle: "Impact sur la biodiversité",
-    icon: "icon-impact-biodiversite ico-medium climat2",
-    couleur: "legumes",
-    impacts: [
-      {
-        id: "especes",
-        libelle: "Destruction des espèces",
-        icon: "icon-impact-especes ico-medium ico-impact",
-        titreSituationReference: "Une biodiversité fortement dégradée",
-        sousTitreSituationReference: "Soit 5%",
-        titreSimulation: "+15%",
-        sousTitreSimulation: "Soit 15%",
-        couleurTitreSimulation: "vert-clair",
-        modal: "ImpactGes",
-      },
-      {
-        id: "soja",
-        libelle: "Déforestation importée",
-        icon: "icon-impact-deforest ico-medium ico-impact",
-        titreSituationReference: "Une biodiversité fortement dégradée",
-        sousTitreSituationReference: "Soit 5%",
-        titreSimulation: "+15%",
-        sousTitreSimulation: "Soit 15%",
-        couleurTitreSimulation: "vert-clair",
-        modal: "ImpactGes",
-      },
-    ],
-  },
-  {
-    id: "eau",
-    libelle: "Impact sur la ressource eau",
-    icon: "icon-impact-eau ico-medium climat2",
-    couleur: "eau",
-    impacts: [
-      {
-        id: "consommation-eau",
-        libelle: "Consommation d'eau",
-        icon: "icon-impact-eau-conso ico-medium ico-impact",
-        titreSituationReference: "Une biodiversité fortement dégradée",
-        sousTitreSituationReference: "Soit 5%",
-        titreSimulation: "+15%",
-        sousTitreSimulation: "Soit 15%",
-        couleurTitreSimulation: "vert-clair",
-        modal: "ImpactGes",
-      },
-    ],
-  },
-  {
-    id: "sols",
-    libelle: "Impact sur les sols",
-    icon: "icon-impact-sol ico-medium climat2",
-    couleur: "viande",
-    impacts: [
-      {
-        id: "pauvrete-sols",
-        libelle: "Pauvreté des sols",
-        icon: "icon-impact-solqualit ico-medium ico-impact",
-        titreSituationReference: "Une biodiversité fortement dégradée",
-        sousTitreSituationReference: "Soit 5%",
-        titreSimulation: "+15%",
-        sousTitreSimulation: "Soit 15%",
-        couleurTitreSimulation: "vert-clair",
-        modal: "ImpactGes",
-      },
-    ],
-  },
-];
+const store = useStore(); // Access Vuex store
+
+const donneesImpacts = computed(() => {
+  return {
+    ges: {
+      donneesReference: store.state.resultatReference.emission_kg_co2e,
+      donneesSimulation: store.state.resultatSimulation.emission_kg_co2e,
+      differenceSimulationReference:
+        (store.state.resultatSimulation.emission_kg_co2e * 100) /
+          store.state.resultatReference.emission_kg_co2e -
+        100,
+    },
+    empreinte_eau_bleue: {
+      donneesReference: store.state.resultatReference.empreinte_eau_bleue_m3,
+      donneesSimulation: store.state.resultatSimulation.empreinte_eau_bleue_m3,
+      differenceSimulationReference:
+        (store.state.resultatSimulation.empreinte_eau_bleue_m3 * 100) /
+          store.state.resultatReference.empreinte_eau_bleue_m3 -
+        100,
+    },
+    abondances_especes: {
+      donneesReference: store.state.resultatReference.abondances_especes,
+      donneesSimulation: store.state.resultatSimulation.abondances_especes,
+      differenceSimulationReference:
+        (store.state.resultatSimulation.abondances_especes * 100) /
+          store.state.resultatReference.abondances_especes -
+        100,
+    },
+    surfaces_ha_soja_importes: {
+      donneesReference: store.state.resultatReference.surfaces_ha_soja_importes,
+      donneesSimulation:
+        store.state.resultatSimulation.surfaces_ha_soja_importes,
+      differenceSimulationReference:
+        (store.state.resultatSimulation.surfaces_ha_soja_importes * 100) /
+          store.state.resultatReference.surfaces_ha_soja_importes -
+        100,
+    },
+    richesses_des_sols: {
+      donneesReference: store.state.resultatReference.richesses_des_sols,
+      donneesSimulation: store.state.resultatSimulation.richesses_des_sols,
+      differenceSimulationReference:
+        (store.state.resultatSimulation.richesses_des_sols * 100) /
+          store.state.resultatReference.richesses_des_sols -
+        100,
+    },
+  };
+});
+const CATEGORIES_IMPACT = computed(() => {
+  return [
+    {
+      id: "climat",
+      libelle: "Impact sur le climat",
+      icon: "icon-impact-climat ico-medium cereales",
+      couleur: "cereales",
+      impacts: [
+        {
+          id: "ges",
+          libelle: "Emissions de gaz à effet de serre",
+          icon: "icon-impact-co2 ico-medium ico-impact",
+          titreSituationReference:
+            AfficherEntier(donneesImpacts?.value.ges.donneesReference) / 1000 +
+            " de t de GES emise par an",
+          sousTitreSituationReference:
+            "Uniquement pour la production alimentaire, soit 8% des émissions nationales",
+          titreSimulation: AfficherEntier(
+            donneesImpacts?.value.ges.differenceSimulationReference
+          ),
+          sousTitreSimulation: "soit XXX millions de tonnes CO2e en moins",
+          couleurTitreSimulation: "vert-clair",
+          modal: "DetailsGes",
+          dossierModal: "modalImpacts",
+        },
+      ],
+    },
+    {
+      id: "biodiversite",
+      libelle: "Impact sur la biodiversité",
+      icon: "icon-impact-biodiversite ico-medium climat2",
+      couleur: "legumes",
+      impacts: [
+        {
+          id: "especes",
+          libelle: "Destruction des espèces",
+          icon: "icon-impact-especes ico-medium ico-impact",
+          titreSituationReference: "Une biodiversité fortement dégradée",
+          sousTitreSituationReference:
+            "45% des espèces d'oiseaux ont disparu en Europe depuis 1970",
+          titreSimulation: AfficherEntier(
+            donneesImpacts?.value.abondances_especes
+              .differenceSimulationReference
+          ),
+          sousTitreSimulation:
+            "Les espèces de pollinisateurs, papillons, vers de terre et gastéropodes sont 45% plus abondantes par hectare de culture.",
+          couleurTitreSimulation: "vert-clair",
+          modal: "DetailsAbondanceEspeces",
+        },
+        {
+          id: "soja",
+          libelle: "Déforestation importée",
+          icon: "icon-impact-deforest ico-medium ico-impact",
+          titreSituationReference: "XX ha de soja sont nécessaires ",
+          sousTitreSituationReference:
+            "chaque année pour nourrir le bétail que l'on consomme. Soit l'équivalent de XX terrains de foot",
+          titreSimulation: AfficherEntier(
+            donneesImpacts?.value.surfaces_ha_soja_importes
+              .differenceSimulationReference
+          ),
+          sousTitreSimulation:
+            "Soit XX terrains de football protégés de la déforestation",
+          couleurTitreSimulation: "vert-clair",
+          modal: "DetailsSojaImporte",
+        },
+      ],
+    },
+    {
+      id: "eau",
+      libelle: "Impact sur la ressource eau",
+      icon: "icon-impact-eau ico-medium climat2",
+      couleur: "eau",
+      impacts: [
+        {
+          id: "consommation-eau",
+          libelle: "Consommation d'eau",
+          icon: "icon-impact-eau-conso ico-medium ico-impact",
+          titreSituationReference: "XXX m3 eau irrigation (rivières et nappes)",
+          titreSimulation:
+            AfficherEntier(
+              donneesImpacts?.value.empreinte_eau_bleue
+                .differenceSimulationReference
+            ) + " m3 d'aeau économisés chaque année",
+          sousTitreSimulation: "",
+          couleurTitreSimulation: "vert-clair",
+          modal: "DetailsEmpreinteEau",
+        },
+      ],
+    },
+    {
+      id: "sols",
+      libelle: "Impact sur les sols",
+      icon: "icon-impact-sol ico-medium climat2",
+      couleur: "viande",
+      impacts: [
+        {
+          id: "pauvrete-sols",
+          libelle: "Pauvreté des sols",
+          icon: "icon-impact-solqualit ico-medium ico-impact",
+          titreSituationReference: "Des sols dont l'état est très dégradé",
+          sousTitreSituationReference: "Soit 5%",
+          titreSimulation: AfficherEntier(
+            donneesImpacts?.value.richesses_des_sols
+              .differenceSimulationReference
+          ),
+          sousTitreSimulation:
+            "de manière organique supplémentaire dans le sol",
+          couleurTitreSimulation: "vert-clair",
+          modal: "DetailsRichesseSols",
+        },
+      ],
+    },
+  ];
+});
 
 const montrerClasse = ref("");
 const modalActive = ref(null);
@@ -1015,42 +748,10 @@ const fermerModal = () => {
   dossierModalActive.value = null;
   ajouterScroll();
 };
-const formatterNombres = (nombre) => {
-  if (nombre > Math.pow(10, 9)) {
-    return Math.round((nombre / Math.pow(10, 9)) * 10) / 10 + " milliards";
-  } else if (nombre > Math.pow(10, 6)) {
-    return Math.round((nombre / Math.pow(10, 6)) * 10) / 10 + " millions";
-  } else if (nombre > Math.pow(10, 3)) {
-    return Math.round((nombre / Math.pow(10, 4)) * 10) / 10 + " milliers";
-  } else return Math.round(nombre, 2);
-};
-
-const store = useStore(); // Access Vuex store
 
 // Computed properties
 const phraseSousTitreConsommationSimulation = computed(() => {
   return `${store.state.part_bio}% de bio, ${store.state.regime_alimentaire["libelle"]}, -${store.state.partpertes} % de gaspillage`;
-});
-
-const donneesImpacts = computed(() => {
-  return {
-    ges: {
-      donneesReference: store.state.resultatReference.emission_kg_co2e,
-      donneesSimulation: store.state.resultatSimulation.emission_kg_co2e,
-      differenceSimulationReference:
-        (store.state.resultatSimulation.emission_kg_co2e * 100) /
-          store.state.resultatReference.emission_kg_co2e -
-        100,
-    },
-    empreinte_eau_bleue: {
-      donneesReference: store.state.resultatReference.empreinte_eau_bleue_m3,
-      donneesSimulation: store.state.resultatSimulation.empreinte_eau_bleue_m3,
-      differenceSimulationReference:
-        (store.state.resultatSimulation.empreinte_eau_bleue_m3 * 100) /
-          store.state.resultatReference.empreinte_eau_bleue_m3 -
-        100,
-    },
-  };
 });
 
 const enleverScroll = () => {

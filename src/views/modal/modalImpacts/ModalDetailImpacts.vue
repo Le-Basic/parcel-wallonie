@@ -8,24 +8,21 @@
     aria-hidden="true"
   >
     <div class="modal-dialog" role="document">
-      <div class="modal-content modal-repart-cat-detail">
-        <component :is="modalId" @closeModal="fermerModal" />
+      <div class="modal-content" v-if="modalId">
+        <component :is="modalId" @fermerModal="fermerModal" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import ImpactGes from "./modalImpacts/impactGes.vue";
-import impactBiodiv from "./modalImpacts/impactBiodiv.vue";
-import impactClimat from "./modalImpacts/impactClimat.vue";
-import impactEau from "./modalImpacts/impactEau.vue";
+import DetailsGes from "./detailsGes.vue";
+
 export default {
-  components: { ImpactGes, impactBiodiv, impactClimat, impactEau },
+  components: { DetailsGes },
   props: {
     modalId: {
       type: String,
-      required: true,
     },
   },
   methods: {

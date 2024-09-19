@@ -9,7 +9,6 @@ import ChoixDiagnosticvsSimulation from "@/views/parcours-parametres/ChoixDiagno
 import ChoixInstitutions from "@/views/parcours-parametres/ChoixInstitutions.vue";
 import RegimePersonnalise from "@/views/parcours-parametres/ChoixRegimePersonnalise.vue";
 
-import ResultatsImpacts from "@/views/parcours-principal-resultats/ResultatsImpacts.vue";
 import ResultatsRelocalisation from "@/views/parcours-principal-resultats/ResultatsRelocalisation.vue";
 import ResultatsSurfaces from "@/views/parcours-principal-resultats/ResultatsSurfaces.vue";
 import ResultatsEmplois from "@/views/parcours-principal-resultats/ResultatsEmplois.vue";
@@ -73,7 +72,7 @@ const routes = [
   {
     path: "/impacts-ecologiques-de-la-relocatisation",
     name: "impacts ecolos",
-    component: ResultatsImpacts,
+    component: ResultatsImpactsv2,
   },
   {
     path: "/impacts",
