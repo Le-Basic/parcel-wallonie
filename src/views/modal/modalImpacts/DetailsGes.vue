@@ -66,63 +66,6 @@
           </li>
         </ul>
       </div>
-      <ul>
-        <li>
-          L’indicateur de surface de PARCEL correspond à la surface à mobiliser
-          au sein d’un territoire sur une année pour produire les matières
-          premières agricoles nécessaires à l’alimentation relocalisée d’une
-          population donnée.
-        </li>
-        <li>
-          Pour calculer ces surfaces, en se basant sur les données de
-          consommation, PARCEL utilise un coefficient, appelé « rendement
-          corrigé de l’utilisation du territoire ». Les rendements agronomiques
-          ne peuvent pas être directement utilisés pour réaliser ces calculs car
-          ils sont rattachés à des produits particuliers (tomates par exemple)
-          et pourraient ainsi mener à des doubles comptages. En effet, les
-          surfaces mobilisées pour une production donnée (par exemple les
-          tomates de saison) peuvent être utilisées pendant le reste de l’année
-          pour d’autres productions (pois, salades…).
-        </li>
-        <li>
-          Pour éviter ce biais, PARCEL calcule le nombre total d’hectares
-          nécessaires en termes d’utilisation du territoire, ces hectares
-          pouvant être le support de différentes productions d’une même
-          catégorie (légumes, fruits, céréales…) selon les saisons (par exemple
-          tomates, pois…).
-        </li>
-        <li>
-          Pour ce faire, les rendements agronomiques sont pondérés de manière à
-          s’assurer que la somme des surfaces calculées pour chacun des 61
-          produits correspond exactement à la part du territoire mobilisée
-          pendant une année pour leur production. Ces rendements pondérés
-          correspondent aux « rendements corrigés de l’utilisation du territoire
-          ».
-        </li>
-        <li>
-          Ces rendements sont calculés sur des moyennes de 3 ans (les trois
-          dernières années disponibles pour l’ensemble des données utilisées,
-          soit la période 2014-2016 pour la version 2019 de PARCEL). Des mises à
-          jour auront lieu fréquemment pour mettre à jour ces moyennes sur la
-          base des dernières données disponibles
-        </li>
-        <li>
-          On divise la donnée de consommation (différente selon le régime
-          choisi) par le rendement corrigé de l’utilisation du territoire, pour
-          obtenir la surface agricole à mobiliser par produit.
-        </li>
-        <li>
-          Pour l’agriculture biologique, un différentiel de rendement a été
-          calculé, principalement à partir de l’étude ROTAB (ITAB, 2011) et de
-          fiches techniques régionales.
-        </li>
-        <li>
-          Pour plus d’éléments sur la méthode de calcul, se référer à la
-          <a href="/methodologie-de-calcul-de-la-relocalisation-alimentaire"
-            >page annexe méthodologique</a
-          >, accessible par le menu principal.
-        </li>
-      </ul>
     </template>
     <template #reperes>
       <BlocRepere
@@ -132,8 +75,8 @@
         proportionSurface="10"
         proportionAssiette="20"
         :premierChiffre="premierChiffre"
-        :deuxiemeChiffre="premierChiffre"
-        :troisiemeChiffre="premierChiffre"
+        :deuxiemeChiffre="deuxiemeChiffre"
+        :troisiemeChiffre="troisiemeChiffre"
       />
     </template>
   </detailsTemplate>
@@ -144,10 +87,22 @@ import detailsTemplate from "./DetailsImpactsTemplate.vue";
 import BlocRepere from "./composant/BlocRepere.vue";
 
 const premierChiffre = {
-  icone: "icon-ico_poids",
-  titre: "Hello youuu",
-  chiffre: 10,
-  sousTitre: "de la surface agricole en Région wallonne",
+  icone: "icon-ico_navigation_alimentation",
+  titre: "Alimentation",
+  chiffre: "24%",
+  sousTitre: "de l'empreinte carbone des ménages belges",
+};
+const deuxiemeChiffre = {
+  icone: "icon-affiner-reloc",
+  titre: "Production Agricole",
+  chiffre: "2/3",
+  sousTitre: "de l'empreinte carbone de l'alimentatoin en Belgique",
+};
+const troisiemeChiffre = {
+  icone: "icon-ico_CATEGORIES_viande",
+  titre: "Produits animaux",
+  chiffre: "80%",
+  sousTitre: "de l'empreinte carbone de l'alimentation des ménages belges",
 };
 </script>
 

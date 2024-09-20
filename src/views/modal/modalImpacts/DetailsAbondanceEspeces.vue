@@ -1,6 +1,6 @@
 <template>
   <detailsTemplate
-    modalTitre="Biodiversité : Déforestation importée lié à l'importation de tourteaux de soja"
+    modalTitre="Biodiversité : Déclin des espèces"
     icone="icon-impact-especes"
     iconeClasse="legumes"
     classeCouleurFond="fond-legumes"
@@ -50,13 +50,12 @@
     <template #reperes>
       <BlocRepere
         icone="icon-ico_poids"
-        classeCouleurFond="fond-cereales"
-        iconeClasse="cereales"
+        classeCouleurFond="fond-legumes"
         proportionSurface="10"
         proportionAssiette="20"
         :premierChiffre="premierChiffre"
-        :deuxiemeChiffre="premierChiffre"
-        :troisiemeChiffre="premierChiffre"
+        :deuxiemeChiffre="deuxiemeChiffre"
+        :troisiemeChiffre="troisiemeChiffre"
       />
     </template>
   </detailsTemplate>
@@ -67,10 +66,22 @@ import detailsTemplate from "./DetailsImpactsTemplate.vue";
 import BlocRepere from "./composant/BlocRepere.vue";
 
 const premierChiffre = {
-  icone: "icon-ico_poids",
-  titre: "Hello youuu",
-  chiffre: 10,
+  icone: "icon-impact-especes",
+  titre: "Espaces menacées",
+  chiffre: "1 million",
   sousTitre: "de la surface agricole en Région wallonne",
+};
+const deuxiemeChiffre = {
+  icone: "icon-impact-biodiversite",
+  titre: "Diversité en Belgique",
+  chiffre: "10%",
+  sousTitre: "de la surface agricole en Région wallonne",
+};
+const troisiemeChiffre = {
+  icone: "icon-affiner-reloc",
+  titre: "1eres causes",
+  chiffre: 10,
+  sousTitre: "de la perte de biodiversité",
 };
 </script>
 

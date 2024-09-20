@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps } from "vue";
+import { defineProps } from "vue";
 const props = defineProps({
   icone: String,
   iconeClasse: String,

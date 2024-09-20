@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import DetailsGes from "./detailsGes.vue";
+import DetailsGes from "./DetailsGes.vue";
 
 export default {
   components: { DetailsGes },

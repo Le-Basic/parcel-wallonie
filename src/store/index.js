@@ -17,6 +17,7 @@ import { calculerResultatSimulationAvecSurface } from "@/plugins/calculResultats
 import { INSTITUTIONS, INSTITUTIONS_IDS } from "@/config/Institutions.js";
 import { CHOIX_POPULATION_IDS } from "@/config/TypeChoixPopulation";
 import store from ".";
+import { IDS_REGIMES_ALIMENTAIRES } from "@/config/regimeIds";
 const getDefaultState = () => {
   return {
     regimeListe: regimeListe,
@@ -148,7 +149,7 @@ async function recalculerResultatSimulation(
   let surfaceNecessaireResponseApi = null;
   let surfaceNecessairePaysageResponseApi = null;
   if (store.state.population.part != CHOIX_POPULATION_IDS.INSTITUTIONS) {
-    if (idRegimeAlimentaire === 5) {
+    if (idRegimeAlimentaire === IDS_REGIMES_ALIMENTAIRES.PERSONNALISE) {
       necessaires__url =
         window.apiURL +
         "parcel/belgique/surfaces_necessaires_paysage_regime_personnalise";

@@ -243,9 +243,6 @@
         <!--end section-->
       </div>
       <!--end content-->
-      <nav id="asy-sidebar" :class="montrerClasse">
-        <modal-affiner-choix @fermerModalAffiner="fermerModal" />
-      </nav>
     </div>
     <!--asy-wrapper-->
     <div
@@ -571,15 +568,18 @@ const donneesImpacts = computed(() => {
     ges: {
       donneesReference: store.state.resultatReference.emission_kg_co2e,
       donneesSimulation: store.state.resultatSimulation.emission_kg_co2e,
-      differenceSimulationReference:
+      differenceSimulationReferencePct:
         (store.state.resultatSimulation.emission_kg_co2e * 100) /
           store.state.resultatReference.emission_kg_co2e -
         100,
+      differenceSimulationReference:
+        store.state.resultatSimulation.emission_kg_co2e -
+        store.state.resultatReference.emission_kg_co2e,
     },
     empreinte_eau_bleue: {
       donneesReference: store.state.resultatReference.empreinte_eau_bleue_m3,
       donneesSimulation: store.state.resultatSimulation.empreinte_eau_bleue_m3,
-      differenceSimulationReference:
+      differenceSimulationReferencePct:
         (store.state.resultatSimulation.empreinte_eau_bleue_m3 * 100) /
           store.state.resultatReference.empreinte_eau_bleue_m3 -
         100,
@@ -587,7 +587,7 @@ const donneesImpacts = computed(() => {
     abondances_especes: {
       donneesReference: store.state.resultatReference.abondances_especes,
       donneesSimulation: store.state.resultatSimulation.abondances_especes,
-      differenceSimulationReference:
+      differenceSimulationReferencePct:
         (store.state.resultatSimulation.abondances_especes * 100) /
           store.state.resultatReference.abondances_especes -
         100,
@@ -596,15 +596,22 @@ const donneesImpacts = computed(() => {
       donneesReference: store.state.resultatReference.surfaces_ha_soja_importes,
       donneesSimulation:
         store.state.resultatSimulation.surfaces_ha_soja_importes,
-      differenceSimulationReference:
+      differenceSimulationReferencePct:
         (store.state.resultatSimulation.surfaces_ha_soja_importes * 100) /
           store.state.resultatReference.surfaces_ha_soja_importes -
         100,
+      differenceSimulationReference: AfficherEntier(
+        store.state.resultatSimulation.surfaces_ha_soja_importes -
+          store.state.resultatReference.surfaces_ha_soja_importes
+      ),
+      donneesReferencePiscineOlympique: AfficherEntier(
+        store.state.resultatReference.surfaces_ha_soja_importes / 0.125
+      ),
     },
     richesses_des_sols: {
       donneesReference: store.state.resultatReference.richesses_des_sols,
       donneesSimulation: store.state.resultatSimulation.richesses_des_sols,
-      differenceSimulationReference:
+      differenceSimulationReferencePct:
         (store.state.resultatSimulation.richesses_des_sols * 100) /
           store.state.resultatReference.richesses_des_sols -
         100,
@@ -624,14 +631,16 @@ const CATEGORIES_IMPACT = computed(() => {
           libelle: "Emissions de gaz à effet de serre",
           icon: "icon-impact-co2 ico-medium ico-impact",
           titreSituationReference:
-            AfficherEntier(donneesImpacts?.value.ges.donneesReference) / 1000 +
+            AfficherEntier(donneesImpacts?.value.ges.donneesReference / 1000) +
             " de t de GES emise par an",
           sousTitreSituationReference:
             "Uniquement pour la production alimentaire, soit 8% des émissions nationales",
           titreSimulation: AfficherEntier(
-            donneesImpacts?.value.ges.differenceSimulationReference
+            donneesImpacts?.value.ges.differenceSimulationReferencePct
           ),
-          sousTitreSimulation: "soit XXX millions de tonnes CO2e en moins",
+          sousTitreSimulation: `soit  ${AfficherEntier(
+            donneesImpacts?.value.ges.differenceSimulationReference / 1000
+          )} millions de tonnes CO2e`,
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsGes",
           dossierModal: "modalImpacts",
@@ -653,7 +662,7 @@ const CATEGORIES_IMPACT = computed(() => {
             "45% des espèces d'oiseaux ont disparu en Europe depuis 1970",
           titreSimulation: AfficherEntier(
             donneesImpacts?.value.abondances_especes
-              .differenceSimulationReference
+              .differenceSimulationReferencePct
           ),
           sousTitreSimulation:
             "Les espèces de pollinisateurs, papillons, vers de terre et gastéropodes sont 45% plus abondantes par hectare de culture.",
@@ -664,15 +673,15 @@ const CATEGORIES_IMPACT = computed(() => {
           id: "soja",
           libelle: "Déforestation importée",
           icon: "icon-impact-deforest ico-medium ico-impact",
-          titreSituationReference: "XX ha de soja sont nécessaires ",
-          sousTitreSituationReference:
-            "chaque année pour nourrir le bétail que l'on consomme. Soit l'équivalent de XX terrains de foot",
+          titreSituationReference: `${AfficherEntier(
+            donneesImpacts?.value.surfaces_ha_soja_importes.donneesReference
+          )} ha de soja sont nécessaires`,
+          sousTitreSituationReference: `chaque année pour nourrir le bétail que l'on consomme. Soit l'équivalent de ${donneesImpacts?.value.surfaces_ha_soja_importes.donneesReferencePiscineOlympique} piscines olympiques`,
           titreSimulation: AfficherEntier(
             donneesImpacts?.value.surfaces_ha_soja_importes
-              .differenceSimulationReference
+              .differenceSimulationReferencePct
           ),
-          sousTitreSimulation:
-            "Soit XX terrains de football protégés de la déforestation",
+          sousTitreSimulation: `Soit ${donneesImpacts?.value.surfaces_ha_soja_importes.differenceSimulationReference} hectares protégés de la déforestation`,
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsSojaImporte",
         },
@@ -688,12 +697,14 @@ const CATEGORIES_IMPACT = computed(() => {
           id: "consommation-eau",
           libelle: "Consommation d'eau",
           icon: "icon-impact-eau-conso ico-medium ico-impact",
-          titreSituationReference: "XXX m3 eau irrigation (rivières et nappes)",
+          titreSituationReference: `${AfficherEntier(
+            donneesImpacts?.value.empreinte_eau_bleue.donneesReference
+          )} m3 eau irrigation (rivières et nappes)`,
           titreSimulation:
             AfficherEntier(
               donneesImpacts?.value.empreinte_eau_bleue
-                .differenceSimulationReference
-            ) + " m3 d'aeau économisés chaque année",
+                .differenceSimulationReferencePct
+            ) + " m3 d'eau économisés chaque année",
           sousTitreSimulation: "",
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsEmpreinteEau",
@@ -714,7 +725,7 @@ const CATEGORIES_IMPACT = computed(() => {
           sousTitreSituationReference: "Soit 5%",
           titreSimulation: AfficherEntier(
             donneesImpacts?.value.richesses_des_sols
-              .differenceSimulationReference
+              .differenceSimulationReferencePct
           ),
           sousTitreSimulation:
             "de manière organique supplémentaire dans le sol",
