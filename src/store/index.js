@@ -3,6 +3,7 @@ import VuexPersistence from "vuex-persist";
 import { regimeListe } from "@/config/regimeListe.js";
 import {
   throttledfetchSurfaceNecessaire,
+  throttledfetchSurfaceNecessairePaysage,
   fetchSurfaceNecessairePourRegimePersonnalise,
   fetchSurfaceNecessaireInstitutions,
   fetchSurfacesActuelles,
@@ -74,7 +75,7 @@ const getDefaultState = () => {
       populationAvecBesoinComblé: 0,
     },
     surfacesMobilisables: 0,
-    pctDiffRegimePersonnalise: {},
+    pctDiffRegimePersonnalise: [],
     nbCouvertsParInstitution: [
       {
         id: INSTITUTIONS_IDS.MATERNELLES,
@@ -177,7 +178,7 @@ async function recalculerResultatSimulation(
         idRegimeAlimentaire
       );
       surfaceNecessairePaysageResponseApi =
-        await throttledfetchSurfaceNecessaire(
+        await throttledfetchSurfaceNecessairePaysage(
           necessaires_paysage__url,
           codesTerritoireParcel,
           idRegimeAlimentaire
@@ -191,11 +192,16 @@ async function recalculerResultatSimulation(
       idRegimeAlimentaire,
       pctDiffRegimePersonnalise
     );
-    surfaceNecessairePaysageResponseApi = await throttledfetchSurfaceNecessaire(
-      necessaires_paysage__url,
-      codesTerritoireParcel,
-      idRegimeAlimentaire
-    );
+    necessaires_paysage__url =
+      window.apiURL +
+      "parcel/belgique/surfaces_necessaires_paysage/institutions";
+    // TODO FAIRE POUR la version institution
+    surfaceNecessairePaysageResponseApi =
+      await fetchSurfaceNecessaireInstitutions(
+        necessaires_paysage__url,
+        idRegimeAlimentaire,
+        pctDiffRegimePersonnalise
+      );
   }
   const actuelles_url =
     window.apiURL + "parcel/belgique/surfaces_actuels_produit";

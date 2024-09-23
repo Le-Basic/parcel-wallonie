@@ -1,11 +1,7 @@
 export function formatterSurfacesNecessaires(chiffreSurface) {
-  return (
-    "Environ " +
-    Math.round(chiffreSurface).toLocaleString("fr-FR") +
-    " hectares"
-  );
+  return "Environ " + chiffreSurface.toLocaleString("fr-FR") + " hectares";
 }
 
 export function formatterChiffres(chiffreSurface) {
-  return Math.round(chiffreSurface).toLocaleString("fr-FR");
+  return chiffreSurface.toLocaleString("fr-FR");
 }

@@ -127,6 +127,23 @@ export const throttledfetchSurfaceNecessaire = _.throttle(
   200
 );
 
+export async function fetchSurfaceNecessairePaysage(
+  url,
+  codesTerritoireParcel,
+  idRegimeAlimentaire
+) {
+  return fetchSurfaceNecessaire(
+    url,
+    codesTerritoireParcel,
+    idRegimeAlimentaire
+  );
+}
+
+export const throttledfetchSurfaceNecessairePaysage = _.throttle(
+  fetchSurfaceNecessairePaysage,
+  200
+);
+
 export async function fetchSurfaceNecessairePourRegimePersonnalise(
   url,
   codesTerritoireParcel,

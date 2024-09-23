@@ -3,7 +3,8 @@ export function trouverChiffre(
   listeObjets,
   libelle,
   champ,
-  champ_libelle = "libelle_parcel_niveau_1"
+  champ_libelle = "libelle_parcel_niveau_1",
+  chiffreApresVirgule = 0
 ) {
   const listeFiltree = listeObjets.filter((item) => {
     return item[champ_libelle] === libelle;
@@ -11,7 +12,7 @@ export function trouverChiffre(
   const valeur = listeFiltree.reduce((acc, item) => {
     return acc + item[champ] ?? 0;
   }, 0);
-  return valeur;
+  return parseFloat(valeur).toFixed(chiffreApresVirgule);
 }
 
 export function AfficherEntier(nombre) {

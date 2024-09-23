@@ -20,7 +20,11 @@
                     class="nbr-ha animated flipInY delay-05s fast"
                     id="emplois_repartition"
                   >
-                    {{ this.$store.state.resultatSimulation.emploisAMobiliser }}
+                    {{
+                      Math.round(
+                        this.$store.state.resultatSimulation.emploisAMobiliser
+                      )
+                    }}
                   </div>
                   <div class="hectares animated fadeIn delay-1s fast">
                     emplois agricoles directs
@@ -31,17 +35,7 @@
                 sont nécessaires
               </h1>
               <resumeChoix />
-              <!--  <div class="titre-page animated fadeInUp delay-05s text-center">
-            <h2 class="resultats-detail">
-              <span class="icon-ico_navigation_territoire icon vert-clair mr-1"></span><span class="vert-clair">Territoire : </span><span id="selection2"></span>
-            </h2>
-          </div>
-          <div class="titre-page animated fadeInUp delay-05s text-center  mb-5">
-            <h2 class="resultats-detail">
-              <span class="icon-ico_navigation_population icon vert-clair mr-1"></span><span class="vert-clair">Population : </span> <span id="population2"></span>
 
-            </h2>
-          </div>-->
               <div class="cadre-graphique">
                 <div class="resultats-categories repartition cadre-emploi">
                   <table

@@ -37,7 +37,7 @@
                         class="nbr-ha animated flipInX delay-1s odometer"
                         id="surface6"
                       >
-                        {{ surfaceAMobiliser }}
+                        {{ Math.round(surfaceAMobiliser) }}
                       </div>
                       <div class="hectares">hectares</div>
                     </div>
@@ -83,7 +83,7 @@
                     id="emplois4"
                     style="float: none"
                   >
-                    {{ emploisAMobiliser }}
+                    {{ Math.round(emploisAMobiliser) }}
                   </div>
                   <div class="hectares">
                     emplois <span id="emplois_inf_1"></span>

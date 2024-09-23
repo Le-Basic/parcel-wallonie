@@ -306,17 +306,21 @@ function calculerSurfacesEtEmploisAMobiliser(
   const surfaces_actuelles_parcel_niveau_1 = surfaceActuelleResponseApi.map(
     (item) => ({
       ...item,
-      part_surfaces_actuelles: item.sau_ha / surfaces_actuelles,
+      part_surfaces_actuelles: (item.sau_ha * 100) / surfaces_actuelles,
     })
   );
 
   const surfaces_actuelles_paysage = surfaceActuelleResponseApiPaysage.map(
     (item) => ({
       ...item,
-      part_surfaces_actuelles: item.sau_ha / surfaces_actuelles,
+      part_surfaces_actuelles: (item.sau_ha * 100) / surfaces_actuelles,
     })
   );
   const groupedData = {};
+  console.log(
+    "surfaceNecessairePaysageResponseApi",
+    surfaceNecessairePaysageResponseApi
+  );
   surfaceNecessairePaysageResponseApi
     .map((item) => ({
       ...item,
@@ -338,6 +342,7 @@ function calculerSurfacesEtEmploisAMobiliser(
         libelle_parcel_paysage_actuel: key,
         surface_a_mobiliser: 0,
       };
+      console.log("entry", entry);
       groupedData[key].surface_a_mobiliser += entry.surface_a_mobiliser;
     });
   const surfaces_a_mobiliser_paysage = Object.values(groupedData);
@@ -412,5 +417,5 @@ function calculSurfAMobiliser(
       part_relocalisee) /
     100;
 
-  return Math.round(surfaces_a_mobiliser);
+  return surfaces_a_mobiliser;
 }

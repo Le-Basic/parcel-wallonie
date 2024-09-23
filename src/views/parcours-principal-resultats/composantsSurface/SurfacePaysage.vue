@@ -71,15 +71,14 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfaceNecessairePaysage,
-                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.PRAIRIES
-                                  .libelle,
-                                "surface_a_mobiliser",
-                                "libelle_parcel_paysage_actuel"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfaceNecessairePaysage,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.PRAIRIES
+                                .libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_paysage_actuel",
+                              this.chiffreApresVirgule
                             )
                           )
                         }}
@@ -107,15 +106,14 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfaceNecessairePaysage,
-                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FOURRAGES
-                                  .libelle,
-                                "surface_a_mobiliser",
-                                "libelle_parcel_paysage_actuel"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfaceNecessairePaysage,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FOURRAGES
+                                .libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_paysage_actuel",
+                              this.chiffreApresVirgule
                             )
                           )
                         }}
@@ -143,15 +141,14 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfaceNecessairePaysage,
-                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMINEUSES
-                                  .libelle,
-                                "surface_a_mobiliser",
-                                "libelle_parcel_paysage_actuel"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfaceNecessairePaysage,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMINEUSES
+                                .libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_paysage_actuel",
+                              this.chiffreApresVirgule
                             )
                           )
                         }}
@@ -181,15 +178,14 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfaceNecessairePaysage,
-                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.CEREALES
-                                  .libelle,
-                                "surface_a_mobiliser",
-                                "libelle_parcel_paysage_actuel"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfaceNecessairePaysage,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.CEREALES
+                                .libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_paysage_actuel",
+                              this.chiffreApresVirgule
                             )
                           )
                         }}
@@ -218,15 +214,14 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfaceNecessairePaysage,
-                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
-                                  .CULTURES_INDUSTRIELLES_ALIMENTAIRES.libelle,
-                                "surface_a_mobiliser",
-                                "libelle_parcel_paysage_actuel"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfaceNecessairePaysage,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
+                                .CULTURES_INDUSTRIELLES_ALIMENTAIRES.libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_paysage_actuel",
+                              this.chiffreApresVirgule
                             )
                           )
                         }}
@@ -254,15 +249,13 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfaceNecessairePaysage,
-                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FRUITS
-                                  .libelle,
-                                "surface_a_mobiliser",
-                                "libelle_parcel_paysage_actuel"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfaceNecessairePaysage,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FRUITS.libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_paysage_actuel",
+                              this.chiffreApresVirgule
                             )
                           )
                         }}
@@ -290,15 +283,14 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfaceNecessairePaysage,
-                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMES
-                                  .libelle,
-                                "surface_a_mobiliser",
-                                "libelle_parcel_paysage_actuel"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfaceNecessairePaysage,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMES
+                                .libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_paysage_actuel",
+                              this.chiffreApresVirgule
                             )
                           )
                         }}
@@ -379,15 +371,13 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfacesActuellesPaysage,
-                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.PRAIRIES
-                                  .libelle,
-                                "sau_ha",
-                                "libelle_parcel_paysage_actuel"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesPaysage,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.PRAIRIES
+                                .libelle,
+                              "sau_ha",
+                              "libelle_parcel_paysage_actuel"
                             )
                           )
                         }}
@@ -415,15 +405,13 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfacesActuellesPaysage,
-                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FOURRAGES
-                                  .libelle,
-                                "sau_ha",
-                                "libelle_parcel_paysage_actuel"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesPaysage,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FOURRAGES
+                                .libelle,
+                              "sau_ha",
+                              "libelle_parcel_paysage_actuel"
                             )
                           )
                         }}
@@ -451,15 +439,13 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfacesActuellesPaysage,
-                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMINEUSES
-                                  .libelle,
-                                "sau_ha",
-                                "libelle_parcel_paysage_actuel"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesPaysage,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMINEUSES
+                                .libelle,
+                              "sau_ha",
+                              "libelle_parcel_paysage_actuel"
                             )
                           )
                         }}
@@ -489,15 +475,13 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfacesActuellesPaysage,
-                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.CEREALES
-                                  .libelle,
-                                "sau_ha",
-                                "libelle_parcel_paysage_actuel"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesPaysage,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.CEREALES
+                                .libelle,
+                              "sau_ha",
+                              "libelle_parcel_paysage_actuel"
                             )
                           )
                         }}
@@ -526,15 +510,13 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfacesActuellesPaysage,
-                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
-                                  .CULTURES_INDUSTRIELLES_ALIMENTAIRES.libelle,
-                                "sau_ha",
-                                "libelle_parcel_paysage_actuel"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesPaysage,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
+                                .CULTURES_INDUSTRIELLES_ALIMENTAIRES.libelle,
+                              "sau_ha",
+                              "libelle_parcel_paysage_actuel"
                             )
                           )
                         }}
@@ -562,15 +544,12 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfacesActuellesPaysage,
-                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FRUITS
-                                  .libelle,
-                                "sau_ha",
-                                "libelle_parcel_paysage_actuel"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesPaysage,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FRUITS.libelle,
+                              "sau_ha",
+                              "libelle_parcel_paysage_actuel"
                             )
                           )
                         }}
@@ -598,15 +577,13 @@
                       <div class="col-auto ml-auto hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfacesActuellesPaysage,
-                                CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMES
-                                  .libelle,
-                                "sau_ha",
-                                "libelle_parcel_paysage_actuel"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesPaysage,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMES
+                                .libelle,
+                              "sau_ha",
+                              "libelle_parcel_paysage_actuel"
                             )
                           )
                         }}
@@ -633,7 +610,6 @@
 </template>
 
 <script>
-import { Treemap } from "d3plus-hierarchy";
 import {
   formatterSurfacesNecessaires,
   formatterChiffres,
@@ -653,8 +629,9 @@ export default {
       CATEGORIE_PRODUITS_ACTUELS_PAYSAGE,
       data: {
         occupationActuelle: [],
-        potentielNourricier: [],
       },
+      chiffreApresVirgule:
+        this.$store.state.resultatSimulation.surfaceAMobiliser < 100 ? 1 : 0,
     };
   },
   methods: {
@@ -662,102 +639,6 @@ export default {
     trouverChiffre,
     formatterSurfacesNecessaires,
     formatterChiffres,
-    recupererDonnees() {
-      var data4 = [
-        {
-          surface: 881877,
-          name: "Prairies",
-          color: "#D1F18C",
-        },
-        {
-          surface: 402398,
-          name: "Cultures fourragères",
-          color: "#F1CF98",
-        },
-        {
-          surface: 54540,
-          name: "Légumineuses",
-          color: "#FDD084",
-        },
-        {
-          surface: 170505,
-          name: "Céréales",
-          color: "#FBCDC2",
-        },
-        {
-          surface: 18180,
-          name: "Cultures industrielles",
-          color: "#88D9D9",
-        },
-        {
-          surface: 27400,
-          name: "Fruits",
-          color: "#FB97C7",
-        },
-        {
-          surface: 20200,
-          name: "Légumes",
-          color: "#EABDFF",
-        },
-        {
-          surface: 20000,
-          name: "Autres",
-          color: "#9CE6FA",
-          background: "#F1F9E0",
-        },
-        {
-          surface: 10000,
-          name: "Jachères",
-          color: "#BDD687",
-        },
-      ];
-      const bodyFormData = new FormData();
-      var codesTerritoireParcel = this.$store.state.geoList.map(
-        (el) => el.code_territoire
-      );
-      codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
-      console.log(codesTerritoireParcel);
-      bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
-      //TODO REFACTO NECESSAIRE
-      this.$axios
-        .post(
-          window.apiURL + "parcel/belgique/surfaces_actuels_paysage",
-          codesTerritoireParcel, // Request body data
-          {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-          }
-        )
-        .then((response) => {
-          data4.forEach((el) => {
-            console.log(el);
-            response.data.find((el2) => {
-              if (el.name == el2.libelle_parcel_paysage_actuel) {
-                el.surface = el2.sau_ha;
-                this.data.occupationActuelle.push(el);
-                console.log(this.data.occupationActuelle);
-              }
-            });
-          });
-          console.log(response);
-        })
-        .then(() => {
-          new Treemap()
-            .select("#viz4")
-            .data(this.data.occupationActuelle)
-            .groupBy("name")
-            .sum("surface")
-            .color("color")
-            .height(500)
-            .legend(0)
-            .render();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
   },
   computed: {
     occupationActuelleTotale() {
@@ -765,6 +646,7 @@ export default {
     },
 
     repartitionSurfaceNecessaires() {
+      console.log("chiffreApresVirgule", this.chiffreApresVirgule);
       let data = [];
       for (const [key, value] of Object.entries(
         CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
@@ -775,7 +657,8 @@ export default {
             this.$store.state.resultatSimulation.surfaceNecessairePaysage,
             value.libelle,
             "surface_a_mobiliser",
-            "libelle_parcel_paysage_actuel"
+            "libelle_parcel_paysage_actuel",
+            2
           ) * 100
         );
         let donnePourGraphique = {
@@ -797,13 +680,11 @@ export default {
         CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
       )) {
         console.log(key);
-        value.part_surface_a_mobiliser = Math.round(
-          trouverChiffre(
-            this.$store.state.resultatSimulation.surfacesActuellesPaysage,
-            value.libelle,
-            "sau_ha",
-            "libelle_parcel_paysage_actuel"
-          ) * 100
+        value.part_surface_a_mobiliser = trouverChiffre(
+          this.$store.state.resultatSimulation.surfacesActuellesPaysage,
+          value.libelle,
+          "sau_ha",
+          "libelle_parcel_paysage_actuel"
         );
         let donnePourGraphique = {
           value: value.part_surface_a_mobiliser,

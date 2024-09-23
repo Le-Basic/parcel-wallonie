@@ -121,15 +121,14 @@
                       <div class="hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfacesEmploisAMobiliser,
-                                CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES
-                                  .libelle,
-                                "surface_a_mobiliser",
-                                "libelle_parcel_niveau_1"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesEmploisAMobiliser,
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES
+                                .libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_niveau_1",
+                              this.chiffreApresVirgule
                             )
                           )
                         }}
@@ -183,15 +182,14 @@
                       <div class="hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfacesEmploisAMobiliser,
-                                CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS
-                                  .libelle,
-                                "surface_a_mobiliser",
-                                "libelle_parcel_niveau_1"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesEmploisAMobiliser,
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS
+                                .libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_niveau_1",
+                              this.chiffreApresVirgule
                             )
                           )
                         }}
@@ -244,15 +242,14 @@
                       <div class="hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfacesEmploisAMobiliser,
-                                CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES
-                                  .libelle,
-                                "surface_a_mobiliser",
-                                "libelle_parcel_niveau_1"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesEmploisAMobiliser,
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES
+                                .libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_niveau_1",
+                              this.chiffreApresVirgule
                             )
                           )
                         }}
@@ -303,15 +300,14 @@
                       <div class="hectares">
                         {{
                           formatterSurfacesNecessaires(
-                            Math.round(
-                              trouverChiffre(
-                                this.$store.state.resultatSimulation
-                                  .surfacesEmploisAMobiliser,
-                                CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE
-                                  .libelle,
-                                "surface_a_mobiliser",
-                                "libelle_parcel_niveau_1"
-                              )
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesEmploisAMobiliser,
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE
+                                .libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_niveau_1",
+                              this.chiffreApresVirgule
                             )
                           )
                         }}
@@ -406,7 +402,7 @@
                                 .libelle,
                               'part_surfaces_actuelles',
                               'libelle_parcel_produit_actuel'
-                            ) * 100
+                            )
                           )
                         "
                         couleur="#F9B233"
@@ -453,7 +449,7 @@
                                 .libelle,
                               'part_surfaces_actuelles',
                               'libelle_parcel_produit_actuel'
-                            ) * 100
+                            )
                           )
                         "
                         :couleur="
@@ -502,7 +498,7 @@
                                 .libelle,
                               'part_surfaces_actuelles',
                               'libelle_parcel_produit_actuel'
-                            ) * 100
+                            )
                           )
                         "
                         :couleur="
@@ -549,7 +545,7 @@
                                 .libelle,
                               'part_surfaces_actuelles',
                               'libelle_parcel_produit_actuel'
-                            ) * 100
+                            )
                           )
                         "
                         :couleur="
@@ -596,7 +592,7 @@
                                 .libelle,
                               'part_surfaces_actuelles',
                               'libelle_parcel_produit_actuel'
-                            ) * 100
+                            )
                           )
                         "
                         :couleur="
@@ -1255,6 +1251,8 @@ export default {
       occupationActuelle: [],
       surfaces_emplois_a_mobiliser_parcel_niveau_1: [],
       modalDetails: "",
+      chiffreApresVirgule:
+        this.$store.state.resultatSimulation.surfaceAMobiliser < 100 ? 1 : 0,
     };
   },
   methods: {
@@ -1274,11 +1272,7 @@ export default {
       this.$emit("nextStep", hash);
     },
     formatterSurfacesNecessaires(chiffreSurface) {
-      return (
-        "Environ " +
-        Math.round(chiffreSurface).toLocaleString("fr-FR") +
-        " hectares"
-      );
+      return "Environ " + chiffreSurface.toLocaleString("fr-FR") + " hectares";
     },
     fermerModalDetails() {
       this.modalDetails = "";
@@ -1308,17 +1302,18 @@ export default {
     },
     repartitionSurfacePotentielNourricier() {
       let data = [];
-      for (const [key, value] of Object.entries(
+      for (const [, value] of Object.entries(
         CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE
       )) {
-        console.log(key);
-        value.partAMobiliser = Math.round(
-          trouverChiffre(
-            this.$store.state.resultatSimulation.surfacesEmploisAMobiliser,
-            value.libelle,
-            "part_surface_a_mobiliser",
-            "libelle_parcel_niveau_2"
-          )
+        value.partAMobiliser = trouverChiffre(
+          this.$store.state.resultatSimulation.surfacesEmploisAMobiliser,
+          value.libelle,
+          "part_surface_a_mobiliser",
+          "libelle_parcel_niveau_2",
+          3
+        );
+        value.partAMobiliser = parseFloat(value.partAMobiliser).toFixed(
+          this.chiffreApresVirgule
         );
         let donnePourGraphique = {
           value: value.partAMobiliser,
@@ -1344,7 +1339,8 @@ export default {
             this.$store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
             value.libelle,
             "part_surfaces_actuelles",
-            "libelle_parcel_produit_actuel"
+            "libelle_parcel_produit_actuel",
+            3
           ) * 100
         );
         let donnePourGraphique = {
