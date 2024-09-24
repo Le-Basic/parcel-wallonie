@@ -403,9 +403,9 @@
                               this.$store.state.resultatSimulation
                                 .surfacesActuellesParcelNiveau1,
                               CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES
-                                .libelle,
+                                .code,
                               'part_surfaces_actuelles',
-                              'libelle_parcel_produit_actuel'
+                              'code_parcel'
                             )
                           )
                         "
@@ -428,9 +428,9 @@
                               this.$store.state.resultatSimulation
                                 .surfacesActuellesParcelNiveau1,
                               CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES
-                                .libelle,
+                                .code,
                               "sau_ha",
-                              "libelle_parcel_produit_actuel"
+                              "code_parcel"
                             )
                           )
                         }}
@@ -450,9 +450,9 @@
                               this.$store.state.resultatSimulation
                                 .surfacesActuellesParcelNiveau1,
                               CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE
-                                .libelle,
+                                .code,
                               'part_surfaces_actuelles',
-                              'libelle_parcel_produit_actuel'
+                              'code_parcel'
                             )
                           )
                         "
@@ -477,9 +477,9 @@
                               this.$store.state.resultatSimulation
                                 .surfacesActuellesParcelNiveau1,
                               CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE
-                                .libelle,
+                                .code,
                               "sau_ha",
-                              "libelle_parcel_produit_actuel"
+                              "code_parcel"
                             )
                           )
                         }}
@@ -498,10 +498,9 @@
                             trouverChiffre(
                               this.$store.state.resultatSimulation
                                 .surfacesActuellesParcelNiveau1,
-                              CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS
-                                .libelle,
+                              CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS.code,
                               'part_surfaces_actuelles',
-                              'libelle_parcel_produit_actuel'
+                              'code_parcel'
                             )
                           )
                         "
@@ -523,10 +522,9 @@
                             trouverChiffre(
                               this.$store.state.resultatSimulation
                                 .surfacesActuellesParcelNiveau1,
-                              CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS
-                                .libelle,
+                              CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS.code,
                               "sau_ha",
-                              "libelle_parcel_produit_actuel"
+                              "code_parcel"
                             )
                           )
                         }}
@@ -546,9 +544,9 @@
                               this.$store.state.resultatSimulation
                                 .surfacesActuellesParcelNiveau1,
                               CATEGORIE_PRODUITS_SURFACES_ACTUELLES.LEGUMES
-                                .libelle,
+                                .code,
                               'part_surfaces_actuelles',
-                              'libelle_parcel_produit_actuel'
+                              'code_parcel'
                             )
                           )
                         "
@@ -571,9 +569,9 @@
                               this.$store.state.resultatSimulation
                                 .surfacesActuellesParcelNiveau1,
                               CATEGORIE_PRODUITS_SURFACES_ACTUELLES.LEGUMES
-                                .libelle,
+                                .code,
                               "sau_ha",
-                              "libelle_parcel_produit_actuel"
+                              "code_parcel"
                             )
                           )
                         }}
@@ -593,9 +591,9 @@
                               this.$store.state.resultatSimulation
                                 .surfacesActuellesParcelNiveau1,
                               CATEGORIE_PRODUITS_SURFACES_ACTUELLES.JACHERES
-                                .libelle,
+                                .code,
                               'part_surfaces_actuelles',
-                              'libelle_parcel_produit_actuel'
+                              'code_parcel'
                             )
                           )
                         "
@@ -616,9 +614,62 @@
                               this.$store.state.resultatSimulation
                                 .surfacesActuellesParcelNiveau1,
                               CATEGORIE_PRODUITS_SURFACES_ACTUELLES.JACHERES
-                                .libelle,
+                                .code,
                               "sau_ha",
-                              "libelle_parcel_produit_actuel"
+                              "code_parcel"
+                            )
+                          )
+                        }}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5">
+                  <div
+                    class="cadre-categorie animated fadeIn delay-1s autreindus"
+                  >
+                    <div class="" id="ppc5" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
+                          Math.round(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesParcelNiveau1,
+                              CATEGORIE_PRODUITS_SURFACES_ACTUELLES.INDUSTRIE
+                                .code,
+                              'part_surfaces_actuelles',
+                              'code_parcel'
+                            )
+                          )
+                        "
+                        :couleur="
+                          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.INDUSTRIE
+                            .couleur
+                        "
+                      ></jaugeChart>
+                    </div>
+                    <div class="">
+                      <span
+                        class="icon-autres-cultures autreindus ico-medium"
+                      ></span>
+                    </div>
+                    <div class="cadre-titre-categorie">
+                      <div class="titre-categorie">
+                        Autres cultures industrielles (hors alimentation
+                        humaine)
+                      </div>
+                      <div class="hectares">
+                        {{
+                          formatterSurfacesNecessaires(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesActuellesParcelNiveau1,
+                              CATEGORIE_PRODUITS_SURFACES_ACTUELLES.INDUSTRIE
+                                .code,
+                              "sau_ha",
+                              "code_parcel"
                             )
                           )
                         }}
@@ -1341,11 +1392,11 @@ export default {
         value.part_surfaces_actuelles = Math.round(
           trouverChiffre(
             this.$store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
-            value.libelle,
+            value.code,
             "part_surfaces_actuelles",
-            "libelle_parcel_produit_actuel",
+            "code_parcel",
             3
-          ) * 100
+          )
         );
         let donnePourGraphique = {
           value: value.part_surfaces_actuelles,
@@ -1365,9 +1416,9 @@ export default {
       return (
         trouverChiffre(
           this.$store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
-          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES.libelle,
+          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES.code,
           "sau_ha",
-          "libelle_parcel_produit_actuel"
+          "code_parcel"
         ) /
         trouverChiffre(
           this.$store.state.resultatSimulation.surfacesEmploisAMobiliser,
@@ -1381,9 +1432,9 @@ export default {
       return (
         trouverChiffre(
           this.$store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
-          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.LEGUMES.libelle,
+          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.LEGUMES.code,
           "sau_ha",
-          "libelle_parcel_produit_actuel"
+          "code_parcel"
         ) /
         trouverChiffre(
           this.$store.state.resultatSimulation.surfacesEmploisAMobiliser,
@@ -1397,9 +1448,9 @@ export default {
       return (
         trouverChiffre(
           this.$store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
-          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS.libelle,
+          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS.code,
           "sau_ha",
-          "libelle_parcel_produit_actuel"
+          "code_parcel"
         ) /
         trouverChiffre(
           this.$store.state.resultatSimulation.surfacesEmploisAMobiliser,
@@ -1413,9 +1464,9 @@ export default {
       return (
         trouverChiffre(
           this.$store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
-          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE.libelle,
+          CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE.code,
           "sau_ha",
-          "libelle_parcel_produit_actuel"
+          "code_parcel"
         ) /
         trouverChiffre(
           this.$store.state.resultatSimulation.surfacesEmploisAMobiliser,
@@ -1471,5 +1522,10 @@ export default {
 
 .result-plus {
   margin: auto;
+}
+
+.autreindus {
+  border-color: #62d5f3;
+  color: #62d5f3;
 }
 </style>

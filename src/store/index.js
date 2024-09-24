@@ -204,7 +204,7 @@ async function recalculerResultatSimulation(
       );
   }
   const actuelles_url =
-    window.apiURL + "parcel/belgique/surfaces_actuels_produit";
+    window.apiURL + "parcel/belgique/surfaces_actuels_produit_par_categorie";
 
   const actuellespaysage__url =
     window.apiURL + "parcel/belgique/surfaces_actuels_paysage";
@@ -257,7 +257,7 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
 
   const url = window.apiURL + "parcel/belgique/surfaces_necessaires";
   const actuelles_url =
-    window.apiURL + "parcel/belgique/surfaces_actuels_produit";
+    window.apiURL + "parcel/belgique/surfaces_actuels_produit_par_categorie";
 
   var surfaceActuelleResponseApi = await fetchSurfacesActuelles(
     actuelles_url,
