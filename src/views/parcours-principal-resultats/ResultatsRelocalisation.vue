@@ -12,7 +12,7 @@
           <div class="" id="asy-sidebarCollapse4"></div>
 
           <div class="text-h2 animated fadeInDown delay-05s">
-            Estimation des effets associés :
+            Cela veut dire quoi sur mon territoire ?
           </div>
           <div class="resultats-generaux row">
             <div
@@ -110,7 +110,6 @@
                       <div
                         class="nbr-ha animated flipInX delay-2s odometer2"
                         id="gaz_effet_serre3"
-                        v-if="impacts.length > 0"
                       >
                         {{ Math.round(pctDifferenceEmissionKGCo2 * 100) }}
                       </div>
@@ -142,7 +141,22 @@
               </div>
             </div>
           </div>
-          <div class="note animated fadeInDown delay-2s">
+          <div class="ligne-bouton">
+            <bouton
+              class="btn btn-secondaire mt-5"
+              @click="modalActive = 'ModalPotentielNourricier'"
+            >
+              C'est quoi le potentiel nourricier ?
+            </bouton>
+            <router-link
+              class="btn btn-principal mt-5"
+              to="/repartition-des-produits-relocalises"
+            >
+              Explorer en détail les surfaces
+            </router-link>
+          </div>
+          <div>
+            <div class="note animated fadeInDown delay-2s"></div>
             <p>
               <sup>*</sup>PARCEL estime les impacts écologiques en fonction de
               vos choix de changement de régime alimentaire et de part en bio.
@@ -163,6 +177,11 @@
     <nav id="asy-sidebar" :class="montrerClasse">
       <modal-affiner-choix @fermerModalAffiner="fermerModal" />
     </nav>
+    <ModalComposant
+      :modalId="this.modalActive"
+      v-if="this.modalActive"
+      @fermerModal="fermerModalPotentiel"
+    ></ModalComposant>
   </div>
 </template>
 
@@ -170,35 +189,27 @@
 import Nav from "@/components/navigation/BarreNavigation.vue";
 import resumeChoix from "@/views/modal/resumeChoix.vue";
 import ModalAffinerChoix from "@/views/modal/modalAffinerChoix.vue";
-
-import { getImpacts } from "@/plugins/getImpacts";
-import { IDS_IMPACTS } from "@/config/ImpactIds";
+import ModalComposant from "@/views/modal/ModalComposant.vue";
 
 export default {
-  components: { resumeChoix, Nav, ModalAffinerChoix },
+  components: { resumeChoix, Nav, ModalAffinerChoix, ModalComposant },
   data() {
     return {
       donnees: {},
       montrerClasse: "",
-      impacts: [],
-      IDS_IMPACTS,
+      modalActive: "",
     };
   },
   methods: {
-    getImpacts,
     montrerModalAffiner() {
       this.montrerClasse = "show";
     },
     fermerModal() {
       this.montrerClasse = "";
     },
-  },
-  async mounted() {
-    this.$store.dispatch(
-      "actionChoisirRegimeAlimentaire",
-      this.$store.state.regime_alimentaire
-    );
-    this.impacts = await getImpacts(this.$store.state.partpertes);
+    fermerModalPotentiel() {
+      this.modalActive = "";
+    },
   },
   computed: {
     surfaceAMobiliser() {
@@ -218,15 +229,6 @@ export default {
     },
   },
   // TODO: REFACTO DU GET IMPACT
-  watch: {
-    "$store.state.resultatSimulation": function () {
-      getImpacts(this.$store.state.partpertes).then((res) => {
-        this.impacts = res;
-      });
-      console.log(this.impacts);
-    },
-    deep: true,
-  },
 };
 </script>
 
@@ -236,5 +238,22 @@ export default {
   display: block !important;
   padding: 0px !important;
   opacity: 1 !important;
+}
+
+.btn {
+  line-height: 1;
+  padding: 16px 1rem !important;
+  height: auto !important;
+  padding-right: 3rem !important;
+  padding-left: 1.7rem !important;
+  font-size: 16px !important;
+}
+
+.ligne-bouton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
 }
 </style>

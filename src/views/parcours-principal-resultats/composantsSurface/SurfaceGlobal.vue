@@ -276,47 +276,11 @@
                 <div class="odometer-inside" v-if="potentiel_nourricier">
                   {{
                     formatterChiffres(
-                      this.$store.state.resultatSimulation.surfaceAMobiliser
+                      Math.round(
+                        this.$store.state.resultatSimulation.surfaceAMobiliser
+                      )
                     )
                   }}
-                  <!-- <span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">4</span></span
-                        ></span
-                      ></span
-                    ></span
-                  ><span class="odometer-formatting-mark"> </span
-                  ><span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">6</span></span
-                        ></span
-                      ></span
-                    ></span
-                  ><span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">8</span></span
-                        ></span
-                      ></span
-                    ></span
-                  ><span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">0</span></span
-                        ></span
-                      ></span
-                    ></span
-                  > -->
                 </div>
               </div>
               <div class="hectares animate__animated fadeIn delay-1-5s">
@@ -440,7 +404,7 @@
             <div class="col">
               <div class="">
                 <span class="surface_act" id="surface_act2">
-                  {{ formatterChiffres(surfaces_actuelles) }}</span
+                  {{ formatterChiffres(Math.round(surfaces_actuelles)) }}</span
                 >
                 hectares
               </div>

@@ -315,7 +315,7 @@
             class="animated flipInY delay-1s nbr-ha odometer odometer-auto-theme"
             id="surface_act9"
           >
-            {{ formatterChiffres(occupationActuelleTotale) }}
+            {{ formatterChiffres(AfficherEntier(occupationActuelleTotale)) }}
           </div>
           <div class="hectares animated fadeIn delay-1-5s">
             hectares agricoles

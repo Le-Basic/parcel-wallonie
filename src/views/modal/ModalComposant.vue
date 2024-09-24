@@ -27,12 +27,16 @@ const props = defineProps({
   },
   dossierModal: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 
 const ContenuModal = defineAsyncComponent(() => {
-  return import(`@/views/modal/${props.dossierModal}/${props.modalId}.vue`);
+  if (!props.dossierModal) {
+    return import(`@/views/modal/${props.modalId}.vue`);
+  } else {
+    return import(`@/views/modal/${props.dossierModal}/${props.modalId}.vue`);
+  }
 });
 
 const fermerModal = () => {
