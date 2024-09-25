@@ -77,14 +77,14 @@ const premierChiffre = {
 const troisiemeChiffre = {
   icone: "icon-impact-sol",
   titre: "Dégradation des sols",
-  chiffre: "10%",
+  chiffre: "",
   sousTitre:
     "un des principaux facteurs qui participent au changement climatique",
 };
 const deuxiemeChiffre = {
   icone: "icon-impact-climat",
   titre: "Matière organique des sols",
-  chiffre: "%",
+  chiffre: "",
   sousTitre:
     "est fondamentale pour réduire l'érosion des sos, améliorer leur fertilité, favoriser la biodiversité",
 };

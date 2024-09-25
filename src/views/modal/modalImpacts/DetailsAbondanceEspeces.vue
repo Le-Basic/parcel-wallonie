@@ -80,7 +80,7 @@ const deuxiemeChiffre = {
 const troisiemeChiffre = {
   icone: "icon-affiner-reloc",
   titre: "1eres causes",
-  chiffre: 10,
+  chiffre: "",
   sousTitre: "de la perte de biodiversité",
 };
 </script>
