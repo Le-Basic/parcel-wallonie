@@ -917,6 +917,12 @@
       </div>
       <div class="div-continuer">
         <button
+          class="btn btn-secondaire mt-5"
+          @click="modalActive = 'ModalComparaison'"
+        >
+          Comparaison actuel / prospectif
+        </button>
+        <button
           type="button"
           class="btn btn-principal mt-5"
           @click="nextStep('landscape')"
@@ -924,6 +930,7 @@
           Suivant
         </button>
       </div>
+      <div></div>
     </div>
 
     <div
@@ -1275,6 +1282,12 @@
         </div>
       </div>
     </div>
+    <ModalComposant
+      :modalId="this.modalActive"
+      v-if="this.modalActive"
+      @fermerModal="fermerModalComparaison"
+      :maxWidth="1200"
+    ></ModalComposant>
   </section>
 </template>
 
@@ -1290,7 +1303,7 @@ import modalDetail from "@/views/modal/modalDetail.vue";
 import jaugeChart from "@/components/visualisation/jaugeChart.vue";
 import RepartitionSurface from "@/components/visualisation/RepartitionSurface.vue";
 import { FormatterPourcentage } from "@/plugins/utils";
-
+import ModalComposant from "@/views/modal/ModalComposant.vue";
 export default {
   inject: ["$axios"],
   emits: ["nextStep", "fermerModal", "ouvrirModal"],
@@ -1298,6 +1311,7 @@ export default {
     modalDetail,
     jaugeChart,
     RepartitionSurface,
+    ModalComposant,
   },
   data() {
     return {
@@ -1306,6 +1320,7 @@ export default {
       occupationActuelle: [],
       surfaces_emplois_a_mobiliser_parcel_niveau_1: [],
       modalDetails: "",
+      modalActive: "",
       chiffreApresVirgule:
         this.$store.state.resultatSimulation.surfaceAMobiliser < 100 ? 1 : 0,
     };
@@ -1333,6 +1348,9 @@ export default {
       this.modalDetails = "";
       this.$emit("fermerModal");
       console.log("hello", this.modalDetails);
+    },
+    fermerModalComparaison() {
+      this.modalActive = "";
     },
   },
 
@@ -1384,11 +1402,9 @@ export default {
 
     repartitionSurfaceActuelles() {
       let data = [];
-      for (const [key, value] of Object.entries(
+      for (const [, value] of Object.entries(
         CATEGORIE_PRODUITS_SURFACES_ACTUELLES
       )) {
-        console.log(key);
-        console.log(value);
         value.part_surfaces_actuelles = Math.round(
           trouverChiffre(
             this.$store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
@@ -1527,5 +1543,12 @@ export default {
 .autreindus {
   border-color: #62d5f3;
   color: #62d5f3;
+}
+
+.div-continuer {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
 }
 </style>

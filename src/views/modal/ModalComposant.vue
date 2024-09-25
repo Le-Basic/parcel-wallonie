@@ -7,7 +7,11 @@
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
-    <div class="modal-dialog" role="document">
+    <div
+      class="modal-dialog"
+      role="document"
+      :style="{ 'max-width': maxWidth + 'px' }"
+    >
       <div class="modal-content modal-repart-cat-detail">
         <ContenuModal @fermerModal="fermerModal" />
       </div>
@@ -28,6 +32,11 @@ const props = defineProps({
   dossierModal: {
     type: String,
     required: false,
+  },
+  maxWidth: {
+    type: Number,
+    required: false,
+    default: 950,
   },
 });
 
