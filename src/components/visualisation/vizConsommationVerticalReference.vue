@@ -24,6 +24,7 @@ const LIBELLE_XAXIS = [
 
 const data = ref([
   {
+    libelle: CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.CEREALES.libelle,
     value: trouverChiffre(
       store.state.resultatReference.surfacesEmploisAMobiliser,
       CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.CEREALES.libelle,
@@ -35,6 +36,7 @@ const data = ref([
     },
   },
   {
+    libelle: CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.LEGUMES.libelle,
     value: trouverChiffre(
       store.state.resultatReference.surfacesEmploisAMobiliser,
       CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.LEGUMES.libelle,
@@ -46,6 +48,7 @@ const data = ref([
     },
   },
   {
+    libelle: CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.FRUITS.libelle,
     value: trouverChiffre(
       store.state.resultatReference.surfacesEmploisAMobiliser,
       CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.FRUITS.libelle,
@@ -57,6 +60,7 @@ const data = ref([
     },
   },
   {
+    libelle: CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.LAIT.libelle,
     value: trouverChiffre(
       store.state.resultatReference.surfacesEmploisAMobiliser,
       CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.LAIT.libelle,
@@ -68,6 +72,7 @@ const data = ref([
     },
   },
   {
+    libelle: CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.ELEVAGE.libelle,
     value: trouverChiffre(
       store.state.resultatReference.surfacesEmploisAMobiliser,
       CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.ELEVAGE.libelle,
@@ -82,7 +87,27 @@ const data = ref([
 
 const dataBio = ref(
   data.value.map((item) => {
-    return { value: item.value * 0.6 };
+    let valeur;
+    switch (item.libelle) {
+      case CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.LEGUMES.libelle:
+        valeur = (item.value * store.state.curseursBioMin.partbiolegumes) / 100;
+        break;
+      case CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.ELEVAGE.libelle:
+        valeur = (item.value * store.state.curseursBioMin.partbioelevage) / 100;
+        break;
+      case CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.LAIT.libelle:
+        valeur = (item.value * store.state.curseursBioMin.partbioelevage) / 100;
+        break;
+      case CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.CEREALES.libelle:
+        valeur =
+          (item.value * store.state.curseursBioMin.partbiocereales) / 100;
+        break;
+      case CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.FRUITS.libelle:
+        valeur = (item.value * store.state.curseursBioMin.partbiofruits) / 100;
+        break;
+    }
+    console.log("value", item.value, valeur);
+    return { value: valeur };
   })
 );
 
