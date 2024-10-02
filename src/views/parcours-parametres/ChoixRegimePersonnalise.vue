@@ -1235,6 +1235,7 @@ import {
 } from "@/config/categorieApports.js";
 import { fetchCoefficientsGroupesAlimentaires } from "@/plugins/getCoefficientsGroupesAlimentaires";
 import { fetchApportsEnergetiques } from "@/plugins/getApportsEnergetiques";
+import { IDS_REGIMES_ALIMENTAIRES } from "@/config/regimeIds";
 
 const store = useStore();
 const _ = require("lodash");
@@ -1346,12 +1347,13 @@ watch(
   coefficientMultiplicateurVolumeCategorieRegime,
   (nouveauCoefficientMultiplicateur) => {
     console.log(
-      _.isEqual(
-        nouveauCoefficientMultiplicateur,
-        coefficientMultiplicateurVolumeCategorieRegimeChoisi.value
-      )
-    ); // true
-
+      "nouveauCoefficientMultiplicateur",
+      nouveauCoefficientMultiplicateur
+    );
+    console.log(
+      "coefficientMultiplicateurVolumeCategorieRegimeChoisi",
+      coefficientMultiplicateurVolumeCategorieRegimeChoisi.value
+    );
     if (
       _.isEqual(
         nouveauCoefficientMultiplicateur,
@@ -1378,138 +1380,148 @@ watch(
 watch(regimeChoisi, (nouvelleValeur) => {
   store.commit("mutationRegimeAlimentaire", nouvelleValeur);
   console.log("regimeChoisi", nouvelleValeur.id);
-
-  // TODO: REFACTO ET SIMPLIFICATION
-  fetchCoefficientsGroupesAlimentaires({
-    url: "https://lebasic.nohost.me/api/parcel/belgique/coefficients_groupes_alimentaires",
-    idRegimeAlimentaire: nouvelleValeur.id,
-  })
-    .then((coefficients) => {
-      console.log("coefficients", coefficients);
-      let coefficientsMultiplaceteursNouveauxRegimes = {
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES]: coefficients.find(
-          (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.CEREALES.id
-        ).valeur,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE]: coefficients.find(
-          (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.HUILE.id
-        ).valeur,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE]: coefficients.find(
-          (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.PATATE.id
-        ).valeur,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES]: coefficients.find(
-          (c) =>
-            c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.LEGUMINEUSES.id
-        ).valeur,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES]: coefficients.find(
-          (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.LEGUMES.id
-        ).valeur,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS]: coefficients.find(
-          (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.FRUITS.id
-        ).valeur,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX]: coefficients.find(
-          (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.OLEAGINEUX.id
-        ).valeur,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE]: coefficients.find(
-          (c) =>
-            c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.VIANDE_ROUGE.id
-        ).valeur,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE]: coefficients.find(
-          (c) =>
-            c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.VIANDE_BLANCHE.id
-        ).valeur,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS]:
-          coefficients.find(
-            (c) =>
-              c.id_groupe_alimentaire ===
-              GROUPES_ALIMENTAIRES.PRODUITS_LAITIERS.id
-          ).valeur,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS]: coefficients.find(
-          (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.OEUFS.id
-        ).valeur,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE]: coefficients.find(
-          (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.SUCRE.id
-        ).valeur,
-      };
-      coefficientMultiplicateurVolumeCategorieRegimeChoisi.value =
-        coefficientsMultiplaceteursNouveauxRegimes;
-      return coefficientsMultiplaceteursNouveauxRegimes;
-    })
-    .then((coefficientsMultiplaceteursNouveauxRegimes) => {
-      valeursChangementGroupeAlimentaire.value = {
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE]:
-          coefficientsMultiplaceteursNouveauxRegimes[
-            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE
-          ] *
-            100 -
-          100,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES]:
-          coefficientsMultiplaceteursNouveauxRegimes[
-            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES
-          ] *
-            100 -
-          100,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE]:
-          coefficientsMultiplaceteursNouveauxRegimes[
-            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE
-          ] *
-            100 -
-          100,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES]:
-          coefficientsMultiplaceteursNouveauxRegimes[
-            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES
-          ] *
-            100 -
-          100,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES]:
-          coefficientsMultiplaceteursNouveauxRegimes[
-            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES
-          ] *
-            100 -
-          100,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS]:
-          coefficientsMultiplaceteursNouveauxRegimes[
-            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS
-          ] *
-            100 -
-          100,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX]:
-          coefficientsMultiplaceteursNouveauxRegimes[
-            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX
-          ] *
-            100 -
-          100,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE]:
-          coefficientsMultiplaceteursNouveauxRegimes[
-            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE
-          ] *
-            100 -
-          100,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE]:
-          (coefficientsMultiplaceteursNouveauxRegimes[
-            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE
-          ] -
-            1) *
-          100,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS]:
-          coefficientsMultiplaceteursNouveauxRegimes[
-            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS
-          ] *
-            100 -
-          100,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS]:
-          coefficientsMultiplaceteursNouveauxRegimes[
-            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS
-          ] *
-            100 -
-          100,
-        [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE]:
-          coefficientsMultiplaceteursNouveauxRegimes[
-            IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE
-          ] *
-            100 -
-          100,
-      };
+  if (nouvelleValeur.id != IDS_REGIMES_ALIMENTAIRES.PERSONNALISE) {
+    fetchApportsEnergetiques(
+      "https://lebasic.nohost.me/api/parcel/belgique/apports_energetiques",
+      listeCoefficientMultiplicateurVolumeCategorieRegimeChoisi
+    ).then((apports) => {
+      apportsEnergetiques.value = apports;
     });
+    // TODO: REFACTO ET SIMPLIFICATION
+    console.log("fetchCoefficientsGroupesAlimentaires");
+    fetchCoefficientsGroupesAlimentaires({
+      url: "https://lebasic.nohost.me/api/parcel/belgique/coefficients_groupes_alimentaires",
+      idRegimeAlimentaire: nouvelleValeur.id,
+    })
+      .then((coefficients) => {
+        let coefficientsMultiplaceteursNouveauxRegimes = {
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES]: coefficients.find(
+            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.CEREALES.id
+          ).valeur,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE]: coefficients.find(
+            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.HUILE.id
+          ).valeur,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE]: coefficients.find(
+            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.PATATE.id
+          ).valeur,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES]: coefficients.find(
+            (c) =>
+              c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.LEGUMINEUSES.id
+          ).valeur,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES]: coefficients.find(
+            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.LEGUMES.id
+          ).valeur,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS]: coefficients.find(
+            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.FRUITS.id
+          ).valeur,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX]: coefficients.find(
+            (c) =>
+              c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.OLEAGINEUX.id
+          ).valeur,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE]: coefficients.find(
+            (c) =>
+              c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.VIANDE_ROUGE.id
+          ).valeur,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE]:
+            coefficients.find(
+              (c) =>
+                c.id_groupe_alimentaire ===
+                GROUPES_ALIMENTAIRES.VIANDE_BLANCHE.id
+            ).valeur,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS]:
+            coefficients.find(
+              (c) =>
+                c.id_groupe_alimentaire ===
+                GROUPES_ALIMENTAIRES.PRODUITS_LAITIERS.id
+            ).valeur,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS]: coefficients.find(
+            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.OEUFS.id
+          ).valeur,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE]: coefficients.find(
+            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.SUCRE.id
+          ).valeur,
+        };
+        coefficientMultiplicateurVolumeCategorieRegimeChoisi.value =
+          coefficientsMultiplaceteursNouveauxRegimes;
+        return coefficientsMultiplaceteursNouveauxRegimes;
+      })
+      .then((coefficientsMultiplaceteursNouveauxRegimes) => {
+        valeursChangementGroupeAlimentaire.value = {
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE]:
+            coefficientsMultiplaceteursNouveauxRegimes[
+              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE
+            ] *
+              100 -
+            100,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES]:
+            coefficientsMultiplaceteursNouveauxRegimes[
+              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES
+            ] *
+              100 -
+            100,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE]:
+            coefficientsMultiplaceteursNouveauxRegimes[
+              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE
+            ] *
+              100 -
+            100,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES]:
+            coefficientsMultiplaceteursNouveauxRegimes[
+              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES
+            ] *
+              100 -
+            100,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES]:
+            coefficientsMultiplaceteursNouveauxRegimes[
+              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES
+            ] *
+              100 -
+            100,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS]:
+            coefficientsMultiplaceteursNouveauxRegimes[
+              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS
+            ] *
+              100 -
+            100,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX]:
+            coefficientsMultiplaceteursNouveauxRegimes[
+              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX
+            ] *
+              100 -
+            100,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE]:
+            coefficientsMultiplaceteursNouveauxRegimes[
+              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE
+            ] *
+              100 -
+            100,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE]:
+            (coefficientsMultiplaceteursNouveauxRegimes[
+              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE
+            ] -
+              1) *
+            100,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS]:
+            coefficientsMultiplaceteursNouveauxRegimes[
+              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS
+            ] *
+              100 -
+            100,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS]:
+            coefficientsMultiplaceteursNouveauxRegimes[
+              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS
+            ] *
+              100 -
+            100,
+          [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE]:
+            coefficientsMultiplaceteursNouveauxRegimes[
+              IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE
+            ] *
+              100 -
+            100,
+        };
+      });
+  }
 });
 
 // TODO refacto doit exister quelque part
@@ -1518,14 +1530,13 @@ function changementRegime(regime) {
 }
 
 const ChangerCompteur = (sens, cle) => {
-  valeursChangementGroupeAlimentaire.value[cle] += 5 * sens;
-  coefficientMultiplicateurVolumeCategorieRegimeChoisi.value[cle] +=
-    (5 * sens) / 100;
+  valeursChangementGroupeAlimentaire.value[cle] =
+    5 * sens + Number.parseFloat(valeursChangementGroupeAlimentaire.value[cle]);
 };
 
 function creerCoefficientMultiplicateur(compteur) {
-  let valeur = 1 + Number(compteur / 100);
-  return Number.parseFloat(valeur).toFixed(2);
+  let valeur = 1 + Number.parseFloat(compteur / 100);
+  return Number(Number.parseFloat(valeur).toFixed(2));
 }
 
 const conclusionRegime = ref([
@@ -1554,8 +1565,6 @@ const conclusionRegime = ref([
 // Fonction pour passer si on a assez ou pas d'un certain apport
 // -1 fort déficit, 0 léger déficit, 1 correct
 function changerConclusionRegimeParCategorie(valeur, categorieRegimeAChanger) {
-  console.log("changerValeur", valeur);
-  console.log("changerValeur", categorieRegimeAChanger);
   let nouvelleValeur = 0;
   switch (valeur) {
     case "fort":
@@ -1580,7 +1589,6 @@ function changerConclusionRegimeParCategorie(valeur, categorieRegimeAChanger) {
       valeur: nouvelleValeur,
     };
   });
-  console.log("conclusionRegime", conclusionRegime.value);
 }
 
 function categorieApportRegimeAlimentaire() {
@@ -1615,13 +1623,6 @@ watch(
       nouveauCoefficientMultiplicateur
     ).then((nouveauxApports) => {
       apportsEnergetiques.value = nouveauxApports;
-      console.log(
-        "apportsEnergetiques",
-        apportsEnergetiques.value.find(
-          (apport) =>
-            apport.id_apport_energetique === CATEGORIE_APPORT_IDS.ENERGIE
-        )
-      );
     });
   },
   { immediate: true }
