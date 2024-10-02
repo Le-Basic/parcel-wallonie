@@ -85,6 +85,12 @@ const data = ref([
   },
 ]);
 
+let dataTotal = data.value
+  .map((item) => {
+    return Number(item.value);
+  })
+  .reduce((total, valeur) => total + valeur, 0);
+console.log("total", dataTotal);
 const dataBio = ref(
   data.value.map((item) => {
     let valeur;
@@ -155,7 +161,15 @@ const options = ref({
       barGap: "0%",
       barCategoryGap: "5%",
       label: {
-        show: false,
+        position: "insideLeft",
+        color: "white",
+        show: true,
+        formatter: (item) => {
+          console.log(item.value / dataTotal);
+          return item.value / dataTotal > 0.05
+            ? Intl.NumberFormat("fr-FR").format(item.value)
+            : "";
+        },
       },
     },
     {

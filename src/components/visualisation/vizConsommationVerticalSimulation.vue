@@ -163,7 +163,7 @@ const options = computed(() => {
           formatter: (item) => {
             console.log(item);
             return (
-              "Différence de consommation: \n" +
+              "Diff. \nde conso: \n" +
               item.data.differenceEntreReferenceSimulation +
               "%"
             );

@@ -8,7 +8,6 @@
             Choisissez le régime alimentaire de votre simulation de
             relocalisation
           </h1>
-          <pre>{{ $store.state }}</pre>
 
           <div class="note text-center">
             Le choix du régime choisi est un régime moyen pour la population. Il
@@ -1526,7 +1525,7 @@ const ChangerCompteur = (sens, cle) => {
 
 function creerCoefficientMultiplicateur(compteur) {
   let valeur = 1 + Number(compteur / 100);
-  return valeur;
+  return Number.parseFloat(valeur).toFixed(2);
 }
 
 const conclusionRegime = ref([
