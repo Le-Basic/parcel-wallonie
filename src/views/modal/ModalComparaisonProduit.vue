@@ -2,7 +2,9 @@
   <div class="modal-content modal-repart-cat-detail">
     <div class="modal-header d-flex align-items-center">
       <div class="d-flex flex-column">
-        <div class="titre-categorie">Comparer l'actuel avec le prospectif</div>
+        <div class="titre-categorie">
+          Comparer l'actuel avec le prospectif: Vision produit
+        </div>
         <div class="hectares"></div>
       </div>
       <button
@@ -38,7 +40,15 @@
             </div>
           </div>
         </div>
-        <RepartitionSurface :serieDonnees="repartitionSurfaceActuelles()" />
+        <div
+          :style="{ width: largeurActuelle, height: hauteurActuelle }"
+          style="margin: auto"
+        >
+          <RepartitionSurface
+            :serieDonnees="repartitionSurfaceActuelles()"
+            width="200px"
+          />
+        </div>
       </div>
 
       <div>
@@ -67,9 +77,14 @@
             </div>
           </div>
         </div>
-        <RepartitionSurface
-          :serieDonnees="repartitionSurfacePotentielNourricier()"
-        />
+        <div
+          :style="{ width: largeurPotentielle, height: hauteurPotentielle }"
+          style="margin: auto"
+        >
+          <RepartitionSurface
+            :serieDonnees="repartitionSurfacePotentielNourricier()"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -140,6 +155,23 @@ const repartitionSurfacePotentielNourricier = () => {
   }
   return data;
 };
+
+const maxHectares = Math.max(
+  store.state.resultatSimulation.surfacesActuelles,
+  store.state.resultatSimulation.surfaceAMobiliser
+);
+
+const ratioActuelles = Math.sqrt(
+  store.state.resultatSimulation.surfacesActuelles / maxHectares
+);
+const ratioPotentiel = Math.sqrt(
+  store.state.resultatSimulation.surfaceAMobiliser / maxHectares
+);
+
+const hauteurPotentielle = ratioPotentiel * 450 + "px";
+const hauteurActuelle = ratioActuelles * 450 + "px";
+const largeurPotentielle = ratioPotentiel * 592 + "px";
+const largeurActuelle = ratioActuelles * 592 + "px";
 </script>
 
 <style scoped>

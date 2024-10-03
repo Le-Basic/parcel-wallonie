@@ -597,16 +597,30 @@
         </div>
       </div>
       <div class="row justify-content-center mt-3 mb-3">
-        <div class="col-auto">
-          <a href="/emplois-crees-par-la-relocalisation"
-            ><button type="button" class="btn btn-principal mt-5">
-              Emplois agricoles nécessaires
-            </button></a
+        <div class="div-continuer">
+          <button
+            class="btn btn-secondaire mt-5"
+            @click="modalActive = 'ModalComparaisonPaysage'"
           >
+            Comparaison actuel / prospectif
+          </button>
+          <router-link
+            type="bouton"
+            class="btn btn-principal mt-5"
+            to="/emplois-crees-par-la-relocalisation"
+          >
+            Emplois agricoles nécessaires
+          </router-link>
         </div>
       </div>
     </div>
   </div>
+  <ModalComposant
+    :modalId="this.modalActive"
+    v-if="this.modalActive"
+    @fermerModal="fermerModalComparaison"
+    :maxWidth="1200"
+  ></ModalComposant>
 </template>
 
 <script>
@@ -618,11 +632,13 @@ import { trouverChiffre, AfficherEntier } from "@/plugins/utils";
 
 import { CATEGORIE_PRODUITS_ACTUELS_PAYSAGE } from "@/config/categorieProduitsActuelsPaysage";
 import RepartitionSurface from "@/components/visualisation/RepartitionSurface.vue";
+import ModalComposant from "@/views/modal/ModalComposant.vue";
 
 export default {
   inject: ["$axios"],
   components: {
     RepartitionSurface,
+    ModalComposant,
   },
   data() {
     return {
@@ -632,6 +648,7 @@ export default {
       },
       chiffreApresVirgule:
         this.$store.state.resultatSimulation.surfaceAMobiliser < 100 ? 1 : 0,
+      modalActive: null,
     };
   },
   methods: {
@@ -639,6 +656,9 @@ export default {
     trouverChiffre,
     formatterSurfacesNecessaires,
     formatterChiffres,
+    fermerModalComparaison() {
+      this.modalActive = "";
+    },
   },
   computed: {
     occupationActuelleTotale() {
@@ -646,7 +666,6 @@ export default {
     },
 
     repartitionSurfaceNecessaires() {
-      console.log("chiffreApresVirgule", this.chiffreApresVirgule);
       let data = [];
       for (const [key, value] of Object.entries(
         CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
@@ -702,3 +721,12 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.div-continuer {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+}
+</style>

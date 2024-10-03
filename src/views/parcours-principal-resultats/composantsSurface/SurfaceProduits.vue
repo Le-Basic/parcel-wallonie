@@ -918,19 +918,18 @@
       <div class="div-continuer">
         <button
           class="btn btn-secondaire mt-5"
-          @click="modalActive = 'ModalComparaison'"
+          @click="modalActive = 'ModalComparaisonProduit'"
         >
           Comparaison actuel / prospectif
         </button>
         <button
           type="button"
           class="btn btn-principal mt-5"
-          @click="nextStep('landscape')"
+          @click="nextStep('#paysage')"
         >
           Suivant
         </button>
       </div>
-      <div></div>
     </div>
 
     <div
@@ -1340,6 +1339,7 @@ export default {
       console.log("nextStep", hash);
       window.scrollTo(0, 0);
       this.$emit("nextStep", hash);
+      this.$router.replace({ hash: hash });
     },
     formatterSurfacesNecessaires(chiffreSurface) {
       return "Environ " + chiffreSurface.toLocaleString("fr-FR") + " hectares";

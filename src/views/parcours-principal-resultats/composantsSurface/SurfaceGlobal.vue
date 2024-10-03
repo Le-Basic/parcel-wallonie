@@ -450,7 +450,7 @@
           <button
             type="button"
             class="btn btn-principal mt-5"
-            @click="nextStep('product')"
+            @click="nextStep('#produit')"
           >
             Suivant
           </button>
@@ -547,9 +547,9 @@ export default {
       }
     },
     nextStep(step) {
-      console.log("nextStep", step);
       window.scrollTo(0, 0);
       this.$emit("nextStep", step);
+      this.$router.replace({ hash: step });
     },
     recupererDonnees() {
       const bodyFormData = new FormData();

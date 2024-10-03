@@ -150,7 +150,7 @@
             </bouton>
             <router-link
               class="btn btn-principal mt-5"
-              to="/repartition-des-produits-relocalises"
+              to="/repartition-des-produits-relocalises#global"
             >
               Explorer en détail les surfaces
             </router-link>

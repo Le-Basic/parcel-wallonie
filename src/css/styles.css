@@ -698,7 +698,7 @@ a > button.btn-recommencer:hover {
 .div-continuer .btn-principal,
 .div-continuer .btn-secondaire {
   font-size: 25px;
-  line-height: 1;
+  line-height: auto;
   height: 56px;
   border-radius: 35px;
   padding-left: 1.7rem;

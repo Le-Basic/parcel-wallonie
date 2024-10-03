@@ -18,10 +18,10 @@
               <div
                 :class="{
                   'card-surface': true,
-                  'card-active': cardSurfaceActive == 'global',
+                  'card-active': cardSurfaceActive == '#global',
                 }"
                 id="global"
-                @click="cardSurfaceActive = 'global'"
+                @click="changerVue('#global')"
               >
                 <div class="m-auto">
                   <div class="icon icon-ico_navigation_surface"></div>
@@ -34,10 +34,10 @@
               <div
                 :class="{
                   'card-surface': true,
-                  'card-active': cardSurfaceActive == 'product',
+                  'card-active': cardSurfaceActive == '#produit',
                 }"
                 id="product"
-                @click="cardSurfaceActive = 'product'"
+                @click="changerVue('#produit')"
               >
                 <div class="m-auto">
                   <div class="icon icon-vue-produits"></div>
@@ -49,10 +49,10 @@
               <div
                 :class="{
                   'card-surface': true,
-                  'card-active': cardSurfaceActive == 'landscape',
+                  'card-active': cardSurfaceActive == '#paysage',
                 }"
                 id="landscape"
-                @click="cardSurfaceActive = 'landscape'"
+                @click="changerVue('#paysage')"
               >
                 <div class="m-auto">
                   <div class="icon icon-vue-paysage"></div>
@@ -66,8 +66,8 @@
             id="globalView"
             :class="{
               containerSurface: true,
-              'non-active': !(cardSurfaceActive == 'global'),
-              active: cardSurfaceActive == 'global',
+              'non-active': !(cardSurfaceActive == '#global'),
+              active: cardSurfaceActive == '#global',
             }"
           >
             <SurfaceGlobal @nextStep="changeCarte" />
@@ -76,16 +76,16 @@
             id="productView"
             :class="{
               containerSurface: true,
-              'non-active': !(cardSurfaceActive == 'product'),
-              active: cardSurfaceActive == 'product',
+              'non-active': !(cardSurfaceActive == '#produit'),
+              active: cardSurfaceActive == '#produit',
             }"
           >
             <SurfaceProduits
-              v-if="cardSurfaceActive == 'product'"
+              v-if="cardSurfaceActive == '#produit'"
               :class="{
                 containerSurface: true,
-                'non-active': !(cardSurfaceActive == 'product'),
-                active: cardSurfaceActive == 'product',
+                'non-active': !(cardSurfaceActive == '#produit'),
+                active: cardSurfaceActive == '#produit',
               }"
               @nextStep="changeCarte"
               @ouvrirModal="enleverScroll"
@@ -96,15 +96,15 @@
             id="landscapeView"
             :class="{
               containerSurface: true,
-              'non-active': !(cardSurfaceActive == 'landscape'),
-              active: cardSurfaceActive == 'landscape',
+              'non-active': !(cardSurfaceActive == '#paysage'),
+              active: cardSurfaceActive == '#paysage',
             }"
           >
             <SurfacePaysage
               :class="{
                 containerSurface: true,
-                'non-active': !(cardSurfaceActive == 'landscape'),
-                active: cardSurfaceActive == 'landscape',
+                'non-active': !(cardSurfaceActive == '#paysage'),
+                active: cardSurfaceActive == '#paysage',
               }"
             />
           </div>
@@ -139,13 +139,19 @@ export default {
   },
   data() {
     return {
-      cardSurfaceActive: "global",
+      cardSurfaceActive: "#global",
       montrerClasse: "",
     };
   },
+  beforeMount() {
+    let hash = this.$router.currentRoute.value.hash;
+    if (hash !== undefined) {
+      console.log("hash", hash);
+      this.cardSurfaceActive = hash;
+    }
+  },
   methods: {
     changeCarte(hash) {
-      console.log(hash);
       this.cardSurfaceActive = hash;
     },
     montrerModalAffiner() {
@@ -161,6 +167,10 @@ export default {
     ajouterScroll() {
       console.log("ajouterScroll");
       document.body.style.overflow = "auto";
+    },
+    changerVue(hash) {
+      this.cardSurfaceActive = hash;
+      this.$router.replace({ hash: hash });
     },
   },
 };
