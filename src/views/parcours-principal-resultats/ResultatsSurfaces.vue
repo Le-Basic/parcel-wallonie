@@ -145,9 +145,12 @@ export default {
   },
   beforeMount() {
     let hash = this.$router.currentRoute.value.hash;
-    if (hash !== undefined) {
+    let listePossibleHashes = ["#global", "#paysage", "#produit"];
+    if (listePossibleHashes.includes(hash)) {
       console.log("hash", hash);
       this.cardSurfaceActive = hash;
+    } else {
+      this.cardSurfaceActive = "#global";
     }
   },
   methods: {

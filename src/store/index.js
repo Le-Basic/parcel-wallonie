@@ -501,6 +501,11 @@ export default createStore({
         state.nbCouvertsParInstitution
       );
     },
+    mutationPopulation(state, { nombreAdultes, nombreSeniors, nombreEnfants }) {
+      state.population.nombreAdultes = nombreAdultes;
+      state.population.nombreEnfants = nombreEnfants;
+      state.population.nombreSeniors = nombreSeniors;
+    },
   },
   actions: {
     addGeo({ commit }, geo) {
@@ -818,6 +823,43 @@ export default createStore({
           );
         }
       );
+      let resultatSimulation = await recalculerResultatSimulation(
+        this.getters.getcodesTerritoireParcel,
+        this.state.regime_alimentaire.id,
+        this.state.partbioelevage,
+        this.state.partbiofruits,
+        this.state.partbiolegumes,
+        this.state.partbiocereales,
+        this.state.partpertes,
+        this.state.part_relocalisee,
+        this.state.resultatReference,
+        this.state.pctDiffRegimePersonnalise
+      );
+      commit("mutationResultatReference", resultatSimulation);
+      resultatSimulation = await recalculerResultatSimulation(
+        this.getters.getcodesTerritoireParcel,
+        this.state.regime_alimentaire.id,
+        this.state.partbioelevage,
+        this.state.partbiofruits,
+        this.state.partbiolegumes,
+        this.state.partbiocereales,
+        this.state.partpertes,
+        this.state.part_relocalisee,
+        this.state.resultatReference,
+        this.state.pctDiffRegimePersonnalise
+      );
+      commit("mutationResultatSimulation", resultatSimulation);
+    },
+    async actionModifierPopulation(
+      { commit },
+      { nombreAdultes, nombreSeniors, nombreEnfants }
+    ) {
+      console.log("test dispatch", nombreAdultes, nombreSeniors, nombreEnfants);
+      commit("mutationPopulation", {
+        nombreAdultes: nombreAdultes,
+        nombreSeniors: nombreSeniors,
+        nombreEnfants: nombreEnfants,
+      });
       let resultatSimulation = await recalculerResultatSimulation(
         this.getters.getcodesTerritoireParcel,
         this.state.regime_alimentaire.id,

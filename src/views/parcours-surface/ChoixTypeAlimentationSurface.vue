@@ -172,7 +172,7 @@
 <script>
 import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import { getRegimeParNomCourt } from "@/config/regimeListe";
-import { getPartdeBio } from "@/plugins/getPartdeBio";
+import { fetchCurseurBio } from "@/plugins/getPartdeBio";
 
 export default {
   name: "ChoixTypeAlimentationSurface",
@@ -192,12 +192,12 @@ export default {
     let url = window.apiURL + "parcel/belgique/curseurs_bio";
     let codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
 
-    getPartdeBio(url, codesTerritoireParcel).then((data) => {
+    fetchCurseurBio(url, codesTerritoireParcel).then((data) => {
       console.log(data);
-      this.partbiolegumes = data[0].curseur_bio;
-      this.partbiofruits = data[0].curseur_bio;
-      this.partbiocereales = data[0].curseur_bio;
-      this.partBioElevage = data[0].curseur_bio;
+      this.partbiolegumes = Math.round(data * 100);
+      this.partbiofruits = Math.round(data * 100);
+      this.partbiocereales = Math.round(data * 100);
+      this.partBioElevage = Math.round(data * 100);
     });
   },
   methods: {

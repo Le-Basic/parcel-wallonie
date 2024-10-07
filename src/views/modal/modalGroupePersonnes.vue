@@ -44,7 +44,7 @@
                 <div class="handle-counter" id="handleCounterenfants">
                   <span
                     class="btn-moins counter-minus"
-                    @click="this.$store.state.population.nombreEnfants--"
+                    @click="this.nombreEnfants--"
                     >-</span
                   >
                   <input
@@ -52,11 +52,11 @@
                     class="nombre groupe"
                     name="nbenfants"
                     id="nbenfants"
-                    v-model="this.$store.state.population.nombreEnfants"
+                    v-model="this.nombreEnfants"
                   />
                   <span
                     class="btn-plus counter-plus"
-                    @click="this.$store.state.population.nombreEnfants++"
+                    @click="this.nombreEnfants++"
                     >+</span
                   ><span class="labelnb"> Enfants (0-17 ans)</span>
                 </div>
@@ -67,7 +67,7 @@
                 <div class="handle-counter" id="handleCounteradultes">
                   <span
                     class="btn-moins counter-minus"
-                    @click="this.$store.state.population.nombreAdultes--"
+                    @click="this.nombreAdultes--"
                     >-</span
                   >
                   <input
@@ -75,11 +75,11 @@
                     class="nombre groupe"
                     name="nbadultes"
                     id="nbadultes"
-                    v-model="this.$store.state.population.nombreAdultes"
+                    v-model="this.nombreAdultes"
                   />
                   <span
                     class="btn-plus counter-plus"
-                    @click="this.$store.state.population.nombreAdultes++"
+                    @click="this.nombreAdultes++"
                     >+</span
                   ><span class="labelnb"> Adultes (18-64 ans)</span>
                 </div>
@@ -90,7 +90,7 @@
                 <div class="handle-counter" id="handleCounterseniors">
                   <span
                     class="btn-moins counter-minus"
-                    @click="this.$store.state.population.nombreSeniors--"
+                    @click="this.nombreSeniors--"
                     >-</span
                   >
                   <input
@@ -98,18 +98,28 @@
                     class="nombre groupe"
                     name="nbseniors"
                     id="nbseniors"
-                    v-model="this.$store.state.population.nombreSeniors"
+                    v-model="this.nombreSeniors"
                   />
                   <span
                     class="btn-plus counter-plus"
-                    @click="this.$store.state.population.nombreSeniors++"
+                    @click="this.nombreSeniors++"
                     >+</span
                   ><span class="labelnb"> Personnes âgées (65+ ans)</span>
                 </div>
               </span>
             </div>
             <router-link to="/3-type-dalimentation"
-              ><button type="button" class="btn btn-principal">
+              ><button
+                type="button"
+                class="btn btn-principal"
+                @click="
+                  dispatchPopulation(
+                    this.nombreAdultes,
+                    this.nombreSeniors,
+                    this.nombreEnfants
+                  )
+                "
+              >
                 Valider
               </button></router-link
             >
@@ -125,9 +135,23 @@
 
 <script>
 export default {
+  data() {
+    return {
+      nombreAdultes: 150,
+      nombreSeniors: 150,
+      nombreEnfants: 150,
+    };
+  },
   methods: {
     fermerModale() {
       this.$emit("fermerModale");
+    },
+    dispatchPopulation(nombreAdultes, nombreSeniors, nombreEnfants) {
+      this.$store.dispatch("actionModifierPopulation", {
+        nombreAdultes,
+        nombreSeniors,
+        nombreEnfants,
+      });
     },
   },
 };
