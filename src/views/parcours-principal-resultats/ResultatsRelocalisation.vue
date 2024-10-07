@@ -1,7 +1,7 @@
 <template>
   <div class="asy-wrapper">
     <div class="content">
-      <Nav @montrerModalAffinage="montrerModalAffiner" :active="1"></Nav>
+      <Navigation @montrerModalAffinage="montrerModalAffiner" :active="1"></Navigation>
       <div class="section centrervh surfaces-container" id="section0">
         <div class="container">
           <div class="titre-page animated fadeInUp">
@@ -186,13 +186,13 @@
 </template>
 
 <script>
-import Nav from "@/components/navigation/BarreNavigation.vue";
+import Navigation from "@/components/navigation/BarreNavigation.vue";
 import resumeChoix from "@/views/modal/resumeChoix.vue";
 import ModalAffinerChoix from "@/views/modal/modalAffinerChoix.vue";
 import ModalComposant from "@/views/modal/ModalComposant.vue";
 
 export default {
-  components: { resumeChoix, Nav, ModalAffinerChoix, ModalComposant },
+  components: { resumeChoix, Navigation, ModalAffinerChoix, ModalComposant },
   data() {
     return {
       donnees: {},
@@ -255,5 +255,26 @@ export default {
   align-items: center;
   justify-content: center;
   gap: 32px;
+}
+
+.cadre-categorie {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 20px 20px;
+  gap: 16px;
+}
+
+.cadre-titre-categorie {
+  flex-grow: 1;
+  margin: auto;
+}
+
+.cadre-titre-categorie .hectares {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #0c1321;
+  letter-spacing: 0;
 }
 </style>

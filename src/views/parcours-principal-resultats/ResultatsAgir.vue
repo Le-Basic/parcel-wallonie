@@ -8,10 +8,6 @@
       <div class="section centrervh" id="section0">
         <div class="container">
           <h1 class="animated fadeInUp fast h1-result">Agir</h1>
-
-          <!-- <a href="https://www.facebook.com/sharer/sharer.php?u=URLENCODED&t=TITLE" class="share facebook" data-network="facebook">Partager sur Facebook</a>
-          <a href="https://twitter.com/share?url=URLENCODED&text=TITLE" class="share twitter" data-network="twitter">Partager sur Twitter</a>
-          <a href="https://www.linkedin.com/shareArticle?mini=true&url=URLENCODED&title=TITLE&source=COMPANY" class="share linkedin" data-network="linkedin">Partager sur LinkedIn</a>-->
           <div class="text-h2">Vous êtes :</div>
           <div
             class="accordion ml-auto mr-auto accordeon-agir"
@@ -45,22 +41,7 @@
                     1
                   </div>
                   <div class="puce-text">
-                    <div class="title">
-                      <a
-                        href="mailto:?subject=L'agriculture et l'alimentation sont des enjeux majeurs du développement de notre territoire.
-&&body=Grâce à PARCEL - Pour une Alimentation Résiliente, Citoyenne et Locale – outil interactif accessible en ligne (parcel-app.org), j'ai découvert que la relocalisation de notre alimentation, le développement de l'agriculture biologique locale et l'évolution de nos régimes alimentaires auraient des effets bénéfiques sur l'emploi local et la préservation de nos ressources naturelles.
-%0D%0A %0D%0A
-Introduire des produits bio en restauration collective, faire évoluer les menus proposés, installer et appuyer la conversion des agriculteurs en bio, préserver et mobiliser des terres agricoles pour les mettre au service de l'intérêt général, développer des filières bio territoriales... Les collectivités locales ont de nombreuses cartes en main pour participer au développement d'une agriculture et d'une alimentation durable, au bénéfice de tous.
-%0D%0A %0D%0A
-Et si nous agissions en faveur de la transition agricole et alimentaire de notre territoire ?
-%0D%0A %0D%0A
-Par ce présent courrier, je vous appelle à vous engager dès maintenant en ce sens, pour une alimentation résiliente citoyenne et locale.
-%0D%0A %0D%0A
-Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlocuteurs locaux sur ces sujets (parcel-app.org/contact).
-                      "
-                        >J’écris à mon élu.e local
-                      </a>
-                    </div>
+                    <div class="title">J’écris à mon élu.e local</div>
                     pour l’inciter à relocaliser l’alimentation et soutenir le
                     développement de la bio sur mon territoire.
                     <a
@@ -73,33 +54,9 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                     <br />
                     <br />
                     <ul>
-                      <li>
-                        <a
-                          href="https://www.data.gouv.fr/fr/reuses/adresses-mairies-fr/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="url-simple"
-                          >1. Retrouver les contacts de vos mairies
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://www.nosdeputes.fr/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="url-simple"
-                          >2. Retrouver les contacts de vos élus locaux
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://www.voxpublic.org/-Annuaires-partages-.html"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="url-simple"
-                          >3. Retrouver les contacts d’autres décideurs
-                        </a>
-                      </li>
+                      <li>1. Retrouver les contacts de vos mairies</li>
+                      <li>2. Retrouver les contacts de vos élus locaux</li>
+                      <li>3. Retrouver les contacts d’autres décideurs</li>
                     </ul>
                   </div>
                 </div>
@@ -113,29 +70,29 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                   </div>
                   <div class="puce-text">
                     <div class="title">
-                      <a
-                        href="javascript:location='mailto:\u0070\u0061\u0072\u0063\u0065\u006c\u0040\u0074\u0065\u0072\u0072\u0065\u0064\u0065\u006c\u0069\u0065\u006e\u0073\u002e\u006f\u0072\u0067\u0020\u0020\u0020';void 0"
-                        class="url-simple"
-                        >Je découvre les initiatives de transition dans mon
-                        territoire :</a
-                      >
+                      Je découvre les initiatives de transition dans mon
+                      territoire :
                     </div>
-                    <a
-                      href="https://terredeliens.org/agir-avec-les-collectivites.html"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="url-simple"
-                    >
-                      <ul>
-                        <li>Les coopératives citoyennes - Collectif 5C</li>
+                    <ul>
+                      <a href="https://www.collectif5c.be/"
+                        ><li>Les coopératives citoyennes - Collectif 5C</li></a
+                      >
+                      <a
+                        href="https://www.mangerdemain.be/2021/02/01/developper-un-projet-de-ceinture-alimentaire-en-wallonie-freins-et-leviers/"
+                      >
                         <li>Les ceintures alimentaires</li>
-                        <li>Les Conseils de Politiques Alimentaires</li>
-                        <li>Les Groupes d'action locale</li>
-                        <li>
-                          Une aide pour un projet d'économie sociale – SAW-B
-                        </li>
-                      </ul>
-                    </a>
+                      </a>
+                      <a href="https://www.mangerdemain.be/cpa-locaux/"
+                        ><li>Les Conseil de Politiques Alimentaires,</li></a
+                      ><a href="https://www.reseauwallonpac.be/sections/gal">
+                        <li>Les Groupes d’action locale</li></a
+                      >
+                      <a href="https://saw-b.be/"
+                        ><li>
+                          Une aide pour un projet d’économie sociale – SAW-B
+                        </li></a
+                      >
+                    </ul>
                   </div>
                 </div>
                 <div
@@ -149,17 +106,28 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                   <div class="puce-text">
                     <div class="title">
                       <a
-                        href="https://www.agencebio.org/profil/consommateur/"
+                        href="https://www.produire-bio.fr/contact-en-region/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >Je veux en savoir plus sur l’agriculture biologique</a
-                      >
+                        >Je veux en savoir plus sur l’/le:
+                      </a>
                     </div>
                     <ul>
-                      <li>Agriculture biologique – Biowallonie</li>
-                      <li>Accès à la terre – Terre-en-Vue</li>
-                      <li>Gaspillage alimentaire – Plan regal</li>
-                      <li>Les scénarios de transition – SYTRA</li>
+                      <a href="https://www.biowallonie.com/"
+                        ><li>Agriculture biologique – Biowallonie</li></a
+                      >
+                      <a href="https://terre-en-vue.be/"
+                        ><li>Accès à la terre – Terre-en-Vue</li></a
+                      >
+                      <a
+                        href="https://moinsdedechets.wallonie.be/gaspillage-alimentaire/le-plan-regal.php"
+                      >
+                        <li>Gaspillage alimentaire – Plan regal</li></a
+                      ><a href="https://sytra.be/fr/abonnement-newsletter/">
+                        <li>
+                          Les scénarios de transition – Newsletter SYTRA
+                        </li></a
+                      >
                     </ul>
                   </div>
                 </div>
@@ -190,9 +158,6 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                           id="inputpartage"
                           class="w-100"
                         />
-                        <!-- <p>
-                          <input type="button" value="Copier l'url" class="js-copy" data-target="#inputpartage">
-                        </p>-->
                         <button
                           onclick="myFunction()"
                           class="btn btn-principal mt-3"
@@ -251,31 +216,34 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                     5
                   </div>
                   <div class="puce-text">
-                    <div class="title">
+                    <div class="title">Je souhaite rester informé.e:</div>
+                    <ul>
                       <a
-                        href="javascript:location='mailto:\u0070\u0061\u0072\u0063\u0065\u006c\u0040\u0074\u0065\u0072\u0072\u0065\u0064\u0065\u006c\u0069\u0065\u006e\u0073\u002e\u006f\u0072\u0067\u0020\u0020\u0020';void 0"
-                        class="url-simple"
-                        >Je souhaite rester informé.e:</a
+                        href="https://sytra.be/fr/publication/abonnez-vous-a-notre-newsletter/"
+                        ><li>Newsletter de Sytra</li></a
                       >
-                    </div>
-                    <a
-                      href="https://terredeliens.org/agir-avec-les-collectivites.html"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="url-simple"
-                    >
-                      <ul>
-                        <li>Newsletter de Sytra</li>
-                        <li>
+                      <li>
+                        <a
+                          href="https://www.wallonie.be/fr/acteurs-et-institutions/wallonie/pole-strategique/direction-du-developpement-durable"
+                        >
                           Site de la Direction du Développement Durable
                           –Alimentation durable
-                        </li>
-                        <li>Site du Baromètre de l’Alimentation durbale</li>
-                        <li>Stratégie Food Wallonia</li>
-                        <li>Etat de l’agriculture Wallonne</li>
+                        </a>
+                      </li>
+                      <li>
+                        Site du Baromètre de l’Alimentation Durable (à venir)
+                      </li>
+                      <a
+                        href="https://developpementdurable.wallonie.be/thematiques/alimentation-durable/Food-Wallonia#:~:text=Adopt%C3%A9%20en%20octobre%202022%20par,aux%20enjeux%20de%20court%20terme."
+                        ><li>Stratégie Food Wallonia</li></a
+                      >
+                      <a href="https://etat-agriculture.wallonie.be/home.html"
+                        ><li>Etat de l’agriculture Wallonne</li>
+                      </a>
+                      <a href="http://etat.environnement.wallonie.be/home.html">
                         <li>Etat de l’Environnement Wallon</li>
-                      </ul>
-                    </a>
+                      </a>
+                    </ul>
                   </div>
                 </div>
                 <div
@@ -288,23 +256,12 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                   </div>
                   <div class="puce-text">
                     <div class="title">
-                      <a
-                        href="javascript:location='mailto:\u0070\u0061\u0072\u0063\u0065\u006c\u0040\u0074\u0065\u0072\u0072\u0065\u0064\u0065\u006c\u0069\u0065\u006e\u0073\u002e\u006f\u0072\u0067\u0020\u0020\u0020';void 0"
-                        class="url-simple"
-                        >Je souhaite contacter les structures partenaires :</a
-                      >
+                      Je souhaite contacter les structures partenaires
                     </div>
-                    <a
-                      href="https://terredeliens.org/agir-avec-les-collectivites.html"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="url-simple"
-                    >
-                      <ul>
-                        <li>SYTRA (contact@sytra.be)</li>
-                        <li>Le Basic (parcel@lebasic.com)</li>
-                      </ul>
-                    </a>
+                    <ul>
+                      <li>SYTRA (contact@sytra.be)</li>
+                      <li>Le Basic (parcel@lebasic.com)</li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -349,27 +306,20 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                         >J'utilise PARCEL pour:</a
                       >
                     </div>
-                    <a
-                      href="https://terredeliens.org/agir-avec-les-collectivites.html"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="url-simple"
-                    >
-                      <ul>
-                        <li>
-                          Pour connaître la situation agricole de mon territoire
-                          et les enjeux
-                        </li>
-                        <li>
-                          Accéder à un ensemble données officielles et
-                          consolidée
-                        </li>
-                        <li>
-                          Créer du dialogue et des réflexions sur des bases
-                          communes sur mon territoire
-                        </li>
-                      </ul>
-                    </a>
+
+                    <ul>
+                      <li>
+                        Pour connaître la situation agricole de mon territoire
+                        et les enjeux
+                      </li>
+                      <li>
+                        Accéder à un ensemble données officielles et consolidée
+                      </li>
+                      <li>
+                        Créer du dialogue et des réflexions sur des bases
+                        communes sur mon territoire
+                      </li>
+                    </ul>
                   </div>
                 </div>
                 <div
@@ -419,27 +369,24 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                         des cantines de mon territoire (et d’autres initiatives)
                         (https://www.mangerdemain.be/)
                       </li>
-                      <li>
-                        Les coopératives citoyennes - Collectif 5C
-                        (https://www.collectif5c.be/)
-                      </li>
-                      <!--li><a href="https://open-ressources.fr/" class="url-simple" target="_blank" rel="noopener noreferrer">Newsletter propulsée par Le BASIC : OpenRessources</a></li-->
-                      <li>
-                        Les ceintures alimentaires
-                        (https://www.mangerdemain.be/2021/02/01/developper-un-projet-de-ceinture-alimentaire-en-wallonie-freins-et-leviers/)
-                      </li>
-                      <li>
-                        Les Conseil de Politiques Alimentaires,
-                        (https://www.mangerdemain.be/cpa-locaux/)
-                      </li>
-                      <li>
-                        Les Groupes d’action locale
-                        (https://www.reseauwallonpac.be/sections/gal)
-                      </li>
-                      <li>
-                        Une aide pour un projet d’économie sociale – SAW-B
-                        (https://saw-b.be/)
-                      </li>
+                      <a href="https://www.collectif5c.be/"
+                        ><li>Les coopératives citoyennes - Collectif 5C</li></a
+                      >
+                      <a
+                        href="https://www.mangerdemain.be/2021/02/01/developper-un-projet-de-ceinture-alimentaire-en-wallonie-freins-et-leviers/"
+                      >
+                        <li>Les ceintures alimentaires</li>
+                      </a>
+                      <a href="https://www.mangerdemain.be/cpa-locaux/"
+                        ><li>Les Conseil de Politiques Alimentaires,</li></a
+                      ><a href="https://www.reseauwallonpac.be/sections/gal">
+                        <li>Les Groupes d’action locale</li></a
+                      >
+                      <a href="https://saw-b.be/"
+                        ><li>
+                          Une aide pour un projet d’économie sociale – SAW-B
+                        </li></a
+                      >
                     </ul>
                   </div>
                 </div>
@@ -452,18 +399,8 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                     3
                   </div>
                   <div class="puce-text">
-                    <div class="title">
-                      <a
-                        href="javascript:location='mailto:\u0070\u0061\u0072\u0063\u0065\u006c\u0040\u006c\u0065\u0062\u0061\u0073\u0069\u0063\u002e\u0063\u006f\u006d';void 0"
-                        >Je contacte SYTRA pour :</a
-                      >
-                    </div>
-                    <a
-                      href="http://www.lebasic.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="url-simple"
-                    >
+                    <a href="https://sytra.be/fr/"
+                      ><div class="title">Je contacte SYTRA pour :</div>
                       <ul>
                         <li>• Le développement de scénarios de transition ;</li>
                         <li>
@@ -492,22 +429,21 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                       </a>
                     </div>
                     <ul>
-                      <li>
-                        Agriculture biologique – Biowallonie
-                        (https://www.biowallonie.com/)
-                      </li>
-                      <li>
-                        Accès à la terre – Terre-en-Vue
-                        (https://terre-en-vue.be/)
-                      </li>
-                      <li>
-                        Gaspillage alimentaire – Plan regal
-                        (https://moinsdedechets.wallonie.be/gaspillage-alimentaire/le-plan-regal.php)
-                      </li>
-                      <li>
-                        Les scénarios de transition – Newsletter SYTRA
-                        (www.sytra.be)
-                      </li>
+                      <a href="https://www.biowallonie.com/"
+                        ><li>Agriculture biologique – Biowallonie</li></a
+                      >
+                      <a href="https://terre-en-vue.be/"
+                        ><li>Accès à la terre – Terre-en-Vue</li></a
+                      >
+                      <a
+                        href="https://moinsdedechets.wallonie.be/gaspillage-alimentaire/le-plan-regal.php"
+                      >
+                        <li>Gaspillage alimentaire – Plan regal</li></a
+                      ><a href="https://sytra.be/fr/abonnement-newsletter/">
+                        <li>
+                          Les scénarios de transition – Newsletter SYTRA
+                        </li></a
+                      >
                     </ul>
                   </div>
                 </div>
@@ -520,38 +456,38 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                     3
                   </div>
                   <div class="puce-text">
-                    <div class="title">
-                      <a
-                        href="https://www.produire-bio.fr/contact-en-region/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >Je contacte Biowallonie pour:
-                      </a>
-                    </div>
-                    <ul>
-                      <li>
-                        Mieux connaître le contexte agricole de mon territoire
-                      </li>
-                      <li>Participer au développement de filières bio</li>
-                      <li>
-                        Favoriser les conversions en bio sur mon territoire
-                      </li>
-                      <li>
-                        Favoriser les conversions en bio sur mon territoire
-                      </li>
-                      <li>
-                        Sécuriser les transmissions d’exploitations bio pour que
-                        les terres bio restent bio
-                      </li>
-                      <li>
-                        Faciliter techniquement l’installation de porteurs de
-                        projets agricoles
-                      </li>
-                      <li>
-                        Faciliter l’accès de tous aux produits bio et locaux sur
-                        mon territoire, notamment en restauration collective
-                      </li>
-                    </ul>
+                    <a
+                      href="Biowallonie"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <div class="title">Je contacte Biowallonie pour:</div>
+                      <ul>
+                        <li>
+                          Mieux connaître le contexte agricole de mon territoire
+                        </li>
+                        <li>Participer au développement de filières bio</li>
+                        <li>
+                          Favoriser les conversions en bio sur mon territoire
+                        </li>
+                        <li>
+                          Favoriser les conversions en bio sur mon territoire
+                        </li>
+                        <li>
+                          Sécuriser les transmissions d’exploitations bio pour
+                          que les terres bio restent bio
+                        </li>
+                        <li>
+                          Faciliter techniquement l’installation de porteurs de
+                          projets agricoles
+                        </li>
+                        <li>
+                          Faciliter l’accès de tous aux produits bio et locaux
+                          sur mon territoire, notamment en restauration
+                          collective
+                        </li>
+                      </ul></a
+                    >
                   </div>
                 </div>
               </div>
@@ -563,14 +499,7 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
             id="accordeon-Agir3"
           >
             <div class="w-100 h-auto" id="headingAgir3">
-              <button
-                class="w-100 btn btn-link collapsed"
-                type="button"
-                data-toggle="collapse show"
-                data-target="#collapseAgir3"
-                aria-expanded="false"
-                aria-controls="collapseAgir3"
-              >
+              <button class="w-100 btn btn-link collapsed" type="button">
                 Un.e agriculteur.trice
               </button>
             </div>
@@ -589,23 +518,7 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                     1
                   </div>
                   <div class="puce-text">
-                    <div class="title">
-                      <a
-                        href="mailto:?subject=L'agriculture et l'alimentation sont des enjeux majeurs du développement de notre territoire.
-&&body=Grâce à PARCEL - Pour une Alimentation Résiliente, Citoyenne et Locale – outil interactif accessible en ligne (parcel-app.org), j'ai découvert que la relocalisation de notre alimentation, le développement de l'agriculture biologique locale et l'évolution de nos régimes alimentaires auraient des effets bénéfiques sur l'emploi local et la préservation de nos ressources naturelles.
-%0D%0A %0D%0A
-Introduire des produits bio en restauration collective, faire évoluer les menus proposés, installer et appuyer la conversion des agriculteurs en bio, préserver et mobiliser des terres agricoles pour les mettre au service de l'intérêt général, développer des filières bio territoriales... Les collectivités locales ont de nombreuses cartes en main pour participer au développement d'une agriculture et d'une alimentation durable, au bénéfice de tous.
-%0D%0A %0D%0A
-Et si nous agissions en faveur de la transition agricole et alimentaire de notre territoire ?
-%0D%0A %0D%0A
-Par ce présent courrier, je vous appelle à vous engager dès maintenant en ce sens, pour une alimentation résiliente citoyenne et locale.
-%0D%0A %0D%0A
-Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlocuteurs locaux sur ces sujets (parcel-app.org/contact).
-
-                      "
-                        >J’écris à mon élu.e local
-                      </a>
-                    </div>
+                    <div class="title">J’écris à mon élu.e local</div>
                     pour l’inciter à relocaliser l’alimentation et soutenir le
                     développement de la bio sur mon territoire.
                     <br />
@@ -617,7 +530,7 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                           target="_blank"
                           rel="noopener noreferrer"
                           class="url-simple"
-                          >1. Retrouver les contacts de vos Commu,es
+                          >1. Retrouver les contacts de vos Communes
                         </a>
                       </li>
                       <li>
@@ -650,24 +563,23 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                     2
                   </div>
                   <div class="puce-text">
-                    <div class="title">
-                      <a
-                        href="https://www.produire-bio.fr/contact-en-region/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >Je contacte Biowallonie</a
-                      >
-                    </div>
-                    <ul>
-                      <li>
-                        • Me renseigner sur la conversion à l’agriculture
-                        biologique
-                      </li>
-                      <li>
-                        Faire évoluer mes pratiques et mes modes de
-                        commercialisation
-                      </li>
-                    </ul>
+                    <a
+                      href="https://www.biowallonie.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <div class="title">Je contacte Biowallonie</div>
+                      <ul>
+                        <li>
+                          Me renseigner sur la conversion à l’agriculture
+                          biologique
+                        </li>
+                        <li>
+                          Faire évoluer mes pratiques et mes modes de
+                          commercialisation
+                        </li>
+                      </ul>
+                    </a>
                   </div>
                 </div>
                 <div
@@ -680,14 +592,12 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                   </div>
                   <div class="puce-text">
                     <div class="title">
-                      <a
-                        href="javascript:location='mailto:\u0070\u0061\u0072\u0063\u0065\u006c\u0040\u0074\u0065\u0072\u0072\u0065\u0064\u0065\u006c\u0069\u0065\u006e\u0073\u002e\u006f\u0072\u0067\u0020\u0020\u0020';void 0"
-                        class="url-simple"
+                      <a href="https://terre-en-vue.be/"
                         >Je contacte Terre en vue pour:</a
                       >
                     </div>
                     <a
-                      href="https://terredeliens.org/agir-avec-les-collectivites.html"
+                      href="https://terre-en-vue.be/"
                       target="_blank"
                       rel="noopener noreferrer"
                       class="url-simple"
@@ -711,10 +621,7 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                   </div>
                   <div class="puce-text">
                     <div class="title">
-                      <a
-                        href="javascript:location='mailto:\u0070\u0061\u0072\u0063\u0065\u006c\u0040\u0074\u0065\u0072\u0072\u0065\u0064\u0065\u006c\u0069\u0065\u006e\u0073\u002e\u006f\u0072\u0067\u0020\u0020\u0020';void 0"
-                        class="url-simple"
-                      >
+                      <a href="https://www.natagriwal.be/" class="url-simple">
                         Je contacte Natagriwal pour la mise en place de MAEC
                       </a>
                     </div>
@@ -736,32 +643,31 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                       >
                     </div>
                     <ul>
-                      <li>
-                        La cellule Manger Demain - pour connaître la situation
-                        des cantines de mon territoire (et d’autres initiatives)
-                        (https://www.mangerdemain.be/)
-                      </li>
-                      <li>
-                        Les coopératives citoyennes - Collectif 5C
-                        (https://www.collectif5c.be/)
-                      </li>
-                      <!--li><a href="https://open-ressources.fr/" class="url-simple" target="_blank" rel="noopener noreferrer">Newsletter propulsée par Le BASIC : OpenRessources</a></li-->
-                      <li>
-                        Les ceintures alimentaires
-                        (https://www.mangerdemain.be/2021/02/01/developper-un-projet-de-ceinture-alimentaire-en-wallonie-freins-et-leviers/)
-                      </li>
-                      <li>
-                        Les Conseil de Politiques Alimentaires,
-                        (https://www.mangerdemain.be/cpa-locaux/)
-                      </li>
-                      <li>
-                        Les Groupes d’action locale
-                        (https://www.reseauwallonpac.be/sections/gal)
-                      </li>
-                      <li>
-                        Une aide pour un projet d’économie sociale – SAW-B
-                        (https://saw-b.be/)
-                      </li>
+                      <a href="https://www.mangerdemain.be/">
+                        <li>
+                          La cellule Manger Demain - pour connaître la situation
+                          des cantines de mon territoire (et d’autres
+                          initiatives)
+                        </li>
+                      </a>
+                      <a href="https://www.collectif5c.be/"
+                        ><li>Les coopératives citoyennes - Collectif 5C</li></a
+                      >
+                      <a
+                        href="https://www.mangerdemain.be/2021/02/01/developper-un-projet-de-ceinture-alimentaire-en-wallonie-freins-et-leviers/"
+                      >
+                        <li>Les ceintures alimentaires</li>
+                      </a>
+                      <a href="https://www.mangerdemain.be/cpa-locaux/"
+                        ><li>Les Conseil de Politiques Alimentaires,</li></a
+                      ><a href="https://www.reseauwallonpac.be/sections/gal">
+                        <li>Les Groupes d’action locale</li></a
+                      >
+                      <a href="https://saw-b.be/"
+                        ><li>
+                          Une aide pour un projet d’économie sociale – SAW-B
+                        </li></a
+                      >
                     </ul>
                   </div>
                 </div>
@@ -872,32 +778,31 @@ Pour en savoir plus, découvrez PARCEL (parcel-app.org) et contactez vos interlo
                       >
                     </div>
                     <ul>
-                      <li>
-                        La cellule Manger Demain - pour connaître la situation
-                        des cantines de mon territoire (et d’autres initiatives)
-                        (https://www.mangerdemain.be/)
-                      </li>
-                      <li>
-                        Les coopératives citoyennes - Collectif 5C
-                        (https://www.collectif5c.be/)
-                      </li>
-                      <!--li><a href="https://open-ressources.fr/" class="url-simple" target="_blank" rel="noopener noreferrer">Newsletter propulsée par Le BASIC : OpenRessources</a></li-->
-                      <li>
-                        Les ceintures alimentaires
-                        (https://www.mangerdemain.be/2021/02/01/developper-un-projet-de-ceinture-alimentaire-en-wallonie-freins-et-leviers/)
-                      </li>
-                      <li>
-                        Les Conseil de Politiques Alimentaires,
-                        (https://www.mangerdemain.be/cpa-locaux/)
-                      </li>
-                      <li>
-                        Les Groupes d’action locale
-                        (https://www.reseauwallonpac.be/sections/gal)
-                      </li>
-                      <li>
-                        Une aide pour un projet d’économie sociale – SAW-B
-                        (https://saw-b.be/)
-                      </li>
+                      <a href="https://www.mangerdemain.be/">
+                        <li>
+                          La cellule Manger Demain - pour connaître la situation
+                          des cantines de mon territoire (et d’autres
+                          initiatives)
+                        </li>
+                      </a>
+                      <a href="https://www.collectif5c.be/"
+                        ><li>Les coopératives citoyennes - Collectif 5C</li></a
+                      >
+                      <a
+                        href="https://www.mangerdemain.be/2021/02/01/developper-un-projet-de-ceinture-alimentaire-en-wallonie-freins-et-leviers/"
+                      >
+                        <li>Les ceintures alimentaires</li>
+                      </a>
+                      <a href="https://www.mangerdemain.be/cpa-locaux/"
+                        ><li>Les Conseil de Politiques Alimentaires,</li></a
+                      ><a href="https://www.reseauwallonpac.be/sections/gal">
+                        <li>Les Groupes d’action locale</li></a
+                      >
+                      <a href="https://saw-b.be/"
+                        ><li>
+                          Une aide pour un projet d’économie sociale – SAW-B
+                        </li></a
+                      >
                     </ul>
                   </div>
                 </div>

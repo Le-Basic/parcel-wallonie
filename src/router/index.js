@@ -27,6 +27,7 @@ import PageRecommencer from "@/views/PageRecommencer.vue";
 import ResultatsImpactsv2 from "@/views/parcours-principal-resultats/ResultatsImpactsv2.vue";
 import testMotion from "@/views/testMotion.vue";
 import TestCarte from "@/views/TestCarte.vue";
+import TableauProduit from "@/components/visualisation/TableauProduit.vue";
 
 const routes = [
   {
@@ -148,6 +149,11 @@ const routes = [
     path: "/regime-personnalise",
     name: "Regime Personnalise",
     component: RegimePersonnalise,
+  },
+  {
+    path: "/test-grille",
+    name: "Test grille",
+    component: TableauProduit,
   },
 ];
 
