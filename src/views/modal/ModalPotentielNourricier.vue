@@ -102,8 +102,8 @@
       <p class="bubble you">
         Le résultat par « produits » permet justement de décliner le potentiel
         nourricier par grandes familles de produits.<br />Si il y a peu de
-        fruits sur le territoire, le potentiel nourricier des fruits sera
-        négatif.
+        fruits sur le territoire, le potentiel nourricier des fruits sera en
+        dessous de 100%.
       </p>
       <p class="bubble you">
         <img

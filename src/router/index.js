@@ -71,7 +71,7 @@ const routes = [
     component: ResultatsEmplois,
   },
   {
-    path: "/impacts-ecologiques-de-la-relocatisation",
+    path: "/impacts-ecologiques-de-la-relocalisation",
     name: "impacts ecolos",
     component: ResultatsImpactsv2,
   },

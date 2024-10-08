@@ -90,7 +90,7 @@
               </a>
             </button>
             <button class="affiner-param">
-              <a href="/impacts-ecologiques-de-la-relocatisation">
+              <a href="/impacts-ecologiques-de-la-relocalisation">
                 <div class="prereglage">
                   <div class="result-type">
                     <span

@@ -236,7 +236,7 @@
                                   href="#"
                                   class="info pb-3"
                                   style="font-style: normal"
-                                  data-tooltip="Les emplois générés par l\'élevage comptabilisent les emplois de l\'élevage ainsi que les emplois liés à la production de l\'alimentation pour l\'élevage."
+                                  data-tooltip="Les emplois générés par l'élevage comptabilisent les emplois de l'élevage ainsi que les emplois liés à la production de l'alimentation pour l'élevage."
                                   data-placement="left"
                                   ><span class="icon-ico_element_info"></span
                                 ></a>
@@ -404,7 +404,7 @@
     </div>-->
               </div>
               <div class="div-continuer mb-big animated fadeInUp delay-5-5s">
-                <a href="/impacts-ecologiques-de-la-relocatisation"
+                <a href="/impacts-ecologiques-de-la-relocalisation"
                   ><button type="button" class="btn btn-principal mt-5">
                     Voir les impacts
                   </button></a

@@ -190,7 +190,7 @@
                   >
                 </div>
                 <div class="div-continuer mb-big animated fadeInUp delay-5-1s">
-                  <a href="/impacts-ecologiques-de-la-relocatisation"
+                  <a href="/impacts-ecologiques-de-la-relocalisation"
                     ><button type="button" class="btn btn-secondaire mt-0">
                       En savoir plus sur le potentiel nourricier
                     </button></a

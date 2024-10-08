@@ -1,7 +1,10 @@
 <template>
   <div class="asy-wrapper">
     <div class="content">
-      <Navigation @montrerModalAffinage="montrerModalAffiner" :active="1"></Navigation>
+      <Navigation
+        @montrerModalAffinage="montrerModalAffiner"
+        :active="1"
+      ></Navigation>
       <div class="section centrervh surfaces-container" id="section0">
         <div class="container">
           <div class="titre-page animated fadeInUp">
@@ -97,7 +100,7 @@
             <div class="col-sm-6 col-lg mb-2" id="result-impacts">
               <div
                 class="h-100 mb-0 cadre-resultat animated cadre-btn fadeIn delay-2s"
-                onclick="location.href='/impacts-ecologiques-de-la-relocatisation';"
+                onclick="location.href='/impacts-ecologiques-de-la-relocalisation';"
                 style="cursor: pointer"
               >
                 <div class="result-type">

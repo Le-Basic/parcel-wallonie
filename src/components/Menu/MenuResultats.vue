@@ -49,7 +49,7 @@
       >
         <router-link
           class="nav-link"
-          to="/impacts-ecologiques-de-la-relocatisation"
+          to="/impacts-ecologiques-de-la-relocalisation"
           ><span class="icon-ico_navigation_impacts ico-menu"></span
           ><span class="entree-menu">Impacts</span></router-link
         >

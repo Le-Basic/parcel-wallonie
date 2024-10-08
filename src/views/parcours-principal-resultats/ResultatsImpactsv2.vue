@@ -195,18 +195,19 @@
                       >
                         <div class="cadre-impact">
                           <span class="impact-result texte-droite"
-                            ><p class="texte-data texte-droite">
-                              {{ impact.titreSituationReference }}
-                            </p>
+                            ><p
+                              class="texte-data texte-droite"
+                              v-html="impact.titreSituationReference"
+                            ></p>
                             {{ impact.sousTitreSituationReference }}
                           </span>
                         </div>
                         <div class="cadre-impact">
                           <span class="impact-result texte-gauche"
-                            ><p class="texte-data texte-gauche vert-clair">
-                              {{ impact.titreSimulation
-                              }}<span class="texte-unite">%</span>
-                            </p>
+                            ><p
+                              class="texte-data texte-gauche vert-clair"
+                              v-html="impact.titreSimulation"
+                            ></p>
                             {{ impact.sousTitreSimulation }}
                           </span>
                         </div>
@@ -635,9 +636,10 @@ const CATEGORIES_IMPACT = computed(() => {
             " de t de GES emise par an",
           sousTitreSituationReference:
             "Uniquement pour la production alimentaire, soit 8% des émissions nationales",
-          titreSimulation: AfficherEntier(
-            donneesImpacts?.value.ges.differenceSimulationReferencePct
-          ),
+          titreSimulation:
+            AfficherEntier(
+              donneesImpacts?.value.ges.differenceSimulationReferencePct
+            ) + '<span class="texte-unite">%</span>',
           sousTitreSimulation: `soit  ${AfficherEntier(
             donneesImpacts?.value.ges.differenceSimulationReference / 1000
           )} millions de tonnes CO2e`,
@@ -660,10 +662,11 @@ const CATEGORIES_IMPACT = computed(() => {
           titreSituationReference: "Une biodiversité fortement dégradée",
           sousTitreSituationReference:
             "45% des espèces d'oiseaux ont disparu en Europe depuis 1970",
-          titreSimulation: AfficherEntier(
-            donneesImpacts?.value.abondances_especes
-              .differenceSimulationReferencePct
-          ),
+          titreSimulation:
+            AfficherEntier(
+              donneesImpacts?.value.abondances_especes
+                .differenceSimulationReferencePct
+            ) + '<span class="texte-unite">%</span>',
           sousTitreSimulation:
             "Les espèces de pollinisateurs, papillons, vers de terre et gastéropodes sont 45% plus abondantes par hectare de culture.",
           couleurTitreSimulation: "vert-clair",
@@ -679,9 +682,13 @@ const CATEGORIES_IMPACT = computed(() => {
           sousTitreSituationReference: `chaque année pour nourrir le bétail que l'on consomme. Soit l'équivalent de ${donneesImpacts?.value.surfaces_ha_soja_importes.donneesReferencePiscineOlympique} piscines olympiques`,
           titreSimulation: AfficherEntier(
             donneesImpacts?.value.surfaces_ha_soja_importes
-              .differenceSimulationReferencePct
+              .differenceSimulationReferencePct +
+              '<span class="texte-unite">%</span>'
           ),
-          sousTitreSimulation: `Soit ${donneesImpacts?.value.surfaces_ha_soja_importes.differenceSimulationReference} hectares protégés de la déforestation`,
+          sousTitreSimulation: `Soit ${Math.abs(
+            donneesImpacts?.value.surfaces_ha_soja_importes
+              .differenceSimulationReference
+          )} hectares protégés de la déforestation`,
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsSojaImporte",
         },
@@ -699,12 +706,14 @@ const CATEGORIES_IMPACT = computed(() => {
           icon: "icon-impact-eau-conso ico-medium ico-impact",
           titreSituationReference: `${AfficherEntier(
             donneesImpacts?.value.empreinte_eau_bleue.donneesReference
-          )} m3 eau irrigation (rivières et nappes)`,
+          )} m<sup>3</sup> eau pour l'irrigation (rivières et nappes)`,
           titreSimulation:
-            AfficherEntier(
-              donneesImpacts?.value.empreinte_eau_bleue
-                .differenceSimulationReferencePct
-            ) + " m3 d'eau économisés chaque année",
+            Math.abs(
+              AfficherEntier(
+                donneesImpacts?.value.empreinte_eau_bleue
+                  .differenceSimulationReferencePct
+              )
+            ) + " m<sup>3</sup> d'eau économisés chaque année",
           sousTitreSimulation: "",
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsEmpreinteEau",
@@ -723,10 +732,11 @@ const CATEGORIES_IMPACT = computed(() => {
           icon: "icon-impact-solqualit ico-medium ico-impact",
           titreSituationReference: "Des sols dont l'état est très dégradé",
           sousTitreSituationReference: "Soit 5%",
-          titreSimulation: AfficherEntier(
-            donneesImpacts?.value.richesses_des_sols
-              .differenceSimulationReferencePct
-          ),
+          titreSimulation:
+            AfficherEntier(
+              donneesImpacts?.value.richesses_des_sols
+                .differenceSimulationReferencePct
+            ) + "<span class='texte-unite'>%</span>",
           sousTitreSimulation:
             "de manière organique supplémentaire dans le sol",
           couleurTitreSimulation: "vert-clair",

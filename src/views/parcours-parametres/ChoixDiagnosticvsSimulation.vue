@@ -49,7 +49,7 @@
                 production.
               </div>
               <div class="div-continuer delay-5-1s">
-                <a href="/impacts-ecologiques-de-la-relocatisation"
+                <a href="/impacts-ecologiques-de-la-relocalisation"
                   ><button type="button" class="btn btn-secondaire mt-0">
                     Passer à la simulation
                   </button></a
