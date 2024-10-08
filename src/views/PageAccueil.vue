@@ -94,7 +94,7 @@
                         class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front"
                         id="list"
                         style="position: absolute; z-index: 1"
-                        v-if="rechercheInput.length > 3 && list_geo.length > 0"
+                        v-if="rechercheInput.length > 1 && list_geo.length > 0"
                       >
                         <li
                           class="ui-menu-item"
@@ -237,8 +237,9 @@
               des ressources en eau, effets sur la biodiversité…)
             </p>
             <p>
-              Développé par Terre de Liens, la Fédération Nationale de
-              l’Agriculture Biologique (FNAB) et le BASIC, PARCEL invite
+              Développé initialement en France par Terre de Liens, la Fédération
+              Nationale de l’Agriculture Biologique (FNAB) et le BASIC, Parcel a
+              été adapté à la Wallonie par Sytra et Le Basic. PARCEL invite
               <strong
                 >les citoyens et les élus à se saisir des enjeux actuels de
                 l’alimentation</strong

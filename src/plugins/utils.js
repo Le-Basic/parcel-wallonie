@@ -21,6 +21,13 @@ export function AfficherEntier(nombre) {
   });
 }
 
+export function AfficherEntierAvecSigne(nombre) {
+  return Intl.NumberFormat("en-US", {
+    signDisplay: "exceptZero",
+    maximumFractionDigits: 0,
+  }).format(nombre);
+}
+
 export function FormatterPourcentage(nombre) {
   return nombre.toLocaleString("fr-FR", {
     style: "percent",

@@ -163,64 +163,64 @@
               <!--end accordeon-->
               <div class="mt-5 mb-3">
                 <div class="repartition row">
-                  <div
-                    class="col-12 cadre-impacts cadre-categorie"
-                    style="cursor: pointer"
+                  <section
                     v-for="categorie in CATEGORIES_IMPACT"
                     :key="categorie.id"
                   >
-                    <div
-                      class="impact-titre"
-                      :class="categorie.couleur"
-                      @click="ouvrirModal(categorie.id)"
-                    >
-                      <span :class="categorie.icon"></span>
-                      {{ categorie.libelle }}
-                    </div>
-                    <div
-                      class="impacts justify-content-around align-items-center flex-column flex-sm-row"
-                      v-for="impact in categorie.impacts"
-                      v-bind:key="impact.id"
-                    >
-                      <div class="impact-item2 col-sm-2 titre-impact">
-                        <div class="impact-graph">
-                          <span :class="impact.icon"></span>
-                        </div>
-                        <div class="impact-nom">
-                          {{ impact.libelle }}
-                        </div>
+                    <div class="col-12 cadre-impacts cadre-categorie">
+                      <div class="impact-titre" :class="categorie.couleur">
+                        <span :class="categorie.icon"></span>
+                        {{ categorie.libelle }}
                       </div>
                       <div
-                        class="impact-item2 col-sm-8 d-flex justify-content-around align-items-center"
-                      >
-                        <div class="cadre-impact">
-                          <span class="impact-result texte-droite"
-                            ><p
-                              class="texte-data texte-droite"
-                              v-html="impact.titreSituationReference"
-                            ></p>
-                            {{ impact.sousTitreSituationReference }}
-                          </span>
-                        </div>
-                        <div class="cadre-impact">
-                          <span class="impact-result texte-gauche"
-                            ><p
-                              class="texte-data texte-gauche vert-clair"
-                              v-html="impact.titreSimulation"
-                            ></p>
-                            {{ impact.sousTitreSimulation }}
-                          </span>
-                        </div>
-                      </div>
-                      <div
-                        class="col-sm-2 result-plus d-flex flex-column justify-content-center text-center"
+                        class="impacts justify-content-around align-items-center flex-column flex-sm-row"
+                        v-for="impact in categorie.impacts"
+                        v-bind:key="impact.id"
+                        style="cursor: pointer"
                         @click="ouvrirModal(impact.modal, impact.dossierModal)"
                       >
-                        <span class="icon-ico_fleche_detail_gros icon"></span
-                        ><span class="explain">Explications</span>
+                        <div class="impact-item2 col-sm-2 titre-impact">
+                          <div class="impact-graph">
+                            <span :class="impact.icon"></span>
+                          </div>
+                          <div class="impact-nom">
+                            {{ impact.libelle }}
+                          </div>
+                        </div>
+                        <div
+                          class="impact-item2 col-sm-8 d-flex justify-content-around align-items-center"
+                        >
+                          <div class="cadre-impact">
+                            <span class="impact-result texte-droite"
+                              ><p
+                                class="texte-data texte-droite"
+                                v-html="impact.titreSituationReference"
+                              ></p>
+                              {{ impact.sousTitreSituationReference }}
+                            </span>
+                          </div>
+                          <div class="cadre-impact">
+                            <span class="impact-result texte-gauche"
+                              ><p
+                                class="texte-data texte-gauche vert-clair"
+                                v-html="impact.titreSimulation"
+                              ></p>
+                              {{ impact.sousTitreSimulation }}
+                            </span>
+                          </div>
+                        </div>
+                        <div
+                          class="col-sm-2 result-plus d-flex flex-column justify-content-center text-center"
+                          @click="
+                            ouvrirModal(impact.modal, impact.dossierModal)
+                          "
+                        >
+                          <span class="icon-ico_fleche_detail_gros icon"></span
+                          ><span class="explain">Explications</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </section>
 
                   <!-- ----------------->
 
@@ -558,7 +558,7 @@ import ModalComposant from "@/views/modal/ModalComposant.vue";
 import BandeauResultat from "@/components/BandeauResultat.vue";
 import vizConsommationVerticalSimulation from "@/components/visualisation/vizConsommationVerticalSimulation.vue";
 import vizConsommationVerticalReference from "@/components/visualisation/vizConsommationVerticalReference.vue";
-import { AfficherEntier } from "@/plugins/utils";
+import { AfficherEntier, AfficherEntierAvecSigne } from "@/plugins/utils";
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
 
@@ -637,7 +637,7 @@ const CATEGORIES_IMPACT = computed(() => {
           sousTitreSituationReference:
             "Uniquement pour la production alimentaire, soit 8% des émissions nationales",
           titreSimulation:
-            AfficherEntier(
+            AfficherEntierAvecSigne(
               donneesImpacts?.value.ges.differenceSimulationReferencePct
             ) + '<span class="texte-unite">%</span>',
           sousTitreSimulation: `soit  ${AfficherEntier(
@@ -663,7 +663,7 @@ const CATEGORIES_IMPACT = computed(() => {
           sousTitreSituationReference:
             "45% des espèces d'oiseaux ont disparu en Europe depuis 1970",
           titreSimulation:
-            AfficherEntier(
+            AfficherEntierAvecSigne(
               donneesImpacts?.value.abondances_especes
                 .differenceSimulationReferencePct
             ) + '<span class="texte-unite">%</span>',
@@ -680,7 +680,7 @@ const CATEGORIES_IMPACT = computed(() => {
             donneesImpacts?.value.surfaces_ha_soja_importes.donneesReference
           )} ha de soja sont nécessaires`,
           sousTitreSituationReference: `chaque année pour nourrir le bétail que l'on consomme. Soit l'équivalent de ${donneesImpacts?.value.surfaces_ha_soja_importes.donneesReferencePiscineOlympique} piscines olympiques`,
-          titreSimulation: AfficherEntier(
+          titreSimulation: AfficherEntierAvecSigne(
             donneesImpacts?.value.surfaces_ha_soja_importes
               .differenceSimulationReferencePct +
               '<span class="texte-unite">%</span>'
@@ -733,7 +733,7 @@ const CATEGORIES_IMPACT = computed(() => {
           titreSituationReference: "Des sols dont l'état est très dégradé",
           sousTitreSituationReference: "Soit 5%",
           titreSimulation:
-            AfficherEntier(
+            AfficherEntierAvecSigne(
               donneesImpacts?.value.richesses_des_sols
                 .differenceSimulationReferencePct
             ) + "<span class='texte-unite'>%</span>",
