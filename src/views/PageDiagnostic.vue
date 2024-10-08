@@ -7,59 +7,82 @@
       />
       <div class="section centrervh" id="section0" style="width: 100%">
         <div class="section-boutons-controles-diapo">
-          <button @click="RevenirDiapoPrecedente">Précédent</button>
-          <button @click="PasserProchaineDiapo">Suivant</button>
+          <button @click="RevenirDiapoPrecedente" class="bouton-retour">
+            Précédent
+          </button>
+          <button @click="PasserProchaineDiapo" class="bouton-suivant">
+            Suivant
+          </button>
         </div>
         <div class="container-grand">
           <div>
             <transition :name="slideTransition" @after-enter="transitionEnd">
               <div v-if="index == 0" class="slide-diagnostic">
                 <p
-                  class="animated fadeInUp fast p-result mb-1 map-content titre-moyen titre-slide"
+                  class="animated fadeInUp fast p-result mb-1 map-content titre-slide texte-moyen work-sans-300"
                   style="text-align: center"
                 >
                   Si on commençait par mieux connaître votre territoire ?
                 </p>
 
                 <div class="diagnostic">
-                  <div class="text-h1" v-html="geoList"></div>
+                  <div class="texte-moyen texte-centre" v-html="geoList"></div>
 
                   <div class="partie-diagnostic">
-                    <div class="sous-partie">
+                    <div class="sous-partie-gauche">
                       <img
                         :src="store.getters.getCarteTerritoireParcel"
                         class="carte"
                       />
                     </div>
-                    <div class="sous-partie">
-                      <p class="map-content">
-                        Le territoire sélectionné compte:
-                      </p>
-                      <div
-                        class="cadre-resultat style-gris resultat-ha animated flipInX delay-05s bg-grey-light nbr-ha"
-                      >
+                    <div class="sous-partie-droite bloc-paragraphe">
+                      <div class="sous-partie">
                         <div>
-                          {{ AfficherEntier(population) }}
+                          <img
+                            src="/img/logo/PARCEL_population.svg"
+                            height="100"
+                          />
                         </div>
-                        <div class="hectares">habitants</div>
-                      </div>
-                      <p class="map-content">Sur une surface de :</p>
-                      <div
-                        class="cadre-resultat style-gris resultat-ha animated flipInX delay-05s bg-grey-light nbr-ha"
-                      >
                         <div>
-                          {{ AfficherEntier(surface_km2) }}
+                          <p class="texte-petit texte-bleu">
+                            Le territoire sélectionné compte:
+                          </p>
+                          <p class="chiffre-moyen work-sans-700 texte-bleu">
+                            {{ AfficherEntier(population) }}
+                          </p>
+                          <p class="texte-petit">habitants</p>
                         </div>
-                        <div class="hectares">km²</div>
                       </div>
-                      <p class="map-content">
-                        Soit une densité de
-                        {{ AfficherEntier(densite) }} habitants par km²
-                      </p>
-                      <p
-                        class="subtext"
-                        v-html="differencePctDensitePhrase"
-                      ></p>
+                      <div class="sous-partie">
+                        <div
+                          style="
+                            width: 100px;
+                            height: 100px;
+                            background-color: var(--vert);
+                          "
+                        ></div>
+                        <div>
+                          <p class="texte-petit texte-bleu">
+                            Sur une surface de :
+                          </p>
+                          <div class="chiffre-moyen work-sans-700 texte-bleu">
+                            {{ AfficherEntier(surface_km2) }}
+                          </div>
+                          <div class="texte-petit">km²</div>
+                        </div>
+                      </div>
+                      <div>
+                        <div>
+                          <p class="texte-petit texte-vert">
+                            Soit une densité de
+                            {{ AfficherEntier(densite) }} habitants par km²
+                          </p>
+                          <p
+                            class="texte-petit"
+                            v-html="differencePctDensitePhrase"
+                          ></p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -221,8 +244,9 @@ const store = useStore();
 function messageBievenue(listeTerritoire) {
   if (listeTerritoire && listeTerritoire.length === 1) {
     return (
-      "<h4 style='text-align: center'>Bienvenue dans le territoire de:</h4> " +
-      listeTerritoire[0].localeName
+      "<p class='texte-vert'>Bienvenue dans le territoire de :</p><p class='texte-bleu'>" +
+      listeTerritoire[0].localeName +
+      "</p>"
     );
   }
 }
@@ -361,22 +385,80 @@ onMounted(() => {
 .section-boutons-controles-diapo {
   position: absolute;
   bottom: 2%;
-  right: 2%;
+  right: 3%;
   transform: translateY(-50%);
   z-index: 100;
   display: flex;
   flex-direction: row;
   gap: 16px;
+  transition: 0s;
 }
 
 .section-boutons-controles-diapo button {
-  background-color: #91c423;
   color: white;
   border: none;
-  padding: 8px 16px;
+  padding: 10px 20px;
   font-size: 16px;
   text-transform: uppercase;
   cursor: pointer;
+  line-height: 16px;
+  transition: 0s;
+}
+
+.bouton-retour {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #c8dbdb; /* Adjust this to match the color */
+  color: #ffffff; /* Text color */
+  border-left: 1px solid #c8dbdb;
+}
+
+.bouton-retour:before {
+  content: url("/public/img/bouton/triangle-precedent.svg");
+  position: absolute;
+  top: 0;
+  left: -19px;
+  border-right: 1px solid #c8dbdb;
+  height: 36px;
+  width: 19px;
+  fill: #c8dbdb;
+}
+
+.bouton-retour:hover {
+  background-color: #b0c7c7; /* Darken the color on hover */
+}
+
+.bouton-retour:hover:before {
+  content: url("/public/img/bouton/triangle-precedent-hover.svg");
+  border-right: 1px solid #b0c7c7;
+}
+.bouton-suivant {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--vert); /* Adjust this to match the color */
+  color: #ffffff; /* Text color */
+  border-right: 1px solid var(--vert);
+}
+
+.bouton-suivant:after {
+  content: url("/public/img/bouton/triangle-suivant.svg");
+  position: absolute;
+  top: 0;
+  right: -18px;
+  border-left: 1px solid var(--vert);
+  height: 36px;
+  width: 19px;
+  fill: #c8dbdb;
+  color: var(--vert);
+}
+
+.bouton-suivant:hover {
+  background-color: var(--bleu); /* Darken the color on hover */
+}
+
+.bouton-suivant:hover:after {
+  content: url("/public/img/bouton/triangle-suivant-hover.svg");
+  border-left: 1px solid var(--bleu);
 }
 
 .slide-diagnostic {
@@ -429,12 +511,31 @@ onMounted(() => {
 
 .sous-partie {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  gap: 32px;
   flex-grow: 1;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   height: 100%;
+}
+
+.sous-partie-gauche {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+
+.sous-partie-droite {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-grow: 1;
+}
+
+.bloc-paragraphe {
+  gap: 32px;
 }
 
 .partie-diagnostic-pleine-page {
@@ -465,7 +566,6 @@ onMounted(() => {
   height: 100%;
   max-width: 600px;
   height: auto;
-  margin: auto;
 }
 
 .map-content {
@@ -486,9 +586,27 @@ onMounted(() => {
   font-size: 16px;
 }
 
-.titre-moyen {
+.titre-slide {
   padding: 32px 0;
   flex-grow: 1;
+  color: #015a5a;
+  line-height: 1.2;
+}
+
+.texte-moyen {
+  font-size: 24px;
+}
+
+.chiffre-moyen {
+  font-size: 28px;
+}
+
+.texte-petit {
+  font-size: 16px;
+}
+
+.texte-centre {
+  text-align: center;
 }
 
 .gros-chiffre-diagnostic {

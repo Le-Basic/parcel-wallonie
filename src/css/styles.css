@@ -13,6 +13,33 @@ body {
   padding: 0;
 }
 
+.work-sans-200 {
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200 !important;
+  font-style: normal;
+}
+.work-sans-300 {
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300 !important;
+  font-style: normal;
+}
+
+.work-sans-400 {
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400 !important;
+  font-style: normal;
+}
+
+.work-sans-700 {
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700 !important;
+  font-style: normal;
+}
+
 .blanc {
   color: #fff !important;
 }
@@ -33,6 +60,18 @@ input {
 
 .texte-centre {
   text-align: center !important;
+}
+
+.texte-vert {
+  color: var(--vert);
+}
+
+.texte-bleu {
+  color: var(--bleu);
+}
+
+.texte-vert {
+  color: var(--vert);
 }
 
 h4 {

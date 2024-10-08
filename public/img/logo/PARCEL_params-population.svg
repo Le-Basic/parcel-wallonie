@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 48 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:10;">
+    <g id="Artboard1" transform="matrix(1.1181,0,0,1.18525,-20.4081,-19.278)">
+        <rect x="18.252" y="16.265" width="42.93" height="32.061" style="fill:none;"/>
+        <clipPath id="_clip1">
+            <rect x="18.252" y="16.265" width="42.93" height="32.061"/>
+        </clipPath>
+        <g clip-path="url(#_clip1)">
+            <g transform="matrix(0.894375,0,0,0.843701,-782.761,-148.337)">
+                <g transform="matrix(1.05208,0,0,1.05208,202.692,-448.301)">
+                    <g transform="matrix(-1.12805,0,0,1.12805,669.228,625.915)">
+                        <ellipse cx="0" cy="-5.662" rx="5.661" ry="5.662" style="fill:none;stroke:rgb(145,196,35);stroke-width:1.69px;"/>
+                    </g>
+                    <g transform="matrix(1.12805,0,0,1.12805,660.151,630.389)">
+                        <path d="M0,13.897L0,4.574C0,2.048 2.329,0 5.201,0L10.892,0C13.764,0 16.093,2.048 16.093,4.574L16.093,13.897" style="fill:none;fill-rule:nonzero;stroke:rgb(145,196,35);stroke-width:1.69px;"/>
+                    </g>
+                </g>
+                <g transform="matrix(1.05208,0,0,1.05208,228.365,-448.301)">
+                    <g transform="matrix(-1.12805,0,0,1.12805,669.228,625.915)">
+                        <ellipse cx="0" cy="-5.662" rx="5.661" ry="5.662" style="fill:none;stroke:rgb(145,196,35);stroke-width:1.69px;"/>
+                    </g>
+                    <g transform="matrix(1.12805,0,0,1.12805,660.151,630.389)">
+                        <path d="M0,13.897L0,4.574C0,2.048 2.329,0 5.201,0L10.892,0C13.764,0 16.093,2.048 16.093,4.574L16.093,13.897" style="fill:none;fill-rule:nonzero;stroke:rgb(145,196,35);stroke-width:1.69px;"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
