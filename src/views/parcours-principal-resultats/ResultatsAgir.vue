@@ -364,11 +364,13 @@
                       >
                     </div>
                     <ul>
-                      <li>
-                        La cellule Manger Demain - pour connaître la situation
-                        des cantines de mon territoire (et d’autres initiatives)
-                        (https://www.mangerdemain.be/)
-                      </li>
+                      <a href="https://www.mangerdemain.be/">
+                        <li>
+                          La cellule Manger Demain - pour connaître la situation
+                          des cantines de mon territoire (et d’autres
+                          initiatives)
+                        </li></a
+                      >
                       <a href="https://www.collectif5c.be/"
                         ><li>Les coopératives citoyennes - Collectif 5C</li></a
                       >
