@@ -146,8 +146,7 @@
             <transition :name="slideTransition" @after-enter="transitionEnd">
               <div class="slide-diagnostic" v-if="index == 2">
                 <p
-                  class="animated fadeInUp fast p-result mb-1 titre-slide texte-moyen work-sans-300"
-                  style="text-align: center"
+                  class="animated fadeInUp fast p-result mb-1 titre-slide texte-moyen work-sans-300 texte-centre"
                 >
                   Pour quels impacts ?
                 </p>
@@ -169,14 +168,30 @@
                         height="100"
                       />
                     </div>
-                    <p class="texte-petit texte-bleu" style="width: 400px">
+                    <p
+                      class="texte-petit texte-bleu work-sans-200"
+                      style="width: 400px"
+                    >
                       L'alimentation a un impact sur le changement climatique.
                       Elle est dans l'un
                       <b>des 3 postes les plus émetteurs de CO2</b>
                       avec le transport et le logement
                     </p>
                   </div>
-                  <div class="sous-partie-droite texte-align-gauche"></div>
+                  <div class="sous-partie-droite texte-align-gauche">
+                    <p class="texte-petit work-sans-300 texte-vert">
+                      ici en l'occurence :
+                    </p>
+                    <p class="chiffre-moyen">2,1<br />cTCO² eq/personne/an</p>
+                    <p
+                      class="texte-tres-petit texte-bleu work-sans-300"
+                      style="width: 400px; margin-top: 32px"
+                    >
+                      Émissions de gaz à effet de serre (en tonnes équivalent
+                      CO2) par personne et par an, associées à l'empreinte
+                      carbone du poste alimentation en 2017
+                    </p>
+                  </div>
                 </div>
               </div>
             </transition>
@@ -185,28 +200,36 @@
                 class="partie-diagnostic-pleine-page slide-diagnostic"
                 v-if="index == 3"
               >
-                <p class="texte-centre titre-grand">
-                  Le territoire sélectionné a également une activité agricole:
+                <p
+                  class="animated fadeInUp fast p-result mb-1 titre-slide texte-moyen work-sans-300"
+                  style="text-align: center"
+                >
+                  Le territoire sélectionné a également une activité agricole :
                 </p>
                 <div class="partie-diagnostic">
-                  <div class="sous-partie">
+                  <div class="sous-partie-gauche bloc-paragraphe">
+                    <p
+                      class="full-width texte-centre texte-petit work-sans-300"
+                    >
+                      Occupation du sol du territoire
+                    </p>
                     <vizOccupationDuSol />
                   </div>
-                  <div class="sous-partie">
-                    <div class="map-content">
-                      La Surface Agricole Utile du territoire est de:
+                  <div class="sous-partie-droite bloc-paragraphe">
+                    <div>
+                      <p class="texte-petit texte-vert">
+                        La Surface Agricole Utile du territoire est de:
+                      </p>
+                      <p class="chiffre-moyen">{{ sau_ha }} hectares</p>
                     </div>
-                    <div class="gros-chiffre-diagnostic">
-                      {{ sau_ha }} hectares
+                    <div>
+                      <p class="texte-petit texte-vert">ce qui veut dire que</p>
+                      <p class="chiffre-moyen">{{ pct_sau }}%</p>
+                      <p class="texte-petit texte-bleu">
+                        de la surface du territoire est consacré à l'agriculture
+                      </p>
                     </div>
-                    <div class="map-content">ce qui veut dire que</div>
-                    <div class="gros-chiffre-diagnostic texte-bleu">
-                      {{ pct_sau }}%
-                    </div>
-                    <div class="map-content">
-                      de la surface du territoire est consacré à l'agriculture
-                    </div>
-                    <p class="subtext">
+                    <p class="texte-petit texte-bleu work-sans-300">
                       en dessous de la moyenne nationale de
                       {{ pctSauSuperficieWallonie }}
                     </p>
@@ -229,29 +252,117 @@
               </div>
             </transition>
             <transition :name="slideTransition" @after-enter="transitionEnd">
-              <div v-if="index == 5">
-                <div>
-                  <p class="texte-centre titre-grand">
-                    Sur le territoire choisi, l'activité agricole (élevage et
-                    culture) est responsable de:
-                  </p>
-                  <p class="gros-chiffre-diagnostic texte-centre">
-                    {{ nb_emploi_agricole_uta }} emplois
-                  </p>
-                  <p class="texte-centre titre-grand">
-                    répartis sur {{ nb_eploitations_2021 }} exploitations
-                    agricoles.
-                  </p>
-                  <p class="map-content">
-                    Soit une baisse de {{ baisse_nbexploitations_1990_2021 }}%
-                    en 30 ans. Les agricultures ne représentent maintenant plus
-                    que 1.5% du total des emplois du territoire.
-                  </p>
+              <div
+                v-if="index == 5"
+                class="partie-diagnostic-pleine-page slide-diagnostic"
+              >
+                <p
+                  class="animated fadeInUp fast p-result mb-1 titre-slide texte-moyen work-sans-300 texte-centre"
+                >
+                  Sur le territoire choisi, l'activité agricole (élevage et
+                  culture) est responsable de:
+                </p>
+                <div class="partie-diagnostic">
+                  <div class="sous-partie-gauche">
+                    <div class="flex-row">
+                      <pieEmploi />
+                      <img
+                        src="/img/logo/PARCEL_params-paysan.svg"
+                        height="100"
+                      />
+                    </div>
+                  </div>
+                  <div class="sous-partie-droite bloc-paragraphe">
+                    <div>
+                      <p class="chiffre-moyen texte-bleu">
+                        {{ nb_emploi_agricole_uta }} emplois
+                      </p>
+                      <p class="texte-centre texte-petit texte-vert">
+                        répartis sur {{ nb_eploitations_2021 }} exploitations
+                        agricoles.
+                      </p>
+                    </div>
+                    <p class="texte-tres-petit texte-bleu">
+                      <b
+                        >Soit une baisse de
+                        {{ baisse_nbexploitations_1990_2021 }}% en 30 ans</b
+                      >. Les agricultures ne représentent maintenant plus que
+                      1.5% du total des emplois du territoire.
+                    </p>
+                  </div>
                 </div>
               </div>
             </transition>
             <transition :name="slideTransition" @after-enter="transitionEnd">
-              <div id="potentiel" v-if="index == 6">
+              <div
+                v-if="index == 6"
+                class="partie-diagnostic-pleine-page slide-diagnostic"
+              >
+                <p
+                  class="animated fadeInUp fast p-result mb-1 titre-slide texte-moyen work-sans-300 texte-centre"
+                >
+                  Cette activité n’est pas sans conséquence pour notre
+                  environnement, les autres espèces, notre eau, nos sols, nos
+                  forêts…
+                </p>
+                <div>
+                  <div class="grille-impacts">
+                    <div class="case-impact texte-bleu">
+                      <img
+                        src="/img/logo/PARCEL_picto-CO2.svg"
+                        style="max-width: 100px; max-height: 100px"
+                      />
+                      <p class="texte-petit texte-bleu">
+                        37 millions de tonnes de CO2 émise par an par notre
+                        production agricole
+                      </p>
+                    </div>
+                    <div class="case-impact texte-bleu">
+                      <img
+                        src="/img/logo/PARCEL_picto-soja.svg"
+                        style="max-width: 100px; max-height: 100px"
+                      />
+                      <p class="texte-petit">
+                        600 000 ha de soja cultivés très loin pour nourrir le
+                        bétail belge accélérant des phénomènes de déforestation
+                      </p>
+                    </div>
+                    <div class="case-impact texte-bleu">
+                      <img
+                        src="/img/logo/PARCEL_picto-ferme.svg"
+                        style="max-width: 100px; max-height: 100px"
+                      />
+                      <p class="texte-petit">
+                        20% des agriculteurs belges vivent sous le taux de
+                        pauvreté en 2024.
+                      </p>
+                    </div>
+                    <div class="case-impact texte-bleu">
+                      <img
+                        src="/img/logo/PARCEL_picto-eau-sale.svg"
+                        style="max-width: 100px; max-height: 100px"
+                      />
+                      <p class="texte-petit">
+                        8% des eaux souterraines ont des taux trop élevés de
+                        nitrates
+                      </p>
+                    </div>
+                    <div class="case-impact texte-bleu">
+                      <img
+                        src="/img/logo/PARCEL_picto-oiseau.svg"
+                        style="max-width: 100px; max-height: 100px"
+                      />
+                      <p class="texte-petit">
+                        45% des oiseaux des champs ont disparu en 30 ans en
+                        Europe
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </transition>
+            <transition :name="slideTransition" @after-enter="transitionEnd">
+              <div id="potentiel" v-if="index == 7">
                 <p class="titre-grand texte-centre">
                   Alors pourrais-je nourrir l'ensemble de ma population avec les
                   surfaces actuelles agricoles ?
@@ -292,6 +403,7 @@
 import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import { AfficherEntier, FormatterPourcentage } from "@/plugins/utils";
 import vizConsommation from "../components/visualisation/vizConsommation.vue";
+import pieEmploi from "../components/visualisation/pieEmploi.vue";
 import CarteOtex from "@/components/visualisation/CarteOtex.vue";
 import vizOccupationDuSol from "@/components/visualisation/vizOccupationDuSol.vue";
 import geojsonData from "/public/data.json";
@@ -397,11 +509,10 @@ geojsonData.features = featuresAvecOtex.value;
 const dernierDeltaY = ref(0);
 const slideTransition = ref("slide-fade");
 const index = ref(0);
-const maxIndex = 5;
+const maxIndex = 7;
 function GererUnEvenementWheel(event) {
   // Any code to be executed when the user scrolls with the wheel
   console.log("Calling handleWheel");
-  console.log(event);
   if (dernierDeltaY.value < Math.abs(event.deltaY)) {
     if (event.deltaY > 0) {
       index.value = index.value === maxIndex ? maxIndex : index.value + 1;
@@ -433,6 +544,9 @@ onMounted(() => {
 </script>
 
 <style scoped>
+* {
+  font-family: "Work Sans", sans-serif;
+}
 p {
   margin-bottom: 0;
 }
@@ -609,6 +723,23 @@ a:hover {
   flex-shrink: 1;
 }
 
+.grille-impacts {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.case-impact {
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  width: 150px;
+  gap: 16px;
+}
+
+.case-impact img {
+  margin: auto 0;
+}
+
 .bloc-paragraphe {
   gap: 32px;
 }
@@ -674,7 +805,7 @@ a:hover {
 
 .chiffre-moyen {
   font-size: 36px;
-  margin-top: 12px;
+  margin-top: 9px;
   font-weight: bold;
   line-height: 1;
 }

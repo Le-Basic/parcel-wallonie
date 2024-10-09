@@ -1,5 +1,4 @@
 <template>
-  <p class="text-h3">Occupation du sol sur le territoire</p>
   <div class="graphique">
     <v-chart :option="option" style="width: 100%" />
   </div>
@@ -7,6 +6,7 @@
 
 <script setup>
 import { useStore } from "vuex";
+import { AfficherEntier } from "@/plugins/utils";
 
 const store = useStore();
 
@@ -36,10 +36,7 @@ const series = [
   "Espaces Artificialisés",
 ].map((name, sid) => {
   return {
-    name,
-    type: "bar",
-    stack: "total",
-    barWidth: "50%",
+    type: "pie",
     color: colors[sid],
     label: {
       show: true,
@@ -47,35 +44,63 @@ const series = [
       distance: 50,
       color: colors[sid],
       formatter: (params) =>
-        name + "\n" + Math.round(params.value * 1000) / 10 + "%",
+        Math.round(params.value * 1000) / 10 + "%" + "\n" + name,
     },
-
-    data: [dataOccupationDuSol[sid] / totalData],
+    name: name,
+    value: dataOccupationDuSol[sid] / totalData,
   };
 });
 
 console.log(series);
 const option = {
-  grid,
-  yAxis: {
-    type: "value",
+  tooltip: {
     show: false,
   },
-  xAxis: {
-    type: "category",
-    data: ["Occupation du sol"],
+  legend: {
     show: false,
   },
-  series,
+
+  series: [
+    {
+      type: "pie",
+      color: colors,
+      startAngle: 180,
+      label: {
+        formatter: function (d) {
+          return (
+            "{bold|" + AfficherEntier(d.data.value * 100) + "%}\n" + d.data.name
+          );
+        },
+        rich: {
+          bold: {
+            fontWeight: "bold",
+          },
+        },
+      },
+      data: [
+        "Surface Agricole",
+        "Espaces Naturels",
+        "Espaces Artificialisés",
+      ].map((name, sid) => {
+        return {
+          name: name,
+          value: dataOccupationDuSol[sid] / totalData,
+          label: {
+            color: colors[sid],
+          },
+        };
+      }),
+    },
+  ],
+  textStyle: { fontFamily: "Work Sans", rich: { test: { color: "red" } } },
 };
 </script>
 
 <style scoped>
 .graphique {
-  min-width: 100px;
-  height: 100%;
+  height: 400px;
   min-width: 200px;
-  width: 100%;
+  width: 600px;
   margin: auto;
 }
 
