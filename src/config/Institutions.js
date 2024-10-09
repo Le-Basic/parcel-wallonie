@@ -23,14 +23,14 @@ export const INSTITUTIONS = [
   },
   {
     id: INSTITUTIONS_IDS.COLLEGES,
-    libelle_pluriel: "Collège(s)",
-    libelle_singulier: "Collège",
+    libelle_pluriel: "Secondaire(s)",
+    libelle_singulier: "Secondaire",
   },
-  {
-    id: INSTITUTIONS_IDS.LYCEES,
-    libelle_pluriel: "Lycée(s)",
-    libelle_singulier: "Lycée",
-  },
+  // {
+  //   id: INSTITUTIONS_IDS.LYCEES,
+  //   libelle_pluriel: "Lycée(s)",
+  //   libelle_singulier: "Lycée",
+  // },
   {
     id: INSTITUTIONS_IDS.UNIVERSITES,
     libelle_pluriel: "Université(s)",

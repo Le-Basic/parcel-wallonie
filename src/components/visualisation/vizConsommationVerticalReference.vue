@@ -9,7 +9,7 @@ import { use } from "echarts/core";
 import { BarChart } from "echarts/charts";
 import { GridComponent } from "echarts/components";
 import { CanvasRenderer } from "echarts/renderers";
-import { ref } from "vue";
+import { ref, defineProps } from "vue";
 import { useStore } from "vuex";
 import { CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE } from "@/config/categorieProduitsPotentielNourricier";
 import { trouverChiffre } from "@/plugins/utils";
@@ -21,6 +21,10 @@ const LIBELLE_XAXIS = [
   "Produits laitiers",
   "Viande \net oeufs",
 ];
+
+const props = defineProps({
+  maxXaxis: Number,
+});
 
 const data = ref([
   {
@@ -151,7 +155,7 @@ const options = ref({
     },
     axisLabel: { show: false },
     type: "value",
-    max: 1000000000,
+    max: props.maxXaxis,
   },
   series: [
     {

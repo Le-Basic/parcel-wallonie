@@ -41,7 +41,7 @@
                 </section>
               </section>
               <section class="comparaison-matieres-premieres">
-                <vizConsommationVerticalReference />
+                <vizConsommationVerticalReference :maxXaxis="maxConsommation" />
                 <div style="margin: auto">
                   <svg
                     height="220"
@@ -52,7 +52,9 @@
                   </svg>
                 </div>
 
-                <vizConsommationVerticalSimulation />
+                <vizConsommationVerticalSimulation
+                  :maxXaxis="maxConsommation"
+                />
               </section>
               <div class="accordion ml-auto mr-auto" id="accordeon-Impact">
                 <!--end heading accordeon-->
@@ -230,10 +232,10 @@
               </div>
               <!--end mt-5-->
               <div class="w-100 div-continuer mb-big text-center">
-                <a href="/agir-pour-une-relocalisation-durable"
+                <router-link to="/agir-pour-une-relocalisation-durable"
                   ><button type="button" class="btn btn-principal mt-5">
                     Agir
-                  </button></a
+                  </button></router-link
                 >
               </div>
             </div>
@@ -246,154 +248,6 @@
       <!--end content-->
     </div>
     <!--asy-wrapper-->
-    <div
-      class="modal fade"
-      id=""
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content modal-repart-cat-detail">
-          <div class="modal-header d-flex align-items-center">
-            <div>
-              <span class="icon-ico_CATEGORIES_legumes icon legumes"></span>
-            </div>
-            <div class="d-flex flex-column">
-              <div class="titre-categorie">Légumes</div>
-              <div class="hectares">10 436 hectares</div>
-            </div>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span class="icon-ico_fermer icon"></span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div id="accordion" class="accordeon-detail">
-              <div class="card">
-                <div class="card-header">
-                  <a
-                    class="card-link"
-                    data-toggle="collapse"
-                    href="#collapseOne"
-                  >
-                    <div><span class="icon-ico_calcul2 icon white"></span></div>
-                    <div>Méthodologie de calcul</div>
-                  </a>
-                </div>
-                <div
-                  id="collapseOne"
-                  class="collapse show"
-                  data-parent="#accordion"
-                >
-                  <div class="card-body">
-                    <div class="mb-3">
-                      Selon les chiffres de l’INSEE de 2015, la part de légumes
-                      moyenne pour un habitant des Bouches du Rhône représente
-                      27 % d’une assiette.
-                    </div>
-                    <div
-                      class="cadre-resultat methodo-detail d-flex flex-row justify-content-around"
-                    >
-                      <span
-                        class="col-6 d-flex flex-column justify-content-center"
-                        ><span class="icon-ico_poids icon legumes"></span
-                        ><span class="nbr-ha"> 7 742 kg</span
-                        ><span class="hectares"> nécessitant </span></span
-                      >
-                      <span
-                        class="col-6 d-flex flex-column justify-content-center"
-                        ><span class="icon-ico_champ icon legumes"></span
-                        ><span class="nbr-ha"> 3 249</span
-                        ><span class="hectares"> hectares </span></span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header">
-                  <a
-                    class="collapsed card-link"
-                    data-toggle="collapse"
-                    href="#collapseTwo"
-                  >
-                    <span class="icon-ico_detail icon white"></span> Détail par
-                    produit
-                  </a>
-                </div>
-                <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                  <div class="card-body">
-                    <span class="mb-2"
-                      ><strong
-                        >en pourcentage de surfaces cultivées</strong
-                      ></span
-                    >
-                    <div class="list-produits">
-                      <ul>
-                        <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit"
-                            >Ail, échalottes, oignons</span
-                          >
-                        </li>
-                        <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit">Artichauts</span>
-                        </li>
-                        <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit">Asperges</span>
-                        </li>
-                        <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit">Aubergines</span>
-                        </li>
-                        <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit"
-                            >Betteraves, Radis, Salsifis, Similaires</span
-                          >
-                        </li>
-                        <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit"
-                            >Bettes, Cardes, Brèdes, Christophine</span
-                          >
-                        </li>
-                        <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit"
-                            >Carottes, Navets potagers, Céleris raves</span
-                          >
-                        </li>
-                        <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit">Céleris branche</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div
       class="modal fade"
       id="modal-fruits"
@@ -421,124 +275,6 @@
               <span class="icon-ico_fermer icon"></span>
             </button>
           </div>
-          <div class="modal-body">
-            <div id="accordion" class="accordeon-detail fruits-fonce">
-              <div class="card">
-                <div class="card-header">
-                  <a
-                    class="card-link fruits-fonce"
-                    data-toggle="collapse"
-                    href="#collapseOne"
-                  >
-                    <div><span class="icon-ico_calcul2 icon white"></span></div>
-                    <div>Méthodologie de calcul</div>
-                  </a>
-                </div>
-                <div
-                  id="collapseOne"
-                  class="collapse show"
-                  data-parent="#accordion"
-                >
-                  <div class="card-body">
-                    <div class="mb-3">
-                      Selon les chiffres de l’INSEE de 2015, la part de légumes
-                      moyenne pour un habitant des Bouches du Rhône représente
-                      27 % d’une assiette.
-                    </div>
-                    <div
-                      class="cadre-resultat fruits-fonce methodo-detail d-flex flex-row justify-content-around"
-                    >
-                      <span
-                        class="col-6 d-flex flex-column justify-content-center"
-                        ><span class="icon-ico_poids icon fruits"></span
-                        ><span class="nbr-ha"> 7 742 kg</span
-                        ><span class="hectares"> nécessitant </span></span
-                      >
-                      <span
-                        class="col-6 d-flex flex-column justify-content-center"
-                        ><span class="icon-ico_champ icon fruits"></span
-                        ><span class="nbr-ha"> 3 249</span
-                        ><span class="hectares"> hectares </span></span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header">
-                  <a
-                    class="collapsed card-link"
-                    data-toggle="collapse"
-                    href="#collapseTwo"
-                  >
-                    <span class="icon-ico_detail icon white"></span> Détail par
-                    produit
-                  </a>
-                </div>
-                <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                  <div class="card-body">
-                    <span class="mb-2"
-                      ><strong
-                        >en pourcentage de surfaces cultivées</strong
-                      ></span
-                    >
-                    <div class="list-produits">
-                      <ul>
-                        <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit"
-                            >Ail, échalottes, oignons</span
-                          >
-                        </li>
-                        <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit">Artichauts</span>
-                        </li>
-                        <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit">Asperges</span>
-                        </li>
-                        <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit">Aubergines</span>
-                        </li>
-                        <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit"
-                            >Betteraves, Radis, Salsifis, Similaires</span
-                          >
-                        </li>
-                        <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit"
-                            >Bettes, Cardes, Brèdes, Christophine</span
-                          >
-                        </li>
-                        <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit"
-                            >Carottes, Navets potagers, Céleris raves</span
-                          >
-                        </li>
-                        <li>
-                          <span class="badge-detail-produit bg-legumes-fonce"
-                            >0,13</span
-                          ><span class="nom-produit">Céleris branche</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -558,11 +294,23 @@ import ModalComposant from "@/views/modal/ModalComposant.vue";
 import BandeauResultat from "@/components/BandeauResultat.vue";
 import vizConsommationVerticalSimulation from "@/components/visualisation/vizConsommationVerticalSimulation.vue";
 import vizConsommationVerticalReference from "@/components/visualisation/vizConsommationVerticalReference.vue";
-import { AfficherEntier, AfficherEntierAvecSigne } from "@/plugins/utils";
+import {
+  AfficherEntier,
+  AfficherEntierAvecSigne,
+  trouverChiffre,
+} from "@/plugins/utils";
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
+import { CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE } from "@/config/categorieProduitsPotentielNourricier";
 
 const store = useStore(); // Access Vuex store
+
+const maxConsommation = trouverChiffre(
+  store.state.resultatReference.surfacesEmploisAMobiliser,
+  CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.LAIT.libelle,
+  "consommation_kg",
+  "libelle_parcel_niveau_2"
+);
 
 const donneesImpacts = computed(() => {
   return {

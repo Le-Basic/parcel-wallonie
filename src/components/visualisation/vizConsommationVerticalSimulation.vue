@@ -29,11 +29,15 @@ import { use } from "echarts/core";
 import { BarChart } from "echarts/charts";
 import { GridComponent } from "echarts/components";
 import { CanvasRenderer } from "echarts/renderers";
-import { computed } from "vue";
+import { computed, defineProps } from "vue";
 import { useStore } from "vuex";
 import { CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE } from "@/config/categorieProduitsPotentielNourricier";
 import { trouverChiffre, AfficherEntier } from "@/plugins/utils";
 const store = useStore();
+
+const props = defineProps({
+  maxXaxis: Number,
+});
 const LIBELLE_XAXIS = [
   "Céréales",
   "Légumes",
@@ -150,7 +154,7 @@ const options = computed(() => {
       },
       axisLabel: { show: false },
       type: "value",
-      max: 1000000000,
+      max: props.maxXaxis,
     },
     series: [
       {

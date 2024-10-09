@@ -19,7 +19,7 @@
       <div>
         <div><b>Diminution de moitié des produits animaux</b></div>
         <div class="details">
-          Ce régime est proche de celui du scénario Afterres 2050, de Solagro
+          Ce régime est proche de celui du scénario TYFA, réalisé par I4CE.
         </div>
       </div>
     </div>

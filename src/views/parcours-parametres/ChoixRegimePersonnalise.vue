@@ -963,7 +963,7 @@
                 ></span>
                 <div class="col text-center text-sm-left">
                   <a
-                    href="https://solidarites-sante.gouv.fr/IMG/pdf/pnns4_2019-2023.pdf"
+                    href="https://www.health.belgium.be/sites/default/files/uploads/fields/fpshealth_theme_file/20190902_css-9284_fbdg_vweb_0.pdf"
                     target="_blank"
                     class="text-white"
                   >

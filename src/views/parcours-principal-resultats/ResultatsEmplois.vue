@@ -11,8 +11,8 @@
           <div class="section centrervh" id="section0">
             <div class="container">
               <h1 class="animated fadeInUp fast h1-result mb-3">
-                Quels sont les emplois agricoles nécessaires pour notre
-                alimentation ?
+                Quels sont les emplois agricoles nécessaires pour le régime
+                alimentaire simulé ?
               </h1>
               <div class="cadre-resultat resultat-ha animated flipInX">
                 <div class="d-inline-flex">
