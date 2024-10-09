@@ -1,6 +1,4 @@
 <template>
-  <p class="text-h3">Carte des spécialisations par commune</p>
-
   <div id="map" ref="map"></div>
   <div class="legende-palette">
     <div
@@ -36,31 +34,31 @@ const props = defineProps({
 const otexEtCouleurDict = [
   {
     label: "Bovins viandeux",
-    couleur: "#b57a60",
+    couleur: "#C7DC91",
   },
   {
     label: "Grandes cultures",
-    couleur: "#f5a623",
+    couleur: "#91C423",
   },
   {
     label: "Bovins laitiers et viandeux",
-    couleur: "#FF6B8B",
+    couleur: "#015A5C",
   },
   {
     label: "Cultures et bovins",
-    couleur: "#FF2D5D",
+    couleur: "#498F3F",
   },
   {
     label: "Horticulture / Fruiticulture",
-    couleur: "#91c423",
+    couleur: "#6EAA31",
   },
   {
     label: "Bovins laitiers",
-    couleur: "#4a90e2",
+    couleur: "#639A76",
   },
   {
     label: "Autres",
-    couleur: "#D3D3D3",
+    couleur: "#25754E",
   },
   {
     label: "Non disponible",
@@ -100,6 +98,16 @@ onMounted(() => {
 
         "fill-opacity": 1,
         "fill-outline-color": "#F1EDEA40",
+      },
+    });
+    carte.addLayer({
+      id: "polygon-border",
+      type: "line",
+      source: "geojson-data",
+      paint: {
+        "line-color": "#ffffff", // Color of the border
+        "line-width": 0.6, // Border thickness
+        "line-opacity": 0.8, // Optional: border opacity
       },
     });
     let popup = new maplibregl.Popup({

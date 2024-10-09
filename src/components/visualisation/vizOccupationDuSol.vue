@@ -24,34 +24,6 @@ for (let j = 0; j < dataOccupationDuSol.length; ++j) {
 }
 
 const colors = ["#91C423", "#025A5C", "#0c1321"];
-const grid = {
-  left: 100,
-  right: 0,
-  top: 0,
-  bottom: 0,
-};
-const series = [
-  "Surface Agricole",
-  "Espaces Naturels",
-  "Espaces Artificialisés",
-].map((name, sid) => {
-  return {
-    type: "pie",
-    color: colors[sid],
-    label: {
-      show: true,
-      position: "left",
-      distance: 50,
-      color: colors[sid],
-      formatter: (params) =>
-        Math.round(params.value * 1000) / 10 + "%" + "\n" + name,
-    },
-    name: name,
-    value: dataOccupationDuSol[sid] / totalData,
-  };
-});
-
-console.log(series);
 const option = {
   tooltip: {
     show: false,

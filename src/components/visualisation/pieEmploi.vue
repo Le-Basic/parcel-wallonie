@@ -5,8 +5,6 @@
 </template>
 
 <script setup>
-import { useStore } from "vuex";
-
 const colors = ["#91c423", "#f8f8f3"];
 
 const option = {

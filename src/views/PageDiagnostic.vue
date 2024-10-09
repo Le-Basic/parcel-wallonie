@@ -239,12 +239,18 @@
             </transition>
 
             <transition :name="slideTransition" @after-enter="transitionEnd">
-              <div v-if="index == 4">
+              <div
+                class="partie-diagnostic-pleine-page slide-diagnostic"
+                v-if="index == 4"
+              >
+                <p
+                  class="animated fadeInUp fast p-result mb-1 titre-slide texte-moyen work-sans-300"
+                  style="text-align: center"
+                >
+                  Cette activité agricole est largement spécialisée et
+                  principalement tournée vers la Viande Bovine:
+                </p>
                 <div>
-                  <p class="map-content texte-centre titre-moyen">
-                    Cette activité agricole est largement spécialisée et
-                    principalement tournée vers la Viande Bovine:
-                  </p>
                   <div style="width: 100%; margin: auto">
                     <CarteOtex :geojson="geojsonData" v-if="geojsonData" />
                   </div>
@@ -305,7 +311,7 @@
                   environnement, les autres espèces, notre eau, nos sols, nos
                   forêts…
                 </p>
-                <div>
+                <div class="partie-diagnostic-pleine-page">
                   <div class="grille-impacts">
                     <div class="case-impact texte-bleu">
                       <img
@@ -506,9 +512,9 @@ const featuresAvecOtex = ref(
 );
 geojsonData.features = featuresAvecOtex.value;
 
-const dernierDeltaY = ref(0);
+const dernierDeltaY = ref(5);
 const slideTransition = ref("slide-fade");
-const index = ref(0);
+const index = ref(6);
 const maxIndex = 7;
 function GererUnEvenementWheel(event) {
   // Any code to be executed when the user scrolls with the wheel
@@ -695,6 +701,13 @@ a:hover {
   gap: 64px;
 }
 
+.partie-diagnostic {
+  flex-grow: 3;
+  flex-shrink: 100;
+  align-items: center;
+  gap: 64px;
+}
+
 .sous-partie {
   display: flex;
   flex-direction: row;
@@ -797,6 +810,8 @@ a:hover {
   flex-grow: 0;
   color: #015a5a;
   line-height: 1.2;
+  max-width: 900px;
+  margin: auto;
 }
 
 .texte-moyen {
