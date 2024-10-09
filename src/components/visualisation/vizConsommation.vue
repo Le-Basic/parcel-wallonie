@@ -1,6 +1,5 @@
 <template>
   <div class="graphique-container">
-    <p class="text-h3">Consommation en matière première de la population</p>
     <v-chart class="graphique" :option="options" autoresize />
   </div>
 </template>
@@ -37,7 +36,13 @@ const data = ref([
         CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.CEREALES
           .couleur,
     },
-    label: { show: true, position: "top" },
+    label: {
+      show: true,
+      color:
+        CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.CEREALES
+          .couleur,
+    },
+    nomSerie: LIBELLE_XAXIS[0],
   },
   {
     value: trouverChiffre(
@@ -51,7 +56,13 @@ const data = ref([
         CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.LEGUMES
           .couleur,
     },
-    label: { show: true, position: "top" },
+    label: {
+      show: true,
+      color:
+        CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.LEGUMES
+          .couleur,
+    },
+    nomSerie: LIBELLE_XAXIS[1],
   },
   {
     value: trouverChiffre(
@@ -64,7 +75,12 @@ const data = ref([
       color:
         CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.FRUITS.couleur,
     },
-    label: { show: true, position: "top" },
+    label: {
+      show: true,
+      color:
+        CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.FRUITS.couleur,
+    },
+    nomSerie: LIBELLE_XAXIS[2],
   },
   {
     value: trouverChiffre(
@@ -79,7 +95,13 @@ const data = ref([
         CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3
           .PRODUITS_LAITIERS.couleur,
     },
-    label: { show: true, position: "top" },
+    label: {
+      show: true,
+      color:
+        CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3
+          .PRODUITS_LAITIERS.couleur,
+    },
+    nomSerie: LIBELLE_XAXIS[3],
   },
   {
     value: trouverChiffre(
@@ -94,7 +116,13 @@ const data = ref([
         CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.VIANDE_ROUGE
           .couleur,
     },
-    label: { show: true, position: "top" },
+    label: {
+      show: true,
+      color:
+        CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.VIANDE_ROUGE
+          .couleur,
+    },
+    nomSerie: LIBELLE_XAXIS[4],
   },
   {
     value: trouverChiffre(
@@ -109,7 +137,13 @@ const data = ref([
         CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.VIANDE_BLANCHE
           .couleur,
     },
-    label: { show: true, position: "top" },
+    label: {
+      show: true,
+      color:
+        CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE_NIVEAU3.VIANDE_BLANCHE
+          .couleur,
+    },
+    nomSerie: LIBELLE_XAXIS[5],
   },
 ]);
 
@@ -120,7 +154,7 @@ const options = ref({
     containLabel: true,
     left: 0,
     top: 0,
-    right: 0,
+    right: 30,
     bottom: 0,
   },
   xAxis: {
@@ -133,7 +167,7 @@ const options = ref({
     type: "category",
     data: LIBELLE_XAXIS,
     axisLabel: {
-      show: true,
+      show: false,
       interval: 0,
       rotate: 45,
     },
@@ -155,19 +189,33 @@ const options = ref({
       type: "bar",
       label: {
         show: true,
-        position: "top",
+        position: ["0", "-32"],
+        align: "left",
+
         formatter: function (d) {
-          return AfficherEntier(d.data.value / 1000);
+          console.log(d.data);
+          return (
+            "{bold|" +
+            d.data.nomSerie +
+            "}\n" +
+            AfficherEntier(d.data.value / 1000)
+          );
+        },
+        rich: {
+          bold: {
+            fontWeight: "bold",
+          },
         },
       },
     },
   ],
+  textStyle: { fontFamily: "Work Sans", rich: { test: { color: "red" } } },
 });
 </script>
 
 <style scoped>
 .graphique-container {
-  height: 500px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -176,6 +224,7 @@ const options = ref({
 
 .graphique {
   min-height: 200px;
-  width: 500px;
+  max-height: 350px;
+  width: 600px;
 }
 </style>

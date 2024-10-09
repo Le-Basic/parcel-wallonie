@@ -31,9 +31,7 @@
             <div class="odometer-inside">
               {{
                 formatterChiffres(
-                  Math.round(
-                    this.$store.state.resultatSimulation.surfacesActuelles
-                  )
+                  Math.round(store.state.resultatSimulation.surfacesActuelles)
                 )
               }}
             </div>
@@ -86,17 +84,23 @@
           :serieDonnees="repartitionSurfacePotentielNourricier()"
         />
       </div>
-      <TableauProduit class="actuel"  :tableauProduits="tableauProduitsActuel"/>
-      <TableauProduit class="prospectif"  :tableauProduits="tableauProduitsProspectif"/>
+      <TableauProduit class="actuel" :tableauProduits="tableauProduitsActuel" />
+      <TableauProduit
+        class="prospectif"
+        :tableauProduits="tableauProduitsProspectif"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
-import { defineEmits,  } from "vue";
+import { defineEmits } from "vue";
 import RepartitionSurface from "@/components/visualisation/RepartitionSurface.vue";
 import { CATEGORIE_PRODUITS_SURFACES_ACTUELLES } from "@/config/categorieProduitsActuel";
-import { CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE, CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER } from "@/config/categorieProduitsPotentielNourricier";
+import {
+  CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE,
+  CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER,
+} from "@/config/categorieProduitsPotentielNourricier";
 import { trouverChiffre } from "@/plugins/utils";
 import { formatterChiffres } from "@/plugins/surfaceProduits";
 import { useStore } from "vuex";
@@ -323,7 +327,7 @@ const tableauProduitsActuel = [
     valeurSurfaces: "sau_ha",
     partSurfaces: "part_surfaces_actuelles",
     nomModale: "detailsLegumes",
-  }
+  },
 ];
 </script>
 

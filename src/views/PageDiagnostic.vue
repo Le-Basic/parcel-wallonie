@@ -19,7 +19,7 @@
             <transition :name="slideTransition" @after-enter="transitionEnd">
               <div v-if="index == 0" class="slide-diagnostic">
                 <p
-                  class="animated fadeInUp fast p-result mb-1 map-content titre-slide texte-moyen work-sans-300"
+                  class="animated fadeInUp fast p-result mb-1 titre-slide texte-moyen work-sans-300"
                   style="text-align: center"
                 >
                   Si on commençait par mieux connaître votre territoire ?
@@ -50,7 +50,7 @@
                           <p class="chiffre-moyen work-sans-700 texte-bleu">
                             {{ AfficherEntier(population) }}
                           </p>
-                          <p class="texte-petit">habitants</p>
+                          <p class="texte-petit texte-bleu">habitants</p>
                         </div>
                       </div>
                       <div class="sous-partie">
@@ -68,7 +68,7 @@
                           <div class="chiffre-moyen work-sans-700 texte-bleu">
                             {{ AfficherEntier(surface_km2) }}
                           </div>
-                          <div class="texte-petit">km²</div>
+                          <div class="texte-petit texte-bleu">km²</div>
                         </div>
                       </div>
                       <div>
@@ -91,41 +91,99 @@
             <transition :name="slideTransition" @after-enter="transitionEnd">
               <div class="slide-diagnostic" v-if="index == 1">
                 <p
-                  class="animated fadeInUp fast p-result mb-1 map-content titre-moyen"
+                  class="animated fadeInUp fast p-result mb-1 titre-slide texte-moyen work-sans-300"
                   style="text-align: center"
                 >
                   Alors on consomme quoi sur votre territoire ?
                 </p>
                 <div class="partie-diagnostic" v-if="index == 1">
                   <div
-                    class="sous-partie titre-grand text-h2 flex-grow-1 flex-shrink-1"
+                    class="sous-partie-gauche bloc-paragraphe texte-align-droite"
                   >
-                    <p>
-                      Ces
-                      <b class="gros-chiffre-diagnostic">{{ population }}</b>
-                      habitants consomment en moyenne par jour XXX g de viande,
-                      XXX g de pain etc. <br />soit une équivalence de
-                      <b class="gros-chiffre-diagnostic"
-                        >{{ consommation_t }} </b
-                      >tonnes de matière première agricole réparties ainsi:
-                    </p>
-                    <p>
+                    <div>
+                      <p class="texte-petit texte-bleu">Ces</p>
+                      <p class="chiffre-moyen texte-bleu">
+                        {{ population }} habitants
+                      </p>
+                      <p class="texte-petit texte-bleu">
+                        habitants consomment en moyenne par jour 48 g de viande,
+                        92 g de pain etc.
+                      </p>
+                      <p />
+                    </div>
+                    <div class="texte-align-droite">
+                      <p class="texte-petit texte-bleu">
+                        soit une équivalence de
+                      </p>
+                      <p class="chiffre-moyen texte-bleu">
+                        {{ consommation_t }}
+                        tonnes
+                      </p>
+                      <p class="texte-petit texte-bleu">
+                        de matière première agricole réparties ainsi:
+                      </p>
+                    </div>
+                    <a
+                      class="texte-vert"
+                      href="google.com"
+                      style="width: 250px"
+                    >
                       En savoir plus sur le régime moyen d'une personne
                       résidente Belge
-                    </p>
+                    </a>
                   </div>
                   <div
-                    class="flex-grow-1 flex-shrink-100 section-graphique-consommation"
+                    class="sous-partie-droite texte-align-droite bloc-paragraphe"
                   >
+                    <p class="texte-petit texte-bleu">
+                      Consommation en matière première de la population :
+                    </p>
                     <vizConsommation />
                   </div>
                 </div>
               </div>
             </transition>
             <transition :name="slideTransition" @after-enter="transitionEnd">
+              <div class="slide-diagnostic" v-if="index == 2">
+                <p
+                  class="animated fadeInUp fast p-result mb-1 titre-slide texte-moyen work-sans-300"
+                  style="text-align: center"
+                >
+                  Pour quels impacts ?
+                </p>
+                <div class="partie-diagnostic">
+                  <div
+                    class="sous-partie-gauche texte-align-droite bloc-paragraphe"
+                  >
+                    <div class="sous-partie">
+                      <img
+                        src="/img/logo/PARCEL_menu-assiette.svg"
+                        height="100"
+                      />
+                      <img
+                        src="/img/logo/PARCEL_picto-camion.svg"
+                        height="100"
+                      />
+                      <img
+                        src="/img/logo/PARCEL_picto-maison.svg"
+                        height="100"
+                      />
+                    </div>
+                    <p class="texte-petit texte-bleu" style="width: 400px">
+                      L'alimentation a un impact sur le changement climatique.
+                      Elle est dans l'un
+                      <b>des 3 postes les plus émetteurs de CO2</b>
+                      avec le transport et le logement
+                    </p>
+                  </div>
+                  <div class="sous-partie-droite texte-align-gauche"></div>
+                </div>
+              </div>
+            </transition>
+            <transition :name="slideTransition" @after-enter="transitionEnd">
               <div
                 class="partie-diagnostic-pleine-page slide-diagnostic"
-                v-if="index == 2"
+                v-if="index == 3"
               >
                 <p class="texte-centre titre-grand">
                   Le territoire sélectionné a également une activité agricole:
@@ -156,8 +214,9 @@
                 </div>
               </div>
             </transition>
+
             <transition :name="slideTransition" @after-enter="transitionEnd">
-              <div v-if="index == 3">
+              <div v-if="index == 4">
                 <div>
                   <p class="map-content texte-centre titre-moyen">
                     Cette activité agricole est largement spécialisée et
@@ -170,7 +229,7 @@
               </div>
             </transition>
             <transition :name="slideTransition" @after-enter="transitionEnd">
-              <div v-if="index == 4">
+              <div v-if="index == 5">
                 <div>
                   <p class="texte-centre titre-grand">
                     Sur le territoire choisi, l'activité agricole (élevage et
@@ -192,7 +251,7 @@
               </div>
             </transition>
             <transition :name="slideTransition" @after-enter="transitionEnd">
-              <div id="potentiel" v-if="index == 5">
+              <div id="potentiel" v-if="index == 6">
                 <p class="titre-grand texte-centre">
                   Alors pourrais-je nourrir l'ensemble de ma population avec les
                   surfaces actuelles agricoles ?
@@ -374,6 +433,18 @@ onMounted(() => {
 </script>
 
 <style scoped>
+p {
+  margin-bottom: 0;
+}
+
+a {
+  text-decoration: underline;
+}
+
+a:hover {
+  color: var(--bleu);
+  text-decoration: underline;
+}
 .asy-wrapper {
   height: 100vh;
   overflow: hidden;
@@ -462,9 +533,9 @@ onMounted(() => {
 }
 
 .slide-diagnostic {
-  height: calc(100vh - 135px);
+  height: calc(100vh - 150px);
   display: flex;
-  gap: 32px;
+  gap: 24px;
   flex-direction: column;
   justify-content: space-evenly;
 }
@@ -500,13 +571,14 @@ onMounted(() => {
 }
 
 .partie-diagnostic {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   flex-direction: row;
   justify-content: flex-start;
   flex-grow: 3;
   flex-shrink: 100;
   align-items: center;
-  gap: 16px;
+  gap: 64px;
 }
 
 .sous-partie {
@@ -515,16 +587,18 @@ onMounted(() => {
   justify-content: center;
   gap: 32px;
   flex-grow: 1;
-  align-items: flex-start;
+  align-items: center;
   position: relative;
   height: 100%;
 }
 
 .sous-partie-gauche {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: center;
   flex-grow: 1;
+  flex-shrink: 1;
+  align-items: flex-end;
 }
 
 .sous-partie-droite {
@@ -532,6 +606,7 @@ onMounted(() => {
   flex-direction: column;
   align-items: flex-start;
   flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .bloc-paragraphe {
@@ -588,21 +663,24 @@ onMounted(() => {
 
 .titre-slide {
   padding: 32px 0;
-  flex-grow: 1;
+  flex-grow: 0;
   color: #015a5a;
   line-height: 1.2;
 }
 
 .texte-moyen {
-  font-size: 24px;
-}
-
-.chiffre-moyen {
   font-size: 28px;
 }
 
+.chiffre-moyen {
+  font-size: 36px;
+  margin-top: 12px;
+  font-weight: bold;
+  line-height: 1;
+}
+
 .texte-petit {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .texte-centre {

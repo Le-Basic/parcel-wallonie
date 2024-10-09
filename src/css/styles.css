@@ -74,6 +74,10 @@ input {
   color: var(--vert);
 }
 
+.texte-align-droite {
+  text-align: right;
+}
+
 h4 {
   text-align: left;
   color: #015a5a;

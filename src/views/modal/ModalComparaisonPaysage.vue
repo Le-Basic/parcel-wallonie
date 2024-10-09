@@ -31,9 +31,7 @@
             <div class="odometer-inside">
               {{
                 formatterChiffres(
-                  Math.round(
-                    this.$store.state.resultatSimulation.surfacesActuelles
-                  )
+                  Math.round(store.state.resultatSimulation.surfacesActuelles)
                 )
               }}
             </div>
