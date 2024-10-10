@@ -10,7 +10,7 @@
             class="alert alert-success mb-5"
             v-if="this.$store.state.geoList.length > 0"
           >
-            <div style="font-size: 20px; color: #015a5a; margin-bottom: 10px">
+            <div style="font-size: 20px; color: #594231; margin-bottom: 10px">
               Votre sélection :
             </div>
             <div

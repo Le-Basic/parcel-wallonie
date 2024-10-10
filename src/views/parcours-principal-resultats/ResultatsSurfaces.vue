@@ -186,7 +186,7 @@ export default {
 }
 
 .card-active {
-  background-color: #91c423;
+  background-color: #bdc660;
   color: white;
 }
 

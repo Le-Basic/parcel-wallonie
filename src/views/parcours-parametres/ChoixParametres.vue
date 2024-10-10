@@ -83,7 +83,7 @@
 
                     <VueSlider
                       v-model="partbio"
-                      :process-style="{ backgroundColor: '#91c423' }"
+                      :process-style="{ backgroundColor: '#BDC660' }"
                       :tooltip="'none'"
                       :height="10"
                       :dot-size="20"
@@ -226,7 +226,7 @@
 
                     <VueSlider
                       v-model="partpertes"
-                      :process-style="{ backgroundColor: '#91c423' }"
+                      :process-style="{ backgroundColor: '#BDC660' }"
                       :tooltip="'none'"
                       :height="10"
                       :dot-size="20"
@@ -405,7 +405,7 @@ export default {
 </script>
 <style>
 .label-menu {
-  background-color: #91c423;
+  background-color: #bdc660;
   height: 33px;
 }
 
@@ -460,7 +460,7 @@ export default {
 /*------------- block product -----------*/
 
 .block-products {
-  background-color: #015a5a;
+  background-color: #594231;
   padding: 2rem;
 }
 
@@ -483,7 +483,7 @@ export default {
 .block-products .product .icon {
   font-size: 2.5rem;
   margin-bottom: 0.4rem;
-  color: #015a5a;
+  color: #594231;
   margin-top: -0.7rem;
 }
 
@@ -513,16 +513,16 @@ export default {
 }
 
 .card-alim .btn-line {
-  border: 1px solid #015a5a;
+  border: 1px solid #594231;
   border-radius: 35px;
-  color: #015a5a;
+  color: #594231;
   text-align: center;
   display: inline-block;
   padding: 0.5rem 2rem;
 }
 
 .card-alim .btn-line:hover {
-  background-color: #015a5a;
+  background-color: #594231;
   color: #fff;
 }
 
@@ -558,7 +558,7 @@ export default {
   background-color: #f5f5f5;
   border-radius: 9px;
   max-width: 180px;
-  color: #015a5a;
+  color: #594231;
   margin-top: 1rem;
 }
 
@@ -646,7 +646,7 @@ export default {
 
 .title-protein {
   font-size: 23px;
-  color: #015a5a;
+  color: #594231;
   margin: 2rem 0;
 }
 
@@ -669,12 +669,12 @@ export default {
   border-right: 1px solid #d7d7d7;
   padding: 1rem;
   width: calc(100% - 40px);
-  color: #015a5a;
+  color: #594231;
   font-weight: 600;
 }
 
 .diet {
-  color: #015a5a;
+  color: #594231;
   font-weight: 600;
 }
 
@@ -691,7 +691,7 @@ export default {
 
 .card-diet .diet .title,
 .card-compose .vert-fonce {
-  color: #015a5a;
+  color: #594231;
   font-weight: bold;
   font-size: 18px;
 }
@@ -842,7 +842,7 @@ export default {
 }
 
 #egalimDefault {
-  color: #015a5a;
+  color: #594231;
 }
 
 #egalimBetter .btn {
@@ -913,7 +913,7 @@ export default {
 
 #detailProduct h5.modal-title {
   font-weight: bold;
-  color: #015a5a;
+  color: #594231;
   display: block;
 }
 
@@ -921,7 +921,7 @@ export default {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: #91c423;
+  background-color: #bdc660;
   margin: auto;
 }
 </style>

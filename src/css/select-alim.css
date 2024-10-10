@@ -1,5 +1,5 @@
 .label-menu {
-  background-color: #91c423;
+  background-color: #bdc660;
   height: 33px;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .block-products {
-  background-color: #015a5a;
+  background-color: #594231;
   padding: 2rem;
 }
 
@@ -74,7 +74,7 @@
 .block-products .product .icon {
   font-size: 2.5rem;
   margin-bottom: 0.4rem;
-  color: #015a5a;
+  color: #594231;
   margin-top: -0.7rem;
 }
 
@@ -101,16 +101,16 @@
 }
 
 .card-alim .btn-line {
-  border: 1px solid #015a5a;
+  border: 1px solid #594231;
   border-radius: 35px;
-  color: #015a5a;
+  color: #594231;
   text-align: center;
   display: inline-block;
   padding: 0.5rem 2rem;
 }
 
 .card-alim .btn-line:hover {
-  background-color: #015a5a;
+  background-color: #594231;
   color: #fff;
 }
 
@@ -146,7 +146,7 @@
   background-color: #f5f5f5;
   border-radius: 9px;
   max-width: 180px;
-  color: #015a5a;
+  color: #594231;
   margin-top: 1rem;
 }
 
@@ -224,7 +224,7 @@
 
 .title-protein {
   font-size: 23px;
-  color: #015a5a;
+  color: #594231;
   margin: 2rem 0;
 }
 
@@ -247,12 +247,12 @@
   border-right: 1px solid #d7d7d7;
   padding: 1rem;
   width: calc(100% - 40px);
-  color: #015a5a;
+  color: #594231;
   font-weight: 600;
 }
 
 .diet {
-  color: #015a5a;
+  color: #594231;
   font-weight: 600;
 }
 
@@ -269,7 +269,7 @@
 
 .card-diet .diet .title,
 .card-compose .vert-fonce {
-  color: #015a5a;
+  color: #594231;
   font-weight: bold;
   font-size: 18px;
 }
@@ -416,7 +416,7 @@
 }
 
 #egalimDefault {
-  color: #015a5a;
+  color: #594231;
 }
 
 #egalimBetter .btn {
@@ -483,6 +483,6 @@
 
 #detailProduct h5.modal-title {
   font-weight: bold;
-  color: #015a5a;
+  color: #594231;
   display: block;
 }

@@ -19,20 +19,20 @@
   appearance: none;
   width: 18px;
   height: 18px;
-  background: #91c423;
+  background: #bdc660;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .slider-range::webkit-slider-runnable-track {
-  background: #91c423;
+  background: #bdc660;
 }
 .slider-range::-moz-range-progress {
-  background: #91c423;
+  background: #bdc660;
 }
 
 .slider-range::-ms-fill-lower {
-  background: #91c423;
+  background: #bdc660;
 }
 
 .range-slider {
@@ -101,12 +101,12 @@ input[type="range"] {
 }
 .legumes .rangeslider .rangeslider__fill,
 .legumes .rangeslider .rangeslider__handle {
-  background-color: #91c423;
+  background-color: #bdc660;
 }
 .legumes
   .rangeslider.rangeslider--horizontal.rangeslider--active
   .rangeslider__handle {
-  background-color: #015a5a;
+  background-color: #594231;
 }
 
 .fruits .rangeslider .rangeslider__fill,

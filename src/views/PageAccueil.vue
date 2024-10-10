@@ -48,7 +48,7 @@
                     <div
                       style="
                         font-size: 20px;
-                        color: #015a5a;
+                        color: #594231;
                         margin-bottom: 10px;
                       "
                     >

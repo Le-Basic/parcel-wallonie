@@ -23,7 +23,7 @@ for (let j = 0; j < dataOccupationDuSol.length; ++j) {
   totalData += dataOccupationDuSol[j];
 }
 
-const colors = ["#91C423", "#025A5C", "#0c1321"];
+const colors = ["#91C423", "#025A5C", "#594231 "];
 const option = {
   tooltip: {
     show: false,
