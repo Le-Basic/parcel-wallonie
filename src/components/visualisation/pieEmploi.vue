@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-const colors = ["#91c423", "#f8f8f3"];
+const colors = ["#BDC660 ", "#f8f8f3"];
 
 const option = {
   tooltip: {

@@ -97,14 +97,14 @@
 }
 
 .bg-vert-fonce {
-  background-color: #015a5a;
+  background-color: #594231;
 }
 
 .bg-grey-light .hectares,
 .bg-grey-light .nbr-ha,
 .bg-white .nbr-ha,
 .bg-white .hectares {
-  color: #015a5a;
+  color: #594231;
 }
 
 .block-surface,
@@ -267,14 +267,14 @@
 .btnPotential.active,
 .card-surface:hover,
 .btnPotential:hover {
-  background: #91c423;
+  background: #bdc660;
   color: #fff;
 }
 
 .btnPotential {
   padding: 0.5rem;
   background: #ffffff;
-  color: #015a5a;
+  color: #594231;
 
   font-size: 2rem;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.22);
@@ -321,7 +321,7 @@
 
 .bg-vert-clair,
 .bg-legumes {
-  background-color: #91c423 !important;
+  background-color: #bdc660 !important;
   color: #fff;
 }
 
@@ -331,7 +331,7 @@
   text-align: center;
   max-width: 860px;
   margin: auto;
-  color: #015a5a;
+  color: #594231;
   font-size: 23px;
   line-height: 1.2;
 }
@@ -377,7 +377,7 @@
 }
 
 #bar-legumes {
-  border-bottom: 1px solid #91c423;
+  border-bottom: 1px solid #bdc660;
 }
 
 #bar-cereales {

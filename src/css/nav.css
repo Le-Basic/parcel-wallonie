@@ -10,7 +10,6 @@
   position: absolute;
 
   width: 100%;
-
 }
 
 .fermer {
@@ -42,7 +41,7 @@
 }
 
 .modal-fullscreen-menu .modal-content {
-  background-color: #015a5a;
+  background-color: #594231;
   box-shadow: none;
   border: none;
   opacity: 0.6;
@@ -64,16 +63,14 @@
   padding: 3vh 0;
   height: 3vh;
 
-
   font-family: "Work Sans", sans-serif;
   font-weight: 400;
   margin-bottom: 5px;
   color: #ffffff;
-
 }
 
 .modal-fullscreen-menu {
-  background-color: #015a5a;
+  background-color: #594231;
 }
 
 .modal-fullscreen-menu .list-group a:before {
@@ -86,15 +83,13 @@
 
   z-index: -1;
   opacity: 0;
-
 }
 
 .modal-fullscreen-menu .list-group a:hover {
-  color: #91c423;
+  color: #bdc660;
 }
 
 .modal-fullscreen-menu .list-group a:hover:before {
-
   opacity: 1;
 }
 
@@ -102,14 +97,12 @@
   opacity: 1;
 }
 
-
-
 .modal-dialog {
   pointer-events: visible;
 }
 
 .btn-notification {
-  background-color: #91c423;
+  background-color: #bdc660;
   border-radius: 5px;
   color: #fff;
   height: 35px;
@@ -118,7 +111,7 @@
 
 .btn-notification:hover {
   color: #fff;
-  background-color: #015a5a;
+  background-color: #594231;
 }
 
 .btn-notification .bell {
@@ -134,7 +127,7 @@
 }
 
 #modalNotification #modalList {
-  background-color: #015a5a;
+  background-color: #594231;
   max-width: 700px;
   padding: 1rem 2rem 2rem 2rem;
   border-radius: 0.3rem;
@@ -142,7 +135,7 @@
 }
 
 #modalNotification .message {
-  background-color: #91c423;
+  background-color: #bdc660;
   border-radius: 5px;
   font-size: 14px;
   padding: 1rem;
@@ -165,21 +158,21 @@
 }
 
 #modalNotification .message .date {
-  color: #015a5a;
+  color: #594231;
 }
 
 #modalNotification .title {
   font-size: 21px;
-  color: #91c423;
+  color: #bdc660;
   margin-bottom: 1rem;
   margin-top: 2rem;
   font-weight: 500;
-  border-bottom: 1px dashed #91c423;
+  border-bottom: 1px dashed #bdc660;
   padding-bottom: 1rem;
 }
 
 #modalNotification .item {
-  border-bottom: 1px dashed #91c423;
+  border-bottom: 1px dashed #bdc660;
   padding-bottom: 1.5rem;
   margin-bottom: 1.5rem;
   font-size: 14px;
@@ -190,13 +183,13 @@
 }
 
 #modalNotification .item:last-child {
-  border-bottom: 0px dashed #91c423;
+  border-bottom: 0px dashed #bdc660;
 }
 
 #modalNotification .date {
   font-size: 15px;
   font-weight: bold;
-  color: #91c423;
+  color: #bdc660;
   margin-top: -0.5rem;
 }
 
@@ -205,7 +198,7 @@
 }
 
 #modalNotification .item a {
-  color: #91c423;
+  color: #bdc660;
   text-decoration: underline;
   text-underline-position: under;
   margin-left: 0.5rem;
@@ -305,5 +298,4 @@
   .navbar-brand-simple {
     margin-top: 5px;
   }
-
 }

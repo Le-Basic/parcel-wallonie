@@ -619,11 +619,11 @@ export default {
 
 <style>
 input:checked + .slider {
-  background-color: #015a5a;
+  background-color: #594231;
 }
 
 input:checked + .slider.legumes {
-  background-color: #91c423;
+  background-color: #bdc660;
 }
 
 input:checked + .slider.fruits {
@@ -639,7 +639,7 @@ input:checked + .slider.viande {
 }
 
 .legumes.icon {
-  color: #91c423 !important;
+  color: #bdc660 !important;
 }
 
 .fruits.icon {

@@ -318,13 +318,13 @@ export default {
 .btn-link-open {
   display: flex;
   flex-direction: row;
-  background-color: #015a5a !important;
+  background-color: #594231 !important;
   color: #fff !important;
   gap: 8px;
 }
 
 .card-header {
-  background-color: #015a5a !important;
+  background-color: #594231 !important;
   color: #fff !important;
 }
 

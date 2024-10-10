@@ -789,7 +789,7 @@ a:hover {
 
 .map-content {
   text-align: left;
-  color: #015a5a;
+  color: #594231;
   font-size: 23px;
   line-height: 1.2;
 }
@@ -808,7 +808,7 @@ a:hover {
 .titre-slide {
   padding: 32px 0;
   flex-grow: 0;
-  color: #015a5a;
+  color: #594231;
   line-height: 1.2;
   max-width: 900px;
   margin: auto;

@@ -112,7 +112,7 @@ const props = defineProps({
   font-family: "Work Sans", sans-serif;
   font-weight: 400;
   font-size: 13px;
-  color: #0c1321;
+  color: #594231;
   letter-spacing: 0;
   text-align: left;
 }

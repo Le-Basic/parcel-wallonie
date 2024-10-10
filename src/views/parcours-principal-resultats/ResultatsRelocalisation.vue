@@ -28,7 +28,7 @@
                 style="cursor: pointer"
               >
                 <div class="row mb-sm-3 w-100">
-                  <div class="col" style="border-right: 1px solid #91c423">
+                  <div class="col" style="border-right: 1px solid #bdc660">
                     <div class="result-type">
                       <span class="icon-ico_navigation_surface icon"></span
                       ><span class="titre-result">
@@ -277,7 +277,7 @@ export default {
   font-family: "Work Sans", sans-serif;
   font-weight: 400;
   font-size: 13px;
-  color: #0c1321;
+  color: #594231;
   letter-spacing: 0;
 }
 </style>

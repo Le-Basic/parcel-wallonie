@@ -40,7 +40,7 @@
                 </div>
                 <VueSlider
                   v-model="portionLegumes"
-                  :process-style="{ backgroundColor: '#91c423' }"
+                  :process-style="{ backgroundColor: '#BDC660' }"
                   :width="200"
                   :height="10"
                 />

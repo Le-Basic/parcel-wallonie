@@ -308,7 +308,7 @@
         <div class="d-flex align-items-center">
           <div
             class="cadre-resultat resultat-ha bg-white vert-fonce animate__animated flipInX delay-05s mx-0 mt-3"
-            style="border: 1px solid #015a5a"
+            style="border: 1px solid #594231"
           >
             <div class="d-inline-flex align-items-center">
               <div
