@@ -311,7 +311,7 @@
         class="logos d-flex align-items-center justify-content-center flex-wrap"
       >
         <div class="item">
-          <a href="https://terredeliens.org/" target="_blank"
+          <a href="https://sytra.be/" target="_blank"
             ><img
               alt="logo-partenaire"
               :src="
@@ -327,6 +327,16 @@
             ><img
               alt="logo-partenaire"
               :src="require('@/assets/img/logos/partenaires/basic.svg')"
+              width="260px"
+              height="auto"
+              class="pt-3"
+          /></a>
+        </div>
+        <div class="item">
+          <a href="https://www.wallonie.be/fr" target="_blank"
+            ><img
+              alt="logo-partenaire"
+              :src="require('@/assets/img/logos/partenaires/soutien_v_fr.png')"
               width="260px"
               height="auto"
               class="pt-3"

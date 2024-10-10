@@ -514,7 +514,7 @@ geojsonData.features = featuresAvecOtex.value;
 
 const dernierDeltaY = ref(5);
 const slideTransition = ref("slide-fade");
-const index = ref(6);
+const index = ref(0);
 const maxIndex = 7;
 function GererUnEvenementWheel(event) {
   // Any code to be executed when the user scrolls with the wheel
