@@ -381,7 +381,7 @@ const CATEGORIES_IMPACT = computed(() => {
           icon: "icon-impact-co2 ico-medium ico-impact",
           titreSituationReference:
             AfficherEntier(donneesImpacts?.value.ges.donneesReference / 1000) +
-            " de t de GES emise par an",
+            " tonnes de GES emise par an",
           sousTitreSituationReference:
             "Uniquement pour la production alimentaire, soit 8% des émissions nationales",
           titreSimulation:
@@ -390,7 +390,7 @@ const CATEGORIES_IMPACT = computed(() => {
             ) + '<span class="texte-unite">%</span>',
           sousTitreSimulation: `soit  ${AfficherEntier(
             donneesImpacts?.value.ges.differenceSimulationReference / 1000
-          )} millions de tonnes CO2e`,
+          )} de tonnes CO2e`,
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsGes",
           dossierModal: "modalImpacts",
