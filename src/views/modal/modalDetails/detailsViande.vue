@@ -4,6 +4,9 @@
     icone="icon-ico_CATEGORIES_viande"
     iconeClasse="viande"
     classeCouleurFond="fond-viande"
+    :proportionImportation="CHIFFRES_DIAGNOSTICS.ELEVAGE.importation"
+    :proportionAssiette="CHIFFRES_DIAGNOSTICS.ELEVAGE.consommation"
+    :proportionSurface="CHIFFRES_DIAGNOSTICS.ELEVAGE.production"
   >
     <template #domainedevalidite>
       <ul>

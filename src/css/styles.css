@@ -184,7 +184,7 @@ h1,
 .text-h1 {
   font-family: "Work Sans", sans-serif;
   font-size: 35px;
-  color: #15213c;
+  color: var(--bleu-fonce);
   letter-spacing: 0;
 
   text-align: center;
@@ -257,7 +257,7 @@ h4 {
 .accueil h2 {
   font-size: 17px;
   text-align: left;
-  color: #15213c;
+  color: var(--bleu-fonce);
   letter-spacing: 0;
   line-height: 24px;
 }
@@ -1490,7 +1490,7 @@ a > button.btn-recommencer:hover {
 .modal-repart-cat-detail .titre-categorie {
   font-family: "Work Sans", sans-serif;
   font-size: 21px;
-  color: #15213c;
+  color: var(--bleu-fonce);
   letter-spacing: 0;
   line-height: 20px;
   margin-bottom: 5px;

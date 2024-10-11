@@ -1,5 +1,9 @@
 <template>
-  <detailsTemplate>
+  <detailsTemplate
+    :proportionImportation="CHIFFRES_DIAGNOSTICS.LEGUMES.importation"
+    :proportionAssiette="CHIFFRES_DIAGNOSTICS.LEGUMES.consommation"
+    :proportionSurface="CHIFFRES_DIAGNOSTICS.LEGUMES.production"
+  >
     <template #sourcesdedonnees>
       <ul>
         <li>

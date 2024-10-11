@@ -106,8 +106,9 @@
                         {{ population }} habitants
                       </p>
                       <p class="texte-petit texte-bleu">
-                        habitants consomment en moyenne par jour 48 g de viande,
-                        92 g de pain etc.
+                        habitants consomment en moyenne par jour 114 g de
+                        viande, 110 g de pain, 90g de fruits et 32g de fromage
+                        par jour.
                       </p>
                       <p />
                     </div>
@@ -125,7 +126,7 @@
                     </div>
                     <a
                       class="texte-vert"
-                      href="google.com"
+                      href="https://www.sciensano.be/fr/projets/enquete-nationale-de-consommation-alimentaire-0"
                       style="width: 250px"
                     >
                       En savoir plus sur le régime moyen d'une personne
@@ -384,22 +385,29 @@
                 >
                   <router-link to="/2-choix-de-la-population"
                     ><button type="button" class="btn btn-principal mt-5">
-                      Simuler la relocalisation
+                      Simuler des scénarii de transition
                     </button></router-link
                   >
                 </div>
                 <div class="div-continuer mb-big animated fadeInUp delay-5-1s">
-                  <a href="/impacts-ecologiques-de-la-relocalisation"
-                    ><button type="button" class="btn btn-secondaire mt-0">
-                      En savoir plus sur le potentiel nourricier
-                    </button></a
+                  <button
+                    type="button"
+                    class="btn btn-secondaire mt-0"
+                    @click="modalActive = 'ModalPotentielNourricier'"
                   >
+                    En savoir plus sur le potentiel nourricier
+                  </button>
                 </div>
               </div>
             </transition>
           </div>
         </div>
       </div>
+      <ModalComposant
+        :modalId="modalActive"
+        v-if="modalActive"
+        @fermerModal="fermerModalPotentiel"
+      ></ModalComposant>
     </div>
   </div>
   <!-- <?php include '../partials/scripts-footer.php'; ?> -->
@@ -416,8 +424,15 @@ import geojsonData from "/public/data.json";
 import { onMounted, ref } from "vue";
 import { useStore } from "vuex";
 import throttle from "lodash/throttle";
+import ModalComposant from "@/views/modal/ModalComposant.vue";
 
 const store = useStore();
+const modalActive = ref("");
+
+const fermerModalPotentiel = () => {
+  modalActive.value = "";
+};
+
 function messageBievenue(listeTerritoire) {
   if (listeTerritoire && listeTerritoire.length === 1) {
     return (
@@ -602,6 +617,7 @@ a:hover {
   background-color: #c8dbdb; /* Adjust this to match the color */
   color: #ffffff; /* Text color */
   border-left: 1px solid #c8dbdb;
+  outline: none;
 }
 
 .bouton-retour:before {
@@ -629,6 +645,7 @@ a:hover {
   background-color: var(--vert); /* Adjust this to match the color */
   color: #ffffff; /* Text color */
   border-right: 1px solid var(--vert);
+  outline: none;
 }
 
 .bouton-suivant:after {

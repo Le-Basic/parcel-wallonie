@@ -130,7 +130,7 @@
                   Faites varier le régime alimentaire<sup>*</sup> (actuellement,
                   environ
                   <strong> trois quarts des protéines consommées</strong> par
-                  les Français proviennent de produits animaux)
+                  les Belges proviennent de produits animaux)
                 </p>
 
                 <div class="mt-5" id="partviande">

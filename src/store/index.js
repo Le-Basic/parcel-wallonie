@@ -19,6 +19,9 @@ import { INSTITUTIONS, INSTITUTIONS_IDS } from "@/config/Institutions.js";
 import { CHOIX_POPULATION_IDS } from "@/config/TypeChoixPopulation";
 import store from ".";
 import { IDS_REGIMES_ALIMENTAIRES } from "@/config/regimeIds";
+import { CalculPartBioGlobale } from "@/plugins/calculPartBio";
+import { AfficherEntier, trouverChiffre } from "@/plugins/utils";
+import { CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER } from "@/config/categorieProduitsPotentielNourricier";
 const getDefaultState = () => {
   return {
     regimeListe: regimeListe,
@@ -617,6 +620,47 @@ export default createStore({
     },
     async actionModifierPartBioElevage({ commit }, partBioElevage) {
       commit("mutationPartBioElevage", partBioElevage);
+      let partBioGlobale = CalculPartBioGlobale(
+        {
+          partBioCereales: this.state.partbiocereales,
+          partBioFruits: this.state.partbiofruits,
+          partBioLegumes: this.state.partbiolegumes,
+          partBioElevage: partBioElevage,
+        },
+        {
+          surfacesNecessairesCereales: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+          surfacesNecessairesFruits: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+          surfacesNecessairesLegumes: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+          surfacesNecessairesElevage: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+        }
+      );
+
+      commit("partBio", AfficherEntier(partBioGlobale * 100));
+
       let resultatSimulation = await recalculerResultatSimulation(
         this.getters.getcodesTerritoireParcel,
         this.state.regime_alimentaire.id,

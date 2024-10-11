@@ -113,7 +113,7 @@ const props = defineProps({
                   ><span class="d-flex flex-column info-detail"
                     ><span class="nbr-ha"> {{ props.proportionAssiette }} </span
                     ><span class="hectares"
-                      >de l’assiette d’un Français moyen (en volume)</span
+                      >de l’assiette d’un Belge moyen (en volume)</span
                     ></span
                   >
                 </div>

@@ -4,6 +4,9 @@
     icone="icon-ico_CATEGORIES_cereales"
     iconeClasse="cereales"
     classeCouleurFond="fond-cereales"
+    :proportionImportation="CHIFFRES_DIAGNOSTICS.CEREALES.importation"
+    :proportionAssiette="CHIFFRES_DIAGNOSTICS.CEREALES.consommation"
+    :proportionSurface="CHIFFRES_DIAGNOSTICS.CEREALES.production"
   >
     <template #domainedevalidite>
       <ul>

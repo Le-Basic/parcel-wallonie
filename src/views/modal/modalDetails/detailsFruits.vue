@@ -4,6 +4,9 @@
     icone="icon-ico_CATEGORIES_fruits"
     iconeClasse="fruits"
     classeCouleurFond="fond-fruits"
+    :proportionImportation="CHIFFRES_DIAGNOSTICS.FRUITS.importation"
+    :proportionAssiette="CHIFFRES_DIAGNOSTICS.FRUITS.consommation"
+    :proportionSurface="CHIFFRES_DIAGNOSTICS.FRUITS.production"
   >
     <template #domainedevalidite>
       <ul>
@@ -239,4 +242,5 @@
 
 <script setup>
 import detailsTemplate from "@/views/modal/modalDetails/detailsTemplate.vue";
+import { CHIFFRES_DIAGNOSTICS } from "@/assets/data/chiffresCles.js";
 </script>

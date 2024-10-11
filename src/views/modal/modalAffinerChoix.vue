@@ -458,8 +458,8 @@
     <div class="menuDroit" id="menu-selection">
       <div class="modal-dialog" role="document" v-if="!showParametres">
         <div class="modal-content">
-          <button class="text-center close">
-            <div class="revoir-select">Affiner votre sélection</div>
+          <button class="text-center close" @click="changeActive">
+            <div class="revoir-selection">Affiner votre sélection</div>
           </button>
           <div class="modal-header d-flex align-items-center justify-between">
             <div class="modal-title mr-auto w-100" id="head-selection">
@@ -506,10 +506,6 @@
                     ><a href="/3-type-dalimentation">modifier</a></span
                   >
                 </div>
-                <span class="badge badge-pill badge-blanc"
-                  >Bio:<span id="bioval">1,8</span>%</span
-                >
-                <span href="" id="assiette2"></span>
               </div>
             </div>
             <!--<a href=""><button type="button" class="btn btn-principal btn-principal-fonce mt-5">Commencer</button></a>-->
@@ -581,7 +577,7 @@ export default {
           "partbioelevage",
           "actionModifierPartBioElevage"
         );
-        this.partbioelevage = nouvelleValeur;
+        this.partBioElevage = nouvelleValeur;
       }
     }, 200),
     partbiofruits: lodash.debounce(function (partBioFruits, ancienneValeur) {
@@ -656,5 +652,23 @@ input:checked + .slider.viande {
 
 .revoir-select {
   background-image: url("/public/img/fleches/fleche-gch-blanc.svg");
+}
+
+.revoir-selection {
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  background-color: #ffff;
+  height: 45px;
+  color: #594231;
+  font-size: 16px;
+  align-items: center;
+  display: flex;
+
+  background-position: left 30px center;
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-image: url("/public/img/fleches/fleche-gch-vert.svg");
 }
 </style>

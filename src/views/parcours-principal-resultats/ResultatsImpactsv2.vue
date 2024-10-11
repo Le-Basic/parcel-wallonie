@@ -332,6 +332,9 @@ const donneesImpacts = computed(() => {
         (store.state.resultatSimulation.empreinte_eau_bleue_m3 * 100) /
           store.state.resultatReference.empreinte_eau_bleue_m3 -
         100,
+      differenceSimulationReference:
+        store.state.resultatSimulation.empreinte_eau_bleue_m3 -
+        store.state.resultatReference.empreinte_eau_bleue_m3,
     },
     abondances_especes: {
       donneesReference: store.state.resultatReference.abondances_especes,
@@ -349,10 +352,9 @@ const donneesImpacts = computed(() => {
         (store.state.resultatSimulation.surfaces_ha_soja_importes * 100) /
           store.state.resultatReference.surfaces_ha_soja_importes -
         100,
-      differenceSimulationReference: AfficherEntier(
+      differenceSimulationReference:
         store.state.resultatSimulation.surfaces_ha_soja_importes -
-          store.state.resultatReference.surfaces_ha_soja_importes
-      ),
+        store.state.resultatReference.surfaces_ha_soja_importes,
       donneesReferencePiscineOlympique: AfficherEntier(
         store.state.resultatReference.surfaces_ha_soja_importes / 0.125
       ),
@@ -416,7 +418,12 @@ const CATEGORIES_IMPACT = computed(() => {
                 .differenceSimulationReferencePct
             ) + '<span class="texte-unite">%</span>',
           sousTitreSimulation:
-            "Les espèces de pollinisateurs, papillons, vers de terre et gastéropodes sont 45% plus abondantes par hectare de culture.",
+            "Les espèces de pollinisateurs, papillons, vers de terre et gastéropodes sont" +
+            AfficherEntier(
+              donneesImpacts?.value.abondances_especes
+                .differenceSimulationReferencePct
+            ) +
+            "% plus abondantes par hectare de culture.",
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsAbondanceEspeces",
         },
@@ -428,14 +435,16 @@ const CATEGORIES_IMPACT = computed(() => {
             donneesImpacts?.value.surfaces_ha_soja_importes.donneesReference
           )} ha de soja sont nécessaires`,
           sousTitreSituationReference: `chaque année pour nourrir le bétail que l'on consomme. Soit l'équivalent de ${donneesImpacts?.value.surfaces_ha_soja_importes.donneesReferencePiscineOlympique} piscines olympiques`,
-          titreSimulation: AfficherEntierAvecSigne(
-            donneesImpacts?.value.surfaces_ha_soja_importes
-              .differenceSimulationReferencePct +
-              '<span class="texte-unite">%</span>'
-          ),
-          sousTitreSimulation: `Soit ${Math.abs(
-            donneesImpacts?.value.surfaces_ha_soja_importes
-              .differenceSimulationReference
+          titreSimulation:
+            AfficherEntierAvecSigne(
+              donneesImpacts?.value.surfaces_ha_soja_importes
+                .differenceSimulationReferencePct
+            ) + '<span class="texte-unite">%</span>',
+          sousTitreSimulation: `Soit ${AfficherEntier(
+            Math.abs(
+              donneesImpacts?.value.surfaces_ha_soja_importes
+                .differenceSimulationReference
+            )
           )} hectares protégés de la déforestation`,
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsSojaImporte",
@@ -456,10 +465,10 @@ const CATEGORIES_IMPACT = computed(() => {
             donneesImpacts?.value.empreinte_eau_bleue.donneesReference
           )} m<sup>3</sup> eau pour l'irrigation (rivières et nappes)`,
           titreSimulation:
-            Math.abs(
-              AfficherEntier(
+            AfficherEntier(
+              Math.abs(
                 donneesImpacts?.value.empreinte_eau_bleue
-                  .differenceSimulationReferencePct
+                  .differenceSimulationReference
               )
             ) + " m<sup>3</sup> d'eau économisés chaque année",
           sousTitreSimulation: "",

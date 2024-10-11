@@ -86,7 +86,7 @@
               <p>
                 Faites varier le régime alimentaire<sup>*</sup> (actuellement,
                 plus de <strong>60% des protéines consommées</strong> par les
-                Français proviennent de produits animaux) :
+                Belge proviennent de produits animaux) :
               </p>
               <div class="mt-5" id="partviande">
                 <label class="container-checkbox"

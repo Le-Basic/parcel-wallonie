@@ -57,12 +57,10 @@ export default {
   },
   methods: {
     choixRegime(regime) {
-      console.log(regime);
-      this.$store.commit(
-        "regimeAlimentaire",
+      this.$store.dispatch(
+        "actionChoisirRegimeAlimentaire",
         regimeListe.find((r) => r.nomCourt === regime)
       );
-      console.log(this.$store.state.regime_alimentaire);
       this.$emit("changementRegime", regime);
       document.getElementById("listDiets").classList.remove("d-block");
     },
