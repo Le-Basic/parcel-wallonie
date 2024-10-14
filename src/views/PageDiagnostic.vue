@@ -135,9 +135,11 @@
                   </div>
                   <div
                     class="sous-partie-droite texte-align-droite bloc-paragraphe"
+                    style="height: 100%; width: 100%"
                   >
                     <p class="texte-petit texte-bleu">
-                      Consommation en matière première de la population :
+                      Consommation en matière première de la population
+                      <br />(en t):
                     </p>
                     <vizConsommation />
                   </div>
@@ -183,7 +185,7 @@
                     <p class="texte-petit work-sans-300 texte-vert">
                       ici en l'occurence :
                     </p>
-                    <p class="chiffre-moyen">2,1<br />cTCO² eq/personne/an</p>
+                    <p class="chiffre-moyen">2,1<br />TCO² eq/personne/an</p>
                     <p
                       class="texte-tres-petit texte-bleu work-sans-300"
                       style="width: 400px; margin-top: 32px"
@@ -208,7 +210,10 @@
                   Le territoire sélectionné a également une activité agricole :
                 </p>
                 <div class="partie-diagnostic">
-                  <div class="sous-partie-gauche bloc-paragraphe">
+                  <div
+                    class="sous-partie-gauche bloc-paragraphe"
+                    style="height: 100%"
+                  >
                     <p
                       class="full-width texte-centre texte-petit work-sans-300"
                     >
@@ -230,10 +235,10 @@
                         de la surface du territoire est consacré à l'agriculture
                       </p>
                     </div>
-                    <p class="texte-petit texte-bleu work-sans-300">
-                      en dessous de la moyenne nationale de
-                      {{ pctSauSuperficieWallonie }}
-                    </p>
+                    <p
+                      class="texte-petit texte-bleu work-sans-300"
+                      v-html="differencePctSAUPhrase"
+                    ></p>
                   </div>
                 </div>
               </div>
@@ -249,12 +254,10 @@
                   style="text-align: center"
                 >
                   Cette activité agricole est largement spécialisée et
-                  principalement tournée vers la Viande Bovine:
+                  principalement tournée vers {{ otexDominant }}:
                 </p>
-                <div>
-                  <div style="width: 100%; margin: auto">
-                    <CarteOtex :geojson="geojsonData" v-if="geojsonData" />
-                  </div>
+                <div class="partie-diagnostic-colonne">
+                  <CarteOtex :geojson="geojsonData" v-if="geojsonData" />
                 </div>
               </div>
             </transition>
@@ -270,14 +273,12 @@
                   culture) est responsable de:
                 </p>
                 <div class="partie-diagnostic">
-                  <div class="sous-partie-gauche">
-                    <div class="flex-row">
-                      <pieEmploi />
-                      <img
-                        src="/img/logo/PARCEL_params-paysan.svg"
-                        height="100"
-                      />
-                    </div>
+                  <div class="graphique-avec-logo" style="height: 100%">
+                    <pieEmploi />
+                    <img
+                      src="/img/logo/PARCEL_params-paysan.svg"
+                      height="100"
+                    />
                   </div>
                   <div class="sous-partie-droite bloc-paragraphe">
                     <div>
@@ -320,7 +321,7 @@
                         style="max-width: 100px; max-height: 100px"
                       />
                       <p class="texte-petit texte-bleu">
-                        37 millions de tonnes de CO2 émise par an par notre
+                        37 millions de tonnes de CO² émise par an par notre
                         production agricole
                       </p>
                     </div>
@@ -369,7 +370,7 @@
               </div>
             </transition>
             <transition :name="slideTransition" @after-enter="transitionEnd">
-              <div id="potentiel" v-if="index == 7">
+              <div id="potentiel" v-if="index == 7" class="slide-diagnostic">
                 <p class="titre-grand texte-centre">
                   Alors pourrais-je nourrir l'ensemble de ma population avec les
                   surfaces actuelles agricoles ?
@@ -454,26 +455,49 @@ function getPhraseDensiteComparaison(densite, densiteWallonie) {
   if (differencePctDensite < 0)
     return `en dessous de la moyenne wallonne  de ${differencePctDensite}%`;
 }
+
 const geoList = ref(messageBievenue(store.state.geoList));
 const population = ref(
   AfficherEntier(store.state.indicateurPortraits.population)
 );
 
 const sau_ha = ref(AfficherEntier(store.state.indicateurPortraits.sau_ha));
-const pct_sau = ref(
-  AfficherEntier(
-    (store.state.indicateurPortraits.sau_ha /
-      store.state.indicateurPortraits.surface_ha) *
-      100
-  )
-);
+const pctSauChiffre =
+  store.state.indicateurPortraits.sau_ha /
+  store.state.indicateurPortraits.surface_ha;
+const pct_sau = ref(AfficherEntier(pctSauChiffre * 100));
 const surface_km2 = ref(store.state.indicateurPortraits.surface_ha / 100);
 const densite = ref(
   (store.state.indicateurPortraits.population * 100) /
     store.state.indicateurPortraits.surface_ha
 );
 const densiteWallonie = 217.8; // https://www.iweps.be/indicateur-statistique/densite-de-population/#:~:text=Au%201er%20janvier%202023%2C%20la,217%2C8%20habitants%20au%20km%C2%B2.
-const pctSauSuperficieWallonie = FormatterPourcentage(0.54); // https://etat-agriculture.wallonie.be/contents/indicatorsheets/EAW-1.html
+const pctSauSuperficieWallonieChiffre = 0.44; // https://etat-agriculture.wallonie.be/contents/indicatorsheets/EAW-1.html
+
+function getPhraseSAUComparaison(pctSauChiffre, pctSauSuperficieWallonie) {
+  const differencePctDensite = Math.round(
+    pctSauChiffre - pctSauSuperficieWallonie
+  );
+
+  console.log(differencePctDensite);
+  if (differencePctDensite > 0)
+    return `au dessus de la moyenne wallonne de ${FormatterPourcentage(
+      pctSauSuperficieWallonieChiffre
+    )}%`;
+  if (differencePctDensite === 0) return `équivalente à la moyenne wallonne`;
+  if (differencePctDensite < 0)
+    return `en dessous de la moyenne wallonne  de ${FormatterPourcentage(
+      pctSauSuperficieWallonieChiffre
+    )}`;
+}
+
+const differencePctSAUPhrase = getPhraseSAUComparaison(
+  pctSauChiffre,
+  pctSauSuperficieWallonieChiffre
+);
+
+console.log(differencePctSAUPhrase);
+
 const differencePctDensitePhrase = getPhraseDensiteComparaison(
   densite.value,
   densiteWallonie
@@ -499,9 +523,33 @@ const baisse_nbexploitations_1990_2021 = ref(
   )
 );
 
-console.log(store.state.indicateurPortraits.otex_dominant_par_commune);
 const otex_dominant_par_commune =
   store.state.indicateurPortraits.otex_dominant_par_commune;
+
+const compte_commune_par_otex_dominant = otex_dominant_par_commune.reduce(
+  (acc, commune) => {
+    if (!acc[commune["otex_dominant"]]) {
+      acc[commune["otex_dominant"]] = 1;
+    } else {
+      acc[commune["otex_dominant"]] += 1;
+    }
+    return acc;
+  },
+  {}
+);
+
+const otexDominant = Object.keys(compte_commune_par_otex_dominant).reduce(
+  function (otex1, otex2) {
+    return compte_commune_par_otex_dominant[otex1] >
+      compte_commune_par_otex_dominant[otex2]
+      ? otex1
+      : otex2;
+  }
+);
+
+console.log("ote dominant", compte_commune_par_otex_dominant);
+console.log("domination", otexDominant);
+
 const featuresAvecOtex = ref(
   geojsonData.features.map((feature) => {
     return {
@@ -670,7 +718,7 @@ a:hover {
 }
 
 .slide-diagnostic {
-  height: calc(100vh - 150px);
+  height: calc(100vh - 200px);
   display: flex;
   gap: 24px;
   flex-direction: column;
@@ -725,6 +773,15 @@ a:hover {
   gap: 64px;
 }
 
+.partie-diagnostic-colonne {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 3;
+  flex-shrink: 100;
+  align-items: center;
+  gap: 32px;
+}
+
 .sous-partie {
   display: flex;
   flex-direction: row;
@@ -743,6 +800,15 @@ a:hover {
   flex-grow: 1;
   flex-shrink: 1;
   align-items: flex-end;
+}
+
+.graphique-avec-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-items: center;
 }
 
 .sous-partie-droite {

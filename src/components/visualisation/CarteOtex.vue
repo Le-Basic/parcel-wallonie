@@ -202,10 +202,11 @@ function creerCarte(attributionHtml) {
 <style scoped>
 #map {
   width: 600px;
-  height: 400px;
+  max-height: 400px;
+  min-height: 200px;
   display: flex;
-  position: relative !important;
   margin: auto;
+  flex-grow: 10;
 }
 
 .legende-palette {

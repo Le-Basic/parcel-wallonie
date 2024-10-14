@@ -9,10 +9,10 @@
         <g clip-path="url(#_clip1)">
             <g transform="matrix(1.1925,0,0,0.890574,-757.589,-623.73)">
                 <g transform="matrix(-0.259163,0.431032,-0.431032,-0.259163,675.326,739.376)">
-                    <path d="M0,-24.917L12.459,-12.458L0,0" style="fill:none;fill-rule:nonzero;stroke:rgb(145,196,35);stroke-width:5.96px;"/>
+                    <path d="M0,-24.917L12.459,-12.458L0,0" style="fill:none;fill-rule:nonzero;stroke:#bdc660;stroke-width:5.96px;"/>
                 </g>
                 <g transform="matrix(0,-1.07887,-1.07887,0,667.225,721.798)">
-                    <path d="M-23.471,-9.721C-20.982,-12.21 -17.544,-13.75 -13.75,-13.75C-6.161,-13.75 0,-7.589 0,0C0,7.589 -6.161,13.75 -13.75,13.75C-21.339,13.75 -27.5,7.589 -27.5,0" style="fill:none;stroke:rgb(145,196,35);stroke-width:2.78px;stroke-linejoin:round;"/>
+                    <path d="M-23.471,-9.721C-20.982,-12.21 -17.544,-13.75 -13.75,-13.75C-6.161,-13.75 0,-7.589 0,0C0,7.589 -6.161,13.75 -13.75,13.75C-21.339,13.75 -27.5,7.589 -27.5,0" style="fill:none;stroke:#bdc660;stroke-width:2.78px;stroke-linejoin:round;"/>
                 </g>
             </g>
         </g>

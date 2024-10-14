@@ -5,19 +5,19 @@
         <rect x="18.252" y="16.265" width="42.93" height="32.061" style="fill:none;"/>
         <g transform="matrix(0.386237,0,0,0.42508,-518.392,-155.053)">
             <g transform="matrix(1.42044,0,0,1.42044,1496.09,406.362)">
-                <path d="M0,48.4L0,0L-3.056,3.393C-6.328,7.026 -8.139,11.743 -8.139,16.632L-8.139,25.435C-8.139,26.54 -7.242,27.436 -6.137,27.436L0,27.436" style="fill:none;fill-rule:nonzero;stroke:rgb(145,196,35);stroke-width:2.79px;"/>
+                <path d="M0,48.4L0,0L-3.056,3.393C-6.328,7.026 -8.139,11.743 -8.139,16.632L-8.139,25.435C-8.139,26.54 -7.242,27.436 -6.137,27.436L0,27.436" style="fill:none;fill-rule:nonzero;stroke:#bdc660;stroke-width:2.79px;"/>
             </g>
             <g transform="matrix(1.42044,0,0,1.42044,1402.69,407.725)">
-                <path d="M0,47.44L0,0" style="fill:none;fill-rule:nonzero;stroke:rgb(145,196,35);stroke-width:2.79px;"/>
+                <path d="M0,47.44L0,0" style="fill:none;fill-rule:nonzero;stroke:#bdc660;stroke-width:2.79px;"/>
             </g>
             <g transform="matrix(0,1.42044,1.42044,0,1413.7,427.545)">
-                <path d="M-13.953,-1.549L-2.926,-1.549C0.499,-1.549 1.549,-4.326 1.549,-7.751C1.549,-11.176 0.499,-13.953 -2.926,-13.953L-13.953,-13.953" style="fill:none;fill-rule:nonzero;stroke:rgb(145,196,35);stroke-width:2.79px;"/>
+                <path d="M-13.953,-1.549L-2.926,-1.549C0.499,-1.549 1.549,-4.326 1.549,-7.751C1.549,-11.176 0.499,-13.953 -2.926,-13.953L-13.953,-13.953" style="fill:none;fill-rule:nonzero;stroke:#bdc660;stroke-width:2.79px;"/>
             </g>
             <g transform="matrix(0,-1.42044,-1.42044,0,1445.97,411.873)">
-                <circle cx="-20.32" cy="0" r="20.32" style="fill:none;stroke:rgb(145,196,35);stroke-width:2.79px;"/>
+                <circle cx="-20.32" cy="0" r="20.32" style="fill:none;stroke:#bdc660;stroke-width:2.79px;"/>
             </g>
             <g transform="matrix(0,-1.42044,-1.42044,0,1445.97,424.398)">
-                <ellipse cx="-11.503" cy="0" rx="11.502" ry="11.503" style="fill:none;stroke:rgb(145,196,35);stroke-width:2.79px;"/>
+                <ellipse cx="-11.503" cy="0" rx="11.502" ry="11.503" style="fill:none;stroke:#bdc660;stroke-width:2.79px;"/>
             </g>
         </g>
     </g>

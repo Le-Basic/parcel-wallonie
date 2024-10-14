@@ -1,13 +1,20 @@
 <template>
   <div class="graphique">
-    <v-chart :option="option" style="width: 100%" />
+    <v-chart :option="option" style="width: 100%; height: 100%" />
   </div>
 </template>
 
 <script setup>
 const colors = ["#BDC660 ", "#f8f8f3"];
 
+const grid = {
+  top: 0,
+  bottom: 0,
+  right: 0,
+};
+
 const option = {
+  grid: grid,
   tooltip: {
     show: false,
   },
@@ -40,10 +47,11 @@ const option = {
 
 <style scoped>
 .graphique {
-  height: 400px;
-  min-width: 200px;
-  width: 400px;
   margin: auto;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
 }
 
 .echarts-inner {

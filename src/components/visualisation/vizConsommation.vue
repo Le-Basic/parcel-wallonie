@@ -215,16 +215,15 @@ const options = ref({
 
 <style scoped>
 .graphique-container {
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  flex-shrink: 50;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
 }
 
 .graphique {
-  min-height: 200px;
-  max-height: 350px;
-  width: 600px;
+  height: 100%;
+  width: 100%;
 }
 </style>

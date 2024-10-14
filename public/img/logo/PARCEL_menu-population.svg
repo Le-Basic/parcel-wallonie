@@ -10,18 +10,18 @@
             <g transform="matrix(0.894375,0,0,0.890574,-1154.44,-730.31)">
                 <g transform="matrix(1,0,0,1,653.757,227.394)">
                     <g transform="matrix(-1.12805,0,0,1.12805,669.228,625.915)">
-                        <ellipse cx="0" cy="-5.662" rx="5.661" ry="5.662" style="fill:none;stroke:rgb(145,196,35);stroke-width:2.66px;"/>
+                        <ellipse cx="0" cy="-5.662" rx="5.661" ry="5.662" style="fill:none;stroke:#bdc660;stroke-width:2.66px;"/>
                     </g>
                     <g transform="matrix(1.12805,0,0,1.12805,660.151,630.389)">
-                        <path d="M0,13.897L0,4.574C0,2.048 2.329,0 5.201,0L10.892,0C13.764,0 16.093,2.048 16.093,4.574L16.093,13.897" style="fill:none;fill-rule:nonzero;stroke:rgb(145,196,35);stroke-width:2.66px;"/>
+                        <path d="M0,13.897L0,4.574C0,2.048 2.329,0 5.201,0L10.892,0C13.764,0 16.093,2.048 16.093,4.574L16.093,13.897" style="fill:none;fill-rule:nonzero;stroke:#bdc660;stroke-width:2.66px;"/>
                     </g>
                 </g>
                 <g transform="matrix(1,0,0,1,678.159,227.394)">
                     <g transform="matrix(-1.12805,0,0,1.12805,669.228,625.915)">
-                        <ellipse cx="0" cy="-5.662" rx="5.661" ry="5.662" style="fill:none;stroke:rgb(145,196,35);stroke-width:2.66px;"/>
+                        <ellipse cx="0" cy="-5.662" rx="5.661" ry="5.662" style="fill:none;stroke:#bdc660;stroke-width:2.66px;"/>
                     </g>
                     <g transform="matrix(1.12805,0,0,1.12805,660.151,630.389)">
-                        <path d="M0,13.897L0,4.574C0,2.048 2.329,0 5.201,0L10.892,0C13.764,0 16.093,2.048 16.093,4.574L16.093,13.897" style="fill:none;fill-rule:nonzero;stroke:rgb(145,196,35);stroke-width:2.66px;"/>
+                        <path d="M0,13.897L0,4.574C0,2.048 2.329,0 5.201,0L10.892,0C13.764,0 16.093,2.048 16.093,4.574L16.093,13.897" style="fill:none;fill-rule:nonzero;stroke:#bdc660;stroke-width:2.66px;"/>
                     </g>
                 </g>
             </g>
