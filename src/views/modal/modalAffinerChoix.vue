@@ -104,8 +104,9 @@
               class="header-filtre ml-auto mr-auto d-flex align-content-stretch"
             >
               <span class="icon-ico_filtres_bio icon"></span
-              ><span class="titre-filtre">Quelle part de produits bio ?</span
-              ><a
+              ><span class="titre-filtre">Quelle part de produits bio ?</span>
+              <pre>{{ this.$store.state.part_bio }}</pre>
+              <a
                 href="#"
                 class="info tooltip-affiner"
                 data-tooltip="Le pourcentage de produits bio ne peut être fixé en-dessous d'un seuil qui correspond à la part de production bio actuelle sur le territoire (uniquement sur les produits de PARCEL). En relocalisant, votre alimentation contient au moins cette part de bio.
@@ -133,7 +134,7 @@
                 step="1.000"
                 value="100"
                 id="partBio"
-                v-model="partBio"
+                v-model="this.partBio"
                 class="slider-range"
               />
               <div class="d-flex mr-auto" style="gap: 16px">
@@ -197,9 +198,9 @@
                 min="0"
                 max="100"
                 step="1.000"
-                value="100"
+                :value="this.partbiolegumes"
                 id="partbiolegumes"
-                v-model="partbiolegumes"
+                @change="this.partbiolegumes = $event.target.value"
                 class="slider-range"
               />
               <div class="range-values">
@@ -552,6 +553,7 @@ export default {
       partbiofruits: this.$store.state.partbiofruits,
       partbiocereales: this.$store.state.partbiocereales,
       partBioElevage: this.$store.state.partbioelevage,
+      partBio: this.$store.state.part_bio,
       showParametres: true,
       regimeChoisi: this.$store.state.regime_alimentaire.nomCourt,
       part_relocalisee: this.$store.state.part_relocalisee,
@@ -599,7 +601,6 @@ export default {
         );
 
         this.partbiocereales = nouvelleValeur;
-        console.log("ready", partBioCereales);
       }
     },
     1000),
@@ -612,7 +613,7 @@ export default {
         );
         this.partBioElevage = nouvelleValeur;
       }
-    }, 200),
+    }, 1000),
     partbiofruits: lodash.debounce(function (partBioFruits, ancienneValeur) {
       if (partBioFruits !== ancienneValeur) {
         let nouvelleValeur = calculerPartBio(
@@ -622,7 +623,7 @@ export default {
         );
         this.partbiofruits = nouvelleValeur;
       }
-    }, 200),
+    }, 1000),
     partbiolegumes: lodash.debounce(function (partBioLegumes, ancienneValeur) {
       if (partBioLegumes !== ancienneValeur) {
         let nouvelleValeur = calculerPartBio(
@@ -632,7 +633,18 @@ export default {
         );
         this.partbiolegumes = nouvelleValeur;
       }
-    }, 200),
+    }, 1000),
+    partBio: function (partBio, ancienneValeur) {
+      if (partBio !== ancienneValeur && partBio != this.$store.state.part_bio) {
+        this.partbiocereales = partBio;
+        this.partbiolegumes = partBio;
+        this.partbiofruits = partBio;
+        this.partBioElevage = partBio;
+        setTimeout(() => {
+          console.log("Retardée d'une seconde.");
+        }, "1000");
+      }
+    },
     regimeChoisi: function (nomCourtRegime) {
       // TODO : choix pour utiliser nomCourt ou id comme clé partout pour les régimes
       const regimeChoisi = getRegimeParNomCourt(nomCourtRegime);
@@ -642,9 +654,12 @@ export default {
       console.log("test");
       this.$store.dispatch("actionModifierPartRElocalisee", part_relocalisee);
     },
+    partBioStore: function (partBio) {
+      this.partBio = partBio;
+    },
   },
   computed: {
-    partBio() {
+    partBioStore() {
       return this.$store.state.part_bio;
     },
   },

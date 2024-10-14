@@ -548,20 +548,6 @@ export default createStore({
         this.state.resultatReference,
         this.state.pctDiffRegimePersonnalise
       );
-      commit("mutationResultatReference", resultatSimulation);
-      console.log(
-        "data3",
-        this.getters.getcodesTerritoireParcel,
-        this.state.regime_alimentaire.id,
-        this.state.partbioelevage,
-        this.state.partbiofruits,
-        this.state.partbiolegumes,
-        this.state.partbiocereales,
-        this.state.partpertes,
-        this.state.part_relocalisee,
-        this.state.resultatReference,
-        this.state.pctDiffRegimePersonnalise
-      );
       resultatSimulation = await recalculerResultatSimulation(
         this.getters.getcodesTerritoireParcel,
         this.state.regime_alimentaire.id,
@@ -634,6 +620,7 @@ export default createStore({
     },
     async actionModifierPartBioElevage({ commit }, partBioElevage) {
       commit("mutationPartBioElevage", partBioElevage);
+      setTimeout(200);
       let partBioGlobale = CalculPartBioGlobale(
         {
           partBioCereales: this.state.partbiocereales,
