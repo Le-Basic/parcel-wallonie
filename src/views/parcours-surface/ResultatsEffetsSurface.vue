@@ -20,6 +20,7 @@
           <div class="animated fadeInUp text-h1 text-center">
             je peux nourrir
           </div>
+          <pre>{{ this.$store.state.resultatSimulationSurface }}</pre>
           <!--
           <div class="titre-page animated fadeInUp h1-result">
             <h1 class="h1-result">Avec</h1>

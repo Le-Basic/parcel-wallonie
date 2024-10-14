@@ -1065,6 +1065,7 @@
                   )?.valeur ?? 300
                 "
               />
+
               <jaugeRegimeAlimentaire
                 titreCategorieAlimentaire="Lipides"
                 iconeCategorieAlimentaire="icon-lipides"
@@ -1373,6 +1374,21 @@ watch(
         "mutationPctDiffRegimePersonnalise",
         coefficientMultiplicateurProduits
       );
+
+      // transform the key to string
+      const coefficientsApportsEnergetiquesApi = Object.entries(
+        nouveauCoefficientMultiplicateur
+      ).map(([id, coefficient]) => ({
+        id_groupe_alimentaire: id,
+        coefficient_multiplicateur: coefficient,
+      }));
+
+      fetchApportsEnergetiques(
+        "https://lebasic.nohost.me/api/parcel/belgique/apports_energetiques",
+        coefficientsApportsEnergetiquesApi
+      ).then((apports) => {
+        apportsEnergetiques.value = apports;
+      });
     }
   }
 );
@@ -1622,6 +1638,7 @@ watch(
       "https://lebasic.nohost.me/api/parcel/belgique/apports_energetiques",
       nouveauCoefficientMultiplicateur
     ).then((nouveauxApports) => {
+      console.log("APPORTS", nouveauxApports);
       apportsEnergetiques.value = nouveauxApports;
     });
   },

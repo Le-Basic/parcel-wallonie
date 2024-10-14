@@ -299,7 +299,6 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
   );
   console.log("indicateursActuelsResponseApi", indicateursActuelsResponseApi);
   const population = indicateursActuelsResponseApi["population"];
-  console.log("Popu pour calcul", population);
   let resultatSimulation = calculerResultatSimulationAvecSurface(
     surfaceActuelleResponseApi,
     surfaceNecessaireResponseApi,

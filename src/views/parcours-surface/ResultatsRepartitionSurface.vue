@@ -104,7 +104,8 @@
                                 formatterSurfacesNecessaires(
                                   Math.round(
                                     trouverChiffre(
-                                      this.$store.state.resultatSimulation
+                                      this.$store.state
+                                        .resultatSimulationSurface
                                         .surfacesEmploisAMobiliser,
                                       CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
                                         .LEGUMES.libelle,
@@ -145,7 +146,7 @@
                               :value="
                                 Math.round(
                                   trouverChiffre(
-                                    this.$store.state.resultatSimulation
+                                    this.$store.state.resultatSimulationSurface
                                       .surfacesEmploisAMobiliser,
                                     CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
                                       .FRUITS.libelle,
@@ -170,7 +171,8 @@
                                 formatterSurfacesNecessaires(
                                   Math.round(
                                     trouverChiffre(
-                                      this.$store.state.resultatSimulation
+                                      this.$store.state
+                                        .resultatSimulationSurface
                                         .surfacesEmploisAMobiliser,
                                       CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
                                         .FRUITS.libelle,
@@ -235,7 +237,8 @@
                                 formatterSurfacesNecessaires(
                                   Math.round(
                                     trouverChiffre(
-                                      this.$store.state.resultatSimulation
+                                      this.$store.state
+                                        .resultatSimulationSurface
                                         .surfacesEmploisAMobiliser,
                                       CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
                                         .CEREALES.libelle,
@@ -298,7 +301,8 @@
                                 formatterSurfacesNecessaires(
                                   Math.round(
                                     trouverChiffre(
-                                      this.$store.state.resultatSimulation
+                                      this.$store.state
+                                        .resultatSimulationSurface
                                         .surfacesEmploisAMobiliser,
                                       CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
                                         .ELEVAGE.libelle,

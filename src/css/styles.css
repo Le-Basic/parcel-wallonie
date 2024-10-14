@@ -1662,8 +1662,6 @@ a > button.btn-recommencer:hover {
 }
 
 .tout-bio {
-  height: 40px;
-  margin-bottom: 20px;
   display: flex;
   align-items: center;
   padding-left: 20px;

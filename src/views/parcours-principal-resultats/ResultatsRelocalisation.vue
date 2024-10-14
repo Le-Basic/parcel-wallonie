@@ -114,7 +114,11 @@
                         class="nbr-ha animated flipInX delay-2s odometer2"
                         id="gaz_effet_serre3"
                       >
-                        {{ Math.round(pctDifferenceEmissionKGCo2 * 100) }}
+                        {{
+                          AfficherEntierAvecSigne(
+                            Math.round(pctDifferenceEmissionKGCo2 * 100)
+                          )
+                        }}
                       </div>
                       <span class="impact-pourcent">%</span>
                     </div>
@@ -193,7 +197,7 @@ import Navigation from "@/components/navigation/BarreNavigation.vue";
 import resumeChoix from "@/views/modal/resumeChoix.vue";
 import ModalAffinerChoix from "@/views/modal/modalAffinerChoix.vue";
 import ModalComposant from "@/views/modal/ModalComposant.vue";
-
+import { AfficherEntierAvecSigne } from "@/plugins/utils";
 export default {
   components: { resumeChoix, Navigation, ModalAffinerChoix, ModalComposant },
   data() {
@@ -213,6 +217,7 @@ export default {
     fermerModalPotentiel() {
       this.modalActive = "";
     },
+    AfficherEntierAvecSigne,
   },
   computed: {
     surfaceAMobiliser() {

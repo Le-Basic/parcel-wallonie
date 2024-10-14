@@ -385,7 +385,7 @@ const CATEGORIES_IMPACT = computed(() => {
             AfficherEntier(donneesImpacts?.value.ges.donneesReference / 1000) +
             " tonnes de GES emise par an",
           sousTitreSituationReference:
-            "Uniquement pour la production alimentaire, soit 8% des émissions nationales",
+            "pour nourrir la population du territoire sélectionné (uniquement pour la production alimentaire)",
           titreSimulation:
             AfficherEntierAvecSigne(
               donneesImpacts?.value.ges.differenceSimulationReferencePct
@@ -488,7 +488,8 @@ const CATEGORIES_IMPACT = computed(() => {
           libelle: "Pauvreté des sols",
           icon: "icon-impact-solqualit ico-medium ico-impact",
           titreSituationReference: "Des sols dont l'état est très dégradé",
-          sousTitreSituationReference: "Soit 5%",
+          sousTitreSituationReference:
+            "90% des sols sous culture belges manquent de matière organique",
           titreSimulation:
             AfficherEntierAvecSigne(
               donneesImpacts?.value.richesses_des_sols

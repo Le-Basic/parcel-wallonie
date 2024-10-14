@@ -100,7 +100,13 @@
                   <div class="result-chiffres">
                     <span><strong>Impacts : </strong></span
                     ><span class="d-inline"
-                      ><span id="gaz_effet_serre">-</span><span> % </span></span
+                      ><span id="gaz_effet_serre">
+                        {{
+                          AfficherEntierAvecSigne(
+                            pctDifferenceEmissionKGCo2 * 100
+                          )
+                        }}</span
+                      ><span> % </span></span
                     ><span>émissions CO<sub>2</sub> / ha</span>
                   </div>
                 </div>
@@ -114,7 +120,11 @@
 </template>
 
 <script>
-import { FormatterPourcentage, AfficherEntier } from "@/plugins/utils";
+import {
+  FormatterPourcentage,
+  AfficherEntier,
+  AfficherEntierAvecSigne,
+} from "@/plugins/utils";
 export default {
   name: "BandeauResultat",
   data() {
@@ -122,7 +132,7 @@ export default {
       bandeauOuvrir: true,
     };
   },
-  methods: { FormatterPourcentage, AfficherEntier },
+  methods: { FormatterPourcentage, AfficherEntier, AfficherEntierAvecSigne },
   computed: {
     surfaceAMobiliser() {
       return this.$store.state.resultatSimulation.surfaceAMobiliser;
@@ -132,6 +142,9 @@ export default {
     },
     emploisAMobiliser() {
       return this.$store.state.resultatSimulation.emploisAMobiliser;
+    },
+    pctDifferenceEmissionKGCo2() {
+      return this.$store.state.resultatSimulation.pctDifferenceEmissionKGCo2;
     },
   },
 };

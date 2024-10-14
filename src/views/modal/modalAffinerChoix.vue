@@ -100,7 +100,9 @@
             </div>
           </div>
           <div>
-            <div class="header-filtre ml-auto mr-auto">
+            <div
+              class="header-filtre ml-auto mr-auto d-flex align-content-stretch"
+            >
               <span class="icon-ico_filtres_bio icon"></span
               ><span class="titre-filtre">Quelle part de produits bio ?</span
               ><a
@@ -110,30 +112,44 @@
 "
                 data-placement="left"
                 title="Tooltip on left"
-                style="<?php echo $displaysliders; ?>"
                 ><span class="icon-ico_element_info"></span
               ></a>
             </div>
             <div
-              class="tout-bio d-flex ml-auto mr-auto"
-              style="max-width: 500px"
+              class="tout-bio d-flex flex-column ml-auto mr-auto range-categorie"
+              style="max-width: 500px; gap: 16px"
             >
-              <div class="mr-auto">Tout bio ?</div>
-              <div>
-                <label class="switch">
-                  <input
-                    type="checkbox"
-                    id="toutbio"
-                    @change="
-                      partbiolegumes = 100;
-                      partbiofruits = 100;
-                      partbiocereales = 100;
-                      partBioElevage = 100;
-                    "
-                    value="1"
-                  />
-                  <span class="slider round"></span>
-                </label>
+              <div
+                class="header-filtre ml-auto mr-auto d-flex justify-content-stretch mr-auto"
+              >
+                <output style="flex-grow: 10" class="text-bold range-output"
+                  ><b>Part de bio actuelle: {{ partBio }}%</b></output
+                >
+              </div>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="1.000"
+                value="100"
+                id="partBio"
+                v-model="partBio"
+                class="slider-range"
+              />
+              <div class="d-flex mr-auto" style="gap: 16px">
+                <div class="mr-auto titre-categorie">Passer tout bio ?</div>
+                <div>
+                  <label class="switch">
+                    <input
+                      type="checkbox"
+                      id="toutbio"
+                      @change="changerValeursBio()"
+                      value="1"
+                      v-model="toutbio"
+                    />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
               </div>
             </div>
             <div
@@ -539,6 +555,7 @@ export default {
       showParametres: true,
       regimeChoisi: this.$store.state.regime_alimentaire.nomCourt,
       part_relocalisee: this.$store.state.part_relocalisee,
+      toutBio: false,
     };
   },
   methods: {
@@ -548,6 +565,22 @@ export default {
     },
     changeActive() {
       this.showParametres = !this.showParametres;
+    },
+    changerValeursBio() {
+      if (!this.toutBio) {
+        this.partbiolegumes = 100;
+        this.partbiofruits = 100;
+        this.partbiocereales = 100;
+        this.partBioElevage = 100;
+
+        this.toutBio = true;
+      } else {
+        this.partbiolegumes = 0;
+        this.partbiofruits = 0;
+        this.partbiocereales = 0;
+        this.partBioElevage = 0;
+        this.toutBio = false;
+      }
     },
   },
   watch: {
@@ -610,6 +643,11 @@ export default {
       this.$store.dispatch("actionModifierPartRElocalisee", part_relocalisee);
     },
   },
+  computed: {
+    partBio() {
+      return this.$store.state.part_bio;
+    },
+  },
 };
 </script>
 
@@ -670,5 +708,13 @@ input:checked + .slider.viande {
   background-repeat: no-repeat;
   background-size: 15px;
   background-image: url("/public/img/fleches/fleche-gch-vert.svg");
+}
+
+.tout-bio {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  background: #f0f0f0;
+  padding: 16px;
 }
 </style>

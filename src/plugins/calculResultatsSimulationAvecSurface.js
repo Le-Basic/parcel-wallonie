@@ -30,9 +30,19 @@ export function calculerResultatSimulationAvecSurface(
   const surfacesAMobiliser = resultat_simulation.surfaceAMobiliser;
   const pctMobilisables = surfaceMobilisable / surfacesAMobiliser;
   const populationAvecBesoinComblé = Math.round(population * pctMobilisables);
-  console.log("population", population);
+  const surfacesEmploisAMobiliser =
+    resultat_simulation.surfacesEmploisAMobiliser.map((culture) => {
+      return {
+        libelle_parcel_niveau_1: culture.libelle_parcel_niveau_1,
+        libelle_parcel_niveau_2: culture.libelle_parcel_niveau_2,
+        libelle_parcel_niveau_3: culture.libelle_parcel_niveau_3,
+        surface_a_mobiliser: culture.surface_a_mobiliser * pctMobilisables,
+        part_surface_a_mobiliser: culture.part_surface_a_mobiliser,
+      };
+    });
   return {
     population,
     populationAvecBesoinComblé,
+    surfacesEmploisAMobiliser,
   };
 }
