@@ -479,9 +479,11 @@ export default createStore({
       state.partpertes = partPertes;
     },
     mutationResultatSimulation(state, resultatSimulation) {
+      console.log("resultat", resultatSimulation);
       state.resultatSimulation = resultatSimulation;
     },
     mutationResultatReference(state, resultatSimulation) {
+      console.log("reference", resultatSimulation);
       state.resultatReference = resultatSimulation;
     },
     mutationResultatSimulationSurface(state, resultatSimulationSurface) {
@@ -547,6 +549,19 @@ export default createStore({
         this.state.pctDiffRegimePersonnalise
       );
       commit("mutationResultatReference", resultatSimulation);
+      console.log(
+        "data3",
+        this.getters.getcodesTerritoireParcel,
+        this.state.regime_alimentaire.id,
+        this.state.partbioelevage,
+        this.state.partbiofruits,
+        this.state.partbiolegumes,
+        this.state.partbiocereales,
+        this.state.partpertes,
+        this.state.part_relocalisee,
+        this.state.resultatReference,
+        this.state.pctDiffRegimePersonnalise
+      );
       resultatSimulation = await recalculerResultatSimulation(
         this.getters.getcodesTerritoireParcel,
         this.state.regime_alimentaire.id,
@@ -692,6 +707,46 @@ export default createStore({
     },
     async actionModifierPartBioFruits({ commit }, partBioFruits) {
       commit("mutationPartBioFruits", partBioFruits);
+      let partBioGlobale = CalculPartBioGlobale(
+        {
+          partBioCereales: this.state.partbiocereales,
+          partBioFruits: this.state.partbiofruits,
+          partBioLegumes: this.state.partbiolegumes,
+          partBioElevage: this.state.partbioelevage,
+        },
+        {
+          surfacesNecessairesCereales: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+          surfacesNecessairesFruits: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+          surfacesNecessairesLegumes: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+          surfacesNecessairesElevage: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+        }
+      );
+
+      commit("partBio", AfficherEntier(partBioGlobale * 100));
       let resultatSimulation = await recalculerResultatSimulation(
         this.getters.getcodesTerritoireParcel,
         this.state.regime_alimentaire.id,
@@ -776,6 +831,47 @@ export default createStore({
     async actionModifierPartBioLegumes({ commit }, partBioLegumes) {
       console.log("actionModifierPartBioLegumes", partBioLegumes);
       commit("mutationPartBioLegumes", partBioLegumes);
+
+      let partBioGlobale = CalculPartBioGlobale(
+        {
+          partBioCereales: this.state.partbiocereales,
+          partBioFruits: this.state.partbiofruits,
+          partBioLegumes: partBioLegumes,
+          partBioElevage: this.state.partbioelevage,
+        },
+        {
+          surfacesNecessairesCereales: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+          surfacesNecessairesFruits: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+          surfacesNecessairesLegumes: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+          surfacesNecessairesElevage: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+        }
+      );
+
+      commit("partBio", AfficherEntier(partBioGlobale * 100));
       let resultatSimulation = await recalculerResultatSimulation(
         this.getters.getcodesTerritoireParcel,
         this.state.regime_alimentaire.id,
@@ -792,6 +888,46 @@ export default createStore({
     },
     async actionModifierPartBioCereales({ commit }, partBioCereales) {
       commit("mutationPartBioCereales", partBioCereales);
+      let partBioGlobale = CalculPartBioGlobale(
+        {
+          partBioCereales: this.state.partbiocereales,
+          partBioFruits: this.state.partbiofruits,
+          partBioLegumes: this.state.partbiolegumes,
+          partBioElevage: this.state.partbioelevage,
+        },
+        {
+          surfacesNecessairesCereales: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+          surfacesNecessairesFruits: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+          surfacesNecessairesLegumes: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+          surfacesNecessairesElevage: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+        }
+      );
+
+      commit("partBio", AfficherEntier(partBioGlobale * 100));
       let resultatSimulation = await recalculerResultatSimulation(
         this.getters.getcodesTerritoireParcel,
         this.state.regime_alimentaire.id,
@@ -833,39 +969,41 @@ export default createStore({
       });
       let curseurs_bio_categorie__url =
         window.apiURL + "parcel/belgique/curseurs_bio_par_categorie";
-      fetchCurseurs(curseurs_bio_categorie__url, codesTerritoireParcel).then(
-        (curseursPartBio) => {
-          commit("curseursMin", curseursPartBio);
-          commit(
-            "partBioLegumes",
-            Math.round(
-              curseursPartBio.find((item) => item.code_parcel_niveau_1 == "LG")
-                .part_bio * 100
-            )
-          );
-          commit(
-            "partBioCereales",
-            Math.round(
-              curseursPartBio.find((item) => item.code_parcel_niveau_1 == "GC")
-                .part_bio * 100
-            )
-          );
-          commit(
-            "partBioElevage",
-            Math.round(
-              curseursPartBio.find((item) => item.code_parcel_niveau_1 == "EL")
-                .part_bio * 100
-            )
-          );
-          commit(
-            "partBioFruits",
-            Math.round(
-              curseursPartBio.find((item) => item.code_parcel_niveau_1 == "FR")
-                .part_bio * 100
-            )
-          );
-        }
+      let curseursPartBio = await fetchCurseurs(
+        curseurs_bio_categorie__url,
+        codesTerritoireParcel
       );
+
+      commit("curseursMin", curseursPartBio);
+      commit(
+        "partBioLegumes",
+        Math.round(
+          curseursPartBio.find((item) => item.code_parcel_niveau_1 == "LG")
+            .part_bio * 100
+        )
+      );
+      commit(
+        "partBioCereales",
+        Math.round(
+          curseursPartBio.find((item) => item.code_parcel_niveau_1 == "GC")
+            .part_bio * 100
+        )
+      );
+      commit(
+        "partBioElevage",
+        Math.round(
+          curseursPartBio.find((item) => item.code_parcel_niveau_1 == "EL")
+            .part_bio * 100
+        )
+      );
+      commit(
+        "partBioFruits",
+        Math.round(
+          curseursPartBio.find((item) => item.code_parcel_niveau_1 == "FR")
+            .part_bio * 100
+        )
+      );
+
       let resultatSimulation = await recalculerResultatSimulation(
         this.getters.getcodesTerritoireParcel,
         this.state.regime_alimentaire.id,
@@ -878,19 +1016,8 @@ export default createStore({
         this.state.resultatReference,
         this.state.pctDiffRegimePersonnalise
       );
+
       commit("mutationResultatReference", resultatSimulation);
-      resultatSimulation = await recalculerResultatSimulation(
-        this.getters.getcodesTerritoireParcel,
-        this.state.regime_alimentaire.id,
-        this.state.partbioelevage,
-        this.state.partbiofruits,
-        this.state.partbiolegumes,
-        this.state.partbiocereales,
-        this.state.partpertes,
-        this.state.part_relocalisee,
-        this.state.resultatReference,
-        this.state.pctDiffRegimePersonnalise
-      );
       commit("mutationResultatSimulation", resultatSimulation);
     },
     async actionModifierPopulation(

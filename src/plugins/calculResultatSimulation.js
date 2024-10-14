@@ -149,10 +149,10 @@ function calculerSurfacesEtEmploisAMobiliser(
         partBioLegumes,
         partBioCereales,
         partPertes,
-        part_relocalisee
+        100
       );
 
-    // TODO: A VOIR POUR LA RELOC...
+    // TODO: RELOC A 100%
     res[valeur.libelle_parcel_niveau_3].surfaces_ha_soja_importes +=
       calculSurfAMobiliser(
         valeur.libelle_parcel_niveau_1,
@@ -163,7 +163,7 @@ function calculerSurfacesEtEmploisAMobiliser(
         partBioLegumes,
         partBioCereales,
         partPertes,
-        part_relocalisee
+        100
       );
     res[valeur.libelle_parcel_niveau_3].empreinte_eau_bleue_m3 +=
       valeur.empreinte_eau_bleue_m3;
@@ -342,7 +342,6 @@ function calculerSurfacesEtEmploisAMobiliser(
         libelle_parcel_paysage_actuel: key,
         surface_a_mobiliser: 0,
       };
-      console.log("entry", entry);
       groupedData[key].surface_a_mobiliser += entry.surface_a_mobiliser;
     });
   const surfaces_a_mobiliser_paysage = Object.values(groupedData);

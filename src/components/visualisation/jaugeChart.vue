@@ -78,7 +78,7 @@ export default defineComponent({
             show: true,
             position: "center",
             fontSize: 13,
-            color: "#594231 ",
+            color: "#594231",
           },
           hoverAnimation: false,
           silent: true,
