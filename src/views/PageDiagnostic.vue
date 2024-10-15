@@ -254,7 +254,7 @@
                   style="text-align: center"
                 >
                   Cette activité agricole est largement spécialisée et
-                  principalement tournée vers {{ otexDominant }}:
+                  principalement tournée vers la filière: {{ otexDominant }}
                 </p>
                 <div class="partie-diagnostic-colonne">
                   <CarteOtex :geojson="geojsonData" v-if="geojsonData" />
@@ -474,7 +474,7 @@ const pctSauSuperficieWallonieChiffre = 0.44; // https://etat-agriculture.wallon
 
 function getPhraseSAUComparaison(pctSauChiffre, pctSauSuperficieWallonie) {
   const differencePctDensite = Math.round(
-    pctSauChiffre - pctSauSuperficieWallonie
+    (pctSauChiffre - pctSauSuperficieWallonie) * 100
   );
 
   console.log(differencePctDensite);

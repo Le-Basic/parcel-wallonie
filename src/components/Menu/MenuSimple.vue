@@ -16,16 +16,16 @@
           >
             <picture>
               <source
-                srcset="../../assets/img/logos/logo-parcel.svg"
+                srcset="../../assets/img/logos/logoPARCELWAL_baseline_vert.png"
                 media="(min-width: 600px)"
               />
               <source
-                srcset="../../assets/img/logos/logo.svg"
+                srcset="../../assets/img/logos/logoPARCELWAL_vert.png"
                 media="(max-width: 600px)"
                 sizes="200px"
               />
               <img
-                srcset="../../assets/img/logos/logo-parcel.svg"
+                srcset="../../assets/img/logos/logoPARCELWAL_baseline_vert.png"
                 alt="logo appli"
                 width="100%"
                 height="auto"

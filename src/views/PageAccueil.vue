@@ -5,7 +5,7 @@
       <div class="accueil-texte">
         <div class="titre animated fadeInUp mb-3">
           <h1>
-            Parcel Wal<br />
+            PARCEL.WAL<br />
             Et si l’alimentation de votre territoire devenait durable et locale
             ?
           </h1>

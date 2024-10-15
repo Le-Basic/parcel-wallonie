@@ -41,7 +41,7 @@
                 style="margin: 0 auto"
               />
               <div class="text-h4">
-                <b>Simulez les effets de la relocalisation</b>
+                <b>Simulez l’empreinte alimentaire de votre territoire</b>
               </div>
               <div class="">
                 Évaluer les surfaces agricoles nécessaires, les emplois créés et

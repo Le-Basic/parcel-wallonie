@@ -31,7 +31,7 @@
             to="/"
             ><img
               alt="logo"
-              :src="require('@/assets/img/logos/logo.svg')"
+              :src="require('@/assets/img/logos/logoPARCELWAL_vert.png')"
               width="181"
               height="auto"
               @click="clearLocalStorage"
