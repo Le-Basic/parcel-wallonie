@@ -5,7 +5,8 @@
       <div class="accueil-texte">
         <div class="titre animated fadeInUp mb-3">
           <h1>
-            Et si l’alimentation de votre territoire devenait locale et durable
+            Parcel Wal<br />
+            Et si l’alimentation de votre territoire devenait durable et locale
             ?
           </h1>
         </div>
@@ -226,7 +227,7 @@
           <div class="two-cols">
             <p>
               PARCEL est un outil web simple, ludique et gratuit, permettant
-              d’évaluer pour un territoire donné les
+              d’évaluer pour une commune ou un territoire donné les
               <strong
                 >surfaces agricoles nécessaires pour se nourrir localement,
                 ainsi que les emplois agricoles et les impacts écologiques
@@ -239,9 +240,10 @@
             <p>
               Développé initialement en France par Terre de Liens, la Fédération
               Nationale de l’Agriculture Biologique (FNAB) et le BASIC, Parcel a
-              été adapté à la Wallonie par Sytra et Le Basic. PARCEL invite
+              été adapté à la Wallonie par Sytra et Le Basic. PARCEL.Wal invite
               <strong
-                >les citoyens et les élus à se saisir des enjeux actuels de
+                >les citoyens, les administrations et les représentants
+                politiques à se saisir des enjeux actuels de
                 l’alimentation</strong
               >
               en leur proposant de « jouer » sur 4 des principaux leviers de

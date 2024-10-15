@@ -21,6 +21,11 @@
                 class="badge badge-pill badge-light pointer"
                 style="cursor: pointer"
                 >{{ geo.localeName }}
+                <span
+                  @click="enleverGeo(geo)"
+                  class="icon-ico_fermer icon"
+                  style="font-size: 8px; color: white"
+                ></span>
               </span>
             </div>
           </div>
@@ -106,7 +111,20 @@ export default {
       this.rechercheInput = "";
       this.list_geo = [];
       this.$store.commit("addGeo", item);
-      console.log("store", this.$store.state);
+      let codesTerritoiresListe = this.$store.getters.getcodesTerritoireParcel;
+      this.$store.commit("getIndicateursPortraits", codesTerritoiresListe);
+      this.$store.dispatch("creerDonneesReference");
+      this.$store.dispatch("actionModifierGeo");
+    },
+    enleverGeo(geo) {
+      let codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
+      this.$store.commit("removeGeo", geo);
+      this.$store.commit("getIndicateursPortraits", codesTerritoireParcel);
+      let codesTerritoiresListe = this.$store.getters.getcodesTerritoireParcel;
+      this.$store.commit("getIndicateursPortraits", codesTerritoiresListe);
+      this.$store.dispatch("creerDonneesReference");
+      this.$store.dispatch("actionModifierGeo");
+      this.$store.dispatch("actionRecupererElementsDIagnostic");
     },
   },
   watch: {

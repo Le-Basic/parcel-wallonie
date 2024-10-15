@@ -84,6 +84,11 @@
           :serieDonnees="repartitionSurfacePotentielNourricier()"
         />
       </div>
+      <div class="transverse information-box">
+        Attention: Ni les jachères ni les cultures industrielles comme le lin ne
+        sont pas prises en compte dans le scénario de relocalisation de PARCEL
+        qui ne modélise uniquement les cultures nourricières.
+      </div>
       <TableauProduit class="actuel" :tableauProduits="tableauProduitsActuel" />
       <TableauProduit
         class="prospectif"
@@ -348,8 +353,11 @@ const tableauProduitsActuel = [
   width: 100%;
   height: auto;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(4, auto);
+  grid-template-rows: repeat(5, auto);
   grid-gap: 16px;
+}
+.transverse {
+  grid-column: span 2;
 }
 
 .actuel {
@@ -369,5 +377,19 @@ const tableauProduitsActuel = [
 }
 .treemap {
   grid-row-start: 3;
+}
+
+.information-box {
+  font-size: 20px;
+  color: var(--vert);
+  font-weight: 400;
+  border: 1px solid var(--vert);
+  font-family: "Work Sans", sans-serif;
+  padding: 16px;
+  margin: 16px;
+}
+
+.modal-content {
+  padding: 0px 16px;
 }
 </style>

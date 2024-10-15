@@ -40,7 +40,7 @@
                         class="nbr-ha animated flipInX delay-1s odometer"
                         id="surface6"
                       >
-                        {{ Math.round(surfaceAMobiliser) }}
+                        {{ AfficherEntierAvecSigne(surfaceAMobiliser) }}
                       </div>
                       <div class="hectares">hectares</div>
                     </div>

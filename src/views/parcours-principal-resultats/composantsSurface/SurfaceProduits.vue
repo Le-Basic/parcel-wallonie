@@ -915,6 +915,17 @@
           ><span class="legende bg-viande"></span> surfaces actuelles
         </div>
       </div>
+      <div>
+        <InformationBox>
+          <template #texte>
+            Les résultats proposés par PARCEL représentent des ordres de
+            grandeur théoriques. Sur base des résultats obtenus, toute
+            réallocation des surfaces doit être évaluée en tenant compte des
+            spécificités agro-climatiques et socio-économiques de votre
+            territoire.
+          </template>
+        </InformationBox>
+      </div>
       <div class="div-continuer">
         <button
           class="btn btn-secondaire mt-5"
@@ -1303,6 +1314,7 @@ import jaugeChart from "@/components/visualisation/jaugeChart.vue";
 import RepartitionSurface from "@/components/visualisation/RepartitionSurface.vue";
 import { FormatterPourcentage } from "@/plugins/utils";
 import ModalComposant from "@/views/modal/ModalComposant.vue";
+import InformationBox from "@/components/bas-niveau/InformationBox";
 export default {
   inject: ["$axios"],
   emits: ["nextStep", "fermerModal", "ouvrirModal"],
@@ -1311,6 +1323,7 @@ export default {
     jaugeChart,
     RepartitionSurface,
     ModalComposant,
+    InformationBox,
   },
   data() {
     return {
@@ -1382,7 +1395,7 @@ export default {
           this.$store.state.resultatSimulation.surfacesEmploisAMobiliser,
           value.libelle,
           "part_surface_a_mobiliser",
-          "libelle_parcel_niveau_2",
+          "libelle_parcel_niveau_1",
           3
         );
         value.partAMobiliser = parseFloat(value.partAMobiliser).toFixed(

@@ -16,8 +16,10 @@
                 <span class="titre-filtre justify-content-center">
                   <h1 class="animated fadeInUp fast">
                     Je choisis de répartir mes
-                    <span id="choixsurface">100</span>
-                    <span id="typesurface">hectares</span> ainsi
+                    <span id="choixsurface">{{
+                      store.state.surfacesMobilisables
+                    }}</span>
+                    <span id="typesurface"> hectares</span> ainsi
                   </h1>
                 </span>
               </div>
@@ -150,8 +152,10 @@
                 <div class="text-center">
                   <span class="sous-titre"
                     ><strong
-                      ><span id="choixsurface2">100</span>
-                      <span id="typesurface2">hectares</span> ainsi
+                      ><span id="choixsurface2">{{
+                        store.state.surfacesMobilisables
+                      }}</span>
+                      <span id="typesurface2"> hectares</span> ainsi
                       répartis</strong
                     ></span
                   >
@@ -235,14 +239,11 @@
                       <div
                         class="text-left text-md-center justify-content-start justify-content-md-center"
                       >
-                        a
                         <div>
-                          <span class="icon-personne ico-medium legumes"
-                            >a</span
-                          >
+                          <span class="icon-personne ico-medium legumes"></span>
                         </div>
                         <div class="nbr-personne legumes" id="couvertslegumes">
-                          0
+                          {{ personnesNourriesParCulture.legumes }}
                         </div>
                         <div class="personnes legumes">personnes</div>
                       </div>
@@ -272,7 +273,7 @@
                         class="text-left text-md-center justify-content-start justify-content-md-center"
                       >
                         <div class="nbr-personne fruits" id="couvertsfruits">
-                          0
+                          {{ personnesNourriesParCulture.fruits }}
                         </div>
                         <div class="personnes fruits">personnes</div>
                       </div>
@@ -305,7 +306,7 @@
                           class="nbr-personne cereales"
                           id="couvertscereales"
                         >
-                          0
+                          {{ personnesNourriesParCulture.cereales }}
                         </div>
                         <div class="personnes cereales">personnes</div>
                       </div>
@@ -335,7 +336,7 @@
                         class="text-left text-md-center justify-content-start justify-content-md-center"
                       >
                         <div class="nbr-personne viande" id="couvertselevage">
-                          1
+                          {{ personnesNourriesParCulture.viande }}
                         </div>
                         <div class="personnes viande">personnes</div>
                       </div>
@@ -395,20 +396,62 @@
 import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import resumeChoixSurface from "@/views/parcours-surface/ResumeChoixSurface.vue";
 import VueSlider from "vue-3-slider-component";
-import { AfficherEntier } from "@/plugins/utils";
+import { AfficherEntier, trouverChiffre } from "@/plugins/utils";
+import { CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER } from "@/config/categorieProduitsPotentielNourricier";
 import { ref } from "vue";
 import { watch } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
-const portionLegumes = ref(25);
-const portionFruits = ref(25);
-const portionCereales = ref(25);
-const portionElevage = ref(25);
+const portionLegumes = ref(
+  trouverChiffre(
+    store.state.resultatSimulation.surfacesEmploisAMobiliser,
+    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
+    "part_surface_a_mobiliser",
+    "libelle_parcel_niveau_1"
+  )
+);
+const portionFruits = ref(
+  trouverChiffre(
+    store.state.resultatSimulation.surfacesEmploisAMobiliser,
+    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle,
+    "part_surface_a_mobiliser",
+    "libelle_parcel_niveau_1"
+  )
+);
+const portionCereales = ref(
+  trouverChiffre(
+    store.state.resultatSimulation.surfacesEmploisAMobiliser,
+    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
+    "part_surface_a_mobiliser",
+    "libelle_parcel_niveau_1"
+  )
+);
+const portionElevage = ref(
+  trouverChiffre(
+    store.state.resultatSimulation.surfacesEmploisAMobiliser,
+    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle,
+    "part_surface_a_mobiliser",
+    "libelle_parcel_niveau_1"
+  )
+);
+
+const portionDepart = {
+  legumes: portionLegumes.value,
+  fruits: portionFruits.value,
+  cereales: portionCereales.value,
+  elevage: portionElevage.value,
+};
 const totalPortions = 100;
 const populationAvecBesoinComblé =
   store.state.resultatSimulationSurface.populationAvecBesoinComblé;
 
+const personnesNourriesParCulture = ref({
+  legumes: store.state.resultatSimulationSurface.populationAvecBesoinComblé,
+  fruits: store.state.resultatSimulationSurface.populationAvecBesoinComblé,
+  cereales: store.state.resultatSimulationSurface.populationAvecBesoinComblé,
+  viande: store.state.resultatSimulationSurface.populationAvecBesoinComblé,
+});
 // watcher
 watch(
   () => portionCereales.value,
@@ -439,6 +482,10 @@ watch(
       portionCereales.value = Math.max(0, portionCereales.value);
       portionFruits.value = Math.min(100, portionFruits.value);
       portionFruits.value = Math.max(0, portionFruits.value);
+      personnesNourriesParCulture.value.cereales = Math.round(
+        (portionCereales.value * populationAvecBesoinComblé) /
+          portionDepart.cereales
+      );
     }
   }
 );
@@ -472,6 +519,11 @@ watch(
       portionCereales.value = Math.max(0, portionCereales.value);
       portionFruits.value = Math.min(100, portionFruits.value);
       portionFruits.value = Math.max(0, portionFruits.value);
+
+      personnesNourriesParCulture.value.elevage = Math.round(
+        (portionElevage.value * populationAvecBesoinComblé) /
+          portionDepart.elevage
+      );
     }
   }
 );
@@ -504,6 +556,11 @@ watch(
       portionCereales.value = Math.max(0, portionCereales.value);
       portionFruits.value = Math.min(100, portionFruits.value);
       portionFruits.value = Math.max(0, portionFruits.value);
+
+      personnesNourriesParCulture.value.legumes = Math.round(
+        (portionLegumes.value * populationAvecBesoinComblé) /
+          portionDepart.legumes
+      );
     }
   }
 );
@@ -536,6 +593,11 @@ watch(
       portionCereales.value = Math.max(0, portionCereales.value);
       portionFruits.value = Math.min(100, portionFruits.value);
       portionFruits.value = Math.max(0, portionFruits.value);
+
+      personnesNourriesParCulture.value.fruits = Math.round(
+        (portionFruits.value * populationAvecBesoinComblé) /
+          portionDepart.fruits
+      );
     }
   }
 );

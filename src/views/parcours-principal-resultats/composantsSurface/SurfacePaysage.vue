@@ -596,6 +596,17 @@
           </table>
         </div>
       </div>
+      <div>
+        <InformationBox>
+          <template #texte>
+            Les résultats proposés par PARCEL représentent des ordres de
+            grandeur théoriques. Sur base des résultats obtenus, toute
+            réallocation des surfaces doit être évaluée en tenant compte des
+            spécificités agro-climatiques et socio-économiques de votre
+            territoire.
+          </template>
+        </InformationBox>
+      </div>
       <div class="row justify-content-center mt-3 mb-3">
         <div class="div-continuer">
           <button
@@ -633,12 +644,14 @@ import { trouverChiffre, AfficherEntier } from "@/plugins/utils";
 import { CATEGORIE_PRODUITS_ACTUELS_PAYSAGE } from "@/config/categorieProduitsActuelsPaysage";
 import RepartitionSurface from "@/components/visualisation/RepartitionSurface.vue";
 import ModalComposant from "@/views/modal/ModalComposant.vue";
+import InformationBox from "@/components/bas-niveau/InformationBox";
 
 export default {
   inject: ["$axios"],
   components: {
     RepartitionSurface,
     ModalComposant,
+    InformationBox,
   },
   data() {
     return {

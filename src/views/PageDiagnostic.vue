@@ -212,7 +212,7 @@
                 <div class="partie-diagnostic">
                   <div
                     class="sous-partie-gauche bloc-paragraphe"
-                    style="height: 100%"
+                    style="height: 100%; width: 80%"
                   >
                     <p
                       class="full-width texte-centre texte-petit work-sans-300"
@@ -371,16 +371,13 @@
             </transition>
             <transition :name="slideTransition" @after-enter="transitionEnd">
               <div id="potentiel" v-if="index == 7" class="slide-diagnostic">
-                <p class="titre-grand texte-centre">
-                  Alors pourrais-je nourrir l'ensemble de ma population avec les
-                  surfaces actuelles agricoles ?
+                <p
+                  class="animated fadeInUp fast p-result mb-1 titre-slide texte-moyen work-sans-300 texte-centre"
+                >
+                  Alors, pourrais-je nourrir l'ensemble de ma population avec
+                  les surfaces actuelles agricoles ?
                 </p>
-                <p class="map-content">
-                  bien que la population pourrait être nourrie par les terres
-                  agricoles du territoire, (le potentiel nourricier est
-                  positif), il manque certaines productions essentielles pour
-                  cela
-                </p>
+                <p v-html="phrasePotentielNourricier" class="texte-moyen"></p>
                 <div
                   class="div-continuer mb-small animated fadeInUp delay-5-1s"
                 >
@@ -461,6 +458,7 @@ const population = ref(
   AfficherEntier(store.state.indicateurPortraits.population)
 );
 
+const sauHaChiffre = store.state.indicateurPortraits.sau_ha;
 const sau_ha = ref(AfficherEntier(store.state.indicateurPortraits.sau_ha));
 const pctSauChiffre =
   store.state.indicateurPortraits.sau_ha /
@@ -574,6 +572,31 @@ const featuresAvecOtex = ref(
   })
 );
 geojsonData.features = featuresAvecOtex.value;
+
+const potentielNourricier =
+  sauHaChiffre / parseInt(store.state.resultatReference.surfaceAMobiliser);
+
+console.log(
+  "diff",
+  sauHaChiffre,
+  parseInt(store.state.resultatReference.surfaceAMobiliser, potentielNourricier)
+);
+const phrasePotentielNourricierFonction = (potentiel) => {
+  let phrase = "";
+
+  if (potentiel > 1) {
+    phrase =
+      "Il est théoriquement possible de nourrir la population avec les terres agricoles du territoire (le potentiel nourricier est supérieur à 100%). Cependant, certaines productions essentielles peuvent manquer, et il est nécessaire d'analyser en détail les besoins en regard des cultures actuelles du territoire.";
+  } else {
+    phrase =
+      "Malheureusement, votre territoire n'a pas assez de terres agricoles pour nourrir l'ensemble de la population (le potentiel nourricier est inférieur à 100%). Il est de fait dépendant d'autres territoires limitrophes ou très éloignés pour des cultures pouvant théoriquement être localement produites";
+  }
+
+  return phrase; // Return the reactive ref
+};
+
+const phrasePotentielNourricier =
+  phrasePotentielNourricierFonction(potentielNourricier);
 
 const dernierDeltaY = ref(5);
 const slideTransition = ref("slide-fade");
@@ -899,6 +922,7 @@ a:hover {
 
 .texte-moyen {
   font-size: 28px;
+  line-height: 1.2;
 }
 
 .chiffre-moyen {

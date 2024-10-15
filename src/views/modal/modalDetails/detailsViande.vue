@@ -289,4 +289,5 @@
 
 <script setup>
 import detailsTemplate from "@/views/modal/modalDetails/detailsTemplate.vue";
+import { CHIFFRES_DIAGNOSTICS } from "@/assets/data/chiffresCles";
 </script>

@@ -600,6 +600,7 @@ export default createStore({
         this.state.pctDiffRegimePersonnalise
       );
       if (this.state.surfacesMobilisables > 0) {
+        console.log("test surface");
         let resultatSimulationSurface =
           await recalculerResultatSimulationPourSurfaceDonnée(
             this.getters.getcodesTerritoireParcel,
