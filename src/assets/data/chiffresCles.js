@@ -2,12 +2,12 @@ export const CHIFFRES_DIAGNOSTICS = {
   FRUITS: {
     production: "0.3%",
     consommation: "9%",
-    importation: 0.5,
+    importation: "80%",
   },
   LEGUMES: {
-    production: 1.5,
+    production: "2%",
     consommation: "2%",
-    importation: 0.5,
+    importation: "15%",
   },
   ELEVAGE: {
     production: "70%",
@@ -17,7 +17,7 @@ export const CHIFFRES_DIAGNOSTICS = {
   CEREALES: {
     production: "20%",
     consommation: "33%",
-    importation: 0.5,
+    importation: "70%",
   },
 };
 

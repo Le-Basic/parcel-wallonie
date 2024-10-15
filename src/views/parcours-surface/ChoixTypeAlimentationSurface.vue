@@ -171,7 +171,7 @@
 
 <script>
 import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
-import { getRegimeParNomCourt } from "@/config/regimeListe";
+import { getRegimeParNomCourt, regimeListe } from "@/config/regimeListe";
 import { fetchCurseurBio } from "@/plugins/getPartdeBio";
 
 export default {
@@ -191,7 +191,7 @@ export default {
   mounted() {
     let url = window.apiURL + "parcel/belgique/curseurs_bio";
     let codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
-
+    this.$store.dispatch("actionChoisirRegimeAlimentaire", regimeListe[0]);
     fetchCurseurBio(url, codesTerritoireParcel).then((data) => {
       console.log(data);
       this.partbiolegumes = Math.round(data * 100);

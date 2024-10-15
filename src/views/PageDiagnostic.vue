@@ -33,6 +33,9 @@
                       <img
                         :src="store.getters.getCarteTerritoireParcel"
                         class="carte"
+                        @error="handleImageError"
+                        @load="handleImageLoad"
+                        v-if="imageExists"
                       />
                     </div>
                     <div class="sous-partie-droite bloc-paragraphe">
@@ -452,6 +455,23 @@ function getPhraseDensiteComparaison(densite, densiteWallonie) {
   if (differencePctDensite < 0)
     return `en dessous de la moyenne wallonne  de ${differencePctDensite}%`;
 }
+function checkImage(url) {
+  const img = new Image();
+  img.src = url;
+  const imageExists = ref(true);
+  img.onload = () => {
+    console.log("Image exists and is loaded");
+    imageExists.value = true;
+  };
+
+  img.onerror = () => {
+    console.log("Image does not exist");
+    imageExists.value = false;
+  };
+}
+onMounted(() => {
+  checkImage(store.getters.getCarteTerritoireParcel);
+});
 
 const geoList = ref(messageBievenue(store.state.geoList));
 const population = ref(

@@ -153,7 +153,7 @@ const options = ref({
   grid: {
     containLabel: true,
     left: 0,
-    top: 0,
+    top: 30,
     right: 30,
     bottom: 0,
   },

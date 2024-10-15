@@ -33,8 +33,8 @@ export const INSTITUTIONS = [
   // },
   {
     id: INSTITUTIONS_IDS.UNIVERSITES,
-    libelle_pluriel: "Université(s)",
-    libelle_singulier: "Université",
+    libelle_pluriel: "Université(s) et Haute(s) école(s)",
+    libelle_singulier: "Université et Haute école",
   },
   {
     id: INSTITUTIONS_IDS.ENTREPRISES,

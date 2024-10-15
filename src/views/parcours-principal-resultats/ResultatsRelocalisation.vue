@@ -40,7 +40,7 @@
                         class="nbr-ha animated flipInX delay-1s odometer"
                         id="surface6"
                       >
-                        {{ AfficherEntierAvecSigne(surfaceAMobiliser) }}
+                        {{ AfficherEntier(surfaceAMobiliser) }}
                       </div>
                       <div class="hectares">hectares</div>
                     </div>
@@ -197,7 +197,7 @@ import Navigation from "@/components/navigation/BarreNavigation.vue";
 import resumeChoix from "@/views/modal/resumeChoix.vue";
 import ModalAffinerChoix from "@/views/modal/modalAffinerChoix.vue";
 import ModalComposant from "@/views/modal/ModalComposant.vue";
-import { AfficherEntierAvecSigne } from "@/plugins/utils";
+import { AfficherEntierAvecSigne, AfficherEntier } from "@/plugins/utils";
 export default {
   components: { resumeChoix, Navigation, ModalAffinerChoix, ModalComposant },
   data() {
@@ -218,6 +218,7 @@ export default {
       this.modalActive = "";
     },
     AfficherEntierAvecSigne,
+    AfficherEntier,
   },
   computed: {
     surfaceAMobiliser() {
