@@ -2,7 +2,7 @@ export const CATEGORIE_PRODUITS_SURFACES_ACTUELLES = {
   ELEVAGE: {
     couleur: "#B57A60",
     code: "EL",
-    libelle: "Elevage (dont alimentation & estives et landes)",
+    libelle: "Elevage (dont alimentation animale)",
   },
   FRUITS: {
     couleur: "#A261C0",

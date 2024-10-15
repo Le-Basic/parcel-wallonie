@@ -38,8 +38,7 @@ const REPONSE_API_SURFACE_ACTUELLE = [
     sau_ha: 0,
   },
   {
-    libelle_parcel_produit_actuel:
-      "Elevage (dont alimentation & estives et landes)",
+    libelle_parcel_produit_actuel: "Elevage (dont alimentation animale)",
     image: "/assets/img/icons/cat/ico_CATEGORIES_viande.svg",
     couleur: "#B57A60",
     sau_ha: 200,

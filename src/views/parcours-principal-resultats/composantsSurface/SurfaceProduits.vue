@@ -467,9 +467,7 @@
                       ></span>
                     </div>
                     <div class="cadre-titre-categorie">
-                      <div class="titre-categorie">
-                        Elevage (dont alimentation & estives et landes)
-                      </div>
+                      <div class="titre-categorie">Elevage</div>
                       <div class="hectares">
                         {{
                           formatterSurfacesNecessaires(

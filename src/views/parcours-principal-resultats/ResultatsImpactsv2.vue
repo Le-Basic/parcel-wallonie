@@ -305,11 +305,19 @@ import { CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE } from "@/config/categ
 
 const store = useStore(); // Access Vuex store
 
-const maxConsommation = trouverChiffre(
-  store.state.resultatReference.surfacesEmploisAMobiliser,
-  CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.LAIT.libelle,
-  "consommation_kg",
-  "libelle_parcel_niveau_2"
+const maxConsommation = Math.max(
+  trouverChiffre(
+    store.state.resultatReference.surfacesEmploisAMobiliser,
+    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.LAIT.libelle,
+    "consommation_kg",
+    "libelle_parcel_niveau_2"
+  ),
+  trouverChiffre(
+    store.state.resultatReference.surfacesEmploisAMobiliser,
+    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.CEREALES.libelle,
+    "consommation_kg",
+    "libelle_parcel_niveau_2"
+  )
 );
 
 const donneesImpacts = computed(() => {
