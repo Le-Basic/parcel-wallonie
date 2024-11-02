@@ -24,27 +24,16 @@
       <div class="col-12 col-lg-auto map-surface is-flex">
         <div id="globalView-images" class="my-auto">
           <div id="div-image-surface-territoire" class="animate__animated">
-            <svg
+            <img
               alt=""
               class="mx-auto"
               :style="{
                 width: (data.surface / max_potentiel_surface) * 100 + '%',
                 opacity: 1,
-                fill: '#000',
               }"
-              fill="#000"
-            >
-              <image
-                :href="
-                  this.$store.getters.getCarteColoreeTerritoireParcel('grises')
-                "
-                x="0"
-                y="0"
-                width="100%"
-                height="100%"
-                fill="red"
-              />
-            </svg>
+              :src="this.territoireCarteGriseUrl"
+              v-if="this.territoireCarteGriseUrl !== undefined"
+            />
           </div>
           <div id="div-image-sau-actuelle" class="animate__animated">
             <img
@@ -54,9 +43,8 @@
                 width: (surfaces_actuelles / max_potentiel_surface) * 100 + '%',
                 opacity: 1,
               }"
-              :src="
-                this.$store.getters.getCarteColoreeTerritoireParcel('bleues')
-              "
+              :src="this.territoireCarteBleueUrl"
+              v-if="this.territoireCarteBleueUrl !== undefined"
             />
           </div>
           <div
@@ -82,9 +70,8 @@
                   '%',
                 opacity: 1,
               }"
-              :src="
-                this.$store.getters.getCarteColoreeTerritoireParcel('vertes')
-              "
+              :src="this.territoireCarteVerteUrl"
+              v-if="this.territoireCarteVerteUrl !== undefined"
             />
           </div>
           <div id="div-image-potentiel-nourricier" class="animate__animated">
@@ -461,6 +448,7 @@
 </template>
 
 <script>
+import { getAssets } from "@/plugins/getAssets";
 import { fetchSurfaceActuelle } from "@/plugins/getSurfacesNecessaires";
 import { formatterChiffres } from "@/plugins/surfaceProduits";
 export default {
@@ -473,6 +461,9 @@ export default {
         sau: 0,
         potentiel_nourricier: 0,
         geoList: this.$store.state.geoList,
+        territoireCarteGriseUrl: undefined,
+        territoireCarteBleueUrl: undefined,
+        territoireCarteVerteUrl: undefined,
       },
     };
   },
@@ -599,7 +590,7 @@ export default {
     },
     carteURL() {
       if (this.codesTerritoireParcel.length === 1) {
-        return this.$store.getters.getCarteColoreeTerritoireParcel("grise");
+        return this.$store.getters.getCarteColoreeTerritoireParcel("grises");
       } else {
         return require("@/assets/img/surfaces/circle-agricole.svg");
       }
@@ -613,8 +604,35 @@ export default {
     this.surfaces_actuelles = surface_actuelle["sau_ha"];
     this.data.potentiel_nourricier =
       this.$store.state.resultatSimulation.potentielNourricier;
-    console.log(this.data);
     this.recupererDonnees();
+
+    // cartes bleues / grises /vertes
+    try {
+      const imageResponse = await getAssets(
+        this.$store.getters.getCarteColoreeTerritoireParcel("grises")
+      );
+      this.territoireCarteGriseUrl = imageResponse.request.responseURL;
+      console.log(this.territoireCarteGriseUrl);
+    } catch (error) {
+      this.territoireCarteGriseUrl = require("@/assets/img/surfaces/circle-agricole.svg");
+    }
+    try {
+      const imageResponse = await getAssets(
+        this.$store.getters.getCarteColoreeTerritoireParcel("bleues")
+      );
+      this.territoireCarteBleueUrl = imageResponse.request.responseURL;
+      console.log(this.territoireCarteBleueUrl);
+    } catch (error) {
+      this.territoireCarteBleueUrl = require("@/assets/img/surfaces/circle-agricole.svg");
+    }
+    try {
+      const imageResponse = await getAssets(
+        this.$store.getters.getCarteColoreeTerritoireParcel("vertes")
+      );
+      this.territoireCarteVerteUrl = imageResponse.request.responseURL;
+    } catch (error) {
+      this.territoireCarteVerteUrl = require("@/assets/img/surfaces/circle-agricole.svg");
+    }
   },
   unmounted() {
     window.removeEventListener("scroll", this.gererVisibiliteImage);

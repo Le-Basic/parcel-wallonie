@@ -159,8 +159,6 @@ export async function fetchSurfaceNecessairePourRegimePersonnalise(
     groupes = "";
   }
   const bodyFormData = new FormData();
-  console.log("terr", codesTerritoireParcel);
-  console.log("pctDiffRegimePersonnalise", pctDiffRegimePersonnalise);
   bodyFormData.append("Codes_territoire_parcel", [codesTerritoireParcel]);
   bodyFormData.append("pctDiffRegimePersonnalise", pctDiffRegimePersonnalise);
   const response = await axios.post(

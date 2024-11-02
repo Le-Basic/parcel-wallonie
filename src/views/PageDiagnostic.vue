@@ -31,11 +31,9 @@
                   <div class="partie-diagnostic">
                     <div class="sous-partie-gauche">
                       <img
-                        :src="store.getters.getCarteTerritoireParcel"
+                        :src="territoirCarteUrl"
                         class="carte"
-                        @error="handleImageError"
-                        @load="handleImageLoad"
-                        v-if="imageExists"
+                        v-if="territoirCarteUrl !== undefined"
                       />
                     </div>
                     <div class="sous-partie-droite bloc-paragraphe">
@@ -426,9 +424,11 @@ import { onMounted, ref } from "vue";
 import { useStore } from "vuex";
 import throttle from "lodash/throttle";
 import ModalComposant from "@/views/modal/ModalComposant.vue";
+import { getAssets } from "@/plugins/getAssets";
 
 const store = useStore();
 const modalActive = ref("");
+const territoirCarteUrl = ref(undefined);
 
 const fermerModalPotentiel = () => {
   modalActive.value = "";
@@ -455,22 +455,15 @@ function getPhraseDensiteComparaison(densite, densiteWallonie) {
   if (differencePctDensite < 0)
     return `en dessous de la moyenne wallonne  de ${differencePctDensite}%`;
 }
-function checkImage(url) {
-  const img = new Image();
-  img.src = url;
-  const imageExists = ref(true);
-  img.onload = () => {
-    console.log("Image exists and is loaded");
-    imageExists.value = true;
-  };
-
-  img.onerror = () => {
-    console.log("Image does not exist");
-    imageExists.value = false;
-  };
-}
-onMounted(() => {
-  checkImage(store.getters.getCarteTerritoireParcel);
+onMounted(async () => {
+  try {
+    const imageResponse = await getAssets(
+      store.getters.getCarteTerritoireParcel
+    );
+    territoirCarteUrl.value = imageResponse.request.responseURL;
+  } catch (error) {
+    console.error("Failed to load image:", error);
+  }
 });
 
 const geoList = ref(messageBievenue(store.state.geoList));
