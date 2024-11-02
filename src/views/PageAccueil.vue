@@ -10,7 +10,6 @@
             ?
           </h1>
         </div>
-        <pre>{{ this.$store.state.simulation }}</pre>
       </div>
       <div class="container-fluid" id="accueil-couv">
         <div class="row align-items-center accueil">
