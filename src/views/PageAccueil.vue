@@ -10,6 +10,7 @@
             ?
           </h1>
         </div>
+        <pre>{{ this.$store.state.simulation }}</pre>
       </div>
       <div class="container-fluid" id="accueil-couv">
         <div class="row align-items-center accueil">
@@ -378,6 +379,11 @@ export default {
       this.$store.commit("getIndicateursPortraits", codesTerritoiresListe);
       this.$store.dispatch("creerDonneesReference");
       this.$store.dispatch("actionModifierGeo");
+      this.$store.dispatch("simulation/actionChangeParameters", {
+        geoList: [item],
+        partBioCereales: 10,
+        partBioLegumes: 30,
+      });
     },
     enleverGeo(geo) {
       let codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;

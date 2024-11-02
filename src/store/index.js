@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import simulation from "./modules/simulation";
 import VuexPersistence from "vuex-persist";
 import { regimeListe } from "@/config/regimeListe.js";
 import {
@@ -318,6 +319,9 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
 }
 
 export default createStore({
+  modules: {
+    simulation,
+  },
   state: getDefaultState(),
   getters: {
     getcodesTerritoireParcel: (state) => {
@@ -1047,5 +1051,4 @@ export default createStore({
     },
   },
   plugins: [new VuexPersistence().plugin],
-  modules: {},
 });
