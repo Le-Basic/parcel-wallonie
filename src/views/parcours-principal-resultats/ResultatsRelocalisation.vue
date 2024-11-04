@@ -130,7 +130,7 @@
                         max-width: 130px;
                       "
                     >
-                      émissions de CO<sub>2</sub> par hectare
+                      émissions de CO<sub>2</sub> par personne
                     </div>
                   </div>
                   <div>

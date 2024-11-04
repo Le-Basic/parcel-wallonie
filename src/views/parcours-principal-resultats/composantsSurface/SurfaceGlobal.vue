@@ -16,7 +16,6 @@
       </div>
     </div>
     <div class="pt-5"></div>
-
     <div
       class="row align-items-center block-surface animate__animated bigmap"
       id="zone-surface-actuelle"
@@ -32,7 +31,6 @@
                 opacity: 1,
               }"
               :src="this.territoireCarteGriseUrl"
-              v-if="this.territoireCarteGriseUrl !== undefined"
             />
           </div>
           <div id="div-image-sau-actuelle" class="animate__animated">
@@ -44,7 +42,6 @@
                 opacity: 1,
               }"
               :src="this.territoireCarteBleueUrl"
-              v-if="this.territoireCarteBleueUrl !== undefined"
             />
           </div>
           <div
@@ -70,8 +67,7 @@
                   '%',
                 opacity: 1,
               }"
-              :src="this.territoireCarteVerteUrl"
-              v-if="this.territoireCarteVerteUrl !== undefined"
+              :src="territoireCarteVerteUrl"
             />
           </div>
           <div id="div-image-potentiel-nourricier" class="animate__animated">
@@ -449,7 +445,6 @@
 
 <script>
 import { getAssets } from "@/plugins/getAssets";
-import { fetchSurfaceActuelle } from "@/plugins/getSurfacesNecessaires";
 import { formatterChiffres } from "@/plugins/surfaceProduits";
 export default {
   inject: ["$axios"],
@@ -457,14 +452,14 @@ export default {
     return {
       codesTerritoireParcel: this.$store.getters.getcodesTerritoireParcel,
       data: {
-        surface: 0,
-        sau: 0,
+        surface: this.$store.state.indicateurPortraits.surface_ha,
+        sau: this.$store.state.indicateurPortraits.sau_ha,
         potentiel_nourricier: 0,
         geoList: this.$store.state.geoList,
-        territoireCarteGriseUrl: undefined,
-        territoireCarteBleueUrl: undefined,
-        territoireCarteVerteUrl: undefined,
       },
+      territoireCarteGriseUrl: undefined,
+      territoireCarteBleueUrl: undefined,
+      territoireCarteVerteUrl: undefined,
     };
   },
   methods: {
@@ -542,32 +537,6 @@ export default {
       this.$emit("nextStep", step);
       this.$router.replace({ hash: step });
     },
-    recupererDonnees() {
-      const bodyFormData = new FormData();
-      var codesTerritoireParcel = this.$store.state.geoList.map(
-        (el) => el.code_territoire
-      );
-      codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
-      bodyFormData.append("Codes_territoire_parcel", codesTerritoireParcel);
-      this.$axios
-        .post(
-          window.apiURL + "parcel/belgique/surfaces_agregees",
-          codesTerritoireParcel, // Request body data
-          {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-          }
-        )
-        .then((response) => {
-          this.data.surface = response.data[0]["surface_ha"];
-          console.log(this.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
   },
   computed: {
     potentiel_nourricier() {
@@ -578,7 +547,7 @@ export default {
     },
     max_potentiel_sau() {
       return Math.max(
-        this.$store.state.resultatSimulation.surfacesActuelles,
+        this.data.sau_ha,
         this.$store.state.resultatSimulation.surfaceAMobiliser
       );
     },
@@ -591,13 +560,8 @@ export default {
   },
   async mounted() {
     window.addEventListener("scroll", this.gererVisibiliteImage);
-    const surface_actuelle = await fetchSurfaceActuelle();
-    console.log("ACTUELLE", surface_actuelle);
-    this.data.surface = surface_actuelle["surface_ha"];
-    this.surfaces_actuelles = surface_actuelle["sau_ha"];
     this.data.potentiel_nourricier =
       this.$store.state.resultatSimulation.potentielNourricier;
-    this.recupererDonnees();
 
     // cartes bleues / grises /vertes
     try {
@@ -607,7 +571,7 @@ export default {
       this.territoireCarteGriseUrl = imageResponse.request.responseURL;
       console.log(this.territoireCarteGriseUrl);
     } catch (error) {
-      this.territoireCarteGriseUrl = require("@/assets/img/surfaces/circle-agricole.svg");
+      this.territoireCarteGriseUrl = require("@/assets/img/surfaces/circle-agricole-gris.svg");
     }
     try {
       const imageResponse = await getAssets(
@@ -616,15 +580,16 @@ export default {
       this.territoireCarteBleueUrl = imageResponse.request.responseURL;
       console.log(this.territoireCarteBleueUrl);
     } catch (error) {
-      this.territoireCarteBleueUrl = require("@/assets/img/surfaces/circle-agricole.svg");
+      this.territoireCarteBleueUrl = require("@/assets/img/surfaces/circle-agricole-bleu.svg");
     }
     try {
       const imageResponse = await getAssets(
         this.$store.getters.getCarteColoreeTerritoireParcel("vertes")
       );
       this.territoireCarteVerteUrl = imageResponse.request.responseURL;
+      console.log(this.territoireCarteVerteUrl);
     } catch (error) {
-      this.territoireCarteVerteUrl = require("@/assets/img/surfaces/circle-agricole.svg");
+      this.territoireCarteVerteUrl = require("@/assets/img/surfaces/circle-agricole-vert.svg");
     }
   },
   unmounted() {

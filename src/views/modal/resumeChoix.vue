@@ -11,13 +11,17 @@
       <div class="result-chiffres" v-if="$store.state.geoList">
         <span class="vert-clair">Territoire : </span>
         <span
+          v-if="this.listeTerritoires.length > 3"
+          v-tippy="
+            this.listeTerritoires.map((geo) => geo.localeName).join(', ')
+          "
           id="selection2"
           class="territoire"
-          v-for="geo in this.$store.state.geoList"
-          :key="geo.id"
+          >{{ getTerritoiresTexte() }}</span
         >
-          {{ geo.localeName }}
-        </span>
+        <span v-else id="selection2" class="territoire">{{
+          getTerritoiresTexte()
+        }}</span>
       </div>
     </div>
     <div class="prereglage" v-if="$store.state.part_relocalisee">
@@ -94,11 +98,33 @@
 </template>
 
 <script>
+import { directive } from "vue-tippy";
+
 export default {
   props: {
     format: {
       type: String,
       default: "court",
+    },
+  },
+  data() {
+    return {
+      listeTerritoires: this.$store.state.geoList,
+    };
+  },
+  directives: {
+    tippy: directive,
+  },
+  methods: {
+    getTerritoiresTexte() {
+      if (this.listeTerritoires.length > 0) {
+        if (this.listeTerritoires.length > 3) {
+          return `${this.listeTerritoires.length} territoires sélectionnés`;
+        } else {
+          return this.listeTerritoires.map((geo) => geo.localeName).join(", ");
+        }
+      }
+      return "";
     },
   },
 };

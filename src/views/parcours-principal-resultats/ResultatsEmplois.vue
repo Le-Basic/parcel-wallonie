@@ -14,6 +14,9 @@
                 Quels sont les emplois agricoles nécessaires pour le régime
                 alimentaire simulé ?
               </h1>
+              <pre>
+                {{ this.$store.state }}
+              </pre>
               <div class="cadre-resultat resultat-ha animated flipInX">
                 <div class="d-inline-flex">
                   <div

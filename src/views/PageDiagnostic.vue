@@ -108,8 +108,9 @@
                       </p>
                       <p class="texte-petit texte-bleu">
                         habitants consomment en moyenne par jour 114 g de
-                        viande, 110 g de pain, 90g de fruits et 32g de fromage
-                        par jour (basé sur le régime moyen d'un wallon).
+                        viande, 110 g de pain, 140g de légumes, 90g de fruits et
+                        32g de fromage par jour (basé sur le régime moyen d'un
+                        wallon).
                       </p>
                       <p />
                     </div>

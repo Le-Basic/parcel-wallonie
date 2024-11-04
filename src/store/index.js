@@ -4,7 +4,8 @@ import VuexPersistence from "vuex-persist";
 import { regimeListe } from "@/config/regimeListe.js";
 import {
   debouncedfetchSurfaceNecessaire,
-  debouncedfetchSurfaceNecessairePaysage,
+  fetchSurfaceNecessairePaysage,
+  fetchSurfaceNecessaire,
   fetchSurfaceNecessairePourRegimePersonnalise,
   fetchSurfaceNecessaireInstitutions,
   fetchSurfacesActuelles,
@@ -176,17 +177,16 @@ async function recalculerResultatSimulation(
           pctDiffRegimePersonnalise
         );
     } else {
-      surfaceNecessaireResponseApi = await debouncedfetchSurfaceNecessaire(
+      surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
         necessaires__url,
         codesTerritoireParcel,
         idRegimeAlimentaire
       );
-      surfaceNecessairePaysageResponseApi =
-        await debouncedfetchSurfaceNecessairePaysage(
-          necessaires_paysage__url,
-          codesTerritoireParcel,
-          idRegimeAlimentaire
-        );
+      surfaceNecessairePaysageResponseApi = await fetchSurfaceNecessairePaysage(
+        necessaires_paysage__url,
+        codesTerritoireParcel,
+        idRegimeAlimentaire
+      );
     }
   } else if (store.state.population.part == CHOIX_POPULATION_IDS.INSTITUTIONS) {
     necessaires__url =
