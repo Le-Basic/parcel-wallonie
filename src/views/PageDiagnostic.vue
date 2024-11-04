@@ -213,7 +213,7 @@
                 <div class="partie-diagnostic">
                   <div
                     class="sous-partie-gauche bloc-paragraphe"
-                    style="height: 100%; width: 80%"
+                    style="height: 100%; width: 100%"
                   >
                     <p
                       class="full-width texte-centre texte-petit work-sans-300"

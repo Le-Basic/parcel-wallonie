@@ -43,6 +43,7 @@ const option = {
             "{bold|" + AfficherEntier(d.data.value * 100) + "%}\n" + d.data.name
           );
         },
+        overflow: "break",
         rich: {
           bold: {
             fontWeight: "bold",

@@ -377,7 +377,6 @@ export default {
       this.$store.commit("addGeo", item);
       let codesTerritoiresListe = this.$store.getters.getcodesTerritoireParcel;
       this.$store.commit("getIndicateursPortraits", codesTerritoiresListe);
-      this.$store.dispatch("creerDonneesReference");
       this.$store.dispatch("actionModifierGeo");
       this.$store.dispatch("simulation/actionModifierGeo", [item]);
     },
@@ -387,7 +386,6 @@ export default {
       this.$store.commit("getIndicateursPortraits", codesTerritoireParcel);
       let codesTerritoiresListe = this.$store.getters.getcodesTerritoireParcel;
       this.$store.commit("getIndicateursPortraits", codesTerritoiresListe);
-      this.$store.dispatch("creerDonneesReference");
       this.$store.dispatch("actionModifierGeo");
     },
   },
