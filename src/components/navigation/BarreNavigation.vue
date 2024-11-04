@@ -28,7 +28,7 @@
           </div>
           <router-link
             class="col-0 col-sm-4 navbar-brand text-center d-sm-block d-none"
-            to="/"
+            to="/accueil"
             ><img
               alt="logo"
               :src="require('@/assets/img/logos/logoPARCELWAL_vert.png')"
@@ -129,7 +129,9 @@
       >
         <div class="d-flex align-items-center col-12 col-md-7 col-lg-8">
           <nav class="list-group">
-            <router-link class="list-group-item" to="/">Accueil</router-link>
+            <router-link class="list-group-item" to="/accueil"
+              >Accueil</router-link
+            >
 
             <!-- <router-link class="list-group-item" to="projet">Le projet</router-link>-->
             <router-link

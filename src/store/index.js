@@ -3,8 +3,8 @@ import simulation from "./modules/simulation";
 import VuexPersistence from "vuex-persist";
 import { regimeListe } from "@/config/regimeListe.js";
 import {
-  throttledfetchSurfaceNecessaire,
-  throttledfetchSurfaceNecessairePaysage,
+  debouncedfetchSurfaceNecessaire,
+  debouncedfetchSurfaceNecessairePaysage,
   fetchSurfaceNecessairePourRegimePersonnalise,
   fetchSurfaceNecessaireInstitutions,
   fetchSurfacesActuelles,
@@ -176,13 +176,13 @@ async function recalculerResultatSimulation(
           pctDiffRegimePersonnalise
         );
     } else {
-      surfaceNecessaireResponseApi = await throttledfetchSurfaceNecessaire(
+      surfaceNecessaireResponseApi = await debouncedfetchSurfaceNecessaire(
         necessaires__url,
         codesTerritoireParcel,
         idRegimeAlimentaire
       );
       surfaceNecessairePaysageResponseApi =
-        await throttledfetchSurfaceNecessairePaysage(
+        await debouncedfetchSurfaceNecessairePaysage(
           necessaires_paysage__url,
           codesTerritoireParcel,
           idRegimeAlimentaire
@@ -275,7 +275,7 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
   );
 
   // TODO: ajouter le cas du régime spécialisé
-  var surfaceNecessaireResponseApi = await throttledfetchSurfaceNecessaire(
+  var surfaceNecessaireResponseApi = await debouncedfetchSurfaceNecessaire(
     url,
     codesTerritoireParcel,
     idRegimeAlimentaire
@@ -285,7 +285,7 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
   const necessaires_paysage__url =
     window.apiURL + "parcel/belgique/surfaces_necessaires_paysage";
   var surfaceNecessairePaysageResponseApi =
-    await throttledfetchSurfaceNecessaire(
+    await debouncedfetchSurfaceNecessaire(
       necessaires_paysage__url,
       codesTerritoireParcel,
       idRegimeAlimentaire

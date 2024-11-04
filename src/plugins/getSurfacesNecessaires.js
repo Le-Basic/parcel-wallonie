@@ -122,7 +122,7 @@ export async function fetchSurfaceNecessaire(
   return response.data;
 }
 
-export const throttledfetchSurfaceNecessaire = _.throttle(
+export const debouncedfetchSurfaceNecessaire = _.debounce(
   fetchSurfaceNecessaire,
   200
 );
@@ -139,7 +139,7 @@ export async function fetchSurfaceNecessairePaysage(
   );
 }
 
-export const throttledfetchSurfaceNecessairePaysage = _.throttle(
+export const debouncedfetchSurfaceNecessairePaysage = _.debounce(
   fetchSurfaceNecessairePaysage,
   200
 );

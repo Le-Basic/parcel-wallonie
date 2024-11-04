@@ -588,13 +588,6 @@ export default {
         this.$store.state.resultatSimulation.surfaceAMobiliser
       );
     },
-    carteURL() {
-      if (this.codesTerritoireParcel.length === 1) {
-        return this.$store.getters.getCarteColoreeTerritoireParcel("grises");
-      } else {
-        return require("@/assets/img/surfaces/circle-agricole.svg");
-      }
-    },
   },
   async mounted() {
     window.addEventListener("scroll", this.gererVisibiliteImage);

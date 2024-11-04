@@ -422,7 +422,7 @@ import vizOccupationDuSol from "@/components/visualisation/vizOccupationDuSol.vu
 import geojsonData from "/public/data.json";
 import { onMounted, ref } from "vue";
 import { useStore } from "vuex";
-import throttle from "lodash/throttle";
+import debounce from "lodash/debounce";
 import ModalComposant from "@/views/modal/ModalComposant.vue";
 import { getAssets } from "@/plugins/getAssets";
 
@@ -641,7 +641,7 @@ function RevenirDiapoPrecedente() {
   slideTransition.value = "slide-fade-down";
 }
 
-const handleDebouncedWheel = throttle(GererUnEvenementWheel, 800); // Adjust throttle delay as needed
+const handleDebouncedWheel = debounce(GererUnEvenementWheel, 800); // Adjust debounce delay as needed
 
 onMounted(() => {
   window.addEventListener("wheel", handleDebouncedWheel);

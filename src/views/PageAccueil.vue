@@ -368,6 +368,7 @@ export default {
   beforeMount: function () {
     window.localStorage.clear();
     this.$store.commit("RESET_STORE");
+    this.$store.dispatch("simulation/actionResetStore");
   },
   methods: {
     ajouter(item) {
@@ -378,11 +379,7 @@ export default {
       this.$store.commit("getIndicateursPortraits", codesTerritoiresListe);
       this.$store.dispatch("creerDonneesReference");
       this.$store.dispatch("actionModifierGeo");
-      this.$store.dispatch("simulation/actionChangeParameters", {
-        geoList: [item],
-        partBioCereales: 10,
-        partBioLegumes: 30,
-      });
+      this.$store.dispatch("simulation/actionModifierGeo", [item]);
     },
     enleverGeo(geo) {
       let codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
@@ -392,12 +389,10 @@ export default {
       this.$store.commit("getIndicateursPortraits", codesTerritoiresListe);
       this.$store.dispatch("creerDonneesReference");
       this.$store.dispatch("actionModifierGeo");
-      this.$store.dispatch("actionRecupererElementsDIagnostic");
     },
   },
   watch: {
     rechercheInput: function (valeur) {
-      console.log(valeur);
       if (valeur.length > 1) {
         axios
           .get(this.pointGeoAPI + valeur + "?pays=belgique")

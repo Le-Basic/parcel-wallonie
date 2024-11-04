@@ -28,10 +28,16 @@ import ResultatsImpactsv2 from "@/views/parcours-principal-resultats/ResultatsIm
 import testMotion from "@/views/testMotion.vue";
 import TestCarte from "@/views/TestCarte.vue";
 import TableauProduit from "@/components/visualisation/TableauProduit.vue";
+import PageSeeyouSoon from "@/views/PageSeeyouSoon.vue";
 
 const routes = [
   {
     path: "/",
+    name: "Paywall",
+    component: PageSeeyouSoon,
+  },
+  {
+    path: "/accueil",
     name: "home",
     component: PageAccueil,
   },
