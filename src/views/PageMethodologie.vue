@@ -35,9 +35,9 @@
           <p>
             Les calculs de surfaces et d’emplois reposent sur les bases de
             données publiques qui fournissent des statistiques à différentes
-            échelles (nationale, régionale, départementale...), et non sur des
-            extrapolations à partir de références techniques (de fermes
-            agricoles, de produits consommés...).
+            échelles (nationale, régionale...), et non sur des extrapolations à
+            partir de références techniques (de fermes agricoles, de produits
+            consommés...).
           </p>
           <p>
             L’estimation des impacts écologiques se base sur les méta-études et

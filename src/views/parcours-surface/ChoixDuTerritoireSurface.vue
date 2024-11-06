@@ -62,8 +62,8 @@
             </form>
           </div>
           <p>
-            Saisissez le nom d’une ou plusieurs région(s), département(s),
-            commune(s) ou leur code postal
+            Saisissez le nom d’une ou plusieurs région(s), arrondissement(s),
+            commune(s)
             <strong class="vert-fonce">au sein de la Région wallonne</strong>
           </p>
 

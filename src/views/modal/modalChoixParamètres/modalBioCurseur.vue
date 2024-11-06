@@ -21,8 +21,8 @@
         </div>
         <div class="modal-body" id="textTooltip">
           Cette donnée est calculée uniquement sur les produits de PARCEL, à
-          partir des surfaces agricoles (bio et non bio) du département et
-          intègre les différences de rendements entre agriculture biologique et
+          partir des surfaces agricoles (bio et non bio) de la région et intègre
+          les différences de rendements entre agriculture biologique et
           agriculture conventionnelle. Il ne s'agit ni du pourcentage de la
           surface agricole (SAU) en bio sur le territoire ni de la consommation
           actuelle de produits bio sur le territoire

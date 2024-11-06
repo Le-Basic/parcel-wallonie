@@ -613,7 +613,7 @@
             class="btn btn-secondaire mt-5"
             @click="modalActive = 'ModalComparaisonPaysage'"
           >
-            Comparaison actuel / prospectif
+            Comparaison actuel / simulation
           </button>
           <router-link
             type="bouton"

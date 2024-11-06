@@ -4,21 +4,21 @@
 	 viewBox="0 0 786 401" style="enable-background:new 0 0 786 401;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#F8F8F3;}
-	.st1{fill:none;stroke:#91C423;stroke-width:0.99;stroke-miterlimit:10;}
-	.st2{fill:none;stroke:#91C423;stroke-width:0.99;stroke-miterlimit:10;stroke-dasharray:5.82,5.82;}
-	.st3{fill:none;stroke:#91C423;stroke-width:0.48;stroke-miterlimit:10;}
-	.st4{fill:none;stroke:#91C423;stroke-width:0.48;stroke-miterlimit:10;stroke-dasharray:7.01,7.01;}
-	.st5{fill:#FFFFFF;stroke:#015A5A;stroke-width:3;stroke-miterlimit:10;}
-	.st6{opacity:0.12;fill:#91C423;stroke:#015A5A;stroke-width:3.24;stroke-miterlimit:10;enable-background:new    ;}
-	.st7{fill:none;stroke:#91C423;stroke-miterlimit:10;}
-	.st8{fill:none;stroke:#015A5A;stroke-width:3;stroke-miterlimit:10;}
-	.st9{fill:none;stroke:#015A5A;stroke-width:2.5;stroke-miterlimit:10;}
-	.st10{fill:#FFFFFF;stroke:#015A5A;stroke-width:2.5;stroke-miterlimit:10;}
-	.st11{fill:#015A5A;}
+	.st1{fill:none;stroke:#bdc660;stroke-width:0.99;stroke-miterlimit:10;}
+	.st2{fill:none;stroke:#bdc660;stroke-width:0.99;stroke-miterlimit:10;stroke-dasharray:5.82,5.82;}
+	.st3{fill:none;stroke:#bdc660;stroke-width:0.48;stroke-miterlimit:10;}
+	.st4{fill:none;stroke:#bdc660;stroke-width:0.48;stroke-miterlimit:10;stroke-dasharray:7.01,7.01;}
+	.st5{fill:#FFFFFF;stroke:#594231;stroke-width:3;stroke-miterlimit:10;}
+	.st6{opacity:0.12;fill:#bdc660;stroke:#594231;stroke-width:3.24;stroke-miterlimit:10;enable-background:new    ;}
+	.st7{fill:none;stroke:#bdc660;stroke-miterlimit:10;}
+	.st8{fill:none;stroke:#594231;stroke-width:3;stroke-miterlimit:10;}
+	.st9{fill:none;stroke:#594231;stroke-width:2.5;stroke-miterlimit:10;}
+	.st10{fill:#FFFFFF;stroke:#594231;stroke-width:2.5;stroke-miterlimit:10;}
+	.st11{fill:#594231;}
 	.st12{fill:#FFFFFF;}
-	.st13{fill:#FFFFFF;stroke:#91C423;stroke-width:3.95;stroke-miterlimit:10;}
+	.st13{fill:#FFFFFF;stroke:#bdc660;stroke-width:3.95;stroke-miterlimit:10;}
 	.st14{clip-path:url(#SVGID_2_);}
-	.st15{fill:none;stroke:#91C022;stroke-width:1.52;stroke-miterlimit:10;}
+	.st15{fill:none;stroke:#bdc660;stroke-width:1.52;stroke-miterlimit:10;}
 </style>
 <title>parcours1</title>
 <ellipse class="st0" cx="388" cy="231.3" rx="246.5" ry="82.1"/>

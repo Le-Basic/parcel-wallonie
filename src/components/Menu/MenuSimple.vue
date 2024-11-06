@@ -102,8 +102,8 @@
               v-if="false"
               >Ressources</a
             >
-            <a class="list-group-item" href="/faq" v-if="false">FAQ</a>
-            <a class="list-group-item" href="/contacter-parcel" v-if="false"
+            <router-link class="list-group-item" to="/faq">FAQ</router-link>
+            <a class="list-group-item" href="/contacter-parcel"
               >Nous contacter</a
             >
           </nav>

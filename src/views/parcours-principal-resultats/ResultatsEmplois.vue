@@ -14,6 +14,12 @@
                 Quels sont les emplois agricoles nécessaires pour le régime
                 alimentaire simulé ?
               </h1>
+              <InformationBox>
+                <template #texte>
+                  Les emplois dans PARCEL sont calculés en équivalents temps
+                  plein (ETP) et incluent les emplois saisonniers.
+                </template>
+              </InformationBox>
               <div class="cadre-resultat resultat-ha animated flipInX">
                 <div class="d-inline-flex">
                   <div
@@ -484,6 +490,8 @@ import vizEmploi from "@/components/visualisation/vizEmploi.vue";
 import { CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER } from "@/config/categorieProduitsPotentielNourricier";
 import { trouverChiffre } from "@/plugins/utils";
 import BandeauResultat from "@/components/BandeauResultat.vue";
+import InformationBox from "@/components/bas-niveau/InformationBox";
+
 export default {
   components: {
     BandeauResultat,
@@ -492,6 +500,7 @@ export default {
     ModalAffinerChoix,
     modalEmplois,
     vizEmploi,
+    InformationBox,
   },
   data() {
     return {

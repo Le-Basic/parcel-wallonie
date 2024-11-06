@@ -939,7 +939,7 @@
           class="btn btn-secondaire mt-5"
           @click="modalActive = 'ModalComparaisonProduit'"
         >
-          Comparaison actuel / prospectif
+          Comparaison actuel / simulation
         </button>
         <button
           type="button"

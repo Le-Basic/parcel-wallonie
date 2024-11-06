@@ -157,9 +157,7 @@
               v-if="false"
               >Ressources</router-link
             >
-            <router-link class="list-group-item" to="/faq" v-if="false"
-              >FAQ
-            </router-link>
+            <router-link class="list-group-item" to="/faq">FAQ</router-link>
             <router-link class="list-group-item" to="/contacter-parcel"
               >Nous contacter</router-link
             >

@@ -162,6 +162,15 @@
                   </div>
                 </div>
               </div>
+              <InformationBox>
+                <template #texte>
+                  Les impacts de la simulation (colonne de droite) sont
+                  présentés en comparaison avec ceux de la production
+                  correspondant aux besoins en matières premières de la
+                  consommation actuelle du territoire et de la population
+                  définie (colonne de gauche).
+                </template>
+              </InformationBox>
               <!--end accordeon-->
               <div class="mt-5 mb-3">
                 <div class="repartition row">
@@ -202,12 +211,19 @@
                             </span>
                           </div>
                           <div class="cadre-impact">
-                            <span class="impact-result texte-gauche"
+                            <span
+                              class="impact-result texte-gauche"
+                              v-if="!impact.pasImpact"
                               ><p
                                 class="texte-data texte-gauche vert-clair"
                                 v-html="impact.titreSimulation"
                               ></p>
                               {{ impact.sousTitreSimulation }}
+                            </span>
+                            <span class="impact-result texte-gauche" v-else
+                              ><p class="texte-data texte-gauche">
+                                Pas d'impact
+                              </p>
                             </span>
                           </div>
                         </div>
@@ -292,6 +308,7 @@ import resumeChoix from "@/views/modal/resumeChoix.vue";
 import ModalAffinerChoix from "@/views/modal/modalAffinerChoix.vue";
 import ModalComposant from "@/views/modal/ModalComposant.vue";
 import BandeauResultat from "@/components/BandeauResultat.vue";
+import InformationBox from "@/components/bas-niveau/InformationBox";
 import vizConsommationVerticalSimulation from "@/components/visualisation/vizConsommationVerticalSimulation.vue";
 import vizConsommationVerticalReference from "@/components/visualisation/vizConsommationVerticalReference.vue";
 import {
@@ -398,12 +415,16 @@ const CATEGORIES_IMPACT = computed(() => {
             AfficherEntierAvecSigne(
               donneesImpacts?.value.ges.differenceSimulationReferencePct
             ) + '<span class="texte-unite">%</span>',
-          sousTitreSimulation: `soit  ${AfficherEntier(
+          sousTitreSimulation: `soit une différence de ${AfficherEntier(
             donneesImpacts?.value.ges.differenceSimulationReference / 1000
-          )} de tonnes CO2e`,
+          )} de tonnes CO2e par rapport aux habitudes alimentaiers actuelles`,
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsGes",
           dossierModal: "modalImpacts",
+          pasImpact:
+            AfficherEntierAvecSigne(
+              donneesImpacts?.value.ges.differenceSimulationReferencePct
+            ) == 0,
         },
       ],
     },
@@ -434,6 +455,11 @@ const CATEGORIES_IMPACT = computed(() => {
             "% plus abondantes par hectare de culture.",
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsAbondanceEspeces",
+          pasImpact:
+            AfficherEntierAvecSigne(
+              donneesImpacts?.value.abondances_especes
+                .differenceSimulationReferencePct
+            ) == 0,
         },
         {
           id: "soja",
@@ -456,6 +482,11 @@ const CATEGORIES_IMPACT = computed(() => {
           )} hectares protégés de la déforestation`,
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsSojaImporte",
+          pasImpact:
+            AfficherEntierAvecSigne(
+              donneesImpacts?.value.surfaces_ha_soja_importes
+                .differenceSimulationReferencePct
+            ) == 0,
         },
       ],
     },
@@ -482,6 +513,11 @@ const CATEGORIES_IMPACT = computed(() => {
           sousTitreSimulation: "",
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsEmpreinteEau",
+          pasImpact:
+            AfficherEntierAvecSigne(
+              donneesImpacts?.value.empreinte_eau_bleue
+                .differenceSimulationReferencePct
+            ) == 0,
         },
       ],
     },
@@ -507,6 +543,11 @@ const CATEGORIES_IMPACT = computed(() => {
             "de manière organique supplémentaire dans le sol",
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsRichesseSols",
+          pasImpact:
+            AfficherEntierAvecSigne(
+              donneesImpacts?.value.richesses_des_sols
+                .differenceSimulationReferencePct
+            ) == 0,
         },
       ],
     },

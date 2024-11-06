@@ -28,6 +28,7 @@
           de réfléchir à des actions concernant l’ensemble des maillons des
           filières agricoles et alimentaires. En effet, les pertes et gaspillage
           d’un maillon peuvent être liés aux contraintes d’un autre maillon.
+          (source: Etude ADEME, 2016)
         </div>
       </div>
     </div>

@@ -17,14 +17,14 @@
                                 <use xlink:href="#path-1"></use>
                             </mask>
                             <g id="Clip-2"></g>
-                            <polygon id="Fill-1" fill="#015A5A" mask="url(#mask-2)" points="-19.7039253 4.9217 49.2780747 -16.1683 72.6920747 60.4147 3.7100747 81.5047"></polygon>
+                            <polygon id="Fill-1" fill="#594231" mask="url(#mask-2)" points="-19.7039253 4.9217 49.2780747 -16.1683 72.6920747 60.4147 3.7100747 81.5047"></polygon>
                         </g>
                         <g id="Group-6">
                             <mask id="mask-4" fill="white">
                                 <use xlink:href="#path-3"></use>
                             </mask>
                             <g id="Clip-5"></g>
-                            <polygon id="Fill-4" fill="#015A5A" mask="url(#mask-4)" points="-19.7039253 4.9217 49.2780747 -16.1683 72.6920747 60.4147 3.7100747 81.5047"></polygon>
+                            <polygon id="Fill-4" fill="#594231" mask="url(#mask-4)" points="-19.7039253 4.9217 49.2780747 -16.1683 72.6920747 60.4147 3.7100747 81.5047"></polygon>
                         </g>
                     </g>
                     <g id="Group-10" transform="translate(44.044513, 8.619000)">
@@ -32,14 +32,14 @@
                             <use xlink:href="#path-5"></use>
                         </mask>
                         <g id="Clip-9"></g>
-                        <polygon id="Fill-8" fill="#015A5A" mask="url(#mask-6)" points="-13.8683382 57 45.1316618 57 45.1316618 -1 -13.8683382 -1"></polygon>
+                        <polygon id="Fill-8" fill="#594231" mask="url(#mask-6)" points="-13.8683382 57 45.1316618 57 45.1316618 -1 -13.8683382 -1"></polygon>
                     </g>
                     <g id="Group-13" transform="translate(0.000000, -0.000000)">
                         <mask id="mask-8" fill="white">
                             <use xlink:href="#path-7"></use>
                         </mask>
                         <g id="Clip-12"></g>
-                        <polygon id="Fill-11" fill="#015A5A" mask="url(#mask-8)" points="-19.7039253 4.9217 49.9500747 -16.3733 73.4270747 60.4147 3.7730747 81.7107"></polygon>
+                        <polygon id="Fill-11" fill="#594231" mask="url(#mask-8)" points="-19.7039253 4.9217 49.9500747 -16.3733 73.4270747 60.4147 3.7730747 81.7107"></polygon>
                     </g>
                 </g>
             </g>

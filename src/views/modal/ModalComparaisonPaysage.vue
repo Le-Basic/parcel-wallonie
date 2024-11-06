@@ -3,7 +3,7 @@
     <div class="modal-header d-flex align-items-center">
       <div class="d-flex flex-column">
         <div class="titre-categorie">
-          Comparer l'actuel avec le prospectif: Vision produit
+          Comparer l'actuel avec la simulation: Vision produit
         </div>
         <div class="hectares"></div>
       </div>

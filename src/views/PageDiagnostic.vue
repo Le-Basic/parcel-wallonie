@@ -179,7 +179,7 @@
                     >
                       L'alimentation a un impact sur le changement climatique.
                       Elle est dans l'un
-                      <b>des 3 postes les plus émetteurs de CO2</b>
+                      <b>des 3 postes les plus émetteurs de CO<sub>2</sub></b>
                       avec le transport et le logement
                     </p>
                   </div>
@@ -187,7 +187,9 @@
                     <p class="texte-petit work-sans-300 texte-vert">
                       ici en l'occurence :
                     </p>
-                    <p class="chiffre-moyen">2,1<br />TCO² eq/personne/an</p>
+                    <p class="chiffre-moyen">
+                      2,1<br />tCO<sub>2</sub> eq/personne/an
+                    </p>
                     <p
                       class="texte-tres-petit texte-bleu work-sans-300"
                       style="width: 400px; margin-top: 32px"
@@ -323,8 +325,8 @@
                         style="max-width: 100px; max-height: 100px"
                       />
                       <p class="texte-petit texte-bleu">
-                        37 millions de tonnes de CO² émise par an par notre
-                        production agricole
+                        En Belgique, 37 millions de tonnes de CO<sub>2</sub>
+                        émise par an par notre production agricole
                       </p>
                     </div>
                     <div class="case-impact texte-bleu">

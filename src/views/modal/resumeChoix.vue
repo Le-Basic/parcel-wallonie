@@ -82,7 +82,7 @@
       </div>
       <!--Lycée : 150 couverts-->
     </div>
-    <div class="prereglage text-center" v-if="$store.state.partpertes">
+    <div class="prereglage text-center" v-if="$store.state.partpertes >= 0">
       <div class="result-type mr-0">
         <span class="icon-gaspillage icon vert-clair mr-1"></span>
       </div>
