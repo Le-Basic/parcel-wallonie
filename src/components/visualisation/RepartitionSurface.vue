@@ -21,6 +21,7 @@ function enrichirSeriesAvecLabels(serieArray) {
     serie.label = {
       fontSize: serie.value > 20 ? 40 : 16,
       overflow: "break",
+      show: !props.hideLabels,
     };
     return { ...serie };
   });
@@ -44,6 +45,10 @@ const props = defineProps({
     type: String,
     default: "#000",
   },
+  hideLabels: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const option = {
@@ -56,7 +61,7 @@ const option = {
   },
   textStyle: { fontFamily: "Work Sans", color: "#000" },
   label: {
-    show: true,
+    show: !props.hideLabels,
     textStyle: {
       overflow: "break",
       color: "#000",

@@ -63,7 +63,7 @@
             <div class="header-filtre ml-auto mr-auto">
               <span class="icon-gaspillage icon"></span
               ><span class="titre-filtre"
-                >Quelle part de pertes et gaspillage souhaitez-vous réduire ?
+                >À quel niveau de pertes et gaspillage souhaitez-vous arriver ?
               </span>
             </div>
             <div class="legumes mb-2">
@@ -82,16 +82,18 @@
                     ></output
                   >
                 </div>
-                <input
-                  type="range"
-                  class="slider-range"
-                  min="0"
-                  max="100"
-                  step="1.000"
-                  value="100"
-                  id="partpertes"
+                <VueSlider
                   v-model="partPertes"
-                />
+                  :process-style="{ backgroundColor: '#BDC660' }"
+                  :tooltip="'none'"
+                  :height="10"
+                  :dot-size="20"
+                  :max="18"
+                >
+                  <template v-slot:dot>
+                    <div :class="['custom-dot']"></div>
+                  </template>
+                </VueSlider>
                 <div class="range-values">
                   <span class="range-min">0</span
                   ><span class="range-max">100</span>
@@ -542,13 +544,17 @@ import "rangeslider.js/dist/rangeslider.css";
 import { getRegimeParNomCourt } from "@/config/regimeListe";
 import calculerPartBio from "@/plugins/calculPartBio";
 import lodash from "lodash";
+import VueSlider from "vue-3-slider-component";
 
 export default {
   name: "MenuAffinerChoix",
+  components: {
+    VueSlider,
+  },
   data: function () {
     return {
       partlocale: this.$store.state.partlocale,
-      partPertes: this.$store.state.partpertes,
+      partPertes: Math.round((18 / 100) * (100 - this.$store.state.partpertes)), // 18% est pour l'instant gaspillé, a mettre dans une variable
       partbiolegumes: this.$store.state.partbiolegumes,
       partbiofruits: this.$store.state.partbiofruits,
       partbiocereales: this.$store.state.partbiocereales,
@@ -586,8 +592,9 @@ export default {
     },
   },
   watch: {
-    partPertes: function (partPertes) {
-      this.$store.dispatch("actionModifierPartPertes", partPertes);
+    partPertes: function () {
+      let reductionGaspillage = Math.round((100 * (18 - this.partPertes)) / 18);
+      this.$store.dispatch("actionModifierPartPertes", reductionGaspillage);
     },
     partbiocereales: lodash.debounce(function (
       partBioCereales,

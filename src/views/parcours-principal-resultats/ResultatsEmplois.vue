@@ -14,9 +14,6 @@
                 Quels sont les emplois agricoles nécessaires pour le régime
                 alimentaire simulé ?
               </h1>
-              <pre>
-                {{ this.$store.state }}
-              </pre>
               <div class="cadre-resultat resultat-ha animated flipInX">
                 <div class="d-inline-flex">
                   <div
@@ -83,13 +80,16 @@
                                 v-if="this.$store.state.resultatSimulation"
                               >
                                 {{
-                                  trouverChiffre(
-                                    this.$store.state.resultatSimulation
-                                      .surfacesEmploisAMobiliser,
-                                    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
-                                      .LEGUMES.libelle,
-                                    "emplois_a_mobiliser",
-                                    "libelle_parcel_niveau_1"
+                                  formatterChiffres(
+                                    trouverChiffre(
+                                      this.$store.state.resultatSimulation
+                                        .surfacesEmploisAMobiliser,
+                                      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
+                                        .LEGUMES.libelle,
+                                      "emplois_a_mobiliser",
+                                      "libelle_parcel_niveau_1",
+                                      chiffreApresVirgule
+                                    )
                                   )
                                 }}
                               </div>
@@ -138,13 +138,16 @@
                                 v-if="this.$store.state.resultatSimulation"
                               >
                                 {{
-                                  trouverChiffre(
-                                    this.$store.state.resultatSimulation
-                                      .surfacesEmploisAMobiliser,
-                                    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
-                                      .FRUITS.libelle,
-                                    "emplois_a_mobiliser",
-                                    "libelle_parcel_niveau_1"
+                                  formatterChiffres(
+                                    trouverChiffre(
+                                      this.$store.state.resultatSimulation
+                                        .surfacesEmploisAMobiliser,
+                                      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
+                                        .FRUITS.libelle,
+                                      "emplois_a_mobiliser",
+                                      "libelle_parcel_niveau_1",
+                                      chiffreApresVirgule
+                                    )
                                   )
                                 }}
                               </div>
@@ -192,13 +195,16 @@
                                 v-if="this.$store.state.resultatSimulation"
                               >
                                 {{
-                                  trouverChiffre(
-                                    this.$store.state.resultatSimulation
-                                      .surfacesEmploisAMobiliser,
-                                    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
-                                      .CEREALES.libelle,
-                                    "emplois_a_mobiliser",
-                                    "libelle_parcel_niveau_1"
+                                  formatterChiffres(
+                                    trouverChiffre(
+                                      this.$store.state.resultatSimulation
+                                        .surfacesEmploisAMobiliser,
+                                      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
+                                        .CEREALES.libelle,
+                                      "emplois_a_mobiliser",
+                                      "libelle_parcel_niveau_1",
+                                      chiffreApresVirgule
+                                    )
                                   )
                                 }}
                               </div>
@@ -254,13 +260,16 @@
                                 v-if="this.$store.state.resultatSimulation"
                               >
                                 {{
-                                  trouverChiffre(
-                                    this.$store.state.resultatSimulation
-                                      .surfacesEmploisAMobiliser,
-                                    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
-                                      .ELEVAGE.libelle,
-                                    "emplois_a_mobiliser",
-                                    "libelle_parcel_niveau_1"
+                                  formatterChiffres(
+                                    trouverChiffre(
+                                      this.$store.state.resultatSimulation
+                                        .surfacesEmploisAMobiliser,
+                                      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER
+                                        .ELEVAGE.libelle,
+                                      "emplois_a_mobiliser",
+                                      "libelle_parcel_niveau_1",
+                                      chiffreApresVirgule
+                                    )
                                   )
                                 }}
                               </div>
@@ -446,34 +455,10 @@
             </button>
           </div>
           <div class="modal-body">
-            <div id="accordeon-fiche" class="accordeon-detail legumes-fonce">
-              <!-- <?php include '../partials/modal-emploi-legumes.php'; ?> -->
-              <!--div class="card">
-              <div class="card-header " id="heading2">
-                <button class="btn btn-link collapsed" data-toggle="collapse" href="#collapseDetail" aria-expanded="false" href="#collapseDetail">
-                  <span class="icon-ico_detail icon white"></span> Détail par produit
-                </button>
-              </div>
-              <div id="collapseDetail" class="collapse" data-parent="#accordion" aria-labelledby="heading2">
-                <div class="card-body">
-                  <span class="mb-2"><strong>en pourcentage de surfaces cultivées</strong></span>
-                  <div class="list-produits">
-                    <table summary="Repartition" class="auto-style1" id="ProductresultsTable1">
-                      <tbody>
-                        <tr style="display:none;">
-                          <td class="auto-style15">&nbsp;</td>
-                          <td class="auto-style12">&nbsp;</td>
-                          <td class="auto-style14">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                          <td class="auto-style8">&nbsp;</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div-->
-            </div>
+            <div
+              id="accordeon-fiche"
+              class="accordeon-detail legumes-fonce"
+            ></div>
           </div>
         </div>
       </div>
@@ -514,6 +499,8 @@ export default {
       modalEmplois: null,
       CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER,
       emplois_a_mobiliser: "emplois_a_mobiliser",
+      chiffreApresVirgule:
+        this.$store.state.resultatSimulation.emploisAMobiliser < 50 ? 1 : 0,
     };
   },
   methods: {
@@ -531,6 +518,10 @@ export default {
     },
     fermerModal() {
       this.modalEmplois = null;
+    },
+    formatterChiffres(chiffre) {
+      let number = Number(chiffre);
+      return number.toLocaleString("fr-FR");
     },
   },
 };

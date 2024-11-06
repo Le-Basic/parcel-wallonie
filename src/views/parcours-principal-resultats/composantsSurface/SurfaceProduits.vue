@@ -783,7 +783,9 @@
                       ></span>
                     </div>
                     <div class="col-pourcent legumes" id="potentiel_legumes">
-                      {{ FormatterPourcentage(potentielNourricierLegumes) }}
+                      {{
+                        formatterPotentielNourricier(potentielNourricierLegumes)
+                      }}
                     </div>
                   </div>
                 </div>
@@ -815,7 +817,9 @@
                       ></span>
                     </div>
                     <div class="col-pourcent fruits" id="potentiel_fruits">
-                      {{ FormatterPourcentage(potentielNourricierFruits) }}
+                      {{
+                        formatterPotentielNourricier(potentielNourricierFruits)
+                      }}
                     </div>
                   </div>
                 </div>
@@ -847,7 +851,11 @@
                       ></span>
                     </div>
                     <div class="col-pourcent cereales" id="potentiel_cereales">
-                      {{ FormatterPourcentage(potentielNourricierCereales) }}
+                      {{
+                        formatterPotentielNourricier(
+                          potentielNourricierCereales
+                        )
+                      }}
                     </div>
                   </div>
                 </div>
@@ -880,7 +888,9 @@
                       ></span>
                     </div>
                     <div class="col-pourcent viande" id="potentiel_elevage">
-                      {{ FormatterPourcentage(potentielNourricierElevage) }}
+                      {{
+                        formatterPotentielNourricier(potentielNourricierElevage)
+                      }}
                     </div>
                   </div>
                 </div>
@@ -1363,6 +1373,13 @@ export default {
     fermerModalComparaison() {
       this.modalActive = "";
     },
+    formatterPotentielNourricier(potentielNourricier) {
+      if (potentielNourricier > 5) {
+        return "+500%";
+      } else {
+        return FormatterPourcentage(potentielNourricier);
+      }
+    },
   },
 
   computed: {
@@ -1505,10 +1522,10 @@ export default {
     },
     maxPotentielsEt1() {
       return Math.max(
-        this.potentielNourricierCereales,
-        this.potentielNourricierElevage,
-        this.potentielNourricierFruits,
-        this.potentielNourricierLegumes,
+        Math.min(this.potentielNourricierCereales, 4),
+        Math.min(this.potentielNourricierElevage, 4),
+        Math.min(this.potentielNourricierFruits, 4),
+        Math.min(this.potentielNourricierLegumes, 4),
         1
       );
     },

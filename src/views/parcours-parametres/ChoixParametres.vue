@@ -230,6 +230,7 @@
                       :tooltip="'none'"
                       :height="10"
                       :dot-size="20"
+                      :max="18"
                     >
                       <template v-slot:dot>
                         <div :class="['custom-dot']"></div>
@@ -237,12 +238,12 @@
                     </VueSlider>
                     <div class="range-values">
                       <span class="range-min">0</span
-                      ><span class="range-max">100</span>
+                      ><span class="range-max">18</span>
                     </div>
                   </div>
                 </div>
                 <div class="note" id="note_pertes">
-                  <sup>*</sup>Actuellement, 1/5 de la production agricole est
+                  <sup>*</sup>Actuellement, 18% de la production agricole est
                   perdue ou gaspillée
                 </div>
               </div>
@@ -302,7 +303,7 @@ export default {
       },
       montrerModal: "",
       partbio: this.$store.state.part_bio,
-      partpertes: 0,
+      partpertes: 18,
       partviande: "actuel",
       partviandeText: "Régime actuel",
       regime: this.$store.state.regime_alimentaire,
@@ -389,7 +390,8 @@ export default {
       );
     },
     partpertes: function (val) {
-      this.$store.commit("partPertes", val);
+      let reductionGaspillage = Math.round((1 - val / 18) * 100);
+      this.$store.commit("partPertes", reductionGaspillage);
     },
   },
   mounted() {

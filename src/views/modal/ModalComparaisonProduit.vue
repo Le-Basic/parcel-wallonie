@@ -82,6 +82,7 @@
       >
         <RepartitionSurface
           :serieDonnees="repartitionSurfacePotentielNourricier()"
+          hideLabels
         />
       </div>
       <div class="transverse information-box">

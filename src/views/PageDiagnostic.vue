@@ -377,26 +377,33 @@
                   class="animated fadeInUp fast p-result mb-1 titre-slide texte-moyen work-sans-300 texte-centre"
                 >
                   Alors, pourrais-je nourrir l'ensemble de ma population avec
-                  les surfaces actuelles agricoles ?
+                  les surfaces actuelles agricoles ? Quel est le
+                  <TextSurlignes>potentiel nourricier</TextSurlignes> de mon
+                  territoire ?
                 </p>
                 <p v-html="phrasePotentielNourricier" class="texte-moyen"></p>
-                <div
-                  class="div-continuer mb-small animated fadeInUp delay-5-1s"
-                >
-                  <router-link to="/2-choix-de-la-population"
-                    ><button type="button" class="btn btn-principal mt-5">
-                      Simuler des scénarii de transition
-                    </button></router-link
+                <tableauPotentielNourricierParCategorie />
+                <div class="boutons-container">
+                  <div
+                    class="div-continuer mb-small animated fadeInUp delay-5-1s"
                   >
-                </div>
-                <div class="div-continuer mb-big animated fadeInUp delay-5-1s">
-                  <button
-                    type="button"
-                    class="btn btn-secondaire mt-0"
-                    @click="modalActive = 'ModalPotentielNourricier'"
+                    <router-link to="/2-choix-de-la-population"
+                      ><button type="button" class="btn btn-principal mt-5">
+                        Simuler des scénarii de transition
+                      </button></router-link
+                    >
+                  </div>
+                  <div
+                    class="div-continuer mb-big animated fadeInUp delay-5-1s"
                   >
-                    En savoir plus sur le potentiel nourricier
-                  </button>
+                    <button
+                      type="button"
+                      class="btn btn-secondaire mt-0"
+                      @click="modalActive = 'ModalPotentielNourricier'"
+                    >
+                      En savoir plus sur le potentiel nourricier
+                    </button>
+                  </div>
                 </div>
               </div>
             </transition>
@@ -426,7 +433,8 @@ import { useStore } from "vuex";
 import debounce from "lodash/debounce";
 import ModalComposant from "@/views/modal/ModalComposant.vue";
 import { getAssets } from "@/plugins/getAssets";
-
+import tableauPotentielNourricierParCategorie from "@/components/visualisation/tableauPotentielNourricierParCategorie.vue";
+import TextSurlignes from "@/components/bas-niveau/TextSurlignes.vue";
 const store = useStore();
 const modalActive = ref("");
 const territoirCarteUrl = ref(undefined);
@@ -993,5 +1001,17 @@ a:hover {
 .slide-fade-down-leave-to {
   transform: translateY(100vh);
   opacity: 0;
+}
+
+.boutons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.btn-principal {
+  margin-top: 0px !important;
+  padding-top: 0px !important;
 }
 </style>
