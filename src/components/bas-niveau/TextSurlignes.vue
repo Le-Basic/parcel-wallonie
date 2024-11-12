@@ -12,7 +12,7 @@ const props = defineProps({
   ModalComposant: {
     type: String,
     required: true,
-    default: "KnowMoreModal/ModalTest.vue",
+    default: "KnowMoreModal/ModalTemplate.vue",
   },
 });
 

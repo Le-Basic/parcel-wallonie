@@ -60,11 +60,11 @@
               <div class="cadre-simple align-items-center">
                 <div class="result-type">
                   <span class="icon-echelle-paris icon"></span
-                  ><span class="titre-result">Paris</span>
+                  ><span class="titre-result">Bruxelles</span>
                 </div>
                 <div class="compare-egale">=</div>
                 <div class="result-chiffres d-inline-flex">
-                  <div class="nbr-ha">10 540</div>
+                  <div class="nbr-ha">16 138</div>
                 </div>
               </div>
             </div>

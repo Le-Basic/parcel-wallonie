@@ -1,18 +1,19 @@
 @font-face {
-  font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?q0am5u');
-  src:  url('fonts/icomoon.eot?q0am5u#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?q0am5u') format('truetype'),
-    url('fonts/icomoon.woff?q0am5u') format('woff'),
-    url('fonts/icomoon.svg?q0am5u#icomoon') format('svg');
+  font-family: "icomoon";
+  src: url("fonts/icomoon.eot?q0am5u");
+  src: url("fonts/icomoon.eot?q0am5u#iefix") format("embedded-opentype"),
+    url("fonts/icomoon.ttf?q0am5u") format("truetype"),
+    url("fonts/icomoon.woff?q0am5u") format("woff"),
+    url("fonts/icomoon.svg?q0am5u#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: "icomoon" !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -200,7 +201,7 @@
   content: "\e924";
 }
 .icon-echelle-paris:before {
-  content: "\e925";
+  content: "\e963";
 }
 .icon-echelle-parking:before {
   content: "\e926";
@@ -321,4 +322,7 @@
 }
 .icon-ico_poids:before {
   content: "\e922";
+}
+.icon-ico_echelle-bruxelles:before {
+  content: "\e963";
 }

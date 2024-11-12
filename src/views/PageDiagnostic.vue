@@ -178,7 +178,7 @@
                       style="width: 400px"
                     >
                       L'alimentation a un impact sur le changement climatique.
-                      Elle est dans l'un
+                      En Belgique, elle est dans l'un
                       <b>des 3 postes les plus émetteurs de CO<sub>2</sub></b>
                       avec le transport et le logement
                     </p>
@@ -380,10 +380,13 @@
                 >
                   Alors, pourrais-je nourrir l'ensemble de ma population avec
                   les surfaces actuelles agricoles ? Quel est le
-                  <TextSurlignes>potentiel nourricier</TextSurlignes> de mon
-                  territoire ?
+                  <TextSurlignes
+                    ModalComposant="KnowMoreModal/ModalPotentielNourricier.vue"
+                    >potentiel nourricier</TextSurlignes
+                  >
+                  de mon territoire ?
                 </p>
-                <p v-html="phrasePotentielNourricier" class="texte-moyen"></p>
+                <p v-html="phrasePotentielNourricier" class="texte-petit"></p>
                 <tableauPotentielNourricierParCategorie />
                 <div class="boutons-container">
                   <div

@@ -23,7 +23,9 @@
         {{ potentielNourricierCereales }}</span
       >
     </div>
-    <KnowMore />
+    <KnowMore
+      ModalComposant="KnowMoreModal/ModalPotentielNourricierCategories"
+    />
   </div>
 </template>
 

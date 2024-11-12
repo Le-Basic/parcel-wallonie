@@ -412,4 +412,9 @@ export default {
   display: flex;
   justify-content: center;
 }
+
+.badge-light:hover {
+  padding-right: 0.6rem;
+  background-color: var(--bleu);
+}
 </style>
