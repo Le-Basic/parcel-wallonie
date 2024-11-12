@@ -47,9 +47,6 @@
         </div>
       </div>
     </div>
-    <nav id="asy-sidebar" class="">
-      <!-- <?php include '../partials/menu-affiner-2modales.php'; ?> -->
-    </nav>
   </div>
 </template>
 

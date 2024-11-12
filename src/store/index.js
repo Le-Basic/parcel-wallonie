@@ -3,7 +3,6 @@ import simulation from "./modules/simulation";
 import VuexPersistence from "vuex-persist";
 import { regimeListe } from "@/config/regimeListe.js";
 import {
-  debouncedfetchSurfaceNecessaire,
   fetchSurfaceNecessairePaysage,
   fetchSurfaceNecessaire,
   fetchSurfaceNecessairePourRegimePersonnalise,
@@ -248,7 +247,7 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
   surfacesMobilisables
 ) {
   console.log(
-    "recalculerResultatSimulation",
+    "recalculerResultatSimulation Surface",
     codesTerritoireParcel,
     idRegimeAlimentaire,
     partBioElevage,
@@ -275,7 +274,7 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
   );
 
   // TODO: ajouter le cas du régime spécialisé
-  var surfaceNecessaireResponseApi = await debouncedfetchSurfaceNecessaire(
+  var surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
     url,
     codesTerritoireParcel,
     idRegimeAlimentaire
@@ -284,12 +283,11 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
   // TODO: ajouter le cas du régime spécialisé
   const necessaires_paysage__url =
     window.apiURL + "parcel/belgique/surfaces_necessaires_paysage";
-  var surfaceNecessairePaysageResponseApi =
-    await debouncedfetchSurfaceNecessaire(
-      necessaires_paysage__url,
-      codesTerritoireParcel,
-      idRegimeAlimentaire
-    );
+  var surfaceNecessairePaysageResponseApi = await fetchSurfaceNecessaire(
+    necessaires_paysage__url,
+    codesTerritoireParcel,
+    idRegimeAlimentaire
+  );
 
   var indicateursactuels__url =
     window.apiURL + "parcel/belgique/surfaces_agregees";

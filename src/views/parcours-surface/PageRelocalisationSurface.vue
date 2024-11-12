@@ -8,6 +8,15 @@
             Renseignez la surface disponible
           </h1>
           <div class="intro">
+            <p class="animated fadeInUp delay-05s">
+              Pour commencer, renseignez la surface dont vous disposez pour
+              relocaliser votre activité. La surface doit être supérieure à 10
+              hectares
+            </p>
+            <div v-if="!isSurfaceValid" class="alert alert-danger">
+              La surface doit être supérieure à 10 hectares
+            </div>
+            <div class=""></div>
             <div
               class="champ-recherche d-flex align-items-center animated fadeInUp delay-1s"
             >
@@ -19,10 +28,7 @@
                 id="choixsurface"
                 v-model="surface"
               />
-              <select id="inputState" class="custom-select">
-                <option selected="" value="hectares">en hectares</option>
-                <option value="m2">en m2</option>
-              </select>
+              <div>hectares</div>
             </div>
             <div
               class="resultats-comparatif cadre-resultat cadre-clair compare-ligne animated fadeInUp delay-1-5s"
@@ -69,11 +75,17 @@
               </div>
             </div>
             <div class="div-continuer animated fadeInUp delay-1-5s">
-              <router-link to="/2-choix-du-territoire" id="suite"
+              <router-link
+                to="/2-choix-du-territoire"
+                id="suite"
+                v-if="isSurfaceValid"
                 ><button type="button" class="btn btn-principal">
                   Continuer
                 </button></router-link
               >
+              <button type="button" class="btn btn-principal" v-else>
+                Continuer
+              </button>
             </div>
           </div>
         </div>
@@ -92,6 +104,7 @@ export default {
   data() {
     return {
       surface: this.$store.state.surfacesMobilisables,
+      isSurfaceValid: undefined,
     };
   },
   components: {
@@ -99,7 +112,15 @@ export default {
   },
   watch: {
     surface: function (surface) {
-      this.$store.dispatch("actionModifierSurfacesMobilisables", surface);
+      if (Number(surface) >= 10) {
+        this.isSurfaceValid = true;
+        this.$store.dispatch(
+          "actionModifierSurfacesMobilisables",
+          Number(surface)
+        );
+      } else {
+        this.isSurfaceValid = false;
+      }
     },
   },
 };

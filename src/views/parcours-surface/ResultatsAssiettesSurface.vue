@@ -5,7 +5,6 @@
       <div class="section centrervh" id="section0">
         <div class="container">
           <resumeChoixSurface />
-
           <div class="mb-5">
             <!-- <?php include '../partials/resum-result2.php'; ?> -->
           </div>
@@ -45,6 +44,8 @@
                   :process-style="{ backgroundColor: '#BDC660' }"
                   :width="200"
                   :height="10"
+                  :tooltip="'none'"
+                  :interval="1"
                 />
 
                 <div class="range-values">
@@ -73,6 +74,8 @@
                   :process-style="{ backgroundColor: '#a261c0' }"
                   :width="200"
                   :height="10"
+                  :tooltip="'none'"
+                  :interval="1"
                 />
 
                 <div class="range-values">
@@ -103,6 +106,8 @@
                   :process-style="{ backgroundColor: '#f5a623' }"
                   :width="200"
                   :height="10"
+                  :tooltip="'none'"
+                  :interval="1"
                 />
 
                 <div class="range-values">
@@ -134,6 +139,7 @@
                   :width="200"
                   :height="10"
                   :tooltip="'none'"
+                  :interval="1"
                 />
 
                 <div class="range-values">
@@ -336,7 +342,7 @@
                         class="text-left text-md-center justify-content-start justify-content-md-center"
                       >
                         <div class="nbr-personne viande" id="couvertselevage">
-                          {{ personnesNourriesParCulture.viande }}
+                          {{ personnesNourriesParCulture.elevage }}
                         </div>
                         <div class="personnes viande">personnes</div>
                       </div>
@@ -404,35 +410,43 @@ import { useStore } from "vuex";
 
 const store = useStore();
 const portionLegumes = ref(
-  trouverChiffre(
-    store.state.resultatSimulation.surfacesEmploisAMobiliser,
-    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
-    "part_surface_a_mobiliser",
-    "libelle_parcel_niveau_1"
+  Number(
+    trouverChiffre(
+      store.state.resultatSimulation.surfacesEmploisAMobiliser,
+      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
+      "part_surface_a_mobiliser",
+      "libelle_parcel_niveau_1"
+    )
   )
 );
 const portionFruits = ref(
-  trouverChiffre(
-    store.state.resultatSimulation.surfacesEmploisAMobiliser,
-    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle,
-    "part_surface_a_mobiliser",
-    "libelle_parcel_niveau_1"
+  Number(
+    trouverChiffre(
+      store.state.resultatSimulation.surfacesEmploisAMobiliser,
+      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle,
+      "part_surface_a_mobiliser",
+      "libelle_parcel_niveau_1"
+    )
   )
 );
 const portionCereales = ref(
-  trouverChiffre(
-    store.state.resultatSimulation.surfacesEmploisAMobiliser,
-    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
-    "part_surface_a_mobiliser",
-    "libelle_parcel_niveau_1"
+  Number(
+    trouverChiffre(
+      store.state.resultatSimulation.surfacesEmploisAMobiliser,
+      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
+      "part_surface_a_mobiliser",
+      "libelle_parcel_niveau_1"
+    )
   )
 );
 const portionElevage = ref(
-  trouverChiffre(
-    store.state.resultatSimulation.surfacesEmploisAMobiliser,
-    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle,
-    "part_surface_a_mobiliser",
-    "libelle_parcel_niveau_1"
+  Number(
+    trouverChiffre(
+      store.state.resultatSimulation.surfacesEmploisAMobiliser,
+      CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle,
+      "part_surface_a_mobiliser",
+      "libelle_parcel_niveau_1"
+    )
   )
 );
 
@@ -450,7 +464,7 @@ const personnesNourriesParCulture = ref({
   legumes: store.state.resultatSimulationSurface.populationAvecBesoinComblé,
   fruits: store.state.resultatSimulationSurface.populationAvecBesoinComblé,
   cereales: store.state.resultatSimulationSurface.populationAvecBesoinComblé,
-  viande: store.state.resultatSimulationSurface.populationAvecBesoinComblé,
+  elevage: store.state.resultatSimulationSurface.populationAvecBesoinComblé,
 });
 // watcher
 watch(
@@ -470,10 +484,11 @@ watch(
         portionElevage.value -
         portionLegumes.value -
         portionFruits.value;
-      console.log("restant", resteADistribuer);
-      portionElevage.value += resteADistribuer / 3;
-      portionLegumes.value += resteADistribuer / 3;
-      portionFruits.value += resteADistribuer / 3;
+      portionElevage.value =
+        Number(portionElevage.value) + resteADistribuer / 3;
+      portionLegumes.value =
+        Number(portionLegumes.value) + resteADistribuer / 3;
+      portionFruits.value = Number(portionFruits.value) + resteADistribuer / 3;
       portionLegumes.value = Math.max(0, portionLegumes.value);
       portionElevage.value = Math.max(0, portionElevage.value);
       portionLegumes.value = Math.min(100, portionLegumes.value);
@@ -482,17 +497,17 @@ watch(
       portionCereales.value = Math.max(0, portionCereales.value);
       portionFruits.value = Math.min(100, portionFruits.value);
       portionFruits.value = Math.max(0, portionFruits.value);
-      personnesNourriesParCulture.value.cereales = Math.round(
-        (portionCereales.value * populationAvecBesoinComblé) /
-          portionDepart.cereales
-      );
     }
+    personnesNourriesParCulture.value.cereales = Math.round(
+      (portionCereales.value * populationAvecBesoinComblé) /
+        portionDepart.cereales
+    );
   }
 );
 watch(
   () => portionElevage.value,
   (value) => {
-    console.log("valeur watcher cereales", value);
+    console.log("valeur watcher elevage", value);
     if (
       portionCereales.value +
         portionElevage.value +
@@ -519,18 +534,17 @@ watch(
       portionCereales.value = Math.max(0, portionCereales.value);
       portionFruits.value = Math.min(100, portionFruits.value);
       portionFruits.value = Math.max(0, portionFruits.value);
-
-      personnesNourriesParCulture.value.elevage = Math.round(
-        (portionElevage.value * populationAvecBesoinComblé) /
-          portionDepart.elevage
-      );
     }
+    personnesNourriesParCulture.value.elevage = Math.round(
+      (portionElevage.value * populationAvecBesoinComblé) /
+        portionDepart.elevage
+    );
   }
 );
 watch(
   () => portionLegumes.value,
   (value) => {
-    console.log("valeur watcher cereales", value);
+    console.log("valeur watcher legumes", value);
     if (
       portionCereales.value +
         portionElevage.value +
@@ -556,18 +570,17 @@ watch(
       portionCereales.value = Math.max(0, portionCereales.value);
       portionFruits.value = Math.min(100, portionFruits.value);
       portionFruits.value = Math.max(0, portionFruits.value);
-
-      personnesNourriesParCulture.value.legumes = Math.round(
-        (portionLegumes.value * populationAvecBesoinComblé) /
-          portionDepart.legumes
-      );
     }
+    personnesNourriesParCulture.value.legumes = Math.round(
+      (portionLegumes.value * populationAvecBesoinComblé) /
+        portionDepart.legumes
+    );
   }
 );
 watch(
   () => portionFruits.value,
   (value) => {
-    console.log("valeur watcher cereales", value);
+    console.log("valeur watcher fruits", value);
     if (
       portionCereales.value +
         portionElevage.value +
@@ -584,7 +597,7 @@ watch(
       console.log("restant", resteADistribuer);
       portionElevage.value += resteADistribuer / 3;
       portionCereales.value += resteADistribuer / 3;
-      portionLegumes.value += resteADistribuer / 3;
+      portionLegumes.value = portionLegumes.value + resteADistribuer / 3;
       portionLegumes.value = Math.max(0, portionLegumes.value);
       portionElevage.value = Math.max(0, portionElevage.value);
       portionLegumes.value = Math.min(100, portionLegumes.value);
@@ -593,12 +606,10 @@ watch(
       portionCereales.value = Math.max(0, portionCereales.value);
       portionFruits.value = Math.min(100, portionFruits.value);
       portionFruits.value = Math.max(0, portionFruits.value);
-
-      personnesNourriesParCulture.value.fruits = Math.round(
-        (portionFruits.value * populationAvecBesoinComblé) /
-          portionDepart.fruits
-      );
     }
+    personnesNourriesParCulture.value.fruits = Math.round(
+      (portionFruits.value * populationAvecBesoinComblé) / portionDepart.fruits
+    );
   }
 );
 </script>
