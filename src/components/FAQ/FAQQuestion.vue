@@ -4,6 +4,7 @@
       <img
         src="img/fleches/fleche-bas-vert.svg"
         :class="{ 'arrow-up': isAnswerShown }"
+        class="arrow"
       />
       <slot name="titreQuestion"></slot>
     </h2>
@@ -35,6 +36,13 @@ const changeAnswerVisibility = () => {
   margin-bottom: 20px;
   border-bottom: 1px solid var(--vert);
   text-align: left;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.arrow {
+  padding: 4px 0px;
 }
 .arrow-up {
   transform: rotate(180deg);

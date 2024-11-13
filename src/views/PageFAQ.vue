@@ -11,26 +11,25 @@
     </div>
   </div>
   <div class="container">
-    <div class="question-categorie">
+    <div
+      class="question-categorie"
+      v-for="categorie in FAQ_CONTENT"
+      :key="categorie.titreCategorie"
+    >
       <p class="titre-categorie">
-        Les paramètres d’entrée : relocalisation, bio, régime alimentaire
+        {{ categorie.titreCategorie }}
       </p>
       <div class="question">
-        <FAQQuestion>
-          <template v-slot:titreQuestion> Hello </template>
-          <template v-slot:reponseQuestion> Hello </template>
-        </FAQQuestion>
-        <FAQQuestion>
-          <template v-slot:titreQuestion> Hello </template>
-          <template v-slot:reponseQuestion> Hello </template>
-        </FAQQuestion>
-        <FAQQuestion>
-          <template v-slot:titreQuestion> Hello </template>
-          <template v-slot:reponseQuestion> Hello </template>
-        </FAQQuestion>
-        <FAQQuestion>
-          <template v-slot:titreQuestion> Hello </template>
-          <template v-slot:reponseQuestion> Hello </template>
+        <FAQQuestion
+          v-for="question in categorie.questions"
+          :key="question.titreQuestion"
+        >
+          <template v-slot:titreQuestion>
+            {{ question.titreQuestion }}
+          </template>
+          <template v-slot:reponseQuestion>
+            <p v-html="question.reponseQuestion"></p>
+          </template>
         </FAQQuestion>
       </div>
     </div>
@@ -75,6 +74,9 @@
 <script setup>
 import FAQQuestion from "@/components/FAQ/FAQQuestion.vue";
 import MenuSimple from "@/components/Menu/MenuSimple.vue";
+import { FAQ_CONTENT } from "@/content/faq_content.js";
+
+console.log(FAQ_CONTENT);
 </script>
 
 <style scoped>
