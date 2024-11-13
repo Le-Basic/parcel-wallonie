@@ -10,6 +10,12 @@
         :modalId="modalDetails"
         @fermerModal="fermerModalDetails"
       ></modalDetail>
+      <div class="intro">
+        La vue produit illustre la répartition des surfaces agricoles en
+        fonction des types de produits alimentaires, par exemple, les hectares
+        destinés aux céréales et fourrages pour la production de viande sont
+        repris dans la catégorie “Elevage” (ou viande si on l’appelle viande)
+      </div>
       <h3 class="text-center">Surface agricole à mobiliser</h3>
       <div
         class="cadre-resultat resultat-ha animated flipInX delay-05s bg-vert-clair"
@@ -41,7 +47,6 @@
         sont théoriquement nécessaires pour satisfaire les besoins alimentaires
         de la population choisie
       </div>
-
       <div class="no-data no-data-viz" v-if="false">
         Désolé, nous n'avons pas de données suffisantes pour afficher ce
         graphique
@@ -298,7 +303,9 @@
                       ></span>
                     </div>
                     <div class="cadre-titre-categorie">
-                      <div class="titre-categorie">Elevage</div>
+                      <div class="titre-categorie">
+                        Viande, oeufs et produits laitiers
+                      </div>
                       <div class="hectares">
                         {{
                           formatterSurfacesNecessaires(
@@ -419,7 +426,7 @@
                     </div>
                     <div class="cadre-titre-categorie">
                       <div class="titre-categorie">
-                        Cultures annuelles pour alimentation humaine
+                        Céréales et grandes cultures (hors alimentation animale)
                       </div>
                       <div class="hectares">
                         {{
@@ -467,7 +474,9 @@
                       ></span>
                     </div>
                     <div class="cadre-titre-categorie">
-                      <div class="titre-categorie">Elevage</div>
+                      <div class="titre-categorie">
+                        Viande, oeufs et produits laitiers
+                      </div>
                       <div class="hectares">
                         {{
                           formatterSurfacesNecessaires(
@@ -841,7 +850,9 @@
                 <div
                   class="order-1 order-md-0 col-12 col-md text-right col-text"
                 >
-                  <b>Céréales et autres grandes cultures</b>
+                  <b
+                    >Céréales et grandes cultures (hors alimentation animale)</b
+                  >
                 </div>
                 <div class="order-0 order-md-1 col-12 col-md-auto">
                   <div class="d-flex align-items-center justify-content-end">
@@ -878,7 +889,7 @@
                 <div
                   class="order-1 order-md-0 col-12 col-md text-right col-text"
                 >
-                  <b>Élevage</b>
+                  <b>Viande, oeufs et produits laitiers</b>
                 </div>
                 <div class="order-0 order-md-1 col-12 col-md-auto">
                   <div class="d-flex align-items-center justify-content-end">
@@ -1410,7 +1421,7 @@ export default {
           this.$store.state.resultatSimulation.surfacesEmploisAMobiliser,
           value.libelle,
           "part_surface_a_mobiliser",
-          "libelle_parcel_niveau_1",
+          "libelle_parcel_niveau_2",
           3
         );
         value.partAMobiliser = parseFloat(value.partAMobiliser).toFixed(
@@ -1418,7 +1429,7 @@ export default {
         );
         let donnePourGraphique = {
           value: value.partAMobiliser,
-          name: value.libelle,
+          name: value.libelle_affichage,
           itemStyle: {
             color: value.couleur,
           },
@@ -1578,5 +1589,16 @@ export default {
   flex-direction: row;
   gap: 16px;
   justify-content: center;
+}
+
+.intro {
+  text-align: center;
+  margin: auto;
+  color: var(--vert);
+  font-size: 20px;
+  line-height: 1.2;
+  padding-bottom: 24px;
+  font-style: italic;
+  font-family: "Work Sans", sans-serif;
 }
 </style>

@@ -1,7 +1,13 @@
 <template>
   <div>
     <div class="bloc-surface">
-      <h3 class="text-center">Surface agricole à mobiliser</h3>
+      <div class="intro"></div>
+      <h3 class="text-center">
+        La vue paysage présente la répartition des surfaces agricoles selon les
+        types de cultures et l'occupation du sol, par exemple, les hectares de
+        céréales et de fourrages pour l’élevage sont ici séparés en céréales et
+        cultures fourragères.
+      </h3>
       <div
         class="cadre-resultat resultat-ha animated flipInX delay-05s bg-vert-clair"
       >
@@ -741,5 +747,16 @@ export default {
   flex-direction: row;
   gap: 16px;
   justify-content: center;
+}
+
+.intro {
+  text-align: center;
+  margin: auto;
+  color: var(--vert);
+  font-size: 20px;
+  line-height: 1.2;
+  padding-bottom: 24px;
+  font-style: italic;
+  font-family: "Work Sans", sans-serif;
 }
 </style>

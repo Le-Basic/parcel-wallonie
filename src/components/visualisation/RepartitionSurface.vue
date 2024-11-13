@@ -59,11 +59,10 @@ const option = {
     bottom: 0,
     containLabel: true,
   },
-  textStyle: { fontFamily: "Work Sans", color: "#000" },
+  textStyle: { fontFamily: "Work Sans", color: "#000", overflow: "break" },
   label: {
     show: !props.hideLabels,
     textStyle: {
-      overflow: "break",
       color: "#000",
     },
   },

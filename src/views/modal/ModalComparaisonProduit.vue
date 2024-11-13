@@ -201,7 +201,6 @@ const tableauProduitsProspectif = [
       ),
     valeurSurfaces: "surface_a_mobiliser",
     partSurfaces: "part_surface_a_mobiliser",
-    nomModale: "detailsLegumes",
   },
   {
     libelle: "Fruits",
@@ -217,7 +216,6 @@ const tableauProduitsProspectif = [
       ),
     valeurSurfaces: "surface_a_mobiliser",
     partSurfaces: "part_surface_a_mobiliser",
-    nomModale: "detailsFruits",
   },
   {
     libelle: "Elevage",
@@ -233,7 +231,21 @@ const tableauProduitsProspectif = [
       ),
     valeurSurfaces: "surface_a_mobiliser",
     partSurfaces: "part_surface_a_mobiliser",
-    nomModale: "detailsViande",
+  },
+  {
+    libelle: "Céréales",
+    classeCouleur: "cereales",
+    couleur: CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.couleur,
+    icon: "icon-ico_CATEGORIES_cereales ico-medium cereales",
+    fonctionTrouverChiffre: (chiffre) =>
+      trouverChiffre(
+        store.state.resultatSimulation.surfacesEmploisAMobiliser,
+        CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
+        chiffre,
+        "libelle_parcel_niveau_1"
+      ),
+    valeurSurfaces: "surface_a_mobiliser",
+    partSurfaces: "part_surface_a_mobiliser",
   },
 ];
 

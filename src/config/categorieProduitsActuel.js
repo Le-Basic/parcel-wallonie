@@ -2,7 +2,7 @@ export const CATEGORIE_PRODUITS_SURFACES_ACTUELLES = {
   ELEVAGE: {
     couleur: "#B57A60",
     code: "EL",
-    libelle: "Elevage (dont alimentation animale)",
+    libelle: "Viande, oeufs et produits laitiers",
   },
   FRUITS: {
     couleur: "#A261C0",
@@ -22,7 +22,7 @@ export const CATEGORIE_PRODUITS_SURFACES_ACTUELLES = {
   CEREALES: {
     couleur: "#F9B233",
     code: "GC",
-    libelle: "Cultures annuelles pour alimentation humaine",
+    libelle: "Céréales et grandes cultures (hors alimentation animale)",
   },
   INDUSTRIE: {
     couleur: "#62D5F3",

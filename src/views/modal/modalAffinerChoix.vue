@@ -107,7 +107,6 @@
             >
               <span class="icon-ico_filtres_bio icon"></span
               ><span class="titre-filtre">Quelle part de produits bio ?</span>
-              <pre>{{ this.$store.state.part_bio }}</pre>
               <a
                 href="#"
                 class="info tooltip-affiner"
@@ -129,16 +128,20 @@
                   ><b>Part de bio actuelle: {{ partBio }}%</b></output
                 >
               </div>
-              <input
-                type="range"
-                min="0"
-                max="100"
-                step="1.000"
-                value="100"
-                id="partBio"
-                v-model="this.partBio"
-                class="slider-range"
-              />
+              <VueSlider
+                v-model="partBio"
+                ref="partBio"
+                :process-style="{ backgroundColor: '#bdc660' }"
+                :tooltip="'none'"
+                :height="10"
+                width="100%"
+                :dot-size="20"
+                :max="100"
+              >
+                <template v-slot:dot>
+                  <div :class="['custom-dot']"></div>
+                </template>
+              </VueSlider>
               <div class="d-flex mr-auto" style="gap: 16px">
                 <div class="mr-auto titre-categorie">Passer tout bio ?</div>
                 <div>
@@ -610,7 +613,7 @@ export default {
         this.partbiocereales = nouvelleValeur;
       }
     },
-    1000),
+    400),
     partBioElevage: lodash.debounce(function (partBioElevage, ancienneValeur) {
       if (partBioElevage !== ancienneValeur) {
         let nouvelleValeur = calculerPartBio(
@@ -620,7 +623,7 @@ export default {
         );
         this.partBioElevage = nouvelleValeur;
       }
-    }, 1000),
+    }, 400),
     partbiofruits: lodash.debounce(function (partBioFruits, ancienneValeur) {
       if (partBioFruits !== ancienneValeur) {
         let nouvelleValeur = calculerPartBio(
@@ -630,7 +633,7 @@ export default {
         );
         this.partbiofruits = nouvelleValeur;
       }
-    }, 1000),
+    }, 400),
     partbiolegumes: lodash.debounce(function (partBioLegumes, ancienneValeur) {
       if (partBioLegumes !== ancienneValeur) {
         let nouvelleValeur = calculerPartBio(
@@ -640,16 +643,26 @@ export default {
         );
         this.partbiolegumes = nouvelleValeur;
       }
-    }, 1000),
-    partBio: function (partBio, ancienneValeur) {
-      if (partBio !== ancienneValeur && partBio != this.$store.state.part_bio) {
-        this.partbiocereales = partBio;
-        this.partbiolegumes = partBio;
-        this.partbiofruits = partBio;
-        this.partBioElevage = partBio;
+    }, 400),
+    partBio: function (nvellePartBio, ancienneValeur) {
+      console.log("change:", nvellePartBio);
+      console.log(Number(nvellePartBio) <= this.$store.state.partBioMin);
+      if (Number(nvellePartBio) <= this.$store.state.partBioMin) {
+        console.log("change:", nvellePartBio);
+        this.partBio = this.$store.state.partBioMin;
+        nvellePartBio = this.$store.state.partBioMin;
         setTimeout(() => {
-          console.log("Retardée d'une seconde.");
-        }, "1000");
+          this.$refs.partBio.setValue(this.$store.state.partBioMin);
+        }, "300");
+      }
+      if (
+        nvellePartBio !== ancienneValeur &&
+        nvellePartBio != this.$store.state.part_bio
+      ) {
+        this.partbiocereales = nvellePartBio;
+        this.partbiolegumes = nvellePartBio;
+        this.partbiofruits = nvellePartBio;
+        this.partBioElevage = nvellePartBio;
       }
     },
     regimeChoisi: function (nomCourtRegime) {

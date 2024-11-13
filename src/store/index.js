@@ -52,6 +52,7 @@ const getDefaultState = () => {
     },
     part_relocalisee: 100,
     part_bio: null,
+    partBioMin: null,
     regime_alimentaire: regimeListe.find((el) => el.default == true),
     partpertes: 0,
     partbiolegumes: null,
@@ -403,6 +404,9 @@ export default createStore({
     },
     partBio(state, part_bio) {
       state.part_bio = part_bio;
+    },
+    partBioMin(state, part_bio) {
+      state.partBioMin = part_bio;
     },
     partBioLegumes(state, partbiolegumes) {
       state.partbiolegumes = Math.max(partbiolegumes, state.partbiolegumes);
@@ -956,6 +960,7 @@ export default createStore({
       fetchCurseurBio(curseurs_bio__url, codesTerritoireParcel).then((data) => {
         let partBio = Math.round(data * 100);
         commit("partBio", partBio);
+        commit("partBioMin", partBio);
       });
       let curseurs_bio_categorie__url =
         window.apiURL + "parcel/belgique/curseurs_bio_par_categorie";

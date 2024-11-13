@@ -23,7 +23,7 @@
               :class="[produit.classeCouleur]"
               style="cursor: pointer"
             >
-              <div class="" id="ppc5" style="width: 65px; height: 65px">
+              <div class="" id="ppc5" style="min-width: 65px; height: 65px">
                 <JaugeChart
                   :value="
                     Math.round(
@@ -54,7 +54,7 @@
                   }}
                 </div>
               </div>
-              <div class="result-plus" v-if="produit.nomModale !== ''">
+              <div class="result-plus" v-if="produit.nomModale">
                 <span
                   @click="ouvrirModal(produit.nomModale)"
                   class="icon-ico_fleche_detail_gros icon"
