@@ -107,7 +107,7 @@
                           )
                         }}</span
                       ><span> % </span></span
-                    ><span>émissions CO<sub>2</sub> / ha</span>
+                    ><span>émissions CO<sub>2</sub> vs actuel</span>
                   </div>
                 </div>
               </a>

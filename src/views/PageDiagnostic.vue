@@ -35,6 +35,13 @@
                         class="carte"
                         v-if="territoirCarteUrl !== undefined"
                       />
+                      <div v-else style="height: 100%; width: 100%">
+                        <CarteTerritoire
+                          :territoireGeojson="geojsonDataTerritoire"
+                          :belgiqueGeojson="geojsonData"
+                          v-if="geojsonDataTerritoire"
+                        />
+                      </div>
                     </div>
                     <div class="sous-partie-droite bloc-paragraphe">
                       <div class="sous-partie">
@@ -431,6 +438,7 @@ import { AfficherEntier, FormatterPourcentage } from "@/plugins/utils";
 import vizConsommation from "../components/visualisation/vizConsommation.vue";
 import pieEmploi from "../components/visualisation/pieEmploi.vue";
 import CarteOtex from "@/components/visualisation/CarteOtex.vue";
+import CarteTerritoire from "@/components/visualisation/CarteTerritoire.vue";
 import vizOccupationDuSol from "@/components/visualisation/vizOccupationDuSol.vue";
 import geojsonData from "/public/data.json";
 import { onMounted, ref } from "vue";
@@ -591,7 +599,7 @@ const featuresAvecOtex = ref(
             (otex) =>
               otex.code_belgique_municipalite ===
               feature.properties.code_belgique_municipalite
-          )?.otex_dominant ?? "Non disponible",
+          )?.otex_dominant ?? "Hors scope",
         libelle_commune: feature.properties.libelle_commune,
       },
       geometry: feature.geometry,
@@ -599,6 +607,15 @@ const featuresAvecOtex = ref(
   })
 );
 geojsonData.features = featuresAvecOtex.value;
+let geojsonDataTerritoire = structuredClone(geojsonData);
+geojsonDataTerritoire.features = geojsonDataTerritoire.features.filter(
+  (feature) =>
+    otex_dominant_par_commune.find(
+      (otex) =>
+        otex.code_belgique_municipalite ===
+        feature.properties.code_belgique_municipalite
+    )
+);
 
 const potentielNourricier =
   sauHaChiffre / parseInt(store.state.resultatReference.surfaceAMobiliser);

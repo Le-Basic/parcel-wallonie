@@ -62,11 +62,11 @@ const otexEtCouleurDict = [
   },
   {
     label: "Non disponible",
-    couleur: "#F1EDEA",
+    couleur: "#CABBAF",
   },
   {
     label: "Hors scope",
-    couleur: "#F1EDEA",
+    couleur: "#f8f8f3",
   },
 ];
 
@@ -170,13 +170,19 @@ let labelsUtilisesListe = [
   ),
 ].sort();
 
-let labelsUtilisesAvecCouleur = labelsUtilisesListe.map((label) => {
-  return {
-    label: label,
-    couleur: otexEtCouleurDict.find((couleur) => couleur.label === label)
-      ?.couleur,
-  };
-});
+let labelsUtilisesAvecCouleur = labelsUtilisesListe
+  .filter((label) => label !== "Hors scope")
+  .map((label) => {
+    if (label !== "Hors scope") {
+      return {
+        label: label,
+        couleur: otexEtCouleurDict.find((couleur) => couleur.label === label)
+          ?.couleur,
+      };
+    }
+  });
+
+console.log("labels", labelsUtilisesAvecCouleur);
 
 function creerCarte(attributionHtml) {
   const carte = new maplibregl.Map({
