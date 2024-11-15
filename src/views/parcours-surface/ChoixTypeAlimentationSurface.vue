@@ -5,6 +5,7 @@
 
       <div class="section centrervh" id="section0">
         <div class="container">
+          <pre>{{ this.$store.state }}</pre>
           <h1 class="animated fadeInUp">Choisissez le type d'alimentation</h1>
           <div class="row choix-alim">
             <div class="col-md-6 col-12 bloc-2col animated fadeIn delay-05s">
@@ -172,7 +173,6 @@
 <script>
 import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
 import { getRegimeParNomCourt, regimeListe } from "@/config/regimeListe";
-import { fetchCurseurBio } from "@/plugins/getPartdeBio";
 
 export default {
   name: "ChoixTypeAlimentationSurface",
@@ -189,16 +189,10 @@ export default {
     };
   },
   mounted() {
-    let url = window.apiURL + "parcel/belgique/curseurs_bio";
-    let codesTerritoireParcel = this.$store.getters.getcodesTerritoireParcel;
-    this.$store.dispatch("actionChoisirRegimeAlimentaire", regimeListe[0]);
-    fetchCurseurBio(url, codesTerritoireParcel).then((data) => {
-      console.log(data);
-      this.partbiolegumes = Math.round(data * 100);
-      this.partbiofruits = Math.round(data * 100);
-      this.partbiocereales = Math.round(data * 100);
-      this.partBioElevage = Math.round(data * 100);
-    });
+    this.partbiolegumes = this.$store.state.partBioMin;
+    this.partbiofruits = this.$store.state.partBioMin;
+    this.partbiocereales = this.$store.state.partBioMin;
+    this.partBioElevage = this.$store.state.partBioMin;
   },
   methods: {
     updatetoutbio() {
@@ -219,6 +213,7 @@ export default {
   },
   watch: {
     partbiocereales: function (partBioCereales) {
+      console.log("cereales", partBioCereales);
       this.$store.dispatch("actionModifierPartBioCereales", partBioCereales);
     },
     partBioElevage: function (partBioElevage) {

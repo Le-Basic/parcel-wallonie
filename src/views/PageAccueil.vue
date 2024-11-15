@@ -115,38 +115,6 @@
                       >au sein de la Région wallonne</strong
                     >
                   </p>
-                  <!-- <div class="mt-4 input-info">
-                    <label class="container-checkbox">
-                      <div class="d-flex align-items-center">
-                        <span>Rechercher par EPCI</span>
-                        <a
-                          href="#"
-                          class="info"
-                          data-tooltip="Les établissements publics de coopération intercommunale (EPCI) sont des regroupements de communes. Les communautés urbaines, communautés d'agglomération, communautés de communes, syndicats d'agglomération nouvelle, syndicats de communes et les syndicats mixtes sont des EPCI. (Source : INSEE)"
-                          data-placement="left"
-                          ><span class="icon-ico_element_info"></span
-                        ></a>
-                      </div>
-
-                      <input type="checkbox" id="CheckboxEPCI" />
-                      <span class="checkmark"></span>
-                    </label>
-
-                    <label class="container-checkbox">
-                      <div class="d-flex align-items-center">
-                        <span>Rechercher par PNR</span
-                        ><a
-                          href="#"
-                          class="info"
-                          data-tooltip="Les Parcs naturels régionaux sont créés pour protéger et mettre en valeur de grands espaces ruraux habités. Peut être classé “Parc naturel régional” un territoire à dominante rurale dont les paysages, les milieux naturels et le patrimoine culturel sont de grande qualité, mais dont l’équilibre est fragile. (Source : Parcs Naturels Régionaux de Région wallonne)"
-                          data-placement="left"
-                          ><span class="icon-ico_element_info"></span
-                        ></a>
-                      </div>
-                      <input type="checkbox" id="CheckboxPNR" />
-                      <span class="checkmark"></span>
-                    </label>
-                  </div> -->
                   <div class="mt-5"></div>
                   <div class="div-continuer">
                     <router-link to="/choix-du-parcours" id="suite">

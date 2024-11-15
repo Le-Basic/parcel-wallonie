@@ -20,6 +20,7 @@
           <div class="animated fadeInUp text-h1 text-center">
             je peux nourrir
           </div>
+          <pre>{{ this.$store.state }}</pre>
           <div class="mb-4"></div>
           <div class="resultats-generaux">
             <router-link

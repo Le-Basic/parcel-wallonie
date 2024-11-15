@@ -5,6 +5,7 @@
 
       <div class="section centrervh" id="section0">
         <h1 class="animated fadeInUp">Choisissez la zone géographique</h1>
+        <pre>{{ this.$store.state }}</pre>
         <div id="preselection" class="text-center animated delay-05s fadeIn">
           <div
             class="alert alert-success mb-5"
@@ -105,7 +106,7 @@ export default {
       this.rechercheInput = "";
       this.list_geo = [];
       this.$store.commit("addGeo", item);
-      console.log("store", this.$store.state);
+      this.$store.dispatch("actionModifierGeo");
     },
   },
   watch: {
