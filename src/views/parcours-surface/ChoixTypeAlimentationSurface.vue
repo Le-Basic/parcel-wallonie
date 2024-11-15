@@ -172,7 +172,7 @@
 
 <script>
 import BarreNavigation from "@/components/navigation/BarreNavigation.vue";
-import { getRegimeParNomCourt, regimeListe } from "@/config/regimeListe";
+import { getRegimeParNomCourt } from "@/config/regimeListe";
 
 export default {
   name: "ChoixTypeAlimentationSurface",
