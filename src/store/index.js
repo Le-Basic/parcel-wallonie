@@ -13,7 +13,6 @@ import {
   fetchPortrait,
   fetchCurseurs,
 } from "@/plugins/getSurfacesNecessaires";
-import { fetchCurseurBio } from "@/plugins/getPartdeBio";
 import { calculerResultatSimulation } from "../plugins/calculResultatSimulation";
 import { calculerResultatSimulationAvecSurface } from "@/plugins/calculResultatsSimulationAvecSurface";
 import { INSTITUTIONS, INSTITUTIONS_IDS } from "@/config/Institutions.js";
@@ -956,12 +955,6 @@ export default createStore({
     },
     async actionModifierGeo({ commit }) {
       let codesTerritoireParcel = this.getters.getcodesTerritoireParcel;
-      let curseurs_bio__url = window.apiURL + "parcel/belgique/curseurs_bio";
-      fetchCurseurBio(curseurs_bio__url, codesTerritoireParcel).then((data) => {
-        let partBio = Math.round(data * 100);
-        commit("partBio", partBio);
-        commit("partBioMin", partBio);
-      });
       let curseurs_bio_categorie__url =
         window.apiURL + "parcel/belgique/curseurs_bio_par_categorie";
       let curseursPartBio = await fetchCurseurs(
@@ -1014,6 +1007,47 @@ export default createStore({
 
       commit("mutationResultatReference", resultatSimulation);
       commit("mutationResultatSimulation", resultatSimulation);
+      let partBioGlobale = CalculPartBioGlobale(
+        {
+          partBioCereales: this.state.partbiocereales,
+          partBioFruits: this.state.partbiofruits,
+          partBioLegumes: this.state.partbiolegumes,
+          partBioElevage: this.state.partbioelevage,
+        },
+        {
+          surfacesNecessairesCereales: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+          surfacesNecessairesFruits: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+          surfacesNecessairesLegumes: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+          surfacesNecessairesElevage: trouverChiffre(
+            this.state.resultatSimulation.surfacesEmploisAMobiliser,
+            CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle,
+            "surface_a_mobiliser",
+            "libelle_parcel_niveau_1",
+            0
+          ),
+        }
+      );
+      let partBioGLobaleBase100 = Math.round(partBioGlobale * 100);
+      commit("partBio", partBioGLobaleBase100);
+      commit("partBioMin", partBioGLobaleBase100);
     },
     async actionModifierPopulation(
       { commit },

@@ -1,7 +1,6 @@
 import { IDS_REGIMES_ALIMENTAIRES } from "@/config/regimeIds";
 import { CHOIX_POPULATION_IDS } from "@/config/TypeChoixPopulation";
 import { fetchCurseurs } from "@/plugins/getSurfacesNecessaires";
-import { fetchCurseurBio } from "@/plugins/getPartdeBio";
 
 const getDefaultState = () => {
   return {
@@ -34,12 +33,6 @@ export default {
     },
     async actionModifierGeo({ commit }, listeTerritoires) {
       let codesTerritoireParcel = this.getters.getcodesTerritoireParcel;
-      let curseurs_bio__url = window.apiURL + "parcel/belgique/curseurs_bio";
-      fetchCurseurBio(curseurs_bio__url, codesTerritoireParcel).then((data) => {
-        let partBio = Math.round(data * 100);
-        console.log("partBio", partBio);
-        // commit("partBio", partBio);
-      });
       let curseurs_bio_categorie__url =
         window.apiURL + "parcel/belgique/curseurs_bio_par_categorie";
       let curseursPartBio = await fetchCurseurs(
