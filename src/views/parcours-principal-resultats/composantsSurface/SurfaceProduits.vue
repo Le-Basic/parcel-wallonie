@@ -244,7 +244,7 @@
                     </div>
                     <div class="cadre-titre-categorie">
                       <div class="titre-categorie">
-                        Céréales et autres cultures...
+                        Céréales et grandes cultures (hors alimentation animale)
                       </div>
                       <div class="hectares">
                         {{
@@ -937,7 +937,7 @@
       <div>
         <InformationBox>
           <template #texte>
-            Les résultats proposés par PARCEL représentent des ordres de
+            Les résultats proposés par PARCEL-Walloniereprésentent des ordres de
             grandeur théoriques. Sur base des résultats obtenus, toute
             réallocation des surfaces doit être évaluée en tenant compte des
             spécificités agro-climatiques et socio-économiques de votre

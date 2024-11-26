@@ -130,7 +130,7 @@
                         max-width: 130px;
                       "
                     >
-                      émissions de CO<sub>2</sub> par personne
+                      émissions de CO<sub>2</sub> / conso. moyenne
                     </div>
                   </div>
                   <div>
@@ -165,15 +165,15 @@
           <div>
             <div class="note animated fadeInDown delay-2s"></div>
             <p>
-              <sup>*</sup>PARCEL estime les impacts écologiques en fonction de
-              vos choix de changement de régime alimentaire et de part en bio.
-              Si vous avez seulement choisi de relocaliser l'alimentation,
-              PARCEL ne calcule pas d'impacts écologiques en raison de la limite
-              des données existantes.
+              <sup>*</sup>PARCEL-Wallonie estime les impacts écologiques en
+              fonction de vos choix de changement de régime alimentaire et de
+              part en bio. Si vous avez seulement choisi de relocaliser
+              l'alimentation, PARCEL-Wallonie ne calcule pas d'impacts
+              écologiques en raison de la limite des données existantes.
             </p>
 
             <p>
-              Les résultats de PARCEL sont calculés selon les choix de
+              Les résultats de PARCEL-Wallonie sont calculés selon les choix de
               consommation, sans prendre en compte l'ensemble des contraintes
               agronomiques, notamment celle du rebouclage du cycle de l'azote.
             </p>

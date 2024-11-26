@@ -3,21 +3,26 @@ export const CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER = {
     couleur: "#B57A60",
     libelle: "Elevage",
     libelle_court: "Viande, oeufs et produits laitiers",
+    libelle_affichage: "Viande, oeufs et produits laitiers",
   },
   FRUITS: {
     couleur: "#A261C0",
     libelle: "Fruits",
     libelle_court: "Fruits",
+    libelle_affichage: "Fruits",
   },
   LEGUMES: {
     couleur: "#91C423",
     libelle: "Légumes",
     libelle_court: "Légumes",
+    libelle_affichage: "Légumes",
   },
   CEREALES: {
     couleur: "#F9B233",
     libelle: "Céréales et autres cultures",
     libelle_court: "Céréales",
+    libelle_affichage:
+      "Céréales et grandes cultures (hors alimentation animale)",
   },
 };
 

@@ -5,6 +5,7 @@
     --bleu: #594231;
     --bleu-fonce: #594231;
     --gris: #f8f8f3;
+    --gris-fonce: #b0b078;
   }
 }
 html,
@@ -411,6 +412,10 @@ button.navbar-btn:focus {
 }
 .fond-cereales {
   background-color: #874e00 !important;
+}
+
+.fond-gris-fonce {
+  background-color: var(--gris-fonce) !important;
 }
 
 .viande {
@@ -3514,7 +3519,7 @@ h3 {
 }
 
 .navbar-brand img {
-  width: 206px;
+  width: 300px;
 }
 
 @media (min-height: 768px) and (min-width: 900px) {

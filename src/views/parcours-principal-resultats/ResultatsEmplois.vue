@@ -16,8 +16,8 @@
               </h1>
               <InformationBox>
                 <template #texte>
-                  Les emplois dans PARCEL sont calculés en équivalents temps
-                  plein (ETP) et incluent les emplois saisonniers.
+                  Les emplois dans PARCEL-Walloniesont calculés en équivalents
+                  temps plein (ETP) et incluent les emplois saisonniers.
                 </template>
               </InformationBox>
               <div class="cadre-resultat resultat-ha animated flipInX">

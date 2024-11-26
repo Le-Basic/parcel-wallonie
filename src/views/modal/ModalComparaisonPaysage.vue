@@ -73,6 +73,7 @@
         <RepartitionSurface
           :serieDonnees="repartitionSurfaceActuelles()"
           width="200px"
+          hideLabels
         />
       </div>
       <div

@@ -5,7 +5,7 @@
       <div class="accueil-texte">
         <div class="titre animated fadeInUp mb-3">
           <h1>
-            PARCEL.WAL<br />
+            PARCEL-Wallonie<br />
             Et si l’alimentation de votre territoire devenait durable et locale
             ?
           </h1>
@@ -16,9 +16,7 @@
           <div class="col-md-6 col-lg-6 col-12 col-image">
             <div class="animated fadeIn delay-05s">
               <img
-                :src="
-                  require('@/assets/img/parcours/animation-home5-4params.gif')
-                "
+                :src="require('@/assets/img/logos/Sytra_SchémaPARCEL.png')"
                 id="img-home"
                 alt=""
                 width="500"
@@ -109,8 +107,8 @@
         <div class="d-flex flex-wrap">
           <div class="two-cols">
             <p>
-              PARCEL est un outil web simple, ludique et gratuit, permettant
-              d’évaluer pour une commune ou un territoire donné les
+              PARCEL-Wallonieest un outil web simple, ludique et gratuit,
+              permettant d’évaluer pour une commune ou un territoire donné les
               <strong
                 >surfaces agricoles nécessaires pour se nourrir localement,
                 ainsi que les emplois agricoles et les impacts écologiques
@@ -123,7 +121,8 @@
             <p>
               Développé initialement en France par Terre de Liens, la Fédération
               Nationale de l’Agriculture Biologique (FNAB) et le BASIC, Parcel a
-              été adapté à la Wallonie par Sytra et Le Basic. PARCEL.Wal invite
+              été adapté à la Wallonie par Sytra et Le Basic. PARCEL-Wallonie
+              invite
               <strong
                 >les citoyens, les administrations et les représentants
                 politiques à se saisir des enjeux actuels de
@@ -154,11 +153,11 @@
       <div class="container">
         <div class="">
           <p>
-            PARCEL estime des ordres de grandeur mais ne prétend pas calculer
-            des valeurs réelles. Il a pour objectif de fournir des estimations
-            ayant un niveau de précision suffisant pour permettre des
-            comparaisons, susciter des questionnements et animer des débats sur
-            le thème de l’alimentation durable dans les territoires. Il est
+            PARCEL-Wallonieestime des ordres de grandeur mais ne prétend pas
+            calculer des valeurs réelles. Il a pour objectif de fournir des
+            estimations ayant un niveau de précision suffisant pour permettre
+            des comparaisons, susciter des questionnements et animer des débats
+            sur le thème de l’alimentation durable dans les territoires. Il est
             complémentaire de travaux d’analyse plus poussés qui visent à
             construire des scénarios prospectifs plus détaillés.
           </p>

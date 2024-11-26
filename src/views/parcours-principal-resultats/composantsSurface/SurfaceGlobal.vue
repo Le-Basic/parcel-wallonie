@@ -104,7 +104,7 @@
         <div class="text-map">
           <h3 class="">Surface totale du territoire</h3>
           <div
-            class="cadre-resultat resultat-ha animate__animated flipInX delay-05s bg-grey-light ml-0 mt-3"
+            class="cadre-resultat resultat-ha animate__animated flipInX delay-05s fond-gris-fonce ml-0 mt-3"
           >
             <div class="d-inline-flex align-items-center">
               <div
@@ -543,11 +543,15 @@ export default {
       return this.$store.state.resultatSimulation.potentielNourricier;
     },
     surfaces_actuelles() {
+      console.log(
+        "isnan number",
+        isNaN(this.$store.state.resultatSimulation.surfacesActuelles)
+      );
       return this.$store.state.resultatSimulation.surfacesActuelles;
     },
     max_potentiel_sau() {
       return Math.max(
-        this.data.sau_ha,
+        this.$store.state.resultatSimulation.surfacesActuelles,
         this.$store.state.resultatSimulation.surfaceAMobiliser
       );
     },

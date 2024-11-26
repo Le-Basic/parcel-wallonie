@@ -2,7 +2,7 @@
   <div>
     <div class="bloc-surface">
       <div class="intro"></div>
-      <h3 class="text-center">
+      <h3 class="intro">
         La vue paysage présente la répartition des surfaces agricoles selon les
         types de cultures et l'occupation du sol, par exemple, les hectares de
         céréales et de fourrages pour l’élevage sont ici séparés en céréales et
@@ -605,7 +605,7 @@
       <div>
         <InformationBox>
           <template #texte>
-            Les résultats proposés par PARCEL représentent des ordres de
+            Les résultats proposés par PARCEL-Walloniereprésentent des ordres de
             grandeur théoriques. Sur base des résultats obtenus, toute
             réallocation des surfaces doit être évaluée en tenant compte des
             spécificités agro-climatiques et socio-économiques de votre

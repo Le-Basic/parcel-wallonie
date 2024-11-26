@@ -33,10 +33,10 @@
         </li>
         <li>
           <strong
-            >Les produits pris en compte par PARCEL représentent environ 91% de
-            notre alimentation (en volume)</strong
+            >Les produits pris en compte par PARCEL-Walloniereprésentent environ
+            91% de notre alimentation (en volume)</strong
           >. Ce sont les produits recensés par la Statistique Agricole Annuelle
-          d’Agreste. PARCEL ne prend pas en compte :
+          d’Agreste. PARCEL-Walloniene prend pas en compte :
           <ul>
             ­
             <li>
@@ -60,26 +60,27 @@
     <template #pointsmethode>
       <ul>
         <li>
-          L’indicateur de surface de PARCEL correspond à la surface à mobiliser
-          au sein d’un territoire sur une année pour produire les matières
-          premières agricoles nécessaires à l’alimentation relocalisée d’une
-          population donnée.
+          L’indicateur de surface de PARCEL-Walloniecorrespond à la surface à
+          mobiliser au sein d’un territoire sur une année pour produire les
+          matières premières agricoles nécessaires à l’alimentation relocalisée
+          d’une population donnée.
         </li>
         <li>
           Pour calculer ces surfaces, en se basant sur les données de
-          consommation, PARCEL utilise un coefficient, appelé « rendement
-          corrigé de l’utilisation du territoire ». Les rendements agronomiques
-          ne peuvent pas être directement utilisés pour réaliser ces calculs car
-          ils sont rattachés à des produits particuliers (tomates par exemple)
-          et pourraient ainsi mener à des doubles comptages. En effet, les
-          surfaces mobilisées pour une production donnée (par exemple les
-          tomates de saison) peuvent être utilisées pendant le reste de l’année
-          pour d’autres productions (pois, salades…).
+          consommation, PARCEL-Wallonieutilise un coefficient, appelé «
+          rendement corrigé de l’utilisation du territoire ». Les rendements
+          agronomiques ne peuvent pas être directement utilisés pour réaliser
+          ces calculs car ils sont rattachés à des produits particuliers
+          (tomates par exemple) et pourraient ainsi mener à des doubles
+          comptages. En effet, les surfaces mobilisées pour une production
+          donnée (par exemple les tomates de saison) peuvent être utilisées
+          pendant le reste de l’année pour d’autres productions (pois,
+          salades…).
         </li>
         <li>
-          Pour éviter ce biais, PARCEL calcule le nombre total d’hectares
-          nécessaires en termes d’utilisation du territoire, ces hectares
-          pouvant être le support de différentes productions d’une même
+          Pour éviter ce biais, PARCEL-Walloniecalcule le nombre total
+          d’hectares nécessaires en termes d’utilisation du territoire, ces
+          hectares pouvant être le support de différentes productions d’une même
           catégorie (légumes, fruits, céréales…) selon les saisons (par exemple
           tomates, pois…).
         </li>

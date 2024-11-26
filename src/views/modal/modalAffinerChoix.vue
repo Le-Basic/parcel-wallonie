@@ -752,4 +752,8 @@ input:checked + .slider.viande {
   background: #f0f0f0;
   padding: 16px;
 }
+
+.tooltip-affiner {
+  z-index: 10 !important;
+}
 </style>

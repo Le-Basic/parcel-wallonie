@@ -29,6 +29,7 @@ import testMotion from "@/views/testMotion.vue";
 import TestCarte from "@/views/TestCarte.vue";
 import PageSeeyouSoon from "@/views/PageSeeyouSoon.vue";
 import PageFAQ from "@/views/PageFAQ.vue";
+import PageContact from "@/views/PageContact.vue";
 const routes = [
   {
     path: "/",
@@ -157,8 +158,13 @@ const routes = [
   },
   {
     path: "/faq",
-    name: "Test grille",
+    name: "Page FAQ",
     component: PageFAQ,
+  },
+  {
+    path: "/contact",
+    name: "Nous contacter",
+    component: PageContact,
   },
 ];
 

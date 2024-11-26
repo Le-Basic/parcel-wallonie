@@ -43,7 +43,8 @@
                   <div class="puce-text">
                     <div class="title">J’écris à mon élu.e local</div>
                     pour l’inciter à relocaliser l’alimentation et soutenir le
-                    développement de la bio sur mon territoire.
+                    développement de l'agriculture biologique sur mon
+                    territoire.
                     <a
                       href="../assets/pdf/modele-courrier-elu-e.odt"
                       target="_blank"
@@ -104,14 +105,7 @@
                     6
                   </div>
                   <div class="puce-text">
-                    <div class="title">
-                      <a
-                        href="https://www.produire-bio.fr/contact-en-region/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >Je veux en savoir plus sur l’/le:
-                      </a>
-                    </div>
+                    <div class="title">Je veux en savoir plus sur l’/le:</div>
                     <ul>
                       <a href="https://www.biowallonie.com/"
                         ><li>Agriculture biologique – Biowallonie</li></a
@@ -142,8 +136,8 @@
                   <div class="puce-text">
                     <div class="title">
                       <a href="#" onclick="partage();"
-                        >Je partage mes résultats de PARCEL sur les réseaux
-                        sociaux</a
+                        >Je partage mes résultats de PARCEL-Walloniesur les
+                        réseaux sociaux</a
                       >
                     </div>
                     <div class="mt-5">
@@ -303,7 +297,7 @@
                       <a
                         href="javascript:location='mailto:\u0070\u0061\u0072\u0063\u0065\u006c\u0040\u0074\u0065\u0072\u0072\u0065\u0064\u0065\u006c\u0069\u0065\u006e\u0073\u002e\u006f\u0072\u0067\u0020\u0020\u0020';void 0"
                         class="url-simple"
-                        >J'utilise PARCEL pour:</a
+                        >J'utilise PARCEL-Walloniepour:</a
                       >
                     </div>
 
@@ -424,7 +418,7 @@
                   <div class="puce-text">
                     <div class="title">
                       <a
-                        href="https://www.produire-bio.fr/contact-en-region/"
+                        href="https://www.biowallonie.com/"
                         target="_blank"
                         rel="noopener noreferrer"
                         >Je veux en savoir plus sur l’/le:
@@ -459,37 +453,36 @@
                   </div>
                   <div class="puce-text">
                     <a
-                      href="Biowallonie"
+                      href="https://www.biowallonie.com/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <div class="title">Je contacte Biowallonie pour:</div>
-                      <ul>
-                        <li>
-                          Mieux connaître le contexte agricole de mon territoire
-                        </li>
-                        <li>Participer au développement de filières bio</li>
-                        <li>
-                          Favoriser les conversions en bio sur mon territoire
-                        </li>
-                        <li>
-                          Favoriser les conversions en bio sur mon territoire
-                        </li>
-                        <li>
-                          Sécuriser les transmissions d’exploitations bio pour
-                          que les terres bio restent bio
-                        </li>
-                        <li>
-                          Faciliter techniquement l’installation de porteurs de
-                          projets agricoles
-                        </li>
-                        <li>
-                          Faciliter l’accès de tous aux produits bio et locaux
-                          sur mon territoire, notamment en restauration
-                          collective
-                        </li>
-                      </ul></a
-                    >
+                    </a>
+                    <ul>
+                      <li>
+                        Mieux connaître le contexte agricole de mon territoire
+                      </li>
+                      <li>Participer au développement de filières bio</li>
+                      <li>
+                        Favoriser les conversions en bio sur mon territoire
+                      </li>
+                      <li>
+                        Favoriser les conversions en bio sur mon territoire
+                      </li>
+                      <li>
+                        Sécuriser les transmissions d’exploitations bio pour que
+                        les terres bio restent bio
+                      </li>
+                      <li>
+                        Faciliter techniquement l’installation de porteurs de
+                        projets agricoles
+                      </li>
+                      <li>
+                        Faciliter l’accès de tous aux produits bio et locaux sur
+                        mon territoire, notamment en restauration collective
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -522,35 +515,19 @@
                   <div class="puce-text">
                     <div class="title">J’écris à mon élu.e local</div>
                     pour l’inciter à relocaliser l’alimentation et soutenir le
-                    développement de la bio sur mon territoire.
+                    développement de l'agriculture biologique sur mon
+                    territoire.
                     <br />
                     <br />
                     <ul>
                       <li>
                         <a
-                          href="https://www.data.gouv.fr/fr/reuses/adresses-mairies-fr/"
+                          href="https://www.uvcw.be/fiches-locales/"
                           target="_blank"
                           rel="noopener noreferrer"
                           class="url-simple"
-                          >1. Retrouver les contacts de vos Communes
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://www.nosdeputes.fr/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="url-simple"
-                          >2. Retrouver les contacts de vos élus locaux
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://www.voxpublic.org/-Annuaires-partages-.html"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="url-simple"
-                          >3. Retrouver les contacts d’autres décideurs
+                          >1. Retrouver les contacts de vos communes et élu.e.s
+                          locaux
                         </a>
                       </li>
                     </ul>
@@ -639,10 +616,8 @@
                   </div>
                   <div class="puce-text">
                     <div class="title">
-                      <a href="#"
-                        >Je contacte les initiatives de transition pour vérifier
-                        ce qui existe dans mon territoire :</a
-                      >
+                      Je contacte les initiatives de transition pour vérifier ce
+                      qui existe dans mon territoire :
                     </div>
                     <ul>
                       <a href="https://www.mangerdemain.be/">
@@ -710,35 +685,17 @@
                   <div class="puce-text">
                     <div class="title">
                       <a
-                        href="https://www.produire-bio.fr/contact-en-region/"
+                        href="https://www.biowallonie.com/"
                         target="_blank"
                         rel="noopener noreferrer"
                         >Je contacte Biowallonie</a
                       >
                     </div>
                     <ul>
+                      <li>Développer des gammes de produits bio et locales</li>
                       <li>
-                        <a
-                          href="javascript:location='mailto:\u0070\u0061\u0072\u0063\u0065\u006c\u0040\u0066\u006e\u0061\u0062\u002e\u006f\u0072\u0067';void 0"
-                          class="url-simple"
-                          >Développer des gammes de produits bio et locales</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="http://www.repasbio.org"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="url-simple"
-                          >Faire évoluer l’alimentation de mon entreprise vers
-                          plus de bio et local</a
-                        >
-                        <a
-                          href="javascript:location='mailto:\u006a\u0072\u0065\u006e\u0061\u0072\u0064\u0040\u0066\u006e\u0061\u0062\u002e\u006f\u0072\u0067';void 0"
-                          class="url-simple"
-                        >
-                          Lien vers le contact national</a
-                        >
+                        Faire évoluer l’alimentation de mon entreprise vers plus
+                        de bio et local
                       </li>
                     </ul>
                   </div>
@@ -754,7 +711,7 @@
                   <div class="puce-text">
                     <div class="title">
                       <a
-                        href="https://terredeliens.org/-entreprises-.html"
+                        href="https://terre-en-vue.be/"
                         target="_blank"
                         rel="noopener noreferrer"
                         >Je contacte Terre en vue pour
@@ -774,10 +731,8 @@
                   </div>
                   <div class="puce-text">
                     <div class="title">
-                      <a href="#"
-                        >Je contacte les initiatives de transition pour vérifier
-                        ce qui existe dans mon territoire :</a
-                      >
+                      >Je contacte les initiatives de transition pour vérifier
+                      ce qui existe dans mon territoire :
                     </div>
                     <ul>
                       <a href="https://www.mangerdemain.be/">
@@ -811,20 +766,7 @@
               </div>
             </div>
           </div>
-          <div class="accordeon-agir mx-auto" id="export">
-            <div class="alert alert-success mb-5 text-center w-100">
-              <button class="btn btn-principal btn-export m-1" onclick="save()">
-                Export des données (Excel)
-              </button>
-              <a
-                id="export_pdf"
-                target="_blank"
-                href="/pdf.php"
-                class="d-none btn btn-principal btn-export m-1"
-                >Export de la brochure (PDF)</a
-              >
-            </div>
-          </div>
+
           <!--button class="btn btn-principal" onclick="savepdf()">Export PDF</button>
           <button class="btn btn-principal" onclick="savepdf2()">Export PDF 2</button-->
           <!--button class="btn btn-principal" onclick="savepdf3()">Export PDF 3</button-->
@@ -896,5 +838,15 @@ export default {
   display: block !important;
   padding: 0px !important;
   opacity: 1 !important;
+}
+
+a {
+  color: var(--bleu);
+  text-decoration: underline;
+}
+
+a:hover {
+  color: var(--vert);
+  text-decoration: underline;
 }
 </style>

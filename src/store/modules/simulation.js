@@ -58,7 +58,6 @@ export default {
             .part_bio * 100
         ),
       };
-      console.log("partBio", partBio);
       commit("mutationChangeParameters", {
         listeTerritoires: listeTerritoires,
         partBioLegumes: partBio.legumes,
@@ -67,6 +66,7 @@ export default {
         partBioViande: partBio.viande,
       });
     },
+
     async actionChangeParameters(
       { commit },
       {

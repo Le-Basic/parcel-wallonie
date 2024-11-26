@@ -218,7 +218,7 @@
                                 class="texte-data texte-gauche vert-clair"
                                 v-html="impact.titreSimulation"
                               ></p>
-                              {{ impact.sousTitreSimulation }}
+                              <p v-html="impact.sousTitreSimulation"></p>
                             </span>
                             <span class="impact-result texte-gauche" v-else
                               ><p class="texte-data texte-gauche">
@@ -417,7 +417,7 @@ const CATEGORIES_IMPACT = computed(() => {
             ) + '<span class="texte-unite">%</span>',
           sousTitreSimulation: `soit une différence de ${AfficherEntier(
             donneesImpacts?.value.ges.differenceSimulationReference / 1000
-          )} de tonnes CO2e par rapport aux habitudes alimentaiers actuelles`,
+          )} tonnes CO<sub>2</sub>e par rapport aux habitudes alimentaiers actuelles`,
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsGes",
           dossierModal: "modalImpacts",
@@ -447,7 +447,7 @@ const CATEGORIES_IMPACT = computed(() => {
                 .differenceSimulationReferencePct
             ) + '<span class="texte-unite">%</span>',
           sousTitreSimulation:
-            "Les espèces de pollinisateurs, papillons, vers de terre et gastéropodes sont" +
+            "Les espèces de pollinisateurs, papillons, vers de terre et gastéropodes sont " +
             AfficherEntier(
               donneesImpacts?.value.abondances_especes
                 .differenceSimulationReferencePct

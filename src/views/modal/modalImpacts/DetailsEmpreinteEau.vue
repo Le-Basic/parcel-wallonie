@@ -13,7 +13,7 @@
         </div>
         <ul>
           <li>
-            PARCEL ne calcule pas les effets d’un passage au bio sur la
+            PARCEL-Walloniene calcule pas les effets d’un passage au bio sur la
             consommation en eau, par manque de données consolidées.
           </li>
         </ul>

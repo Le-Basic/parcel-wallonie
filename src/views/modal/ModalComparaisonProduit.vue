@@ -73,6 +73,7 @@
         <RepartitionSurface
           :serieDonnees="repartitionSurfaceActuelles()"
           width="200px"
+          hideLabels
         />
       </div>
       <div
@@ -218,10 +219,10 @@ const tableauProduitsProspectif = [
     partSurfaces: "part_surface_a_mobiliser",
   },
   {
-    libelle: "Elevage",
+    libelle: CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle_affichage,
     classeCouleur: "viande",
     couleur: CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.couleur,
-    icon: "icon-ico_CATEGORIES_fruits ico-medium viande",
+    icon: "icon-ico_CATEGORIES_viande ico-medium viande",
     fonctionTrouverChiffre: (chiffre) =>
       trouverChiffre(
         store.state.resultatSimulation.surfacesEmploisAMobiliser,
@@ -233,7 +234,7 @@ const tableauProduitsProspectif = [
     partSurfaces: "part_surface_a_mobiliser",
   },
   {
-    libelle: "Céréales",
+    libelle: "Céréales et grandes cultures (hors alimentation animale)",
     classeCouleur: "cereales",
     couleur: CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.couleur,
     icon: "icon-ico_CATEGORIES_cereales ico-medium cereales",
@@ -283,7 +284,7 @@ const tableauProduitsActuel = [
     nomModale: "detailsLegumes",
   },
   {
-    libelle: "Elevage",
+    libelle: CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE.libelle_affichage,
     classeCouleur: "viande",
     couleur: CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE.couleur,
     icon: "icon-ico_CATEGORIES_viande ico-medium viande",
@@ -299,10 +300,10 @@ const tableauProduitsActuel = [
     nomModale: "detailsLegumes",
   },
   {
-    libelle: CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES.libelle,
+    libelle: CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES.libelle_affichage,
     classeCouleur: "cereales",
     couleur: CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES.couleur,
-    icon: "icon-ico_CATEGORIES_legumes ico-medium cereales",
+    icon: "icon-ico_CATEGORIES_cereales ico-medium cereales",
     fonctionTrouverChiffre: (chiffre) =>
       trouverChiffre(
         store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
@@ -318,7 +319,7 @@ const tableauProduitsActuel = [
     libelle: CATEGORIE_PRODUITS_SURFACES_ACTUELLES.JACHERES.libelle,
     classeCouleur: "legumes",
     couleur: CATEGORIE_PRODUITS_SURFACES_ACTUELLES.JACHERES.couleur,
-    icon: "icon-ico_CATEGORIES_legumes ico-medium legumes",
+    icon: "icon-jachere ico-medium legumes",
     fonctionTrouverChiffre: (chiffre) =>
       trouverChiffre(
         store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
@@ -334,7 +335,7 @@ const tableauProduitsActuel = [
     libelle: CATEGORIE_PRODUITS_SURFACES_ACTUELLES.INDUSTRIE.libelle,
     classeCouleur: "autreindus",
     couleur: CATEGORIE_PRODUITS_SURFACES_ACTUELLES.INDUSTRIE.couleur,
-    icon: "icon-ico_CATEGORIES_legumes ico-medium autreindus",
+    icon: "icon-autres-cultures ico-medium autreindus",
     fonctionTrouverChiffre: (chiffre) =>
       trouverChiffre(
         store.state.resultatSimulation.surfacesActuellesParcelNiveau1,

@@ -13,8 +13,8 @@
         </div>
         <ul>
           <li>
-            • PARCEL ne calcule pas les effets d’un passage au bio sur la
-            déforestation importée, faute de données consolidées disponibles.
+            • PARCEL-Walloniene calcule pas les effets d’un passage au bio sur
+            la déforestation importée, faute de données consolidées disponibles.
           </li>
         </ul>
         <div class="d-flex align-items-center">
@@ -31,9 +31,9 @@
             ce risque.
           </li>
           <li>
-            PARCEL ne rend pas compte des spécificités de certaines fermes
-            d’élevage, plus herbagères et plus autonomes par exemple, et dont le
-            fonctionnement va de pair avec une réduction forte, voir une
+            PARCEL-Walloniene rend pas compte des spécificités de certaines
+            fermes d’élevage, plus herbagères et plus autonomes par exemple, et
+            dont le fonctionnement va de pair avec une réduction forte, voir une
             annulation, du risque de déforestation importée.
           </li>
         </ul>

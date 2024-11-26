@@ -42,8 +42,8 @@
       </div>
 
       <p>
-        Un certain nombre d'outils sont disponibles sur PARCEL pour répondre à
-        diverses interrogations. Tout d'abord la
+        Un certain nombre d'outils sont disponibles sur PARCEL-Walloniepour
+        répondre à diverses interrogations. Tout d'abord la
         <a
           href="https://bck.parcel-app.org/storage/app/uploads/public/633/407/dd3/633407dd356ea638253814.pdf"
           target="_blank"
@@ -52,11 +52,11 @@
         >
       </p>
       <p>
-        Pour chaque résultat de sa simulation, PARCEL fournit des informations
-        supplémentaires (sur la méthode, le domaine de validité, etc.) afin
-        d'aider l'utilisateur à mieux comprendre ces résultats. Ces informations
-        supplémentaires sont accessibles en cliquant sur les chevrons à côté des
-        résultats.
+        Pour chaque résultat de sa simulation, PARCEL-Walloniefournit des
+        informations supplémentaires (sur la méthode, le domaine de validité,
+        etc.) afin d'aider l'utilisateur à mieux comprendre ces résultats. Ces
+        informations supplémentaires sont accessibles en cliquant sur les
+        chevrons à côté des résultats.
       </p>
       <p>
         Pour les surfaces, c'est en cliquant sur ce chevron qu'on accède au
