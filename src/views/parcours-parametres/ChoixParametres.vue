@@ -80,9 +80,10 @@
                         ><span class="text-bold legumes">%</span></output
                       >
                     </div>
-
+                    {{ partbio }}
                     <VueSlider
                       v-model="partbio"
+                      ref="partBioSlider"
                       :process-style="{ backgroundColor: '#BDC660' }"
                       :tooltip="'none'"
                       :height="10"
@@ -388,6 +389,7 @@ export default {
         "partbiocereales",
         "actionModifierPartBioCereales"
       );
+      this.$refs.partBioSlider.setIndex(50);
     },
     partpertes: function (val) {
       let reductionGaspillage = Math.round((1 - val / 18) * 100);

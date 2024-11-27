@@ -16,7 +16,7 @@
         </div>
         <div class="ss-titre-page vert-fonce text-left">
           <p>
-            PARCEL-Wallonieestime des ordres de grandeur mais ne prétend pas
+            PARCEL-Wallonie estime des ordres de grandeur mais ne prétend pas
             calculer des valeurs réelles. Il a pour objectif de fournir des
             estimations ayant un niveau de précision suffisant pour permettre
             des comparaisons, susciter des questionnements et animer des débats

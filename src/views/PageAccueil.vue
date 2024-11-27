@@ -107,7 +107,7 @@
         <div class="d-flex flex-wrap">
           <div class="two-cols">
             <p>
-              PARCEL-Wallonieest un outil web simple, ludique et gratuit,
+              PARCEL-Wallonie est un outil web simple, ludique et gratuit,
               permettant d’évaluer pour une commune ou un territoire donné les
               <strong
                 >surfaces agricoles nécessaires pour se nourrir localement,
@@ -153,7 +153,7 @@
       <div class="container">
         <div class="">
           <p>
-            PARCEL-Wallonieestime des ordres de grandeur mais ne prétend pas
+            PARCEL-Wallonie estime des ordres de grandeur mais ne prétend pas
             calculer des valeurs réelles. Il a pour objectif de fournir des
             estimations ayant un niveau de précision suffisant pour permettre
             des comparaisons, susciter des questionnements et animer des débats

@@ -5,7 +5,7 @@
       <h1>Nous contacter</h1>
       <h2>
         Une bug, une question, une requête ou bien une félicitation! N'hésitez
-        pas à nous contacter à l'adresse suivante: contact@parcel-wallonie.fr
+        pas à nous contacter à l'adresse suivante: contact@parcel-wallonie.be
       </h2>
     </div>
     <a href="contact@parcel-app.org"

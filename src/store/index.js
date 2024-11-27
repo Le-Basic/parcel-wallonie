@@ -94,10 +94,6 @@ const getDefaultState = () => {
         nb_couverts: 0,
       },
       {
-        id: INSTITUTIONS_IDS.LYCEES,
-        nb_couverts: 0,
-      },
-      {
         id: INSTITUTIONS_IDS.UNIVERSITES,
         nb_couverts: 0,
       },

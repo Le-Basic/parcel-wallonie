@@ -42,7 +42,7 @@
       </div>
 
       <p>
-        Un certain nombre d'outils sont disponibles sur PARCEL-Walloniepour
+        Un certain nombre d'outils sont disponibles sur PARCEL-Wallonie pour
         répondre à diverses interrogations. Tout d'abord la
         <a
           href="https://bck.parcel-app.org/storage/app/uploads/public/633/407/dd3/633407dd356ea638253814.pdf"
@@ -52,7 +52,7 @@
         >
       </p>
       <p>
-        Pour chaque résultat de sa simulation, PARCEL-Walloniefournit des
+        Pour chaque résultat de sa simulation, PARCEL-Wallonie fournit des
         informations supplémentaires (sur la méthode, le domaine de validité,
         etc.) afin d'aider l'utilisateur à mieux comprendre ces résultats. Ces
         informations supplémentaires sont accessibles en cliquant sur les
@@ -65,7 +65,7 @@
       <p>
         Si toutefois vous ne trouvez pas la réponse à votre question, vous
         pouvez nous écrire à l'adresse email suivante :
-        <span class="font-weight-bold">contact@parcel-app.org</span>
+        <span class="font-weight-bold">contact@parcel-wallonie.be</span>
       </p>
     </div>
   </div>

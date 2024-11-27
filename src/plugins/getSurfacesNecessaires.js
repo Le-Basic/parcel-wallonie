@@ -186,8 +186,9 @@ export async function fetchSurfaceNecessaireInstitutions(
 
   const bodyFormData = new FormData();
   bodyFormData.append("pctDiffRegimePersonnalise", pctDiffRegimePersonnalise);
+  bodyFormData.append("id_menu", idRegimeAlimentaire);
   const response = await axios.post(
-    `${url}`,
+    `${url}?id_menu=${idRegimeAlimentaire}`,
 
     {
       Institutions: nbCouvertsParInstitution,
