@@ -80,23 +80,15 @@
                         ><span class="text-bold legumes">%</span></output
                       >
                     </div>
-                    {{ partbio }}
-                    <VueSlider
-                      v-model="partbio"
-                      ref="partBioSlider"
-                      :process-style="{ backgroundColor: '#BDC660' }"
-                      :tooltip="'none'"
-                      :height="10"
-                      :dot-size="20"
-                    >
-                      <template v-slot:dot>
-                        <div :class="['custom-dot']"></div>
-                      </template>
-                    </VueSlider>
-                    <div class="range-values">
-                      <span class="range-min">0</span
-                      ><span class="range-max">100</span>
-                    </div>
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      step="1.000"
+                      v-model="this.partbio"
+                      id="partbio"
+                      class="slider-range"
+                    />
                   </div>
                 </div>
                 <div class="note">
@@ -359,7 +351,7 @@ export default {
   },
   computed: {
     partbioText() {
-      return this.partbio;
+      return this.$store.state.part_bio;
     },
     partpertesText() {
       return this.partpertes;
@@ -367,6 +359,11 @@ export default {
   },
   watch: {
     partbio: function (partBioValeur) {
+      setTimeout(() => {
+        if (partBioValeur < this.$store.state.partBioMin) {
+          this.partbio = this.$store.state.partBioMin; // Reset to threshold
+        }
+      }, 500);
       console.log("partbio", partBioValeur);
       this.$store.commit("partBio", partBioValeur);
       calculerPartBio(
@@ -389,7 +386,6 @@ export default {
         "partbiocereales",
         "actionModifierPartBioCereales"
       );
-      this.$refs.partBioSlider.setIndex(50);
     },
     partpertes: function (val) {
       let reductionGaspillage = Math.round((1 - val / 18) * 100);
