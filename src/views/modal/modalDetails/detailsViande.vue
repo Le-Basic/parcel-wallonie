@@ -55,19 +55,19 @@
           Au sein des systèmes d’élevage, une partie de l’alimentation provient
           d’importations, particulièrement de tourteaux de soja. Les surfaces
           correspondant à la part de l’alimentation qui est importée
-          apparaissent dans le niveau de détails par produits.
-          PARCEL-Wallonieutilise les références de production de la statistique
-          agricole annuelle et ne modifie pas le fonctionnement technique des
-          systèmes qui y sont décrits. Ainsi, PARCEL-Walloniene relocalise pas
-          la part de l’alimentation des animaux qui est actuellement importée,
-          (ce qui pourrait être proposé dans une version ultérieure).
+          apparaissent dans le niveau de détails par produits. PARCEL-Wallonie
+          utilise les références de production de la statistique agricole
+          annuelle et ne modifie pas le fonctionnement technique des systèmes
+          qui y sont décrits. Ainsi, PARCEL-Wallonie ne relocalise pas la part
+          de l’alimentation des animaux qui est actuellement importée, (ce qui
+          pourrait être proposé dans une version ultérieure).
         </li>
         <li>
           <strong
-            >Les produits pris en compte par PARCEL-Walloniereprésentent environ
-            91% de notre alimentation (en volume)</strong
+            >Les produits pris en compte par PARCEL-Wallonie représentent
+            environ 91% de notre alimentation (en volume)</strong
           >. Ce sont les produits recensés par la Statistique Agricole Annuelle
-          d’Agreste. PARCEL-Walloniene prend pas en compte : ­
+          d’Agreste. PARCEL-Wallonie ne prend pas en compte : ­
           <ul>
             <li>
               Les produits qui ne possèdent pas de potentiel de production en
@@ -98,7 +98,7 @@
         </li>
         <li>
           Pour calculer ces surfaces, en se basant sur les données de
-          consommation, PARCEL-Wallonieutilise un coefficient, appelé «
+          consommation, PARCEL-Wallonie utilise un coefficient, appelé «
           rendement corrigé de l’utilisation du territoire ». Les rendements
           agronomiques ne peuvent pas être directement utilisés pour réaliser
           ces calculs car ils sont rattachés à des produits particuliers
@@ -109,7 +109,7 @@
           salades…).
         </li>
         <li>
-          Pour éviter ce biais, PARCEL-Walloniecalcule le nombre total
+          Pour éviter ce biais, PARCEL-Wallonie calcule le nombre total
           d’hectares nécessaires en termes d’utilisation du territoire, ces
           hectares pouvant être le support de différentes productions d’une même
           catégorie (légumes, fruits, céréales…) selon les saisons (par exemple

@@ -55,9 +55,13 @@
                     <br />
                     <br />
                     <ul>
-                      <li>1. Retrouver les contacts de vos mairies</li>
-                      <li>2. Retrouver les contacts de vos élus locaux</li>
-                      <li>3. Retrouver les contacts d’autres décideurs</li>
+                      <li>
+                        <a
+                          href="https://www.uvcw.be/fiches-locales/"
+                          target="_blank"
+                          >Retrouver les contacts de vos élus locaux</a
+                        >
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -136,7 +140,7 @@
                   <div class="puce-text">
                     <div class="title">
                       <a href="#" onclick="partage();"
-                        >Je partage mes résultats de PARCEL-Walloniesur les
+                        >Je partage mes résultats de PARCEL-Wallonie sur les
                         réseaux sociaux</a
                       >
                     </div>
@@ -254,7 +258,7 @@
                     </div>
                     <ul>
                       <li>SYTRA (contact@sytra.be)</li>
-                      <li>Le Basic (parcel@lebasic.com)</li>
+                      <li>Le Basic (contact@parcel-wallonie.be)</li>
                     </ul>
                   </div>
                 </div>
@@ -325,7 +329,7 @@
                     2
                   </div>
                   <div class="puce-text">
-                    <div class="title">Je contacte Terre en vue pour:</div>
+                    <div class="title">Je contacte Terre-en-vue pour:</div>
                     <ul>
                       <li>
                         Pour connaître la situation foncière de mon territoire
@@ -398,9 +402,9 @@
                     <a href="https://sytra.be/fr/"
                       ><div class="title">Je contacte SYTRA pour :</div>
                       <ul>
-                        <li>• Le développement de scénarios de transition ;</li>
+                        <li>Le développement de scénarios de transition ;</li>
                         <li>
-                          • Avoir une compréhension des filières et de leurs
+                          Avoir une compréhension des filières et de leurs
                           impacts sur mon territoire ;
                         </li>
                       </ul>
@@ -572,7 +576,7 @@
                   <div class="puce-text">
                     <div class="title">
                       <a href="https://terre-en-vue.be/"
-                        >Je contacte Terre en vue pour:</a
+                        >Je contacte Terre-en-vue pour:</a
                       >
                     </div>
                     <a
@@ -714,7 +718,7 @@
                         href="https://terre-en-vue.be/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >Je contacte Terre en vue pour
+                        >Je contacte Terre-en-vue pour
                       </a>
                     </div>
                     engager mon entreprise aux côtés d’un mouvement citoyen pour
@@ -731,8 +735,8 @@
                   </div>
                   <div class="puce-text">
                     <div class="title">
-                      >Je contacte les initiatives de transition pour vérifier
-                      ce qui existe dans mon territoire :
+                      Je contacte les initiatives de transition pour vérifier ce
+                      qui existe dans mon territoire :
                     </div>
                     <ul>
                       <a href="https://www.mangerdemain.be/">

@@ -11,7 +11,6 @@ export const CATEGORIE_PRODUITS_ACTUELS_PAYSAGE = {
     image: "/assets/img/icons/cat/ico_CATEGORIES_viande.svg",
     classeIcone: "icon-fourragere",
     couleur: "#F1CF98",
-    sau_ha: 119154.99000000002,
     classeCouleur: "fourrage",
     libelleLong: "Cultures Fourragères",
   },
@@ -20,7 +19,6 @@ export const CATEGORIE_PRODUITS_ACTUELS_PAYSAGE = {
     image: "/assets/img/icons/cat/ico_CATEGORIES_legumes.svg",
     classeIcone: "icon-legumineuses",
     couleur: "#FDD084",
-    sau_ha: 9297.080000000004,
     classeCouleur: "legumineuse",
     libelleLong: "Légumineuses",
   },
@@ -29,7 +27,6 @@ export const CATEGORIE_PRODUITS_ACTUELS_PAYSAGE = {
     image: "/assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
     classeIcone: "icon-oleagineux",
     couleur: "#FBCDC2",
-    sau_ha: 187335.43,
     classeCouleur: "oleagineux",
     libelleLong: "Céréales, Oléagineux, protéagineux",
   },
@@ -38,7 +35,6 @@ export const CATEGORIE_PRODUITS_ACTUELS_PAYSAGE = {
     image: "/assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
     classeIcone: "icon-cereales2",
     couleur: "#9CE6FA",
-    sau_ha: 84802.09999999995,
     libelleLong:
       "Cultures industrielles alimentaires (pomme de terre, betterave à sucre…)",
     classeCouleur: "pdt",
@@ -64,7 +60,7 @@ export const CATEGORIE_PRODUITS_ACTUELS_PAYSAGE = {
   JACHERES: {
     libelle: "Jachères",
     image: "/assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
-    classeIcone: "icon-ico_CATEGORIES_fruits",
+    classeIcone: "icon-jachere",
     couleur: "#9CC347",
     sau_ha: 8756.239999999996,
     libelleLong: "Jachères",
@@ -82,7 +78,6 @@ export const CATEGORIE_PRODUITS_ACTUELS_PAYSAGE = {
   AUTRES: {
     libelle: "Autres",
     image: "/assets/img/icons/cat/ico_CATEGORIES_cereales.svg",
-    classeIcone: "icon-ico_CATEGORIES_fruits",
     couleur: "#62D5F3",
     sau_ha: 5.08,
     libelleLong: "Autres",

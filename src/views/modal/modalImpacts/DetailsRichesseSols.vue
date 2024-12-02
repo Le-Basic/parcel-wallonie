@@ -38,10 +38,7 @@
         </ul>
         <div class="d-flex align-items-center">
           <span class="icon-gaspillage icon viande icon-medium"></span>
-          <strong
-            >Les effets d’une réduction d'une réduction des pertes et
-            gaspillages</strong
-          >
+          <strong>Les effets d'une réduction des pertes et gaspillages</strong>
         </div>
         <ul>
           <li>

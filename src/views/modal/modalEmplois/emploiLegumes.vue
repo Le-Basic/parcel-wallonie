@@ -146,11 +146,11 @@
 
                     <li>
                       <strong
-                        >Les produits pris en compte par
-                        PARCEL-Walloniereprésentent environ 91% de notre
-                        alimentation (en volume)</strong
+                        >Les produits pris en compte par PARCEL-Wallonie
+                        représentent environ 91% de notre alimentation (en
+                        volume)</strong
                       >. Ce sont les produits recensés par la Statistique
-                      Agricole Annuelle d’Agreste. PARCEL-Walloniene prend pas
+                      Agricole Annuelle d’Agreste. PARCEL-Wallonie ne prend pas
                       en compte :
                       <ul>
                         <li>

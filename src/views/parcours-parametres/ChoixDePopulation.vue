@@ -51,9 +51,9 @@
           </div>
           <div class="text-center note animated fadeInUp delay-2s">
             <em
-              >*En fonction du choix de population, PARCEL-Walloniedétermine les
-              consommations alimentaires qui varient en fonction de l'âge et du
-              sexe</em
+              >*En fonction du choix de population, PARCEL-Wallonie détermine
+              les consommations alimentaires qui varient en fonction de l'âge et
+              du sexe</em
             >
           </div>
         </div>

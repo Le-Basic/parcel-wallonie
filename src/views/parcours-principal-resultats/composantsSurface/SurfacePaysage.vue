@@ -344,10 +344,7 @@
             min-height: 550px;
           "
         >
-          <RepartitionSurface
-            :serieDonnees="repartitionSurfacesActuelles"
-            couleurLabels="black"
-          />
+          <RepartitionSurface :serieDonnees="repartitionSurfacesActuelles" />
         </div>
         <div class="wrap-viz4 resultats-categories repartition">
           <table
@@ -605,8 +602,8 @@
       <div>
         <InformationBox>
           <template #texte>
-            Les résultats proposés par PARCEL-Walloniereprésentent des ordres de
-            grandeur théoriques. Sur base des résultats obtenus, toute
+            Les résultats proposés par PARCEL-Wallonie représentent des ordres
+            de grandeur théoriques. Sur base des résultats obtenus, toute
             réallocation des surfaces doit être évaluée en tenant compte des
             spécificités agro-climatiques et socio-économiques de votre
             territoire.
@@ -725,7 +722,7 @@ export default {
           "libelle_parcel_paysage_actuel"
         );
         let donnePourGraphique = {
-          value: value.part_surface_a_mobiliser,
+          value: value.part_surface_a_mobiliser * 100,
           name: value.libelle,
           itemStyle: {
             color: value.couleur ? value.couleur : "red",

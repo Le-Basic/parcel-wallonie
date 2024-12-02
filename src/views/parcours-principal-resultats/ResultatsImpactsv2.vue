@@ -417,7 +417,7 @@ const CATEGORIES_IMPACT = computed(() => {
             ) + '<span class="texte-unite">%</span>',
           sousTitreSimulation: `soit une différence de ${AfficherEntier(
             donneesImpacts?.value.ges.differenceSimulationReference / 1000
-          )} tonnes CO<sub>2</sub>e par rapport aux habitudes alimentaiers actuelles`,
+          )} tonnes CO<sub>2</sub>e par rapport aux habitudes alimentaires actuelles`,
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsGes",
           dossierModal: "modalImpacts",

@@ -937,8 +937,8 @@
       <div>
         <InformationBox>
           <template #texte>
-            Les résultats proposés par PARCEL-Walloniereprésentent des ordres de
-            grandeur théoriques. Sur base des résultats obtenus, toute
+            Les résultats proposés par PARCEL-Wallonie représentent des ordres
+            de grandeur théoriques. Sur base des résultats obtenus, toute
             réallocation des surfaces doit être évaluée en tenant compte des
             spécificités agro-climatiques et socio-économiques de votre
             territoire.
