@@ -5,7 +5,7 @@
 
       <div class="section centrervh" id="section0">
         <h1 class="animated fadeInUp">Choisissez la zone géographique</h1>
-        <BarreRecherche />
+        <BarreRecherche buttonRoute="/2-choix-du-type-dalimentation" />
       </div>
     </div>
     <nav id="asy-sidebar" class="">

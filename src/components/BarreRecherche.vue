@@ -64,7 +64,7 @@
     </p>
     <div class="mt-5"></div>
     <div class="div-continuer">
-      <router-link to="/choix-du-parcours" id="suite">
+      <router-link :to="props.buttonRoute" id="suite">
         <button type="button" class="btn btn-principal mt-5">Continuer</button>
       </router-link>
     </div>
@@ -75,6 +75,13 @@
 import { useStore } from "vuex";
 import { ref, watch } from "vue";
 import axios from "axios";
+
+const props = defineProps({
+  buttonRoute: {
+    type: String,
+    default: "/choix-du-parcours",
+  },
+});
 const store = useStore();
 
 const rechercheInput = ref("");

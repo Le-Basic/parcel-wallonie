@@ -5,7 +5,6 @@
 
       <div class="section centrervh" id="section0">
         <div class="container">
-          <pre>{{ this.$store.state }}</pre>
           <h1 class="animated fadeInUp">Choisissez le type d'alimentation</h1>
           <div class="row choix-alim">
             <div class="col-md-6 col-12 bloc-2col animated fadeIn delay-05s">
