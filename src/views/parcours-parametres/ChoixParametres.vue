@@ -359,33 +359,53 @@ export default {
   },
   watch: {
     partbio: function (partBioValeur) {
-      setTimeout(() => {
-        if (partBioValeur < this.$store.state.partBioMin) {
+      if (partBioValeur <= this.$store.state.partBioMin) {
+        setTimeout(() => {
           this.partbio = this.$store.state.partBioMin; // Reset to threshold
-        }
-      }, 500);
-      console.log("partbio", partBioValeur);
-      this.$store.commit("partBio", partBioValeur);
-      calculerPartBio(
-        partBioValeur,
-        "partbiolegumes",
-        "actionModifierPartBioLegumes"
-      );
-      calculerPartBio(
-        partBioValeur,
-        "partbiofruits",
-        "actionModifierPartBioFruits"
-      );
-      calculerPartBio(
-        partBioValeur,
-        "partbioelevage",
-        "actionModifierPartBioElevage"
-      );
-      calculerPartBio(
-        partBioValeur,
-        "partbiocereales",
-        "actionModifierPartBioCereales"
-      );
+
+          calculerPartBio(
+            this.$store.state.curseursBioMin.partbiolegumes,
+            "partbiolegumes",
+            "actionModifierPartBioLegumes"
+          );
+          calculerPartBio(
+            this.$store.state.curseursBioMin.partbiofruits,
+            "partbiofruits",
+            "actionModifierPartBioFruits"
+          );
+          calculerPartBio(
+            this.$store.state.curseursBioMin.partbioelevage,
+            "partbioelevage",
+            "actionModifierPartBioElevage"
+          );
+          calculerPartBio(
+            this.$store.state.curseursBioMin.partbiocereales,
+            "partbiocereales",
+            "actionModifierPartBioCereales"
+          );
+        }, 500);
+      } else {
+        calculerPartBio(
+          partBioValeur,
+          "partbiolegumes",
+          "actionModifierPartBioLegumes"
+        );
+        calculerPartBio(
+          partBioValeur,
+          "partbiofruits",
+          "actionModifierPartBioFruits"
+        );
+        calculerPartBio(
+          partBioValeur,
+          "partbioelevage",
+          "actionModifierPartBioElevage"
+        );
+        calculerPartBio(
+          partBioValeur,
+          "partbiocereales",
+          "actionModifierPartBioCereales"
+        );
+      }
     },
     partpertes: function (val) {
       let reductionGaspillage = Math.round((1 - val / 18) * 100);

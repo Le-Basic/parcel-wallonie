@@ -16,7 +16,13 @@ export function CalculPartBioGlobale(
     surfacesNecessairesElevage,
   }
 ) {
-  console.log(partBioCereales, partBioFruits, partBioLegumes, partBioElevage);
+  console.log(
+    "Calcul part bio",
+    partBioCereales,
+    partBioFruits,
+    partBioLegumes,
+    partBioElevage
+  );
   let partBioGlobale =
     (partBioCereales * surfacesNecessairesCereales +
       partBioFruits * surfacesNecessairesFruits +
