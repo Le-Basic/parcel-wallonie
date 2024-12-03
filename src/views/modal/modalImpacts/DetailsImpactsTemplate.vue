@@ -59,7 +59,7 @@ const props = defineProps({
     <div class="card">
       <div class="card-header sansFond" id="methode">
         <div>
-          <span class="icon-ico_calcul2 icon white icon-titre"></span>
+          <span class="icon-ico_calcul2 white icon-titre ico-medium"></span>
         </div>
         <div>Quelques points de méthode</div>
       </div>
@@ -71,7 +71,7 @@ const props = defineProps({
     </div>
     <div class="card">
       <div class="card-header sansFond" id="Reperes">
-        <div><span class="icon-repere icon white icon-titre"></span></div>
+        <div><span class="icon-repere ico-medium white icon-titre"></span></div>
         <div>Repères</div>
       </div>
       <div
@@ -81,66 +81,11 @@ const props = defineProps({
         aria-labelledby="Reperes"
       >
         <div class="card-body">
-          <slot name="reperes">
-            <div
-              class="cadre-resultat methodo-detail d-flex flex-sm-row flex-column justify-content-around infographie-detail"
-              :class="props.classeCouleurFond"
-            >
-              <span
-                class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-                ><span :class="['icon-ico_poids', 'icon', iconeClasse]"></span>
-                <div class="info-infos">
-                  <span class="d-flex flex-column info-intro"
-                    ><span :class="['info-entete', iconeClasse]"
-                      >Production</span
-                    ><span :class="['info-verbe', iconeClasse]">=</span></span
-                  ><span class="d-flex flex-column info-detail"
-                    ><span class="nbr-ha">{{ props.proportionSurface }}</span
-                    ><span class="hectares"
-                      >de la surface agricole en Région wallonne</span
-                    ></span
-                  >
-                </div>
-              </span>
-              <span
-                class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-                ><span :class="['icon-ico_champ', 'icon', iconeClasse]"></span>
-                <div class="info-infos">
-                  <span class="d-flex flex-column info-intro"
-                    ><span :class="['info-entete', iconeClasse]"
-                      >Consommation</span
-                    ><span :class="['info-verbe', iconeClasse]">=</span></span
-                  ><span class="d-flex flex-column info-detail"
-                    ><span class="nbr-ha"> {{ props.proportionAssiette }} </span
-                    ><span class="hectares"
-                      >de l’assiette d’un Belge moyen (en volume)</span
-                    ></span
-                  >
-                </div>
-              </span>
-              <span
-                class="col-4 d-flex flex-sm-column flex-row justify-content-center"
-                ><span :class="[icone, 'icon', iconeClasse]"></span>
-                <div class="info-infos">
-                  <span class="d-flex flex-column info-intro"
-                    ><span :class="['info-entete', iconeClasse]"
-                      >Importation</span
-                    ><span :class="['info-verbe', iconeClasse]">=</span></span
-                  ><span class="d-flex flex-column info-detail"
-                    ><span class="nbr-ha"> {{ proportionImportation }} </span
-                    ><span class="hectares">
-                      des légumes consommés en Région wallonne sont
-                      importés</span
-                    ></span
-                  >
-                </div>
-              </span>
-            </div>
-          </slot>
+          <slot name="reperes"> </slot>
         </div>
       </div>
     </div>
-    <div class="card">
+    <!-- <div class="card">
       <div class="card-header sansFond" id="sources">
         <div><span class="icon-source icon white icon-titre"></span></div>
         <div>Limites des calculs</div>
@@ -155,7 +100,7 @@ const props = defineProps({
           <slot name="limitedescalculs"> </slot>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

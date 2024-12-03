@@ -5,7 +5,6 @@
 
       <div class="section centrervh" id="section0">
         <h1 class="animated fadeInUp">Choisissez la zone géographique</h1>
-        <pre>{{ this.$store.state }}</pre>
         <BarreRecherche />
       </div>
     </div>

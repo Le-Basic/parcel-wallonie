@@ -3,7 +3,7 @@
     <div>
       <BarreNavigation
         @montrerModalAffinage="montrerModalAffiner"
-        :active="4"
+        :active="5"
       />
       <div class="section centrervh" id="section0">
         <div class="container">

@@ -74,7 +74,7 @@ const premierChiffre = {
 const deuxiemeChiffre = {
   icone: "icon-impact-biodiversite",
   titre: "Diversité en Belgique",
-  chiffre: "10%",
+  chiffre: "3%",
   sousTitre: "de la surface agricole en Région wallonne",
 };
 const troisiemeChiffre = {

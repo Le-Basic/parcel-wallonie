@@ -50,31 +50,11 @@
         <!--mb-3 mt-5 -->
       </div>
     </template>
-    <template #reperes>
-      <BlocRepere
-        icone="icon-ico_poids"
-        classeCouleurFond="fond-eau"
-        iconeClasse="cereales"
-        proportionSurface="10"
-        proportionAssiette="20"
-        :premierChiffre="premierChiffre"
-        :deuxiemeChiffre="premierChiffre"
-        :troisiemeChiffre="premierChiffre"
-      />
-    </template>
   </detailsTemplate>
 </template>
 
 <script setup>
 import detailsTemplate from "./DetailsImpactsTemplate.vue";
-import BlocRepere from "./composant/BlocRepere.vue";
-
-const premierChiffre = {
-  icone: "icon-ico_poids",
-  titre: "Hello youuu",
-  chiffre: 10,
-  sousTitre: "de la surface agricole en Région wallonne",
-};
 </script>
 
 <style scoped>
