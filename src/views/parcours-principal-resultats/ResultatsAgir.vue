@@ -46,10 +46,11 @@
                     développement de l'agriculture biologique sur mon
                     territoire.
                     <a
-                      href="../assets/pdf/modele-courrier-elu-e.odt"
+                      href="/PARCEL-Wallonie-modele-courrier-elu-e.odt"
                       target="_blank"
                       rel="noopener noreferrer"
                       class="url-simple"
+                      download="Modele Courrier.odt"
                       >Télécharger le modèle de courrier</a
                     >
                     <br />

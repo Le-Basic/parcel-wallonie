@@ -6,7 +6,7 @@
         <h1>Méthodologie de calcul</h1>
         <div class="text-center mb-5">
           <a
-            href="https://bck.parcel-app.org/storage/app/uploads/public/633/407/dd3/633407dd356ea638253814.pdf"
+            href="/BASIC_Parcel Wallonie Fiche Méthodologique.pdf"
             target="_blank"
             rel="noopener noreferrer"
             ><button type="button" class="btn btn-principal mt-5">
