@@ -58,6 +58,7 @@ const getDefaultState = () => {
     partbiofruits: null,
     partbiocereales: null,
     partbioelevage: null,
+    gardeBiodivTerres: false,
     resultatSimulation: {
       surfaceAMobiliser: 0,
       emploisAMobiliser: 0,
@@ -127,7 +128,8 @@ async function recalculerResultatSimulation(
   partPertes,
   part_relocalisee,
   resultatReference,
-  pctDiffRegimePersonnalise
+  pctDiffRegimePersonnalise,
+  gardeBiodivTerres
 ) {
   console.log(
     "recalculerResultatSimulation",
@@ -140,7 +142,8 @@ async function recalculerResultatSimulation(
     partPertes,
     part_relocalisee,
     resultatReference,
-    pctDiffRegimePersonnalise
+    pctDiffRegimePersonnalise,
+    gardeBiodivTerres
   );
 
   let necessaires__url = window.apiURL + "parcel/belgique/surfaces_necessaires";
@@ -227,7 +230,8 @@ async function recalculerResultatSimulation(
     surfaceActuelleResponseApiPaysage,
     surfaceNecessairePaysageResponseApi,
     part_relocalisee,
-    resultatReference
+    resultatReference,
+    gardeBiodivTerres
   );
   return resultatSimulation;
 }
@@ -511,6 +515,9 @@ export default createStore({
       state.population.nombreEnfants = nombreEnfants;
       state.population.nombreSeniors = nombreSeniors;
     },
+    mutationGardeBiodivTerres(state, gardeBiodivTerres) {
+      state.gardeBiodivTerres = gardeBiodivTerres;
+    },
   },
   actions: {
     addGeo({ commit }, geo) {
@@ -547,7 +554,8 @@ export default createStore({
         this.state.partpertes,
         this.state.part_relocalisee,
         this.state.resultatReference,
-        this.state.pctDiffRegimePersonnalise
+        this.state.pctDiffRegimePersonnalise,
+        this.state.gardeBiodivTerres
       );
       resultatSimulation = await recalculerResultatSimulation(
         this.getters.getcodesTerritoireParcel,
@@ -559,7 +567,8 @@ export default createStore({
         this.state.partpertes,
         this.state.part_relocalisee,
         this.state.resultatReference,
-        this.state.pctDiffRegimePersonnalise
+        this.state.pctDiffRegimePersonnalise,
+        this.state.gardeBiodivTerres
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },
@@ -598,7 +607,8 @@ export default createStore({
         this.state.partpertes,
         this.state.part_relocalisee,
         this.state.resultatReference,
-        this.state.pctDiffRegimePersonnalise
+        this.state.pctDiffRegimePersonnalise,
+        this.state.gardeBiodivTerres
       );
       if (this.state.surfacesMobilisables > 0) {
         console.log("test surface");
@@ -618,6 +628,23 @@ export default createStore({
         console.log("resultatSimulationSurface", resultatSimulationSurface);
         commit("mutationResultatSimulationSurface", resultatSimulationSurface);
       }
+      commit("mutationResultatSimulation", resultatSimulation);
+    },
+    async actionGardeBiodivTerres({ commit }, gardeBiodivTerres) {
+      commit("mutationGardeBiodivTerres", gardeBiodivTerres);
+      let resultatSimulation = await recalculerResultatSimulation(
+        this.getters.getcodesTerritoireParcel,
+        this.state.regime_alimentaire.id,
+        this.state.partbioelevage,
+        this.state.partbiofruits,
+        this.state.partbiolegumes,
+        this.state.partbiocereales,
+        this.state.partpertes,
+        this.state.part_relocalisee,
+        this.state.resultatReference,
+        this.state.pctDiffRegimePersonnalise,
+        this.state.gardeBiodivTerres
+      );
       commit("mutationResultatSimulation", resultatSimulation);
     },
     async actionModifierPartBioElevage({ commit }, partBioElevage) {
@@ -674,7 +701,8 @@ export default createStore({
         this.state.partpertes,
         this.state.part_relocalisee,
         this.state.resultatReference,
-        this.state.pctDiffRegimePersonnalise
+        this.state.pctDiffRegimePersonnalise,
+        this.state.gardeBiodivTerres
       );
       if (this.state.surfacesMobilisables > 0) {
         let resultatSimulationSurface =
@@ -746,7 +774,8 @@ export default createStore({
         this.state.partpertes,
         this.state.part_relocalisee,
         this.state.resultatReference,
-        this.state.pctDiffRegimePersonnalise
+        this.state.pctDiffRegimePersonnalise,
+        this.state.gardeBiodivTerres
       );
       if (this.state.surfacesMobilisables > 0) {
         let resultatSimulationSurface =
@@ -781,7 +810,8 @@ export default createStore({
         this.state.partpertes,
         this.state.part_relocalisee,
         this.state.resultatReference,
-        this.state.pctDiffRegimePersonnalise
+        this.state.pctDiffRegimePersonnalise,
+        this.state.gardeBiodivTerres
       );
       commit("mutationResultatSimulation", resultatSimulation);
       commit("mutationResultatReference", resultatSimulation);
@@ -798,7 +828,8 @@ export default createStore({
         this.state.partpertes,
         this.state.part_relocalisee,
         this.state.resultatReference,
-        this.state.pctDiffRegimePersonnalise
+        this.state.pctDiffRegimePersonnalise,
+        this.state.gardeBiodivTerres
       );
       commit("mutationResultatSimulation", resultatSimulation);
       if (this.state.surfacesMobilisables > 0) {
@@ -871,7 +902,8 @@ export default createStore({
         this.state.partpertes,
         this.state.part_relocalisee,
         this.state.resultatReference,
-        this.state.pctDiffRegimePersonnalise
+        this.state.pctDiffRegimePersonnalise,
+        this.state.gardeBiodivTerres
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },
@@ -926,7 +958,8 @@ export default createStore({
         this.state.partbiocereales,
         this.state.partpertes,
         this.state.part_relocalisee,
-        this.state.pctDiffRegimePersonnalise
+        this.state.pctDiffRegimePersonnalise,
+        this.state.gardeBiodivTerres
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },
@@ -942,7 +975,8 @@ export default createStore({
         this.state.partpertes,
         this.state.part_relocalisee,
         this.state.resultatReference,
-        this.state.pctDiffRegimePersonnalise
+        this.state.pctDiffRegimePersonnalise,
+        this.state.gardeBiodivTerres
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },
@@ -998,7 +1032,8 @@ export default createStore({
         this.state.partpertes,
         this.state.part_relocalisee,
         this.state.resultatReference,
-        this.state.pctDiffRegimePersonnalise
+        this.state.pctDiffRegimePersonnalise,
+        this.state.gardeBiodivTerres
       );
 
       commit("mutationResultatReference", resultatSimulation);
@@ -1065,7 +1100,8 @@ export default createStore({
         this.state.partpertes,
         this.state.part_relocalisee,
         this.state.resultatReference,
-        this.state.pctDiffRegimePersonnalise
+        this.state.pctDiffRegimePersonnalise,
+        this.state.gardeBiodivTerres
       );
       commit("mutationResultatReference", resultatSimulation);
       resultatSimulation = await recalculerResultatSimulation(
@@ -1078,7 +1114,8 @@ export default createStore({
         this.state.partpertes,
         this.state.part_relocalisee,
         this.state.resultatReference,
-        this.state.pctDiffRegimePersonnalise
+        this.state.pctDiffRegimePersonnalise,
+        this.state.gardeBiodivTerres
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },

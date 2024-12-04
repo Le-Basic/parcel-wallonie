@@ -24,6 +24,12 @@ export const CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER = {
     libelle_affichage:
       "Céréales et grandes cultures (hors alimentation animale)",
   },
+  BIODIV: {
+    couleur: "#38a13f",
+    libelle: "Surfaces pour Biodiversité",
+    libelle_court: "Surfaces pour Biodiversité",
+    libelle_affichage: "Surfaces pour Biodiversité",
+  },
 };
 
 // ICI UNE SEPARATION EXPLICITE ENTRE VIANDE ET PRODUITS LAITIERS
@@ -59,6 +65,12 @@ export const CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE = {
     libelle: "Produits Laitiers",
     libelle_court: "Produits Laitiers",
     libelle_affichage: "Produits Laitiers",
+  },
+  BIODIV: {
+    couleur: "#38a13f",
+    libelle: "Surfaces pour Biodiversité",
+    libelle_court: "Surfaces pour Biodiversité",
+    libelle_affichage: "Surfaces pour Biodiversité",
   },
 };
 

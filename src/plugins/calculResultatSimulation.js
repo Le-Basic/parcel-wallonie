@@ -10,9 +10,10 @@ export function calculerResultatSimulation(
   surfaceActuelleResponseApiPaysage,
   surfaceNecessairePaysageResponseApi,
   part_relocalisee,
-  donneesReference
+  donneesReference,
+  gardeBiodivTerres
 ) {
-  const {
+  let {
     surfaces_a_mobiliser,
     emplois_a_mobiliser,
     consommation_kg,
@@ -48,6 +49,25 @@ export function calculerResultatSimulation(
       emission_kg_co2e / donneesReference.emission_kg_co2e - 1;
   }
 
+  if (gardeBiodivTerres) {
+    let SurfaceBiodiv = ajoutTerresBiodiversites(surfaces_a_mobiliser);
+
+    surfaces_emplois_a_mobiliser_parcel_niveau_1 = [
+      ...surfaces_emplois_a_mobiliser_parcel_niveau_1,
+      SurfaceBiodiv,
+    ];
+    surfaces_a_mobiliser = surfaces_emplois_a_mobiliser_parcel_niveau_1
+      .map((item) => {
+        return item.surface_a_mobiliser;
+      })
+      .reduce((somme, surface_a_mobiliser) => somme + surface_a_mobiliser, 0);
+    surfaces_emplois_a_mobiliser_parcel_niveau_1 =
+      surfaces_emplois_a_mobiliser_parcel_niveau_1.map((item) => ({
+        ...item,
+        part_surface_a_mobiliser:
+          (item.surface_a_mobiliser / surfaces_a_mobiliser) * 100,
+      }));
+  }
   return {
     surfaceAMobiliser: surfaces_a_mobiliser,
     emploisAMobiliser: emplois_a_mobiliser,
@@ -417,4 +437,26 @@ function calculSurfAMobiliser(
     100;
 
   return surfaces_a_mobiliser;
+}
+
+function ajoutTerresBiodiversites(surface_a_mobiliser) {
+  return {
+    libelle_parcel_niveau_1: "Surfaces pour Biodiversité",
+    libelle_parcel_niveau_2: "Surfaces pour Biodiversité",
+    libelle_parcel_niveau_3: "Surfaces pour Biodiversité",
+    surface_necessaire_conventionnel: 0,
+    surface_necessaire_bio: 0,
+    emploi_conventionnel: 0,
+    emploi_bio: 0,
+    surface_a_mobiliser: surface_a_mobiliser * 0.1 * 1.1,
+    emplois_a_mobiliser: 0,
+    consommation_kg: 0,
+    emission_kg_co2e: 0,
+    empreinte_eau_bleue_m3: 0,
+    surfaces_ha_soja_importes: 0,
+    abondances_especes: 1.4,
+    richesses_des_sols: 1.1,
+    part_surface_a_mobiliser: 10,
+    part_emplois_a_mobiliser: 0,
+  };
 }

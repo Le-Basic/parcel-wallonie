@@ -102,6 +102,25 @@
             </div>
           </div>
           <div>
+            <div class="header-filtre ml-auto mr-auto">
+              <span class="icon-gaspillage icon"></span
+              ><span class="titre-filtre"
+                >Souhaitez-vous protéger la biodiversité ?
+              </span>
+              <div>
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    id="toutbio"
+                    value="1"
+                    v-model="gardeBiodivTerres"
+                  />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div>
             <div
               class="header-filtre ml-auto mr-auto d-flex align-content-stretch"
             >
@@ -567,6 +586,7 @@ export default {
       regimeChoisi: this.$store.state.regime_alimentaire.nomCourt,
       part_relocalisee: this.$store.state.part_relocalisee,
       toutBio: false,
+      gardeBiodivTerres: this.$store.state.gardeBiodivTerres,
     };
   },
   methods: {
@@ -676,6 +696,9 @@ export default {
     },
     partBioStore: function (partBio) {
       this.partBio = partBio;
+    },
+    gardeBiodivTerres: function (nouvelleValeur) {
+      this.$store.dispatch("actionGardeBiodivTerres", nouvelleValeur);
     },
   },
   computed: {
