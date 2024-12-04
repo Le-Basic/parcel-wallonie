@@ -37,6 +37,10 @@
                   <h1 class="mb-0">Définissez le territoire concerné</h1>
                 </div>
                 <BarreRecherche></BarreRecherche>
+                <h2>
+                  Ou commencez par explorer un court diagnostic de la Région
+                  Wallone
+                </h2>
               </div>
             </div>
           </div>

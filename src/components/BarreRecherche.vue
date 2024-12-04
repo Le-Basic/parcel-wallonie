@@ -62,7 +62,6 @@
       arrondissement(s) commune(s)
       <strong class="vert-fonce">au sein de la Région wallonne</strong>
     </p>
-    <div class="mt-5"></div>
     <div class="div-continuer">
       <router-link :to="props.buttonRoute" id="suite">
         <button type="button" class="btn btn-principal mt-5">Continuer</button>
