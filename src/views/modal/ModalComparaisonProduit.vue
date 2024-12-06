@@ -160,7 +160,7 @@ const repartitionSurfacePotentielNourricier = () => {
     value.partAMobiliser = parseFloat(value.partAMobiliser).toFixed(0);
     let donnePourGraphique = {
       value: value.partAMobiliser,
-      name: value.libelle,
+      name: value.libelle_affichage,
       itemStyle: {
         color: value.couleur,
       },

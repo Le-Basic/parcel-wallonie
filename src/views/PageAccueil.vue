@@ -42,7 +42,7 @@
                   <h1 class="mb-0">Définissez le territoire concerné</h1>
                 </div>
                 <BarreRecherche></BarreRecherche>
-                <h2>
+                <h2 @click="goToWallonieDiagnostic()">
                   Ou commencez par explorer un court diagnostic de la Région
                   Wallone
                 </h2>
@@ -262,6 +262,42 @@ export default {
     this.$store.commit("RESET_STORE");
     this.$store.dispatch("simulation/actionResetStore");
   },
+  methods: {
+    goToWallonieDiagnostic() {
+      let geo = {
+        localeKey: "reg03000",
+        localeName: "Région wallonne",
+        code_territoire: "reg03000",
+      };
+
+      new Promise((resolve, reject) => {
+        try {
+          this.$store.commit("addGeo", geo);
+          let codesTerritoiresListe =
+            this.$store.getters.getcodesTerritoireParcel;
+          this.$store.commit("getIndicateursPortraits", codesTerritoiresListe);
+          this.$store
+            .dispatch("actionModifierGeo")
+            .then(() => {
+              resolve();
+            })
+            .catch((error) => {
+              reject(error);
+            });
+        } catch (error) {
+          reject(error);
+        }
+      })
+        .then(() => {
+          // Router navigation after the promise resolves
+          this.$router.push("/diagnostic");
+        })
+        .catch((error) => {
+          // Handle errors (e.g., log them or show an error message)
+          console.error("Error", error);
+        });
+    },
+  },
 };
 </script>
 
@@ -278,5 +314,17 @@ export default {
   color: white;
   font-weight: 600;
   font-size: 16px;
+}
+h2 {
+  font-size: 24px;
+  font-family: "Work Sans", sans-serif;
+  margin: auto;
+  text-align: center !important;
+  text-decoration: underline;
+}
+
+h2:hover {
+  font-weight: 700;
+  cursor: pointer;
 }
 </style>
