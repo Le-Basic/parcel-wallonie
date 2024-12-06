@@ -67,6 +67,23 @@
                     data-target="#modal-legumes"
                     style="cursor: pointer"
                   >
+                    <div class="" id="pc1" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
+                          Math.round(
+                            trouverChiffre(
+                              repartitionSurfaceNecessaires,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.PRAIRIES
+                                .libelle,
+                              'value',
+                              'name'
+                            )
+                          )
+                        "
+                        couleur="#91C423"
+                        :key="this.$store.state.resultatSimulation"
+                      />
+                    </div>
                     <div class="result-type">
                       <span class="icon-prairie ico-medium prairie"></span>
                     </div>
@@ -102,6 +119,23 @@
                     data-target="#modal-fruits"
                     style="cursor: pointer"
                   >
+                    <div class="" id="pc1" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
+                          Math.round(
+                            trouverChiffre(
+                              repartitionSurfaceNecessaires,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FOURRAGES
+                                .libelle,
+                              'value',
+                              'name'
+                            )
+                          )
+                        "
+                        couleur="#91C423"
+                        :key="this.$store.state.resultatSimulation"
+                      />
+                    </div>
                     <div class="result-type">
                       <span class="icon-fourragere ico-medium fourrage"></span>
                     </div>
@@ -137,6 +171,23 @@
                     data-target="#modal-cereales"
                     style="cursor: pointer"
                   >
+                    <div class="" id="pc1" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
+                          Math.round(
+                            trouverChiffre(
+                              repartitionSurfaceNecessaires,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMINEUSES
+                                .libelle,
+                              'value',
+                              'name'
+                            )
+                          )
+                        "
+                        couleur="#91C423"
+                        :key="this.$store.state.resultatSimulation"
+                      />
+                    </div>
                     <div class="result-type">
                       <span
                         class="icon-legumineuses ico-medium legumineuse"
@@ -172,6 +223,23 @@
                     data-target="#modal-viande"
                     style="cursor: pointer"
                   >
+                    <div class="" id="pc1" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
+                          Math.round(
+                            trouverChiffre(
+                              repartitionSurfaceNecessaires,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.CEREALES
+                                .libelle,
+                              'value',
+                              'name'
+                            )
+                          )
+                        "
+                        couleur="#91C423"
+                        :key="this.$store.state.resultatSimulation"
+                      />
+                    </div>
                     <div class="result-type">
                       <span
                         class="icon-oleagineux ico-medium oleagineux"
@@ -209,6 +277,23 @@
                     data-target="#modal-viande"
                     style="cursor: pointer"
                   >
+                    <div class="" id="pc1" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
+                          Math.round(
+                            trouverChiffre(
+                              repartitionSurfaceNecessaires,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
+                                .CULTURES_INDUSTRIELLES_ALIMENTAIRES.libelle,
+                              'value',
+                              'name'
+                            )
+                          )
+                        "
+                        couleur="#91C423"
+                        :key="this.$store.state.resultatSimulation"
+                      />
+                    </div>
                     <div class="result-type">
                       <span class="icon-cereales2 ico-medium pdt"></span>
                     </div>
@@ -245,6 +330,22 @@
                     data-target="#modal-viande"
                     style="cursor: pointer"
                   >
+                    <div class="" id="pc1" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
+                          Math.round(
+                            trouverChiffre(
+                              repartitionSurfaceNecessaires,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FRUITS.libelle,
+                              'value',
+                              'name'
+                            )
+                          )
+                        "
+                        couleur="#91C423"
+                        :key="this.$store.state.resultatSimulation"
+                      />
+                    </div>
                     <div class="result-type">
                       <span
                         class="icon-ico_CATEGORIES_fruits ico-medium fruitssurface"
@@ -279,6 +380,23 @@
                     data-target="#modal-viande"
                     style="cursor: pointer"
                   >
+                    <div class="" id="pc1" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
+                          Math.round(
+                            trouverChiffre(
+                              repartitionSurfaceNecessaires,
+                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMES
+                                .libelle,
+                              'value',
+                              'name'
+                            )
+                          )
+                        "
+                        couleur="#91C423"
+                        :key="this.$store.state.resultatSimulation"
+                      />
+                    </div>
                     <div class="result-type">
                       <span
                         class="icon-ico_CATEGORIES_legumes ico-medium legumessurface"
@@ -648,6 +766,7 @@ import { CATEGORIE_PRODUITS_ACTUELS_PAYSAGE } from "@/config/categorieProduitsAc
 import RepartitionSurface from "@/components/visualisation/RepartitionSurface.vue";
 import ModalComposant from "@/views/modal/ModalComposant.vue";
 import InformationBox from "@/components/bas-niveau/InformationBox";
+import jaugeChart from "@/components/visualisation/jaugeChart.vue";
 
 export default {
   inject: ["$axios"],
@@ -655,6 +774,7 @@ export default {
     RepartitionSurface,
     ModalComposant,
     InformationBox,
+    jaugeChart,
   },
   data() {
     return {
