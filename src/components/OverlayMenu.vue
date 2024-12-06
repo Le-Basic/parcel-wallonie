@@ -5,7 +5,7 @@
   >
     <div class="d-flex align-items-center col-12 col-md-7 col-lg-8">
       <nav class="list-group">
-        <router-link class="list-group-item" to="/accueil">Accueil</router-link>
+        <router-link class="list-group-item" to="/">Accueil</router-link>
 
         <!--<a class="list-group-item" href="projet">Le projet</a>-->
         <router-link

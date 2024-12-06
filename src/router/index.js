@@ -27,17 +27,11 @@ import PageRecommencer from "@/views/PageRecommencer.vue";
 import ResultatsImpactsv2 from "@/views/parcours-principal-resultats/ResultatsImpactsv2.vue";
 import testMotion from "@/views/testMotion.vue";
 import TestCarte from "@/views/TestCarte.vue";
-import PageSeeyouSoon from "@/views/PageSeeyouSoon.vue";
 import PageFAQ from "@/views/PageFAQ.vue";
 import PageContact from "@/views/PageContact.vue";
 const routes = [
   {
     path: "/",
-    name: "Paywall",
-    component: PageSeeyouSoon,
-  },
-  {
-    path: "/accueil",
     name: "home",
     component: PageAccueil,
   },
