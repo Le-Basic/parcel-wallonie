@@ -179,7 +179,7 @@
                         :key="this.$store.state.resultatSimulation"
                       ></jaugeChart>
                     </div>
-                    <div class="">
+                    <div>
                       <span
                         class="icon-ico_CATEGORIES_fruits ico-medium fruits"
                       ></span>
@@ -330,11 +330,67 @@
                   </div>
                 </td>
               </tr>
+              <tr>
+                <td colspan="5">
+                  <div
+                    class="cadre-categorie text-vert-bio animated fadeIn delay-2-5s"
+                  >
+                    <div class="" id="pc4" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
+                          Math.round(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesEmploisAMobiliser,
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.BIODIV
+                                .libelle,
+                              'part_surface_a_mobiliser',
+                              'libelle_parcel_niveau_1'
+                            )
+                          )
+                        "
+                        :couleur="
+                          CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.BIODIV.couleur
+                        "
+                        :key="this.$store.state.resultatSimulation"
+                      ></jaugeChart>
+                    </div>
+                    <div class="">
+                      <span
+                        class="icon-impact-biodiversite ico-medium text-vert-bio"
+                      ></span>
+                    </div>
+                    <div class="cadre-titre-categorie">
+                      <div class="titre-categorie">
+                        Protection de la biodiversité
+                      </div>
+                      <div class="hectares">
+                        {{
+                          formatterSurfacesNecessaires(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesEmploisAMobiliser,
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.BIODIV
+                                .libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_niveau_1",
+                              this.chiffreApresVirgule
+                            )
+                          )
+                        }}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
+    <pre>{{
+      this.$store.state.resultatSimulation.surfacesEmploisAMobiliser
+    }}</pre>
     <div class="bloc-surface">
       <h3 class="text-center">Surface agricole actuelle du territoire</h3>
       <div class="map-content mb-4">
