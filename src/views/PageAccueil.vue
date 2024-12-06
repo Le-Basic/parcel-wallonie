@@ -3,8 +3,12 @@
     <MenuSimple></MenuSimple>
     <div class="bandeau">
       🔨 PARCEL-Wallonie est en cours de finalisation, quelques bugs pourraient
-      être encore présents 🔨<br />N'ésitez pas à nous écrire à l'adresse
-      contact@parcel-wallonie.be
+      être encore présents 🔨<br />
+      <span class="text-small">
+        N'hésitez pas à nous écrire à l'adresse contact@parcel-wallonie.be Vous
+        pouvez les référencer selon les adresses des pages, ex:
+        parcel.wallonie/diagnostic
+      </span>
     </div>
     <div class="section flex-column" id="accueil">
       <div class="accueil-texte">
@@ -53,7 +57,7 @@
         <div
           class="cadre-resultat resultat-ha"
           style="
-            position: absolute;
+            position: absolute-;
             top: -25px;
             z-index: 2;
             left: calc(50% - 25px);
@@ -274,5 +278,9 @@ export default {
   color: white;
   font-weight: 600;
   font-size: 16px;
+}
+
+.text-small {
+  font-size: 12px;
 }
 </style>
