@@ -28,7 +28,7 @@
           </div>
           <router-link
             class="col-0 col-sm-4 navbar-brand text-center d-sm-block d-none"
-            to="/accueil"
+            to="/"
             ><img
               alt="logo"
               :src="require('@/assets/img/logos/logoPARCELWAL_vert.png')"

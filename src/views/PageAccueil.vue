@@ -1,6 +1,11 @@
 <template>
   <div>
     <MenuSimple></MenuSimple>
+    <div class="bandeau">
+      🔨 PARCEL-Wallonie est en cours de finalisation, quelques bugs pourraient
+      être encore présents 🔨<br />N'ésitez pas à nous écrire à l'adresse
+      contact@parcel-wallonie.be
+    </div>
     <div class="section flex-column" id="accueil">
       <div class="accueil-texte">
         <div class="titre animated fadeInUp mb-3">
@@ -260,5 +265,14 @@ export default {
 .section-categorie-alimentaire {
   display: flex;
   justify-content: center;
+}
+
+.bandeau {
+  background-color: var(--vert-clair);
+  padding: 8px;
+  font-family: Work Sans;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
 }
 </style>

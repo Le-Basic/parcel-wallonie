@@ -45,11 +45,6 @@
             </button>
           </div>
         </div>
-        <div class="w-100">
-          <nav
-            class="navbar-expand menu-icons text-center justify-content-center"
-          ></nav>
-        </div>
       </div>
     </nav>
     <div
