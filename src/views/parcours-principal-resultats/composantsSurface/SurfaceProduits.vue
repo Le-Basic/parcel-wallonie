@@ -14,7 +14,7 @@
         La vue produit illustre la répartition des surfaces agricoles en
         fonction des types de produits alimentaires, par exemple, les hectares
         destinés aux céréales et fourrages pour la production de viande sont
-        repris dans la catégorie “Elevage” (ou viande si on l’appelle viande)
+        repris dans la catégorie “Viande et oeufs” et “Produits laitiers”.
       </div>
       <h3 class="text-center">Surface agricole à mobiliser</h3>
       <div
