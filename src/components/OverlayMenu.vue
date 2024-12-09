@@ -85,12 +85,12 @@
               </div>
             </div>
             <div>
-              <a
-                href="https://parcel-app.org/1-relocaliser-une-surface-disponible"
+              <router-link
+                to="/1-relocaliser-une-surface-disponible"
                 target="_blank"
                 ><button type="button" class="btn btn-principal mt-3">
                   Commencer
-                </button></a
+                </button></router-link
               >
             </div>
           </div>
