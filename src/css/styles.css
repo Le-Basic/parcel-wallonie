@@ -4757,6 +4757,20 @@ input.nombre.groupe {
   font-size: 20px;
 }
 
+.bandeau-play .btn-principal {
+  color: #594231;
+  background: url("/public/img/fleches/fleche-droite-secondaire.svg") no-repeat
+    right 15px center;
+  background-color: #ffffff;
+}
+
+.bandeau-play .btn-principal:hover {
+  color: #594231;
+  background: url("/public/img/fleches/fleche-droite-blanche.svg") no-repeat
+    right 15px center;
+  background-color: #ffffff;
+}
+
 .parcours-home {
   background-color: #bdc660;
   padding: 6rem 4rem;
