@@ -69,15 +69,6 @@
                           )
                         }}
                       </div>
-                      <a
-                        data-toggle="modal"
-                        data-target="#detailProduct"
-                        style="cursor: pointer"
-                        onclick="modaldetail('Céréales')"
-                        ><img
-                          src="@/assets/img/parcours/nutrition-more.svg"
-                          alt=""
-                      /></a>
                     </div>
                     <div class="icon-cereales2 icon"></div>
                     <div class="my-auto">Céréales</div>
@@ -142,15 +133,6 @@
                           )
                         }}
                       </div>
-                      <a
-                        data-toggle="modal"
-                        data-target="#detailProduct"
-                        style="cursor: pointer"
-                        onclick="modaldetail('Huile')"
-                        ><img
-                          src="@/assets/img/parcours/nutrition-more.svg"
-                          alt=""
-                      /></a>
                     </div>
                     <div class="icon-huile icon"></div>
                     <div class="my-auto">Huile</div>
@@ -215,15 +197,6 @@
                           )
                         }}
                       </div>
-                      <a
-                        data-toggle="modal"
-                        data-target="#detailProduct"
-                        style="cursor: pointer"
-                        onclick="modaldetail('Pomme de terre')"
-                        ><img
-                          src="@/assets/img/parcours/nutrition-more.svg"
-                          alt=""
-                      /></a>
                     </div>
                     <div class="icon-pdt icon"></div>
                     <div class="my-auto">Pommes de terre</div>
@@ -288,15 +261,6 @@
                           )
                         }}
                       </div>
-                      <a
-                        data-toggle="modal"
-                        data-target="#detailProduct"
-                        style="cursor: pointer"
-                        onclick="modaldetail('Légumineuses')"
-                        ><img
-                          src="@/assets/img/parcours/nutrition-more.svg"
-                          alt=""
-                      /></a>
                     </div>
                     <div class="icon-secs icon"></div>
                     <div class="my-auto">Légumineuses</div>
@@ -361,15 +325,6 @@
                           )
                         }}
                       </div>
-                      <a
-                        data-toggle="modal"
-                        data-target="#detailProduct"
-                        style="cursor: pointer"
-                        onclick="modaldetail('Légumes')"
-                        ><img
-                          src="@/assets/img/parcours/nutrition-more.svg"
-                          alt=""
-                      /></a>
                     </div>
                     <div class="icon-legumes2 icon"></div>
                     <div class="my-auto">Légumes</div>
@@ -435,15 +390,6 @@
                           )
                         }}
                       </div>
-                      <a
-                        data-toggle="modal"
-                        data-target="#detailProduct"
-                        style="cursor: pointer"
-                        onclick="modaldetail('Fruits (hors oléagineux)')"
-                        ><img
-                          src="@/assets/img/parcours/nutrition-more.svg"
-                          alt=""
-                      /></a>
                     </div>
                     <div class="icon-fruit2 icon"></div>
                     <div class="my-auto">
@@ -514,15 +460,6 @@
                           )
                         }}
                       </div>
-                      <a
-                        data-toggle="modal"
-                        data-target="#detailProduct"
-                        style="cursor: pointer"
-                        onclick="modaldetail('Fruits oléagineux')"
-                        ><img
-                          src="@/assets/img/parcours/nutrition-more.svg"
-                          alt=""
-                      /></a>
                     </div>
                     <div class="icon-oleagineux icon"></div>
                     <div class="my-auto">Fruits oléagineux</div>
@@ -588,15 +525,6 @@
                           )
                         }}
                       </div>
-                      <a
-                        data-toggle="modal"
-                        data-target="#detailProduct"
-                        style="cursor: pointer"
-                        onclick="modaldetail('Viande rouge')"
-                        ><img
-                          src="@/assets/img/parcours/nutrition-more.svg"
-                          alt=""
-                      /></a>
                     </div>
                     <div class="icon-viande-rouge icon"></div>
                     <div class="my-auto">Viande rouge</div>
@@ -662,15 +590,6 @@
                           )
                         }}
                       </div>
-                      <a
-                        data-toggle="modal"
-                        data-target="#detailProduct"
-                        style="cursor: pointer"
-                        onclick="modaldetail('Viande blanche')"
-                        ><img
-                          src="@/assets/img/parcours/nutrition-more.svg"
-                          alt=""
-                      /></a>
                     </div>
                     <div class="icon-viande-blanche icon"></div>
                     <div class="my-auto">Viande blanche</div>
@@ -741,15 +660,6 @@
                           )
                         }}
                       </div>
-                      <a
-                        data-toggle="modal"
-                        data-target="#detailProduct"
-                        style="cursor: pointer"
-                        onclick="modaldetail('Produits laitiers')"
-                        ><img
-                          src="@/assets/img/parcours/nutrition-more.svg"
-                          alt=""
-                      /></a>
                     </div>
                     <div class="icon-lait icon"></div>
                     <div class="my-auto">Produits laitiers</div>
@@ -816,15 +726,6 @@
                           )
                         }}
                       </div>
-                      <a
-                        data-toggle="modal"
-                        data-target="#detailProduct"
-                        style="cursor: pointer"
-                        onclick="modaldetail('Œufs')"
-                        ><img
-                          src="@/assets/img/parcours/nutrition-more.svg"
-                          alt=""
-                      /></a>
                     </div>
                     <div class="icon-oeuf icon"></div>
                     <div class="my-auto">Œufs</div>
@@ -890,16 +791,6 @@
                           )
                         }}
                       </div>
-
-                      <a
-                        data-toggle="modal"
-                        data-target="#detailProduct"
-                        style="cursor: pointer"
-                        onclick="modaldetail('Sucre')"
-                        ><img
-                          src="@/assets/img/parcours/nutrition-more.svg"
-                          alt=""
-                      /></a>
                     </div>
                     <div class="icon-sucre icon"></div>
                     <div class="my-auto">Sucre</div>
@@ -1041,6 +932,9 @@
                       CATEGORIE_APPORT_IDS.PROTEINES
                   )?.valeur ?? 70
                 "
+                @update:categoriesAlimentaires="
+                  changerConclusionRegimeParCategorie($event, 'proteines')
+                "
               />
 
               <jaugeRegimeAlimentaire
@@ -1064,6 +958,9 @@
                       CATEGORIE_APPORT_IDS.GLUCIDES
                   )?.valeur ?? 300
                 "
+                @update:categoriesAlimentaires="
+                  changerConclusionRegimeParCategorie($event, 'glucides')
+                "
               />
 
               <jaugeRegimeAlimentaire
@@ -1086,6 +983,9 @@
                       apport.id_apport_energetique ===
                       CATEGORIE_APPORT_IDS.LIPIDES
                   )?.valeur ?? 70
+                "
+                @update:categoriesAlimentaires="
+                  changerConclusionRegimeParCategorie($event, 'lipides')
                 "
               />
               <jaugeRegimeAlimentaire
@@ -1115,6 +1015,9 @@
                       CATEGORIE_APPORT_IDS.FIBRES_ALIMENTAIRES
                   )?.valeur ?? 20
                 "
+                @update:categoriesAlimentaires="
+                  changerConclusionRegimeParCategorie($event, 'fibres')
+                "
               />
             </div>
           </div>
@@ -1130,41 +1033,6 @@
               <div>Quels aliments contribuent à chaque apport ?</div>
             </a>
           </div>
-          <!--
-          <div class="text-center title-protein">Votre régime en deux chiffres</div>
-          <div class="container d-block mx-auto twoBlocks">
-            <div class="row justify-content-center">
-              <div class="col-12 col-sm mb-3">
-                <div class="card-protein d-flex align-items-center">
-                  <div class="row align-items-center">
-                    <div class="col-auto"><img src="@/assets/img/parcours/viande.svg" width="88" class="w-100"></div>
-                    <div class="col ml-0 contentText pl-0">
-                      <div>
-                        <div class="badge">-18 %</div>
-                      </div>
-                      <div class="">de produits d’origines animales en équivalent matière première</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm mb-3">
-                <div class="card-protein d-flex align-items-center">
-                  <div class="row align-items-center">
-                    <div class="col-auto"><img src="@/assets/img/parcours/vegetal-protein.svg" width="88" class="w-100"></div>
-                    <div class="col ml-0 contentText pl-0">
-                      <div>
-                        <div class="badge">2/3</div>
-                      </div>
-                      <div>d’apport protéiques d’origine végétale</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="note text-center">Actuellement, environ 3/4 des apports protéiques sont d’origine animale</div>
-          -->
         </div>
         <div class="div-continuer animated fadeInUp">
           <router-link
@@ -1174,38 +1042,6 @@
               Valider ce régime
             </button></router-link
           >
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Modal -->
-  <div
-    class="modal fade"
-    id="detailProduct"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="detailProduct"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body text-center">
-          <h5 class="modal-title text-center" id="titleDetail"></h5>
-
-          <div id="bodyDetail"></div>
-          <div class="note mb-0 mt-5">
-            (recommandation du Programme National Nutrition Santé)
-          </div>
         </div>
       </div>
     </div>
@@ -1610,7 +1446,7 @@ function changerConclusionRegimeParCategorie(valeur, categorieRegimeAChanger) {
 function categorieApportRegimeAlimentaire() {
   return conclusionRegime.value.reduce(
     (acc, categorie) => Math.min(acc, categorie.valeur),
-    0
+    1
   );
 }
 
