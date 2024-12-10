@@ -138,10 +138,10 @@ const potentielNourricierElevage = computed(() => {
 
 .potentiel-nourricier-categorie-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 0.8fr 0.6fr 0.8fr;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: 0.8fr 0.6fr 0.8fr;
   column-gap: 32px;
-  grid-auto-flow: column;
+  grid-auto-flow: row;
 }
 span {
   display: flex;

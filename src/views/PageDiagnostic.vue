@@ -350,8 +350,8 @@
                         style="max-width: 100px; max-height: 100px"
                       />
                       <p class="texte-petit">
-                        600 000 ha de soja cultivés très loin pour nourrir le
-                        bétail belge accélérant des phénomènes de déforestation
+                        150 000 ha de soja cultivés très loin pour nourrir le
+                        bétail wallon accélérant des phénomènes de déforestation
                       </p>
                     </div>
                     <div class="case-impact texte-bleu">
@@ -389,7 +389,11 @@
               </div>
             </transition>
             <transition :name="slideTransition" @after-enter="transitionEnd">
-              <div id="potentiel" v-if="index == 7" class="slide-diagnostic">
+              <div
+                id="potentiel"
+                v-if="index == 7"
+                class="slide-diagnostic slide-bilan"
+              >
                 <p
                   class="animated fadeInUp fast p-result mb-1 titre-slide texte-moyen work-sans-300 texte-centre"
                 >
@@ -401,34 +405,40 @@
                   >
                   de mon territoire ?
                 </p>
-                <p
-                  v-html="phrasePotentielNourricier"
-                  class="texte-tres-petit"
-                ></p>
-                <tableauPotentielNourricierParCategorie />
-                <div class="boutons-container">
-                  <div
-                    class="div-continuer mb-small animated fadeInUp delay-5-1s"
-                  >
-                    <router-link to="/2-choix-de-la-population"
-                      ><button
-                        type="button"
-                        class="btn btn-principal btn-menu-new mt-5"
-                      >
-                        Simuler des scénarii de transition
-                      </button></router-link
-                    >
+                <div class="partie-diagnostic">
+                  <div class="sous-partie-gauche">
+                    <tableauPotentielNourricierParCategorie />
                   </div>
-                  <div
-                    class="div-continuer mb-big animated fadeInUp delay-5-1s"
-                  >
-                    <button
-                      type="button"
-                      class="btn btn-secondaire mt-0"
-                      @click="modalActive = 'ModalPotentielNourricier'"
-                    >
-                      En savoir plus sur le potentiel nourricier
-                    </button>
+                  <div class="sous-partie-droite">
+                    <p
+                      v-html="phrasePotentielNourricier"
+                      class="texte-tres-petit"
+                    ></p>
+                    <div class="boutons-container">
+                      <div
+                        class="div-simulation mb-small animated fadeInUp delay-5-1s"
+                      >
+                        <router-link to="/2-choix-de-la-population"
+                          ><button
+                            type="button"
+                            class="btn btn-principal btn-menu-new mt-5"
+                          >
+                            Simuler des scénarii de transition
+                          </button></router-link
+                        >
+                      </div>
+                      <div
+                        class="div-simulation mb-big animated fadeInUp delay-5-1s"
+                      >
+                        <button
+                          type="button"
+                          class="btn btn-secondaire mt-0"
+                          @click="modalActive = 'ModalPotentielNourricier'"
+                        >
+                          En savoir plus sur le potentiel nourricier
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -743,14 +753,14 @@ a:hover {
 .bouton-retour {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #639797; /* Adjust this to match the color */
-  color: #ffffff; /* Text color */
-  border-left: 1px solid #c8dbdb;
+  background-color: #bdc660; /* Adjust this to match the color */
+  color: #b0b078; /* Text color */
+  border-left: 1px solid #b0b078;
   outline: none;
 }
 
 .bouton-retour:hover {
-  background-color: #203131; /* Darken the color on hover */
+  background-color: #594231; /* Darken the color on hover */
 }
 
 .bouton-retour.disabled {
@@ -760,7 +770,7 @@ a:hover {
 }
 
 .bouton-retour.disabled:hover {
-  background-color: #d4e3e3;
+  background-color: #b0b078;
   color: #436666;
   cursor: not-allowed;
 }
@@ -791,6 +801,14 @@ a:hover {
 
 .slide-diagnostic {
   height: calc(100vh - 200px);
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.slide-bilan {
+  height: fit-content !important;
   display: flex;
   gap: 24px;
   flex-direction: column;
@@ -1037,13 +1055,25 @@ a:hover {
 
 .boutons-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-end;
   gap: 16px;
+  margin-top: 32px;
 }
 
 .btn-principal {
   margin-top: 0px !important;
   padding-top: 0px !important;
+}
+
+.div-simulation .btn-principal,
+.div-simulation .btn-secondaire {
+  font-size: 20px;
+  line-height: auto;
+  height: 40px;
+  border-radius: 35px;
+  padding-left: 1.7rem;
+  padding-right: 3rem;
+  background-position: right 20px center;
 }
 </style>
