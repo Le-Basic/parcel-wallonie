@@ -103,9 +103,10 @@
           </div>
           <div>
             <div class="header-filtre ml-auto mr-auto">
-              <span class="icon-gaspillage icon"></span
+              <span class="icon-impact-biodiversite icon"></span
               ><span class="titre-filtre"
-                >Souhaitez-vous protéger la biodiversité ?
+                >Préserver 10% des surfaces agricoles en faveur de la
+                biodiversité ?
               </span>
               <div>
                 <label class="switch">

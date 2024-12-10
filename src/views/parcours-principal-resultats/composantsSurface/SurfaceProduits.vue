@@ -388,9 +388,6 @@
         </div>
       </div>
     </div>
-    <pre>{{
-      this.$store.state.resultatSimulation.surfacesEmploisAMobiliser
-    }}</pre>
     <div class="bloc-surface">
       <h3 class="text-center">Surface agricole actuelle du territoire</h3>
       <div class="map-content mb-4">
