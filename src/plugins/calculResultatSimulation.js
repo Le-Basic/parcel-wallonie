@@ -40,7 +40,7 @@ export function calculerResultatSimulation(
     surfaceNecessairePaysageResponseApi,
     part_relocalisee
   );
-  const potentielNourricier = Math.round(
+  let potentielNourricier = Math.round(
     (surfaces_actuelles * 100) / surfaces_a_mobiliser
   );
   let pct_difference_emission_kg_co2e = null;
@@ -51,6 +51,8 @@ export function calculerResultatSimulation(
 
   if (gardeBiodivTerres) {
     let SurfaceBiodiv = ajoutTerresBiodiversites(surfaces_a_mobiliser);
+    let SurfaceBiodivPaysage =
+      ajoutTerresBiodiversitesPaysage(surfaces_a_mobiliser);
 
     surfaces_emplois_a_mobiliser_parcel_niveau_1 = [
       ...surfaces_emplois_a_mobiliser_parcel_niveau_1,
@@ -67,6 +69,21 @@ export function calculerResultatSimulation(
         part_surface_a_mobiliser:
           (item.surface_a_mobiliser / surfaces_a_mobiliser) * 100,
       }));
+
+    surfaces_a_mobiliser_paysage = [
+      ...surfaces_a_mobiliser_paysage,
+      SurfaceBiodivPaysage,
+    ];
+
+    surfaces_a_mobiliser_paysage = surfaces_a_mobiliser_paysage.map((item) => ({
+      ...item,
+      part_surface_a_mobiliser:
+        (item.surface_a_mobiliser / surfaces_a_mobiliser) * 100,
+    }));
+
+    potentielNourricier = Math.round(
+      (surfaces_actuelles * 100) / surfaces_a_mobiliser
+    );
   }
   return {
     surfaceAMobiliser: surfaces_a_mobiliser,
@@ -465,5 +482,12 @@ function ajoutTerresBiodiversites(surface_a_mobiliser) {
     richesses_des_sols: 1.1,
     part_surface_a_mobiliser: 10,
     part_emplois_a_mobiliser: 0,
+  };
+}
+
+function ajoutTerresBiodiversitesPaysage(surface_a_mobiliser) {
+  return {
+    libelle_parcel_paysage_actuel: "Surfaces pour Biodiversité",
+    surface_a_mobiliser: surface_a_mobiliser * 0.1 * 1.1,
   };
 }
