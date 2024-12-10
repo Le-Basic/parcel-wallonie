@@ -57,7 +57,7 @@
         <div
           class="cadre-resultat resultat-ha"
           style="
-            position: absolute-;
+            position: absolute;
             top: -25px;
             z-index: 2;
             left: calc(50% - 25px);

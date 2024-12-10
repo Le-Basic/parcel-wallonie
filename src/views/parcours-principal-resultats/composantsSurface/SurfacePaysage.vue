@@ -49,265 +49,10 @@
             <RepartitionSurface :serieDonnees="repartitionSurfaceNecessaires" />
           </div>
         </div>
-        <div class="wrap-viz3 resultats-categories repartition">
-          <table
-            summary="Resultats"
-            id="PaysSpatCategoryresultsTable"
-            class="auto-style1 w-100"
-            border="1"
-          >
-            <thead></thead>
-            <tbody>
-              <tr>
-                <td colspan="5">
-                  <div
-                    class="cadre-categorie prairie animated fadeIn"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-legumes"
-                    style="cursor: pointer"
-                  >
-                    <div class="result-type">
-                      <span class="icon-prairie ico-medium prairie"></span>
-                    </div>
-                    <div class="result-chiffres row align-items-center">
-                      <div class="col titre-categorie mb-0">
-                        Prairie, estives, landes
-                      </div>
-                      <div class="col-auto ml-auto hectares">
-                        {{
-                          formatterSurfacesNecessaires(
-                            trouverChiffre(
-                              this.$store.state.resultatSimulation
-                                .surfaceNecessairePaysage,
-                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.PRAIRIES
-                                .libelle,
-                              "surface_a_mobiliser",
-                              "libelle_parcel_paysage_actuel",
-                              this.chiffreApresVirgule
-                            )
-                          )
-                        }}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="5">
-                  <div
-                    class="cadre-categorie fourrage animated fadeIn"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-fruits"
-                    style="cursor: pointer"
-                  >
-                    <div class="result-type">
-                      <span class="icon-fourragere ico-medium fourrage"></span>
-                    </div>
-                    <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">
-                        Cultures fourragères
-                      </div>
-                      <div class="col-auto ml-auto hectares">
-                        {{
-                          formatterSurfacesNecessaires(
-                            trouverChiffre(
-                              this.$store.state.resultatSimulation
-                                .surfaceNecessairePaysage,
-                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FOURRAGES
-                                .libelle,
-                              "surface_a_mobiliser",
-                              "libelle_parcel_paysage_actuel",
-                              this.chiffreApresVirgule
-                            )
-                          )
-                        }}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="5">
-                  <div
-                    class="cadre-categorie legumineuse animated fadeIn"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-cereales"
-                    style="cursor: pointer"
-                  >
-                    <div class="result-type">
-                      <span
-                        class="icon-legumineuses ico-medium legumineuse"
-                      ></span>
-                    </div>
-                    <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">Légumineuses</div>
-                      <div class="col-auto ml-auto hectares">
-                        {{
-                          formatterSurfacesNecessaires(
-                            trouverChiffre(
-                              this.$store.state.resultatSimulation
-                                .surfaceNecessairePaysage,
-                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMINEUSES
-                                .libelle,
-                              "surface_a_mobiliser",
-                              "libelle_parcel_paysage_actuel",
-                              this.chiffreApresVirgule
-                            )
-                          )
-                        }}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="5">
-                  <div
-                    class="cadre-categorie oleagineux animated fadeIn"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-viande"
-                    style="cursor: pointer"
-                  >
-                    <div class="result-type">
-                      <span
-                        class="icon-oleagineux ico-medium oleagineux"
-                      ></span>
-                    </div>
-                    <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">
-                        Céréales, Oléagineux, protéagineux
-                      </div>
-                      <div class="col-auto ml-auto hectares">
-                        {{
-                          formatterSurfacesNecessaires(
-                            trouverChiffre(
-                              this.$store.state.resultatSimulation
-                                .surfaceNecessairePaysage,
-                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.CEREALES
-                                .libelle,
-                              "surface_a_mobiliser",
-                              "libelle_parcel_paysage_actuel",
-                              this.chiffreApresVirgule
-                            )
-                          )
-                        }}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="5">
-                  <div
-                    class="cadre-categorie pdt animated fadeIn"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-viande"
-                    style="cursor: pointer"
-                  >
-                    <div class="result-type">
-                      <span class="icon-cereales2 ico-medium pdt"></span>
-                    </div>
-                    <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">
-                        Cultures industrielles alimentaires (pomme de terre,
-                        betterave à sucre…)
-                      </div>
-                      <div class="col-auto ml-auto hectares">
-                        {{
-                          formatterSurfacesNecessaires(
-                            trouverChiffre(
-                              this.$store.state.resultatSimulation
-                                .surfaceNecessairePaysage,
-                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
-                                .CULTURES_INDUSTRIELLES_ALIMENTAIRES.libelle,
-                              "surface_a_mobiliser",
-                              "libelle_parcel_paysage_actuel",
-                              this.chiffreApresVirgule
-                            )
-                          )
-                        }}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="5">
-                  <div
-                    class="cadre-categorie fruitssurface animated fadeIn"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-viande"
-                    style="cursor: pointer"
-                  >
-                    <div class="result-type">
-                      <span
-                        class="icon-ico_CATEGORIES_fruits ico-medium fruitssurface"
-                      ></span>
-                    </div>
-                    <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">Fruits</div>
-                      <div class="col-auto ml-auto hectares">
-                        {{
-                          formatterSurfacesNecessaires(
-                            trouverChiffre(
-                              this.$store.state.resultatSimulation
-                                .surfaceNecessairePaysage,
-                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FRUITS.libelle,
-                              "surface_a_mobiliser",
-                              "libelle_parcel_paysage_actuel",
-                              this.chiffreApresVirgule
-                            )
-                          )
-                        }}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="5">
-                  <div
-                    class="cadre-categorie legumessurface animated fadeIn"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-viande"
-                    style="cursor: pointer"
-                  >
-                    <div class="result-type">
-                      <span
-                        class="icon-ico_CATEGORIES_legumes ico-medium legumessurface"
-                      ></span>
-                    </div>
-                    <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">Légumes</div>
-                      <div class="col-auto ml-auto hectares">
-                        {{
-                          formatterSurfacesNecessaires(
-                            trouverChiffre(
-                              this.$store.state.resultatSimulation
-                                .surfaceNecessairePaysage,
-                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMES
-                                .libelle,
-                              "surface_a_mobiliser",
-                              "libelle_parcel_paysage_actuel",
-                              this.chiffreApresVirgule
-                            )
-                          )
-                        }}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <TableauProduit
+          class="prospectif tableau"
+          :tableauProduits="tableauProduitsProjeteMapped"
+        />
       </div>
     </div>
     <div class="bloc-surface">
@@ -346,258 +91,10 @@
         >
           <RepartitionSurface :serieDonnees="repartitionSurfacesActuelles" />
         </div>
-        <div class="wrap-viz4 resultats-categories repartition">
-          <table
-            summary="Resultats"
-            id="PaysSpatCategoryresultsTable"
-            class="auto-style1 w-100"
-            border="1"
-          >
-            <thead></thead>
-            <tbody>
-              <tr>
-                <td colspan="5">
-                  <div
-                    class="cadre-categorie prairie animated fadeIn"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-legumes"
-                    style="cursor: pointer"
-                  >
-                    <div class="result-type">
-                      <span class="icon-prairie ico-medium prairie"></span>
-                    </div>
-                    <div class="result-chiffres row align-items-center">
-                      <div class="col titre-categorie mb-0">
-                        Prairie, estives, landes
-                      </div>
-                      <div class="col-auto ml-auto hectares">
-                        {{
-                          formatterSurfacesNecessaires(
-                            trouverChiffre(
-                              this.$store.state.resultatSimulation
-                                .surfacesActuellesPaysage,
-                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.PRAIRIES
-                                .libelle,
-                              "sau_ha",
-                              "libelle_parcel_paysage_actuel"
-                            )
-                          )
-                        }}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="5">
-                  <div
-                    class="cadre-categorie fourrage animated fadeIn"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-fruits"
-                    style="cursor: pointer"
-                  >
-                    <div class="result-type">
-                      <span class="icon-fourragere ico-medium fourrage"></span>
-                    </div>
-                    <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">
-                        Cultures fourragères
-                      </div>
-                      <div class="col-auto ml-auto hectares">
-                        {{
-                          formatterSurfacesNecessaires(
-                            trouverChiffre(
-                              this.$store.state.resultatSimulation
-                                .surfacesActuellesPaysage,
-                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FOURRAGES
-                                .libelle,
-                              "sau_ha",
-                              "libelle_parcel_paysage_actuel"
-                            )
-                          )
-                        }}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="5">
-                  <div
-                    class="cadre-categorie legumineuse animated fadeIn"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-cereales"
-                    style="cursor: pointer"
-                  >
-                    <div class="result-type">
-                      <span
-                        class="icon-legumineuses ico-medium legumineuse"
-                      ></span>
-                    </div>
-                    <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">Légumineuses</div>
-                      <div class="col-auto ml-auto hectares">
-                        {{
-                          formatterSurfacesNecessaires(
-                            trouverChiffre(
-                              this.$store.state.resultatSimulation
-                                .surfacesActuellesPaysage,
-                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMINEUSES
-                                .libelle,
-                              "sau_ha",
-                              "libelle_parcel_paysage_actuel"
-                            )
-                          )
-                        }}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="5">
-                  <div
-                    class="cadre-categorie oleagineux animated fadeIn"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-viande"
-                    style="cursor: pointer"
-                  >
-                    <div class="result-type">
-                      <span
-                        class="icon-oleagineux ico-medium oleagineux"
-                      ></span>
-                    </div>
-                    <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">
-                        Céréales, Oléagineux, protéagineux
-                      </div>
-                      <div class="col-auto ml-auto hectares">
-                        {{
-                          formatterSurfacesNecessaires(
-                            trouverChiffre(
-                              this.$store.state.resultatSimulation
-                                .surfacesActuellesPaysage,
-                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.CEREALES
-                                .libelle,
-                              "sau_ha",
-                              "libelle_parcel_paysage_actuel"
-                            )
-                          )
-                        }}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="5">
-                  <div
-                    class="cadre-categorie pdt animated fadeIn"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-viande"
-                    style="cursor: pointer"
-                  >
-                    <div class="result-type">
-                      <span class="icon-cereales2 ico-medium pdt"></span>
-                    </div>
-                    <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">
-                        Cultures industrielles alimentaires (pomme de terre,
-                        betterave à sucre…)
-                      </div>
-                      <div class="col-auto ml-auto hectares">
-                        {{
-                          formatterSurfacesNecessaires(
-                            trouverChiffre(
-                              this.$store.state.resultatSimulation
-                                .surfacesActuellesPaysage,
-                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
-                                .CULTURES_INDUSTRIELLES_ALIMENTAIRES.libelle,
-                              "sau_ha",
-                              "libelle_parcel_paysage_actuel"
-                            )
-                          )
-                        }}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="5">
-                  <div
-                    class="cadre-categorie fruitssurface animated fadeIn"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-viande"
-                    style="cursor: pointer"
-                  >
-                    <div class="result-type">
-                      <span
-                        class="icon-ico_CATEGORIES_fruits ico-medium fruitssurface"
-                      ></span>
-                    </div>
-                    <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">Fruits</div>
-                      <div class="col-auto ml-auto hectares">
-                        {{
-                          formatterSurfacesNecessaires(
-                            trouverChiffre(
-                              this.$store.state.resultatSimulation
-                                .surfacesActuellesPaysage,
-                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.FRUITS.libelle,
-                              "sau_ha",
-                              "libelle_parcel_paysage_actuel"
-                            )
-                          )
-                        }}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="5">
-                  <div
-                    class="cadre-categorie legumessurface animated fadeIn"
-                    onclick=""
-                    data-toggle="modal"
-                    data-target="#modal-viande"
-                    style="cursor: pointer"
-                  >
-                    <div class="result-type">
-                      <span
-                        class="icon-ico_CATEGORIES_legumes ico-medium legumessurface"
-                      ></span>
-                    </div>
-                    <div class="result-chiffres row align-items-center">
-                      <div class="col mb-0 titre-categorie">Légumes</div>
-                      <div class="col-auto ml-auto hectares">
-                        {{
-                          formatterSurfacesNecessaires(
-                            trouverChiffre(
-                              this.$store.state.resultatSimulation
-                                .surfacesActuellesPaysage,
-                              CATEGORIE_PRODUITS_ACTUELS_PAYSAGE.LEGUMES
-                                .libelle,
-                              "sau_ha",
-                              "libelle_parcel_paysage_actuel"
-                            )
-                          )
-                        }}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <TableauProduit
+          class="prospectif tableau"
+          :tableauProduits="tableauProduitsActuelMapped"
+        />
       </div>
       <div>
         <InformationBox>
@@ -648,6 +145,7 @@ import { CATEGORIE_PRODUITS_ACTUELS_PAYSAGE } from "@/config/categorieProduitsAc
 import RepartitionSurface from "@/components/visualisation/RepartitionSurface.vue";
 import ModalComposant from "@/views/modal/ModalComposant.vue";
 import InformationBox from "@/components/bas-niveau/InformationBox";
+import TableauProduit from "@/components/visualisation/TableauProduit.vue";
 
 export default {
   inject: ["$axios"],
@@ -655,6 +153,7 @@ export default {
     RepartitionSurface,
     ModalComposant,
     InformationBox,
+    TableauProduit,
   },
   data() {
     return {
@@ -733,6 +232,50 @@ export default {
       let total = data.reduce((acc, el) => acc + el.value, 0);
       data.map((el) => (el.value = (el.value / total) * 100));
       return data;
+    },
+    tableauProduitsProjeteMapped() {
+      return Object.values(CATEGORIE_PRODUITS_ACTUELS_PAYSAGE).map(
+        (culture) => {
+          return {
+            libelle: culture.libelleLong,
+            classeCouleur: culture.classeCouleur,
+            couleur: culture.couleur,
+            icon: culture.classeIcone,
+            fonctionTrouverChiffre: (chiffre) =>
+              trouverChiffre(
+                this.$store.state.resultatSimulation.surfaceNecessairePaysage,
+                culture.libelle,
+                chiffre,
+                "libelle_parcel_paysage_actuel"
+              ),
+            valeurSurfaces: "surface_a_mobiliser",
+            partSurfaces: "part_surface_a_mobiliser",
+            nomModale: "",
+          };
+        }
+      );
+    },
+    tableauProduitsActuelMapped() {
+      return Object.values(CATEGORIE_PRODUITS_ACTUELS_PAYSAGE).map(
+        (culture) => {
+          return {
+            libelle: culture.libelleLong,
+            classeCouleur: culture.classeCouleur,
+            couleur: culture.couleur,
+            icon: culture.classeIcone,
+            fonctionTrouverChiffre: (chiffre) =>
+              trouverChiffre(
+                this.$store.state.resultatSimulation.surfacesActuellesPaysage,
+                culture.libelle,
+                chiffre,
+                "libelle_parcel_paysage_actuel"
+              ),
+            valeurSurfaces: "sau_ha",
+            partSurfaces: "part_surfaces_actuelles",
+            nomModale: "",
+          };
+        }
+      );
     },
   },
 };
