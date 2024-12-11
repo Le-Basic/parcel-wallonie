@@ -340,7 +340,10 @@
                         style="max-width: 100px; max-height: 100px"
                       />
                       <p class="texte-tres-petit texte-bleu">
-                        En Wallonie, 4 500 kT eqCO<sub>2</p>sub> sont émis par an par la production et le transport agricole (12% des émissions wallonnes (Source: Etat de l’environnement wallon, 2019)
+                        En Wallonie, 4 500 kT eqCO<sub>2</sub> sont émis par an
+                        par la production et le transport agricole - 12% des
+                        émissions wallonnes (Etat de l’environnement wallon,
+                        2019)
                       </p>
                     </div>
                     <div class="case-impact texte-bleu">
@@ -349,7 +352,10 @@
                         style="max-width: 100px; max-height: 100px"
                       />
                       <p class="texte-tres-petit">
-                        Par an, environ 65 000 ha de soja importé sont cultivés très loin pour nourrir le bétail wallon, accélérant des phénomènes de déforestation (Moyenne 2018-2022, modélisation Sytra, 2024)
+                        Par an, environ 65 000 ha de soja importé sont cultivés
+                        très loin pour nourrir le bétail wallon, accélérant des
+                        phénomènes de déforestation (Moyenne 2018-2022,
+                        modélisation Sytra, 2024)
                       </p>
                     </div>
                     <div class="case-impact texte-bleu">
@@ -359,9 +365,9 @@
                       />
                       <p class="texte-tres-petit">
                         Près de 90 % de la superficie wallonne sous cultures
-                        présente des teneurs insuffisantes en matière organique (Sur la
-                        période 2015 – 2019, SPW ARNE – DEMNA – DEE, via Etat de
-                        l’environnement wallon, 2024)
+                        présente des teneurs insuffisantes en matière organique
+                        (Sur la période 2015 – 2019, SPW ARNE – DEMNA – DEE, via
+                        Etat de l’environnement wallon, 2024)
                       </p>
                     </div>
                     <div class="case-impact texte-bleu">
@@ -384,8 +390,8 @@
                       <p class="texte-tres-petit">
                         En Wallonie, les espèces d'oiseaux communs associées aux
                         milieux agricoles ont perdu en moyenne plus de la moitié
-                        de leurs effectifs entre 1990 et 2022 (SPW ARNE – DEMNA, via l’Etat de
-                        l’environnement wallon, 2024)
+                        de leurs effectifs entre 1990 et 2022 (SPW ARNE – DEMNA,
+                        via l’Etat de l’environnement wallon, 2024)
                       </p>
                     </div>
                   </div>
