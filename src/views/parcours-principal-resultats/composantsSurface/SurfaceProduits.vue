@@ -362,7 +362,7 @@
                     </div>
                     <div class="cadre-titre-categorie">
                       <div class="titre-categorie">
-                        Protection de la biodiversité
+                        Espace de protection de biodiversité
                       </div>
                       <div class="hectares">
                         {{
