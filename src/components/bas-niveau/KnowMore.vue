@@ -32,7 +32,7 @@ const ouvrirModal = () => {
   gap: 8px;
   flex-direction: row;
   align-items: center;
-  padding: 16px;
+  padding: 0px;
   cursor: pointer;
 }
 </style>

@@ -7,10 +7,18 @@
       />
       <div class="section centrervh" id="section0" style="width: 100%">
         <div class="section-boutons-controles-diapo">
-          <button @click="RevenirDiapoPrecedente" class="bouton-retour">
+          <button
+            @click="RevenirDiapoPrecedente"
+            class="bouton-retour"
+            :class="{ disabled: index === 0 }"
+          >
             Précédent
           </button>
-          <button @click="PasserProchaineDiapo" class="bouton-suivant">
+          <button
+            @click="PasserProchaineDiapo"
+            class="bouton-suivant"
+            :class="{ disabled: index === maxIndex }"
+          >
             Suivant
           </button>
         </div>
@@ -48,7 +56,7 @@
                         <div>
                           <img
                             src="/img/logo/PARCEL_population.svg"
-                            height="100"
+                            height="80"
                           />
                         </div>
                         <div>
@@ -64,8 +72,8 @@
                       <div class="sous-partie">
                         <div
                           style="
-                            width: 100px;
-                            height: 100px;
+                            width: 80px;
+                            height: 80px;
                             background-color: var(--vert);
                           "
                         ></div>
@@ -342,8 +350,8 @@
                         style="max-width: 100px; max-height: 100px"
                       />
                       <p class="texte-petit">
-                        600 000 ha de soja cultivés très loin pour nourrir le
-                        bétail belge accélérant des phénomènes de déforestation
+                        150 000 ha de soja cultivés très loin pour nourrir le
+                        bétail wallon accélérant des phénomènes de déforestation
                       </p>
                     </div>
                     <div class="case-impact texte-bleu">
@@ -381,7 +389,11 @@
               </div>
             </transition>
             <transition :name="slideTransition" @after-enter="transitionEnd">
-              <div id="potentiel" v-if="index == 7" class="slide-diagnostic">
+              <div
+                id="potentiel"
+                v-if="index == 7"
+                class="slide-diagnostic slide-bilan"
+              >
                 <p
                   class="animated fadeInUp fast p-result mb-1 titre-slide texte-moyen work-sans-300 texte-centre"
                 >
@@ -393,28 +405,40 @@
                   >
                   de mon territoire ?
                 </p>
-                <p v-html="phrasePotentielNourricier" class="texte-petit"></p>
-                <tableauPotentielNourricierParCategorie />
-                <div class="boutons-container">
-                  <div
-                    class="div-continuer mb-small animated fadeInUp delay-5-1s"
-                  >
-                    <router-link to="/2-choix-de-la-population"
-                      ><button type="button" class="btn btn-principal mt-5">
-                        Simuler des scénarii de transition
-                      </button></router-link
-                    >
+                <div class="partie-diagnostic">
+                  <div class="sous-partie-gauche">
+                    <tableauPotentielNourricierParCategorie />
                   </div>
-                  <div
-                    class="div-continuer mb-big animated fadeInUp delay-5-1s"
-                  >
-                    <button
-                      type="button"
-                      class="btn btn-secondaire mt-0"
-                      @click="modalActive = 'ModalPotentielNourricier'"
-                    >
-                      En savoir plus sur le potentiel nourricier
-                    </button>
+                  <div class="sous-partie-droite">
+                    <p
+                      v-html="phrasePotentielNourricier"
+                      class="texte-tres-petit"
+                    ></p>
+                    <div class="boutons-container">
+                      <div
+                        class="div-simulation mb-small animated fadeInUp delay-5-1s"
+                      >
+                        <router-link to="/2-choix-de-la-population"
+                          ><button
+                            type="button"
+                            class="btn btn-principal btn-menu-new mt-5"
+                          >
+                            Simuler des scénarii de transition
+                          </button></router-link
+                        >
+                      </div>
+                      <div
+                        class="div-simulation mb-big animated fadeInUp delay-5-1s"
+                      >
+                        <button
+                          type="button"
+                          class="btn btn-secondaire mt-0"
+                          @click="modalActive = 'ModalPotentielNourricier'"
+                        >
+                          En savoir plus sur le potentiel nourricier
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -705,8 +729,8 @@ a:hover {
 }
 .section-boutons-controles-diapo {
   position: absolute;
-  bottom: 2%;
-  right: 3%;
+  bottom: 5%;
+  right: 10%;
   transform: translateY(-50%);
   z-index: 100;
   display: flex;
@@ -729,31 +753,40 @@ a:hover {
 .bouton-retour {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #c8dbdb; /* Adjust this to match the color */
-  color: #ffffff; /* Text color */
-  border-left: 1px solid #c8dbdb;
+  background-color: #bdc660; /* Adjust this to match the color */
+  color: #b0b078; /* Text color */
+  border-left: 1px solid #b0b078;
   outline: none;
 }
 
-.bouton-retour:before {
-  content: url("/public/img/bouton/triangle-precedent.svg");
-  position: absolute;
-  top: 0;
-  left: -19px;
-  border-right: 1px solid #c8dbdb;
-  height: 36px;
-  width: 19px;
-  fill: #c8dbdb;
-}
-
 .bouton-retour:hover {
-  background-color: #b0c7c7; /* Darken the color on hover */
+  background-color: #594231; /* Darken the color on hover */
 }
 
-.bouton-retour:hover:before {
-  content: url("/public/img/bouton/triangle-precedent-hover.svg");
-  border-right: 1px solid #b0c7c7;
+.bouton-retour.disabled {
+  background-color: #d4e3e3;
+  color: #436666;
+  cursor: not-allowed;
 }
+
+.bouton-retour.disabled:hover {
+  background-color: #b0b078;
+  color: #436666;
+  cursor: not-allowed;
+}
+
+.bouton-suivant.disabled {
+  background-color: #cad17f;
+  color: #436666;
+  cursor: not-allowed;
+}
+
+.bouton-suivant.disabled:hover {
+  background-color: #cad17f;
+  color: #436666;
+  cursor: not-allowed;
+}
+
 .bouton-suivant {
   display: inline-block;
   padding: 10px 20px;
@@ -762,30 +795,20 @@ a:hover {
   border-right: 1px solid var(--vert);
   outline: none;
 }
-
-.bouton-suivant:after {
-  content: url("/public/img/bouton/triangle-suivant.svg");
-  position: absolute;
-  top: 0;
-  right: -18px;
-  border-left: 1px solid var(--vert);
-  height: 36px;
-  width: 19px;
-  fill: #c8dbdb;
-  color: var(--vert);
-}
-
 .bouton-suivant:hover {
   background-color: var(--bleu); /* Darken the color on hover */
 }
 
-.bouton-suivant:hover:after {
-  content: url("/public/img/bouton/triangle-suivant-hover.svg");
-  border-left: 1px solid var(--bleu);
-}
-
 .slide-diagnostic {
   height: calc(100vh - 200px);
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.slide-bilan {
+  height: fit-content !important;
   display: flex;
   gap: 24px;
   flex-direction: column;
@@ -867,6 +890,7 @@ a:hover {
   flex-grow: 1;
   flex-shrink: 1;
   align-items: flex-end;
+  height: 100%;
 }
 
 .graphique-avec-logo {
@@ -933,7 +957,7 @@ a:hover {
 
 .carte {
   height: 100%;
-  max-width: 600px;
+  max-width: 400px;
   height: auto;
 }
 
@@ -956,11 +980,11 @@ a:hover {
 }
 
 .titre-slide {
-  padding: 32px 0;
+  padding: 16px 0;
   flex-grow: 0;
   color: #594231;
   line-height: 1.2;
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
 }
 
@@ -971,13 +995,17 @@ a:hover {
 
 .chiffre-moyen {
   font-size: 36px;
-  margin-top: 9px;
+  margin-top: 6px;
   font-weight: bold;
   line-height: 1;
 }
 
 .texte-petit {
   font-size: 20px;
+}
+
+.texte-tres-petit {
+  font-size: 16px;
 }
 
 .texte-centre {
@@ -1027,13 +1055,25 @@ a:hover {
 
 .boutons-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-end;
   gap: 16px;
+  margin-top: 32px;
 }
 
 .btn-principal {
   margin-top: 0px !important;
   padding-top: 0px !important;
+}
+
+.div-simulation .btn-principal,
+.div-simulation .btn-secondaire {
+  font-size: 20px;
+  line-height: auto;
+  height: 40px;
+  border-radius: 35px;
+  padding-left: 1.7rem;
+  padding-right: 3rem;
+  background-position: right 20px center;
 }
 </style>

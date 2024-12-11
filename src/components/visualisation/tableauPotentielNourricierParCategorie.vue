@@ -125,11 +125,11 @@ const potentielNourricierElevage = computed(() => {
 <style scoped>
 .potentiel-nourricier-container {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   border: 1px solid var(--vert);
   flex-direction: column;
   align-items: center;
-  padding: 16px;
+  padding: 12px;
 }
 
 .potentiel-nourricier-title {
@@ -138,10 +138,10 @@ const potentielNourricierElevage = computed(() => {
 
 .potentiel-nourricier-categorie-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: 0.8fr 0.6fr 0.8fr;
   column-gap: 32px;
-  grid-auto-flow: column;
+  grid-auto-flow: row;
 }
 span {
   display: flex;
@@ -151,10 +151,10 @@ span {
 }
 
 .categorie {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .potentiel-nourricier-chiffre {
-  font-size: 24px;
+  font-size: 20px;
 }
 </style>

@@ -8,7 +8,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-      - test
+      - master
 
 jobs:
   build_and_deploy_job:

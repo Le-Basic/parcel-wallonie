@@ -344,7 +344,7 @@ function calculerSurfacesEtEmploisAMobiliser(
       };
       groupedData[key].surface_a_mobiliser += entry.surface_a_mobiliser;
     });
-  const surfaces_a_mobiliser_paysage = Object.values(groupedData);
+  let surfaces_a_mobiliser_paysage = Object.values(groupedData);
   surfaces_emplois_a_mobiliser_parcel_niveau_1 =
     surfaces_emplois_a_mobiliser_parcel_niveau_1.map((item) => ({
       ...item,
@@ -355,6 +355,13 @@ function calculerSurfacesEtEmploisAMobiliser(
         (item.emplois_a_mobiliser * 100) / emplois_a_mobiliser
       ),
     }));
+
+  surfaces_a_mobiliser_paysage = surfaces_a_mobiliser_paysage.map((item) => ({
+    ...item,
+    part_surface_a_mobiliser: Math.round(
+      (item.surface_a_mobiliser * 100) / surfaces_a_mobiliser
+    ),
+  }));
   return {
     surfaces_a_mobiliser: surfaces_a_mobiliser,
     emplois_a_mobiliser: emplois_a_mobiliser,
