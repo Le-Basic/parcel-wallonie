@@ -146,7 +146,6 @@ import RepartitionSurface from "@/components/visualisation/RepartitionSurface.vu
 import ModalComposant from "@/views/modal/ModalComposant.vue";
 import InformationBox from "@/components/bas-niveau/InformationBox";
 import TableauProduit from "@/components/visualisation/TableauProduit.vue";
-import jaugeChart from "@/components/visualisation/jaugeChart.vue";
 
 export default {
   inject: ["$axios"],
@@ -155,7 +154,6 @@ export default {
     ModalComposant,
     InformationBox,
     TableauProduit,
-    jaugeChart,
   },
   data() {
     return {
