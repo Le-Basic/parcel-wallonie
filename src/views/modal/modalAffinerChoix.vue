@@ -107,6 +107,15 @@
               ><span class="titre-filtre"
                 >Préserver 10% des surfaces agricoles en faveur de la
                 biodiversité ?
+                <a
+                  href="#"
+                  class="info tooltip-affiner"
+                  data-tooltip="Ce curseur ajoute 10% de superficies non productives en faveur du maintien et du développement de la biodiversité (éléments non-productifs tels que fossés, haies, bords de champs, bandes enherbées, jachères, etc.). En 2020, les surfaces de soutien à la biodiversité sont estimées à 1.5 à 2% des superficies wallonnes sous culture (principalement des surfaces non productives). Elles devraient atteindre minimum 10% des superficies sous culture pour assurer le maintient de la biodiversité.
+"
+                  data-placement="left"
+                  title="Tooltip on left"
+                  ><span class="icon-ico_element_info"></span
+                ></a>
               </span>
               <div>
                 <label class="switch">
