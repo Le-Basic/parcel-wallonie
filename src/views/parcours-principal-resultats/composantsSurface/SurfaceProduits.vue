@@ -52,9 +52,9 @@
         graphique
       </div>
 
-      <div class="wrap-viz cadre-graphique mt-5">
+      <div class="cadre-graphique mt-5 delay-1s">
         <div
-          class="resultats-categories repartition graph row"
+          class="wrap-viz2 resultats-categories repartition graph"
           style="
             background-color: #fff;
             height: 100%;
@@ -63,15 +63,8 @@
           "
         >
           <div
-            id="viz"
-            class="viz"
-            ref="viz1"
-            style="
-              background-color: #fff;
-              height: 100%;
-              margin-top: 20px;
-              min-height: 550px;
-            "
+            id="viz2"
+            style="background-color: #fff; height: 100%; min-height: 550px"
           >
             <RepartitionSurface
               :serieDonnees="repartitionSurfacePotentielNourricier"
