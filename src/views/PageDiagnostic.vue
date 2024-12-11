@@ -428,7 +428,7 @@
                         >
                       </div>
                       <div
-                        class="div-simulation mb-big animated fadeInUp delay-5-1s"
+                        class="div-simulation mb-small animated fadeInUp delay-5-1s"
                       >
                         <button
                           type="button"
@@ -653,11 +653,13 @@ const phrasePotentielNourricierFonction = (potentiel) => {
   let phrase = "";
 
   if (potentiel > 1) {
-    phrase =
-      "Il est théoriquement possible de nourrir la population avec les terres agricoles du territoire (le potentiel nourricier est supérieur à 100%). Cependant, certaines productions essentielles peuvent manquer, et il est nécessaire d'analyser en détail les besoins en regard des cultures actuelles du territoire.";
+    phrase = `Il est théoriquement possible de nourrir la population avec les terres agricoles du territoire (le potentiel nourricier est de <strong class='texte-vert'>${FormatterPourcentage(
+      potentiel
+    )}</strong>). Cependant, certaines productions essentielles peuvent manquer, et il est nécessaire d'analyser en détail les besoins en regard des cultures actuelles du territoire.`;
   } else {
-    phrase =
-      "Malheureusement, votre territoire n'a pas assez de terres agricoles pour nourrir l'ensemble de la population (le potentiel nourricier est inférieur à 100%). Il est de fait dépendant d'autres territoires limitrophes ou très éloignés pour des cultures pouvant théoriquement être localement produites";
+    phrase = `Malheureusement, votre territoire n'a pas assez de terres agricoles pour nourrir l'ensemble de la population (le potentiel nourricier est <strong class='texte-vert'>${FormatterPourcentage(
+      potentiel
+    )}</strong>). Il est de fait dépendant d'autres territoires limitrophes ou très éloignés pour des cultures pouvant théoriquement être localement produites`;
   }
 
   return phrase; // Return the reactive ref
