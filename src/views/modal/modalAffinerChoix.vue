@@ -102,6 +102,35 @@
             </div>
           </div>
           <div>
+            <div class="header-filtre ml-auto mr-auto">
+              <span class="icon-impact-biodiversite icon"></span
+              ><span class="titre-filtre"
+                >Préserver 10% des surfaces agricoles en faveur de la
+                biodiversité ?
+                <a
+                  href="#"
+                  class="info tooltip-affiner"
+                  data-tooltip="Ce curseur ajoute 10% de superficies non productives en faveur du maintien et du développement de la biodiversité (éléments non-productifs tels que fossés, haies, bords de champs, bandes enherbées, jachères, etc.). En 2020, les surfaces de soutien à la biodiversité sont estimées à 1.5 à 2% des superficies wallonnes sous culture (principalement des surfaces non productives). Elles devraient atteindre minimum 10% des superficies sous culture pour assurer le maintient de la biodiversité.
+"
+                  data-placement="left"
+                  title="Tooltip on left"
+                  ><span class="icon-ico_element_info"></span
+                ></a>
+              </span>
+              <div>
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    id="toutbio"
+                    value="1"
+                    v-model="gardeBiodivTerres"
+                  />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div>
             <div
               class="header-filtre ml-auto mr-auto d-flex align-content-stretch"
             >
@@ -567,6 +596,7 @@ export default {
       regimeChoisi: this.$store.state.regime_alimentaire.nomCourt,
       part_relocalisee: this.$store.state.part_relocalisee,
       toutBio: false,
+      gardeBiodivTerres: this.$store.state.gardeBiodivTerres,
     };
   },
   methods: {
@@ -676,6 +706,9 @@ export default {
     },
     partBioStore: function (partBio) {
       this.partBio = partBio;
+    },
+    gardeBiodivTerres: function (nouvelleValeur) {
+      this.$store.dispatch("actionGardeBiodivTerres", nouvelleValeur);
     },
   },
   computed: {

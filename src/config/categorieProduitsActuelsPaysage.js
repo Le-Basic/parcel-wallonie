@@ -83,4 +83,12 @@ export const CATEGORIE_PRODUITS_ACTUELS_PAYSAGE = {
     libelleLong: "Autres",
     classeCouleur: "fruitssurface",
   },
+  BIODIV: {
+    couleur: "#38a13f",
+    classeIcone: "icon-impact-biodiversite",
+    libelle: "Surfaces pour Biodiversité",
+    libelle_court: "Surfaces pour Biodiversité",
+    libelleLong: "Surfaces pour Biodiversité",
+    classeCouleur: "text-vert-bio",
+  },
 };

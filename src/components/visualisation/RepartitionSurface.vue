@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
+import { computed } from "vue";
 import { use } from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
 import { TreemapChart } from "echarts/charts";
@@ -51,50 +51,52 @@ const props = defineProps({
   },
 });
 
-const option = {
-  grid: {
-    left: "0%",
-    right: "0%",
-    top: 0,
-    bottom: 0,
-    containLabel: true,
-  },
-  textStyle: { fontFamily: "Work Sans", color: "#000", overflow: "break" },
-  label: {
-    show: !props.hideLabels,
-    textStyle: {
-      color: "#000",
+const option = computed(() => {
+  return {
+    grid: {
+      left: "0%",
+      right: "0%",
+      top: 0,
+      bottom: 0,
+      containLabel: true,
     },
-  },
-  tooltip: {
-    borderRadius: 0,
-    formatter: function (categorieProduit) {
-      let nomProduit = categorieProduit.name;
-      let partTotal = categorieProduit.value / 100 ?? 0;
-      let couleur = categorieProduit.data.itemStyle?.color ?? "#00a8ff";
-      let tooltip = `<div class="tooltip-title" style="color:${couleur}">`;
-
-      console.log("tooltip", tooltip);
-      return [
-        tooltip + nomProduit + "</div>",
-        "Part : " + FormatterPourcentage(partTotal),
-      ].join("");
-    },
-  },
-  series: [
-    {
-      type: "treemap",
-      roam: "move",
-      width: "100%",
-      height: "100%",
-      nodeClick: false,
-      breadcrumb: {
-        show: false,
+    textStyle: { fontFamily: "Work Sans", color: "#000", overflow: "break" },
+    label: {
+      show: !props.hideLabels,
+      textStyle: {
+        color: "#000",
       },
-      data: enrichirSeriesAvecLabels(props.serieDonnees),
     },
-  ],
-};
+    tooltip: {
+      borderRadius: 0,
+      formatter: function (categorieProduit) {
+        let nomProduit = categorieProduit.name;
+        let partTotal = categorieProduit.value / 100 ?? 0;
+        let couleur = categorieProduit.data.itemStyle?.color ?? "#00a8ff";
+        let tooltip = `<div class="tooltip-title" style="color:${couleur}">`;
+
+        console.log("tooltip", tooltip);
+        return [
+          tooltip + nomProduit + "</div>",
+          "Part : " + FormatterPourcentage(partTotal),
+        ].join("");
+      },
+    },
+    series: [
+      {
+        type: "treemap",
+        roam: "move",
+        width: "100%",
+        height: "100%",
+        nodeClick: false,
+        breadcrumb: {
+          show: false,
+        },
+        data: enrichirSeriesAvecLabels(props.serieDonnees),
+      },
+    ],
+  };
+});
 </script>
 
 <style scoped>

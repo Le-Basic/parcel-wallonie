@@ -339,9 +339,11 @@
                         src="/img/logo/PARCEL_picto-CO2.svg"
                         style="max-width: 100px; max-height: 100px"
                       />
-                      <p class="texte-petit texte-bleu">
-                        En Belgique, 37 millions de tonnes de CO<sub>2</sub>
-                        émise par an par notre production agricole
+                      <p class="texte-tres-petit texte-bleu">
+                        En Wallonie, 4 500 kT eqCO<sub>2</sub> sont émis par an
+                        par la production et le transport agricole - 12% des
+                        émissions wallonnes (Etat de l’environnement wallon,
+                        2019)
                       </p>
                     </div>
                     <div class="case-impact texte-bleu">
@@ -349,9 +351,11 @@
                         src="/img/logo/PARCEL_picto-soja.svg"
                         style="max-width: 100px; max-height: 100px"
                       />
-                      <p class="texte-petit">
-                        150 000 ha de soja cultivés très loin pour nourrir le
-                        bétail wallon accélérant des phénomènes de déforestation
+                      <p class="texte-tres-petit">
+                        Par an, environ 65 000 ha de soja importé sont cultivés
+                        très loin pour nourrir le bétail wallon, accélérant des
+                        phénomènes de déforestation (Moyenne 2018-2022,
+                        modélisation Sytra, 2024)
                       </p>
                     </div>
                     <div class="case-impact texte-bleu">
@@ -359,9 +363,11 @@
                         src="/img/logo/PARCEL_picto-ferme.svg"
                         style="max-width: 100px; max-height: 100px"
                       />
-                      <p class="texte-petit">
-                        20% des agriculteurs belges vivent sous le taux de
-                        pauvreté en 2024.
+                      <p class="texte-tres-petit">
+                        Près de 90 % de la superficie wallonne sous cultures
+                        présente des teneurs insuffisantes en matière organique
+                        (Sur la période 2015 – 2019, SPW ARNE – DEMNA – DEE, via
+                        Etat de l’environnement wallon, 2024)
                       </p>
                     </div>
                     <div class="case-impact texte-bleu">
@@ -369,9 +375,11 @@
                         src="/img/logo/PARCEL_picto-eau-sale.svg"
                         style="max-width: 100px; max-height: 100px"
                       />
-                      <p class="texte-petit">
-                        8% des eaux souterraines ont des taux trop élevés de
-                        nitrates
+                      <p class="texte-tres-petit">
+                        35 % masses d’eau souterraines wallonnes sont déclassées
+                        en raison de concentrations trop élevées en nitrate
+                        et/ou en pesticides d’origine agricole (Etat de
+                        l’environnement wallon, 2019)
                       </p>
                     </div>
                     <div class="case-impact texte-bleu">
@@ -379,9 +387,11 @@
                         src="/img/logo/PARCEL_picto-oiseau.svg"
                         style="max-width: 100px; max-height: 100px"
                       />
-                      <p class="texte-petit">
-                        45% des oiseaux des champs ont disparu en 30 ans en
-                        Europe
+                      <p class="texte-tres-petit">
+                        En Wallonie, les espèces d'oiseaux communs associées aux
+                        milieux agricoles ont perdu en moyenne plus de la moitié
+                        de leurs effectifs entre 1990 et 2022 (SPW ARNE – DEMNA,
+                        via l’Etat de l’environnement wallon, 2024)
                       </p>
                     </div>
                   </div>
@@ -428,7 +438,7 @@
                         >
                       </div>
                       <div
-                        class="div-simulation mb-big animated fadeInUp delay-5-1s"
+                        class="div-simulation mb-small animated fadeInUp delay-5-1s"
                       >
                         <button
                           type="button"
@@ -653,11 +663,13 @@ const phrasePotentielNourricierFonction = (potentiel) => {
   let phrase = "";
 
   if (potentiel > 1) {
-    phrase =
-      "Il est théoriquement possible de nourrir la population avec les terres agricoles du territoire (le potentiel nourricier est supérieur à 100%). Cependant, certaines productions essentielles peuvent manquer, et il est nécessaire d'analyser en détail les besoins en regard des cultures actuelles du territoire.";
+    phrase = `Il est théoriquement possible de nourrir la population avec les terres agricoles du territoire (le potentiel nourricier est de <strong class='texte-vert'>${FormatterPourcentage(
+      potentiel
+    )}</strong>). Cependant, certaines productions essentielles peuvent manquer, et il est nécessaire d'analyser en détail les besoins en regard des cultures actuelles du territoire.`;
   } else {
-    phrase =
-      "Malheureusement, votre territoire n'a pas assez de terres agricoles pour nourrir l'ensemble de la population (le potentiel nourricier est inférieur à 100%). Il est de fait dépendant d'autres territoires limitrophes ou très éloignés pour des cultures pouvant théoriquement être localement produites";
+    phrase = `Malheureusement, votre territoire n'a pas assez de terres agricoles pour nourrir l'ensemble de la population (le potentiel nourricier est <strong class='texte-vert'>${FormatterPourcentage(
+      potentiel
+    )}</strong>). Il est de fait dépendant d'autres territoires limitrophes ou très éloignés pour des cultures pouvant théoriquement être localement produites`;
   }
 
   return phrase; // Return the reactive ref
@@ -913,13 +925,13 @@ a:hover {
 .grille-impacts {
   display: flex;
   justify-content: center;
-  gap: 32px;
+  gap: 16px;
 }
 
 .case-impact {
   display: grid;
-  grid-template-rows: 100px 1fr;
-  width: 150px;
+  grid-template-rows: 120px 1fr;
+  width: 200px;
   gap: 16px;
 }
 

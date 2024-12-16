@@ -12,9 +12,10 @@
       ></modalDetail>
       <div class="intro">
         La vue produit illustre la répartition des surfaces agricoles en
-        fonction des types de produits alimentaires, par exemple, les hectares
-        destinés aux céréales et fourrages pour la production de viande sont
-        repris dans la catégorie “Viande et oeufs” et “Produits laitiers”.
+        fonction des types de produits alimentaires. Par exemple, les hectares
+        destinés aux céréales et fourrages pour la production de produits
+        d’origine animale (viande, produits laitiers, oeufs) sont repris dans
+        les catégories “Viande et oeufs” et “Produits laitiers”.
       </div>
       <h3 class="text-center">Surface agricole à mobiliser</h3>
       <div
@@ -52,9 +53,9 @@
         graphique
       </div>
 
-      <div class="wrap-viz cadre-graphique mt-5">
+      <div class="cadre-graphique mt-5 delay-1s">
         <div
-          class="resultats-categories repartition graph row"
+          class="wrap-viz2 resultats-categories repartition graph"
           style="
             background-color: #fff;
             height: 100%;
@@ -63,15 +64,8 @@
           "
         >
           <div
-            id="viz"
-            class="viz"
-            ref="viz1"
-            style="
-              background-color: #fff;
-              height: 100%;
-              margin-top: 20px;
-              min-height: 550px;
-            "
+            id="viz2"
+            style="background-color: #fff; height: 100%; min-height: 550px"
           >
             <RepartitionSurface
               :serieDonnees="repartitionSurfacePotentielNourricier"
@@ -179,7 +173,7 @@
                         :key="this.$store.state.resultatSimulation"
                       ></jaugeChart>
                     </div>
-                    <div class="">
+                    <div>
                       <span
                         class="icon-ico_CATEGORIES_fruits ico-medium fruits"
                       ></span>
@@ -326,6 +320,59 @@
                       <span
                         class="icon-ico_fleche_detail_gros icon viande"
                       ></span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5">
+                  <div
+                    class="cadre-categorie text-vert-bio animated fadeIn delay-2-5s"
+                  >
+                    <div class="" id="pc4" style="width: 65px; height: 65px">
+                      <jaugeChart
+                        :value="
+                          Math.round(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesEmploisAMobiliser,
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.BIODIV
+                                .libelle,
+                              'part_surface_a_mobiliser',
+                              'libelle_parcel_niveau_1'
+                            )
+                          )
+                        "
+                        :couleur="
+                          CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.BIODIV.couleur
+                        "
+                        :key="this.$store.state.resultatSimulation"
+                      ></jaugeChart>
+                    </div>
+                    <div class="">
+                      <span
+                        class="icon-impact-biodiversite ico-medium text-vert-bio"
+                      ></span>
+                    </div>
+                    <div class="cadre-titre-categorie">
+                      <div class="titre-categorie">
+                        Espace de protection de biodiversité
+                      </div>
+                      <div class="hectares">
+                        {{
+                          formatterSurfacesNecessaires(
+                            trouverChiffre(
+                              this.$store.state.resultatSimulation
+                                .surfacesEmploisAMobiliser,
+                              CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.BIODIV
+                                .libelle,
+                              "surface_a_mobiliser",
+                              "libelle_parcel_niveau_1",
+                              this.chiffreApresVirgule
+                            )
+                          )
+                        }}
+                      </div>
                     </div>
                   </div>
                 </td>

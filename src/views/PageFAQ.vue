@@ -45,7 +45,7 @@
         Un certain nombre d'outils sont disponibles sur PARCEL-Wallonie pour
         répondre à diverses interrogations. Tout d'abord la
         <a
-          href="https://bck.parcel-app.org/storage/app/uploads/public/633/407/dd3/633407dd356ea638253814.pdf"
+          href="/BASIC_Parcel Wallonie Fiche Méthodologique.pdf"
           target="_blank"
           rel="noopener noreferrer"
           >Note méthodologique</a
