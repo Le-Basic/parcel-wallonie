@@ -89,7 +89,7 @@
       <div class="result-chiffres">
         <span class="vert-clair">Réduction gaspillage : </span>
         <span id="valpartpertes2" class="territoire">
-          {{ $store.state.partpertes }}</span
+          De 18 à {{ 18 * (1 - $store.state.partpertes) }}</span
         ><span class="vert-fonce">%</span>
       </div>
     </div>

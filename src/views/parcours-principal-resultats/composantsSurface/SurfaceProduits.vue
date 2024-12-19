@@ -1589,7 +1589,7 @@ export default {
     },
     positionGaucheBarreVerticale() {
       return (
-        "calc(" + Math.min(0.5, 1 / this.maxPotentielsEt1) * 100 + "% - 20px)"
+        "calc(" + Math.min(1, 1 / this.maxPotentielsEt1) * 100 + "% - 20px)"
       );
     },
   },

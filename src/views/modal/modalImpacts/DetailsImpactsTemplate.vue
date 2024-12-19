@@ -1,6 +1,5 @@
 <script setup>
-import { defineProps } from "vue";
-
+import { defineProps, defineEmits, getCurrentInstance, computed } from "vue";
 const props = defineProps({
   modalId: {
     type: String,
@@ -34,6 +33,19 @@ const props = defineProps({
     default: "33%",
   },
 });
+
+const emits = defineEmits(["fermerModal"]);
+
+const fermerModal = () => {
+  emits("fermerModal");
+};
+
+const instance = getCurrentInstance();
+const slots = instance?.slots; // Access slots from the instance
+
+const hasReperesSlot = computed(
+  () => !!slots.reperes && slots.reperes().length > 0
+);
 </script>
 
 <template>
@@ -70,7 +82,7 @@ const props = defineProps({
       </div>
     </div>
     <div class="card">
-      <div class="card-header sansFond" id="Reperes">
+      <div class="card-header sansFond" id="Reperes" v-if="hasReperesSlot">
         <div><span class="icon-repere ico-medium white icon-titre"></span></div>
         <div>Repères</div>
       </div>
