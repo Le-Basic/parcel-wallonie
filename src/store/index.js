@@ -39,9 +39,9 @@ const getDefaultState = () => {
     },
     population: {
       part: "toute",
-      nombreEnfants: 150,
-      nombreAdultes: 150,
-      nombreSeniors: 150,
+      nombreEnfants: 0,
+      nombreAdultes: 0,
+      nombreSeniors: 0,
     },
     curseursBioMin: {
       partbiocereales: 0,

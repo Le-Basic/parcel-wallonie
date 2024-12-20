@@ -137,9 +137,9 @@
 export default {
   data() {
     return {
-      nombreAdultes: 150,
-      nombreSeniors: 150,
-      nombreEnfants: 150,
+      nombreAdultes: 0,
+      nombreSeniors: 0,
+      nombreEnfants: 0,
     };
   },
   methods: {

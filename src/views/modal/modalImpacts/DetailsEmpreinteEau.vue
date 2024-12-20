@@ -58,7 +58,7 @@ import detailsTemplate from "./DetailsImpactsTemplate.vue";
 </script>
 
 <style scoped>
-.ico-medium {
+.icon-medium {
   font-size: 35px !important;
   margin-right: 8px;
 }

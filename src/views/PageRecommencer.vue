@@ -21,19 +21,6 @@
                 class="mt-auto mb-auto choix-pop animated fadeInUp delay-05s faster align-items-center"
               >
                 <div class="col-12 ml-auto mr-auto">
-                  <router-link to="/2-choix-de-la-population"
-                    ><button
-                      type="button"
-                      class="btn btn-big-light btn-recommencer"
-                    >
-                      <span
-                        class="icon-ico_navigation_population ico-medium"
-                      ></span
-                      ><span>choisir une nouvelle population</span>
-                    </button></router-link
-                  >
-                </div>
-                <div class="col-12 ml-auto mr-auto">
                   <router-link
                     to="/1-choix-du-territoire"
                     onclick="localStorage.clear();"
@@ -45,6 +32,19 @@
                         class="icon-ico_navigation_parcours ico-medium"
                       ></span
                       ><span>recommencer</span>
+                    </button></router-link
+                  >
+                </div>
+                <div class="col-12 ml-auto mr-auto">
+                  <router-link to="/2-choix-de-la-population"
+                    ><button
+                      type="button"
+                      class="btn btn-big-light btn-recommencer"
+                    >
+                      <span
+                        class="icon-ico_navigation_population ico-medium"
+                      ></span
+                      ><span>choisir une nouvelle population</span>
                     </button></router-link
                   >
                 </div>

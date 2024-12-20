@@ -22,7 +22,10 @@
                       id: institution.id,
                     })
               "
-              >{{ institution.libelle_pluriel }}
+              >{{ institution.libelle_pluriel
+              }}<span style="font-style: italic">
+                - {{ institution.nb_repas }}</span
+              >
               <input
                 type="checkbox"
                 :name="institution.libelle_singulier"
