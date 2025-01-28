@@ -124,7 +124,7 @@
       <p class="bubble you">
         Bien entendu, selon les territoires, cette diversification n’est pas
         toujours envisageable ou souhaitable. Par exemple, en zone de montagne,
-        il est difficile d’imaginer le remplacement de zones d’estives par des
+        il est difficile d’imaginer le remplacement de zones de prairies par des
         zones de cultures
       </p>
       <p class="bubble-name you">Caroline - 16:12</p>

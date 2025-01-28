@@ -32,6 +32,7 @@
                       )
                     )
                   "
+                  :key="produit"
                   :couleur="produit.couleur"
                 ></JaugeChart>
               </div>

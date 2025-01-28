@@ -52,6 +52,7 @@
         <TableauProduit
           class="prospectif tableau"
           :tableauProduits="tableauProduitsProjeteMapped"
+          :key="this.$store.state.resultatSimulation.surfaceNecessairePaysage"
         />
       </div>
     </div>
