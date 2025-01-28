@@ -540,7 +540,7 @@ const CATEGORIES_IMPACT = computed(() => {
                 .differenceSimulationReferencePct
             ) + "<span class='texte-unite'>%</span>",
           sousTitreSimulation:
-            "de manière organique supplémentaire dans le sol",
+            "de matière organique supplémentaire dans le sol",
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsRichesseSols",
           pasImpact:

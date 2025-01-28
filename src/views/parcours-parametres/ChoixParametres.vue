@@ -237,7 +237,7 @@
                 </div>
                 <div class="note" id="note_pertes">
                   <sup>*</sup>Actuellement, 18% de la production agricole est
-                  perdue ou gaspillée
+                  perdue ou gaspillée tout au long de la chaîne
                 </div>
               </div>
             </div>

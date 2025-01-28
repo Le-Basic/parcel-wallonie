@@ -4,7 +4,7 @@ export const CATEGORIE_PRODUITS_ACTUELS_PAYSAGE = {
     couleur: "#D1F18C",
     classeIcone: "icon-prairie",
     classeCouleur: "prairie",
-    libelleLong: "Prairie, estives, landes",
+    libelleLong: "Prairies",
   },
   FOURRAGES: {
     libelle: "Cultures fourragères",

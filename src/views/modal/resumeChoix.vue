@@ -88,10 +88,16 @@
       </div>
       <div class="result-chiffres">
         <span class="vert-clair">Réduction gaspillage : </span>
-        <span id="valpartpertes2" class="territoire">
+        <span
+          id="valpartpertes2"
+          class="territoire"
+          v-if="$store.state.partpertes > 0"
+        >
           De 18 à
           {{ Math.round((18 * (100 - $store.state.partpertes)) / 100) }}</span
-        ><span class="vert-fonce">%</span>
+        >
+        <span id="valpartpertes2" class="territoire" v-else>18</span>
+        <span class="vert-fonce">%</span>
       </div>
     </div>
   </div>
