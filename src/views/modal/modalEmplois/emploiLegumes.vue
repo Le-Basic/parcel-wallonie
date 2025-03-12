@@ -214,8 +214,7 @@
                   </li>
                   <li>
                     <strong
-                      >Une exploitation est spécialisée au sein d’un
-                      OTEX</strong
+                      >Une exploitation est spécialisée au sein d’un OTE</strong
                     >
                     si la Production Brute Standard (indicateur économique sur
                     le potentiel de production d’une exploitation) de la ou des
@@ -224,7 +223,7 @@
                   <li>
                     <strong
                       >Pour le maraîchage, on utilise l’indicateur UTA/ha de
-                      l’OTEX « Légumes et champignons ».</strong
+                      l’OTE « Légumes et champignons ».</strong
                     >
                   </li>
                   <li>

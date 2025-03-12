@@ -198,14 +198,14 @@
                       >On utilise les données du dernier recensement agricole
                       (2010) qui comptabilise les Unité de travail annuel par
                       hectare en fonction des Orientations technico-économique
-                      (OTEX). </strong
+                      (OTE). </strong
                     >. Les données seront mises à jour avec le prochain
                     recensement agricole.
                   </li>
                   <li>
                     <strong
                       >Une exploitation est spécialisée au sein d’une
-                      OTEX</strong
+                      OTE</strong
                     >
                     si la Production Brute Standard (indicateur économique sur
                     le potentiel de production d’une exploitation) de la ou des
@@ -214,7 +214,7 @@
                   <li>
                     <strong
                       >Pour l'arboriculture, on utilise l’indicateur UTA/ha de
-                      l’OTEX « Fruits et autres cultures permanentes ».</strong
+                      l’OTE « Fruits et autres cultures permanentes ».</strong
                     >
                   </li>
                   <li>
