@@ -55,7 +55,7 @@
                         ><span class="nbr-ha"> 3% </span
                         ><span class="hectares"
                           >(environ) de l’emploi agricole total en Région
-                          wallonne métropolitaine</span
+                          wallonne</span
                         ></span
                       >
                     </div>
