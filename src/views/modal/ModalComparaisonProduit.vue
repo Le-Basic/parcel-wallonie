@@ -31,7 +31,7 @@
             <div class="odometer-inside">
               {{
                 formatterChiffres(
-                  Math.round(store.state.resultatSimulation.surfacesActuelles)
+                  Math.round(store.state.resultatSimulation.surfacesActuelles),
                 )
               }}
             </div>
@@ -55,7 +55,7 @@
             >
               {{
                 formatterChiffres(
-                  Math.round(store.state.resultatSimulation.surfaceAMobiliser)
+                  Math.round(store.state.resultatSimulation.surfaceAMobiliser),
                 )
               }}
             </div>
@@ -88,8 +88,8 @@
       </div>
       <div class="transverse information-box">
         Attention: Ni les jachères ni les cultures industrielles comme le lin ne
-        sont pas prises en compte dans le scénario de relocalisation de PARCEL
-        qui ne modélise uniquement les cultures nourricières.
+        sont prises en compte dans le scénario de relocalisation de PARCEL qui
+        modélise uniquement les cultures nourricières.
       </div>
       <TableauProduit class="actuel" :tableauProduits="tableauProduitsActuel" />
       <TableauProduit
@@ -122,7 +122,7 @@ const fermerModal = () => {
 const repartitionSurfaceActuelles = () => {
   let data = [];
   for (const [, value] of Object.entries(
-    CATEGORIE_PRODUITS_SURFACES_ACTUELLES
+    CATEGORIE_PRODUITS_SURFACES_ACTUELLES,
   )) {
     value.part_surfaces_actuelles = Math.round(
       trouverChiffre(
@@ -130,8 +130,8 @@ const repartitionSurfaceActuelles = () => {
         value.code,
         "part_surfaces_actuelles",
         "code_parcel",
-        3
-      )
+        3,
+      ),
     );
     let donnePourGraphique = {
       value: value.part_surfaces_actuelles,
@@ -148,14 +148,14 @@ const repartitionSurfaceActuelles = () => {
 const repartitionSurfacePotentielNourricier = () => {
   let data = [];
   for (const [, value] of Object.entries(
-    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE
+    CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE,
   )) {
     value.partAMobiliser = trouverChiffre(
       store.state.resultatSimulation.surfacesEmploisAMobiliser,
       value.libelle,
       "part_surface_a_mobiliser",
       "libelle_parcel_niveau_2",
-      3
+      3,
     );
     value.partAMobiliser = parseFloat(value.partAMobiliser).toFixed(0);
     let donnePourGraphique = {
@@ -172,14 +172,14 @@ const repartitionSurfacePotentielNourricier = () => {
 
 const maxHectares = Math.max(
   store.state.resultatSimulation.surfacesActuelles,
-  store.state.resultatSimulation.surfaceAMobiliser
+  store.state.resultatSimulation.surfaceAMobiliser,
 );
 
 const ratioActuelles = Math.sqrt(
-  store.state.resultatSimulation.surfacesActuelles / maxHectares
+  store.state.resultatSimulation.surfacesActuelles / maxHectares,
 );
 const ratioPotentiel = Math.sqrt(
-  store.state.resultatSimulation.surfaceAMobiliser / maxHectares
+  store.state.resultatSimulation.surfaceAMobiliser / maxHectares,
 );
 
 const hauteurPotentielle = ratioPotentiel * 450 + "px";
@@ -198,7 +198,7 @@ const tableauProduitsProspectif = [
         store.state.resultatSimulation.surfacesEmploisAMobiliser,
         CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
         chiffre,
-        "libelle_parcel_niveau_1"
+        "libelle_parcel_niveau_1",
       ),
     valeurSurfaces: "surface_a_mobiliser",
     partSurfaces: "part_surface_a_mobiliser",
@@ -213,7 +213,7 @@ const tableauProduitsProspectif = [
         store.state.resultatSimulation.surfacesEmploisAMobiliser,
         CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle,
         chiffre,
-        "libelle_parcel_niveau_1"
+        "libelle_parcel_niveau_1",
       ),
     valeurSurfaces: "surface_a_mobiliser",
     partSurfaces: "part_surface_a_mobiliser",
@@ -228,7 +228,7 @@ const tableauProduitsProspectif = [
         store.state.resultatSimulation.surfacesEmploisAMobiliser,
         CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle,
         chiffre,
-        "libelle_parcel_niveau_1"
+        "libelle_parcel_niveau_1",
       ),
     valeurSurfaces: "surface_a_mobiliser",
     partSurfaces: "part_surface_a_mobiliser",
@@ -243,7 +243,7 @@ const tableauProduitsProspectif = [
         store.state.resultatSimulation.surfacesEmploisAMobiliser,
         CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
         chiffre,
-        "libelle_parcel_niveau_1"
+        "libelle_parcel_niveau_1",
       ),
     valeurSurfaces: "surface_a_mobiliser",
     partSurfaces: "part_surface_a_mobiliser",
@@ -261,7 +261,7 @@ const tableauProduitsActuel = [
         store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
         CATEGORIE_PRODUITS_SURFACES_ACTUELLES.LEGUMES.code,
         chiffre,
-        "code_parcel"
+        "code_parcel",
       ),
     valeurSurfaces: "sau_ha",
     partSurfaces: "part_surfaces_actuelles",
@@ -277,7 +277,7 @@ const tableauProduitsActuel = [
         store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
         CATEGORIE_PRODUITS_SURFACES_ACTUELLES.FRUITS.code,
         chiffre,
-        "code_parcel"
+        "code_parcel",
       ),
     valeurSurfaces: "sau_ha",
     partSurfaces: "part_surfaces_actuelles",
@@ -293,7 +293,7 @@ const tableauProduitsActuel = [
         store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
         CATEGORIE_PRODUITS_SURFACES_ACTUELLES.ELEVAGE.code,
         chiffre,
-        "code_parcel"
+        "code_parcel",
       ),
     valeurSurfaces: "sau_ha",
     partSurfaces: "part_surfaces_actuelles",
@@ -309,7 +309,7 @@ const tableauProduitsActuel = [
         store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
         CATEGORIE_PRODUITS_SURFACES_ACTUELLES.CEREALES.code,
         chiffre,
-        "code_parcel"
+        "code_parcel",
       ),
     valeurSurfaces: "sau_ha",
     partSurfaces: "part_surfaces_actuelles",
@@ -325,7 +325,7 @@ const tableauProduitsActuel = [
         store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
         CATEGORIE_PRODUITS_SURFACES_ACTUELLES.JACHERES.code,
         chiffre,
-        "code_parcel"
+        "code_parcel",
       ),
     valeurSurfaces: "sau_ha",
     partSurfaces: "part_surfaces_actuelles",
@@ -341,7 +341,7 @@ const tableauProduitsActuel = [
         store.state.resultatSimulation.surfacesActuellesParcelNiveau1,
         CATEGORIE_PRODUITS_SURFACES_ACTUELLES.INDUSTRIE.code,
         chiffre,
-        "code_parcel"
+        "code_parcel",
       ),
     valeurSurfaces: "sau_ha",
     partSurfaces: "part_surfaces_actuelles",

@@ -31,7 +31,7 @@
             <div class="odometer-inside">
               {{
                 formatterChiffres(
-                  Math.round(store.state.resultatSimulation.surfacesActuelles)
+                  Math.round(store.state.resultatSimulation.surfacesActuelles),
                 )
               }}
             </div>
@@ -55,7 +55,7 @@
             >
               {{
                 formatterChiffres(
-                  Math.round(store.state.resultatSimulation.surfaceAMobiliser)
+                  Math.round(store.state.resultatSimulation.surfaceAMobiliser),
                 )
               }}
             </div>
@@ -86,6 +86,8 @@
           hideLabels
         />
       </div>
+      <pre>{{ store.state.resultatSimulation.surfacesActuellesPaysage }}</pre>
+      <pre>{{ tableauProduitsActuelMapped }}</pre>
       <TableauProduit
         class="actuel tableau"
         :tableauProduits="tableauProduitsActuelMapped"
@@ -115,16 +117,14 @@ const fermerModal = () => {
 
 const repartitionSurfaceActuelles = () => {
   let data = [];
-  for (const [key, value] of Object.entries(
-    CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
-  )) {
-    console.log(key);
-    value.part_surface_a_mobiliser = trouverChiffre(
-      store.state.resultatSimulation.surfacesActuellesPaysage,
-      value.libelle,
-      "sau_ha",
-      "libelle_parcel_paysage_actuel"
-    );
+  for (const [, value] of Object.entries(CATEGORIE_PRODUITS_ACTUELS_PAYSAGE)) {
+    value.part_surface_a_mobiliser =
+      trouverChiffre(
+        store.state.resultatSimulation.surfacesActuellesPaysage,
+        value.libelle,
+        "sau_ha",
+        "libelle_parcel_paysage_actuel",
+      ) * 100;
     let donnePourGraphique = {
       value: value.part_surface_a_mobiliser,
       name: value.libelle,
@@ -142,7 +142,7 @@ const repartitionSurfaceActuelles = () => {
 const repartitionSurfacePotentielNourricier = () => {
   let data = [];
   for (const [key, value] of Object.entries(
-    CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
+    CATEGORIE_PRODUITS_ACTUELS_PAYSAGE,
   )) {
     console.log(key);
     value.part_surface_a_mobiliser = Math.round(
@@ -151,8 +151,8 @@ const repartitionSurfacePotentielNourricier = () => {
         value.libelle,
         "surface_a_mobiliser",
         "libelle_parcel_paysage_actuel",
-        2
-      ) * 100
+        2,
+      ) * 100,
     );
     let donnePourGraphique = {
       value: value.part_surface_a_mobiliser,
@@ -170,14 +170,14 @@ const repartitionSurfacePotentielNourricier = () => {
 
 const maxHectares = Math.max(
   store.state.resultatSimulation.surfacesActuelles,
-  store.state.resultatSimulation.surfaceAMobiliser
+  store.state.resultatSimulation.surfaceAMobiliser,
 );
 
 const ratioActuelles = Math.sqrt(
-  store.state.resultatSimulation.surfacesActuelles / maxHectares
+  store.state.resultatSimulation.surfacesActuelles / maxHectares,
 );
 const ratioPotentiel = Math.sqrt(
-  store.state.resultatSimulation.surfaceAMobiliser / maxHectares
+  store.state.resultatSimulation.surfaceAMobiliser / maxHectares,
 );
 
 const hauteurPotentielle = ratioPotentiel * 450 + "px";
@@ -186,7 +186,7 @@ const largeurPotentielle = ratioPotentiel * 592 + "px";
 const largeurActuelle = ratioActuelles * 592 + "px";
 
 const tableauProduitsActuelMapped = Object.values(
-  CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
+  CATEGORIE_PRODUITS_ACTUELS_PAYSAGE,
 ).map((culture) => {
   return {
     libelle: culture.libelleLong,
@@ -198,7 +198,7 @@ const tableauProduitsActuelMapped = Object.values(
         store.state.resultatSimulation.surfacesActuellesPaysage,
         culture.libelle,
         chiffre,
-        "libelle_parcel_paysage_actuel"
+        "libelle_parcel_paysage_actuel",
       ),
     valeurSurfaces: "sau_ha",
     partSurfaces: "part_surfaces_actuelles",
@@ -207,7 +207,7 @@ const tableauProduitsActuelMapped = Object.values(
 });
 
 const tableauProduitsProjeteMapped = Object.values(
-  CATEGORIE_PRODUITS_ACTUELS_PAYSAGE
+  CATEGORIE_PRODUITS_ACTUELS_PAYSAGE,
 ).map((culture) => {
   return {
     libelle: culture.libelleLong,
@@ -219,7 +219,7 @@ const tableauProduitsProjeteMapped = Object.values(
         store.state.resultatSimulation.surfaceNecessairePaysage,
         culture.libelle,
         chiffre,
-        "libelle_parcel_paysage_actuel"
+        "libelle_parcel_paysage_actuel",
       ),
     valeurSurfaces: "surface_a_mobiliser",
     partSurfaces: "part_surface_a_mobiliser",
