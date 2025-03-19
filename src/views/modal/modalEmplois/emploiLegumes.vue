@@ -55,7 +55,7 @@
                         ><span class="nbr-ha"> 3% </span
                         ><span class="hectares"
                           >(environ) de l’emploi agricole total en Région
-                          wallonne métropolitaine</span
+                          wallonne</span
                         ></span
                       >
                     </div>
@@ -214,8 +214,7 @@
                   </li>
                   <li>
                     <strong
-                      >Une exploitation est spécialisée au sein d’un
-                      OTEX</strong
+                      >Une exploitation est spécialisée au sein d’un OTE</strong
                     >
                     si la Production Brute Standard (indicateur économique sur
                     le potentiel de production d’une exploitation) de la ou des
@@ -224,7 +223,7 @@
                   <li>
                     <strong
                       >Pour le maraîchage, on utilise l’indicateur UTA/ha de
-                      l’OTEX « Légumes et champignons ».</strong
+                      l’OTE « Légumes et champignons ».</strong
                     >
                   </li>
                   <li>
@@ -263,29 +262,17 @@
                 <ul>
                   <li>
                     ­<span class="source-titre"
-                      >Recensement agricole 2010 d’Agreste </span
-                    ><span class="source-auteur">
-                      – Ministère de l’Agriculture et de l’Alimentation</span
+                      ><a
+                        href="https://statbel.fgov.be/fr/themes/agriculture-peche/exploitations-agricoles-et-horticoles#figures"
+                        >Chiffres Agricoles</a
+                      > </span
+                    ><span class="source-auteur"> – Statbel</span
                     ><span class="source-année"></span>
                     <div>
                       <a
                         class=""
-                        href="http://agreste.agriculture.gouv.fr/recensement-agricole-2010/"
-                        >Voir le recensement</a
-                      >
-                    </div>
-                  </li>
-                  <li>
-                    ­<span class="source-titre"
-                      >Statistique Agricole Annuelle d’Agreste </span
-                    ><span class="source-auteur">
-                      – Ministère de l’Agriculture et de l’Alimentation</span
-                    >
-                    <div>
-                      <a
-                        class=""
-                        href="http://agreste.agriculture.gouv.fr/donnees-de-synthese/statistique-agricole-annuelle-saa/"
-                        >Voir la Statistique Agricole</a
+                        href="https://statbel.fgov.be/fr/themes/agriculture-peche/exploitations-agricoles-et-horticoles#figures"
+                        >Voir la page de statistiques</a
                       >
                     </div>
                   </li>

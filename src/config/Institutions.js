@@ -15,19 +15,19 @@ export const INSTITUTIONS = [
     id: INSTITUTIONS_IDS.MATERNELLES,
     libelle_pluriel: "Maternelle(s)",
     libelle_singulier: "Maternelle",
-    nb_repas: "Déjeuner , 180 jours par an",
+    nb_repas: "Dîner, 180 jours par an",
   },
   {
     id: INSTITUTIONS_IDS.PRIMAIRES,
     libelle_pluriel: "Primaire(s)",
     libelle_singulier: "Primaire",
-    nb_repas: "Déjeuner , 180 jours par an",
+    nb_repas: "Dîner, 180 jours par an",
   },
   {
     id: INSTITUTIONS_IDS.COLLEGES,
     libelle_pluriel: "Secondaire(s)",
     libelle_singulier: "Secondaire",
-    nb_repas: "Déjeuner , 180 jours par an",
+    nb_repas: "Dîner, 180 jours par an",
   },
   // {
   //   id: INSTITUTIONS_IDS.LYCEES,
@@ -38,13 +38,13 @@ export const INSTITUTIONS = [
     id: INSTITUTIONS_IDS.UNIVERSITES,
     libelle_pluriel: "Université(s) et Haute(s) école(s)",
     libelle_singulier: "Université et Haute école",
-    nb_repas: "Déjeuner , 170 jours par an",
+    nb_repas: "Dîner, 170 jours par an",
   },
   {
     id: INSTITUTIONS_IDS.ENTREPRISES,
     libelle_pluriel: "Entreprise(s)",
     libelle_singulier: "Entreprise",
-    nb_repas: "Déjeuner , 216 jours par an",
+    nb_repas: "Dîner, 216 jours par an",
   },
   {
     id: INSTITUTIONS_IDS.MAISONS_DE_RETRAITE,
