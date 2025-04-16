@@ -3,9 +3,6 @@
   <div class="menuDroit" id="menu-affiner">
     <div class="modal-dialog" role="document" v-if="showParametres">
       <div class="modal-content">
-        <button class="text-center close" @click="changeActive">
-          <div class="revoir-select">Revoir votre sélection</div>
-        </button>
         <div class="modal-header d-flex align-items-center justify-between">
           <div class="modal-title mr-auto w-100" id="head-affiner">
             <span class="icon-ico_menu_affiner icon"></span>Mes paramètres
@@ -631,13 +628,13 @@ export default {
     },
     partbiocereales: lodash.debounce(function (
       partBioCereales,
-      ancienneValeur
+      ancienneValeur,
     ) {
       if (partBioCereales !== ancienneValeur) {
         let nouvelleValeur = calculerPartBio(
           partBioCereales,
           "partbiocereales",
-          "actionModifierPartBioCereales"
+          "actionModifierPartBioCereales",
         );
 
         this.partbiocereales = nouvelleValeur;
@@ -649,7 +646,7 @@ export default {
         let nouvelleValeur = calculerPartBio(
           partBioElevage,
           "partbioelevage",
-          "actionModifierPartBioElevage"
+          "actionModifierPartBioElevage",
         );
         this.partBioElevage = nouvelleValeur;
       }
@@ -659,7 +656,7 @@ export default {
         let nouvelleValeur = calculerPartBio(
           partBioFruits,
           "partbiofruits",
-          "actionModifierPartBioFruits"
+          "actionModifierPartBioFruits",
         );
         this.partbiofruits = nouvelleValeur;
       }
@@ -669,7 +666,7 @@ export default {
         let nouvelleValeur = calculerPartBio(
           partBioLegumes,
           "partbiolegumes",
-          "actionModifierPartBioLegumes"
+          "actionModifierPartBioLegumes",
         );
         this.partbiolegumes = nouvelleValeur;
       }
