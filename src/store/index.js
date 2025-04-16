@@ -129,7 +129,7 @@ async function recalculerResultatSimulation(
   part_relocalisee,
   resultatReference,
   pctDiffRegimePersonnalise,
-  gardeBiodivTerres
+  gardeBiodivTerres,
 ) {
   console.log(
     "recalculerResultatSimulation",
@@ -143,7 +143,7 @@ async function recalculerResultatSimulation(
     part_relocalisee,
     resultatReference,
     pctDiffRegimePersonnalise,
-    gardeBiodivTerres
+    gardeBiodivTerres,
   );
 
   let necessaires__url = window.apiURL + "parcel/belgique/surfaces_necessaires";
@@ -165,25 +165,25 @@ async function recalculerResultatSimulation(
           necessaires__url,
           codesTerritoireParcel,
           idRegimeAlimentaire,
-          pctDiffRegimePersonnalise
+          pctDiffRegimePersonnalise,
         );
       surfaceNecessairePaysageResponseApi =
         await fetchSurfaceNecessairePourRegimePersonnalise(
           necessaires_paysage__url,
           codesTerritoireParcel,
           idRegimeAlimentaire,
-          pctDiffRegimePersonnalise
+          pctDiffRegimePersonnalise,
         );
     } else {
       surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
         necessaires__url,
         codesTerritoireParcel,
-        idRegimeAlimentaire
+        idRegimeAlimentaire,
       );
       surfaceNecessairePaysageResponseApi = await fetchSurfaceNecessairePaysage(
         necessaires_paysage__url,
         codesTerritoireParcel,
-        idRegimeAlimentaire
+        idRegimeAlimentaire,
       );
     }
   } else if (store.state.population.part == CHOIX_POPULATION_IDS.INSTITUTIONS) {
@@ -192,7 +192,7 @@ async function recalculerResultatSimulation(
     surfaceNecessaireResponseApi = await fetchSurfaceNecessaireInstitutions(
       necessaires__url,
       idRegimeAlimentaire,
-      pctDiffRegimePersonnalise
+      pctDiffRegimePersonnalise,
     );
     necessaires_paysage__url =
       window.apiURL +
@@ -202,7 +202,7 @@ async function recalculerResultatSimulation(
       await fetchSurfaceNecessaireInstitutions(
         necessaires_paysage__url,
         idRegimeAlimentaire,
-        pctDiffRegimePersonnalise
+        pctDiffRegimePersonnalise,
       );
   }
   const actuelles_url =
@@ -212,11 +212,11 @@ async function recalculerResultatSimulation(
     window.apiURL + "parcel/belgique/surfaces_actuels_paysage";
   var surfaceActuelleResponseApiPaysage = await fetchSurfacesActuellesPaysage(
     actuellespaysage__url,
-    codesTerritoireParcel
+    codesTerritoireParcel,
   );
   var surfaceActuelleResponseApi = await fetchSurfacesActuelles(
     actuelles_url,
-    codesTerritoireParcel
+    codesTerritoireParcel,
   );
 
   let resultatSimulation = calculerResultatSimulation(
@@ -231,7 +231,7 @@ async function recalculerResultatSimulation(
     surfaceNecessairePaysageResponseApi,
     part_relocalisee,
     resultatReference,
-    gardeBiodivTerres
+    gardeBiodivTerres,
   );
   return resultatSimulation;
 }
@@ -244,7 +244,7 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
   partBioCereales,
   partPertes,
   part_relocalisee,
-  surfacesMobilisables
+  surfacesMobilisables,
 ) {
   console.log(
     "recalculerResultatSimulation Surface",
@@ -255,7 +255,7 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
     partBioLegumes,
     partBioCereales,
     partPertes,
-    part_relocalisee
+    part_relocalisee,
   );
 
   const url = window.apiURL + "parcel/belgique/surfaces_necessaires";
@@ -264,20 +264,20 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
 
   var surfaceActuelleResponseApi = await fetchSurfacesActuelles(
     actuelles_url,
-    codesTerritoireParcel
+    codesTerritoireParcel,
   );
   const actuellespaysage__url =
     window.apiURL + "parcel/belgique/surfaces_actuels_paysage";
   var surfaceActuelleResponseApiPaysage = await fetchSurfacesActuellesPaysage(
     actuellespaysage__url,
-    codesTerritoireParcel
+    codesTerritoireParcel,
   );
 
   // TODO: ajouter le cas du régime spécialisé
   var surfaceNecessaireResponseApi = await fetchSurfaceNecessaire(
     url,
     codesTerritoireParcel,
-    idRegimeAlimentaire
+    idRegimeAlimentaire,
   );
 
   // TODO: ajouter le cas du régime spécialisé
@@ -286,7 +286,7 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
   var surfaceNecessairePaysageResponseApi = await fetchSurfaceNecessaire(
     necessaires_paysage__url,
     codesTerritoireParcel,
-    idRegimeAlimentaire
+    idRegimeAlimentaire,
   );
 
   var indicateursactuels__url =
@@ -294,7 +294,7 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
 
   var indicateursActuelsResponseApi = await fetchIndicateursActuels(
     indicateursactuels__url,
-    codesTerritoireParcel
+    codesTerritoireParcel,
   );
   console.log("indicateursActuelsResponseApi", indicateursActuelsResponseApi);
   const population = indicateursActuelsResponseApi["population"];
@@ -310,7 +310,7 @@ async function recalculerResultatSimulationPourSurfaceDonnée(
     surfaceNecessairePaysageResponseApi,
     part_relocalisee,
     surfacesMobilisables,
-    population
+    population,
   );
 
   return resultatSimulation;
@@ -337,7 +337,7 @@ export default createStore({
         state.nbCouvertsParInstitution.map((item) => {
           let institutionLibelle = null;
           institutionLibelle = INSTITUTIONS.find(
-            (institution) => institution.id == item.id
+            (institution) => institution.id == item.id,
           ).libelle_singulier;
           console.log("institutionLibelle", institutionLibelle);
           console.log("item.nbCouverts", item.nb_couverts);
@@ -422,19 +422,19 @@ export default createStore({
     curseursMin(state, curseursBioMin) {
       state.curseursBioMin.partbiocereales = Math.round(
         curseursBioMin.find((item) => item.code_parcel_niveau_1 == "GC")
-          .part_bio * 100
+          .part_bio * 100,
       );
       state.curseursBioMin.partbioelevage = Math.round(
         curseursBioMin.find((item) => item.code_parcel_niveau_1 == "EL")
-          .part_bio * 100
+          .part_bio * 100,
       );
       state.curseursBioMin.partbiofruits = Math.round(
         curseursBioMin.find((item) => item.code_parcel_niveau_1 == "FR")
-          .part_bio * 100
+          .part_bio * 100,
       );
       state.curseursBioMin.partbiolegumes = Math.round(
         curseursBioMin.find((item) => item.code_parcel_niveau_1 == "LG")
-          .part_bio * 100
+          .part_bio * 100,
       );
     },
     regimeAlimentaire(state, regime_alimentaire) {
@@ -448,7 +448,7 @@ export default createStore({
     },
     choisirRegimeAlimentaire(state, regime_alimentaire_nomCourt) {
       state.regime_alimentaire = state.regimeListe.find(
-        (el) => el.nomCourt == regime_alimentaire_nomCourt
+        (el) => el.nomCourt == regime_alimentaire_nomCourt,
       );
     },
     // TODO : parallel change pour bascule progressive sur de nouveau mutateurs
@@ -459,25 +459,25 @@ export default createStore({
     mutationPartBioElevage(state, partBioElevage) {
       state.partbioelevage = Math.max(
         partBioElevage,
-        state.curseursBioMin.partbioelevage
+        state.curseursBioMin.partbioelevage,
       );
     },
     mutationPartBioFruits(state, partBioFruits) {
       state.partbiofruits = Math.max(
         partBioFruits,
-        state.curseursBioMin.partbiofruits
+        state.curseursBioMin.partbiofruits,
       );
     },
     mutationPartBioLegumes(state, partBioLegumes) {
       state.partbiolegumes = Math.max(
         partBioLegumes,
-        state.curseursBioMin.partbiolegumes
+        state.curseursBioMin.partbiolegumes,
       );
     },
     mutationPartBioCereales(state, partBioCereales) {
       state.partbiocereales = Math.max(
         partBioCereales,
-        state.curseursBioMin.partbiocereales
+        state.curseursBioMin.partbiocereales,
       );
     },
     mutationPartPertes(state, partPertes) {
@@ -507,7 +507,7 @@ export default createStore({
       state.nbCouvertsParInstitution = nbCouvertsParInstitution;
       console.log(
         "state.nbCouvertsParInstitution",
-        state.nbCouvertsParInstitution
+        state.nbCouvertsParInstitution,
       );
     },
     mutationPopulation(state, { nombreAdultes, nombreSeniors, nombreEnfants }) {
@@ -555,7 +555,7 @@ export default createStore({
         this.state.part_relocalisee,
         this.state.resultatReference,
         this.state.pctDiffRegimePersonnalise,
-        this.state.gardeBiodivTerres
+        this.state.gardeBiodivTerres,
       );
       resultatSimulation = await recalculerResultatSimulation(
         this.getters.getcodesTerritoireParcel,
@@ -568,7 +568,7 @@ export default createStore({
         this.state.part_relocalisee,
         this.state.resultatReference,
         this.state.pctDiffRegimePersonnalise,
-        this.state.gardeBiodivTerres
+        this.state.gardeBiodivTerres,
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },
@@ -608,7 +608,7 @@ export default createStore({
         this.state.part_relocalisee,
         this.state.resultatReference,
         this.state.pctDiffRegimePersonnalise,
-        this.state.gardeBiodivTerres
+        this.state.gardeBiodivTerres,
       );
       if (this.state.surfacesMobilisables > 0) {
         console.log("test surface");
@@ -623,7 +623,7 @@ export default createStore({
             this.state.partpertes,
             this.state.part_relocalisee,
             this.state.surfacesMobilisables,
-            this.state.pctDiffRegimePersonnalise
+            this.state.pctDiffRegimePersonnalise,
           );
         console.log("resultatSimulationSurface", resultatSimulationSurface);
         commit("mutationResultatSimulationSurface", resultatSimulationSurface);
@@ -643,7 +643,7 @@ export default createStore({
         this.state.part_relocalisee,
         this.state.resultatReference,
         this.state.pctDiffRegimePersonnalise,
-        this.state.gardeBiodivTerres
+        this.state.gardeBiodivTerres,
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },
@@ -663,30 +663,30 @@ export default createStore({
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
           surfacesNecessairesFruits: trouverChiffre(
             this.state.resultatSimulation.surfacesEmploisAMobiliser,
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
           surfacesNecessairesLegumes: trouverChiffre(
             this.state.resultatSimulation.surfacesEmploisAMobiliser,
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
           surfacesNecessairesElevage: trouverChiffre(
             this.state.resultatSimulation.surfacesEmploisAMobiliser,
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
-        }
+        },
       );
 
       commit("partBio", AfficherEntier(partBioGlobale * 100));
@@ -702,7 +702,7 @@ export default createStore({
         this.state.part_relocalisee,
         this.state.resultatReference,
         this.state.pctDiffRegimePersonnalise,
-        this.state.gardeBiodivTerres
+        this.state.gardeBiodivTerres,
       );
       if (this.state.surfacesMobilisables > 0) {
         let resultatSimulationSurface =
@@ -716,7 +716,7 @@ export default createStore({
             this.state.partpertes,
             this.state.part_relocalisee,
             this.state.surfacesMobilisables,
-            this.state.pctDiffRegimePersonnalise
+            this.state.pctDiffRegimePersonnalise,
           );
         commit("mutationResultatSimulationSurface", resultatSimulationSurface);
       }
@@ -737,30 +737,30 @@ export default createStore({
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
           surfacesNecessairesFruits: trouverChiffre(
             this.state.resultatSimulation.surfacesEmploisAMobiliser,
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
           surfacesNecessairesLegumes: trouverChiffre(
             this.state.resultatSimulation.surfacesEmploisAMobiliser,
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
           surfacesNecessairesElevage: trouverChiffre(
             this.state.resultatSimulation.surfacesEmploisAMobiliser,
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
-        }
+        },
       );
 
       commit("partBio", AfficherEntier(partBioGlobale * 100));
@@ -775,7 +775,7 @@ export default createStore({
         this.state.part_relocalisee,
         this.state.resultatReference,
         this.state.pctDiffRegimePersonnalise,
-        this.state.gardeBiodivTerres
+        this.state.gardeBiodivTerres,
       );
       if (this.state.surfacesMobilisables > 0) {
         let resultatSimulationSurface =
@@ -789,7 +789,7 @@ export default createStore({
             this.state.partpertes,
             this.state.part_relocalisee,
             this.state.surfacesMobilisables,
-            this.state.resultatReference
+            this.state.resultatReference,
           );
         commit("mutationResultatSimulationSurface", resultatSimulationSurface);
       }
@@ -797,7 +797,7 @@ export default createStore({
     },
     async actionModifierNbCouvertsParInstitution(
       { commit },
-      nbCouvertsParInstitution
+      nbCouvertsParInstitution,
     ) {
       commit("mutationNbCouvertsParInstitution", nbCouvertsParInstitution);
       let resultatSimulation = await recalculerResultatSimulation(
@@ -811,7 +811,7 @@ export default createStore({
         this.state.part_relocalisee,
         this.state.resultatReference,
         this.state.pctDiffRegimePersonnalise,
-        this.state.gardeBiodivTerres
+        this.state.gardeBiodivTerres,
       );
       commit("mutationResultatSimulation", resultatSimulation);
       commit("mutationResultatReference", resultatSimulation);
@@ -829,7 +829,7 @@ export default createStore({
         this.state.part_relocalisee,
         this.state.resultatReference,
         this.state.pctDiffRegimePersonnalise,
-        this.state.gardeBiodivTerres
+        this.state.gardeBiodivTerres,
       );
       commit("mutationResultatSimulation", resultatSimulation);
       if (this.state.surfacesMobilisables > 0) {
@@ -843,7 +843,7 @@ export default createStore({
             this.state.partbiocereales,
             this.state.partpertes,
             this.state.part_relocalisee,
-            this.state.surfacesMobilisables
+            this.state.surfacesMobilisables,
           );
         commit("mutationResultatSimulationSurface", resultatSimulationSurface);
       }
@@ -865,30 +865,30 @@ export default createStore({
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
           surfacesNecessairesFruits: trouverChiffre(
             this.state.resultatSimulation.surfacesEmploisAMobiliser,
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
           surfacesNecessairesLegumes: trouverChiffre(
             this.state.resultatSimulation.surfacesEmploisAMobiliser,
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
           surfacesNecessairesElevage: trouverChiffre(
             this.state.resultatSimulation.surfacesEmploisAMobiliser,
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
-        }
+        },
       );
 
       commit("partBio", AfficherEntier(partBioGlobale * 100));
@@ -903,7 +903,7 @@ export default createStore({
         this.state.part_relocalisee,
         this.state.resultatReference,
         this.state.pctDiffRegimePersonnalise,
-        this.state.gardeBiodivTerres
+        this.state.gardeBiodivTerres,
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },
@@ -922,30 +922,30 @@ export default createStore({
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
           surfacesNecessairesFruits: trouverChiffre(
             this.state.resultatSimulation.surfacesEmploisAMobiliser,
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
           surfacesNecessairesLegumes: trouverChiffre(
             this.state.resultatSimulation.surfacesEmploisAMobiliser,
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
           surfacesNecessairesElevage: trouverChiffre(
             this.state.resultatSimulation.surfacesEmploisAMobiliser,
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
-        }
+        },
       );
 
       commit("partBio", AfficherEntier(partBioGlobale * 100));
@@ -959,7 +959,7 @@ export default createStore({
         this.state.partpertes,
         this.state.part_relocalisee,
         this.state.pctDiffRegimePersonnalise,
-        this.state.gardeBiodivTerres
+        this.state.gardeBiodivTerres,
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },
@@ -976,7 +976,7 @@ export default createStore({
         this.state.part_relocalisee,
         this.state.resultatReference,
         this.state.pctDiffRegimePersonnalise,
-        this.state.gardeBiodivTerres
+        this.state.gardeBiodivTerres,
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },
@@ -989,7 +989,7 @@ export default createStore({
         window.apiURL + "parcel/belgique/curseurs_bio_par_categorie";
       let curseursPartBio = await fetchCurseurs(
         curseurs_bio_categorie__url,
-        codesTerritoireParcel
+        codesTerritoireParcel,
       );
 
       commit("curseursMin", curseursPartBio);
@@ -997,29 +997,29 @@ export default createStore({
         "partBioLegumes",
         Math.round(
           curseursPartBio.find((item) => item.code_parcel_niveau_1 == "LG")
-            .part_bio * 100
-        )
+            .part_bio * 100,
+        ),
       );
       commit(
         "partBioCereales",
         Math.round(
           curseursPartBio.find((item) => item.code_parcel_niveau_1 == "GC")
-            .part_bio * 100
-        )
+            .part_bio * 100,
+        ),
       );
       commit(
         "partBioElevage",
         Math.round(
           curseursPartBio.find((item) => item.code_parcel_niveau_1 == "EL")
-            .part_bio * 100
-        )
+            .part_bio * 100,
+        ),
       );
       commit(
         "partBioFruits",
         Math.round(
           curseursPartBio.find((item) => item.code_parcel_niveau_1 == "FR")
-            .part_bio * 100
-        )
+            .part_bio * 100,
+        ),
       );
 
       let resultatSimulation = await recalculerResultatSimulation(
@@ -1033,7 +1033,7 @@ export default createStore({
         this.state.part_relocalisee,
         this.state.resultatReference,
         this.state.pctDiffRegimePersonnalise,
-        this.state.gardeBiodivTerres
+        this.state.gardeBiodivTerres,
       );
 
       commit("mutationResultatReference", resultatSimulation);
@@ -1051,30 +1051,30 @@ export default createStore({
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.CEREALES.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
           surfacesNecessairesFruits: trouverChiffre(
             this.state.resultatSimulation.surfacesEmploisAMobiliser,
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.FRUITS.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
           surfacesNecessairesLegumes: trouverChiffre(
             this.state.resultatSimulation.surfacesEmploisAMobiliser,
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.LEGUMES.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
           surfacesNecessairesElevage: trouverChiffre(
             this.state.resultatSimulation.surfacesEmploisAMobiliser,
             CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER.ELEVAGE.libelle,
             "surface_a_mobiliser",
             "libelle_parcel_niveau_1",
-            0
+            0,
           ),
-        }
+        },
       );
       let partBioGLobaleBase100 = Math.round(partBioGlobale * 100);
       commit("partBio", partBioGLobaleBase100);
@@ -1082,7 +1082,7 @@ export default createStore({
     },
     async actionModifierPopulation(
       { commit },
-      { nombreAdultes, nombreSeniors, nombreEnfants }
+      { nombreAdultes, nombreSeniors, nombreEnfants },
     ) {
       console.log("test dispatch", nombreAdultes, nombreSeniors, nombreEnfants);
       commit("mutationPopulation", {
@@ -1101,7 +1101,7 @@ export default createStore({
         this.state.part_relocalisee,
         this.state.resultatReference,
         this.state.pctDiffRegimePersonnalise,
-        this.state.gardeBiodivTerres
+        this.state.gardeBiodivTerres,
       );
       commit("mutationResultatReference", resultatSimulation);
       resultatSimulation = await recalculerResultatSimulation(
@@ -1115,7 +1115,24 @@ export default createStore({
         this.state.part_relocalisee,
         this.state.resultatReference,
         this.state.pctDiffRegimePersonnalise,
-        this.state.gardeBiodivTerres
+        this.state.gardeBiodivTerres,
+      );
+      commit("mutationResultatSimulation", resultatSimulation);
+    },
+    async relancerResultatSimulation({ commit }) {
+      console.log("recalculer resultat simulation");
+      const resultatSimulation = await recalculerResultatSimulation(
+        this.getters.getcodesTerritoireParcel,
+        this.state.regime_alimentaire.id,
+        this.state.partbioelevage,
+        this.state.partbiofruits,
+        this.state.partbiolegumes,
+        this.state.partbiocereales,
+        this.state.partpertes,
+        this.state.part_relocalisee,
+        this.state.resultatReference,
+        this.state.pctDiffRegimePersonnalise,
+        this.state.gardeBiodivTerres,
       );
       commit("mutationResultatSimulation", resultatSimulation);
     },

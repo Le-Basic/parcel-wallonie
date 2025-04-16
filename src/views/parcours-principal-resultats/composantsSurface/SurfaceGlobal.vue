@@ -260,8 +260,8 @@
                   {{
                     formatterChiffres(
                       Math.round(
-                        this.$store.state.resultatSimulation.surfaceAMobiliser
-                      )
+                        this.$store.state.resultatSimulation.surfaceAMobiliser,
+                      ),
                     )
                   }}
                 </div>
@@ -354,7 +354,7 @@
                 <span class="surface_potentiel" id="surface_potentiel2">
                   {{
                     formatterChiffres(
-                      this.$store.state.resultatSimulation.surfaceAMobiliser
+                      this.$store.state.resultatSimulation.surfaceAMobiliser,
                     )
                   }}</span
                 >
@@ -466,20 +466,20 @@ export default {
     formatterChiffres,
     gererVisibiliteImage() {
       let zoneScrollableSurfaceActuelle = document.getElementById(
-        "zone-surface-actuelle"
+        "zone-surface-actuelle",
       );
       let zoneScrollableSurfaceAMobiliser = document.getElementById(
-        "zone-surface-a-mobiliser"
+        "zone-surface-a-mobiliser",
       );
       let zoneScrollablePotentielNourricier = document.getElementById(
-        "zone-potentiel-nourricier"
+        "zone-potentiel-nourricier",
       );
       let imageSurfaceTerritoire = document.getElementById(
-        "div-image-surface-territoire"
+        "div-image-surface-territoire",
       );
       let imageSauActuelle = document.getElementById("div-image-sau-actuelle");
       let imagePotentielNourricier = document.getElementById(
-        "div-image-surface-a-mobiliser"
+        "div-image-surface-a-mobiliser",
       );
       if (
         window.scrollY >=
@@ -545,20 +545,20 @@ export default {
     surfaces_actuelles() {
       console.log(
         "isnan number",
-        isNaN(this.$store.state.resultatSimulation.surfacesActuelles)
+        isNaN(this.$store.state.resultatSimulation.surfacesActuelles),
       );
       return this.$store.state.resultatSimulation.surfacesActuelles;
     },
     max_potentiel_sau() {
       return Math.max(
         this.$store.state.resultatSimulation.surfacesActuelles,
-        this.$store.state.resultatSimulation.surfaceAMobiliser
+        this.$store.state.resultatSimulation.surfaceAMobiliser,
       );
     },
     max_potentiel_surface() {
       return Math.max(
         this.data.surface,
-        this.$store.state.resultatSimulation.surfaceAMobiliser
+        this.$store.state.resultatSimulation.surfaceAMobiliser,
       );
     },
   },
@@ -570,7 +570,7 @@ export default {
     // cartes bleues / grises /vertes
     try {
       const imageResponse = await getAssets(
-        this.$store.getters.getCarteColoreeTerritoireParcel("grises")
+        this.$store.getters.getCarteColoreeTerritoireParcel("grises"),
       );
       this.territoireCarteGriseUrl = imageResponse.request.responseURL;
       console.log(this.territoireCarteGriseUrl);
@@ -579,7 +579,7 @@ export default {
     }
     try {
       const imageResponse = await getAssets(
-        this.$store.getters.getCarteColoreeTerritoireParcel("bleues")
+        this.$store.getters.getCarteColoreeTerritoireParcel("bleues"),
       );
       this.territoireCarteBleueUrl = imageResponse.request.responseURL;
       console.log(this.territoireCarteBleueUrl);
@@ -588,7 +588,7 @@ export default {
     }
     try {
       const imageResponse = await getAssets(
-        this.$store.getters.getCarteColoreeTerritoireParcel("vertes")
+        this.$store.getters.getCarteColoreeTerritoireParcel("vertes"),
       );
       this.territoireCarteVerteUrl = imageResponse.request.responseURL;
       console.log(this.territoireCarteVerteUrl);

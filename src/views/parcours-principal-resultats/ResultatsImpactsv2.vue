@@ -327,14 +327,14 @@ const maxConsommation = Math.max(
     store.state.resultatReference.surfacesEmploisAMobiliser,
     CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.LAIT.libelle,
     "consommation_kg",
-    "libelle_parcel_niveau_2"
+    "libelle_parcel_niveau_2",
   ),
   trouverChiffre(
     store.state.resultatReference.surfacesEmploisAMobiliser,
     CATEGORIE_PRODUITS_POTENTIEL_NOURRICIER_DETAILLE.CEREALES.libelle,
     "consommation_kg",
-    "libelle_parcel_niveau_2"
-  )
+    "libelle_parcel_niveau_2",
+  ),
 );
 
 const donneesImpacts = computed(() => {
@@ -381,7 +381,7 @@ const donneesImpacts = computed(() => {
         store.state.resultatSimulation.surfaces_ha_soja_importes -
         store.state.resultatReference.surfaces_ha_soja_importes,
       donneesReferencePiscineOlympique: AfficherEntier(
-        store.state.resultatReference.surfaces_ha_soja_importes / 0.125
+        store.state.resultatReference.surfaces_ha_soja_importes / 0.125,
       ),
     },
     richesses_des_sols: {
@@ -413,17 +413,17 @@ const CATEGORIES_IMPACT = computed(() => {
             "pour nourrir la population du territoire sélectionné (uniquement pour la production alimentaire)",
           titreSimulation:
             AfficherEntierAvecSigne(
-              donneesImpacts?.value.ges.differenceSimulationReferencePct
+              donneesImpacts?.value.ges.differenceSimulationReferencePct,
             ) + '<span class="texte-unite">%</span>',
           sousTitreSimulation: `soit une différence de ${AfficherEntier(
-            donneesImpacts?.value.ges.differenceSimulationReference / 1000
+            donneesImpacts?.value.ges.differenceSimulationReference / 1000,
           )} tonnes CO<sub>2</sub>e par rapport aux habitudes alimentaires actuelles`,
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsGes",
           dossierModal: "modalImpacts",
           pasImpact:
             AfficherEntierAvecSigne(
-              donneesImpacts?.value.ges.differenceSimulationReferencePct
+              donneesImpacts?.value.ges.differenceSimulationReferencePct,
             ) == 0,
         },
       ],
@@ -444,13 +444,13 @@ const CATEGORIES_IMPACT = computed(() => {
           titreSimulation:
             AfficherEntierAvecSigne(
               donneesImpacts?.value.abondances_especes
-                .differenceSimulationReferencePct
+                .differenceSimulationReferencePct,
             ) + '<span class="texte-unite">%</span>',
           sousTitreSimulation:
             "Les espèces de pollinisateurs, papillons, vers de terre et gastéropodes sont " +
             AfficherEntier(
               donneesImpacts?.value.abondances_especes
-                .differenceSimulationReferencePct
+                .differenceSimulationReferencePct,
             ) +
             "% plus abondantes par hectare de culture.",
           couleurTitreSimulation: "vert-clair",
@@ -458,7 +458,7 @@ const CATEGORIES_IMPACT = computed(() => {
           pasImpact:
             AfficherEntierAvecSigne(
               donneesImpacts?.value.abondances_especes
-                .differenceSimulationReferencePct
+                .differenceSimulationReferencePct,
             ) == 0,
         },
         {
@@ -466,26 +466,26 @@ const CATEGORIES_IMPACT = computed(() => {
           libelle: "Déforestation importée",
           icon: "icon-impact-deforest ico-medium ico-impact",
           titreSituationReference: `${AfficherEntier(
-            donneesImpacts?.value.surfaces_ha_soja_importes.donneesReference
+            donneesImpacts?.value.surfaces_ha_soja_importes.donneesReference,
           )} ha de soja sont nécessaires`,
           sousTitreSituationReference: `chaque année pour nourrir le bétail que l'on consomme. Soit l'équivalent de ${donneesImpacts?.value.surfaces_ha_soja_importes.donneesReferencePiscineOlympique} piscines olympiques`,
           titreSimulation:
             AfficherEntierAvecSigne(
               donneesImpacts?.value.surfaces_ha_soja_importes
-                .differenceSimulationReferencePct
+                .differenceSimulationReferencePct,
             ) + '<span class="texte-unite">%</span>',
           sousTitreSimulation: `Soit ${AfficherEntier(
             Math.abs(
               donneesImpacts?.value.surfaces_ha_soja_importes
-                .differenceSimulationReference
-            )
+                .differenceSimulationReference,
+            ),
           )} hectares protégés de la déforestation`,
           couleurTitreSimulation: "vert-clair",
           modal: "DetailsSojaImporte",
           pasImpact:
             AfficherEntierAvecSigne(
               donneesImpacts?.value.surfaces_ha_soja_importes
-                .differenceSimulationReferencePct
+                .differenceSimulationReferencePct,
             ) == 0,
         },
       ],
@@ -501,14 +501,14 @@ const CATEGORIES_IMPACT = computed(() => {
           libelle: "Consommation d'eau",
           icon: "icon-impact-eau-conso ico-medium ico-impact",
           titreSituationReference: `${AfficherEntier(
-            donneesImpacts?.value.empreinte_eau_bleue.donneesReference
+            donneesImpacts?.value.empreinte_eau_bleue.donneesReference,
           )} m<sup>3</sup> eau pour l'irrigation (rivières et nappes)`,
           titreSimulation:
             AfficherEntier(
               Math.abs(
                 donneesImpacts?.value.empreinte_eau_bleue
-                  .differenceSimulationReference
-              )
+                  .differenceSimulationReference,
+              ),
             ) + " m<sup>3</sup> d'eau économisés chaque année",
           sousTitreSimulation: "",
           couleurTitreSimulation: "vert-clair",
@@ -516,7 +516,7 @@ const CATEGORIES_IMPACT = computed(() => {
           pasImpact:
             AfficherEntierAvecSigne(
               donneesImpacts?.value.empreinte_eau_bleue
-                .differenceSimulationReferencePct
+                .differenceSimulationReferencePct,
             ) == 0,
         },
       ],
@@ -537,7 +537,7 @@ const CATEGORIES_IMPACT = computed(() => {
           titreSimulation:
             AfficherEntierAvecSigne(
               donneesImpacts?.value.richesses_des_sols
-                .differenceSimulationReferencePct
+                .differenceSimulationReferencePct,
             ) + "<span class='texte-unite'>%</span>",
           sousTitreSimulation:
             "de matière organique supplémentaire dans le sol",
@@ -546,7 +546,7 @@ const CATEGORIES_IMPACT = computed(() => {
           pasImpact:
             AfficherEntierAvecSigne(
               donneesImpacts?.value.richesses_des_sols
-                .differenceSimulationReferencePct
+                .differenceSimulationReferencePct,
             ) == 0,
         },
       ],

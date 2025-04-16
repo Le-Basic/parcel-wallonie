@@ -366,44 +366,44 @@ export default {
           calculerPartBio(
             this.$store.state.curseursBioMin.partbiolegumes,
             "partbiolegumes",
-            "actionModifierPartBioLegumes"
+            "actionModifierPartBioLegumes",
           );
           calculerPartBio(
             this.$store.state.curseursBioMin.partbiofruits,
             "partbiofruits",
-            "actionModifierPartBioFruits"
+            "actionModifierPartBioFruits",
           );
           calculerPartBio(
             this.$store.state.curseursBioMin.partbioelevage,
             "partbioelevage",
-            "actionModifierPartBioElevage"
+            "actionModifierPartBioElevage",
           );
           calculerPartBio(
             this.$store.state.curseursBioMin.partbiocereales,
             "partbiocereales",
-            "actionModifierPartBioCereales"
+            "actionModifierPartBioCereales",
           );
         }, 500);
       } else {
         calculerPartBio(
           partBioValeur,
           "partbiolegumes",
-          "actionModifierPartBioLegumes"
+          "actionModifierPartBioLegumes",
         );
         calculerPartBio(
           partBioValeur,
           "partbiofruits",
-          "actionModifierPartBioFruits"
+          "actionModifierPartBioFruits",
         );
         calculerPartBio(
           partBioValeur,
           "partbioelevage",
-          "actionModifierPartBioElevage"
+          "actionModifierPartBioElevage",
         );
         calculerPartBio(
           partBioValeur,
           "partbiocereales",
-          "actionModifierPartBioCereales"
+          "actionModifierPartBioCereales",
         );
       }
     },
@@ -420,6 +420,7 @@ export default {
     if (this.$store.state.part_bio) {
       this.partbio = this.$store.state.part_bio;
     }
+    this.$store.dispatch("relancerResultatSimulation");
   },
 };
 </script>

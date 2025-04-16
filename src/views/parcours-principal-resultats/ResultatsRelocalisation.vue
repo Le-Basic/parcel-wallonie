@@ -17,6 +17,12 @@
           <div class="text-h2 animated fadeInDown delay-05s">
             Cela veut dire quoi sur mon territoire ?
           </div>
+          <pre>{{
+            this.$store.state.resultatReference.abondances_especes
+          }}</pre>
+          <pre>{{
+            this.$store.state.resultatSimulation.abondances_especes
+          }}</pre>
           <div class="resultats-generaux row">
             <div
               class="col-12 col-sm-12 col-lg-6 mb-2"
@@ -116,7 +122,7 @@
                       >
                         {{
                           AfficherEntierAvecSigne(
-                            Math.round(pctDifferenceEmissionKGCo2 * 100)
+                            Math.round(pctDifferenceEmissionKGCo2 * 100),
                           )
                         }}
                       </div>
@@ -236,6 +242,9 @@ export default {
     partpertes() {
       return this.$store.state.partpertes;
     },
+  },
+  mounted() {
+    this.$store.dispatch("relancerResultatSimulation");
   },
   // TODO: REFACTO DU GET IMPACT
 };
