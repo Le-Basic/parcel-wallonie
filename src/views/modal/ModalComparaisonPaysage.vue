@@ -86,8 +86,6 @@
           hideLabels
         />
       </div>
-      <pre>{{ store.state.resultatSimulation.surfacesActuellesPaysage }}</pre>
-      <pre>{{ tableauProduitsActuelMapped }}</pre>
       <TableauProduit
         class="actuel tableau"
         :tableauProduits="tableauProduitsActuelMapped"
