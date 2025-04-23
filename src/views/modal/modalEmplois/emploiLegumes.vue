@@ -55,7 +55,7 @@
                         ><span class="nbr-ha"> 3% </span
                         ><span class="hectares"
                           >(environ) de l’emploi agricole total en Région
-                          wallonne métropolitaine</span
+                          wallonne</span
                         ></span
                       >
                     </div>
@@ -137,7 +137,7 @@
                     </li>
                     <li>
                       <strong
-                        >Parcel comptabilise uniquement les emplois
+                        >PARCEL-Wallonie comptabilise uniquement les emplois
                         agricoles</strong
                       >. La relocalisation de l’alimentation impacte aussi les
                       emplois du milieu et de l’aval des chaînes alimentaires.
@@ -147,10 +147,10 @@
                     <li>
                       <strong
                         >Les produits pris en compte par PARCEL-Wallonie
-                        représentent environ 91% de notre alimentation (en
+                        représentent environ 84% de notre alimentation (en
                         volume)</strong
                       >. Ce sont les produits recensés par la Statistique
-                      Agricole Annuelle d’Agreste. PARCEL-Wallonie ne prend pas
+                      Agricole Annuelle de Statbel. PARCEL-Wallonie ne prend pas
                       en compte :
                       <ul>
                         <li>
@@ -170,11 +170,11 @@
                     </li>
                     <li>
                       <strong
-                        >Parcel prend en compte les produits qui ont
+                        >PARCEL-Wallonie prend en compte les produits qui ont
                         actuellement une production représentative en Région
                         wallonne </strong
                       >(dont la production est recensée au sein des statistiques
-                      agricoles). La nomenclature retenue de 63 produits, ne
+                      agricoles). La nomenclature retenue de 40 produits, ne
                       représente pas l’ensemble de l’alimentation des wallon (il
                       manque notamment les boissons et les produits tropicaux).
                     </li>
@@ -206,9 +206,9 @@
                 <ul>
                   <li>
                     <strong
-                      >On utilise les données du dernier recensement agricole
-                      (2010), qui donne par Orientations technico-économique,
-                      les Unités de travail annuel par hectare</strong
+                      >On utilise les données statistiques de STATBEL (2020),
+                      qui donne par Orientations technico-économique, les Unités
+                      de travail annuel par hectare</strong
                     >. Les données seront mises à jour avec le prochain
                     recensement agricole.
                   </li>
@@ -234,60 +234,6 @@
                       href="/methodologie-de-calcul-de-la-relocalisation-alimentaire"
                       >page annexe méthodologique</a
                     >, accessible par le menu principal.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header" id="sources">
-              <button
-                class="btn btn-link btn-link-open"
-                data-toggle="collapse show"
-                href="#collapseSource"
-                aria-expanded="false"
-                data-target="#collapseSource"
-              >
-                <div><span class="icon-source icon white"></span></div>
-                <div>Principales sources de données</div>
-              </button>
-            </div>
-            <div
-              id="collapseSource"
-              class="collapse show"
-              data-parent="#accordion"
-              aria-labelledby="sources"
-            >
-              <div class="card-body">
-                <ul>
-                  <li>
-                    ­<span class="source-titre"
-                      >Recensement agricole 2010 d’Agreste </span
-                    ><span class="source-auteur">
-                      – Ministère de l’Agriculture et de l’Alimentation</span
-                    ><span class="source-année"></span>
-                    <div>
-                      <a
-                        class=""
-                        href="http://agreste.agriculture.gouv.fr/recensement-agricole-2010/"
-                        >Voir le recensement</a
-                      >
-                    </div>
-                  </li>
-                  <li>
-                    ­<span class="source-titre"
-                      >Statistique Agricole Annuelle d’Agreste </span
-                    ><span class="source-auteur">
-                      – Ministère de l’Agriculture et de l’Alimentation</span
-                    >
-                    <div>
-                      <a
-                        class=""
-                        href="http://agreste.agriculture.gouv.fr/donnees-de-synthese/statistique-agricole-annuelle-saa/"
-                        >Voir la Statistique Agricole</a
-                      >
-                    </div>
                   </li>
                 </ul>
               </div>
