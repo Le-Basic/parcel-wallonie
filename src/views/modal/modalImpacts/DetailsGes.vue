@@ -13,16 +13,18 @@
         </div>
         <ul>
           <li>
-            Par hectare, la diminution des émissions de gaz à effet de serre est
-            principalement liée à la non-utilisation d’engrais minéraux en
-            agriculture biologique (en particulier les engrais azotés de
-            synthèse, dont la fabrication est très énergivore) et à la mise en
-            œuvre de systèmes d’élevage plus extensifs en moyenne ;
+            Au total, l’impact est faible du fait de la diminution des
+            rendements en bio (on mobilise un plus grand nombre d’hectares et on
+            additionne les effets de chacun d’eux), pouvant même mener dans
+            certains cas à une légère augmentation des émissions de GES.
           </li>
           <li>
-            Par personne, l’impact est faible du fait de la diminution des
-            rendements en bio (on mobilise un plus grand nombre d’hectares et on
-            additionne les effets de chacun d’eux).
+            Cependant par hectare, l’augmentation bio mène à la diminution des
+            émissions de gaz à effet de serre, principalement grâce à la
+            non-utilisation d’engrais minéraux en agriculture biologique (en
+            particulier les engrais azotés de synthèse, dont la fabrication est
+            très énergivore) et à la mise en œuvre de systèmes d’élevage plus
+            extensifs en moyenne ;
           </li>
         </ul>
 
@@ -34,20 +36,12 @@
         </div>
         <ul>
           <li>
-            Par hectare, les émissions ne diminuent pas forcément avec la
-            réduction des produits animaux : l’élevage n’est pas toujours plus
-            émetteur en gaz à effet de serre lorsqu’on la ramène à l’unité de
-            surface, comparé aux cultures végétales que l’on ajoute pour assurer
-            l’apport protéique (fruits à coque, légumineuses…) ;
-          </li>
-          <li>
-            Cependant, c’est l’élevage qui mobilise le plus d’hectare (plus de
-            80% de l’empreinte spatiale de notre alimentation actuelle), une
-            réduction des produits animaux fait rapidement diminuer le nombre
-            d’hectares (explication dans les détails de l’indicateur « Empreinte
-            au sol ») et donc les impacts qui leurs sont liés (émissions de
-            méthane, de protoxyde d’azote…) : par personne, les émissions
-            diminuent fortement avec la réduction des produits animaux ;
+            L’élevage mobilise le plus d’hectare (plus de 80% de l’empreinte
+            spatiale de notre alimentation actuelle), une réduction des produits
+            animaux fait rapidement diminuer le nombre d’hectares et donc les
+            impacts qui leurs sont liés (émissions de méthane, de protoxyde
+            d’azote…) : au total, les émissions diminuent fortement avec la
+            réduction des produits animaux ;
           </li>
         </ul>
         <div class="d-flex align-items-center">
@@ -56,13 +50,9 @@
         </div>
         <ul>
           <li>
-            On ne mesure pas les effets d’une réduction des pertes et gaspillage
-            par hectare.
-          </li>
-          <li>
-            Par personne, la réduction des pertes et gaspillages permet de
-            réduire les quantités nécessaires à produire et réduit donc d’autant
-            les émissions de gaz à effet de serre.
+            La réduction des pertes et gaspillages permet de réduire les
+            quantités nécessaires à produire et réduit donc d’autant les
+            émissions de gaz à effet de serre.
           </li>
         </ul>
       </div>
