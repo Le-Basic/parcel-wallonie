@@ -137,7 +137,7 @@
                     </li>
                     <li>
                       <strong
-                        >Parcel comptabilise uniquement les emplois
+                        >PARCEL-Wallonie comptabilise uniquement les emplois
                         agricoles</strong
                       >. La relocalisation de l’alimentation impacte aussi les
                       emplois du milieu et de l’aval des chaînes alimentaires.
@@ -146,11 +146,11 @@
                     <li>
                       <strong
                         >Les produits pris en compte par PARCEL-Wallonie
-                        représentent environ 91% de notre alimentation (en
+                        représentent environ 84% de notre alimentation (en
                         volume)</strong
-                      >. Ce sont les produits recensés par la Statistique
-                      Agricole Annuelle d’Agreste. PARCEL-Wallonie ne prend pas
-                      en compte :
+                      >. Ce sont les produits recensés par les données
+                      statistiques de STATBEL. PARCEL-Wallonie ne prend pas en
+                      compte :
                       <ul>
                         <li>
                           Les produits qui ne possèdent pas de potentiel de
@@ -195,17 +195,16 @@
                 <ul>
                   <li>
                     <strong
-                      >On utilise les données du dernier recensement agricole
-                      (2010) qui comptabilise les Unité de travail annuel par
-                      hectare en fonction des Orientations technico-économique
-                      (OTE). </strong
+                      >On utilise les données statistiques de STATBEL (2020) qui
+                      comptabilise les Unité de travail annuel par hectare en
+                      fonction des Orientations technico-économique (OTEX). </strong
                     >. Les données seront mises à jour avec le prochain
                     recensement agricole.
                   </li>
                   <li>
                     <strong
                       >Une exploitation est spécialisée au sein d’une
-                      OTE</strong
+                      OTEX</strong
                     >
                     si la Production Brute Standard (indicateur économique sur
                     le potentiel de production d’une exploitation) de la ou des
@@ -214,7 +213,7 @@
                   <li>
                     <strong
                       >Pour l'arboriculture, on utilise l’indicateur UTA/ha de
-                      l’OTE « Fruits et autres cultures permanentes ».</strong
+                      l’OTEX « Fruits et autres cultures permanentes ».</strong
                     >
                   </li>
                   <li>
@@ -224,48 +223,6 @@
                       href="/methodologie-de-calcul-de-la-relocalisation-alimentaire"
                       >page annexe méthodologique</a
                     >, accessible par le menu principal.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header" id="sources">
-              <button
-                class="btn btn-link btn-link-open"
-                data-toggle="collapse show"
-                href="#collapseSource"
-                aria-expanded="false"
-                data-target="#collapseSource"
-              >
-                <div><span class="icon-source icon white"></span></div>
-                <div>Principales sources de données</div>
-              </button>
-            </div>
-            <div
-              id="collapseSource"
-              class="collapse show"
-              data-parent="#accordion"
-              aria-labelledby="sources"
-            >
-              <div class="card-body">
-                <ul>
-                  <li>
-                    ­<span class="source-titre"
-                      ><a
-                        href="https://statbel.fgov.be/fr/themes/agriculture-peche/exploitations-agricoles-et-horticoles#figures"
-                        >Chiffres Agricoles</a
-                      > </span
-                    ><span class="source-auteur"> – Statbel</span
-                    ><span class="source-année"></span>
-                    <div>
-                      <a
-                        class=""
-                        href="https://statbel.fgov.be/fr/themes/agriculture-peche/exploitations-agricoles-et-horticoles#figures"
-                        >Voir la page de statistiques</a
-                      >
-                    </div>
                   </li>
                 </ul>
               </div>
