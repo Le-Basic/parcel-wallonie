@@ -149,9 +149,8 @@
                         >Les produits pris en compte par PARCEL-Wallonie
                         représentent environ 84% de notre alimentation (en
                         volume)</strong
-                      >. Ce sont les produits recensés par la Statistique
-                      Agricole Annuelle de Statbel. PARCEL-Wallonie ne prend pas
-                      en compte :
+                      >. Ce sont les produits recensés par les données .
+                      PARCEL-Wallonie ne prend pas en compte :
                       <ul>
                         <li>
                           Les produits qui ne possèdent pas de potentiel de
@@ -209,13 +208,11 @@
                       >On utilise les données statistiques de STATBEL (2020),
                       qui donne par Orientations technico-économique, les Unités
                       de travail annuel par hectare</strong
-                    >. Les données seront mises à jour avec le prochain
-                    recensement agricole.
+                    >.
                   </li>
                   <li>
                     <strong
-                      >Une exploitation est spécialisée au sein d’un
-                      OTEX</strong
+                      >Une exploitation est spécialisée au sein d’un OTE</strong
                     >
                     si la Production Brute Standard (indicateur économique sur
                     le potentiel de production d’une exploitation) de la ou des
@@ -224,7 +221,7 @@
                   <li>
                     <strong
                       >Pour le maraîchage, on utilise l’indicateur UTA/ha de
-                      l’OTEX « Légumes et champignons ».</strong
+                      l’OTE « Légumes et champignons ».</strong
                     >
                   </li>
                   <li>

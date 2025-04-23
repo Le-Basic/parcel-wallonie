@@ -230,14 +230,13 @@
                       >On utilise les données statistiques de STATBEL (2020) qui
                       comptabilise les Unité de travail annuel par hectare en
                       fonction des Orientations technico-économique
-                      (OTEX)</strong
-                    >. Les données seront mises à jour avec le prochain
-                    recensement agricole.
+                      (OTE)</strong
+                    >.
                   </li>
                   <li>
                     <strong
                       >Une exploitation est spécialisée au sein d’une
-                      OTEX</strong
+                      OTE</strong
                     >
                     si la Production Brute Standard (indicateur économique sur
                     le potentiel de production d’une exploitation) de la ou des
@@ -246,7 +245,7 @@
                   <li>
                     <strong
                       >Pour les céréales et autres grandes cultures, on utilise
-                      l’indicateur UTA/ha de l’OTEX « Céréales et
+                      l’indicateur UTA/ha de l’OTE « Céréales et
                       oléoprotéagineux ».</strong
                     >
                   </li>
