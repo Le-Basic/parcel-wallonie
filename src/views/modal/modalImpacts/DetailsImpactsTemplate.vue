@@ -44,7 +44,7 @@ const instance = getCurrentInstance();
 const slots = instance?.slots; // Access slots from the instance
 
 const hasReperesSlot = computed(
-  () => !!slots.reperes && slots.reperes().length > 0
+  () => !!slots.reperes && slots.reperes().length > 0,
 );
 </script>
 
@@ -52,7 +52,7 @@ const hasReperesSlot = computed(
   <div class="modal-content modal-repart-cat-detail">
     <div class="modal-header d-flex align-items-center">
       <div>
-        <span :class="[icone, 'ico-medium', iconeClasse]"></span>
+        <span :class="[icone, 'icon-medium', iconeClasse]"></span>
       </div>
       <div class="d-flex flex-column">
         <div class="titre-categorie">{{ props.modalTitre }}</div>
@@ -71,7 +71,7 @@ const hasReperesSlot = computed(
     <div class="card">
       <div class="card-header sansFond" id="methode">
         <div>
-          <span class="icon-ico_calcul2 white icon-titre ico-medium"></span>
+          <span class="icon-ico_calcul2 white icon-titre icon-medium"></span>
         </div>
         <div>Quelques points de méthode</div>
       </div>
@@ -83,7 +83,9 @@ const hasReperesSlot = computed(
     </div>
     <div class="card">
       <div class="card-header sansFond" id="Reperes" v-if="hasReperesSlot">
-        <div><span class="icon-repere ico-medium white icon-titre"></span></div>
+        <div>
+          <span class="icon-repere icon-medium white icon-titre"></span>
+        </div>
         <div>Repères</div>
       </div>
       <div
@@ -154,7 +156,7 @@ export default {
   border: none;
 }
 
-.ico-medium {
+.icon-medium {
   margin-right: 20px;
 }
 </style>
