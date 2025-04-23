@@ -10,7 +10,7 @@
             Emplois en cultures céréalières et autres cultures…
           </div>
           <div class="hectares" id="-totaljobcereales2">
-            Consommés directement (pain, lentilles, huiles, etc.)
+            Consommés directement (pain, lentilles, huiles, etc)
           </div>
         </div>
         <button
