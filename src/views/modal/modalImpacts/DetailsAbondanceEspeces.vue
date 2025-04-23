@@ -8,7 +8,7 @@
     <template #pointsmethode>
       <div class="card-body">
         <div class="d-flex align-items-center">
-          <span class="icon-ico_filtres_bio icon legumes ico-medium"></span>
+          <span class="icon-ico_filtres_bio icon legumes icon-medium"></span>
           <strong>Les effets d’un passage au bio</strong>
         </div>
         <ul>
@@ -21,7 +21,7 @@
         </ul>
         <div class="d-flex align-items-center">
           <span
-            class="icon-ico_navigation_alimentation icon legumes ico-medium"
+            class="icon-ico_navigation_alimentation icon legumes icon-medium"
           ></span>
           <strong>Les effets d’une réduction des produits animaux</strong>
         </div>
@@ -35,9 +35,7 @@
           </li>
         </ul>
         <div class="d-flex align-items-center">
-          <span
-            class="icon-ico_navigation_alimentation icon legumes ico-medium"
-          ></span>
+          <span class="icon-gaspillage icon legumes icon-medium"></span>
           <strong>Les effets d’une réduction des pertes et gaspillage</strong>
         </div>
         <ul>
@@ -87,7 +85,7 @@ const troisiemeChiffre = {
 </script>
 
 <style scoped>
-.ico-medium {
+.icon-medium {
   font-size: 35px !important;
   margin-right: 8px;
 }
