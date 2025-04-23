@@ -25,6 +25,19 @@
         </div>
         <ul>
           <li>
+            La consommation en eau diminue avec la réduction des produits
+            animaux, puisqu’on réduit significativement le nombre d’hectares
+            nécessaires à la production animale.
+          </li>
+        </ul>
+        <div class="d-flex align-items-center">
+          <span
+            class="icon-ico_navigation_alimentation icon eau icon-medium"
+          ></span>
+          <strong>Les effets d’une réduction des produits animaux</strong>
+        </div>
+        <ul>
+          <li>
             L’augmentation de la consommation en eau par hectare résulte du fait
             qu’on remplace des productions d’élevage (peu consommatrices en eau
             lorsqu’on les ramène à l’unité de surface) par des productions
@@ -43,8 +56,9 @@
         </div>
         <ul>
           <li>
-            Par personne, la consommation en eau diminue avec la réduction des
-            produits animaux, puisqu’on réduit le nombre d’hectares nécessaires.
+            PARCEL-Wallonie ne calcule pas les effets d’une réduction des pertes
+            et gaspillage sur la consommation en eau, par manque de données
+            consolidées.
           </li>
         </ul>
         <!--mb-3 mt-5 -->
@@ -58,7 +72,7 @@ import detailsTemplate from "./DetailsImpactsTemplate.vue";
 </script>
 
 <style scoped>
-.icon-medium {
+.ico-medium {
   font-size: 35px !important;
   margin-right: 8px;
 }

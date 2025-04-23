@@ -29,11 +29,13 @@
         </div>
         <ul>
           <li>
-            Les prairies ont des stocks de carbone organiques plus importants
-            que les autres cultures végétales (INRA, 2019). Ainsi, la réduction
-            des produits animaux va de paire avec une augmentation de la
-            pauvreté des sols par hectare (car elle diminue la part occupée par
-            des prairies).
+            Les effets d’une réduction des produits animaux sur la qualités des
+            sols n’est pas directement mesurés, par manque de données
+            consolidées. Mais les prairies ont en réalité des stocks de carbone
+            organiques plus importants que les autres cultures végétales (INRA,
+            2019). Ainsi, la réduction des produits animaux va de pair avec une
+            augmentation de la pauvreté des sols par hectare (car elle diminue
+            la part occupée par des prairies).
           </li>
         </ul>
         <div class="d-flex align-items-center">
@@ -42,8 +44,8 @@
         </div>
         <ul>
           <li>
-            On ne mesure pas les effets d’une réduction des pertes et gaspillage
-            par hectare.
+            PARCEL-Wallonie ne mesure pas les effets d’une réduction des pertes
+            et gaspillage sur la qualité des sols.
           </li>
         </ul>
         <!--mb-3 mt-5 -->
