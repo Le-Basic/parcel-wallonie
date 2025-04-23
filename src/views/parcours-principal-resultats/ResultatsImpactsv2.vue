@@ -173,10 +173,11 @@
               </InformationBox>
               <!--end accordeon-->
               <div class="mt-5 mb-3">
-                <div class="repartition row">
+                <div class="row">
                   <section
                     v-for="categorie in CATEGORIES_IMPACT"
                     :key="categorie.id"
+                    class="section-impacts"
                   >
                     <div class="col-12 cadre-impacts cadre-categorie">
                       <div class="impact-titre" :class="categorie.couleur">
@@ -633,5 +634,9 @@ const ajouterScroll = () => {
 .impact-result,
 .texte-droite {
   padding: 32px 32px !important;
+}
+
+.section-impacts {
+  width: 100%;
 }
 </style>
