@@ -197,7 +197,28 @@
                           Les produits de la mer (difficulté de donner un
                           indicateur d’empreinte spatiale) ;
                         </li>
+                        <li>
+                          <strong
+                            >PARCEL-Wallonie prend en compte les produits qui
+                            ont actuellement une production représentative en
+                            Région wallonne </strong
+                          >(dont la production est recensée au sein des
+                          statistiques agricoles). La nomenclature retenue de 40
+                          produits, ne représente pas l’ensemble de
+                          l’alimentation des wallon (il manque notamment les
+                          boissons et les produits tropicaux).
+                        </li>
                       </ul>
+                    </li>
+                    <li>
+                      <strong
+                        >PARCEL-Wallonie prend en compte les produits qui ont
+                        actuellement une production représentative en Région
+                        wallonne </strong
+                      >(dont la production est recensée au sein des statistiques
+                      agricoles). La nomenclature retenue de 40 produits, ne
+                      représente pas l’ensemble de l’alimentation des wallon (il
+                      manque notamment les boissons et les produits tropicaux).
                     </li>
                   </ul>
                 </div>
@@ -227,7 +248,7 @@
                 <ul>
                   <li>
                     <strong
-                      >On utilise les données statistiques de STATBEL (2020) qui
+                      >On utilise les données statistiques de STATBEL (2023) qui
                       comptabilise les Unité de travail annuel par hectare en
                       fonction des Orientations technico-économique
                       (OTE)</strong

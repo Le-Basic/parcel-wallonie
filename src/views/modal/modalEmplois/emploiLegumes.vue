@@ -149,8 +149,9 @@
                         >Les produits pris en compte par PARCEL-Wallonie
                         représentent environ 84% de notre alimentation (en
                         volume)</strong
-                      >. Ce sont les produits recensés par les données .
-                      PARCEL-Wallonie ne prend pas en compte :
+                      >. Ce sont les produits recensés par les données
+                      statistiques de STATBEL. PARCEL-Wallonie ne prend pas en
+                      compte :
                       <ul>
                         <li>
                           Les produits qui ne possèdent pas de potentiel de
@@ -205,7 +206,7 @@
                 <ul>
                   <li>
                     <strong
-                      >On utilise les données statistiques de STATBEL (2020),
+                      >On utilise les données statistiques de STATBEL (2023),
                       qui donne par Orientations technico-économique, les Unités
                       de travail annuel par hectare</strong
                     >.

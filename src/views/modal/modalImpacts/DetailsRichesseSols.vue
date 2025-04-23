@@ -29,7 +29,7 @@
         </div>
         <ul>
           <li>
-            Les effets d’une réduction des produits animaux sur la qualités des
+            Les effets d’une réduction des produits animaux sur la qualité des
             sols ne sont pas directement mesurés, par manque de données
             consolidées. Mais les prairies ont en réalité des stocks de carbone
             organiques plus importants que les autres cultures végétales (INRA,
