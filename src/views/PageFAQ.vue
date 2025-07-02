@@ -11,6 +11,49 @@
     </div>
   </div>
   <div class="container">
+    <div>
+      <h2 class="titre-categorie">Vidéos tutoriel</h2>
+      <div class="tutorial-grid">
+        <iframe
+          class="video-tutorial"
+          src="https://www.youtube.com/embed/ELqrMOXazk0?si=7hoIblpyRCLXLHqc"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          width="100%"
+          height="auto"
+        ></iframe>
+        <iframe
+          class="video-tutorial"
+          src="https://www.youtube.com/embed/kZnpGiid-6g?si=WCFlKWjVo2-47L8l"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+        <iframe
+          class="video-tutorial"
+          src="https://www.youtube.com/embed/JtAohTx0SyY?si=O61UV6UrEARlwAG8"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+        <iframe
+          class="video-tutorial"
+          src="https://www.youtube.com/embed/FFvd1x3lLC4?si=SY2RVXGhv3LXXRFv"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
     <div
       class="question-categorie"
       v-for="categorie in FAQ_CONTENT"
@@ -90,6 +133,7 @@ h1 {
   line-height: 1.2em;
   margin-bottom: 30px;
 }
+
 .titre-categorie {
   font-weight: 300;
   font-size: 36px;
@@ -98,6 +142,19 @@ h1 {
   border-bottom: 1px dashed #015a5a;
   padding: 4rem 0 1rem 0;
   margin: 3rem 0px 3rem;
+}
+
+.tutorial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+}
+
+.video-tutorial {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
 }
 
 .question {
