@@ -85,7 +85,7 @@ const store = useStore();
 
 const rechercheInput = ref("");
 const list_geo = ref([]);
-const pointGeoAPI = window.apiURL + "/parcel/GeoData/";
+const pointGeoAPI = window.apiURL + "parcel/GeoData/";
 
 const ajouterGeo = (geo) => {
   rechercheInput.value = "";
