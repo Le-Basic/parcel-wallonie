@@ -1,6 +1,6 @@
 <template>
   <MenuSimple></MenuSimple>
-  <h1>FAQ</h1>
+  <h1>Tutoriels et FAQ</h1>
   <div class="ss-titre-page">
     Retrouvez les réponses à vos questions les plus fréquemment posées.
     <div>
