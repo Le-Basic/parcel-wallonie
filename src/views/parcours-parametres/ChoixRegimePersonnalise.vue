@@ -65,7 +65,7 @@
                           creerCoefficientMultiplicateur(
                             valeursChangementGroupeAlimentaire[
                               IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES
-                            ]
+                            ],
                           )
                         }}
                       </div>
@@ -85,7 +85,7 @@
                             @click="
                               ChangerCompteur(
                                 -1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES,
                               )
                             "
                             >-</span
@@ -110,7 +110,7 @@
                             @click="
                               ChangerCompteur(
                                 1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES,
                               )
                             "
                             >+</span
@@ -129,7 +129,7 @@
                           creerCoefficientMultiplicateur(
                             valeursChangementGroupeAlimentaire[
                               IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE
-                            ]
+                            ],
                           )
                         }}
                       </div>
@@ -149,7 +149,7 @@
                             @click="
                               ChangerCompteur(
                                 -1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE,
                               )
                             "
                             >-</span
@@ -174,7 +174,7 @@
                             @click="
                               ChangerCompteur(
                                 1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE,
                               )
                             "
                             >+</span
@@ -193,7 +193,7 @@
                           creerCoefficientMultiplicateur(
                             valeursChangementGroupeAlimentaire[
                               IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE
-                            ]
+                            ],
                           )
                         }}
                       </div>
@@ -213,7 +213,7 @@
                             @click="
                               ChangerCompteur(
                                 -1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE,
                               )
                             "
                             >-</span
@@ -238,7 +238,7 @@
                             @click="
                               ChangerCompteur(
                                 1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE,
                               )
                             "
                             >+</span
@@ -257,7 +257,7 @@
                           creerCoefficientMultiplicateur(
                             valeursChangementGroupeAlimentaire[
                               IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES
-                            ]
+                            ],
                           )
                         }}
                       </div>
@@ -276,7 +276,7 @@
                             @click="
                               ChangerCompteur(
                                 -1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES,
                               )
                             "
                             class="btn-moins counter-minus"
@@ -302,7 +302,7 @@
                             @click="
                               ChangerCompteur(
                                 1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES,
                               )
                             "
                             >+</span
@@ -321,7 +321,7 @@
                           creerCoefficientMultiplicateur(
                             valeursChangementGroupeAlimentaire[
                               IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES
-                            ]
+                            ],
                           )
                         }}
                       </div>
@@ -340,7 +340,7 @@
                             @click="
                               ChangerCompteur(
                                 -1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES,
                               )
                             "
                             class="btn-moins counter-minus"
@@ -367,7 +367,7 @@
                             @click="
                               ChangerCompteur(
                                 1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES,
                               )
                             "
                             >+</span
@@ -386,7 +386,7 @@
                           creerCoefficientMultiplicateur(
                             valeursChangementGroupeAlimentaire[
                               IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS
-                            ]
+                            ],
                           )
                         }}
                       </div>
@@ -410,7 +410,7 @@
                             @click="
                               ChangerCompteur(
                                 -1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS,
                               )
                             "
                             class="btn-moins counter-minus"
@@ -437,7 +437,7 @@
                             @click="
                               ChangerCompteur(
                                 1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS,
                               )
                             "
                             >+</span
@@ -456,7 +456,7 @@
                           creerCoefficientMultiplicateur(
                             valeursChangementGroupeAlimentaire[
                               IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX
-                            ]
+                            ],
                           )
                         }}
                       </div>
@@ -475,7 +475,7 @@
                             @click="
                               ChangerCompteur(
                                 -1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX,
                               )
                             "
                             class="btn-moins counter-minus"
@@ -502,7 +502,7 @@
                             @click="
                               ChangerCompteur(
                                 1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX,
                               )
                             "
                             >+</span
@@ -521,7 +521,7 @@
                           creerCoefficientMultiplicateur(
                             valeursChangementGroupeAlimentaire[
                               IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE
-                            ]
+                            ],
                           )
                         }}
                       </div>
@@ -540,7 +540,7 @@
                             @click="
                               ChangerCompteur(
                                 -1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE,
                               )
                             "
                             class="btn-moins counter-minus"
@@ -567,7 +567,7 @@
                             @click="
                               ChangerCompteur(
                                 1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE,
                               )
                             "
                             >+</span
@@ -586,7 +586,7 @@
                           creerCoefficientMultiplicateur(
                             valeursChangementGroupeAlimentaire[
                               IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE
-                            ]
+                            ],
                           )
                         }}
                       </div>
@@ -605,7 +605,7 @@
                             @click="
                               ChangerCompteur(
                                 -1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE,
                               )
                             "
                             class="btn-moins counter-minus"
@@ -633,7 +633,7 @@
                             @click="
                               ChangerCompteur(
                                 1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE,
                               )
                             "
                             >+</span
@@ -656,7 +656,7 @@
                             valeursChangementGroupeAlimentaire[
                               IDS_CATEGORIES_REGIMES_ALIMENTAIRES
                                 .PRODUITS_LAITIERS
-                            ]
+                            ],
                           )
                         }}
                       </div>
@@ -675,7 +675,7 @@
                             @click="
                               ChangerCompteur(
                                 -1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS,
                               )
                             "
                             class="btn-moins counter-minus"
@@ -703,7 +703,7 @@
                             @click="
                               ChangerCompteur(
                                 1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS,
                               )
                             "
                             >+</span
@@ -722,7 +722,7 @@
                           creerCoefficientMultiplicateur(
                             valeursChangementGroupeAlimentaire[
                               IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS
-                            ]
+                            ],
                           )
                         }}
                       </div>
@@ -741,7 +741,7 @@
                             @click="
                               ChangerCompteur(
                                 -1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS,
                               )
                             "
                             class="btn-moins counter-minus"
@@ -768,7 +768,7 @@
                             @click="
                               ChangerCompteur(
                                 1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS,
                               )
                             "
                             >+</span
@@ -787,7 +787,7 @@
                           creerCoefficientMultiplicateur(
                             valeursChangementGroupeAlimentaire[
                               IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE
-                            ]
+                            ],
                           )
                         }}
                       </div>
@@ -806,7 +806,7 @@
                             @click="
                               ChangerCompteur(
                                 -1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE,
                               )
                             "
                             class="btn-moins counter-minus"
@@ -833,7 +833,7 @@
                             @click="
                               ChangerCompteur(
                                 1,
-                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE
+                                IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE,
                               )
                             "
                             >+</span
@@ -907,7 +907,7 @@
                   apportsEnergetiques.find(
                     (apport) =>
                       apport.id_apport_energetique ===
-                      CATEGORIE_APPORT_IDS.ENERGIE
+                      CATEGORIE_APPORT_IDS.ENERGIE,
                   )?.valeur
                 "
               />
@@ -929,7 +929,7 @@
                   apportsEnergetiques.find(
                     (apport) =>
                       apport.id_apport_energetique ===
-                      CATEGORIE_APPORT_IDS.PROTEINES
+                      CATEGORIE_APPORT_IDS.PROTEINES,
                   )?.valeur ?? 70
                 "
                 @update:categoriesAlimentaires="
@@ -955,7 +955,7 @@
                   apportsEnergetiques.find(
                     (apport) =>
                       apport.id_apport_energetique ===
-                      CATEGORIE_APPORT_IDS.GLUCIDES
+                      CATEGORIE_APPORT_IDS.GLUCIDES,
                   )?.valeur ?? 300
                 "
                 @update:categoriesAlimentaires="
@@ -981,7 +981,7 @@
                   apportsEnergetiques.find(
                     (apport) =>
                       apport.id_apport_energetique ===
-                      CATEGORIE_APPORT_IDS.LIPIDES
+                      CATEGORIE_APPORT_IDS.LIPIDES,
                   )?.valeur ?? 70
                 "
                 @update:categoriesAlimentaires="
@@ -995,24 +995,24 @@
                 :listeIconesProduits="getListeIconesProduits('Fibres')"
                 :categoriesAlimentaires="
                   getCategoriesJaugeAlimentaire(
-                    CATEGORIE_APPORT_IDS.FIBRES_ALIMENTAIRES
+                    CATEGORIE_APPORT_IDS.FIBRES_ALIMENTAIRES,
                   )
                 "
                 :valeurMax="
                   getMinMaxJaugeAlimentaire(
-                    CATEGORIE_APPORT_IDS.FIBRES_ALIMENTAIRES
+                    CATEGORIE_APPORT_IDS.FIBRES_ALIMENTAIRES,
                   ).max
                 "
                 :valeurMin="
                   getMinMaxJaugeAlimentaire(
-                    CATEGORIE_APPORT_IDS.FIBRES_ALIMENTAIRES
+                    CATEGORIE_APPORT_IDS.FIBRES_ALIMENTAIRES,
                   ).min
                 "
                 :valeurJauge="
                   apportsEnergetiques.find(
                     (apport) =>
                       apport.id_apport_energetique ===
-                      CATEGORIE_APPORT_IDS.FIBRES_ALIMENTAIRES
+                      CATEGORIE_APPORT_IDS.FIBRES_ALIMENTAIRES,
                   )?.valeur ?? 20
                 "
                 @update:categoriesAlimentaires="
@@ -1107,77 +1107,77 @@ const coefficientMultiplicateurVolumeCategorieRegime = computed(() => {
       creerCoefficientMultiplicateur(
         valeursChangementGroupeAlimentaire.value[
           IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES
-        ]
+        ],
       ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE]: creerCoefficientMultiplicateur(
       valeursChangementGroupeAlimentaire.value[
         IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE
-      ]
+      ],
     ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE]:
       creerCoefficientMultiplicateur(
         valeursChangementGroupeAlimentaire.value[
           IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE
-        ]
+        ],
       ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES]:
       creerCoefficientMultiplicateur(
         valeursChangementGroupeAlimentaire.value[
           IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES
-        ]
+        ],
       ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES]:
       creerCoefficientMultiplicateur(
         valeursChangementGroupeAlimentaire.value[
           IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES
-        ]
+        ],
       ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS]:
       creerCoefficientMultiplicateur(
         valeursChangementGroupeAlimentaire.value[
           IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS
-        ]
+        ],
       ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX]:
       creerCoefficientMultiplicateur(
         valeursChangementGroupeAlimentaire.value[
           IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX
-        ]
+        ],
       ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE]:
       creerCoefficientMultiplicateur(
         valeursChangementGroupeAlimentaire.value[
           IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE
-        ]
+        ],
       ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE]:
       creerCoefficientMultiplicateur(
         valeursChangementGroupeAlimentaire.value[
           IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE
-        ]
+        ],
       ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS]:
       creerCoefficientMultiplicateur(
         valeursChangementGroupeAlimentaire.value[
           IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS
-        ]
+        ],
       ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS]: creerCoefficientMultiplicateur(
       valeursChangementGroupeAlimentaire.value[
         IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS
-      ]
+      ],
     ),
     [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE]: creerCoefficientMultiplicateur(
       valeursChangementGroupeAlimentaire.value[
         IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE
-      ]
+      ],
     ),
   };
 });
 
 // régime par défaut, tous les coefficients multiplicateurs sont à 1
 const coefficientMultiplicateurVolumeCategorieRegimeChoisi = ref(
-  coefficientMultiplicateurVolumeCategorieRegime.value
+  coefficientMultiplicateurVolumeCategorieRegime.value,
 );
 
 watch(
@@ -1185,16 +1185,16 @@ watch(
   (nouveauCoefficientMultiplicateur) => {
     console.log(
       "nouveauCoefficientMultiplicateur",
-      nouveauCoefficientMultiplicateur
+      nouveauCoefficientMultiplicateur,
     );
     console.log(
       "coefficientMultiplicateurVolumeCategorieRegimeChoisi",
-      coefficientMultiplicateurVolumeCategorieRegimeChoisi.value
+      coefficientMultiplicateurVolumeCategorieRegimeChoisi.value,
     );
     if (
       _.isEqual(
         nouveauCoefficientMultiplicateur,
-        coefficientMultiplicateurVolumeCategorieRegimeChoisi.value
+        coefficientMultiplicateurVolumeCategorieRegimeChoisi.value,
       )
     ) {
       console.log("chgt de régime");
@@ -1204,29 +1204,29 @@ watch(
       let coefficientMultiplicateurProduits =
         MapProduitsCoefficientMultiplicateurRegime(
           MAP_CATEGORIE_PRODUITS_DETAILLES,
-          nouveauCoefficientMultiplicateur
+          nouveauCoefficientMultiplicateur,
         );
       store.commit(
         "mutationPctDiffRegimePersonnalise",
-        coefficientMultiplicateurProduits
+        coefficientMultiplicateurProduits,
       );
 
       // transform the key to string
       const coefficientsApportsEnergetiquesApi = Object.entries(
-        nouveauCoefficientMultiplicateur
+        nouveauCoefficientMultiplicateur,
       ).map(([id, coefficient]) => ({
         id_groupe_alimentaire: id,
         coefficient_multiplicateur: coefficient,
       }));
 
       fetchApportsEnergetiques(
-        "https://lebasic.nohost.me/api/parcel/belgique/apports_energetiques",
-        coefficientsApportsEnergetiquesApi
+        "https://api.basic.coop/parcel/belgique/apports_energetiques",
+        coefficientsApportsEnergetiquesApi,
       ).then((apports) => {
         apportsEnergetiques.value = apports;
       });
     }
-  }
+  },
 );
 
 watch(regimeChoisi, (nouvelleValeur) => {
@@ -1234,63 +1234,63 @@ watch(regimeChoisi, (nouvelleValeur) => {
   console.log("regimeChoisi", nouvelleValeur.id);
   if (nouvelleValeur.id != IDS_REGIMES_ALIMENTAIRES.PERSONNALISE) {
     fetchApportsEnergetiques(
-      "https://lebasic.nohost.me/api/parcel/belgique/apports_energetiques",
-      listeCoefficientMultiplicateurVolumeCategorieRegimeChoisi
+      "https://api.basic.coop/parcel/belgique/apports_energetiques",
+      listeCoefficientMultiplicateurVolumeCategorieRegimeChoisi,
     ).then((apports) => {
       apportsEnergetiques.value = apports;
     });
     // TODO: REFACTO ET SIMPLIFICATION
     console.log("fetchCoefficientsGroupesAlimentaires");
     fetchCoefficientsGroupesAlimentaires({
-      url: "https://lebasic.nohost.me/api/parcel/belgique/coefficients_groupes_alimentaires",
+      url: "https://api.basic.coop/parcel/belgique/coefficients_groupes_alimentaires",
       idRegimeAlimentaire: nouvelleValeur.id,
     })
       .then((coefficients) => {
         let coefficientsMultiplaceteursNouveauxRegimes = {
           [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.CEREALES]: coefficients.find(
-            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.CEREALES.id
+            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.CEREALES.id,
           ).valeur,
           [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.HUILE]: coefficients.find(
-            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.HUILE.id
+            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.HUILE.id,
           ).valeur,
           [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PATATE]: coefficients.find(
-            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.PATATE.id
+            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.PATATE.id,
           ).valeur,
           [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMINEUSES]: coefficients.find(
             (c) =>
-              c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.LEGUMINEUSES.id
+              c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.LEGUMINEUSES.id,
           ).valeur,
           [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.LEGUMES]: coefficients.find(
-            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.LEGUMES.id
+            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.LEGUMES.id,
           ).valeur,
           [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.FRUITS]: coefficients.find(
-            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.FRUITS.id
+            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.FRUITS.id,
           ).valeur,
           [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OLEAGINEUX]: coefficients.find(
             (c) =>
-              c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.OLEAGINEUX.id
+              c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.OLEAGINEUX.id,
           ).valeur,
           [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_ROUGE]: coefficients.find(
             (c) =>
-              c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.VIANDE_ROUGE.id
+              c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.VIANDE_ROUGE.id,
           ).valeur,
           [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.VIANDE_BLANCHE]:
             coefficients.find(
               (c) =>
                 c.id_groupe_alimentaire ===
-                GROUPES_ALIMENTAIRES.VIANDE_BLANCHE.id
+                GROUPES_ALIMENTAIRES.VIANDE_BLANCHE.id,
             ).valeur,
           [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.PRODUITS_LAITIERS]:
             coefficients.find(
               (c) =>
                 c.id_groupe_alimentaire ===
-                GROUPES_ALIMENTAIRES.PRODUITS_LAITIERS.id
+                GROUPES_ALIMENTAIRES.PRODUITS_LAITIERS.id,
             ).valeur,
           [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.OEUFS]: coefficients.find(
-            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.OEUFS.id
+            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.OEUFS.id,
           ).valeur,
           [IDS_CATEGORIES_REGIMES_ALIMENTAIRES.SUCRE]: coefficients.find(
-            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.SUCRE.id
+            (c) => c.id_groupe_alimentaire === GROUPES_ALIMENTAIRES.SUCRE.id,
           ).valeur,
         };
         coefficientMultiplicateurVolumeCategorieRegimeChoisi.value =
@@ -1446,7 +1446,7 @@ function changerConclusionRegimeParCategorie(valeur, categorieRegimeAChanger) {
 function categorieApportRegimeAlimentaire() {
   return conclusionRegime.value.reduce(
     (acc, categorie) => Math.min(acc, categorie.valeur),
-    1
+    1,
   );
 }
 
@@ -1458,27 +1458,27 @@ const listeCoefficientMultiplicateurVolumeCategorieRegimeChoisi = computed(
   () => {
     //parse json dict
     return Object.keys(
-      coefficientMultiplicateurVolumeCategorieRegimeChoisi.value
+      coefficientMultiplicateurVolumeCategorieRegimeChoisi.value,
     ).map((key) => ({
       id_groupe_alimentaire: key,
       coefficient_multiplicateur:
         coefficientMultiplicateurVolumeCategorieRegimeChoisi.value[key],
     }));
-  }
+  },
 );
 
 watch(
   listeCoefficientMultiplicateurVolumeCategorieRegimeChoisi,
   (nouveauCoefficientMultiplicateur) => {
     fetchApportsEnergetiques(
-      "https://lebasic.nohost.me/api/parcel/belgique/apports_energetiques",
-      nouveauCoefficientMultiplicateur
+      "https://api.basic.coop/parcel/belgique/apports_energetiques",
+      nouveauCoefficientMultiplicateur,
     ).then((nouveauxApports) => {
       console.log("APPORTS", nouveauxApports);
       apportsEnergetiques.value = nouveauxApports;
     });
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 const montreDetailProduits = ref(false);

@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      pointGeoAPI: window.apiURL + "/parcel/GeoData/",
+      pointGeoAPI: window.apiURL + "parcel/GeoData/",
       rechercheInput: "",
       list_geo: [],
     };
