@@ -14,44 +14,56 @@
     <div>
       <h2 class="titre-categorie">Vidéos tutoriel</h2>
       <div class="tutorial-grid">
-        <iframe
-          class="video-tutorial"
-          src="https://www.youtube.com/embed/ELqrMOXazk0?si=7hoIblpyRCLXLHqc"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-          width="100%"
-          height="auto"
-        ></iframe>
-        <iframe
-          class="video-tutorial"
-          src="https://www.youtube.com/embed/kZnpGiid-6g?si=WCFlKWjVo2-47L8l"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
-        <iframe
-          class="video-tutorial"
-          src="https://www.youtube.com/embed/JtAohTx0SyY?si=O61UV6UrEARlwAG8"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
-        <iframe
-          class="video-tutorial"
-          src="https://www.youtube.com/embed/FFvd1x3lLC4?si=SY2RVXGhv3LXXRFv"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
+        <div>
+          <div class="title-question">Réaliser un diagnostic</div>
+          <iframe
+            class="video-tutorial"
+            src="https://www.youtube.com/embed/ELqrMOXazk0?si=7hoIblpyRCLXLHqc"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            width="100%"
+            height="auto"
+          ></iframe>
+        </div>
+        <div>
+          <div class="title-question">Paramétrer une simulation</div>
+          <iframe
+            class="video-tutorial"
+            src="https://www.youtube.com/embed/kZnpGiid-6g?si=WCFlKWjVo2-47L8l"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div>
+          <div class="title-question">Interpréter les résultats</div>
+          <iframe
+            class="video-tutorial"
+            src="https://www.youtube.com/embed/JtAohTx0SyY?si=O61UV6UrEARlwAG8"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div>
+          <div class="title-question">Valoriser une surfce donnée</div>
+          <iframe
+            class="video-tutorial"
+            src="https://www.youtube.com/embed/FFvd1x3lLC4?si=SY2RVXGhv3LXXRFv"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
     </div>
     <div
@@ -81,7 +93,7 @@
     <div class="container mx-auto">
       <div class="title">
         Où chercher pour trouver la réponse à une question que l'on se pose sur
-        PARCEL?
+        PARCEL-Wallonie ?
       </div>
 
       <p>
@@ -133,7 +145,21 @@ h1 {
   line-height: 1.2em;
   margin-bottom: 30px;
 }
-
+.title-question {
+  font-weight: 500;
+  font-size: 19px;
+  color: var(--bleu);
+  line-height: 1.2;
+  padding-left: 8px;
+  margin-top: 0.5rem;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--vert);
+  text-align: left;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
 .titre-categorie {
   font-weight: 300;
   font-size: 36px;
